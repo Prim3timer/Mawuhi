@@ -16,7 +16,7 @@ const Home = ()=> {
         // if used in more components, this should be in context 
         // axios to /logout endpoint 
         dispatch({type: 'auth', payload: ({})});
-        navigate('/login');
+        navigate('/linkpage');
     }
     return (
         <section
@@ -34,6 +34,8 @@ const Home = ()=> {
         <Link to="/inventory">Go to the Inventory page</Link>
         <br />
         <Link to="/register"> register page</Link>
+        <br />
+        <Link to="/linkpage">Go to the link page</Link>
         <br />
         <br />
         <Link to="/create-inventory">Go to the create inventory</Link><br/>

@@ -14,9 +14,9 @@ const Login = () => {
     const [state, dispatch] = useReducer(reducer, initialState)
     const { setAuth } = useAuth()
 
-    // const navigate = useNavigate();
-    // const location = useLocation();
-    // const from = location.state?.from?.pathname || "/";
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
 
     const userRef = useRef();
     const errRef = useRef();
@@ -51,12 +51,12 @@ const Login = () => {
             //console.log(JSON.stringify(response));
             const accessToken = response?.data?.accessToken;
             const roles = response?.data?.roles;
-            // setAuth({ user, pwd, roles, accessToken });
-            dispatch({type: 'auth', paylaod: { user, pwd, roles, accessToken }})
-            // navigate(from, { replace: true });
+            setAuth({ user, pwd, roles, accessToken });
+            // dispatch({type: 'auth', paylaod: { user, pwd, roles, accessToken }})
             setUser('');
             setPwd('');
-            dispatch({type: 'success', payload: true})
+            navigate(from, { replace: true });
+            // dispatch({type: 'success', payload: true})
         } catch (err) {
             if (!err?.response) {
                 dispatch({type: 'errMsg', payload: 'No server Response'});
@@ -76,16 +76,7 @@ const Login = () => {
     }
 
     return (
-        <>
-        {state.success ? (
-            <section>
-            <h1>You are logged in</h1>
-            <br/>
-            <p>
-            <a style={{backgroundColor: 'tomato'}} href='/'>Got to Home</a>
-            </p>
-            </section>
-        ) :
+     
         <section>
             <p ref={errRef} className={state.errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{state.errMsg}</p>
             <h1>Sign In</h1>
@@ -119,8 +110,6 @@ const Login = () => {
                 </span>
             </p>
         </section>
-}
-</>
     )
 }
 
