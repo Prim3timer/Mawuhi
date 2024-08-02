@@ -1,0 +1,43 @@
+const initialState = {
+    items: '',
+    sales: '',
+    inventory: '',
+    search: '',
+    marker: '',
+    name: '',
+    price: '',
+    unitMeasure: '',
+    piecesUnit: '',
+    salesGrand: '',
+    isMatched: '',
+
+    user: '',
+    validName: false,
+    userFocus: false,
+    pwd: '',
+    validPwd: false,
+    pwdFocus: false,
+    matchPwd: '',
+    validMatch: false,
+    matchFocus: false,
+
+    errMsg: '',
+    success: false,
+    auth: {},
+    qty: '',
+    getNames: [],
+   isEdit: false,
+   inItem: '',
+   outItem: '',
+   afa: '', 
+   ole: '',
+   transArray: [],
+   total: 0,
+   amount: 0,
+   clear: '',
+   INCREMENT: '',
+   DECREMENT: ''
+  
+}
+
+export default initialState

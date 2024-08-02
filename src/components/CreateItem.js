@@ -1,0 +1,92 @@
+import reducer from "../reducer"
+import initialState from "../store"
+import axios from '../app/api/axios'
+import { useEffect, useReducer } from "react"
+const {v4: uuid} = require('uuid')
+
+
+let CreateItem = () => {
+       const [state, dispatch] = useReducer(reducer, initialState)
+   
+    const handleSubmit = async (e)=> {
+        e.preventDefault()
+        const newItem = {
+            name: state.name,
+            price: state.price,
+            unitMeasure: state.unitMeasure,
+            piecesUnit: state.piecesUnit
+            
+        }
+
+        // let groove = await axios.get('/items')
+
+
+        dispatch({type: 'items', payload: await axios.get('/items')})
+        console.log(state.items)
+      const theMatch = state.items && state.items.data.find((item)=> item.name.toLowerCase() === newItem.name.toLowerCase())
+      if (theMatch){
+   
+        dispatch({type: 'isMatched', payload: 'we have a match' })
+        setTimeout(()=> {
+            dispatch({type: 'isMatched', payload: '' })
+        }, 3000)
+        
+    } else {
+        const response = await axios.post('/items', newItem)  
+        if (response){  
+
+            dispatch({type: 'isMatched', payload: `new item, ${newItem.name} created` })
+            setTimeout(()=> {
+                dispatch({type: 'isMatched', payload: '' })
+            }, 3000)
+        }
+    }  
+    dispatch({type: 'name', payload: '' })
+    dispatch({type: 'price', payload: '' })
+    dispatch({type: 'unitMeasure', payload: '' })
+    dispatch({type: 'piecesUnit', payload: '' })
+        // setUsername('')
+    }
+    return (
+        <div className="create-item">
+            <h2 id="create-item-heading">Create Item</h2>
+            <form onSubmit={handleSubmit}
+            id="create-item-form" >
+                <label>name:</label>
+                <input
+                type="text"
+                required
+                value={state.name}
+                onChange={(e)=> dispatch({type: 'name', payload: e.target.value})}
+                />
+                <label>price:</label>
+                <input
+                type="text"
+                required
+                value={state.price}
+                onChange={(e)=> dispatch({type: 'price', payload: e.target.value})}
+                />
+                <label>unitMeasure:</label>
+                <input
+                type="text"
+                required
+                value={state.unitMeasere}
+                onChange={(e)=> dispatch({type: 'unitMeasure', payload: e.target.value})}
+                />
+                <label>Pieces/Unit:</label>
+                <input
+                type="text"
+                placeholder="optional"
+                // required
+                value={state.piecesUnit}
+                onChange={(e)=> dispatch({type: 'piecesUnit', payload: e.target.value})}
+                />
+                <br/>
+               <button type="submit" className="pop">Add Item</button>
+               <h3>{state.isMatched}</h3>
+            </form>
+        </div>
+    )
+}
+
+export default CreateItem
