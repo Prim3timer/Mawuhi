@@ -8,7 +8,7 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom'
 
 // Nickel Store
 import store from './store'
-import { Provider } from "react-redux"
+// import { Provider } from "react-redux"
 import { AuthProvider } from './context/authProvider';
 
 
