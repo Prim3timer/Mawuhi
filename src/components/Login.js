@@ -1,7 +1,6 @@
 
-import { useRef, useState, useEffect, useContext, useReducer } from 'react';
+import { useRef, useState, useEffect, useReducer } from 'react';
 import useAuth from '../hooks/useAuth';
-import AuthContext from '../context/authProvider';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 import axios from '../app/api/axios';
@@ -13,7 +12,7 @@ const LOGIN_URL = '/auth';
 
 const Login = () => {
     const [state, dispatch] = useReducer(reducer, initialState)
-    const { setAuth } = useContext(AuthContext)
+    const { setAuth } = useAuth()
 
     // const navigate = useNavigate();
     // const location = useLocation();
@@ -83,7 +82,7 @@ const Login = () => {
             <h1>You are logged in</h1>
             <br/>
             <p>
-            <a href='#'>Got to Home</a>
+            <a style={{backgroundColor: 'tomato'}} href='/'>Got to Home</a>
             </p>
             </section>
         ) :

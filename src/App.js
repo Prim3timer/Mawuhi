@@ -28,24 +28,24 @@ const App = () => {
   // <Routes>
   //   <Route path="/" element={<Layout/>}>
   //   {/* public routes */}
-  //     <Route path="/login" element={<Login/>}/>
-  //     <Route path="register" element={<Register/>}/>
-  //     <Route path="admin" element={<Admin/>}/>
-  //     {/* <Route path="linkpage" element={<LinkPage/>}/> */}
-  //     <Route path="unauthorized" element={<Unauthorized/>}/>
+      // <Route path="/login" element={<Login/>}/>
+      // <Route path="register" element={<Register/>}/>
+      // <Route path="admin" element={<Admin/>}/>
+      // {/* <Route path="linkpage" element={<LinkPage/>}/> */}
+      // <Route path="unauthorized" element={<Unauthorized/>}/>
   //     {/* </Route> */}
 
   //     {/* protected routes */}
-  //     <Route element={<RequireAuth />}/>
-  //     <Route path="/" element={<Home/>}/>
+    //   <Route element={<RequireAuth />}/>
+    //   <Route path="/" element={<Home/>}/>
       
      
-  //     <Route path="editor" element={<Editor/>}/>
+    //   <Route path="editor" element={<Editor/>}/>
    
       
-  //     <Route path="transaction" element={<Transactions/>}/>
+    //   <Route path="transaction" element={<Transactions/>}/>
     
-  //   <Route path="create-item" element={<CreateItem/>}/>
+    // <Route path="create-item" element={<CreateItem/>}/>
       
   //     <Route path="inventory" element={<Inventory/>}/>
 
@@ -59,8 +59,30 @@ const App = () => {
 
   // </Routes>
   <main className="app">
-    <Login/>
-    {/* <Admin/> */}
+    <Routes>
+       {/* public routes */}
+      <Route path="/" element={<Layout/>}>
+  <Route path="/login" element={<Login/>}/>
+  <Route path="register" element={<Register/>}/>
+       {/* <Route path="linkpage" element={<LinkPage/>}/> */}
+    <Route path="unauthorized" element={<Unauthorized/>}/>
+       <Route path="transaction" element={<Transactions/>}/>
+       <Route path="inventory" element={<Inventory/>}/>
+
+     {/* public routes */}
+       <Route path="/" element={<Home/>}/>
+     <Route element={<RequireAuth/>}>
+   <Route path="admin" element={<Admin/>}/>
+       <Route path="editor" element={<Editor/>}/>
+     <Route path="create-item" element={<CreateItem/>}/>
+       <Route path="create-inventory" element={<CreateInventory/>}/>
+       </Route>
+
+     
+
+       <Route path="*" element={<Missing/>}/>
+      </Route>
+    </Routes>
   </main>
   
   )

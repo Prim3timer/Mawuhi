@@ -36,7 +36,8 @@ const Home = ()=> {
         <Link to="/register"> register page</Link>
         <br />
         <br />
-        <Link to="/create-inventory">Go to the create inventory</Link>
+        <Link to="/create-inventory">Go to the create inventory</Link><br/>
+        <Link to="/login">Login</Link>
         <br />
         <Link to="/admin">Go to the admin</Link>
         <div className="flexGrow">

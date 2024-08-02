@@ -24,7 +24,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: darkslategray ;
+  /* background-color: darkslategray ; */
   /* background: linear-gradient(0deg, rgba(162, 233, 233, 0.996), rgb(214, 242, 252)); */
 }
 
