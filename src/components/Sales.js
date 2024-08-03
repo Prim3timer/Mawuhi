@@ -1,8 +1,8 @@
-import reducer from "./reducer"
-import initialState from "./store"
+import reducer from "../reducer"
+import initialState from "../store"
 import SearchItem from "./SearchItem";
 import {useEffect, useReducer } from "react";
-import axios  from "./app/api/axios";
+import axios  from "../app/api/axios";
 const {v4: uuid} = require('uuid')
 
 

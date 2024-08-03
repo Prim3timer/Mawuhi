@@ -14,6 +14,8 @@ import CreateItem from "./components/CreateItem"
 import CreateInventory from "./components/CreateInventory"
 import Admin from "./components/Admin"
 import LinkPage from "./components/LinkPage"
+import Edit from "./components/Edit"
+import Sales from "./components/Sales"
 
 
 
@@ -51,6 +53,8 @@ const App = () => {
        <Route path="create-inventory" element={<CreateInventory/>}/>
        </Route>
      <Route element={<RequireAuth allowedRoles={[1984, 5150]}/>}>
+     <Route path="edit" element={<Edit/>}/>
+     <Route path="sales" element={<Sales/>}/>
      <Route path="create-item" element={<CreateItem/>}/>
        </Route>
       

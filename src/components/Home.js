@@ -16,7 +16,7 @@ const Home = ()=> {
         // if used in more components, this should be in context 
         // axios to /logout endpoint 
         dispatch({type: 'auth', payload: ({})});
-        navigate('/linkpage');
+        navigate('/login');
     }
     return (
         <section
@@ -26,22 +26,23 @@ const Home = ()=> {
         <br />
         <p>You are logged in!</p>
         <br />
-        <Link to="/transaction">Go to the transaction page</Link><br/>
-        <Link to="/create-inventory">Go to the create inventory page</Link>
+        <Link to="/transaction">transaction</Link><br/>
+        <Link to="/create-inventory">create inventory</Link>
         <br />
-        <Link to="/create-item">Go to the create item page</Link>
+        <Link to="/create-item">create item</Link>
         <br />
-        <Link to="/inventory">Go to the Inventory page</Link>
+        <Link to="/inventory">Inventory</Link>
         <br />
         <Link to="/register"> register page</Link>
         <br />
-        <Link to="/linkpage">Go to the link page</Link>
+        <Link to="/linkpage">link page</Link>
         <br />
         <br />
-        <Link to="/create-inventory">Go to the create inventory</Link><br/>
+        <Link to="/create-inventory">create inventory</Link><br/>
         <Link to="/login">Login</Link>
         <br />
-        <Link to="/admin">Go to the admin</Link>
+        <Link to="/admin">admin</Link><br/>
+        <Link to="/sales">Sales</Link>
         <div className="flexGrow">
             <button onClick={logout}>Sign Out</button>
         </div>
