@@ -189,7 +189,7 @@ input {
   border-radius: 5px;
   padding: 1rem;
   /* background-color: rgba(0,0,0,0.4); */
-  background-color: darkcyan;
+  /* background-color: darkcyan; */
   /* color: lightskyblue; */
 }
 
@@ -371,15 +371,15 @@ datalist{
 
     #username {
       width: 60vw;
-      height: 3rem;
+      height: 2rem;
     }
     
     #password {
-      height: 3rem;
+      height: 2rem;
       width: 60vw;
     }
     #confirm_pwd {
-      height: 3rem;
+      height: 2rem;
       width: 60vw;
 
     }
