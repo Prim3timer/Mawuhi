@@ -60,14 +60,10 @@ const Transactions = ()=> {
 
     const upper = (id)=> {
         dispatch({type: 'INCREMENT', payload: id})
-        const currentItem = state.transArray.find((trans)=> trans._id === id)
-        currentItem.total += currentItem.price
     }
     
     const downer = (id)=> {
-        dispatch({type: 'DECREMENT', payload: id})
-        const currentItem = state.transArray.find((trans)=> trans._id === id)
-        currentItem.total -= currentItem.price
+        dispatch({type: 'DECREMENT', payload: id})   
     }
     
     const clearer = ()=> {
@@ -144,7 +140,10 @@ const Transactions = ()=> {
                {!state.transArray.length ? <h4>list is empty</h4> : state.transArray.map((item, index)=> {
                 return (
                     <div
-                    
+                    style={{
+                        display:'grid'
+                        
+                    }}
                     >
             <section 
            key={index}
@@ -153,7 +152,7 @@ const Transactions = ()=> {
                 // borderTop: '1.5px solid black',
                 borderBottom: '2.5px solid black',
                 gridTemplateColumns: 'repeat(5, 200px)',
-                rowGap: '2rem',
+                columnGap: '.3px',
                
              
             }}

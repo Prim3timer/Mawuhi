@@ -45,9 +45,9 @@ const reducer = (state, action)=> {
        case 'success': 
         return {...state, success: action.payload}
        case 'qty': 
-    //     return {...state, qty: action.payload}
+     return {...state, qty: action.payload}
     //   case 'auth': 
-        return {...state, auth: action.payload}
+       //  return {...state, auth: action.payload}
         case 'getNames':
           return {...state, getNames: action.payload}
         
@@ -78,7 +78,8 @@ const reducer = (state, action)=> {
           case 'INCREMENT': 
           const tempCart = state.transArray.map((item)=> {
               if ( item._id === action.payload){
-                  return {...item, qty: item.qty + 1}
+                const curretnQty = item.qty + 1
+                  return {...item, qty: item.qty + 1, total: (item.price * curretnQty)}
               }
               return item
           })
@@ -87,7 +88,7 @@ const reducer = (state, action)=> {
           case 'DECREMENT':
             const tempCart2 = state.transArray.map((item)=> {
                 if ( item._id === action.payload){
-                    return {...item, qty: item.qty - 1}
+                    return {...item, qty: item.qty - 1, total: item.total - item.price}
                 }
                 return item
             }).filter((item)=> item.qty !== 0)
