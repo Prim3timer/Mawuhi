@@ -157,7 +157,7 @@ const Transactions = ()=> {
                 gridTemplateColumns: 'repeat(5, 150px)',
                 columnGap: '.3px',
                 backgroundColor: 'lightskyblue',
-                width: '95vh'
+                width: '95vw'
                
              
             }}
