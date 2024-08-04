@@ -20,13 +20,13 @@ const Home = ()=> {
     }
     return (
         <section
-        style={{backgroundColor: 'green',
+        style={{
+            backgroundColor: 'green',
             fontSize: '2rem',
             // margin: '0 0 1rem 0',
-            padding: '2rem 0'
+            padding: '0 0 2rem 0'
         }}
         >
-        <h1>Home</h1>
         <br />
         <p>You are logged in!</p>
         <br />

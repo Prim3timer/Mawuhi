@@ -3,13 +3,27 @@ import { Link } from "react-router-dom";
 
 const Admin = () => {
     return (
-        <section>
+        <section
+        style={{
+            display: 'flex',
+            flexDirection: 'column',
+            // justifyContent: 'center'
+        }}
+        >
             <h1>Admin</h1>
+            <h2>Users List</h2>
             <br/>
             <Users/>
             <br/>
-            <div className="flexGrow">
-                <Link to="/">Home</Link>
+            <div className="flexGrow"
+            
+            >
+                <Link to="/"
+                style={{
+                    color: 'brown',
+                    fontSize: '1.5rem'
+                }}
+                >Home</Link>
             </div>
         </section>
     )

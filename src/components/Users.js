@@ -29,13 +29,29 @@ useEffect(()=> {
     }
 }, [])
 return (
-    <article>
-        <h2>Users List</h2>
+    <article
+    style={{
+        // width: '50vw'
+        // alignItems: 'center',
+        // margin: '0 auto'
+        // justifyContent: 'center'
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center'
+    }}
+    >
+      
         {users?.length
         ? (
-            <ul>
-                {users.map((user, i)=> <li key={i}>{user?.username}</li>)}
-            </ul>
+            <ol
+            style={{width: '10vw',
+                // justifySelf: 'center'
+            }}
+            >
+                {users.map((user, i)=> <li key={i}
+              
+                >{user?.username}</li>)}
+            </ol>
         ) : <p>no user to display</p>}
     </article>
 )
