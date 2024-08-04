@@ -389,8 +389,8 @@ datalist{
       margin: 0 auto;
     }
     button {
-      width: 30rem;
-      background-color: green;
+      width: 40vw;
+      /* background-color: green; */
     }
 }  
 
