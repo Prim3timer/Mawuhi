@@ -80,7 +80,9 @@ const Login = () => {
         <section>
             <p ref={errRef} className={state.errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{state.errMsg}</p>
             <h1>Sign In</h1>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit}
+            id='login-form'
+            >
                 <label htmlFor="username">Username:</label>
                 <input
                     type="text"
