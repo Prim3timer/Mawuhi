@@ -154,10 +154,11 @@ const Transactions = ()=> {
                 display: 'grid',
                 // borderTop: '1.5px solid black',
                 // borderBottom: '2.5px solid black',
-                gridTemplateColumns: 'repeat(5, 150px)',
+                gridAutoColumns: 'repeat(1, 1fr)',
+                gridTemplateColumns: 'repeat(5, 200px)',
                 columnGap: '.3px',
                 backgroundColor: 'lightskyblue',
-                width: '95vw'
+                // width: '300vw'
                
              
             }}

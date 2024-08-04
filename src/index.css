@@ -25,7 +25,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /* background-color: darkslategray ; */
-  /* background: linear-gradient(0deg, rgba(162, 233, 233, 0.996), rgb(214, 242, 252)); */
+  background: linear-gradient(0deg, rgba(162, 233, 233, 0.996), rgb(214, 242, 252));
 }
 
 code {
@@ -165,7 +165,7 @@ input {
   margin: 0 auto;
   justify-content: center;
   /* background-color: yellow; */
-  width: 50vw;
+  width: 50vw; 
 }
 
 .trans-items {
@@ -360,5 +360,12 @@ datalist{
 .inventory {
   margin-bottom: 2rem;
 }
+
+@media screen and (orientation: portrait) {
+
+
+
+}  
+
 
 
