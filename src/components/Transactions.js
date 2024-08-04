@@ -135,24 +135,28 @@ const Transactions = ()=> {
             }}>{state.errMsg}</h3>
             </fieldset>
          
-                
-          
-               {!state.transArray.length ? <h4>list is empty</h4> : state.transArray.map((item, index)=> {
-                return (
-                    <div
+            <div
                     style={{
-                        display:'grid'
+                  display: 'grid',
+                  rowGap: '.5rem',
+                  gridAutoFlow: 'row',
+                //   backgroundColor: 'green'
                         
                     }}
                     >
+          
+               {!state.transArray.length ? <h4>list is empty</h4> : state.transArray.map((item, index)=> {
+                return (
+                 
             <section 
            key={index}
             style={{
                 display: 'grid',
                 // borderTop: '1.5px solid black',
-                borderBottom: '2.5px solid black',
-                gridTemplateColumns: 'repeat(5, 200px)',
+                // borderBottom: '2.5px solid black',
+                gridTemplateColumns: 'repeat(5, 150px)',
                 columnGap: '.3px',
+                backgroundColor: 'lightskyblue'
                
              
             }}
@@ -229,9 +233,9 @@ const Transactions = ()=> {
                     onClick={()=> removeItem(item._id)}
                     >remove</h4>
         </section>
-        </div>
                 )
             })}{}
+            </div>
             <article 
             id="grand-total"
             >
