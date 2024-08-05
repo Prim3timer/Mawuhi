@@ -82,7 +82,9 @@ const Transactions = ()=> {
             <fieldset
             id="field"
             >
-                <h2>Grand Total: ${state.total}</h2>
+                <h2
+                style={{width: '6rem'}}
+                >Grand Total: ${state.total}</h2>
         <form
         
         >
@@ -127,13 +129,12 @@ const Transactions = ()=> {
         </form>
           <button
           style={{height: '3rem',
-            margin: '0 0 0 4rem'
           }}
           >Save</button>
-            <h3 style={{color: 'red',
-                
-            }}>{state.errMsg}</h3>
             </fieldset>
+            <h3 style={{color: 'red',
+                // position: 'absolute'
+            }}>{state.errMsg}</h3>
          
             <div
             id="trans-item-cont"
@@ -150,25 +151,21 @@ const Transactions = ()=> {
             >
                     
                     <h2
-                    style={{
-                        position: 'relative',
-                        top: '30%',
-                        left: '10%',
-                        // color: 'green',
-                        width: '8rem',
+                    // style={{
+                    //     position: 'relative',
+                    //     top: '30%',
+                    //     left: '10%',
+                    //     // color: 'green',
+                    //     width: '8rem',
                        
-                    }}
+                    // }}
                     >{item.name}</h2>
                    <article
+                   
                    id="flex-article"
-                 style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    width: '5rem'
-                    }}
+               
                 >
                     <div
-                      
                     >
                     <h4
                   

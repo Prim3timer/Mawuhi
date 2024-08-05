@@ -41,12 +41,21 @@ code {
 }
 
 #field {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  text-align: center;
+  column-gap: 2rem;
+} 
+
+/* #field {
   display: grid;
                 border-bottom: 2.5px solid black;
-                grid-template-columns: repeat(3, 300px)
+                grid-template-columns: repeat(4, 400px);
+                background-color: yellow;
     
              
-}
+} */
 
 .dets {
   margin: 1rem;
@@ -68,7 +77,7 @@ h5 {margin-right: 1rem;}
 
 .trans-cont {
   margin: 0 auto;
-  text-align: center;
+  /* text-align: center; */
   /* width: 100vw; */
 }
 
@@ -154,17 +163,24 @@ input {
   margin-bottom: 1rem;
   /* background-color: a; */
 }
-.trans-items-cont {
+#trans-item-cont {
   display: flex;
   margin: 0 auto;
-  justify-content: center;
+    flex-direction: column;
+  align-items: center;
+  row-gap: .5rem;
   /* background-color: yellow; */
-  width: 50vw; 
+  /* width: 90vw;  */
+
 }
 
-.trans-items {
-  margin-right: 1rem;
-  font-size: larger;
+
+
+#trans-item {
+  /* margin-right: 1rem;
+  font-size: larger; */
+  /* background-color: green; */
+  /* height: 60vh; */
   
 }
 #login-button {
@@ -323,6 +339,7 @@ Link {
 }
 
 #transItem {
+  /* width ; */
 /* font-size: 10rem; */
 padding: .5rem;
 }
@@ -362,16 +379,21 @@ datalist{
   border-top: 1.5px solid black;
 border-bottom: 2.5px solid black;
   flex-direction: row;
-  column-gap: 5rem;
-  /* flex-wrap: wrap; */
+  column-gap: 6rem;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
   background-color: lightskyblue;
   width: 98vw
 }
 
 #flex-article {
     display: flex;
-    flex-direction: column;
-    width: 5rem;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 1rem;
+    flex-wrap: wrap;
+    /* width: 5rem; */
 }
 
 
@@ -408,7 +430,8 @@ border-bottom: 2.5px solid black;
 
     }
     #trans-cont {
-      display: flex;
+      margin:  0 auto;
+      width: 100vw;
 
     }
     #transItem {
@@ -417,18 +440,26 @@ border-bottom: 2.5px solid black;
 
     #trans-item-cont {
 
-      /* display: grid;
+      display: grid;
       row-gap: .5rem;
-      width: 100v;
-      grid-auto-flow: row; */
-      /* background-color: green */
-            
-      /* flex-wrap: wrap; */
-    
-  }
-  #tran-item {
+      width: 150vw;
+      grid-auto-flow: row; 
+      /* background-color: green   */
+      
+      
+      
+    } 
+    #trans-item {
+    /* width: 150vw; */
     flex-wrap: wrap;
+    /* width: 100vw; */
+    width: 150vw;
   }
+
+ #field {
+  width: 140vw;
+  flex-wrap: wrap;
+ }
 
 }  
 
