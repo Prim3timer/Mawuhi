@@ -83,8 +83,9 @@ const Transactions = ()=> {
             id="field"
             >
                 <h2
+                className="grand-total"
                 style={{width: '6rem'}}
-                >Grand Total: ${state.total}</h2>
+                >Grand Total: ${parseFloat(state.total).toFixed(2)}</h2>
         <form
         
         >
@@ -97,8 +98,8 @@ const Transactions = ()=> {
         /><button
         onClick={handleAdd}
          style={{
-            width: '2rem',
-            margin: '0 0 0 .5rem'
+            width: '3rem',
+            fontSize: '2rem'
         }}>+</button></h3>
         <datalist id="edulevel"
         style={{backgroundColor: 'blue',
@@ -128,7 +129,7 @@ const Transactions = ()=> {
 
         </form>
           <button
-          style={{height: '3rem',
+          style={{height: '3rem'
           }}
           >Done</button>
             </fieldset>
@@ -167,10 +168,8 @@ const Transactions = ()=> {
                 >
                     <div
                     >
-                    <h2
-                  
-             
-                    >Qty:</h2>
+                    <h3
+                    >Qty:</h3>
                 
  </div>
  <section>
@@ -200,7 +199,7 @@ const Transactions = ()=> {
                     </article>
                     <article>
                     <h2
-                //    onClick={()=> totality(item._id)}
+                    id="grand-total"
                     >sub total: </h2>
                     <h2 
                     style={{display: `${state.getAllTotals ? 'none' : 'block' }`}}
@@ -215,7 +214,7 @@ const Transactions = ()=> {
             })}{}
             </div>
             <article 
-            id="grand-total"
+            className="grand-total"
             >
 
            {/* <button
@@ -225,9 +224,10 @@ const Transactions = ()=> {
            onClick={()=> dispatch({type: 'getAllTotals', payload: !state.getAllTotals})}
            >Get Totals</button>
             */}
-            <h1
+            <h2
+                    className="grand-total"
            style={{display: `${state.getAllTotals ? 'none' : 'block' }`}}
-           >Grand Total: ${parseFloat(state.total).toFixed(2)}</h1>
+           >Grand Total: ${parseFloat(state.total).toFixed(2)}</h2>
             </article >
             <section
             style={{

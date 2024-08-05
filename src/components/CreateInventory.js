@@ -101,7 +101,6 @@ const CreateInventory = () => {
                     // backgroundColor: 'blue'
                     
                  }}
-        onClick={()=> console.log('hello world')}
         value={state.name}
         onChange={(e)=>  dispatch({type: 'name', payload: e.target.value})}
         /></h2>
@@ -126,7 +125,6 @@ const CreateInventory = () => {
                 onChange={(e)=>  dispatch({type: 'qty', payload: e.target.value})}
                 /><br/>
                <button type="submit" className='pop' >Add</button>           
-               {/* <button type="submit" className='pop' onClick={setExcercises(excercises)} >Add Log</button>            */}
             </form>
             <h3 style={{position: 'absolute',
                 margin: '0 35%',
