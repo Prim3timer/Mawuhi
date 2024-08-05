@@ -383,6 +383,7 @@ datalist{
   justify-content: center;
   flex-wrap: wrap;
   background-color: lightskyblue;
+  padding: .5rem;
   width: 98vw
 }
 
@@ -473,7 +474,7 @@ datalist{
     flex-wrap: wrap;
     /* width: 100vw; */
     width: 145vw;
-    padding: .5rem
+  
   }
 
  #field {
