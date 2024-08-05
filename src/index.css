@@ -467,12 +467,18 @@ datalist{
     /* width: 150vw; */
     flex-wrap: wrap;
     /* width: 100vw; */
-    width: 150vw;
+    width: 145vw;
   }
 
  #field {
-  width: 140vw;
+  width: 130vw;
+  row-gap: .5rem;
   flex-wrap: wrap;
+ }
+
+ #trans-search {
+  width: 10rem;
+  /* background-color: red; */
  }
 
 }  

@@ -130,7 +130,7 @@ const Transactions = ()=> {
           <button
           style={{height: '3rem',
           }}
-          >Save</button>
+          >Done</button>
             </fieldset>
             <h3 style={{color: 'red',
                 // position: 'absolute'
