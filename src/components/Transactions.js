@@ -167,10 +167,10 @@ const Transactions = ()=> {
                 >
                     <div
                     >
-                    <h4
+                    <h2
                   
              
-                    >Qty:</h4>
+                    >Qty:</h2>
                 
  </div>
  <section>
@@ -182,7 +182,7 @@ const Transactions = ()=> {
             <path d='M10.707 7.05L10 6.343 4.343 12l1.414 1.414L10 9.172l4.243 4.242L15.657 12z' />
           </svg>
                         </button>
-                    <h3 id="qty-header">{item.qty} {item.unitMeasure} </h3>
+                    <h2 id="qty-header">{item.qty} {item.unitMeasure} </h2>
                     <button
                     id="qty-decrease"
                     onClick={()=> downer(item._id)}
@@ -194,14 +194,14 @@ const Transactions = ()=> {
                     </section>
                    </article>
                     <article>
-                    <h4>price/ {item.unitMeasure}:</h4>
-                    <h4>${item.price}</h4>
+                    <h2>price/ {item.unitMeasure}:</h2>
+                    <h2>${item.price}</h2>
 
                     </article>
                     <article>
-                    <h3
+                    <h2
                 //    onClick={()=> totality(item._id)}
-                    >sub total: </h3>
+                    >sub total: </h2>
                     <h3 
                     style={{display: `${state.getAllTotals ? 'none' : 'block' }`}}
                     >${item.total}</h3>
@@ -225,11 +225,23 @@ const Transactions = ()=> {
            onClick={()=> dispatch({type: 'getAllTotals', payload: !state.getAllTotals})}
            >Get Totals</button>
             */}
-            <h2
+            <h1
            style={{display: `${state.getAllTotals ? 'none' : 'block' }`}}
-           >Grand Total: ${parseFloat(state.total).toFixed(2)}</h2>
-            </article>
+           >Grand Total: ${parseFloat(state.total).toFixed(2)}</h1>
+            </article >
+            <section
+            style={{
+                // margin: '0 auto',
+                display: 'flex',
+                flexDirection: 'row',
+                columnGap: '2rem',
+                alignItems: 'center',
+                justifyContent: 'center'
+            }}
+            >
            <button onClick={clearer}>Clear List</button>
+           <button onClick={clearer}>Cancel</button>
+           </section>
         </div>
     )
 }
