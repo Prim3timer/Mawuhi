@@ -194,22 +194,22 @@ const Transactions = ()=> {
                     </section>
                    </article>
                     <article>
-                    <h2>price/ {item.unitMeasure}:</h2>
-                    <h2>${item.price}</h2>
+                    <h4>price/ {item.unitMeasure}:</h4>
+                    <h4>${item.price}</h4>
 
                     </article>
                     <article>
                     <h2
                 //    onClick={()=> totality(item._id)}
                     >sub total: </h2>
-                    <h3 
+                    <h2 
                     style={{display: `${state.getAllTotals ? 'none' : 'block' }`}}
-                    >${item.total}</h3>
+                    >${item.total}</h2>
 
                     </article>
-                    <h4
+                    <h2
                     onClick={()=> removeItem(item._id)}
-                    >remove</h4>
+                    >remove</h2>
         </section>
                 )
             })}{}
