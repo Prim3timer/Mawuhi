@@ -398,11 +398,16 @@ datalist{
 #trans-search {
   width: 12rem;
 }
+@media screen and (min-width: 550px) {
+  #trans-search {
+    width: 15rem;
+  }
+}
 
 @media screen and (min-width: 430px) {
 
   .trans-cont {
-    font-size: 1.5rem;
+    font-size: 2rem;
   }
   #trans-item {
 
