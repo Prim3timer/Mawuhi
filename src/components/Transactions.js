@@ -89,7 +89,7 @@ const Transactions = ()=> {
         
         >
         <h3 id="transItem"><input type="text"
-        id="transItem"
+        id="trans-search"
         placeholder="search item"
         ref={inputRef}
         list="edulevel"
