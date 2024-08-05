@@ -5,7 +5,7 @@ import { useEffect, useReducer, useRef, useState } from "react"
 import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { type } from "@testing-library/user-event/dist/type"
-import { current } from "@reduxjs/toolkit";
+// import { current } from "@reduxjs/toolkit";
 const Transactions = ()=> {
     const [qty, setQty] = useState(0)
     const [state, dispatch] = useReducer(reducer, initialState)
