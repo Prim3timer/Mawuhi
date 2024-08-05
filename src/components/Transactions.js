@@ -1,11 +1,16 @@
 import reducer from "../reducer"
 import initialState from "../store"
 import axios from "../app/api/axios"
-import { useEffect, useReducer, useRef } from "react"
+import { useEffect, useReducer, useRef, useState } from "react"
+import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { type } from "@testing-library/user-event/dist/type"
+import { current } from "@reduxjs/toolkit";
 const Transactions = ()=> {
+    const [qty, setQty] = useState(0)
     const [state, dispatch] = useReducer(reducer, initialState)
     const inputRef = useRef()
+     const qtyRef = useRef()
     const getItems = async ()=> {
         const response = await axios.get('/items')
       
@@ -52,13 +57,24 @@ const Transactions = ()=> {
             dispatch({type: 'errMsg', payload: 'Please select an item'})
         }
     }
-    const handleInput = async (e, id)=> {
+    const handleQty = async (id)=> {
         const response = await axios.get(`/items`)
-       if (response?.data){
-        const currentItem  = response.data.find((item)=> item._id === id)
-        return {...currentItem, qty: e.target.value}
-       }
-    }
+        // if (response?.data){
+            const currentItem  = response.data.find((item)=> item._id === id)
+            console.log(qtyRef.current.value)
+            console.log(currentItem)
+        
+        // return {...currentItem, qyt: qtyRef.current.value, total: (currentItem.qty * currentItem.price)}
+
+        // }
+    //    currentItem.qty = Number(qtyRef.current.value)
+    //    console.log(currentItem.total)
+    //    setTimeout(()=> {
+
+    //     //    currentItem.total += (currentItem.qty * currentItem.price)
+    //    },1000)
+
+    } 
     
 
     const removeItem = (id)=>{
@@ -124,11 +140,6 @@ const Transactions = ()=> {
                             position: 'relative',
                             color: 'brown',
                         }}
-            //             onSelect={(e)=> {            
-            //     dispatch({type: 'name', payload: e.target.value})
-            // console.log(state.name)
-            // }}
-                        
                         >
                             {user.name}
                         </option>)
@@ -178,15 +189,23 @@ const Transactions = ()=> {
  </div>
  {item.unitMeasure === 'lbs' || item.unitMeasure === 'kg' ? <section><input
  type="text"
- style={{width: '8rem'}}
- value={item.qty}
- onChange={(e) => handleInput(e, item._id)}
+ ref={qtyRef}
+ style={{width: '5rem'}}
+ value={qty}
+ onChange={(e)=> setQty(e.target.value)}
  /><span
  style={{fontWeight: 'bold',
     marginLeft: '.5rem',
     fontSize:'1.5rem'
  }}
- >{item.unitMeasure}</span></section> :
+ >{item.unitMeasure}</span>
+   <button
+   onClick={()=> handleQty(item._id)}
+   style={{width: '3rem',
+    marginLeft: '.5rem'
+   }}
+   ><FontAwesomeIcon icon={faCheck} /></button>
+ </section> :
  <section>
  <button id="qty-increase"
       onClick={()=> upper(item._id)}
@@ -232,14 +251,6 @@ const Transactions = ()=> {
             <article 
             className="grand-total"
             >
-
-           {/* <button
-           style={{height: '3rem',
-            fontSize: '1.5rem'
-           }}
-           onClick={()=> dispatch({type: 'getAllTotals', payload: !state.getAllTotals})}
-           >Get Totals</button>
-            */}
             <h2
                     className="grand-total"
            style={{display: `${state.getAllTotals ? 'none' : 'block' }`}}

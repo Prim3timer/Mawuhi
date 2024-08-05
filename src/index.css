@@ -498,7 +498,7 @@ datalist{
 
  #field {
   width: 135vw;
-  row-gap: 0rem;
+  column-gap: 1.5rem;
   flex-wrap: wrap;
   padding-bottom: 2rem;
  }
