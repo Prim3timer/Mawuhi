@@ -52,6 +52,14 @@ const Transactions = ()=> {
             dispatch({type: 'errMsg', payload: 'Please select an item'})
         }
     }
+    const handleInput = async (e, id)=> {
+        const response = await axios.get(`/items`)
+       if (response?.data){
+        const currentItem  = response.data.find((item)=> item._id === id)
+        return {...currentItem, qty: e.target.value}
+       }
+    }
+    
 
     const removeItem = (id)=>{
         dispatch({type: 'remove', payload: id})
@@ -151,16 +159,9 @@ const Transactions = ()=> {
             
             >
                     
-                    <h2
-                    // style={{
-                    //     position: 'relative',
-                    //     top: '30%',
-                    //     left: '10%',
-                    //     // color: 'green',
-                    //     width: '8rem',
-                       
-                    // }}
-                    >{item.name}</h2>
+                    <h1
+                 
+                    >{item.name}</h1>
                    <article
                    
                    id="flex-article"
@@ -169,28 +170,43 @@ const Transactions = ()=> {
                     <div
                     >
                     <h3
+                    style={{position: 'relative',
+                        marginTop:'2.4rem'
+                    }}
                     >Qty:</h3>
                 
  </div>
+ {item.unitMeasure === 'lbs' || item.unitMeasure === 'kg' ? <section><input
+ type="text"
+ style={{width: '8rem'}}
+ value={item.qty}
+ onChange={(e) => handleInput(e, item._id)}
+ /><span
+ style={{fontWeight: 'bold',
+    marginLeft: '.5rem',
+    fontSize:'1.5rem'
+ }}
+ >{item.unitMeasure}</span></section> :
  <section>
-                    <button id="qty-increase"
-                         onClick={()=> upper(item._id)}
-                    >
-                         <svg 
-                         xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'>
-            <path d='M10.707 7.05L10 6.343 4.343 12l1.414 1.414L10 9.172l4.243 4.242L15.657 12z' />
-          </svg>
-                        </button>
-                    <h2 id="qty-header">{item.qty} {item.unitMeasure} </h2>
-                    <button
-                    id="qty-decrease"
-                    onClick={()=> downer(item._id)}
-                    >
-                         <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'>
-            <path d='M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z' />
-          </svg>
-                    </button>
-                    </section>
+ <button id="qty-increase"
+      onClick={()=> upper(item._id)}
+ >
+      <svg 
+      xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'>
+<path d='M10.707 7.05L10 6.343 4.343 12l1.414 1.414L10 9.172l4.243 4.242L15.657 12z' />
+</svg>
+     </button>
+ <h2 id="qty-header">{item.qty} {item.unitMeasure} </h2>
+ <button
+ id="qty-decrease"
+ onClick={()=> downer(item._id)}
+ >
+      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'>
+<path d='M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z' />
+</svg>
+ </button>
+ </section>}
+ 
                    </article>
                     <article>
                     <h4>price/ {item.unitMeasure}:</h4>
