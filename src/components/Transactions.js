@@ -182,7 +182,7 @@ const Transactions = ()=> {
             <path d='M10.707 7.05L10 6.343 4.343 12l1.414 1.414L10 9.172l4.243 4.242L15.657 12z' />
           </svg>
                         </button>
-                    <h1 id="qty-header">{item.qty} {item.unitMeasure} </h1>
+                    <h2 id="qty-header">{item.qty} {item.unitMeasure} </h2>
                     <button
                     id="qty-decrease"
                     onClick={()=> downer(item._id)}
