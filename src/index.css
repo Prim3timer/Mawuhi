@@ -473,6 +473,7 @@ datalist{
     flex-wrap: wrap;
     /* width: 100vw; */
     width: 145vw;
+    padding: .5rem
   }
 
  #field {
