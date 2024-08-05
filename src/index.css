@@ -491,7 +491,7 @@ datalist{
     /* width: 150vw; */
     flex-wrap: wrap;
     /* width: 100vw; */
-    column-gap: 3rem;
+    column-gap: 2rem;
     width: 145vw;
   
   }
