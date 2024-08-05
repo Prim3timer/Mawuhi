@@ -97,14 +97,15 @@ const CreateInventory = () => {
                  placeholder='search item'
                  list="edulevel"
                  style={{
-                    width: '30vw'
+                    width: '60vw',
+                    // backgroundColor: 'blue'
+                    
                  }}
         onClick={()=> console.log('hello world')}
         value={state.name}
         onChange={(e)=>  dispatch({type: 'name', payload: e.target.value})}
         /></h2>
         <datalist id="edulevel"
-        style={{backgroundColor: 'blue'}}
         >
             {state.getNames && state.getNames.map((user)=> {
                 return (
@@ -118,12 +119,12 @@ const CreateInventory = () => {
                     })}
             </datalist>
                  <br/>
-                 <label>Quantity:</label>
+                 <label>Quantity:</label><br/>
                 <input
                 name="qty"
                 value={state.qty}
                 onChange={(e)=>  dispatch({type: 'qty', payload: e.target.value})}
-                />
+                /><br/>
                <button type="submit" className='pop' >Add</button>           
                {/* <button type="submit" className='pop' onClick={setExcercises(excercises)} >Add Log</button>            */}
             </form>

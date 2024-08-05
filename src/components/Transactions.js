@@ -136,13 +136,8 @@ const Transactions = ()=> {
             </fieldset>
          
             <div
-                    style={{
-                  display: 'grid',
-                  rowGap: '.5rem',
-                  gridAutoFlow: 'row',
-                //   backgroundColor: 'green'
-                        
-                    }}
+            id="trans-item-cont"
+                 
                     >
           
                {!state.transArray.length ? <h4>list is empty</h4> : state.transArray.map((item, index)=> {
@@ -150,18 +145,8 @@ const Transactions = ()=> {
                  
             <section 
            key={index}
-            style={{
-                display: 'grid',
-                // borderTop: '1.5px solid black',
-                // borderBottom: '2.5px solid black',
-                gridAutoColumns: 'repeat(1, 1fr)',
-                gridTemplateColumns: 'repeat(5, 200px)',
-                columnGap: '.3px',
-                backgroundColor: 'lightskyblue',
-                width: '98vw'
-               
-             
-            }}
+           id="trans-item"
+            
             >
                     
                     <h2
@@ -175,29 +160,23 @@ const Transactions = ()=> {
                     }}
                     >{item.name}</h2>
                    <article
-                   style={{display: 'grid',
-                    gridTemplateColumns: 'repeat(1, 150px)',
-                    position: 'relative',
-                    rowGap: '2rem',
-                }}
+                   id="flex-article"
+                 style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    width: '5rem'
+                    }}
                 >
                     <div
-                        //   style={{display: 'grid',
-                        //     gridAutoColumns: 'repeat(1, 1fr)',
-                        //     columnGapGap: '2rem 2rem',
-                        //     backgroundColor: 'green'
-                        //   }}
+                      
                     >
                     <h4
-                    style={{
-                        position: 'absolute',
-                        top: '30%',
-                        // left: '-20%',
-                      
-                    }}
+                  
              
                     >Qty:</h4>
-
+                
+ </div>
+ <section>
                     <button id="qty-increase"
                          onClick={()=> upper(item._id)}
                     >
@@ -215,7 +194,7 @@ const Transactions = ()=> {
             <path d='M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z' />
           </svg>
                     </button>
-                    </div>
+                    </section>
                    </article>
                     <article>
                     <h4>price/ {item.unitMeasure}:</h4>

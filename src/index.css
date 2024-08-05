@@ -106,12 +106,6 @@ option {
   width: 50vw;
   margin: 2rem auto 0;
 }
-#create-item-form{
-  margin: 0 auto;
-  /* background-color: red; */
-  width: 50vw;
-  text-align: center;
-}
 #create-item-heading{
   margin: 1rem auto;;
   text-align: center;
@@ -161,7 +155,7 @@ input {
   /* background-color: a; */
 }
 .trans-items-cont {
-  /* display: flex; */
+  display: flex;
   margin: 0 auto;
   justify-content: center;
   /* background-color: yellow; */
@@ -188,17 +182,12 @@ input {
   min-height: 400px;
   border-radius: 5px;
   padding: 1rem;
-  /* background-color: rgba(0,0,0,0.4); */
-  /* background-color: darkcyan; */
-  /* color: lightskyblue; */
 }
 
 form {
   /* display: flex; */
-  flex-direction: column;
-  /* justify-content: space-evenly; */
-    /* flex-grow: 1; */
-    /* padding-bottom: 1rem; */
+  /* flex-direction: column; */
+
   } 
 
 
@@ -367,6 +356,25 @@ datalist{
   /* justify-content: center; */
 }
 
+#trans-item {
+
+  display: flex;
+  border-top: 1.5px solid black;
+border-bottom: 2.5px solid black;
+  flex-direction: row;
+  column-gap: 5rem;
+  /* flex-wrap: wrap; */
+  background-color: lightskyblue;
+  width: 98vw
+}
+
+#flex-article {
+    display: flex;
+    flex-direction: column;
+    width: 5rem;
+}
+
+
 @media screen and (max-width: 376px) {
 
     #username {
@@ -392,6 +400,36 @@ datalist{
       width: 40vw;
       /* background-color: green; */
     }
+    input  {
+      width: 60vw;
+    }
+    #transNames {
+      width: 60vw;
+
+    }
+    #trans-cont {
+      display: flex;
+
+    }
+    #transItem {
+      font-size: 3rem;
+    }
+
+    #trans-item-cont {
+
+      /* display: grid;
+      row-gap: .5rem;
+      width: 100v;
+      grid-auto-flow: row; */
+      /* background-color: green */
+            
+      /* flex-wrap: wrap; */
+    
+  }
+  #tran-item {
+    flex-wrap: wrap;
+  }
+
 }  
 
 
