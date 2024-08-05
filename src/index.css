@@ -376,8 +376,7 @@ datalist{
 #trans-item {
 
   display: flex;
-  border-top: 1.5px solid black;
-border-bottom: 2.5px solid black;
+/* height: 35vh; */
   flex-direction: row;
   column-gap: 6rem;
   align-items: center;
@@ -397,10 +396,23 @@ border-bottom: 2.5px solid black;
 }
 
 #trans-search {
-  /* background-color: red; */
   width: 12rem;
 }
 
+@media screen and (min-width: 430px) {
+
+  .trans-cont {
+    font-size: 1.5rem;
+  }
+  #trans-item {
+
+    width: 190vw;
+  }
+  #field {
+    width: 140vw;
+    flex-wrap: wrap;
+   }
+}
 
 @media screen and (max-width: 376px) {
 
@@ -450,9 +462,6 @@ border-bottom: 2.5px solid black;
       width: 150vw;
       grid-auto-flow: row; 
       /* background-color: green   */
-      
-      
-      
     } 
     #trans-item {
     /* width: 150vw; */
