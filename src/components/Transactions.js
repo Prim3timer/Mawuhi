@@ -61,7 +61,7 @@ const Transactions = ()=> {
             if ( item._id === id){
                 console.log(state.qty)
                 console.log(item.total)
-                return {...item, qty: state.qty, total: (item.price * state.qty)}
+                return {...item, qty: state.qty, total: (item.price * state.qty).toFixed(2)}
             }
             
             return item
