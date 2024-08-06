@@ -44,9 +44,9 @@ code {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  text-align: cente/r;
+  text-align: center;
   /* column-gap: 2rem; */
-    /* width: 125vw; */
+    width: 120vw;
   /* background-color: blue; */
 } 
 
@@ -376,12 +376,12 @@ datalist{
   column-gap: 5rem;
   /* row-gap: 6rem; */
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   flex-wrap: wrap;
   background-color: lightseagreen;
   font-size: 1.2rem;
   padding: .5rem;
-  width: 98vw
+  width: 125vw
 }
 
 #flex-article {
@@ -398,13 +398,13 @@ datalist{
   width: 12rem;
   margin-right: .5rem;
 }
-@media screen and (min-width: 550px) {
+@media screen and (max-width: 550px) {
   #trans-search {
     width: 15rem;
   }
 }
 
-@media screen and (min-width: 430px) {
+@media screen and (max-width: 430px) {
 
   .trans-cont {
     font-size: 2rem;
@@ -413,7 +413,6 @@ datalist{
   }
   #field {
     width: 110vw;
-   
     flex-wrap: wrap;
    }
    #trans-item-cont {

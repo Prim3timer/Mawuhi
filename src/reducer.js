@@ -1,10 +1,12 @@
+import { act } from "react"
 
 const reducer = (state, action)=> {
-    switch (action.type){
-      case 'items':
-        return {...state, items: action.payload}
 
-      case 'sales': 
+    switch (action.type){
+        case 'items':
+            return {...state, items: action.payload}
+            
+            case 'sales': 
       return {...state, sales: action.payload}
 
       case 'search':
@@ -93,6 +95,8 @@ const reducer = (state, action)=> {
                 return item
             }).filter((item)=> item.qty !== 0)
             return {...state, transArray: tempCart2}
+                case 'FIELDCHANGE':
+                    return {...state, qty: action.payload}
 
             case 'remove':
               return {...state, transArray: state.transArray.filter((item)=> item._id !== action.payload)

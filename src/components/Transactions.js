@@ -4,8 +4,6 @@ import axios from "../app/api/axios"
 import { useEffect, useReducer, useRef, useState } from "react"
 import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { type } from "@testing-library/user-event/dist/type"
-// import { current } from "@reduxjs/toolkit";
 const Transactions = ()=> {
     const [qty, setQty] = useState(0)
     const [state, dispatch] = useReducer(reducer, initialState)
@@ -56,24 +54,20 @@ const Transactions = ()=> {
         } else {
             dispatch({type: 'errMsg', payload: 'Please select an item'})
         }
+        state.qty = ''
     }
-    const handleQty = async (id)=> {
-        const response = await axios.get(`/items`)
-        // if (response?.data){
-            const currentItem  = response.data.find((item)=> item._id === id)
-            console.log(qtyRef.current.value)
-            console.log(currentItem)
-        
-        // return {...currentItem, qyt: qtyRef.current.value, total: (currentItem.qty * currentItem.price)}
-
-        // }
-    //    currentItem.qty = Number(qtyRef.current.value)
-    //    console.log(currentItem.total)
-    //    setTimeout(()=> {
-
-    //     //    currentItem.total += (currentItem.qty * currentItem.price)
-    //    },1000)
-
+    const handleQty = (id)=> {
+        const tempCart = state.transArray.map((item)=> {
+            if ( item._id === id){
+                console.log(state.qty)
+                console.log(item.total)
+                return {...item, qty: state.qty, total: (item.price * state.qty)}
+            }
+            
+            return item
+        })
+    //    state.qty = ''
+       return dispatch({type:'transArray', payload: tempCart})
     } 
     
 
@@ -100,6 +94,7 @@ const Transactions = ()=> {
         // console.log('hello mundial')
 
     }, [state.transArray, state.success])
+   
     return (
         <div className="trans-cont">
             <h1>Transactions</h1>
@@ -189,10 +184,11 @@ const Transactions = ()=> {
  </div>
  {item.unitMeasure === 'lbs' || item.unitMeasure === 'kg' ? <section><input
  type="text"
+ placeholder={state.qty}
  ref={qtyRef}
+ value={state.qty}
  style={{width: '5rem'}}
- value={qty}
- onChange={(e)=> setQty(e.target.value)}
+ onChange={(e)=> dispatch({type: 'FIELDCHANGE', payload: e.target.value})}
  /><span
  style={{fontWeight: 'bold',
     marginLeft: '.5rem',
