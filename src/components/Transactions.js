@@ -66,7 +66,6 @@ const Transactions = ()=> {
             
             return item
         })
-    //    state.qty = ''
        return dispatch({type:'transArray', payload: tempCart})
     } 
     
@@ -164,10 +163,14 @@ const Transactions = ()=> {
            id="trans-item"
             
             >
-                    
+                <section>
+                    <h3>name:</h3>
+
                     <h1
                  
                     >{item.name}</h1>
+                </section>
+                    
                    <article
                    
                    id="flex-article"

@@ -22,7 +22,7 @@ const Home = ()=> {
         <section
         style={{
             backgroundColor: 'green',
-            fontSize: '2rem',
+            fontSize: '1.5rem',
             // margin: '0 0 1rem 0',
             padding: '0 0 2rem 0'
         }}

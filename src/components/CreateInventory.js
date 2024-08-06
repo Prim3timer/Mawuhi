@@ -111,9 +111,9 @@ const CreateInventory = () => {
                         
                         <option key={user._id} 
                         id="transNames"
-                        value={user.name}
+                        // value={user.name}
                         >
-                            {user.name}
+                            {user.name} ({user.unitMeasure})
                         </option>)
                     })}
             </datalist>

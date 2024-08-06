@@ -14,7 +14,7 @@ let CreateItem = () => {
             name: state.name,
             price: state.price,
             unitMeasure: state.unitMeasure,
-            piecesUnit: state.piecesUnit
+            piecesUnit: state.piecesUnit,
             
         }
 
@@ -24,7 +24,10 @@ let CreateItem = () => {
         dispatch({type: 'items', payload: await axios.get('/items')})
         console.log(state.items)
       const theMatch = state.items && state.items.data.find((item)=> item.name.toLowerCase() === newItem.name.toLowerCase())
-      if (theMatch){
+    const theMatch2 = theMatch  && theMatch.unitMeasure.toLowerCase() === 'pcs'
+    console.log(theMatch)
+    console.log(theMatch2)
+      if (theMatch2 && theMatch){
    
         dispatch({type: 'isMatched', payload: 'we have a match' })
         setTimeout(()=> {
@@ -45,7 +48,6 @@ let CreateItem = () => {
     dispatch({type: 'price', payload: '' })
     dispatch({type: 'unitMeasure', payload: '' })
     dispatch({type: 'piecesUnit', payload: '' })
-        // setUsername('')
     }
     return (
         <div className="create-item">
@@ -70,7 +72,7 @@ let CreateItem = () => {
                 <input
                 type="text"
                 required
-                value={state.unitMeasere}
+                value={state.unitMeasure}
                 onChange={(e)=> dispatch({type: 'unitMeasure', payload: e.target.value})}
                 />
                 <label>Pieces/Unit:</label>
