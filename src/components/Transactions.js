@@ -101,7 +101,7 @@ const Transactions = ()=> {
         <div className="trans-cont"
        
         >
-            <h1>Transactions</h1>
+            <h3>Transactions</h3>
             <fieldset
             id="field"
             >
@@ -126,7 +126,7 @@ const Transactions = ()=> {
         }}>+</button></h3>
         <datalist id="edulevel"
         style={{backgroundColor: 'blue',
-            fontSize: '2.5rem'
+            // fontSize: '2.5rem'
 
         }}
         >
@@ -156,8 +156,7 @@ const Transactions = ()=> {
             }}>{state.errMsg}</h3>
          
             <div
-            id="trans-item-cont"
-                 
+            id="trans-item-cont"               
                     >
           
                {!state.transArray.length ? <h4>list is empty</h4> : state.transArray.map((item, index)=> {
