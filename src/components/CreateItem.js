@@ -10,44 +10,66 @@ let CreateItem = () => {
    
     const handleSubmit = async (e)=> {
         e.preventDefault()
-        const newItem = {
-            name: state.name,
-            price: state.price,
-            unitMeasure: state.unitMeasure,
-            piecesUnit: state.piecesUnit,
+        try {
+            const newItem = {
+                name: state.name,
+                price: state.price,
+                unitMeasure: state.unitMeasure,
+                piecesUnit: state.piecesUnit,
+                
+            }
             
+            let groove = await axios.get('/items')
+
+            
+            console.log(groove.data)
+            dispatch({type: 'items', payload: groove ? groove : ''})
+            const querryArray = state.items.data
+            
+            
+            const count = (arr, element) => {
+                return  arr.reduce((ele, arrayEle) =>
+                    console.log(arr)
+                    (arrayEle.name == element.name ? ele + 1 : ele), 0);
+            };
+
+        count(querryArray, newItem.name)
+          const theMatch = state.items && state.items.data.find((item)=> item.name.toLowerCase() === newItem.name.toLowerCase())
+        const theMatch2 = theMatch  && theMatch.unitMeasure.toLowerCase() === 'pcs'
+        console.log(theMatch)
+        console.log(theMatch2)
+          if ((theMatch2 && theMatch)){
+       
+            // if (count(querryArray, newItem.name)){
+            //     // dispatch({type: 'isMatched', payload: 'we have a match' })
+            //     throw Error(`Conflict: You can't have more than two instances of the 
+            //         same item in stock. You can have an item with unitMeasure other than
+            //         'pcs' and another instance with unitMeasure 'pcs' with 'pcs/unit' filled out`)
+            //     // setTimeout(()=> {
+            //     //     dispatch({type: 'isMatched', payload: '' })
+            //     // }, 3000)
+
+            // }
+            throw Error('match detected')
+            
+        } else {
+            const response = await axios.post('/items', newItem)  
+            if (response){  
+    
+                dispatch({type: 'isMatched', payload: `new item, ${newItem.name} created` })
+                setTimeout(()=> {
+                    dispatch({type: 'isMatched', payload: '' })
+                }, 3000)
+            }
+        }  
+        dispatch({type: 'name', payload: '' })
+        dispatch({type: 'price', payload: '' })
+        dispatch({type: 'unitMeasure', payload: '' })
+        dispatch({type: 'piecesUnit', payload: '' })
+        } catch (error) {
+            dispatch({type: 'errMsg', payload: `${error.message}`})
         }
 
-        // let groove = await axios.get('/items')
-
-
-        dispatch({type: 'items', payload: await axios.get('/items')})
-        console.log(state.items)
-      const theMatch = state.items && state.items.data.find((item)=> item.name.toLowerCase() === newItem.name.toLowerCase())
-    const theMatch2 = theMatch  && theMatch.unitMeasure.toLowerCase() === 'pcs'
-    console.log(theMatch)
-    console.log(theMatch2)
-      if (theMatch2 && theMatch){
-   
-        dispatch({type: 'isMatched', payload: 'we have a match' })
-        setTimeout(()=> {
-            dispatch({type: 'isMatched', payload: '' })
-        }, 3000)
-        
-    } else {
-        const response = await axios.post('/items', newItem)  
-        if (response){  
-
-            dispatch({type: 'isMatched', payload: `new item, ${newItem.name} created` })
-            setTimeout(()=> {
-                dispatch({type: 'isMatched', payload: '' })
-            }, 3000)
-        }
-    }  
-    dispatch({type: 'name', payload: '' })
-    dispatch({type: 'price', payload: '' })
-    dispatch({type: 'unitMeasure', payload: '' })
-    dispatch({type: 'piecesUnit', payload: '' })
     }
     return (
         <div className="create-item">
@@ -85,7 +107,9 @@ let CreateItem = () => {
                 />
                 <br/>
                <button type="submit" className="pop">Add Item</button>
-               <h3>{state.isMatched}</h3>
+               {state.errMsg ? <h3>{state.errMsg}</h3>: state.isMatched ? <h3>{state.isMatched}</h3>
+               : ''
+               }
             </form>
         </div>
     )

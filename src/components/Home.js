@@ -42,7 +42,6 @@ const Home = ()=> {
         <Link to="/linkpage">link page</Link>
         <br />
         <br />
-        <Link to="/create-inventory">create inventory</Link><br/>
         <Link to="/login">Login</Link>
         <br />
         <Link to="/admin">admin</Link><br/>

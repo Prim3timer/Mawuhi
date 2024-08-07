@@ -421,6 +421,11 @@ datalist{
 
 @media screen and (max-width: 376px) {
 
+  #trans-search {
+    font-size: 1rem;
+    /* background-color: red; */
+  }
+
     #username {
       width: 60vw;
       height: 2rem;
@@ -482,10 +487,16 @@ datalist{
     /* background-color: blue; */
   
   }
+  #done-button{
+    /* background-color: red; */
+    /* width: 6rem; */
+    flex: 2
+  }
   
  #field {
   width: 98vw;
-  justify-content: space-evenly;
+  justify-content: space-between;
+
   flex-wrap: wrap;
   padding-bottom: 2rem;
  }
