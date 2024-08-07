@@ -181,11 +181,11 @@ const Transactions = ()=> {
                 >
                     <div
                     >
-                    <h3
+                    <h4
                     style={{position: 'relative',
                         marginTop:'2.4rem'
                     }}
-                    >Qty:</h3>
+                    >Qty:</h4>
                 
  </div>
  {item.unitMeasure === 'lbs' || item.unitMeasure === 'kg' ? <section><input
@@ -235,9 +235,9 @@ const Transactions = ()=> {
 
                     </article>
                     <article>
-                    <h2
+                    <h3
                     id="grand-total"
-                    >sub total: </h2>
+                    >sub total: </h3>
                     <h2 
                     style={{display: `${state.getAllTotals ? 'none' : 'block' }`}}
                     >${item.total}</h2>
