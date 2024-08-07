@@ -152,7 +152,7 @@ input {
   justify-content: center;
   row-gap: .5rem;
   /* background-color: yellow; */
-  /* width: 125vw;  */
+  width: 125vw; 
 
 }
 
@@ -469,6 +469,7 @@ datalist{
       row-gap: .5rem;
       /* width: 140vw; */
       grid-auto-flow: row; 
+      /* margin: 0 3rem; */
       /* background-color: green   */
     } 
     #trans-item {
