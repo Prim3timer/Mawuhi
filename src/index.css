@@ -152,7 +152,7 @@ input {
   justify-content: center;
   row-gap: .5rem;
   /* background-color: yellow; */
-  width: 125vw; 
+  /* width: 125vw;  */
 
 }
 
@@ -400,7 +400,7 @@ datalist{
     flex-wrap: wrap;
    }
    #trans-item-cont {
-    width: 122vw;
+    /* width: 122vw; */
    }
    .grand-total {
     font-size: 2rem;
@@ -460,7 +460,7 @@ datalist{
 
     }
     #transItem {
-      font-size: 3rem;
+      /* font-size: 3rem; */
     }
 
     #trans-item-cont {

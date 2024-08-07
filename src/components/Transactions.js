@@ -64,8 +64,8 @@ const Transactions = ()=> {
                 return {...item, qty: state.qty, total: (item.price * state.qty).toFixed(2)}
             }
             
-            state.qty = ''
             qtyRef.current.value = item.qty
+            state.qty = ''
             return item
         })
        return dispatch({type:'transArray', payload: tempCart})
