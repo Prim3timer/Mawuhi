@@ -93,7 +93,7 @@ const Sales = ()=> {
     <h2
     style={{backgroundColor: 'white',
         width: '50vw',
-        margin: '0 auto 2rem',
+        margin: '0 auto 2rem',  
         padding: '.5rem',
         borderRadius: '5px'
     }}

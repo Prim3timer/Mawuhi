@@ -64,6 +64,8 @@ const Transactions = ()=> {
                 return {...item, qty: state.qty, total: (item.price * state.qty).toFixed(2)}
             }
             
+            qtyRef.current.value = item.qty
+            state.qty = ''
             return item
         })
        return dispatch({type:'transArray', payload: tempCart})
@@ -93,9 +95,17 @@ const Transactions = ()=> {
         // console.log('hello mundial')
 
     }, [state.transArray, state.success])
+
    
     return (
-        <div className="trans-cont">
+        <div className="trans-cont"
+        style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            // backgroundColor: 'blue'
+        }}
+        >
             <h1>Transactions</h1>
             <fieldset
             id="field"
@@ -187,7 +197,7 @@ const Transactions = ()=> {
  </div>
  {item.unitMeasure === 'lbs' || item.unitMeasure === 'kg' ? <section><input
  type="text"
- placeholder={state.qty}
+ placeholder={item.qty}
  ref={qtyRef}
  value={state.qty}
  style={{width: '5rem'}}
