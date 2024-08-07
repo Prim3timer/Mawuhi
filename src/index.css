@@ -467,23 +467,24 @@ datalist{
       flex-direction: column;
       text-align: center;
       justify-content: center;
+      width: 110vw;
       /* background-color: green   */
     } 
     #trans-item {
-    /* width: 150vw; */
     flex-wrap: wrap;
     /* flex-direction: row; */
     /* width: 115vw; */
-    column-gap: 2rem;
-    justify-content: space-between;
+    /* column-gap: 2rem; */
+    justify-content: space-evenly;
     /* width: 145vw; */
     /* border-radius: 10px; */
+    width: 95vw;
     /* background-color: blue; */
   
   }
   
  #field {
-  /* width: 135vw; */
+  width: 100vw;
   justify-content: space-evenly;
   flex-wrap: wrap;
   padding-bottom: 2rem;
