@@ -100,13 +100,15 @@ const Transactions = ()=> {
         <div className="trans-cont"
        
         >
-            <h3>Transactions</h3>
+            <h2
+            id="tans-title"
+            >Transactions</h2>
             <fieldset
             id="field"
             >
                 <h2
                 className="grand-total"
-                style={{width: '6rem'}}
+                style={{width: '5rem'}}
                 >Grand Total: ${parseFloat(state.total).toFixed(2)}</h2>
         <form
         
