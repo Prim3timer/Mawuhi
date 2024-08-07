@@ -454,8 +454,9 @@ datalist{
 
     }
     #trans-cont {
+      text-align: center;
       margin:  0 auto;
-      width: 100vw;
+      /* width: 100vw; */
 
     }
     #transItem {
@@ -466,7 +467,7 @@ datalist{
 
       display: grid;
       row-gap: .5rem;
-      width: 140vw;
+      /* width: 140vw; */
       grid-auto-flow: row; 
       /* background-color: green   */
     } 
@@ -474,14 +475,15 @@ datalist{
     /* width: 150vw; */
     flex-wrap: wrap;
     /* width: 100vw; */
-    column-gap: 2rem;
-    width: 145vw;
+    /* column-gap: 2rem; */
+    justify-content: space-evenly;
+    /* width: 145vw; */
   
   }
 
  #field {
-  width: 135vw;
-  column-gap: 1.5rem;
+  /* width: 135vw; */
+  justify-content: space-evenly;
   flex-wrap: wrap;
   padding-bottom: 2rem;
  }

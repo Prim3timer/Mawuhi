@@ -64,8 +64,8 @@ const Transactions = ()=> {
                 return {...item, qty: state.qty, total: (item.price * state.qty).toFixed(2)}
             }
             
-            qtyRef.current.value = item.qty
             state.qty = ''
+            qtyRef.current.value = item.qty
             return item
         })
        return dispatch({type:'transArray', payload: tempCart})
@@ -99,12 +99,7 @@ const Transactions = ()=> {
    
     return (
         <div className="trans-cont"
-        style={{
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            // backgroundColor: 'blue'
-        }}
+       
         >
             <h1>Transactions</h1>
             <fieldset
