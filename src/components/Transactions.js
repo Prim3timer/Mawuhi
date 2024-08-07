@@ -61,10 +61,9 @@ const Transactions = ()=> {
             if ( item._id === id){
                 console.log(state.qty)
                 console.log(item.total)
-                return {...item, qty: state.qty, total: (item.price * state.qty).toFixed(2)}
+                return {...item, qty: qtyRef.current.value, total: (item.price * state.qty).toFixed(2)}
             }
             
-            qtyRef.current.value = item.qty
             state.qty = ''
             return item
         })
@@ -191,8 +190,8 @@ const Transactions = ()=> {
  </div>
  {item.unitMeasure === 'lbs' || item.unitMeasure === 'kg' ? <section><input
  type="text"
- placeholder={item.qty}
  ref={qtyRef}
+ placeholder={item.qty}
  value={state.qty}
  style={{width: '5rem'}}
  onChange={(e)=> dispatch({type: 'FIELDCHANGE', payload: e.target.value})}
