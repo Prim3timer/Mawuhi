@@ -169,9 +169,9 @@ const Transactions = ()=> {
                 <section>
                     <h3>name:</h3>
 
-                    <h1
+                    <h2
                  
-                    >{item.name}</h1>
+                    >{item.name}</h2>
                 </section>
                     
                    <article
