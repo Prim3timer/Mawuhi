@@ -16,6 +16,9 @@ import Admin from "./components/Admin"
 import LinkPage from "./components/LinkPage"
 import Edit from "./components/Edit"
 import Sales from "./components/Sales"
+import ItemList from "./components/ItemList"
+import EditItem from "./components/EditItem"
+import Shopping from "./components/Shopping"
 
 
 
@@ -32,7 +35,7 @@ const App = () => {
     <Routes>
        {/* public routes */}
       <Route path="/" element={<Layout/>}>
-  <Route path="/login" element={<Login/>}/>
+  {/* <Route path="/login" element={<Login/>}/> */}
   <Route path="register" element={<Register/>}/>
        <Route path="linkpage" element={<LinkPage/>}/>
        <Route path="transaction" element={<Transactions/>}/>
@@ -41,10 +44,11 @@ const App = () => {
 
      {/* protected routes */}
      <Route element={<RequireAuth allowedRoles={[2001]}/>}>
-       <Route path="/" element={<Home/>}/>
        </Route>
       
+       <Route path="/" element={<Home/>}/>
       
+       <Route path="item-list" element={<ItemList/>}/>
      <Route element={<RequireAuth allowedRoles={[1984]}/>}>
        <Route path="editor" element={<Editor/>}/>
        </Route>
@@ -54,18 +58,73 @@ const App = () => {
        </Route>
      <Route element={<RequireAuth allowedRoles={[1984, 5150]}/>}>
      <Route path="edit" element={<Edit/>}/>
-     <Route path="sales" element={<Sales/>}/>
-     <Route path="create-item" element={<CreateItem/>}/>
+     {/* <Route path="edit-item" element={<EditItem/>}/> */}
        </Route>
+     <Route path="sales" element={<Sales/>}/>
+     <Route path="shopping" element={<Shopping/>}/>
       
 
      
 
-       <Route path="*" element={<Missing/>}/>
+     <Route path="create-item" element={<CreateItem/>}/>
+       {/* <Route path="*" element={<Missing/>}/> */}
+
+
+       
       </Route>
+
+
+
     </Routes>
   </main>
   
   )
+
+
+  
+
+  // return (
+
+  //   <main className="app">
+  //     <Routes>
+  //        {/* public routes */}
+  //       <Route path="/" element={<Layout/>}>
+  //   <Route path="/login" element={<Login/>}/>
+  //   <Route path="register" element={<Register/>}/>
+  //        <Route path="linkpage" element={<LinkPage/>}/>
+  //        <Route path="transaction" element={<Transactions/>}/>
+  //        <Route path="inventory" element={<Inventory/>}/>
+  //     <Route path="unauthorized" element={<Unauthorized/>}/>
+  
+  //      {/* protected routes */}
+  //      <Route element={<RequireAuth allowedRoles={[2001]}/>}>
+  //        <Route path="/" element={<Home/>}/>
+  //        </Route>
+        
+        
+  //      <Route element={<RequireAuth allowedRoles={[1984]}/>}>
+  //        <Route path="editor" element={<Editor/>}/>
+  //        </Route>
+  //      <Route element={<RequireAuth allowedRoles={[5150]}/>}>
+  //    <Route path="admin" element={<Admin/>}/>
+  //        <Route path="create-inventory" element={<CreateInventory/>}/>
+  //        </Route>
+  //      <Route element={<RequireAuth allowedRoles={[1984, 5150]}/>}>
+  //      <Route path="edit" element={<Edit/>}/>
+  //      <Route path="sales" element={<Sales/>}/>
+  //      <Route path="create-item" element={<CreateItem/>}/>
+  //        </Route>
+        
+  
+       
+  
+  //        <Route path="*" element={<Missing/>}/>
+  //       </Route>
+  //     </Routes>
+  //   </main>
+    
+  //   )
+
+  
 }
 export default App

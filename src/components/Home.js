@@ -41,6 +41,12 @@ const Home = ()=> {
         <br />
         <Link to="/linkpage">link page</Link>
         <br />
+        <Link to="/item-list">Items</Link>
+        <br />
+        <Link to="/shopping">Shopping</Link>
+        <br />
+        {/* <Link to="/edit-item">Edit Item</Link> */}
+        <br />
         <br />
         <Link to="/login">Login</Link>
         <br />

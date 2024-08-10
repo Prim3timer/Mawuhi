@@ -25,7 +25,7 @@ const Transactions = ()=> {
         } catch (error) {
             console.log(error)
         }
-        console.log(state.getNames)
+        console.log(state.getNames && state.getNames)
     }
 
 
@@ -127,24 +127,29 @@ const Transactions = ()=> {
         }}>+</button></h3>
         <datalist id="edulevel"
         style={{backgroundColor: 'blue',
+            // display: 'flex',
+            // flexDirection: 'row'
             // fontSize: '2.5rem'
 
         }}
         >
             {state.getNames && state.getNames.map((user)=> {
+                
                 return (
                     
-                    <option key={user._id} 
+                    <option key={user._id}
                     value={user.name}
                     style={{
                             position: 'relative',
                             color: 'brown',
                         }}
                         >
-                            {user.name}
+                            {/* {user.unitMeasure.split(' ')[1]} */}
                         </option>)
                     })}
             </datalist>
+
+
 
         </form>
           <button
@@ -162,6 +167,7 @@ const Transactions = ()=> {
                     >
           
                {!state.transArray.length ? <h4>list is empty</h4> : state.transArray.map((item, index)=> {
+                 console.log(item.unitMeasure)
                 return (
                  
             <section 
@@ -174,7 +180,7 @@ const Transactions = ()=> {
 
                     <h2
                  
-                    >{item.name}</h2>
+                    >{`${item.name.split(' ')[0]} (${item.unitMeasure.split(' ')[1]})`}</h2>
                 </section>
                     
                    <article
@@ -191,19 +197,22 @@ const Transactions = ()=> {
                     >Qty:</h4>
                 
  </div>
- {item.unitMeasure === 'lbs' || item.unitMeasure === 'kg' ? <section><input
+ {item.unitMeasure === 'Pounds lbs' || item.unitMeasure === 
+
+ 'Kilogram kg' ? <section><input
  type="text"
  ref={qtyRef}
  placeholder={item.qty}
  value={state.qty}
  style={{width: '5rem'}}
  onChange={(e)=> dispatch({type: 'FIELDCHANGE', payload: e.target.value})}
- /><span
+ />
+ <span
  style={{fontWeight: 'bold',
     marginLeft: '.5rem',
     fontSize:'1.5rem'
  }}
- >{item.unitMeasure}</span>
+ >{item.unitMeasure.split(' ')[1]}</span>
    <button
    onClick={()=> handleQty(item._id)}
    style={{width: '3rem',
@@ -220,7 +229,7 @@ const Transactions = ()=> {
 <path d='M10.707 7.05L10 6.343 4.343 12l1.414 1.414L10 9.172l4.243 4.242L15.657 12z' />
 </svg>
      </button>
- <h2 id="qty-header">{item.qty} {item.unitMeasure} </h2>
+ <h2 id="qty-header">{item.qty} {item.unitMeasure.split(' ')[1]} </h2>
  <button
  id="qty-decrease"
  onClick={()=> downer(item._id)}
@@ -233,7 +242,7 @@ const Transactions = ()=> {
  
                    </article>
                     <article>
-                    <h4>price/ {item.unitMeasure}:</h4>
+                    <h4>price/ {item.unitMeasure.split(' ')[1]}:</h4>
                     <h4>${item.price}</h4>
 
                     </article>

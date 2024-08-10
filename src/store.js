@@ -36,7 +36,8 @@ const initialState = {
    amount: 0,
    clear: '',
    INCREMENT: '',
-   DECREMENT: ''
+   DECREMENT: '',
+   cartItem: ''
   
 }
 

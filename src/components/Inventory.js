@@ -84,7 +84,7 @@ return (
  style={{backgroundColor: index % 2 === 0 ?
      'white' : 'palegreen'}}
      >
-     <td className="sales-items">{inv.name}{inv.unitMeasure}</td>
+     <td className="sales-items">{inv.name}</td>
      <td className="sales-items">{inv.qty}</td>
      <td className="sales-items">{inv.date.substring(0, 10)}</td>
      <td 
@@ -96,7 +96,10 @@ return (
          <a
          onClick={(e) => handleEdit(inv._id, e)}
      style={{color: 'blue'}}
-     href={'/edit'}>edit</a></td>
+    //  href={'/edit'}
+     >edit
+     </a>
+     </td>
  </tr>
 )
 })}

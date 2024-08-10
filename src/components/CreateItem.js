@@ -1,18 +1,26 @@
 import reducer from "../reducer"
 import initialState from "../store"
 import axios from '../app/api/axios'
-import { useEffect, useReducer } from "react"
+import { useEffect, useReducer, useRef } from "react"
+import { type } from "@testing-library/user-event/dist/type"
 const {v4: uuid} = require('uuid')
 
 
 let CreateItem = () => {
        const [state, dispatch] = useReducer(reducer, initialState)
+       const itemRef = useRef()
+       const measurements = ['Kilogram kg', 'Pieces pcs', 'Dozen dzn', 'Sachet sct', 
+        'Pounds lbs'
+       ]
+    const first = measurements[0]
+    console.log(first.split(' ')[1].split())
    
     const handleSubmit = async (e)=> {
+        const {name, price, unitMeasure, piecesUnit} = state
         e.preventDefault()
         try {
             const newItem = {
-                name: state.name,
+                name: `${name} ${unitMeasure}`,
                 price: state.price,
                 unitMeasure: state.unitMeasure,
                 piecesUnit: state.piecesUnit,
@@ -22,37 +30,39 @@ let CreateItem = () => {
             let groove = await axios.get('/items')
 
             
-            console.log(groove.data)
+            // console.log(groove.data)
             dispatch({type: 'items', payload: groove ? groove : ''})
-            const querryArray = state.items.data
+            const querryArray = state.items && state.items.data
             
             
-            const count = (arr, element) => {
-                return  arr.reduce((ele, arrayEle) =>
-                    console.log(arr)
-                    (arrayEle.name == element.name ? ele + 1 : ele), 0);
-            };
+            // const count = (querryArray, element) => {
+            //     return  querryArray.reduce((ele, arrayEle) =>
+            //         // console.log(arr)
+            //         (arrayEle.name.toLowerCase() == element.name.toLowerCase ? ele + 1 : ele), 0);
+            // };
 
-        count(querryArray, newItem.name)
-          const theMatch = state.items && state.items.data.find((item)=> item.name.toLowerCase() === newItem.name.toLowerCase())
-        const theMatch2 = theMatch  && theMatch.unitMeasure.toLowerCase() === 'pcs'
+        // console.log(count(querryArray, newItem))
+        console.log(newItem.name)
+        const theMatch = state.items && state.items.data.find((item)=> item.name.toLowerCase() === newItem.name.toLowerCase()) 
         console.log(theMatch)
-        console.log(theMatch2)
-          if ((theMatch2 && theMatch)){
-       
-            // if (count(querryArray, newItem.name)){
-            //     // dispatch({type: 'isMatched', payload: 'we have a match' })
-            //     throw Error(`Conflict: You can't have more than two instances of the 
-            //         same item in stock. You can have an item with unitMeasure other than
-            //         'pcs' and another instance with unitMeasure 'pcs' with 'pcs/unit' filled out`)
-            //     // setTimeout(()=> {
-            //     //     dispatch({type: 'isMatched', payload: '' })
-            //     // }, 3000)
+        const theMatch2 = theMatch && theMatch.unitMeasure === 'Pieces pcs'
+        console.log(newItem.unitMeasure)
+        console.log(Boolean(theMatch))
+        console.log(Boolean(theMatch2))
+        if (theMatch2){
 
-            // }
-            throw Error('match detected')
+            // dispatch({type: 'isMatched', payload: 'we have a match' })
+            throw Error(`Conflict: You cannot enter 'pcs' as a unit of measurement of the 
+                second instance of an item. Please remove the first instance and 
+                enter pcs first`)
+        }
+          else if (theMatch ){ 
+            dispatch({type: 'errMsg', payload: 'There cannot be more than two intances of the same item'})
+       
+                      
             
-        } else {
+        } 
+        else {
             const response = await axios.post('/items', newItem)  
             if (response){  
     
@@ -68,9 +78,14 @@ let CreateItem = () => {
         dispatch({type: 'piecesUnit', payload: '' })
         } catch (error) {
             dispatch({type: 'errMsg', payload: `${error.message}`})
+            setTimeout(()=> {
+                dispatch({type: 'errMsg', payload: ``})
+                
+            }, 3000)
         }
 
     }
+
     return (
         <div className="create-item">
             <h2 id="create-item-heading">Create Item</h2>
@@ -78,6 +93,7 @@ let CreateItem = () => {
             id="create-item-form" >
                 <label>name:</label>
                 <input
+              
                 type="text"
                 required
                 value={state.name}
@@ -90,13 +106,47 @@ let CreateItem = () => {
                 value={state.price}
                 onChange={(e)=> dispatch({type: 'price', payload: e.target.value})}
                 />
-                <label>unitMeasure:</label>
+                {/* <label>unitMeasure:</label>
                 <input
                 type="text"
                 required
                 value={state.unitMeasure}
                 onChange={(e)=> dispatch({type: 'unitMeasure', payload: e.target.value})}
-                />
+                /> */}
+
+<h3 id="ulu"><label>unitMeasure:</label><br/><input type="text"
+        // id="trans-search"
+        // placeholder="pick measurement"
+        style={{width: '20rem',
+            // backgroundColor: 'red'
+        }}
+        ref={itemRef}
+        list="measure"
+        onChange={(e)=> dispatch({type: 'unitMeasure', payload: e.target.value})}
+        value={state.unitMeasure}
+        /></h3>
+        <datalist id="measure"
+        style={{backgroundColor: 'blue',
+            // fontSize: '2.5rem'
+
+        }}
+        >
+            {measurements.map((measurement)=> {
+                return (
+                    
+                    <option 
+                    value={measurement}
+                    style={{
+                            position: 'relative',
+                            color: 'brown',
+                        }}
+                        >
+                            {measurement}
+                        </option>)
+                    })}
+            </datalist>
+
+
                 <label>Pieces/Unit:</label>
                 <input
                 type="text"
@@ -107,9 +157,9 @@ let CreateItem = () => {
                 />
                 <br/>
                <button type="submit" className="pop">Add Item</button>
-               {state.errMsg ? <h3>{state.errMsg}</h3>: state.isMatched ? <h3>{state.isMatched}</h3>
-               : ''
-               }
+        <h3>{state.errMsg}</h3>
+        <h3>{state.isMatched}</h3>
+               
             </form>
         </div>
     )
