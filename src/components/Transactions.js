@@ -213,7 +213,12 @@ const Transactions = ()=> {
 
                     <h2
                  
-                    >{`${item.name.split(' ')[0]} (${item.unitMeasure.split(' ')[1]})`}</h2>
+                    >
+                        {/* {`${item.name.split(' ')[0]} (${item.unitMeasure.split(' ')[1]})`}
+                     */}
+                     {`${item.name.split(' ').slice(0, -2)} ${item.name.split(' ').at(-1)}`}
+                    
+                    </h2>
                 </section>
                     
                    <article
@@ -230,9 +235,9 @@ const Transactions = ()=> {
                     >Qty:</h4>
                 
  </div>
- {item.unitMeasure === 'Pounds lbs' || item.unitMeasure === 
+ {item.unitMeasure === 'Pounds (lbs)' || item.unitMeasure === 
 
- 'Kilogram kg' ? <section><input
+ 'Kilogram (kg)' ? <section><input
  type="text"
  ref={qtyRef}
  placeholder={item.qty}

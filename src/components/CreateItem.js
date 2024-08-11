@@ -21,9 +21,9 @@ let CreateItem = () => {
         try {
             const newItem = {
                 name: `${name} ${unitMeasure}`,
-                price: state.price,
-                unitMeasure: state.unitMeasure,
-                piecesUnit: state.piecesUnit,
+                price: price,
+                unitMeasure: unitMeasure,
+                piecesUnit: piecesUnit,
                 
             }
             
