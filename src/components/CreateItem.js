@@ -10,7 +10,7 @@ let CreateItem = () => {
        const [state, dispatch] = useReducer(reducer, initialState)
        const itemRef = useRef()
        const measurements = ['Kilogram (kg)', 'Pieces (pcs)', 'Dozen (dzn)', 'Sachet (sct)', 
-        'Pounds (lbs)'
+        'Pounds (lbs)', 'Litre (L)'
        ]
     const first = measurements[0]
     console.log(first.split(' ')[1].split())
