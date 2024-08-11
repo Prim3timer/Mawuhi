@@ -100,18 +100,26 @@ const Transactions = ()=> {
     
     const doneSales = async()=> {
         const {transArray, total} = state
-        console.log('hello trans')
-        console.log(state.transArray)
-        const transItems = {
-            goods: transArray,
-            grandTotal: total
-            
-        }
-        const response = await axios.post('/transactions', transItems)
-        if (response){
-            console.log('transacton complete')
-            dispatch({type: 'clear'})
-            
+        
+        if (transArray.length > 0){
+            console.log(transArray)
+            const transItems = {
+                goods: transArray,
+                grandTotal: total
+                
+            }
+            const response = await axios.post('/transactions', transItems)
+            if (response){
+                console.log('transacton complete')
+                dispatch({type: 'clear'})
+                
+            }
+        } else{
+            dispatch({type: 'success', payload: true})
+            setTimeout(()=> {
+                dispatch({type: 'success', payload: false})
+
+            }, 3000)
         }
     }
     const assertain = ()=> [
@@ -301,6 +309,8 @@ const Transactions = ()=> {
            style={{display: `${state.getAllTotals ? 'none' : 'block' }`}}
            >Grand Total: ${parseFloat(state.total).toFixed(2)}</h2>
             </article >
+
+           
             <section
             id="trans-verify-section"
             style={{
@@ -314,6 +324,14 @@ const Transactions = ()=> {
                 //   width: '115vw'
             }}
             >
+                 {state.success ? <h2
+                 style={{
+                    position: 'absolute',
+                    top: '22vw',
+                    color: 'red'
+                 }}
+                 >Cart is Empty Please Select an Item</h2> : ''}
+                 <br/>
                 {state.cancel ? <div
                 style={{
                     display: 'flex',
