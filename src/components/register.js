@@ -185,7 +185,11 @@ const Register = () => {
                         Already registered?<br />
                         <span className="line">
                             {/*put router link here*/}
-                            <Link to={'/login'}>Sign In</Link>
+                            <Link 
+                            style={{
+                                color: 'blue'
+                            }}
+                            to={'/login'}>Sign In</Link>
                         </span>
                     </p>
                 </section>
