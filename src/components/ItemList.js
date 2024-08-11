@@ -94,7 +94,7 @@ const ItemList = ()=> {
          <tr className="sales-items-cont"
          key={uuid()}
        style={{backgroundColor: index % 2 === 0 ?
-        'white' : 'palegreen'}}
+        'white' : 'lavender'}}
         >
            <td className="items">{`${item.name.split(' ').slice(0, -2)}`}</td>
            <td className="items">{item.price}</td>
