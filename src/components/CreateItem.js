@@ -99,20 +99,6 @@ let CreateItem = () => {
                 value={state.name}
                 onChange={(e)=> dispatch({type: 'name', payload: e.target.value})}
                 />
-                <label>price:</label>
-                <input
-                type="text"
-                required
-                value={state.price}
-                onChange={(e)=> dispatch({type: 'price', payload: e.target.value})}
-                />
-                {/* <label>unitMeasure:</label>
-                <input
-                type="text"
-                required
-                value={state.unitMeasure}
-                onChange={(e)=> dispatch({type: 'unitMeasure', payload: e.target.value})}
-                /> */}
 
 <h3 id="ulu"><label>unitMeasure:</label><br/><input type="text"
         // id="trans-search"
@@ -145,6 +131,24 @@ let CreateItem = () => {
                         </option>)
                     })}
             </datalist>
+
+            
+                <label>price:</label>
+                <input
+                type="text"
+                required
+                value={state.price}
+                onChange={(e)=> dispatch({type: 'price', payload: e.target.value})}
+                />
+                {/* <label>unitMeasure:</label>
+                <input
+                type="text"
+                required
+                value={state.unitMeasure}
+                onChange={(e)=> dispatch({type: 'unitMeasure', payload: e.target.value})}
+                /> */}
+
+
 
 
                 <label>Pieces/Unit:</label>

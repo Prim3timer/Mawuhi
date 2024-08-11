@@ -94,14 +94,14 @@ const Sales = ()=> {
     <th>Total</th>
     <th>
  {state.sales && state.sales.reduce((a, b)=> {
-    return  parseFloat((a + b.qty)).toFixed(2)
-}, 0)}
+    return  a + parseFloat( b.qty)
+}, 0).toFixed(2)}
 
     </th>
     <th>
     ${state.sales && state.sales.reduce((a, b)=> {
-    return  parseFloat((a + b.total)).toFixed(2)
-}, 0)}
+    return  a + parseFloat( b.total)
+}, 0).toFixed(2)}
     </th>
 
 

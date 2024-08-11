@@ -54,8 +54,8 @@ const App = () => {
        </Route>
      <Route element={<RequireAuth allowedRoles={[5150]}/>}>
    <Route path="admin" element={<Admin/>}/>
-       <Route path="create-inventory" element={<CreateInventory/>}/>
        </Route>
+       <Route path="create-inventory" element={<CreateInventory/>}/>
      <Route element={<RequireAuth allowedRoles={[1984, 5150]}/>}>
      <Route path="edit" element={<Edit/>}/>
      {/* <Route path="edit-item" element={<EditItem/>}/> */}
