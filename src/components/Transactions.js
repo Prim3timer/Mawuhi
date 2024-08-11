@@ -86,14 +86,44 @@ const Transactions = ()=> {
     
     const clearer = ()=> {
         dispatch({type: 'clear'})
+        console.log('CLEARED!')
+        dispatch({type: 'cancel', payload: false})
     }
     
-   
+    
+    
     useEffect(()=> {
         dispatch({type: 'getTotal'})
         // console.log('hello mundial')
-
+        
     }, [state.transArray, state.success])
+    
+    const doneSales = async()=> {
+        const {transArray, total} = state
+        console.log('hello trans')
+        console.log(state.transArray)
+        const transItems = {
+            goods: transArray,
+            grandTotal: total
+            
+        }
+        const response = await axios.post('/transactions', transItems)
+        if (response){
+            console.log('transacton complete')
+            dispatch({type: 'clear'})
+            
+        }
+    }
+    const assertain = ()=> [
+        dispatch({type: 'cancel', payload: true})
+        
+    ]
+    
+    const remain = ()=> {
+        dispatch({type: 'cancel', payload: false})
+    }
+    
+
 
    
     return (
@@ -156,6 +186,7 @@ const Transactions = ()=> {
           id="done-button"
           style={{height: '3rem'
           }}
+          onClick={doneSales}
           >Done</button>
             </fieldset>
             <h3 style={{color: 'red',
@@ -167,7 +198,7 @@ const Transactions = ()=> {
                     >
           
                {!state.transArray.length ? <h4>list is empty</h4> : state.transArray.map((item, index)=> {
-                 console.log(item.unitMeasure)
+                //  console.log(item.unitMeasure)
                 return (
                  
             <section 
@@ -271,17 +302,59 @@ const Transactions = ()=> {
            >Grand Total: ${parseFloat(state.total).toFixed(2)}</h2>
             </article >
             <section
+            id="trans-verify-section"
             style={{
                 // margin: '0 auto',
                 display: 'flex',
                 flexDirection: 'row',
                 columnGap: '2rem',
                 alignItems: 'center',
-                justifyContent: 'center'
+                justifyContent: 'center',
+                //   backgroundColor: 'teal',
+                //   width: '115vw'
             }}
             >
-           <button onClick={clearer}>Clear List</button>
-           <button onClick={clearer}>Cancel</button>
+                {state.cancel ? <div
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                      backgroundColor: 'lavender',
+                      padding: '1rem',
+                      borderRadius: '5px',
+
+                }}
+                ><h2
+                id="verify-header"
+                >Are you sure you want to cancel
+                    the transaction?</h2>
+                    <article
+                    style={{
+                        display: 'flex',
+                        flexDirection: 'row',
+                        columnGap: '4vw',
+                        justifyContent: 'center',
+                    }}
+                    ><button
+                    onClick={remain}
+                    >No</button><button
+                    onClick={clearer}
+                    >Yes</button></article></div> : <div
+                    style={{
+                        display: 'flex',
+                        flexDirection: 'row',
+                        columnGap: '4vw',
+                        justifyContent: 'center'
+                    }}
+                    >
+                         <button onClick={assertain}
+                           style={{backgroundColor: 'red',
+                            borderColor: 'red'
+                        }}
+                        // onClick={assertain}
+                         >Cancel</button>
+                         <button onClick={doneSales}>Done</button>
+                        </div>}
+          
            </section>
         </div>
     )

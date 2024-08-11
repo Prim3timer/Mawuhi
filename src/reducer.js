@@ -118,6 +118,9 @@ const reducer = (state, action)=> {
 
     case 'cartItem': 
     return {...state, cartItem: action.payload}
+
+    case 'cancel':
+        return {...state, cancel: action.payload}
  
               default:
                 throw new Error()

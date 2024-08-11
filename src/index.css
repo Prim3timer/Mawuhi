@@ -509,6 +509,13 @@ border-radius: 5px;
  .grand-total {
   /* font-size: 2rem; */
  }
+ #verify-header {
+  font-size: 1.5rem;
+  /* background-color: blue; */
+ }
+ #trans-verify-section {
+  width: 115vw;
+ }
 
 }  
 
