@@ -113,7 +113,7 @@ const CreateInventory = () => {
                         id="transNames"
                         // value={user.name}
                         >
-                            {user.name} ({user.unitMeasure.split(' ')[1]})
+                            {user.name} {user.unitMeasure.split(' ')[1]}
                         </option>)
                     })}
             </datalist>
