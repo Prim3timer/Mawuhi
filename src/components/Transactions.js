@@ -114,12 +114,6 @@ const Transactions = ()=> {
                 dispatch({type: 'clear'})
                 
             }
-        } else{
-            dispatch({type: 'success', payload: true})
-            setTimeout(()=> {
-                dispatch({type: 'success', payload: false})
-
-            }, 3000)
         }
     }
     const assertain = ()=> [
@@ -205,7 +199,7 @@ const Transactions = ()=> {
             id="trans-item-cont"               
                     >
           
-               {!state.transArray.length ? <h4>Cart is empty</h4> : state.transArray.map((item, index)=> {
+               {!state.transArray.length ? <h4>list is empty</h4> : state.transArray.map((item, index)=> {
                 //  console.log(item.unitMeasure)
                 return (
                  
@@ -309,8 +303,7 @@ const Transactions = ()=> {
            style={{display: `${state.getAllTotals ? 'none' : 'block' }`}}
            >Grand Total: ${parseFloat(state.total).toFixed(2)}</h2>
             </article >
-
-           
+            
             <section
             id="trans-verify-section"
             style={{
@@ -324,14 +317,6 @@ const Transactions = ()=> {
                 //   width: '115vw'
             }}
             >
-                 {state.success ? <h2
-                 style={{
-                    position: 'absolute',
-                    top: '22vw',
-                    color: 'red'
-                 }}
-                 >Cart is Empty Please Select an Item</h2> : ''}
-                 <br/>
                 {state.cancel ? <div
                 style={{
                     display: 'flex',

@@ -31,6 +31,8 @@ const Sales = ()=> {
        dispatch({type: 'sales', 
         payload: filterate})
     }
+
+    console.log(state.sales)
    
     useEffect(()=> {
         getTrans()
@@ -88,20 +90,25 @@ const Sales = ()=> {
    
 >
  </tr>
+ <tr>
+    <th>Total</th>
+    <th>
+ {state.sales && state.sales.reduce((a, b)=> {
+    return a + parseFloat(b.qty)
+}, 0)}
+
+    </th>
+    <th>
+    ${state.sales && state.sales.reduce((a, b)=> {
+    return a + parseFloat(b.total)
+}, 0)}
+    </th>
+
+
+ </tr>
           </tbody>
     </table>
-    <h2
-    style={{backgroundColor: 'white',
-        width: '50vw',
-        margin: '0 auto 2rem',  
-        padding: '.5rem',
-        borderRadius: '5px'
-    }}
- >Total Qty: {state.sales && state.sales.reduce((a, b)=> {
-    return a + b.qty
-}, 0)}  Total Revenue: ${state.sales && state.sales.reduce((a, b)=> {
-    return a + b.total
-}, 0)} </h2>
+   
         </div>
     )
 }
