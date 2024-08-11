@@ -9,8 +9,8 @@ const {v4: uuid} = require('uuid')
 let CreateItem = () => {
        const [state, dispatch] = useReducer(reducer, initialState)
        const itemRef = useRef()
-       const measurements = ['Kilogram kg', 'Pieces pcs', 'Dozen dzn', 'Sachet sct', 
-        'Pounds lbs'
+       const measurements = ['Kilogram (kg)', 'Pieces (pcs)', 'Dozen (dzn)', 'Sachet (sct)', 
+        'Pounds (lbs)'
        ]
     const first = measurements[0]
     console.log(first.split(' ')[1].split())
@@ -132,7 +132,7 @@ let CreateItem = () => {
                     })}
             </datalist>
 
-            
+
                 <label>price:</label>
                 <input
                 type="text"
