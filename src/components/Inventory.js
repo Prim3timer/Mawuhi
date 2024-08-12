@@ -78,6 +78,7 @@ const Inventory = ({mark, setMark})=> {
      <th>action</th>
      </tr>
 {state.inventory && state.inventory.map((inv, index)=> {
+    console.log(inv.name)
 return (
    <tr className="sales-items-cont"
    key={uuid()}
@@ -85,7 +86,7 @@ return (
      'white' : 'palegreen'}}
      >
         
-     <td className="sales-items">{`${inv.name.split(' ').slice(0, -2)} ${inv.name.split(' ').at(-1)}`}</td>
+     <td className="sales-items">{`${(inv.name.split(' ').slice(0,-2)).join(' ')} ${inv.name.split(' ').at(-1)}`}</td>
      <td className="sales-items">{inv.qty}</td>
      <td className="sales-items">{inv.date.substring(0, 10)}</td>
      <td 

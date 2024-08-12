@@ -216,7 +216,7 @@ const Transactions = ()=> {
                     >
                         {/* {`${item.name.split(' ')[0]} (${item.unitMeasure.split(' ')[1]})`}
                      */}
-                     {`${item.name.split(' ').slice(0, -2)} ${item.name.split(' ').at(-1)}`}
+                     {`${(item.name.split(' ').slice(0, -2)).join(' ')} `}
                     
                     </h2>
                 </section>

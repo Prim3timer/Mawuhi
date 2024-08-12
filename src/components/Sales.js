@@ -79,7 +79,7 @@ const Sales = ()=> {
         style={{backgroundColor: index % 2 === 0 ?
             'white' : 'khaki'}}
         >
-            <td className="sales-items">{`${sale.name.split(' ').slice(0, -2)} ${sale.name.split(' ').at(-1)}`}</td>
+            <td className="sales-items">{`${(sale.name.split(' ').slice(0, -2)).join(' ')} ${sale.name.split(' ').at(-1)}`}</td>
             <td className="sales-items">{sale.qty}</td>
             <td className="sales-items">{sale.total}</td>
             <td className="sales-items">{sale.date.substring(0, 10)}</td>
