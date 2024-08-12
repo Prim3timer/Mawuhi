@@ -346,6 +346,9 @@ const Transactions = ()=> {
                     onClick={remain}
                     >No</button><button
                     onClick={clearer}
+                    style={{backgroundColor: 'red',
+                        borderColor: 'red'
+                    }}
                     >Yes</button></article></div> : <div
                     style={{
                         display: 'flex',
@@ -355,9 +358,7 @@ const Transactions = ()=> {
                     }}
                     >
                          <button onClick={assertain}
-                           style={{backgroundColor: 'red',
-                            borderColor: 'red'
-                        }}
+                       
                         // onClick={assertain}
                          >Cancel</button>
                          <button onClick={doneSales}>Done</button>
