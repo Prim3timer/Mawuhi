@@ -381,6 +381,12 @@ border-radius: 5px;
   width: 12rem;
   margin-right: .5rem;
 }
+
+#edit-item-form {
+    display: flex;
+    flex-direction: column;
+}
+
 @media screen and (max-width: 550px) {
   #trans-search {
     width: 15rem;

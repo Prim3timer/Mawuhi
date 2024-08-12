@@ -12,9 +12,7 @@ let CreateItem = () => {
        const measurements = ['Kilogram (kg)', 'Pieces (pcs)', 'Dozen (dzn)', 'Sachet (sct)', 
         'Pounds (lbs)', 'Litre (L)'
        ]
-    const first = measurements[0]
-    console.log(first.split(' ')[1].split())
-   
+ 
     const handleSubmit = async (e)=> {
         const {name, price, unitMeasure, piecesUnit} = state
         e.preventDefault()
@@ -106,7 +104,7 @@ let CreateItem = () => {
         style={{width: '20rem',
             // backgroundColor: 'red'
         }}
-        ref={itemRef}
+        // ref={itemRef}
         list="measure"
         onChange={(e)=> dispatch({type: 'unitMeasure', payload: e.target.value})}
         value={state.unitMeasure}
@@ -140,17 +138,7 @@ let CreateItem = () => {
                 value={state.price}
                 onChange={(e)=> dispatch({type: 'price', payload: e.target.value})}
                 />
-                {/* <label>unitMeasure:</label>
-                <input
-                type="text"
-                required
-                value={state.unitMeasure}
-                onChange={(e)=> dispatch({type: 'unitMeasure', payload: e.target.value})}
-                /> */}
-
-
-
-
+              
                 <label>Pieces/Unit:</label>
                 <input
                 type="text"

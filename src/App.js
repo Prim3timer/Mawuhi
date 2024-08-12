@@ -58,6 +58,7 @@ const App = () => {
        <Route path="create-inventory" element={<CreateInventory/>}/>
      <Route element={<RequireAuth allowedRoles={[1984, 5150]}/>}>
      <Route path="edit" element={<Edit/>}/>
+     <Route path="edit-item" element={<EditItem/>}/>
      {/* <Route path="edit-item" element={<EditItem/>}/> */}
        </Route>
      <Route path="sales" element={<Sales/>}/>
