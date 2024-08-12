@@ -45,7 +45,7 @@ const Home = ()=> {
         <br />
         <Link to="/shopping">Shopping</Link>
         <br />
-        <Link to="/edit-item">Edit Item</Link>
+        {/* <Link to="/edit-item">Edit Item</Link> */}
         <br />
         <br />
         <Link to="/login">Login</Link>
