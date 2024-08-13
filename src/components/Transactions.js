@@ -238,7 +238,7 @@ const Transactions = ()=> {
  </div>
  {item.unitMeasure === 'Pounds (lbs)' || item.unitMeasure === 
 
- 'Kilogram (kg)' || 'Litre (L)'? <section><input
+ 'Kilogram (kg)' || item.unitMeasure === 'Litre (L)'? <section><input
  type="text"
  ref={qtyRef}
  placeholder={item.qty}
