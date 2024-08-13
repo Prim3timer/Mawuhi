@@ -14,6 +14,10 @@ const CreateInventory = () => {
 
     const getItems = async ()=> {
         const response = await axios.get('/items')
+        console.log(response.data.length)
+        // if (response.data.length > 12){
+        //     response.data.shift()
+        // }
         dispatch({type: 'getNames', payload: response.data})
         try {
             if (state.getNames){
@@ -64,8 +68,9 @@ const CreateInventory = () => {
             }
     
     
-    
+        
             const response = await axios.post('/inventory', newItem)  
+           
             if (response){  
     
                 dispatch({type: 'isMatched', payload: `new inventory, ${newItem.name} created` })

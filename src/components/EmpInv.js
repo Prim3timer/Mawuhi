@@ -8,11 +8,7 @@ import Edit from "./Edit"
 import { type } from "@testing-library/user-event/dist/type"
 const {v4: uuid} = require('uuid')
 
-// export const idContext = createContext()
-// console.log(idContext)
-
-
-const Inventory = ({mark, setMark})=> {
+const EmpInv = ()=> {
     const [state, dispatch] = useReducer(reducer, initialState)
     // const [mark, setMark] = useState('')  
 
@@ -20,7 +16,8 @@ const Inventory = ({mark, setMark})=> {
     const invRef = useRef()
     const getTrans = async ()=> {
         const graw = await axios.get('/inventory')
-        console.log(graw.data.length)
+        // console.log(graw.data)
+        
         const filterate = graw.data.filter((inner)=> inner.name.toLowerCase().includes(state.search.toLowerCase()))
         dispatch({type: 'inventory', 
             payload: filterate})
@@ -43,9 +40,7 @@ const Inventory = ({mark, setMark})=> {
     //     console.log('hello edit')
     // }, [state.isEdit])
  
-    const watcher = state.isEdit ? 
-  
-  <Edit mark={invRef.current.value}/>: (
+  return  (
 
         <div>  
         <article id="form-cont">
@@ -66,7 +61,7 @@ const Inventory = ({mark, setMark})=> {
    </form>
      <h2 id="invent-header">Inventory</h2>
  </article>
- <table className="inventory"
+ <table className="emp-inventory"
 
 >
  <tbody>
@@ -74,7 +69,6 @@ const Inventory = ({mark, setMark})=> {
      <th>name</th>
      <th>qty</th>
      <th> last udated</th>
-     <th>action</th>
      </tr>
 {state.inventory && state.inventory.map((inv, index)=> {
     console.log(inv.name)
@@ -82,25 +76,13 @@ return (
    <tr className="sales-items-cont"
    key={uuid()}
  style={{backgroundColor: index % 2 === 0 ?
-     'white' : 'palegreen'}}
+     'white' : 'lightpink'}}
      >
         
      <td className="sales-items">{`${(inv.name.split(' ').slice(0,-2)).join(' ')} ${inv.name.split(' ').at(-1)}`}</td>
      <td className="sales-items">{inv.qty}</td>
      <td className="sales-items">{inv.date.substring(0, 10)}</td>
-     <td 
-     // style={{backgroundColor: 'blue'}}
-     // ref={achoRef}
-     onClick={(e) => handleEdit(inv._id, e)}
-     ref={invRef}
-     className="sales-items">
-         <a
-         onClick={(e) => handleEdit(inv._id, e)}
-     style={{color: 'blue'}}
-    //  href={'/edit'}
-     >edit
-     </a>
-     </td>
+    
  </tr>
 )
 })}
@@ -110,7 +92,6 @@ return (
 </div>
 
     )
-    return watcher
 }
 
-export default Inventory
+export default EmpInv

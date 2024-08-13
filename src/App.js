@@ -19,6 +19,7 @@ import Sales from "./components/Sales"
 import ItemList from "./components/ItemList"
 import EditItem from "./components/EditItem"
 import Shopping from "./components/Shopping"
+import EmpInv from "./components/EmpInv"
 
 
 
@@ -53,7 +54,6 @@ const App = () => {
        <Route path="editor" element={<Editor/>}/>
        </Route>
      <Route element={<RequireAuth allowedRoles={[5150]}/>}>
-   <Route path="admin" element={<Admin/>}/>
        </Route>
        <Route path="create-inventory" element={<CreateInventory/>}/>
      <Route element={<RequireAuth allowedRoles={[1984, 5150]}/>}>
@@ -61,6 +61,8 @@ const App = () => {
      <Route path="edit-item" element={<EditItem/>}/>
      {/* <Route path="edit-item" element={<EditItem/>}/> */}
        </Route>
+   <Route path="emp-inv" element={<EmpInv/>}/>
+   <Route path="admin" element={<Admin/>}/>
      <Route path="sales" element={<Sales/>}/>
      <Route path="shopping" element={<Shopping/>}/>
       

@@ -14,11 +14,12 @@ const Edit = ({mark, setMark})=> {
        ]
     const getAnInventory = async ()=> {
         try {
-            let response = await axios.get(`/items/${mark}`)
-            console.log(response.data)
+            let response = await axios.get(`/items/${id}`)
+        
+            // console.log(response.data)
             if (response) {
                 
-                // dispatch({type:'inItem', payload: response.data})
+                dispatch({type:'inItem', payload: response.data})
                 dispatch({type: 'afa', payload: response.data.name})
                 dispatch({type: 'unitMeasure', payload: response.data.unitMeasure})
                 dispatch({type: 'price', payload: response.data.price})
@@ -36,7 +37,7 @@ const Edit = ({mark, setMark})=> {
         e.preventDefault()
         try {
             const newItem = {
-                name:  state.afa ? `${state.afa} ${unitMeasure}` :  response.data.name,
+                name:  state.afa ? state.afa :  response.data.name,
                 price: price && price,
                 unitMeasure: unitMeasure && unitMeasure,
                 piecesUnit: piecesUnit,
