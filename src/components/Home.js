@@ -28,7 +28,7 @@ const Home = ()=> {
         }}
         >
         <br />
-        <p>You are logged in!</p>
+        <p>You are logged in {state.user}</p>
         <br />
         <Link to="/transaction">transaction</Link><br/>
         <Link to="/create-inventory">create inventory</Link>

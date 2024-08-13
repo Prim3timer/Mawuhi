@@ -10,7 +10,7 @@ let CreateItem = () => {
        const [state, dispatch] = useReducer(reducer, initialState)
        const itemRef = useRef()
        const measurements = ['Kilogram (kg)', 'Pieces (pcs)', 'Dozen (dzn)', 'Sachet (sct)', 
-        'Pounds (lbs)', 'Litre (L)'
+        'Pounds (lbs)', 'Litres (L)'
        ]
  
     const handleSubmit = async (e)=> {
