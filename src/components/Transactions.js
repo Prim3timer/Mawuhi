@@ -294,10 +294,12 @@ const Transactions = ()=> {
                     >${item.total}</h2>
 
                     </article>
-                    {/* <h2
-                    onClick={()=> removeItem(item._id)}
-                    >remove</h2> */}
-                     <FaTrashAlt role='button' tableIndex='0'/> 
+                    <h2
+                        onClick={()=> removeItem(item._id)}
+                    >
+                    <FaTrashAlt role='button'
+                    tableIndex='0'/> 
+                    </h2>
         </section>
                 )
             })}{}
