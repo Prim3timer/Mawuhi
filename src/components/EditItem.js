@@ -94,7 +94,7 @@ const Edit = ({mark, setMark})=> {
                 placeholder="item name only"
                 id="name"
                 value={state.afa} 
-                onChange={(e)=> dispatch({type: 'afa', payload: e.target.value})}
+                // onChange={(e)=> dispatch({type: 'afa', payload: e.target.value})}
                 />
 
                 
