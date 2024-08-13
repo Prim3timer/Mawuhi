@@ -2,11 +2,15 @@ import reducer from "../reducer"
 import initialState from "../store"
 import axios from "../app/api/axios"
 import { useEffect, useReducer, useState, useRef, createContext     } from "react"
+
+import { FaTrashAlt } from "react-icons/fa";
 import SearchItem from "./SearchItem"
 import { Link } from "react-router-dom"
 import EditItem from "./EditItem"
 import { type } from "@testing-library/user-event/dist/type"
 const {v4: uuid} = require('uuid')
+
+// import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 
 
 const ItemList = ()=> {
@@ -112,7 +116,10 @@ const ItemList = ()=> {
            href={'/edit-item'}>edit</a></td>
            <td className="items"
            onClick={(e)=>handleRemove(item._id, e)}
-           >remove</td>
+           >
+            {/* remove */}
+           <FaTrashAlt role='button' tableIndex='0'/> 
+           </td>
           
        </tr>
       )

@@ -4,6 +4,7 @@ import axios from "../app/api/axios"
 import { useEffect, useReducer, useRef, useState } from "react"
 import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FaTrashAlt } from "react-icons/fa";
 const Transactions = ()=> {
     const [qty, setQty] = useState(0)
     const [state, dispatch] = useReducer(reducer, initialState)
@@ -293,9 +294,10 @@ const Transactions = ()=> {
                     >${item.total}</h2>
 
                     </article>
-                    <h2
+                    {/* <h2
                     onClick={()=> removeItem(item._id)}
-                    >remove</h2>
+                    >remove</h2> */}
+                     <FaTrashAlt role='button' tableIndex='0'/> 
         </section>
                 )
             })}{}

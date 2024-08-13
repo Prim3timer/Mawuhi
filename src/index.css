@@ -479,18 +479,18 @@ border-radius: 5px;
       flex-direction: column;
       text-align: center;
       justify-content: center;
-      width: 115vw;
+      /* width: 115vw; */
       /* background-color: green   */
     } 
     #trans-item {
     flex-wrap: wrap;
     /* flex-direction: row; */
     /* width: 115vw; */
-    column-gap: 3rem;
-    /* justify-content: space-evenly; */
+    column-gap: 2rem;
+    /* justify-content: space-around; */
     /* width: 145vw; */
     /* border-radius: 10px; */
-    width: 100vw;
+    /* width: 100vw; */
     /* background-color: blue; */
   
   }

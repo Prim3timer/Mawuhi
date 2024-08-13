@@ -16,11 +16,12 @@ const Edit = ({mark, setMark})=> {
         try {
             let response = await axios.get(`/items/${id}`)
         
-            // console.log(response.data)
+            console.log(response.data)
             if (response) {
                 
                 dispatch({type:'inItem', payload: response.data})
                 dispatch({type: 'afa', payload: response.data.name})
+                
                 dispatch({type: 'unitMeasure', payload: response.data.unitMeasure})
                 dispatch({type: 'price', payload: response.data.price})
             }
