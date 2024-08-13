@@ -8,7 +8,7 @@ import SearchItem from "./SearchItem"
 import { Link } from "react-router-dom"
 import EditItem from "./EditItem"
 import { type } from "@testing-library/user-event/dist/type"
-import { current } from "@reduxjs/toolkit";
+// import { current } from "@reduxjs/toolkit";
 const {v4: uuid} = require('uuid')
 
 // import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
