@@ -41,7 +41,8 @@ const Transactions = ()=> {
             if (state.success === false) state.success = true
             else state.success = false
               console.log(inputRef.current.value)
-              const currentItem = state.getNames && state.getNames.find((name)=> name.name === inputRef.current.value)
+              const currentItem = state.getNames && state.getNames.find((name)=> `${(name.name.split(' ').slice(0, -2)).join(' ')} ${name.unitMeasure.split(' ')[1]}` === inputRef.current.value)
+            //   `${(user.name.split(' ').slice(0, -2)).join(' ')} ${user.unitMeasure.split(' ')[1]}`
               currentItem.total = currentItem.price
               console.log(currentItem)
               dispatch({type: 'name', payload: inputRef.current.value})
@@ -170,7 +171,7 @@ const Transactions = ()=> {
                 return (
                     
                     <option key={user._id}
-                    value={user.name}
+                    value={`${(user.name.split(' ').slice(0, -2)).join(' ')} ${user.unitMeasure.split(' ')[1]}`}
                     style={{
                             position: 'relative',
                             color: 'brown',
