@@ -26,7 +26,7 @@ let CreateItem = () => {
         e.preventDefault()
         try {
             const newItem = {
-                name: `${name} ${unitMeasure}`,
+                name: `${name}`,
                 price: price,
                 unitMeasure: unitMeasure,
                 piecesUnit: piecesUnit,
@@ -38,7 +38,7 @@ let CreateItem = () => {
         console.log(newItem.name)
         const theMatch = state.items && state.items.data.find((item)=> item.name.toLowerCase() === newItem.name.toLowerCase()) 
         console.log(theMatch)
-        const theMatch2 = theMatch && theMatch.unitMeasure === 'Pieces pcs'
+        const theMatch2 = theMatch.unitMeasure === 'Pieces (pcs)' 
         console.log(newItem.unitMeasure)
         console.log(Boolean(theMatch))
         console.log(Boolean(theMatch2))

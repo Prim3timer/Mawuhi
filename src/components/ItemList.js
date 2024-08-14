@@ -140,7 +140,7 @@ const ItemList = ()=> {
        style={{backgroundColor: index % 2 === 0 ?
         'white' : 'lavender'}}
         >
-           <td className="items">{`${(item.name.split(' ').slice(0, -2)).join(' ')}`}</td>
+           <td className="items">{item.name}</td>
            <td className="items">{item.price}</td>
            <td className="items">{item.unitMeasure.split(' ')[0]}</td>
            <td className="items">{item.piecesUnit}</td>

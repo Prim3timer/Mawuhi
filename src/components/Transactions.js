@@ -41,8 +41,7 @@ const Transactions = ()=> {
             if (state.success === false) state.success = true
             else state.success = false
               console.log(inputRef.current.value)
-              const currentItem = state.getNames && state.getNames.find((name)=> `${(name.name.split(' ').slice(0, -2)).join(' ')} ${name.unitMeasure.split(' ')[1]}` === inputRef.current.value)
-            //   `${(user.name.split(' ').slice(0, -2)).join(' ')} ${user.unitMeasure.split(' ')[1]}`
+              const currentItem = state.getNames && state.getNames.find((name)=> `${name.name} ${name.unitMeasure.split(' ')[1]}` === inputRef.current.value)
               currentItem.total = currentItem.price
               console.log(currentItem)
               dispatch({type: 'name', payload: inputRef.current.value})
@@ -171,7 +170,7 @@ const Transactions = ()=> {
                 return (
                     
                     <option key={user._id}
-                    value={`${(user.name.split(' ').slice(0, -2)).join(' ')} ${user.unitMeasure.split(' ')[1]}`}
+                    value={`${user.name} ${user.unitMeasure.split(' ')[1]}`}
                     style={{
                             position: 'relative',
                             color: 'brown',
@@ -217,7 +216,7 @@ const Transactions = ()=> {
                     >
                         {/* {`${item.name.split(' ')[0]} (${item.unitMeasure.split(' ')[1]})`}
                      */}
-                     {`${(item.name.split(' ').slice(0, -2)).join(' ')} `}
+                     {item.name}
                     
                     </h2>
                 </section>
