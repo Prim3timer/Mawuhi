@@ -143,7 +143,7 @@ const ItemList = ()=> {
            <td className="items">{item.name}</td>
            <td className="items">{item.price}</td>
            <td className="items">{item.unitMeasure.split(' ')[0]}</td>
-           <td className="items">{item.piecesUnit}</td>
+           <td className="items"> {item.piecesUnit ? item.piecesUnit: 'N/A' } </td>
            <td 
            // style={{backgroundColor: 'blue'}}
            // ref={achoRef}

@@ -139,7 +139,7 @@ const Edit = ({mark, setMark})=> {
                 onChange={(e)=> dispatch({type: 'price', payload: e.target.value})}
                 />
 
-<label>Pieces/Unit:</label>
+{/* <label>Pieces/Unit:</label>
                 <input
                 type="text"
                 placeholder="optional"
@@ -147,7 +147,7 @@ const Edit = ({mark, setMark})=> {
                 value={state.piecesUnit}
                 onChange={(e)=> dispatch({type: 'piecesUnit', payload: e.target.value})}
                 />
-                <br/>
+                <br/> */}
                <button type="submit"
                onClick={handleSubmit}
                className="pop">Update Item</button>

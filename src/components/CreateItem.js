@@ -134,7 +134,7 @@ let CreateItem = () => {
                 onChange={(e)=> dispatch({type: 'price', payload: e.target.value})}
                 />
               
-                <label>Pieces/Unit:</label>
+                {/* <label>Pieces/Unit:</label>
                 <input
                 type="text"
                 placeholder="optional"
@@ -142,7 +142,7 @@ let CreateItem = () => {
                 value={state.piecesUnit}
                 onChange={(e)=> dispatch({type: 'piecesUnit', payload: e.target.value})}
                 />
-                <br/>
+                <br/> */}
                <button type="submit" className="pop">Add Item</button>
         <h3>{state.isMatched}</h3>
         <h3>{state.errMsg}</h3>
