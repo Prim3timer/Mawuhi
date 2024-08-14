@@ -231,7 +231,7 @@ const Transactions = ()=> {
                     >
                     <h4
                     style={{position: 'relative',
-                        marginTop:'2.4rem'
+                        marginTop:'1.5rem'
                     }}
                     >Qty:</h4>
                 
@@ -260,23 +260,27 @@ const Transactions = ()=> {
    ><FontAwesomeIcon icon={faCheck} /></button>
  </section> :
  <section>
- <button id="qty-increase"
-      onClick={()=> upper(item._id)}
- >
+ 
       <svg 
-      xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'>
+     onClick={()=> upper(item._id)}
+      xmlns='http://www.w3.org/2000/svg'
+       viewBox='0 0 20 20'
+    width='50px'
+ height='70px'
+      >
 <path d='M10.707 7.05L10 6.343 4.343 12l1.414 1.414L10 9.172l4.243 4.242L15.657 12z' />
 </svg>
-     </button>
- <h2 id="qty-header">{item.qty} {item.unitMeasure.split(' ')[1]} </h2>
- <button
- id="qty-decrease"
- onClick={()=> downer(item._id)}
- >
-      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'>
+ <h3 id="qty-header">{item.qty} {item.unitMeasure.split(' ')[1]} </h3>
+
+      <svg 
+     onClick={()=> downer(item._id)}
+  width='50px'
+  height='70px'
+      xmlns='http://www.w3.org/2000/svg'
+       viewBox='0 0 20 20'
+      >
 <path d='M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z' />
 </svg>
- </button>
  </section>}
  
                    </article>
