@@ -22,13 +22,24 @@ const ItemList = ()=> {
 
     const itemRef = useRef()
     const getTrans = async ()=> {
-        const graw = await axios.get('/items')
-        dispatch({type: 'items', payload: graw})
-        console.log(state.items.data)
-        
-        const filterate = graw.data.filter((inner)=> inner.name.toLowerCase().includes(state.search.toLowerCase()))
-        dispatch({type: 'items', 
-            payload: filterate})
+
+        try {
+            const graw = await axios.get('/items')
+            console.log(graw.data.items)
+            if (graw.data.items.length > 0) {
+                dispatch({type: 'items', payload: graw.data.items})
+                console.log(state.items.data)
+
+                const filterate = graw.data.items.filter((inner)=> inner.name.toLowerCase().includes(state.search.toLowerCase()))
+                dispatch({type: 'items', 
+                    payload: filterate})
+            }
+    
+            
+            
+        } catch (error) {
+            console.log(error)
+        }
         }
 
         
@@ -63,22 +74,28 @@ const ItemList = ()=> {
 
         const removeInventory = async (id)=> {
             const items = await axios.get('/items')
-            const currentItem = items.data.find((item) => item._id === id)
+            console.log(items)
+            const currentItem = state.items.find((item) => item._id === id)
             console.log(currentItem)
             const invLIst = await axios.get('/inventory')
             console.log(invLIst.data)
             const currentInventory = invLIst.data.find((inv)=> inv.name === currentItem.name)
             console.log(currentInventory)
-            const inventory = await axios.delete(`/inventory/${currentInventory._id}`)
-            // // dispatch({type: 'inventory', payload: newList})
+            if (currentInventory){
+
+                const inventory = await axios.delete(`/inventory/${currentInventory._id}`)
+                // dispatch({type: 'inventory', payload: newList})
+            }
             // console.log(id)
         }
+        console.log(state.items)
         // removeInventory('66bb6d08cee24e6d05660bca')
         console.log(state.isEdit)
         useEffect(()=> {
             getTrans()
             
     }, [state.search])
+    console.log(state)
     const watcher = state.isEdit ? 
 
   
@@ -115,6 +132,7 @@ const ItemList = ()=> {
            <th colSpan={2}>action</th>
            {/* <th>action</th> */}
            </tr>
+    
       {state.items && state.items.map((item, index)=> {
       return (
          <tr className="sales-items-cont"

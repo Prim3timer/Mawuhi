@@ -14,16 +14,18 @@ const CreateInventory = () => {
 
     const getItems = async ()=> {
         const response = await axios.get('/items')
+        let groove = await axios.get('/inventory')
+        console.log(groove)
         console.log(response.data.length)
         // if (response.data.length > 12){
         //     response.data.shift()
         // }
-        dispatch({type: 'getNames', payload: response.data})
+        dispatch({type: 'getNames', payload: response.data.items})
         try {
             if (state.getNames){
-                console.log(response.data)
+                console.log(state.getNames)
     
-             console.log(state.getNames)
+
                         // setUsername(response.data.users[0].username)
                         dispatch({type: 'user', payload: state.getNames[0].name})
                         console.log(state.user)
@@ -46,14 +48,15 @@ const CreateInventory = () => {
         console.log(newItem.name)
         console.log(newItem.qty)
         let groove = await axios.get('/inventory')
-        dispatch({type: 'inventory', payload: groove})
-        if (state.inventory){
+        console.log(groove)
+        console.log(state.inventory)
+        if (groove){
 
             console.log(state.inventory.data)
-          const theMatch = state.inventory.data.find((item)=> item.name.toLowerCase() === newItem.name.toLowerCase())
+          const theMatch = groove.data.find((item)=> item.name.toLowerCase() === newItem.name.toLowerCase())
           if (theMatch){
        
-            dispatch({type: 'isMatched', payload: 'we have a match' })
+            dispatch({type: 'isMatched', payload: 'item alrady in list' })
             setTimeout(()=> {
                 dispatch({type: 'isMatched', payload: '' })
             }, 3000)
@@ -74,17 +77,14 @@ const CreateInventory = () => {
             if (response){  
     
                 dispatch({type: 'isMatched', payload: `new inventory, ${newItem.name} created` })
+                dispatch({type: 'name', payload: '' })
+                dispatch({type: 'qty', payload: '' })
                 setTimeout(()=> {
                     dispatch({type: 'isMatched', payload: '' })
                 }, 3000)
             }
         }  
     } 
-    // dispatch({type: 'name', payload: '' })
-    // dispatch({type: 'price', payload: '' })
-    // dispatch({type: 'unitMeasure', payload: '' })
-    // dispatch({type: 'piecesUnit', payload: '' })
-        // setUsername('')
     }
     useEffect(()=>{
         getItems()
@@ -132,11 +132,8 @@ const CreateInventory = () => {
                 /><br/>
                <button type="submit" className='pop' >Add</button>           
             </form>
-            <h3 style={{position: 'absolute',
-                margin: '0 35%',
-                width: '20rem',
-
-            }}>{state.isMatched}</h3>
+            <h3 
+            >{state.isMatched}</h3>
         </div>
     )
 }

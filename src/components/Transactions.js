@@ -6,14 +6,13 @@ import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icon
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FaTrashAlt } from "react-icons/fa";
 const Transactions = ()=> {
-    const [qty, setQty] = useState(0)
     const [state, dispatch] = useReducer(reducer, initialState)
     const inputRef = useRef()
      const qtyRef = useRef()
     const getItems = async ()=> {
         const response = await axios.get('/items')
       
-        dispatch({type: 'getNames', payload: response.data})    
+        dispatch({type: 'getNames', payload: response.data.items})    
         try {
             if (state.getNames){
                 

@@ -12,6 +12,14 @@ let CreateItem = () => {
        const measurements = ['Kilogram (kg)', 'Pieces (pcs)', 'Dozen (dzn)', 'Sachet (sct)', 
         'Pounds (lbs)', 'Litres (L)'
        ]
+
+       const getItems = ()=> {
+        try {
+            
+        } catch (error) {
+            
+        }
+       }
  
     const handleSubmit = async (e)=> {
         const {name, price, unitMeasure, piecesUnit} = state
@@ -25,21 +33,8 @@ let CreateItem = () => {
                 
             }
             
-            let groove = await axios.get('/items')
 
-            
-            // console.log(groove.data)
-            dispatch({type: 'items', payload: groove ? groove : ''})
-            const querryArray = state.items && state.items.data
-            
-            
-            // const count = (querryArray, element) => {
-            //     return  querryArray.reduce((ele, arrayEle) =>
-            //         // console.log(arr)
-            //         (arrayEle.name.toLowerCase() == element.name.toLowerCase ? ele + 1 : ele), 0);
-            // };
 
-        // console.log(count(querryArray, newItem))
         console.log(newItem.name)
         const theMatch = state.items && state.items.data.find((item)=> item.name.toLowerCase() === newItem.name.toLowerCase()) 
         console.log(theMatch)
@@ -69,11 +64,11 @@ let CreateItem = () => {
                     dispatch({type: 'isMatched', payload: '' })
                 }, 3000)
             }
+            dispatch({type: 'name', payload: '' })
+            dispatch({type: 'price', payload: '' })
+            dispatch({type: 'unitMeasure', payload: '' })
+            dispatch({type: 'piecesUnit', payload: '' })
         }  
-        dispatch({type: 'name', payload: '' })
-        dispatch({type: 'price', payload: '' })
-        dispatch({type: 'unitMeasure', payload: '' })
-        dispatch({type: 'piecesUnit', payload: '' })
         } catch (error) {
             dispatch({type: 'errMsg', payload: `${error.message}`})
             setTimeout(()=> {
@@ -149,8 +144,8 @@ let CreateItem = () => {
                 />
                 <br/>
                <button type="submit" className="pop">Add Item</button>
-        <h3>{state.errMsg}</h3>
         <h3>{state.isMatched}</h3>
+        <h3>{state.errMsg}</h3>
                
             </form>
         </div>

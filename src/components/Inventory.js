@@ -19,11 +19,17 @@ const Inventory = ({mark, setMark})=> {
 
     const invRef = useRef()
     const getTrans = async ()=> {
-        const graw = await axios.get('/inventory')
-        console.log(graw.data.length)
-        const filterate = graw.data.filter((inner)=> inner.name.toLowerCase().includes(state.search.toLowerCase()))
-        dispatch({type: 'inventory', 
-            payload: filterate})
+
+          try {
+            
+              const graw = await axios.get('/inventory')
+              console.log(graw.data.length)
+              const filterate = graw.data.filter((inner)=> inner.name.toLowerCase().includes(state.search.toLowerCase()))
+              dispatch({type: 'inventory', 
+                  payload: filterate})
+          } catch (error) {
+            dispatch({type: 'errMsg', payload: error.Message})
+          }
         }
         console.log(state.isEdit)
         useEffect(()=> {
@@ -38,10 +44,6 @@ const Inventory = ({mark, setMark})=> {
         console.log(invRef.current.value)
       
     }
-    // useEffect(()=> {
-    //     handleEdit()
-    //     console.log('hello edit')
-    // }, [state.isEdit])
  
     const watcher = state.isEdit ? 
   
@@ -106,7 +108,7 @@ return (
 })}
    </tbody>
 </table>
-{/* <Edit mark={invRef}/>  */}
+<h3>{state.errMsg}</h3>
 </div>
 
     )

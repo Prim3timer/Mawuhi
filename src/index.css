@@ -60,7 +60,6 @@ h5 {margin-right: 1rem;}
 #create-item-form {
   display: flex;
   flex-direction: column;
-  row-gap: -2rem;
 }
 
 #search {
