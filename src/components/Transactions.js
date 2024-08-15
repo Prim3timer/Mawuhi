@@ -46,8 +46,16 @@ const Transactions = ()=> {
               console.log(currentItem)
               dispatch({type: 'name', payload: inputRef.current.value})
               const acutalItem = {...currentItem, qty: 1}
-              state.transArray.push(acutalItem)
-              state.transArray.reverse()
+              const match = state.transArray.find((item) => item.name === acutalItem.name)
+             if(!match){
+
+                 state.transArray.push(acutalItem)
+                 state.transArray.reverse()
+             }else if (match) {
+
+                 dispatch({type: 'errMsg', payload: 'item already in list'})
+             }
+              
               console.log(state.transArray)
               // console.log(state.getNames)
               inputRef.current.value = ''

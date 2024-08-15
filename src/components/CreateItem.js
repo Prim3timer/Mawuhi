@@ -13,13 +13,7 @@ let CreateItem = () => {
         'Pounds (lbs)', 'Litres (L)'
        ]
 
-       const getItems = async ()=> {
-        try {
-            const response = await axios.get('/items')
-        } catch (error) {
-            
-        }
-       }
+     
  
     const handleSubmit = async (e)=> {
         const {name, price, unitMeasure, piecesUnit} = state
