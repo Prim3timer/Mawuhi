@@ -79,7 +79,7 @@ const ItemList = ()=> {
             console.log(currentItem)
             const invLIst = await axios.get('/inventory')
             console.log(invLIst.data)
-            const currentInventory = invLIst.data.find((inv)=> inv.name === currentItem.name)
+            const currentInventory = invLIst.data.find((inv)=> inv.name === `${currentItem.name} ${currentItem.unitMeasure.split(' ')[1]}`)
             console.log(currentInventory)
             if (currentInventory){
 
@@ -128,7 +128,7 @@ const ItemList = ()=> {
            <th>name</th>
            <th>price</th>
            <th> UMT</th>
-           <th>P/U</th>
+           {/* <th>P/U</th> */}
            <th colSpan={2}>action</th>
            {/* <th>action</th> */}
            </tr>
@@ -143,7 +143,7 @@ const ItemList = ()=> {
            <td className="items">{item.name}</td>
            <td className="items">{item.price}</td>
            <td className="items">{item.unitMeasure.split(' ')[0]}</td>
-           <td className="items"> {item.piecesUnit ? item.piecesUnit: 'N/A' } </td>
+           {/* <td className="items"> {item.piecesUnit ? item.piecesUnit: 'N/A' } </td> */}
            <td 
            // style={{backgroundColor: 'blue'}}
            // ref={achoRef}

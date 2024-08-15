@@ -37,24 +37,10 @@ let CreateItem = () => {
 
         console.log(newItem.name)
         const theMatch = state.items && state.items.data.find((item)=> item.name.toLowerCase() === newItem.name.toLowerCase()) 
-        console.log(theMatch)
-        const theMatch2 = theMatch.unitMeasure === 'Pieces (pcs)' 
-        console.log(newItem.unitMeasure)
-        console.log(Boolean(theMatch))
-        console.log(Boolean(theMatch2))
-        if (theMatch2){
+        if (theMatch){
 
-            // dispatch({type: 'isMatched', payload: 'we have a match' })
-            throw Error(`Conflict: You cannot enter 'pcs' as a unit of measurement of the 
-                second instance of an item. Please remove the first instance and 
-                enter pcs first`)
+                dispatch({type: 'errMsg', payload: 'There cannot be more than two intances of the same item'})
         }
-          else if (theMatch ){ 
-            dispatch({type: 'errMsg', payload: 'There cannot be more than two intances of the same item'})
-       
-                      
-            
-        } 
         else {
             const response = await axios.post('/items', newItem)  
             if (response){  

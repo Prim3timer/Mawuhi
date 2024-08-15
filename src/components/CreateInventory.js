@@ -1,14 +1,17 @@
-import { useEffect, useReducer, useRef } from "react"
+import { useEffect, useReducer, useRef, useState } from "react"
 import initialState from "../store"
 import reducer from "../reducer"
 import axios from "../app/api/axios"
 
+
 const CreateInventory = () => {
     const [state, dispatch] = useReducer(reducer, initialState)
+    const [unit, setUnit] = useState()
     const ACTION = {
         NAME: 'name',
         QTY: 'qty',
-        INVENTORY: 'inventory'
+        INVENTORY: 'inventory',
+        UNITMEASURE: 'unitMeasure'
     }
     const inputRef = useRef()
 
@@ -66,7 +69,8 @@ const CreateInventory = () => {
     
             const newItem = {
                 name: state.name,
-                qty: state.qty
+                qty: state.qty,
+                unitMeasure: state.unitMeasure
                 
             }
     
@@ -112,14 +116,17 @@ const CreateInventory = () => {
         <datalist id="edulevel"
         >
             {state.getNames && state.getNames.map((user)=> {
+                // dispatch({type: 'unitMeasure', payload: user.unitMeasure})
+                // setUnit(user.unitMeasure)
                 return (
                         
                         <option key={user._id} 
                         id="transNames"
                         // value={user.name}
                         >
-                            {user.name} 
-                            {/* {user.unitMeasure.split(' ')[1]} */}
+                            {user.name}  {user.unitMeasure.split(' ')[1]}
+                            
+                           
                         </option>)
                     })}
             </datalist>
