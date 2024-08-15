@@ -13,9 +13,9 @@ let CreateItem = () => {
         'Pounds (lbs)', 'Litres (L)'
        ]
 
-       const getItems = ()=> {
+       const getItems = async ()=> {
         try {
-            
+            const response = await axios.get('/items')
         } catch (error) {
             
         }
@@ -39,7 +39,7 @@ let CreateItem = () => {
         const theMatch = state.items && state.items.data.find((item)=> item.name.toLowerCase() === newItem.name.toLowerCase()) 
         if (theMatch){
 
-                dispatch({type: 'errMsg', payload: 'There cannot be more than two intances of the same item'})
+                dispatch({type: 'errMsg', payload: 'There cannot be two intances of the same item'})
         }
         else {
             const response = await axios.post('/items', newItem)  
@@ -64,6 +64,8 @@ let CreateItem = () => {
         }
 
     }
+
+  
 
     return (
         <div className="create-item">

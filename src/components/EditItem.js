@@ -25,15 +25,32 @@ const Edit = ({mark, setMark})=> {
                 dispatch({type: 'unitMeasure', payload: response.data.unitMeasure})
                 dispatch({type: 'price', payload: response.data.price})
             }
-            console.log(state.inItem)
-            console.log(response.data)
+            if (state.inItem){
+                
+                console.log(state.inItem)
+                console.log(response.data)
+            }
+            anInventory()
             
         } catch (error) {
             dispatch({type: state.errMsg, payload: error})
         }
     }
 
+    const anInventory = async () => {
+        const response = await axios.get('/inventory')
+        // console.log(state.inItem.name)
+        // console.log(state.inItem.unitMeasure.split(' ')[1])
+        if (state.inItem){
+            const response2 = await response.data.find((inventory)=> inventory.name === `${state.inItem.name} ${state.inItem.unitMeasure.split(' ')[1]}`)
+            dispatch({type: 'outItem', payload: response2})
+            console.log(state.outItem)
+
+        }
+    }
+
     const handleSubmit = async (e)=> {
+        console.log('do abeg')
         const {name, price, unitMeasure, piecesUnit} = state
         e.preventDefault()
         try {
@@ -44,8 +61,12 @@ const Edit = ({mark, setMark})=> {
                 piecesUnit: piecesUnit,
                 
             }
-     
-            const response = await axios.patch(`/items/${mark}`, newItem)  
+            state.outItem.name = `${newItem.name} ${newItem.unitMeasure.split(' ')[1]}`
+            const newInventory = {...state.outItem, name: `${newItem.name} ${newItem.unitMeasure.split(' ')[1]}`}
+           console.log(state.outItem)
+           
+           const response = await axios.put(`/items/${id}`, newItem)  
+           await axios.put(`/inventory/${state.outItem._id}`, newInventory)
             if (response){  
     
                 dispatch({type: 'isMatched', payload: `item, ${newItem.name} Edited` })
@@ -81,6 +102,13 @@ const Edit = ({mark, setMark})=> {
       }
      
     }
+
+    // useEffect(()=> {
+    //     setTimeout(()=> {
+
+    //         anInventory()
+    //     }, 2000)
+    // }, [])
 
     return (
         <div id="edit">
