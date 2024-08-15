@@ -76,7 +76,7 @@ return (
    <tr className="sales-items-cont"
    key={uuid()}
  style={{backgroundColor: index % 2 === 0 ?
-     'white' : 'lightpink'}}
+     'white' : 'aqua'}}
      >
         
      <td className="sales-items">{`${(inv.name.split(' ').slice(0,-2)).join(' ')} ${inv.name.split(' ').at(-1)}`}</td>

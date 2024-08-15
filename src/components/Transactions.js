@@ -141,7 +141,7 @@ const Transactions = ()=> {
                 <h2
                 className="grand-total"
                 style={{width: '5rem'}}
-                >Grand Total: ${parseFloat(state.total).toFixed(2)}</h2>
+                >Grand Total: ${state.total.toFixed(2)}</h2>
         <form
         
         >
@@ -254,18 +254,20 @@ const Transactions = ()=> {
    <button
    onClick={()=> handleQty(item._id)}
    style={{width: '3rem',
-    marginLeft: '.5rem'
+    marginLeft: '.5rem',
+    borderColor: 'limegreen',
+    backgroundColor: 'limegreen'
    }}
    ><FontAwesomeIcon icon={faCheck} /></button>
  </section> :
  <section>
- 
       <svg 
      onClick={()=> upper(item._id)}
       xmlns='http://www.w3.org/2000/svg'
        viewBox='0 0 20 20'
-    width='50px'
+    width='80px'
  height='70px'
+
       >
 <path d='M10.707 7.05L10 6.343 4.343 12l1.414 1.414L10 9.172l4.243 4.242L15.657 12z' />
 </svg>
@@ -273,8 +275,9 @@ const Transactions = ()=> {
 
       <svg 
      onClick={()=> downer(item._id)}
-  width='50px'
+  width='80px'
   height='70px'
+
       xmlns='http://www.w3.org/2000/svg'
        viewBox='0 0 20 20'
       >
@@ -294,7 +297,7 @@ const Transactions = ()=> {
                     >sub total: </h3>
                     <h2 
                     style={{display: `${state.getAllTotals ? 'none' : 'block' }`}}
-                    >${item.total}</h2>
+                    >${(item.total).toFixed(2)}</h2>
 
                     </article>
                     <h2

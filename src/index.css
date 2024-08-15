@@ -61,6 +61,9 @@ h5 {margin-right: 1rem;}
   display: flex;
   flex-direction: column;
 }
+svg {
+  color: darkslateblue;
+}
 
 #search {
   width: 40vw;
@@ -361,13 +364,14 @@ border-radius: 5px;
   justify-content: space-evenly;
   flex-wrap: wrap;
   /* background-color: lightseagreen; */
-  background-color: rosybrown;
+  background-color: lightskyblue;
   font-size: 1.2rem;
   padding: 1rem;
   width: 95vw  
 }
 
 #flex-article {
+  /* color: lightcyan; */
     display: flex;
     flex-direction: row;
     align-items: center;
