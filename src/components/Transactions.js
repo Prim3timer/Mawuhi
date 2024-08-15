@@ -141,7 +141,7 @@ const Transactions = ()=> {
                 <h2
                 className="grand-total"
                 style={{width: '5rem'}}
-                >Grand Total: ${state.total.toFixed(2)}</h2>
+                >Grand Total: ${parseFloat(state.total).toFixed(2)}</h2>
         <form
         
         >
@@ -297,7 +297,7 @@ const Transactions = ()=> {
                     >sub total: </h3>
                     <h2 
                     style={{display: `${state.getAllTotals ? 'none' : 'block' }`}}
-                    >${(item.total).toFixed(2)}</h2>
+                    >${parseFloat(item.total).toFixed(2)}</h2>
 
                     </article>
                     <h2
