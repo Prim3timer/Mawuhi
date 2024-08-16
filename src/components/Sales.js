@@ -16,6 +16,7 @@ const Sales = ()=> {
                 const elements =  {
                     name: good.name,
                     qty: good.qty,
+                    unitMeasure: good.unitMeasure,
                     total: good.total,
                     date: gr.date
 
@@ -36,7 +37,7 @@ const Sales = ()=> {
    
     useEffect(()=> {
         getTrans()
-        
+        console.log(state.sales)
     }, [state.search])
     console.log(state.sales.data)
  
@@ -79,7 +80,7 @@ const Sales = ()=> {
         style={{backgroundColor: index % 2 === 0 ?
             'white' : 'khaki'}}
         >
-            <td className="sales-items">{`${(sale.name.split(' ').slice(0, -2)).join(' ')} ${sale.name.split(' ').at(-1)}`}</td>
+            <td className="sales-items">{`${sale.name.split(' ').join(' ')} ${sale.unitMeasure.split(' ')[1]}`}</td>
             <td className="sales-items">{sale.qty}</td>
             <td className="sales-items">{sale.total}</td>
             <td className="sales-items">{sale.date.substring(0, 10)}</td>
