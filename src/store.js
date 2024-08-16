@@ -38,7 +38,8 @@ const initialState = {
    INCREMENT: '',
    DECREMENT: '',
    cartItem: '',
-   cancel: false
+   cancel: false,
+   qtyArray: []
   
 }
 

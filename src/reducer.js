@@ -76,7 +76,9 @@ const reducer = (state, action)=> {
            case 'inventEdit':
                 return {...state, outItem: action.payload}
         case 'amount':
-          return {...state, amount: action.payload}
+            return {...state, amount: action.payload}
+            case 'qtyArray':
+                return {...state, qtyArray: action.paylaod}
         case 'clear':
           return {...state, transArray: []}
           case 'INCREMENT': 

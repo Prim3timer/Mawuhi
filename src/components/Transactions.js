@@ -109,20 +109,48 @@ const Transactions = ()=> {
     const doneSales = async()=> {
         const {transArray, total} = state
         
-        if (transArray.length > 0){
-            console.log(transArray)
-            const transItems = {
-                goods: transArray,
-                grandTotal: total
-                
-            }
-            const response = await axios.post('/transactions', transItems)
-            if (response){
-                console.log('transacton complete')
-                dispatch({type: 'clear'})
-                
-            }
+        // console.log(transArray)
+        const transItems = {
+            goods: transArray,
+            grandTotal: total
+            
         }
+
+        const response = await axios.post('/transactions', transItems)
+        const response2 = await axios.get('/inventory')
+        console.log(response2)
+        if (response){
+            dispatch({type: 'clear'})
+            dispatch({type: 'transArray', payload: []})
+            
+        }
+
+    const goods = transItems.goods.map((good)=> {
+        const invs = response2.data.map(async(inv)=> {
+            if (inv.name.split(' ').slice(0, -1).join(' ') === good.name){
+                const goodObj = {
+                    name: inv.name,
+                    qty: inv.qty - good.qty
+                }
+                await axios.patch(`/inventory`, goodObj)
+                // invArray.push(inv.qty)
+                //  goodArray.push(good.qty)
+                // goodArray.push(goodObj)
+             
+                
+                
+                
+                
+                // dispatch({type: 'qtyArray', payload: goodObj})
+            }
+        })
+        
+        console.log(invs)
+        console.log(state.qtyArray)
+        
+    })
+    dispatch({type: 'qtyArray', payload: []})
+       
     }
     const assertain = ()=> [
         dispatch({type: 'cancel', payload: true})
