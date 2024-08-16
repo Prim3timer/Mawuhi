@@ -397,6 +397,11 @@ border-radius: 5px;
 }
 
 @media screen and (max-width: 550px) {
+  #links {
+    width: 60rem;
+    background-color: blue;
+  }
+
   #trans-search {
     width: 15rem;
   }
@@ -404,10 +409,10 @@ border-radius: 5px;
 
 @media screen and (max-width: 430px) {
 
-  /* #links {
+  #links {
     width: 60rem;
     background-color: blue;
-  } */
+  }
 
   .trans-cont {
     font-size: 2rem;
@@ -442,10 +447,10 @@ border-radius: 5px;
 
 @media screen and (max-width: 376px) {
 
-  /* #links {
+  #links {
     width: 60rem;
     background-color: blue;
-  } */
+  }
 
   #trans-search {
     font-size: 2rem;
