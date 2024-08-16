@@ -10,7 +10,7 @@ const Sales = ()=> {
     const [state, dispatch] = useReducer(reducer, initialState)
     const getTrans = async ()=> {
         const innerArray = []
-        if (innerArray.length > 0){
+        // if (innerArray.length > 0){
             
             const graw =  await axios.get('/transactions/sales')
             graw.data.map((gr)=> {
@@ -27,7 +27,7 @@ const Sales = ()=> {
             return innerArray
                 })
         })
-        }
+        // }
         const filterate = innerArray.filter((inner)=> inner.name.toLowerCase().includes(state.search.toLowerCase()))
 
        

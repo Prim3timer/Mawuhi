@@ -21,11 +21,12 @@ const Home = ()=> {
     return (
         <div>
         <section
+        id="links"
         style={{
             backgroundColor: 'green',
             fontSize: '1.5rem',
             // margin: '0 0 1rem 0',
-            padding: '2rem 0 0 0',
+            padding: '2rem 2rem 0 0',
             display: 'flex',
             flexDirection: 'row',
             columnGap: '1rem'

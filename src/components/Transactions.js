@@ -54,6 +54,7 @@ const Transactions = ()=> {
              }else if (match) {
 
                  dispatch({type: 'errMsg', payload: 'item already in list'})
+                 inputRef.current.value = ''
              }
               
               console.log(state.transArray)
@@ -235,7 +236,7 @@ const Transactions = ()=> {
             id="trans-item-cont"               
                     >
           
-               {!state.transArray.length ? <h4>list is empty</h4> : state.transArray.map((item, index)=> {
+               {!state.transArray.length ? <h4>Cart is empty.</h4> : state.transArray.map((item, index)=> {
                 //  console.log(item.unitMeasure)
                 return (
                  

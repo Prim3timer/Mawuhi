@@ -125,11 +125,11 @@ const ItemList = ()=> {
       >
        <tbody>
        <tr>
-           <th>name</th>
-           <th>price</th>
+           <th>NAME</th>
+           <th>PRICE</th>
            <th> UMT</th>
            {/* <th>P/U</th> */}
-           <th colSpan={2}>action</th>
+           <th colSpan={2}>ACTIONS</th>
            {/* <th>action</th> */}
            </tr>
     
@@ -140,7 +140,7 @@ const ItemList = ()=> {
        style={{backgroundColor: index % 2 === 0 ?
         'white' : 'lavender'}}
         >
-           <td className="items">{item.name}</td>
+           <th className="items">{item.name}</th>
            <td className="items">{item.price}</td>
            <td className="items">{item.unitMeasure.split(' ')[0]}</td>
            {/* <td className="items"> {item.piecesUnit ? item.piecesUnit: 'N/A' } </td> */}

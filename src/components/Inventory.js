@@ -88,7 +88,7 @@ return (
      >
         
      <td className="sales-items">{`${inv.name}`}</td>
-     <td className="sales-items">{inv.qty}</td>
+     <th className="sales-items">{inv.qty}</th>
      <td className="sales-items">{inv.date.substring(0, 10)}</td>
      <td 
      // style={{backgroundColor: 'blue'}}

@@ -88,6 +88,7 @@ const App = () => {
 return (
 
   <main className="app">
+     <h2>Mawuhi Mart</h2>
       <Routes>
          {/* public routes */}
         <Route path="/" element={<Layout/>}>
