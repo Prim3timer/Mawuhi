@@ -10,21 +10,24 @@ const Sales = ()=> {
     const [state, dispatch] = useReducer(reducer, initialState)
     const getTrans = async ()=> {
         const innerArray = []
-        const graw = await axios.get('/transactions/sales')
-        graw.data.map((gr)=> {
-            return gr.goods.map((good)=> {
-                const elements =  {
-                    name: good.name,
-                    qty: good.qty,
-                    unitMeasure: good.unitMeasure,
-                    total: good.total,
-                    date: gr.date
-
-                }
-                innerArray.push(elements)
-                return innerArray
-            })
+        if (innerArray.length > 0){
+            
+            const graw =  await axios.get('/transactions/sales')
+            graw.data.map((gr)=> {
+                return gr.goods.map((good)=> {
+                    const elements =  {
+                        name: good.name,
+                        qty: good.qty,
+                        unitMeasure: good.unitMeasure,
+                        total: good.total,
+                        date: gr.date
+        
+                    }
+                    innerArray.push(elements)
+            return innerArray
+                })
         })
+        }
         const filterate = innerArray.filter((inner)=> inner.name.toLowerCase().includes(state.search.toLowerCase()))
 
        

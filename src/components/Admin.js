@@ -13,7 +13,8 @@ const Admin = () => {
             <h1>Admin</h1>
             <h2>Users List</h2>
             <br/>
-            <Users/>
+            
+            {<h2>Loading...</h2> && <Users/>}
             <br/>
             <div className="flexGrow"
             

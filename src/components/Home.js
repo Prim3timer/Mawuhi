@@ -19,43 +19,48 @@ const Home = ()=> {
         navigate('/login');
     }
     return (
+        <div>
         <section
         style={{
             backgroundColor: 'green',
             fontSize: '1.5rem',
             // margin: '0 0 1rem 0',
-            padding: '0 0 2rem 0'
+            padding: '2rem 0 0 0',
+            display: 'flex',
+            flexDirection: 'row',
+            columnGap: '1rem'
         }}
         >
         <br />
-        <p>You are logged in {state.user}</p>
+        {/* <p>You are logged in {state.user}</p> */}
         <br />
         <Link to="/transaction">transaction</Link><br/>
         <Link to="/create-inventory">create inventory</Link>
         <br />
-        <Link to="/create-item">create item</Link>
+        <Link to="/create-item">add item</Link>
         <br />
-        <Link to="/inventory">Inventory</Link>
+        <Link to="/inventory">Inventory2</Link>
         <br />
-        <Link to="/register"> register page</Link>
         <br />
-        <Link to="/linkpage">link page</Link>
+        {/* <Link to="/linkpage">link page</Link> */}
         <br />
         <Link to="/item-list">Items</Link>
         <br />
-        <Link to="/shopping">Shopping</Link>
+        {/* <Link to="/shopping">Shopping</Link> */}
         <br />
-        <Link to="/emp-inv">Employee Inventory</Link>
+        <Link to="/emp-inv">Inventory1</Link>
         <br />
         <br />
-        <Link to="/login">Login</Link>
         <br />
         <Link to="/admin">admin</Link><br/>
         <Link to="/sales">Sales</Link>
+    </section>
+        <Link to="/login">Login</Link>
+        <Link to="/register"> register page</Link>
         <div className="flexGrow">
             <button onClick={logout}>Sign Out</button>
         </div>
-    </section>
+    </div>
     )
 }
 export default Home

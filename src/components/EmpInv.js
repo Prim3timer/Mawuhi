@@ -79,7 +79,7 @@ return (
      'white' : 'aqua'}}
      >
         
-     <td className="sales-items">{`${(inv.name.split(' ').slice(0,-2)).join(' ')} ${inv.name.split(' ').at(-1)}`}</td>
+     <td className="sales-items">{inv.name}</td>
      <td className="sales-items">{inv.qty}</td>
      <td className="sales-items">{inv.date.substring(0, 10)}</td>
     

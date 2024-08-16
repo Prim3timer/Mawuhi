@@ -108,7 +108,9 @@ const Login = () => {
             <p>
                 Need an Account?<br />
                 <span className="line">
-                    <Link to="/register">Sign Up</Link>
+                    <Link 
+                    style={{color: 'blue'}}
+                    to="/register">Sign Up</Link>
                 </span>
             </p>
         </section>
