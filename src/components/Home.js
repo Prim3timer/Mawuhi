@@ -19,19 +19,9 @@ const Home = ()=> {
         navigate('/login');
     }
     return (
-        <div>
+        <div className="home-cont" >
         <section
-        id="links"
-        style={{
-            backgroundColor: 'green',
-            fontSize: '1rem',
-            margin: '0 0 1rem 0',
-            padding: '2rem 2rem 0 .5rem',
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'flex-end',
-            columnGap: '1rem'
-        }}
+        className="home"
         >
         <br />
         {/* <p>You are logged in {state.user}</p> */}
@@ -54,10 +44,15 @@ const Home = ()=> {
         <Link to="/admin">admin</Link><br/>
         <Link to="/sales">Sales</Link>
     </section>
-        <Link to="/login">Login</Link>
-        <Link to="/register"> register page</Link>
-        <div className="flexGrow">
-            <button onClick={logout}>Sign Out</button>
+        
+        <div className="flexGrow"
+        style={{textAlign: 'center'}}>
+            <button onClick={logout}
+            style={{
+                fontSize: '1rem',
+                margin: '2rem auto'
+            }}
+            >Sign Out</button>
         </div>
     </div>
     )

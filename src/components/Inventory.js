@@ -49,7 +49,7 @@ const Inventory = ({mark, setMark})=> {
   
   <Edit mark={invRef.current.value}/>: (
 
-        <div>  
+        <div className="inventory">  
         <article id="form-cont">
      <form  className="search-form" 
      //   onSubmit={(e)=> e.preventDefault()}

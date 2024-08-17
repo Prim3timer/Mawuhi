@@ -42,7 +42,7 @@ const EmpInv = ()=> {
  
   return  (
 
-        <div>  
+        <div className="inventory-two">  
         <article id="form-cont">
      <form  className="search-form" 
      //   onSubmit={(e)=> e.preventDefault()}

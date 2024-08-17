@@ -94,7 +94,7 @@ const CreateInventory = () => {
         getItems()
     }, [])
     return (
-        <div id="create-inventory">
+        <div className="create-inventory">
             <h2 id="create-inventory">Create Inventory</h2>
 
             <form 
@@ -131,8 +131,9 @@ const CreateInventory = () => {
                     })}
             </datalist>
                  <br/>
-                 <label>Quantity:</label><br/>
+                 <h2>Quantity:</h2>
                 <input
+                type="text"
                 name="qty"
                 value={state.qty}
                 onChange={(e)=>  dispatch({type: 'qty', payload: e.target.value})}

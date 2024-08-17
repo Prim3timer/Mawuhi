@@ -30,65 +30,12 @@ import EmpInv from "./components/EmpInv"
 // }
 
 const App = () => {
-//   return (
 
-//   <main className="app">
-//     <h2>Mawuhi Mart</h2>
-//     <Routes>
-//        {/* public routes */}
-//       <Route path="/" element={<Layout/>}>
-//   {/* <Route path="/login" element={<Login/>}/> */}
-//   <Route path="register" element={<Register/>}/>
-//        <Route path="linkpage" element={<LinkPage/>}/>
-//        <Route path="transaction" element={<Transactions/>}/>
-//        <Route path="inventory" element={<Inventory/>}/>
-//     <Route path="unauthorized" element={<Unauthorized/>}/>
-
-//      {/* protected routes */}
-//      <Route element={<RequireAuth allowedRoles={[2001]}/>}>
-//        </Route>
-      
-//        <Route path="/" element={<Home/>}/>
-      
-//      <Route element={<RequireAuth allowedRoles={[1984]}/>}>
-//        <Route path="editor" element={<Editor/>}/>
-//        </Route>
-//      <Route element={<RequireAuth allowedRoles={[5150]}/>}>
-//        </Route>
-//        <Route path="create-inventory" element={<CreateInventory/>}/>
-//      <Route element={<RequireAuth allowedRoles={[1984, 5150]}/>}>
-//      <Route path="edit" element={<Edit/>}/>
-//      <Route path="edit-item" element={<EditItem/>}/>
-//      {/* <Route path="edit-item" element={<EditItem/>}/> */}
-//        </Route>
-//    <Route path="admin" element={<Admin/>}/>
-//      <Route path="sales" element={<Sales/>}/>
-//      <Route path="shopping" element={<Shopping/>}/>
-
-
-
-
-//      <Route path="create-item" element={<CreateItem/>}/>
-//        {/* <Route path="*" element={<Missing/>}/> */}
-
-
-       
-//       </Route>
-
-
-
-//     </Routes>
-//   </main>
-  
-// )
-
-
-
-
+  const year = new Date().getFullYear()
 return (
 
-  <main className="app">
-     <h2>Mawuhi Mart</h2>
+  <main className="App">
+     <h2 className="header">Mawuhi Mart</h2>
       <Routes>
          {/* public routes */}
         <Route path="/" element={<Layout/>}>
@@ -126,6 +73,10 @@ return (
          <Route path="*" element={<Missing/>}/>
         </Route>
       </Routes>
+      <p
+      className="footer"
+            >&copy; {year} Amalu productions.</p>
+     
     </main>
     
   )

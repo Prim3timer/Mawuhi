@@ -54,7 +54,7 @@ const Edit = ({mark, setMark})=> {
     }
 
     return (
-        <div id="edit">
+        <div className="edit">
             <h2>Edit Inventory</h2>
             <form onSubmit={(e)=> e.preventDefault()}
                 id="update-form"

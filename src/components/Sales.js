@@ -45,7 +45,7 @@ const Sales = ()=> {
     console.log(state.sales.data)
  
     return (
-        <div>
+        <div className="sale">
             <article id="form-cont">
             <form  className="search-form"   onSubmit={(e)=> e.preventDefault()}>
         <input 

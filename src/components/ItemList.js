@@ -55,14 +55,6 @@ const ItemList = ()=> {
             console.log(itemRef.current.value)
             
         }
-
-        // const  handleRemove = async (id)=>{
-        //        const currentUser = users.find((user)=> user._id ===id)
-        //         const currentExcercise = excercises.find((session)=> session.username === currentUser.username)
-        //     let newList = graw.data.filter((item)=> item._id !== id )
-        //     setExcercises(newList)
-        //     console.log(id)
-        //   }
         
         const handleRemove = async (id)=> {
             // e.preventDefault()     
@@ -88,9 +80,6 @@ const ItemList = ()=> {
             }
             // console.log(id)
         }
-        console.log(state.items)
-        // removeInventory('66bb6d08cee24e6d05660bca')
-        console.log(state.isEdit)
         useEffect(()=> {
             getTrans()
             
@@ -101,7 +90,7 @@ const ItemList = ()=> {
   
         <EditItem mark={itemRef.current.value}/>: (
       
-              <div>  
+              <div className="item-list">  
               <article id="form-cont">
            <form  className="search-form" 
            //   onSubmit={(e)=> e.preventDefault()}

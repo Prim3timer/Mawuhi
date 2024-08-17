@@ -171,13 +171,17 @@ const Transactions = ()=> {
         >
             <h2
             id="tans-title"
+            style={{
+                textAlign: 'center',
+                margin:'1rem 0'
+            }}
             >Transactions</h2>
             <fieldset
             id="field"
             >
                 <h2
                 className="grand-total"
-                style={{width: '5rem'}}
+                // style={{width: '5rem'}}
                 >Grand Total: ${parseFloat(state.total).toFixed(2)}</h2>
         <form
         
@@ -397,7 +401,8 @@ const Transactions = ()=> {
                         display: 'flex',
                         flexDirection: 'row',
                         columnGap: '4vw',
-                        justifyContent: 'center'
+                        justifyContent: 'center',
+                        margin: '1rem 0'
                     }}
                     >
                          <button onClick={assertain}

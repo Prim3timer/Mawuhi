@@ -83,7 +83,7 @@ const Edit = ({mark, setMark})=> {
     }
 
     return (
-        <div id="edit">
+        <div className="edit-item">
             <h2>Edit Item</h2>
             <form onSubmit={(e)=> e.preventDefault()}
                 id="update-form"
