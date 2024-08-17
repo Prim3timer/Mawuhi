@@ -234,6 +234,7 @@ const Transactions = ()=> {
             </fieldset>
             <h3 style={{color: 'red',
                 // position: 'absolute'
+                textAlign: 'center'
             }}>{state.errMsg}</h3>
          
             <div
