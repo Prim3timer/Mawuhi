@@ -88,7 +88,7 @@ return (
      >
         
      <td className="sales-items">{`${inv.name}`}</td>
-     <th className="sales-items">{inv.qty}</th>
+     <th className="sales-items" style={{color: inv.qty < 20 ? 'red' : ''}}>{parseFloat(inv.qty).toFixed(2)}</th>
      <td className="sales-items">{inv.date.substring(0, 10)}</td>
      <td 
      // style={{backgroundColor: 'blue'}}

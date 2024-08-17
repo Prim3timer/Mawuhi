@@ -73,7 +73,7 @@ const Sales = ()=> {
         >
             <th>name</th>
             <th>qty</th>
-            <th>total</th>
+            <th>total ($)</th>
             <th>date</th>
             </tr>
   {state.sales && state.sales.map((sale, index)=> {

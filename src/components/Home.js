@@ -41,18 +41,15 @@ const Home = ()=> {
         <br />
         <Link to="/create-item">add item</Link>
         <br />
-        <Link to="/inventory">Inventory2</Link>
-        <br />
-        <br />
-        {/* <Link to="/linkpage">link page</Link> */}
+        <Link to="/inventory">Inventory</Link>
         <br />
         <Link to="/item-list">Items</Link>
         <br />
+        {/* <Link to="/linkpage">link page</Link> */}
+        <br />
         {/* <Link to="/shopping">Shopping</Link> */}
         <br />
-        <Link to="/emp-inv">Inventory1</Link>
-        <br />
-        <br />
+        <Link to="/emp-inv">Inventory2</Link>
         <br />
         <Link to="/admin">admin</Link><br/>
         <Link to="/sales">Sales</Link>
