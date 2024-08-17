@@ -25,10 +25,11 @@ const Home = ()=> {
         style={{
             backgroundColor: 'green',
             fontSize: '1.5rem',
-            // margin: '0 0 1rem 0',
-            padding: '2rem 2rem 0 0',
+            margin: '0 0 1rem 0',
+            padding: '2rem 2rem 0 .5rem',
             display: 'flex',
             flexDirection: 'row',
+            justifyContent: 'flex-end',
             columnGap: '1rem'
         }}
         >

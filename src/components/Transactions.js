@@ -246,13 +246,9 @@ const Transactions = ()=> {
             
             >
                 <section>
-                    {/* <h3>name:</h3> */}
-
                     <h2
                  
                     >
-                        {/* {`${item.name.split(' ')[0]} (${item.unitMeasure.split(' ')[1]})`}
-                     */}
                      {item.name}
                     
                     </h2>

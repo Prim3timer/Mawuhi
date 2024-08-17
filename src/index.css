@@ -18,13 +18,14 @@ code {
 
 
 .app {
-  /* width: 100vw; */
-  text-align: center;
+  width: 100vw;
+   text-align: center;
   justify-content: center;
+
 }
 
-#link {
-  width: 110rem;
+#links {
+  width: 120vw;
   padding: 1rem;
 }
 
@@ -154,6 +155,7 @@ input {
 }
 #trans-item-cont {
   display: flex;
+  max-width: 800px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
