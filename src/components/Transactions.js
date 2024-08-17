@@ -181,7 +181,7 @@ const Transactions = ()=> {
             >
                 <h2
                 className="grand-total"
-                // style={{width: '5rem'}}
+                style={{width: '5rem'}}
                 >Grand Total: ${parseFloat(state.total).toFixed(2)}</h2>
         <form
         

@@ -149,7 +149,7 @@ button:active {
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  column-gap: 1rem;
+  column-gap: .5rem;
     /* width: 120vw; */
     /* width: 95vw; */
   /* background-color: blue; */
