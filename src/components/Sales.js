@@ -85,7 +85,7 @@ const Sales = ()=> {
         >
             <td className="sales-items">{`${sale.name.split(' ').join(' ')} ${sale.unitMeasure.split(' ')[1]}`}</td>
             <td className="sales-items">{sale.qty}</td>
-            <td className="sales-items">{sale.total}</td>
+            <td className="sales-items">{parseFloat(sale.total).toFixed(2)}</td>
             <td className="sales-items">{sale.date.substring(0, 10)}</td>
         </tr>
     )
