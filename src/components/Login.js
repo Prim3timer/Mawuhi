@@ -79,7 +79,11 @@ const Login = () => {
      
         <section className='login'>
             <p ref={errRef} className={state.errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{state.errMsg}</p>
-            <h1>Sign In</h1>
+            <h1
+            style={{textAlign: 'center',
+                margin: '1rem 0'
+            }}
+            >Sign In</h1>
             <form onSubmit={handleSubmit}
             id='login-form'
             >
@@ -103,7 +107,9 @@ const Login = () => {
                     // required    
                 />
 
-                <button>Sign In</button>
+                <button
+                style={{margin: '1rem 0'}}
+                >Sign In</button>
             </form>
             <p>
                 Need an Account?<br />

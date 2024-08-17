@@ -177,7 +177,8 @@ const Register = () => {
                         <button 
                         style={{backgroundColor: 'dodgerblue',
                             borderColor: 'dodgerblue',
-                            width: '40vw'
+                            width: '40vw',
+                            margin: '1rem 0'
                         }}
                         disabled={!state.validName || !state.validPwd || !state.validMatch ? true : false}>Sign Up</button>
                     </form>
