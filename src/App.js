@@ -75,7 +75,7 @@ return (
       </Routes>
       <p
       className="footer"
-            >&copy; {year} Amalu productions.</p>
+            >&copy; {year} Amalu Productions.</p>
      
     </main>
     
