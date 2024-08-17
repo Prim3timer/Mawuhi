@@ -24,7 +24,7 @@ const Home = ()=> {
         id="links"
         style={{
             backgroundColor: 'green',
-            fontSize: '1.5rem',
+            fontSize: '1rem',
             margin: '0 0 1rem 0',
             padding: '2rem 2rem 0 .5rem',
             display: 'flex',
