@@ -126,7 +126,7 @@ const Transactions = ()=> {
             
         }
 
-    const goods = transItems.goods.map((good)=> {
+    const goods = transItems.goods &&  transItems.goods.map((good)=> {
         const invs = response2.data.map(async(inv)=> {
             if (inv.name.split(' ').slice(0, -1).join(' ') === good.name){
                 const goodObj = {
@@ -137,7 +137,7 @@ const Transactions = ()=> {
                 // invArray.push(inv.qty)
                 //  goodArray.push(good.qty)
                 // goodArray.push(goodObj)
-             
+                
                 
                 
                 
@@ -182,7 +182,7 @@ const Transactions = ()=> {
                 <h2
                 className="grand-total"
                 style={{width: '5rem'}}
-                >Grand Total: ${parseFloat(state.total).toFixed(2)}</h2>
+                >Grand Total: N{parseFloat(state.total).toFixed(2)}</h2>
         <form
         
         >
@@ -326,7 +326,7 @@ const Transactions = ()=> {
                    </article>
                     <article>
                     <h4>price/ {item.unitMeasure.split(' ')[1]}:</h4>
-                    <h4>${item.price}</h4>
+                    <h4>N{item.price}</h4>
 
                     </article>
                     <article>
@@ -335,7 +335,7 @@ const Transactions = ()=> {
                     >sub total: </h3>
                     <h2 
                     style={{display: `${state.getAllTotals ? 'none' : 'block' }`}}
-                    >${parseFloat(item.total).toFixed(2)}</h2>
+                    >N{parseFloat(item.total).toFixed(2)}</h2>
 
                     </article>
                     <h2
@@ -354,7 +354,7 @@ const Transactions = ()=> {
             <h2
                     className="grand-total"
            style={{display: `${state.getAllTotals ? 'none' : 'block' }`}}
-           >Grand Total: ${parseFloat(state.total).toFixed(2)}</h2>
+           >Grand Total: N{parseFloat(state.total).toFixed(2)}</h2>
             </article >
             
             <section

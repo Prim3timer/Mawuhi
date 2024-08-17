@@ -78,9 +78,11 @@ const reducer = (state, action)=> {
         case 'amount':
             return {...state, amount: action.payload}
             case 'qtyArray':
-                return {...state, qtyArray: action.paylaod}
+                return {...state, qtyArray: action.payload}
         case 'clear':
           return {...state, transArray: []}
+
+
           case 'INCREMENT': 
           const tempCart = state.transArray.map((item)=> {
               if ( item._id === action.payload){

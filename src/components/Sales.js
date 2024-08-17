@@ -9,26 +9,37 @@ const {v4: uuid} = require('uuid')
 const Sales = ()=> {
     const [state, dispatch] = useReducer(reducer, initialState)
     const getTrans = async ()=> {
+        const mc = await axios.get('transactions')
+        const graw =  mc.data && await axios.get('/transactions/sales')
         const innerArray = []
-        // if (innerArray.length > 0){
+        dispatch({type: 'qtyArray', payload: graw})
+    //   console.log(graw.length)
+        try {
+            if (graw.data.length > 0){
+                graw.data.map((gr)=> {
+                    return gr.goods.map((good)=> {
+                        const elements =  {
+                            name: good.name,
+                            qty: good.qty,
+                            unitMeasure: good.unitMeasure,
+                            total: good.total,
+                            date: gr.date
             
-            const graw =  await axios.get('/transactions/sales')
-            graw.data.map((gr)=> {
-                return gr.goods.map((good)=> {
-                    const elements =  {
-                        name: good.name,
-                        qty: good.qty,
-                        unitMeasure: good.unitMeasure,
-                        total: good.total,
-                        date: gr.date
-        
-                    }
-                    innerArray.push(elements)
-            return innerArray
-                })
-        })
+                        }
+                        innerArray.push(elements)
+                return innerArray
+                    })
+            })     
+            }
+            else return
+    }
+
+             catch (error) {
+            console.log(error)
+        }
+       
         // }
-        const filterate = innerArray.filter((inner)=> inner.name.toLowerCase().includes(state.search.toLowerCase()))
+        const filterate = state.qtyArray && innerArray.filter((inner)=> inner.name.toLowerCase().includes(state.search.toLowerCase()))
 
        
         console.log(innerArray)
@@ -39,7 +50,7 @@ const Sales = ()=> {
     console.log(state.sales)
    
     useEffect(()=> {
-        getTrans()
+             getTrans()
         console.log(state.sales)
     }, [state.search])
     console.log(state.sales.data)
@@ -73,7 +84,7 @@ const Sales = ()=> {
         >
             <th>name</th>
             <th>qty</th>
-            <th>total ($)</th>
+            <th>total (N)</th>
             <th>date</th>
             </tr>
   {state.sales && state.sales.map((sale, index)=> {
@@ -103,7 +114,7 @@ const Sales = ()=> {
 
     </th>
     <th>
-    ${state.sales && state.sales.reduce((a, b)=> {
+    N{state.sales && state.sales.reduce((a, b)=> {
     return  a + parseFloat( b.total)
 }, 0).toFixed(2)}
     </th>

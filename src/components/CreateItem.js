@@ -9,7 +9,7 @@ const {v4: uuid} = require('uuid')
 let CreateItem = () => {
        const [state, dispatch] = useReducer(reducer, initialState)
        const itemRef = useRef()
-       const measurements = ['Kilogram (kg)', 'Pieces (pcs)', 'Dozen (dzn)', 'Sachet (sct)', 
+       const measurements = ['Kilogram (kg)', 'Plates (Pts)', 'Dozen (dzn)', 'Bottles (Btl)', 
         'Pounds (lbs)', 'Litres (L)'
        ]
 
