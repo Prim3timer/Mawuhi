@@ -179,10 +179,10 @@ const Transactions = ()=> {
             <fieldset
             id="field"
             >
-                <h2
+                <h3
                 className="grand-total"
-                style={{width: '5rem'}}
-                >Grand Total: N{parseFloat(state.total).toFixed(2)}</h2>
+                // style={{width: '5rem'}}
+                >Grand Total: N{parseFloat(state.total).toFixed(2)}</h3>
         <form
         
         >
@@ -227,7 +227,7 @@ const Transactions = ()=> {
         </form>
           <button
           id="done-button"
-          style={{height: '3rem'
+          style={{height: '3rem',
           }}
           onClick={doneSales}
           >Done</button>

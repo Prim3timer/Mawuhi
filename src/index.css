@@ -169,6 +169,10 @@ input {
   /* text-align: center; */
   align-items: center;
   /* justify-content: center; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin:  0 auto;
   width: 60vw;
   max-width: 420px;
@@ -323,17 +327,34 @@ form {
   } 
   #ulu {text-align: center;}
 
-@media screen and (max-width: 376px) {
+@media screen and (orientation: portrait) {
 
  .home {
   flex-direction: column;
   background-color: none;
 }
 
+#done-button {
+  width: 6rem;
+}
+
+.grand-total{
+  /* margin: 0 auto; */
+}
+
+#trans-search {
+  width:60%;
+}
+
+#field {
+  width: 98%;
+  /* justify-content: space-between; */
+}
+
 #trans-item {
-  width: 60%;
+  width: 98%;
   /* background-color: red; */
-  justify-content: first flex-end;
+  justify-content: center;
   align-items: center;
   /* row-gap: 6rem; */
 }

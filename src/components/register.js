@@ -100,7 +100,11 @@ const Register = () => {
             ) : (
                 <section className="reg-cont">
                     <p ref={errRef} className={state.errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{state.errMsg}</p>
-                    <h1>Register</h1>
+                    <h1
+                    style={{textAlign: 'center',
+                        margin: '1rem 0'
+                    }}
+                    >Register</h1>
                     <form onSubmit={handleSubmit}
                     id="username-form">
                         <label htmlFor="username">
