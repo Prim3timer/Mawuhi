@@ -66,7 +66,7 @@ let CreateItem = () => {
             <h2 id="create-item-heading">Create Item</h2>
             <form onSubmit={handleSubmit}
             id="create-item-form" >
-                <h2>name:</h2>
+                <h2>Name:</h2>
                 <input
               
                 type="text"
@@ -75,8 +75,8 @@ let CreateItem = () => {
                 onChange={(e)=> dispatch({type: 'name', payload: e.target.value})}
                 />
 
-<h3 id="ulu"
-><label>unitMeasure:</label><br/><input type="text"
+{/* <h3 id="ulu" */}
+<h2>Unit Measure:</h2><input type="text"
         // id="trans-search"
         // placeholder="pick measurement"
         style={{width: '20rem',
@@ -86,7 +86,8 @@ let CreateItem = () => {
         list="measure"
         onChange={(e)=> dispatch({type: 'unitMeasure', payload: e.target.value})}
         value={state.unitMeasure}
-        /></h3>
+        />
+        {/* </h3> */}
         {/* <label>unitMeasure:</label> */}
         <datalist id="measure"
         style={{backgroundColor: 'blue',
@@ -110,7 +111,7 @@ let CreateItem = () => {
             </datalist>
 
 
-                <h2>price:</h2>
+                <h2>Price:</h2>
                 <input
                 type="text"
                 required

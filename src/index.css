@@ -64,7 +64,7 @@ html {
   flex-wrap: nowrap;
   column-gap: .5rem;
   margin: .5rem 0;
-  padding: 1rem  0  0 0;
+  padding: 1rem  .5rem;
   /* justify-content: space-evenly; */
   align-items: center;
   background-color: rgb(194, 234, 94);

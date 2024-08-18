@@ -73,7 +73,9 @@ const Sales = ()=> {
         />
           </form>
         <h2
-        style={{textAlign: 'center'}}
+        style={{textAlign: 'center',
+            margin: '1rem auto'
+        }}
         >Sales   </h2>
           {/* <SearchItem/> */}
         </article>
