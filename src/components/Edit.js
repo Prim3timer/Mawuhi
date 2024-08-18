@@ -70,7 +70,7 @@ const Edit = ({mark, setMark})=> {
                 <input
                 type="text" 
                 id="ole"
-                value={state.ole}
+                value={parseFloat(sale.ole).toFixed(2)}
                 onChange={(e)=> dispatch({type: 'ole', payload: e.target.value})}
                 />
                 <button 
