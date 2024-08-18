@@ -106,7 +106,7 @@ const CreateInventory = () => {
                  placeholder='search item'
                  list="edulevel"
                  style={{
-                    width: '60vw',
+                    width: '90%',
                     // backgroundColor: 'blue'
                     
                  }}
@@ -114,6 +114,7 @@ const CreateInventory = () => {
         onChange={(e)=>  dispatch({type: 'name', payload: e.target.value})}
         /></h2>
         <datalist id="edulevel"
+        
         >
             {state.getNames && state.getNames.map((user)=> {
                 // dispatch({type: 'unitMeasure', payload: user.unitMeasure})
@@ -134,6 +135,7 @@ const CreateInventory = () => {
                  <h2>Quantity:</h2>
                 <input
                 type="text"
+                style={{width: '90%'}}
                 name="qty"
                 value={state.qty}
                 onChange={(e)=>  dispatch({type: 'qty', payload: e.target.value})}
