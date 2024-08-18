@@ -267,9 +267,7 @@ const Transactions = ()=> {
                     <div
                     >
                     <h4
-                    style={{position: 'relative',
-                        marginTop:'1.5rem'
-                    }}
+                  
                     >Qty:</h4>
                 
  </div>

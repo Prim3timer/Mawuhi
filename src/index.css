@@ -347,6 +347,17 @@ form {
   /* @media screen and (min-width: 451px) {
   } */
 
+  #flex-article {
+    /* color: lightcyan; */
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      column-gap: .5rem;
+      /* flex-wrap: wrap; */
+      /* width: 5rem; */
+  }
+
   #invent-header {
     text-align: center;
     margin: 1rem auto;
@@ -376,10 +387,12 @@ form {
 }
 
 #trans-item {
-  width: 98%;
+  width: 95%;
   /* background-color: red; */
-  justify-content: center;
+column-gap: 2rem;
+row-gap: 1rem;
   align-items: center;
+  /* column-gap: .5rem; */
   /* row-gap: 6rem; */
 }
 }
