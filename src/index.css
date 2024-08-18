@@ -167,9 +167,12 @@ input {
 #field {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content:space-around;
   align-items: center;
   column-gap: .5rem;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: .5rem;
   /* background-color: blue; */
 } 
 
@@ -391,20 +394,25 @@ form {
 }
 
 #done-button {
-  width: 6rem;
+  width: 8rem;
+  /* background-color: green; */
+  flex: 2;
 }
 
 .grand-total{
   /* margin: 0 auto; */
+  /* background-color: blue; */
 }
 
 #trans-search {
-  width:60%;
+  margin: 0 .5rem;
+  width:50%;
 }
 
 #field {
-  width: 98%;
-  /* justify-content: space-between; */
+  width: 100%;
+/* justify-content: space-evenly; */
+  column-gap: .5rem;
 }
 
 #trans-item {

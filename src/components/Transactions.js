@@ -221,6 +221,7 @@ const Transactions = ()=> {
           <button
           id="done-button"
           style={{height: '3rem',
+            // flex: 2
           }}
           onClick={doneSales}
           >Done</button>
@@ -244,12 +245,12 @@ const Transactions = ()=> {
             
             >
                 <section>
-                    <h2
+                    <h3
                  
                     >
                      {item.name}
                     
-                    </h2>
+                    </h3>
                 </section>
                     
                    <article
@@ -324,9 +325,9 @@ const Transactions = ()=> {
                     <h3
                     id="grand-total"
                     >sub total: </h3>
-                    <h2 
+                    <h3 
                     style={{display: `${state.getAllTotals ? 'none' : 'block' }`}}
-                    >N{parseFloat(item.total).toFixed(2)}</h2>
+                    >N{parseFloat(item.total).toFixed(2)}</h3>
 
                     </article>
                     <h2

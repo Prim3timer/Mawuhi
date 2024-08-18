@@ -54,17 +54,20 @@ return (
         
        <Route element={<RequireAuth allowedRoles={[1984]}/>}>
          <Route path="editor" element={<Editor/>}/>
-         </Route>
-       <Route element={<RequireAuth allowedRoles={[5150]}/>}>
-     <Route path="admin" element={<Admin/>}/>
-         <Route path="create-inventory" element={<CreateInventory/>}/>
-         </Route>
-       <Route element={<RequireAuth allowedRoles={[1984, 5150]}/>}>
-  <Route path="item-list" element={<ItemList/>}/>
+         <Route path="item-list" element={<ItemList/>}/>
     <Route path="inventory" element={<Inventory/>}/>
        <Route path="edit" element={<Edit/>}/>
        <Route path="sales" element={<Sales/>}/>
        <Route path="create-item" element={<CreateItem/>}/>
+
+         </Route>
+      
+       {/* <Route element={<RequireAuth allowedRoles={[1984, 5150]}/>}>
+ 
+         </Route> */}
+         <Route path="create-inventory" element={<CreateInventory/>}/>
+       <Route element={<RequireAuth allowedRoles={[5150]}/>}>
+     <Route path="admin" element={<Admin/>}/>
          </Route>
         
   
