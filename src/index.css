@@ -327,7 +327,14 @@ form {
 
   #tans-search {
     background-color: red;
-    width: 4rem;
+    width: 50%;
+  }
+  #tans-search {
+    background-color: red;
+    width: 20%;
+  }
+
+  @media screen and (min-width: 451px) {
   }
 
 @media screen and (max-width: 450px) {
