@@ -363,7 +363,19 @@ form {
     text-align: center;
     margin: 1rem auto;
   }
+
+#sales-total {
+  display: flex;
+    justify-content: flex-start;
+    column-gap: 20%;
+    margin: 0 0 0 1rem
+}
+
 @media screen and (max-width: 450px) {
+
+  #sales-total {
+    column-gap: 10%;
+  }
 
  .home {
   flex-direction: column;

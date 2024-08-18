@@ -115,11 +115,7 @@ const Sales = ()=> {
     </table>
     {/* <th> */}
     <div
-    style={{display: 'flex',
-        justifyContent: 'flex-start',
-        columnGap: '20%',
-        margin: '0 0 0 1rem'
-    }}
+    id="sales-total"
     >
         <h3>Total:</h3>
     <h3>
