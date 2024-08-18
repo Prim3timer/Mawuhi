@@ -41,11 +41,12 @@ html {
 .App {
   width: 100%;
   max-width: 800px;
-  /* height: 100vh; */
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  overflow-y: auto;
   border: 1px solid black;
   box-shadow: 0px 0px 15px gray;
 }
@@ -141,6 +142,7 @@ button:active {
   padding: 0.75rem;
   display: grid;
   place-content: center;
+  /* overflow-y: auto; */
   /* background-color: #66d8f5; */
 }
 
