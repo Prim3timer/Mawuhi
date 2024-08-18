@@ -137,10 +137,6 @@ const Transactions = ()=> {
                     qty: inv.qty - good.qty
                 }
                 await axios.patch(`/inventory`, goodObj)
-                // invArray.push(inv.qty)
-                //  goodArray.push(good.qty)
-                // goodArray.push(goodObj)
-                
                 
                 
                 
@@ -202,12 +198,6 @@ const Transactions = ()=> {
             fontSize: '2rem'
         }}>+</button></h3>
         <datalist id="edulevel"
-        style={{backgroundColor: 'blue',
-            // display: 'flex',
-            // flexDirection: 'row'
-            // fontSize: '2.5rem'
-
-        }}
         >
             {state.getNames && state.getNames.map((user)=> {
                 

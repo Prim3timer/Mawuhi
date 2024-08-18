@@ -9,11 +9,11 @@ const {v4: uuid} = require('uuid')
 const Sales = ()=> {
     const [state, dispatch] = useReducer(reducer, initialState)
     const getTrans = async ()=> {
-        const mc = await axios.get('transactions')
-        const graw =  mc.data && await axios.get('/transactions/sales')
+        // const mc = await axios.get('transactions')
+        const graw =  await axios.get('/transactions')
         const innerArray = []
-        dispatch({type: 'qtyArray', payload: graw})
-    //   console.log(graw.length)
+        dispatch({type: 'qtyArray', payload: graw.data})
+      console.log(state.qtyArray)
         try {
             if (graw.data.length > 0){
                 graw.data.map((gr)=> {
@@ -47,10 +47,11 @@ const Sales = ()=> {
         payload: filterate})
     }
 
-    console.log(state.sales)
+    console.log(state.qtyArray.length)
    
     useEffect(()=> {
-             getTrans()
+        getTrans()
+      
         console.log(state.sales)
     }, [state.search])
     console.log(state.sales.data)
@@ -105,24 +106,37 @@ const Sales = ()=> {
    
 >
  </tr>
- <tr>
-    <th>Total</th>
-    <th>
- {state.sales && state.sales.reduce((a, b)=> {
-    return  a + parseFloat( b.qty)
-}, 0).toFixed(2)}
-
-    </th>
-    <th>
-    N{state.sales && state.sales.reduce((a, b)=> {
-    return  a + parseFloat( b.total)
-}, 0).toFixed(2)}
-    </th>
-
+ <tr
+ 
+ >
 
  </tr>
           </tbody>
     </table>
+    {/* <th> */}
+    <div
+    style={{display: 'flex',
+        justifyContent: 'flex-start',
+        columnGap: '20%',
+        margin: '0 0 0 1rem'
+    }}
+    >
+        <h3>Total:</h3>
+    <h3>
+ {state.sales && state.sales.reduce((a, b)=> {
+    return  a + parseFloat( b.qty)
+}, 0).toFixed(2)}
+</h3>
+
+    {/* </th> */}
+    {/* <th> */}
+    <h3>
+    {state.sales && state.sales.reduce((a, b)=> {
+    return  a + parseFloat( b.total)
+}, 0).toFixed(2)}
+    {/* </th> */}
+    </h3>
+    </div>
    
         </div>
     )

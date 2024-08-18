@@ -147,7 +147,7 @@ const ItemList = ()=> {
            onClick={(e)=>handleRemove(item._id, e)}
            >
             {/* remove */}
-           <FaTrashAlt role='button' tableIndex='0'
+           <FaTrashAlt role='button'
            
            /> 
            </td>
