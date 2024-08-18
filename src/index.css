@@ -390,7 +390,7 @@ form {
   width: 95%;
   /* background-color: red; */
 column-gap: 2rem;
-row-gap: 1rem;
+row-gap: 2rem;
   align-items: center;
   /* column-gap: .5rem; */
   /* row-gap: 6rem; */
