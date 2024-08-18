@@ -365,16 +365,24 @@ form {
   }
 
 #sales-total {
+  width: 80vw;
   display: flex;
     justify-content: flex-start;
     column-gap: 20%;
-    margin: 0 0 0 1rem
+    padding: 0 0 0 2rem;
+    border-bottom: 1px solid brown;
+    /* border-right: 1px solid brown;
+    border-left: 1px solid brown; */
 }
 
 @media screen and (max-width: 450px) {
 
   #sales-total {
+    margin: 0 0 0 1rem;
     column-gap: 10%;
+    border-bottom: 1px solid brown;
+    /* border-right: 1px solid brown;
+    border-left: 1px solid brown; */
   }
 
  .home {
