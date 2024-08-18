@@ -170,7 +170,7 @@ input {
   justify-content:space-around;
   align-items: center;
   column-gap: .5rem;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   width: 100%;
   padding: .5rem;
   /* background-color: blue; */
