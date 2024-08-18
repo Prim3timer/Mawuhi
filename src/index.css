@@ -271,7 +271,7 @@ td, th  {
 /* height: 35vh; */
 border-radius: 5px;
   flex-direction: row;
-  column-gap: 5rem;
+  /* column-gap: 2rem; */
   /* row-gap: 6rem; */
   align-items: center;
   justify-content: space-evenly;
