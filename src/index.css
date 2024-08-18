@@ -387,6 +387,7 @@ form {
     margin: 0 0 0 1rem;
     column-gap: 10%;
     border-bottom: 1px solid brown;
+    margin: .5rem auto;
     /* border-right: 1px solid brown;
     border-left: 1px solid brown; */
   }

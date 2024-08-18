@@ -155,7 +155,7 @@ const Transactions = ()=> {
     }
     const assertain = ()=> {
         dispatch({type: 'cancel', payload: true})
-
+     console.log(state.transArray)   
     }
     
     const remain = ()=> {
@@ -401,6 +401,7 @@ const Transactions = ()=> {
                     >
                          <button onClick={assertain}
                        
+                        // onClick={assertain}
                          >Cancel</button>
                          <button onClick={()=> state.transArray && doneSales}>Done</button>
                         </div>}
