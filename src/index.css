@@ -375,6 +375,7 @@ form {
     column-gap: 20%;
     padding: 0 0 0 2rem;
     border-bottom: 1px solid brown;
+    margin: .5rem auto;
     /* border-right: 1px solid brown;
     border-left: 1px solid brown; */
 }

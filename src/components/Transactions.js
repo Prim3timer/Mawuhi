@@ -150,12 +150,12 @@ const Transactions = ()=> {
         
     })
     dispatch({type: 'qtyArray', payload: []})
+    
        
     }
-    const assertain = ()=> [
+    const assertain = ()=> {
         dispatch({type: 'cancel', payload: true})
-        
-    ]
+    }
     
     const remain = ()=> {
         dispatch({type: 'cancel', payload: false})
@@ -400,9 +400,8 @@ const Transactions = ()=> {
                     >
                          <button onClick={assertain}
                        
-                        // onClick={assertain}
                          >Cancel</button>
-                         <button onClick={doneSales}>Done</button>
+                         <button onClick={()=> state.transArray && doneSales}>Done</button>
                         </div>}
           
            </section>
