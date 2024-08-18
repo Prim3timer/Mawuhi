@@ -7,9 +7,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FaTrashAlt } from "react-icons/fa";
 const Transactions = ()=> {
     const [state, dispatch] = useReducer(reducer, initialState)
+    
     const inputRef = useRef()
      const qtyRef = useRef()
     const getItems = async ()=> {
+        dispatch({type: 'clear'})
         const response = await axios.get('/items')
       
         dispatch({type: 'getNames', payload: response.data.items})    
@@ -109,6 +111,7 @@ const Transactions = ()=> {
     
     const doneSales = async()=> {
         const {transArray, total} = state
+       
         
         // console.log(transArray)
         const transItems = {
