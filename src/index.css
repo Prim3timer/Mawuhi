@@ -396,6 +396,7 @@ form {
 #done-button {
   width: 8rem;
   /* background-color: green; */
+  margin: 1rem auto;
   flex: 2;
 }
 
@@ -412,6 +413,7 @@ form {
 #field {
   width: 100%;
 /* justify-content: space-evenly; */
+flex-wrap: nowrap;
   column-gap: .5rem;
 }
 
