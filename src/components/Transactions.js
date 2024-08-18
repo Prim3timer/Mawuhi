@@ -155,6 +155,7 @@ const Transactions = ()=> {
     }
     const assertain = ()=> {
         dispatch({type: 'cancel', payload: true})
+
     }
     
     const remain = ()=> {
