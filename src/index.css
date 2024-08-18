@@ -339,9 +339,10 @@ form {
   } 
   #ulu {text-align: center;}
 
-  #tans-search {
-    background-color: red;
-    width: 50%;
+  #trans-search {
+    /* background-color: red; */
+    margin: 0 .5rem;
+    width: 60%;
   }
   /* #tans-search {
     background-color: red;
