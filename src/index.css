@@ -51,12 +51,20 @@ html {
   box-shadow: 0px 0px 15px gray;
 }
 
+.home-cont {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: flex-end; */
+  /* align-items: flex-start; */
+}
+
 .home {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   column-gap: .5rem;
-  padding: 0 1rem;
+  margin: .5rem 0;
+  padding: 1rem  0  0 0;
   /* justify-content: space-evenly; */
   align-items: center;
   background-color: rgb(194, 234, 94);
