@@ -44,8 +44,8 @@ useEffect(()=> {
                 console.log(item)
                 return (
                     <article>
-                        <h4>Date: {item.date}</h4>
                         <h5>ID: {item._id}</h5>
+                        <h4>Date: {item.date}</h4>
                         {item.goods.map((good)=> {
                             return (
                                 <div
