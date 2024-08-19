@@ -35,7 +35,7 @@ const App = () => {
 return (
 
   <main className="App">
-     <h2 className="header">The Retailer</h2>
+     <h2 className="header">Retail Tracker</h2>
       <Routes>
         <Route path="shopping" element={<Shopping/>}/>
          {/* public routes */}
