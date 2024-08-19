@@ -1,26 +1,84 @@
 import initialState from "../store"
 import { useEffect, useReducer } from "react"
 import reducer from "../reducer"
+import axios from "../app/api/axios"
+import { retry } from "@reduxjs/toolkit/query"
+import { FaTrashAlt } from "react-icons/fa";
 const Shopping = ()=> {
 const [state, dispatch] = useReducer(reducer, initialState)
-console.log(state.transArray)
+const getItems = async ()=> {
+    try {
+        const response = await axios.get('/transactions')
+        console.log(response.data)
+        if (response){
+            dispatch({type: 'getNames', payload: response.data})
+            console.log(state.transArry)
 
+        }
+    } catch (error) {
+        console.log(error)
+    }
+}
+console.log(state.getItems)
+
+const handleRemove = async (id)=> {
+    // e.preventDefault()     
+    // removeInventory(id)
+        await axios.delete(`/transactions/${id}`)
+    const newGraw = state.getNames && state.getNames.filter((item)=> item._id !== id)
+    dispatch({type: 'getNames', payload: newGraw})
+}
+useEffect(()=> {
+    getItems()
+}, [])
     return (
-        <di>
-            <h2>Shopping</h2>
-            <form>
-                <label>Name:</label>
-                <input/>
-                <label>qty</label>
-                <input/>
-                <label></label>
-                <input/>
-                <label></label>
-                <input/>
-            </form>
+        <div>
+            <h2
+            style={{
+                margin: '1rem'
+            }}
+            >Reciepts</h2>
+            {state.getNames && state.getNames.map((item)=> {
+                console.log(item.goods)
+            //    item.goods.map((good)=> {
+                console.log(item)
+                return (
+                    <article>
+                        <h5>ID: {item._id}</h5>
+                        {item.goods.map((good)=> {
+                            return (
+                                <div
+                                style={{display: 'flex',
+                                    flexDirection: 'column',
+                                    justifyContent: 'space-evenly',
+                                    // rowGap:'5rem'
+                                    
+                                }}
+                                >
+                                    <h3>Item: {good.name}</h3>
+                                    <h5>Qty: {good.qty}</h5>
+                                    <h5>Price: {good.price}</h5>
+                                    <h5>Sub Total: N{good.total}</h5>
+                                    {/* <br/> */}
+                                </div>
+                            )
+                        })}
+                        <h4>Date: {item.date}</h4>
+                        <h4>Grand Total: N{item.grandTotal}</h4>
+                        <h3 onClick={(id)=> handleRemove(item._id)}>
+                        <FaTrashAlt role='button'
+           
+           /> 
+                        </h3>
+                        <br/>
+                    </article>
+                )
+            //    })
+            })}
+            
             
 
-        </di>
+        </div>
     )
 }
 

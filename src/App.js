@@ -37,9 +37,10 @@ return (
   <main className="App">
      <h2 className="header">The Retailer</h2>
       <Routes>
+        <Route path="shopping" element={<Shopping/>}/>
          {/* public routes */}
         <Route path="/" element={<Layout/>}>
-     <Route path="emp-inv" element={<EmpInv/>}/>
+     {/* <Route path="emp-inv" element={<EmpInv/>}/> */}
     <Route path="/login" element={<Login/>}/>
     <Route path="register" element={<Register/>}/>
          <Route path="linkpage" element={<LinkPage/>}/>
