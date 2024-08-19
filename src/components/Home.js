@@ -53,7 +53,7 @@ const Home = ()=> {
             <button onClick={logout}
             style={{
                 fontSize: '1rem',
-                margin: '2rem auto'
+                margin: '1rem auto'
             }}
             >Sign Out</button>
         </div>
