@@ -74,7 +74,7 @@ const Inventory = ({mark, setMark})=> {
  <tbody>
  <tr>
      <th>name</th>
-     <th>qty</th>
+     <th>in-stock</th>
      <th> last udated</th>
      <th>action</th>
      </tr>

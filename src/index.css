@@ -431,6 +431,7 @@ row-gap: 2rem;
 }
 .home {
   font-size: 1.5rem;
-  padding: 0 .5rem;
+  padding: 0 1.5rem;
+  /* background-color: blue; */
 }
 }

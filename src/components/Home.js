@@ -27,13 +27,13 @@ const Home = ()=> {
         {/* <p>You are logged in {state.user}</p> */}
         <br />
         <Link to="/transaction">transaction</Link><br/>
-        <Link to="/create-inventory">create inventory</Link>
+        <Link to="/create-inventory">add inventory</Link>
         <br />
         <Link to="/create-item">add item</Link>
         <br />
-        <Link to="/item-list">Items</Link>
+        <Link to="/item-list">items</Link>
         <br />
-        <Link to="/inventory">Inventory</Link>
+        <Link to="/inventory">inventory</Link>
         <br />
         {/* <Link to="/emp-inv">Inventory2</Link> */}
         <br />
