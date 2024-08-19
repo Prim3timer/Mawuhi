@@ -33,7 +33,6 @@ const Home = ()=> {
         <br />
         <Link to="/create-inventory">add inventory</Link>
         <br />
-       
         <Link to="/inventory">inventory</Link>
         <br />
         {/* <Link to="/emp-inv">Inventory2</Link> */}
