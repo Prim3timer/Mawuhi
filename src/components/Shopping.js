@@ -55,7 +55,7 @@ useEffect(()=> {
                                     
                                 }}
                                 >
-                                    <h3>Item: {good.name}</h3>
+                                    <h3>{good.name}</h3>
                                     <h5>Qty: {good.qty}</h5>
                                     <h5>Price: {good.price}</h5>
                                     <h5>Sub Total: N{good.total}</h5>
