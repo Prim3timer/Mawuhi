@@ -66,7 +66,11 @@ useEffect(()=> {
                         })}
                      
                         <h3>Grand Total: N{item.grandTotal}</h3>
-                        <h3 onClick={(id)=> handleRemove(item._id)}>
+                        <h3 onClick={(id)=> handleRemove(item._id)}
+                            style={{
+                                textAlign: 'center',
+                            }}
+                            >
                         <FaTrashAlt role='button'
            
            /> 
