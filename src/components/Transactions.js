@@ -70,6 +70,7 @@ const Transactions = ()=> {
     const handleQty = (id)=> {
         const tempCart = state.transArray.map((item)=> {
             if ( item._id === id){
+                console.log(item.qty)
                 console.log(state.qty)
                 console.log(item.total)
                 return {...item, qty: qtyRef.current.value, total: (item.price * state.qty).toFixed(2)}
@@ -403,7 +404,7 @@ const Transactions = ()=> {
                        
                         // onClick={assertain}
                          >Cancel</button>
-                         <button onClick={()=> state.transArray && doneSales}>Done</button>
+                         <button onClick={doneSales}>Done</button>
                         </div>}
           
            </section>
