@@ -2,7 +2,7 @@ import initialState from "../store"
 import { useEffect, useReducer } from "react"
 import reducer from "../reducer"
 import axios from "../app/api/axios"
-import { retry } from "@reduxjs/toolkit/query"
+// import { retry } from "@reduxjs/toolkit/query"
 import { FaTrashAlt } from "react-icons/fa";
 const Shopping = ()=> {
 const [state, dispatch] = useReducer(reducer, initialState)
