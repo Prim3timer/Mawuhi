@@ -59,13 +59,13 @@ useEffect(()=> {
                                     <h3>{good.name}</h3>
                                     <h5>Qty: {good.qty}</h5>
                                     <h5>Price: {good.price}</h5>
-                                    <h5>Sub Total: N{good.total}</h5>
+                                    <h4>Sub Total: N{good.total}</h4>
                                     {/* <br/> */}
                                 </div>
                             )
                         })}
-                        <h4>Date: {item.date}</h4>
-                        <h4>Grand Total: N{item.grandTotal}</h4>
+                     
+                        <h3>Grand Total: N{item.grandTotal}</h3>
                         <h3 onClick={(id)=> handleRemove(item._id)}>
                         <FaTrashAlt role='button'
            
