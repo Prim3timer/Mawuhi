@@ -9,7 +9,7 @@ const {v4: uuid} = require('uuid')
 let CreateItem = () => {
        const [state, dispatch] = useReducer(reducer, initialState)
        const itemRef = useRef()
-       const measurements = ['Kilogram (kg)', 'Oueces (pcs)', 'Plates (Pts)', 'Dozen (dzn)', 'Bottles (Btl)', 
+       const measurements = ['Kilogram (kg)', 'Pieces (pcs)', 'Plates (Plts)', 'Dozen (dzn)', 'Bottles (Btl)', 
         'Pounds (lbs)', 'Litres (L)'
        ]
 
@@ -56,6 +56,7 @@ let CreateItem = () => {
                 
             }, 3000)
         }
+        itemRef.current.focus()
 
     }
 
@@ -68,7 +69,7 @@ let CreateItem = () => {
             id="create-item-form" >
                 <h2>Name:</h2>
                 <input
-              
+              ref={itemRef}
                 type="text"
                 required
                 value={state.name}
