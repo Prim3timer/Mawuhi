@@ -67,28 +67,21 @@ const Transactions = ()=> {
         }
         state.qty = ''
     }
-    const handleQty = (id)=> {
-        const tempCart = state.transArray.map((item)=> {
-            if ( item._id === id){
-                console.log(item.qty)
-                console.log(state.qty)
-                console.log(item.total)
-                return {...item, qty: qtyRef.current.value, total: (item.price * state.qty).toFixed(2)}
-            }
-            
-            state.qty = ''
-            return item
-        })
-       return dispatch({type:'transArray', payload: tempCart})
+    const handleQty = ()=> {
+       
+            dispatch({type: 'qty', payload: ''})
+    
+    
     } 
     
 
     const removeItem = (id)=>{
         dispatch({type: 'remove', payload: id})
-       
+        
     }
-
+    
     const upper = (id)=> {
+     
         dispatch({type: 'INCREMENT', payload: id})
     }
     
@@ -138,11 +131,6 @@ const Transactions = ()=> {
                     qty: inv.qty - good.qty
                 }
                 await axios.patch(`/inventory`, goodObj)
-                
-                
-                
-                
-                // dispatch({type: 'qtyArray', payload: goodObj})
             }
         })
         
@@ -278,10 +266,11 @@ const Transactions = ()=> {
     <input
  type="text"
  ref={qtyRef}
- placeholder={item.qty}
- value={state.qty}
+//  placeholder={item.qty}
+ value={item.qty}
  style={{width: '5rem'}}
- onChange={(e)=> dispatch({type: 'FIELDCHANGE', payload: e.target.value})}
+ onChange={(e)=> dispatch({type: 'FIELDCHANGE', payload: e.target.value, id: item._id})}
+onClick={() => dispatch({type: 'qty', payload: ''})}
  />
  <span
  style={{fontWeight: 'bold',
@@ -289,14 +278,7 @@ const Transactions = ()=> {
     fontSize:'1.5rem'
  }}
  >{item.unitMeasure.split(' ')[1]}</span>
-   <button
-   onClick={()=> handleQty(item._id)}
-   style={{width: '3rem',
-    marginLeft: '.5rem',
-    borderColor: 'limegreen',
-    backgroundColor: 'limegreen'
-   }}
-   ><FontAwesomeIcon icon={faCheck} /></button>
+  
  </section> :
  <section>
       <svg 
