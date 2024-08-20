@@ -226,6 +226,7 @@ const Transactions = ()=> {
         </form>
           <button
           id="done-button"
+          className="donezo"
           style={{height: '3rem',
             // flex: 2
           }}

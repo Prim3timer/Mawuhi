@@ -404,21 +404,19 @@ form {
   flex: 2;
 }
 
-.grand-total{
-  /* margin: 0 auto; */
-  /* background-color: blue; */
-}
-
 #trans-search {
-  margin: 0 .5rem;
-  width:50%;
+  /* margin: 0 .5rem; */
+  width: 50%;
 }
 
 #field {
-  width: 100%;
-/* justify-content: space-evenly; */
+  /* width: 100%;
 flex-wrap: nowrap;
-  column-gap: .5rem;
+  column-gap: .5rem; */
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap:  0 .5rem;
 }
 
 #trans-item {
@@ -429,6 +427,11 @@ row-gap: 2rem;
   align-items: center;
   /* column-gap: .5rem; */
 }
+
+/* .donezo {
+  margin:  0 0 0 50% ;
+  background-color: green;
+} */
 .home {
   font-size: 1.3rem;
   padding: 0 1.5rem;
