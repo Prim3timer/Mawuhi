@@ -158,6 +158,10 @@ const Transactions = ()=> {
         dispatch({type: 'cancel', payload: true})
      console.log(state.transArray)   
     }
+
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
     
     const remain = ()=> {
         dispatch({type: 'cancel', payload: false})
@@ -183,7 +187,7 @@ const Transactions = ()=> {
                 <h3
                 className="grand-total"
                 style={{width: '5rem'}}
-                >Grand Total: N{parseFloat(state.total).toFixed(2)}</h3>
+                >Grand Total: ₦{numberWithCommas(parseFloat(state.total).toFixed(2))}</h3>
         <form
         
         >
@@ -269,7 +273,8 @@ const Transactions = ()=> {
  </div>
  {item.unitMeasure === 'Pounds (lbs)' || item.unitMeasure === 
 
- 'Kilogram (kg)' || item.unitMeasure === 'Litres (L)' ? <section><input
+ 'Kilogram (kg)' || item.unitMeasure === 'Litres (L)' ? <section>
+    <input
  type="text"
  ref={qtyRef}
  placeholder={item.qty}
@@ -329,7 +334,8 @@ const Transactions = ()=> {
                     >sub total: </h3>
                     <h3 
                     style={{display: `${state.getAllTotals ? 'none' : 'block' }`}}
-                    >N{parseFloat(item.total).toFixed(2)}</h3>
+                    // >N{parseFloat(item.total).toFixed(2)}</h3>
+                    >₦{numberWithCommas(parseFloat(item.total).toFixed(2))}</h3>
 
                     </article>
                     <h2
@@ -338,6 +344,7 @@ const Transactions = ()=> {
                     <FaTrashAlt role='button'
                     tableIndex='0'/> 
                     </h2>
+                    {}
         </section>
                 )
             })}{}
@@ -348,7 +355,9 @@ const Transactions = ()=> {
             <h2
                     className="grand-total"
            style={{display: `${state.getAllTotals ? 'none' : 'block' }`}}
-           >Grand Total: N{parseFloat(state.total).toFixed(2)}</h2>
+
+        //    >Grand Total: N{parseFloat(state.total).toFixed(2)}</h2>
+           >Grand Total: ₦{numberWithCommas(parseFloat(state.total).toFixed(2))}</h2>
             </article >
             
             <section

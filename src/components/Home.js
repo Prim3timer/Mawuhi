@@ -39,7 +39,7 @@ const Home = ()=> {
         <br />
         <Link to="/admin">admin</Link>
         <br/>
-        <Link to="/sales">Sales</Link>
+        <Link to="/sales">sales</Link>
         <br/>
         <Link to="/shopping">reciepts</Link>
         {/* <br /> */}

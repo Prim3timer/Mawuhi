@@ -55,6 +55,11 @@ const Sales = ()=> {
         console.log(state.sales)
     }, [state.search])
     console.log(state.sales.data)
+
+
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
  
     return (
         <div className="sale">
@@ -87,7 +92,7 @@ const Sales = ()=> {
         >
             <th>name</th>
             <th>qty</th>
-            <th>total (N)</th>
+            <th>total (₦)</th>
             <th>date</th>
             </tr>
   {state.sales && state.sales.map((sale, index)=> {
@@ -129,10 +134,14 @@ const Sales = ()=> {
     {/* </th> */}
     {/* <th> */}
     <h3>
-    {state.sales && state.sales.reduce((a, b)=> {
+    {/* {state.sales && state.sales.reduce((a, b)=> {
     return  a + parseFloat( b.total)
-}, 0).toFixed(2)}
-    {/* </th> */}
+}, 0).toFixed(2)} */}
+
+
+{state.sales && numberWithCommas(state.sales.reduce((a, b)=> {
+    return  a + parseFloat( b.total)
+}, 0).toFixed(2))}
     </h3>
     </div>
    

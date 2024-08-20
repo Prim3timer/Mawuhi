@@ -31,6 +31,13 @@ const handleRemove = async (id)=> {
 useEffect(()=> {
     getItems()
 }, [])
+
+
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+
     return (
         <div>
             <h2
@@ -59,13 +66,13 @@ useEffect(()=> {
                                     <h3>{good.name}</h3>
                                     <h5>Qty: {good.qty}</h5>
                                     <h5>Price: {good.price}</h5>
-                                    <h4>Sub Total: N{good.total}</h4>
+                                    <h4>Sub Total: ₦{numberWithCommas(parseFloat(good.total).toFixed(2))}</h4>
                                     {/* <br/> */}
                                 </div>
                             )
                         })}
                      
-                        <h3>Grand Total: N{item.grandTotal}</h3>
+                        <h3>Grand Total: ₦{ numberWithCommas(parseFloat(item.grandTotal).toFixed(2))}</h3>
                         <h3 onClick={(id)=> handleRemove(item._id)}
                             style={{
                                 textAlign: 'center',
