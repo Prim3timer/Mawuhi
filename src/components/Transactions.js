@@ -100,11 +100,11 @@ const Transactions = ()=> {
             grandTotal: total
             
         }
-
         const response = await axios.post('/transactions', transItems)
         const response2 = await axios.get('/inventory')
         console.log(response2)
         if (response){
+            // so i can effect change in color of the errMsg
             dispatch({type: 'qty', payload: response})
             dispatch({type: 'clear'})
             dispatch({type: 'transArray', payload: []})
