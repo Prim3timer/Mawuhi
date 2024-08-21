@@ -79,7 +79,7 @@ const Inventory = ({mark, setMark})=> {
      <th>action</th>
      </tr>
 {state.inventory && state.inventory.map((inv, index)=> {
-    console.log(inv)
+    const invReg = inv.qty < 1 ? inv.qty = 0 : inv.qty
 return (
    <tr className="sales-items-cont"
    key={uuid()}
@@ -88,7 +88,7 @@ return (
      >
         
      <td className="sales-items">{`${inv.name}`}</td>
-     <th className="sales-items" style={{color: inv.qty < 20 ? 'red' : ''}}>{parseFloat(inv.qty).toFixed(2)}</th>
+     <th className="sales-items" style={{color: inv.qty < 20 ? 'red' : ''}}>{parseFloat(invReg).toFixed(2)}</th>
      <td className="sales-items">{inv.date.substring(0, 10)}</td>
      <td 
      // style={{backgroundColor: 'blue'}}

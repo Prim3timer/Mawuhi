@@ -5,6 +5,7 @@ import { useEffect, useReducer, useRef, useState } from "react"
 import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FaTrashAlt } from "react-icons/fa";
+import { type } from "@testing-library/user-event/dist/type";
 const Transactions = ()=> {
     const [state, dispatch] = useReducer(reducer, initialState)
     
@@ -104,6 +105,7 @@ const Transactions = ()=> {
         const response2 = await axios.get('/inventory')
         console.log(response2)
         if (response){
+            dispatch({type: 'qty', payload: response})
             dispatch({type: 'clear'})
             dispatch({type: 'transArray', payload: []})
             
@@ -123,6 +125,10 @@ const Transactions = ()=> {
     })
     dispatch({type: 'qtyArray', payload: []})
     dispatch({type: 'errMsg', payload: 'Transactons Complete'})
+    setTimeout(()=> {
+        dispatch({type: 'errMsg', payload: ''})
+
+    }, 1000)
     
        
     }
@@ -205,9 +211,10 @@ const Transactions = ()=> {
           onClick={doneSales}
           >Done</button>
             </fieldset>
-            <h3 style={{color: 'red',
+            <h3 
+            style={{color: `${state.qty ? 'green' : 'red'}`,
                 // position: 'absolute'
-                // textAlign: 'center'
+                textAlign: 'center'
                 // width: '6rem'
             }}>{state.errMsg}</h3>
          
