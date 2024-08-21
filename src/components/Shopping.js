@@ -47,7 +47,6 @@ function numberWithCommas(x) {
             >Reciepts</h2>
             {state.getNames && state.getNames.map((item)=> {
                 console.log(item.goods)
-            //    item.goods.map((good)=> {
                 console.log(item)
                 return (
                     <article>
@@ -64,7 +63,7 @@ function numberWithCommas(x) {
                                 }}
                                 >
                                     <h3>{good.name}</h3>
-                                    <h5>Qty: {good.qty}</h5>
+                                    <h5>Qty: {good.qty} {good.unitMeasure.split(' ')[1]}</h5>
                                     <h5>Price: {good.price}</h5>
                                     <h4>Sub Total: ₦{numberWithCommas(parseFloat(good.total).toFixed(2))}</h4>
                                     {/* <br/> */}

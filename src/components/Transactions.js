@@ -67,12 +67,7 @@ const Transactions = ()=> {
         }
         state.qty = ''
     }
-    const handleQty = ()=> {
-       
-            dispatch({type: 'qty', payload: ''})
-    
-    
-    } 
+ 
     
 
     const removeItem = (id)=>{
@@ -80,14 +75,6 @@ const Transactions = ()=> {
         
     }
     
-    const upper = (id)=> {
-     
-        dispatch({type: 'INCREMENT', payload: id})
-    }
-    
-    const downer = (id)=> {
-        dispatch({type: 'DECREMENT', payload: id})   
-    }
     
     const clearer = ()=> {
         dispatch({type: 'clear'})
@@ -99,7 +86,6 @@ const Transactions = ()=> {
     
     useEffect(()=> {
         dispatch({type: 'getTotal'})
-        // console.log('hello mundial')
         
     }, [state.transArray, state.success])
     
@@ -123,7 +109,7 @@ const Transactions = ()=> {
             
         }
 
-    const goods = transItems.goods &&  transItems.goods.map((good)=> {
+    transItems.goods &&  transItems.goods.map((good)=> {
         const invs = response2.data.map(async(inv)=> {
             if (inv.name.split(' ').slice(0, -1).join(' ') === good.name){
                 const goodObj = {
@@ -134,11 +120,9 @@ const Transactions = ()=> {
             }
         })
         
-        console.log(invs)
-        console.log(state.qtyArray)
-        
     })
     dispatch({type: 'qtyArray', payload: []})
+    dispatch({type: 'errMsg', payload: 'Transactons Complete'})
     
        
     }
@@ -172,25 +156,29 @@ const Transactions = ()=> {
             <fieldset
             id="field"
             >
+                {/* <div
+                id="field-grid-container"
+                > */}
                 <h3
-                className="grand-total"
-                style={{width: '5rem'}}
+                id="grand-total-one"
+                // style={{width: '5rem'}}
                 >Grand Total: ₦{numberWithCommas(parseFloat(state.total).toFixed(2))}</h3>
         <form
         
         >
-        <h3 id="transItem"><input type="text"
+            <article id="trans-add">
+       <input type="text"
         id="trans-search"
         placeholder="search item"
         ref={inputRef}
         list="edulevel"
-        
         /><button
         onClick={handleAdd}
          style={{
             width: '3rem',
-            fontSize: '2rem'
-        }}>+</button></h3>
+            // fontSize: '2rem'
+        }}
+        >+</button></article>
         <datalist id="edulevel"
         >
             {state.getNames && state.getNames.map((user)=> {
@@ -204,7 +192,6 @@ const Transactions = ()=> {
                             color: 'brown',
                         }}
                         >
-                            {/* {user.unitMeasure.split(' ')[1]} */}
                         </option>)
                     })}
             </datalist>
@@ -212,18 +199,16 @@ const Transactions = ()=> {
 
 
         </form>
+        {/* </div> */}
           <button
-          id="done-button"
-          className="donezo"
-          style={{height: '3rem',
-            // flex: 2
-          }}
+          id="donezo"
           onClick={doneSales}
           >Done</button>
             </fieldset>
             <h3 style={{color: 'red',
                 // position: 'absolute'
-                textAlign: 'center'
+                // textAlign: 'center'
+                // width: '6rem'
             }}>{state.errMsg}</h3>
          
             <div
@@ -267,13 +252,13 @@ const Transactions = ()=> {
 //  placeholder={item.qty}
  value={item.qty}
  style={{width: '5rem'}}
+ onClick={() => item.qty = 7}
  onChange={(e)=> dispatch({type: 'FIELDCHANGE', payload: e.target.value, id: item._id})}
-onClick={() => dispatch({type: 'qty', payload: ''})}
  />
  <span
  style={{fontWeight: 'bold',
     marginLeft: '.5rem',
-    fontSize:'1.5rem'
+    // fontSize:'1.5rem'
  }}
  >{item.unitMeasure.split(' ')[1]}</span>
   
@@ -286,13 +271,13 @@ onClick={() => dispatch({type: 'qty', payload: ''})}
 
                     </article>
                     <article>
-                    <h3
+                    <h4
                     id="grand-total"
-                    >sub total: </h3>
-                    <h3 
+                    >sub total: </h4>
+                    <h4 
                     style={{display: `${state.getAllTotals ? 'none' : 'block' }`}}
                     // >N{parseFloat(item.total).toFixed(2)}</h3>
-                    >₦{numberWithCommas(parseFloat(item.total).toFixed(2))}</h3>
+                    >₦{numberWithCommas(parseFloat(item.total).toFixed(2))}</h4>
 
                     </article>
                     <h2
@@ -307,10 +292,9 @@ onClick={() => dispatch({type: 'qty', payload: ''})}
             })}{}
             </div>
             <article 
-            className="grand-total"
             >
             <h2
-                    className="grand-total"
+                id="grand-total-two"
            style={{display: `${state.getAllTotals ? 'none' : 'block' }`}}
 
         //    >Grand Total: N{parseFloat(state.total).toFixed(2)}</h2>
