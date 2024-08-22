@@ -63,7 +63,7 @@ function numberWithCommas(x) {
                                 }}
                                 >
                                     <h3>{good.name}</h3>
-                                    <h5>Qty: {good.qty} {good.unitMeasure.split(' ')[1]}</h5>
+                                    <h5>Qty: {good.qty} {good.unitMeasure.split(' ')[1].slice(1, -1)}</h5>
                                     <h5>Price: {good.price}</h5>
                                     <h4>Sub Total: ₦{numberWithCommas(parseFloat(good.total).toFixed(2))}</h4>
                                     {/* <br/> */}

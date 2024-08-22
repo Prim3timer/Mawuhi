@@ -172,6 +172,7 @@ const Transactions = ()=> {
         <form
         
         >
+          
             <article id="trans-add">
        <input type="text"
         id="trans-search"
@@ -225,16 +226,19 @@ const Transactions = ()=> {
                {!state.transArray.length ? <h4>Cart is empty.</h4> : state.transArray.map((item, index)=> {
                 //  console.log(item.unitMeasure)
                 return (
-                 
-            <section 
-           key={index}
-           id="trans-item"
-            
-            >
+                    
+                    <section 
+                    key={index}
+                    id="trans-item"
+                    
+                    >
+                            
+                           
                 <section>
                     <h3
                  
-                    >
+                 >
+               
                      {item.name}
                     
                     </h3>
@@ -267,13 +271,14 @@ const Transactions = ()=> {
     marginLeft: '.5rem',
     // fontSize:'1.5rem'
  }}
- >{item.unitMeasure.split(' ')[1]}</span>
+ >{item.unitMeasure.split(' ')[1].slice(1, -1)}</span>
+ {console.log(item.unitMeasure.split(' ')[1])}
   
  </section> 
  
                    </article>
                     <article>
-                    <h4>price/ {item.unitMeasure.split(' ')[1]}:</h4>
+                    <h4>price/ {item.unitMeasure.split(' ')[1].slice(1, -1)}:</h4>
                     <h4>N{item.price}</h4>
 
                     </article>
@@ -293,7 +298,6 @@ const Transactions = ()=> {
                     <FaTrashAlt role='button'
                     tableIndex='0'/> 
                     </h2>
-                    {}
         </section>
                 )
             })}{}

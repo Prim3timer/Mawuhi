@@ -20,6 +20,7 @@ const Home = ()=> {
     }
     return (
         <div className="home-cont" >
+            <h2>Welcome {state.user}</h2>
         <section
         className="home"
         >

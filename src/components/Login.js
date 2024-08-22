@@ -73,6 +73,7 @@ const Login = () => {
             }
             errRef.current.focus();
         }
+        dispatch({type: 'user', payload: user})
     }
 
     return (

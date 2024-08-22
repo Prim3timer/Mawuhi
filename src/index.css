@@ -435,7 +435,7 @@ form {
   justify-content: space-around;
   /* align-content: space-between;
   display: grid; */
-  grid-template-columns: 100px 225px;
+  grid-template-columns: 100px 250px;
   column-gap: 1rem;
   /* grid-template-areas: "footer footer"; */
   /* width: 70%; */

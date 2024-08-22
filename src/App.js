@@ -18,7 +18,7 @@ import Edit from "./components/Edit"
 import Sales from "./components/Sales"
 import ItemList from "./components/ItemList"
 import EditItem from "./components/EditItem"
-import Shopping from "./components/Shopping"
+import Reciepts from "./components/Reciepts"
 import EmpInv from "./components/EmpInv"
 
 
@@ -37,7 +37,7 @@ return (
   <main className="App">
      <h2 className="header">Retail Tracker</h2>
       <Routes>
-        <Route path="shopping" element={<Shopping/>}/>
+        <Route path="shopping" element={<Reciepts/>}/>
          {/* public routes */}
         <Route path="/" element={<Layout/>}>
      {/* <Route path="emp-inv" element={<EmpInv/>}/> */}
