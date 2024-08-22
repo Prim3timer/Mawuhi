@@ -263,7 +263,7 @@ const Transactions = ()=> {
 //  placeholder={item.qty}
  value={item.qty}
  style={{width: '5rem'}}
- onClick={() => item.qty = 7}
+ onClick={() => dispatch({type: 'blank', payload: '', id: item._id})}
  onChange={(e)=> dispatch({type: 'FIELDCHANGE', payload: e.target.value, id: item._id})}
  />
  <span
@@ -272,7 +272,6 @@ const Transactions = ()=> {
     // fontSize:'1.5rem'
  }}
  >{item.unitMeasure.split(' ')[1].slice(1, -1)}</span>
- {console.log(item.unitMeasure.split(' ')[1])}
   
  </section> 
  

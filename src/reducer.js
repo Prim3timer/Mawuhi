@@ -101,6 +101,8 @@ const reducer = (state, action)=> {
                 return item
             }).filter((item)=> item.qty !== 0)
             return {...state, transArray: tempCart2}
+
+
                 case 'FIELDCHANGE':
                   const tempCart3 = state.transArray.map((item)=> {
                   //  state.qty = action.payload
@@ -111,8 +113,16 @@ const reducer = (state, action)=> {
                   return item
                  })
                  return {...state, transArray: tempCart3}
-                    // return {...state, qty: action.payload}
-
+                 case 'blank': 
+                 const tempCart4 = state.transArray.map((item)=> {
+                  console.log('holla')
+                  if (item._id === action.id){
+                    return {...item, qty: action.payload}
+                    
+                  }
+                  return item
+                 })
+                 return {...state, transArray: tempCart4}
             case 'remove':
               return {...state, transArray: state.transArray.filter((item)=> item._id !== action.payload)
               }
