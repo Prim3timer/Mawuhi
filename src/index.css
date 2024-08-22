@@ -477,6 +477,6 @@ row-gap: 2rem;
 }
 
 #grand-total-two {
-  margin-left: 2rem;
+  margin: 1rem  0 0  2rem;
 }
 }
