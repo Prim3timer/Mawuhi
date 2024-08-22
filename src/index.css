@@ -441,11 +441,24 @@ form {
   /* width: 70%; */
 }
 
+#trans-item-cont {
+  /* margin: .5rem auto;
+  display: flex; */
+  /* flex-direction: column; */
+  /* row-gap: .2rem; */
+  /* width: 98%; */
+  align-items: center;
+  margin: 1rem 0 0 1rem;
+  justify-content: center;  
+  /* background-color: blue; */
+}
+  
 #trans-item {
-  width: 95%;
+  width: 95%;  
   /* background-color: red; */
 column-gap: 2rem;
 row-gap: 2rem;
+/* justify-content: center; */
   align-items: center;
   /* column-gap: .5rem; */
 }
@@ -464,6 +477,6 @@ row-gap: 2rem;
 }
 
 #grand-total-two {
-  margin-left: 1rem;
+  margin-left: 2rem;
 }
 }
