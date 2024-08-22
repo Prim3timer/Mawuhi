@@ -277,7 +277,7 @@ const Transactions = ()=> {
  
                    </article>
                     <article>
-                    <h4>price/ {item.unitMeasure.split(' ')[1].slice(1, -1)}:</h4>
+                    <h4>price/{item.unitMeasure.split(' ')[1].slice(1, -1)}:</h4>
                     <h4>N{item.price}</h4>
 
                     </article>
