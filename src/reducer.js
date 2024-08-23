@@ -115,9 +115,8 @@ const reducer = (state, action)=> {
                  return {...state, transArray: tempCart3}
                  case 'blank': 
                  const tempCart4 = state.transArray.map((item)=> {
-                  console.log('holla')
                   if (item._id === action.id){
-                    return {...item, qty: action.payload}
+                    return {...item, qty: action.payload, total: 0}
                     
                   }
                   return item
