@@ -375,9 +375,9 @@ form {
     row-gap: 1rem;
     align-items: center;
     justify-content: space-evenly;
-    background-color: deepskyblue;
+    background-color: powderblue;
     padding: 1rem;
-    border-radius: 50px;
+    border-radius: 5px;
   }
 
   
