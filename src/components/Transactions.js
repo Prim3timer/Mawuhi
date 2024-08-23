@@ -249,14 +249,13 @@ const Transactions = ()=> {
                    id="flex-article"
                
                 >
-                    <div
-                    >
-                    <h4
+                 
+                    <span
                   
-                    >Qty:</h4>
+                    >Qty:</span>
                 
- </div>
- <section>
+
+ {/* <section> */}
     <input
  type="text"
  ref={qtyRef}
@@ -267,13 +266,13 @@ const Transactions = ()=> {
  onChange={(e)=> dispatch({type: 'FIELDCHANGE', payload: e.target.value, id: item._id})}
  />
  <span
- style={{fontWeight: 'bold',
-    marginLeft: '.5rem',
-    // fontSize:'1.5rem'
- }}
+//  style={{fontWeight: 'bold',
+//     marginLeft: '.5rem',
+//     // fontSize:'1.5rem'
+//  }}
  >{item.unitMeasure.split(' ')[1].slice(1, -1)}</span>
   
- </section> 
+ {/* </section>  */}
  
                    </article>
                     <article>
@@ -325,14 +324,7 @@ const Transactions = ()=> {
             }}
             >
                 {state.cancel ? <div
-                style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                      backgroundColor: 'lavender',
-                      padding: '1rem',
-                      borderRadius: '5px',
-
-                }}
+              
                 ><h2
                 id="verify-header"
                 >Are you sure you want to cancel
