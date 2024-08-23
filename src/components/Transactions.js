@@ -251,7 +251,7 @@ const Transactions = ()=> {
                 >
                  
                     <span
-                  
+                  style={{fontWeight: 'bold'}}
                     >Qty:</span>
                 
 
@@ -266,18 +266,17 @@ const Transactions = ()=> {
  onChange={(e)=> dispatch({type: 'FIELDCHANGE', payload: e.target.value, id: item._id})}
  />
  <span
-//  style={{fontWeight: 'bold',
-//     marginLeft: '.5rem',
-//     // fontSize:'1.5rem'
-//  }}
+ style={{fontWeight: 'bold',
+ 
+ }}
  > {item.unitMeasure.split(' ')[1].slice(1, -1)}</span>
   
  {/* </section>  */}
  
                    </article>
                     <article>
-                    <h4>price/{item.unitMeasure.split(' ')[1].slice(1, -1)}:</h4>
-                    <h4>N{item.price}</h4>
+                    <p>price/{item.unitMeasure.split(' ')[1].slice(1, -1)}:</p>
+                    <p>N{item.price}</p>
 
                     </article>
                     <article>
