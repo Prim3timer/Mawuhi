@@ -320,6 +320,7 @@ form {
 
   #field {
     width: 98%;
+    margin: .5rem 0;
     flex-grow: 1;
     justify-self: center;
     /* background-color: red; */
