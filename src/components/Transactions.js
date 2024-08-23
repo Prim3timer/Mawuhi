@@ -270,7 +270,7 @@ const Transactions = ()=> {
 //     marginLeft: '.5rem',
 //     // fontSize:'1.5rem'
 //  }}
- >{item.unitMeasure.split(' ')[1].slice(1, -1)}</span>
+ > {item.unitMeasure.split(' ')[1].slice(1, -1)}</span>
   
  {/* </section>  */}
  
