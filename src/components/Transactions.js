@@ -156,7 +156,7 @@ const Transactions = ()=> {
             id="tans-title"
             style={{
                 textAlign: 'center',
-                margin:'1rem 0'
+                margin:'1rem 0' 
             }}
             >Transactions</h2>
             <fieldset
@@ -300,6 +300,7 @@ const Transactions = ()=> {
             })}{}
             </div>
             <article 
+            id="grand-two-cont"
             >
             <h2
                 id="grand-total-two"

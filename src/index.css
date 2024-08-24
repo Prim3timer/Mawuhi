@@ -119,6 +119,17 @@ box-shadow: 0.2em 0.3em 0.4em gray;
 #grand-total-one {
   text-align: center;
   margin: 0  0 0 .5rem;
+  width: 5rem;
+}
+
+#grand-total-two {
+  text-align: left;
+  /* justify-content: flex-start; */
+
+}
+#grand-two-cont {
+
+ /* background-color: green; */
 }
 
 
@@ -164,12 +175,6 @@ input {
   margin: 0 auto;
   /* height: 6vh; */
   text-align: center;
-}
-
-
-
-#grand-total-one {
-  width: 5rem;
 }
 
 #reg-cont {
@@ -375,7 +380,7 @@ form {
     row-gap: 1rem;
     align-items: center;
     justify-content: space-evenly;
-    background-color: deepskyblue;
+    background-color: #00DFFF;
     padding: 1rem;
     border-radius: 5px;
   }
