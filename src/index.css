@@ -368,14 +368,14 @@ form {
   }
 
   #trans-item {
-    width: 96vw;
+    width: 95vw;
     display: flex;
     flex-wrap: wrap;
     column-gap: 3rem;
     row-gap: 1rem;
     align-items: center;
     justify-content: space-evenly;
-    background-color: powderblue;
+    background-color: deepskyblue;
     padding: 1rem;
     border-radius: 5px;
   }
