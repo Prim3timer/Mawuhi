@@ -58,16 +58,16 @@ return (
          <Route path="item-list" element={<ItemList/>}/>
     <Route path="inventory" element={<Inventory/>}/>
        <Route path="edit" element={<Edit/>}/>
-       <Route path="sales" element={<Sales/>}/>
        <Route path="create-item" element={<CreateItem/>}/>
 
          </Route>
       
        {/* <Route element={<RequireAuth allowedRoles={[1984, 5150]}/>}>
  
-         </Route> */}
+ </Route> */}
          <Route path="create-inventory" element={<CreateInventory/>}/>
        <Route element={<RequireAuth allowedRoles={[5150]}/>}>
+ <Route path="sales" element={<Sales/>}/>
      <Route path="admin" element={<Admin/>}/>
          </Route>
         
