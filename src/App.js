@@ -65,7 +65,7 @@ return (
        {/* <Route element={<RequireAuth allowedRoles={[1984, 5150]}/>}>
  
  </Route> */}
-         <Route path="create-inventory" element={<CreateInventory/>}/>
+     
        <Route element={<RequireAuth allowedRoles={[5150]}/>}>
  <Route path="sales" element={<Sales/>}/>
      <Route path="admin" element={<Admin/>}/>
