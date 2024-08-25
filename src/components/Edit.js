@@ -10,7 +10,7 @@ const Edit = ({mark, setMark})=> {
     const id = mark
     const getAnInventory = async ()=> {
         try {
-            let response = await axios.get(`/inventory/${mark}`)
+            let response = await axios.get(`/items/${mark}`)
             console.log(response.data)
             if (response) {
                 
@@ -42,7 +42,7 @@ const Edit = ({mark, setMark})=> {
         //   qty: state.qty,
 
       }
-        const response = await axios.put(`/inventory/${id}`, inventory) 
+        const response = await axios.patch(`/items/inventory/${id}`, inventory) 
         if (response){
             dispatch({type: 'success', payload: 'inventory edited'})
             setTimeout(()=> {

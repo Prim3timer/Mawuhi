@@ -106,7 +106,7 @@ const Edit = ({mark, setMark})=> {
         }}
         // ref={itemRef}
         list="measure"
-        // onChange={(e)=> dispatch({type: 'unitMeasure', payload: e.target.value})}
+        onChange={(e)=> dispatch({type: 'unitMeasure', payload: e.target.value})}
         value={state.unitMeasure}
         /></h3>
         <datalist id="measure"

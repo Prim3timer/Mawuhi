@@ -101,7 +101,7 @@ const Transactions = ()=> {
             
         }
         const response = await axios.post('/transactions', transItems)
-        const response2 = await axios.get('/inventory')
+        const response2 = await axios.get('/items')
         console.log(response2)
         if (response){
             // so i can effect change in color of the errMsg
@@ -112,13 +112,15 @@ const Transactions = ()=> {
         }
 
     transItems.goods &&  transItems.goods.map((good)=> {
-        const invs = response2.data.map(async(inv)=> {
-            if (inv.name.split(' ').slice(0, -1).join(' ') === good.name){
+        const invs = response2.data.items.map(async(inv)=> {
+            console.log(inv.name)
+            console.log(good.name)
+            if (inv.name === good.name){
                 const goodObj = {
                     name: inv.name,
                     qty: inv.qty - good.qty
                 }
-                await axios.patch(`/inventory`, goodObj)
+                await axios.put(`items/dynam`, goodObj)
             }
         })
         

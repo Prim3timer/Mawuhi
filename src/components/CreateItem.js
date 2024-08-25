@@ -16,15 +16,14 @@ let CreateItem = () => {
      
  
     const handleSubmit = async (e)=> {
-        const {name, price, unitMeasure, piecesUnit} = state
+        
+        const {name, price, unitMeasure} = state
         e.preventDefault()
         try {
             const newItem = {
                 name: `${name}`,
                 price: price,
                 unitMeasure: unitMeasure,
-                piecesUnit: piecesUnit,
-                
             }
             
 

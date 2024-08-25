@@ -17,8 +17,8 @@ const CreateInventory = () => {
 
     const getItems = async ()=> {
         const response = await axios.get('/items')
-        let groove = await axios.get('/inventory')
-        console.log(groove)
+        // let groove = await axios.get('/inventory')
+        // console.log(groove)
         console.log(response.data.length)
         // if (response.data.length > 12){
         //     response.data.shift()
@@ -42,15 +42,15 @@ const CreateInventory = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-    
         const newItem = {
+            // id: req.params.id,
             name: state.name,
             qty: state.qty
             
         }
         console.log(newItem.name)
         console.log(newItem.qty)
-        let groove = await axios.get('/inventory')
+        let groove = await axios.get('/items')
         console.log(groove)
         console.log(state.inventory)
         if (groove){
@@ -76,7 +76,7 @@ const CreateInventory = () => {
     
     
         
-            const response = await axios.post('/inventory', newItem)  
+            const response = await axios.patch(`/items`, newItem)  
            
             if (response){  
     

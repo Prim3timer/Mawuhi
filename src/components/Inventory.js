@@ -22,9 +22,9 @@ const Inventory = ({mark, setMark})=> {
 
           try {
             
-              const graw = await axios.get('/inventory')
+              const graw = await axios.get('/items')
               console.log(graw.data.length)
-              const filterate = graw.data.filter((inner)=> inner.name.toLowerCase().includes(state.search.toLowerCase()))
+              const filterate = graw.data.items.filter((inner)=> inner.name.toLowerCase().includes(state.search.toLowerCase()))
               dispatch({type: 'inventory', 
                   payload: filterate})
           } catch (error) {
@@ -87,7 +87,7 @@ return (
      'white' : 'palegreen'}}
      >
         
-     <td className="sales-items">{`${inv.name}`}</td>
+     <td className="sales-items">{`${inv.name} ${inv.unitMeasure.split(' ')[1]}`}</td>
      <th className="sales-items" style={{color: inv.qty < 20 ? 'red' : ''}}>{parseFloat(invReg).toFixed(2)}</th>
      <td className="sales-items">{inv.date.substring(0, 10)}</td>
      <td 
