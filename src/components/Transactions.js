@@ -39,6 +39,7 @@ const Transactions = ()=> {
 
     const handleAdd = (e)=> {
         e.preventDefault()
+      
         if (inputRef.current.value){
             dispatch({type: 'errMsg', payload: ''})
             if (state.success === false) state.success = true
@@ -54,6 +55,7 @@ const Transactions = ()=> {
 
                  state.transArray.push(acutalItem)
                  state.transArray.reverse()
+                
              }else if (match) {
 
                  dispatch({type: 'errMsg', payload: 'item already in list'})
@@ -66,7 +68,7 @@ const Transactions = ()=> {
         } else {
             dispatch({type: 'errMsg', payload: 'Please select an item'})
         }
-        state.qty = ''
+       
     }
  
     
@@ -261,7 +263,6 @@ const Transactions = ()=> {
     <input
  type="text"
  ref={qtyRef}
-//  placeholder={item.qty}
  value={item.qty}
  style={{width: '5rem'}}
  onClick={() => dispatch({type: 'blank', payload: '', id: item._id})}

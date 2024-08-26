@@ -26,10 +26,14 @@ const Home = ()=> {
         <br />
         {/* <p>You are logged in {state.user}</p> */}
         <br />
+   
         <Link 
     
-        to="/transaction">transaction</Link><br/>
-        <Link to="/create-item">add item</Link>
+        to="/transaction">transaction</Link>
+       <br/>
+        <Link
+       
+        to="/create-item">add item</Link>
         <br />
         <Link to="/item-list">items</Link>
         <br />
