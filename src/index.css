@@ -79,7 +79,7 @@ html {
 
 .home > * {
   flex-basis: 15%;
-  background-color: orange;
+  background-color: #e6e6fa;
   padding: .5rem;
   text-decoration: none;
   text-align: center;
