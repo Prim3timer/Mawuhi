@@ -40,7 +40,6 @@ html {
 
 .App {
   width: 100%;
-  /* max-width: 800px; */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -49,6 +48,7 @@ html {
   overflow-y: auto;
   border: 1px solid black;
   box-shadow: 0px 0px 15px gray;
+  /* max-width: 800px; */
 }
 
 
@@ -372,6 +372,8 @@ form {
     row-gap: .2rem;
     align-items: center;
     margin: 0 0 1rem 0;
+  /* max-width: 960px; */
+
 
   }
 
