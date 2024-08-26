@@ -89,6 +89,14 @@ html {
 
 }
 
+.home > *:active {
+  box-shadow: 0em 0em 0em gray;
+  transition-property: box-shadow scale;
+  transform: scale(0.95, 0.95);
+  box-shadow: 0em 0e 0em;
+  transition-duration: 0.1s;
+}
+
 #invent-search {
   margin: 1rem auto;
 }
