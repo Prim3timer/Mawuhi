@@ -87,7 +87,7 @@ return (
      'white' : 'palegreen'}}
      >
         
-     <td className="sales-items">{`${inv.name} ${inv.unitMeasure.split(' ')[1]}`}</td>
+     <th className="sales-items">{`${inv.name} ${inv.unitMeasure.split(' ')[1]}`}</th>
      <th className="sales-items" style={{color: inv.qty < 20 ? 'red' : ''}}>{parseFloat(invReg).toFixed(2)}</th>
      <td className="sales-items">{inv.date.substring(0, 10)}</td>
      <td 

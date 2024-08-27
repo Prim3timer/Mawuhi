@@ -40,7 +40,7 @@ html {
 
 .App {
   width: 100%;
-  min-height: 100vh;
+  max-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -51,7 +51,9 @@ html {
   /* max-width: 800px; */
 }
 
-
+.App > * {
+  overflow-y: auto;
+}
 
 .home-cont {
   /* display: flex;
@@ -191,11 +193,10 @@ button:active {
 
 
 .footer {
+text-align: center;
+  width: 100%;
   padding: 0.75rem;
-  display: grid;
-  place-content: center;
-  /* overflow-y: auto; */
-  /* background-color: #66d8f5; */
+  background-color: #66d8f5;
 }
 
 input {
