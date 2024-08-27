@@ -222,6 +222,36 @@ const handlePay = (e) => {
           id="donezo"
           onClick={doneSales}
           >Checkout</button>
+
+<section
+className="payment"
+>
+            <form
+         
+            >
+                <label>Amount Paid:</label>
+                <input
+                className="cash-amount"
+              
+                value={state.paidAmount}
+                onChange={(e)=> dispatch({type: 'paidAmount', payload: e.target.value})}
+                /><button
+                    onClick={handlePay}
+                >Confirm</button>
+            </form>
+
+           </section>
+           <article
+           style={{
+            margin: '1rem auto',
+            display: 'flex',
+            columnGap: '.5rem'
+           }}
+           >
+
+           <h3>Balance: </h3><h3>₦{state.balance}</h3>
+           </article>
+
             </fieldset>
             <h3 
             style={{color: `${state.qty ? 'green' : 'red'}`,
@@ -320,10 +350,12 @@ const handlePay = (e) => {
            >Grand Total: ₦{numberWithCommas(parseFloat(state.total).toFixed(2))}</h2>
             </article >
 
-            <section>
+            <section
+            className="payment">
             <form>
                 <label>Amount Paid:</label>
                 <input
+                className="cash-amount"
                 value={state.paidAmount}
                 onChange={(e)=> dispatch({type: 'paidAmount', payload: e.target.value})}
                 /><button
@@ -331,17 +363,12 @@ const handlePay = (e) => {
                 >Confirm</button>
             </form>
 
-           </section>
            <article
-           style={{
-            margin: '1rem auto',
-            display: 'flex',
-            columnGap: '.5rem'
-           }}
            >
 
            <h3>Balance: </h3><h3>₦{state.balance}</h3>
            </article>
+           </section>
             
             <section
             id="trans-verify-section"

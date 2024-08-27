@@ -438,6 +438,14 @@ form {
     border-left: 1px solid brown; */
 }
 
+.cash-amount {
+    margin: 0 0 1rem 0
+}
+.payment {
+  /* display: flex; */
+  /* background-color: green; */
+}
+
 
 @media screen and (max-width: 585px) {
   #sales-total {
