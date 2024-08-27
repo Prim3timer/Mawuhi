@@ -39,7 +39,19 @@ function numberWithCommas(x) {
 
 
     return (
-        <div>
+        <div
+        style={{
+            // display: 'flex',
+            // flexDirection: 'column',
+            // justifyContent: 'center',
+            // flexWrap: 'wrap'
+            // rowGap:'5rem'
+            // backgroundColor: 'blue'
+            // textAlign: 'center'
+            margin: ' 0 0 0 1rem'
+            
+        }}
+        >
             <h2
             style={{
                 margin: '1rem'
@@ -49,7 +61,19 @@ function numberWithCommas(x) {
                 console.log(item.goods)
                 console.log(item)
                 return (
-                    <article>
+                    <article
+                    style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'flex-start',
+                        alignItems: 'flex-start'
+                        // flexWrap: 'wrap',
+                        // rowGap:'5rem',
+                        // backgroundColor: 'blue'
+                        // textAlign: 'center'
+                        
+                    }}
+                    >
                         <h5>ID: {item._id}</h5>
                         <h5>Date: {item.date}</h5>
                         {item.goods.map((good)=> {
@@ -57,7 +81,7 @@ function numberWithCommas(x) {
                                 <div
                                 style={{display: 'flex',
                                     flexDirection: 'column',
-                                    justifyContent: 'space-evenly',
+                                    justifyContent: 'center',
                                     // rowGap:'5rem'
                                     
                                 }}
