@@ -439,7 +439,7 @@ form {
 }
 
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 585px) {
   #sales-total {
     /* width: 80vw; */
     display: flex;
@@ -463,4 +463,10 @@ form {
       flex: 0 1 8em
     }
 
+    #field > *:nth-child(3){
+      font-size: 20px;
+      flex: 0 0 10rem;
+    margin: auto;
+      min-width: 30%;
+    }
 }

@@ -150,7 +150,14 @@ const Transactions = ()=> {
     }
     
 
-
+const handlePay = (e) => {
+    e.preventDefault()
+    // console.log(state.paidAmount)
+    // console.log(state.total)
+    const bal = state.paidAmount - state.total
+    dispatch({type: 'balance', payload: bal})
+    console.log(bal)
+}
    
     return (
         <div className="trans-cont"
@@ -214,7 +221,7 @@ const Transactions = ()=> {
           <button
           id="donezo"
           onClick={doneSales}
-          >Done</button>
+          >Checkout</button>
             </fieldset>
             <h3 
             style={{color: `${state.qty ? 'green' : 'red'}`,
@@ -312,6 +319,29 @@ const Transactions = ()=> {
         //    >Grand Total: N{parseFloat(state.total).toFixed(2)}</h2>
            >Grand Total: ₦{numberWithCommas(parseFloat(state.total).toFixed(2))}</h2>
             </article >
+
+            <section>
+            <form>
+                <label>Amount Paid:</label>
+                <input
+                value={state.paidAmount}
+                onChange={(e)=> dispatch({type: 'paidAmount', payload: e.target.value})}
+                /><button
+                    onClick={handlePay}
+                >Confirm</button>
+            </form>
+
+           </section>
+           <article
+           style={{
+            margin: '1rem auto',
+            display: 'flex',
+            columnGap: '.5rem'
+           }}
+           >
+
+           <h3>Balance: </h3><h3>₦{state.balance}</h3>
+           </article>
             
             <section
             id="trans-verify-section"
@@ -359,10 +389,12 @@ const Transactions = ()=> {
                        
                         // onClick={assertain}
                          >Cancel</button>
-                         <button onClick={doneSales}>Done</button>
+                         <button onClick={doneSales}>Checkout</button>
                         </div>}
           
            </section>
+
+        
         </div>
     )
 }

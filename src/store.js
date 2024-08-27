@@ -39,7 +39,10 @@ const initialState = {
    DECREMENT: '',
    cartItem: '',
    cancel: false,
-   qtyArray: []
+   qtyArray: [],
+   checkout: false,
+   paidAmount: 0,
+   balance: 0
   
 }
 
