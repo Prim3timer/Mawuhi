@@ -6,8 +6,13 @@ import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icon
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FaTrashAlt } from "react-icons/fa";
 import { type } from "@testing-library/user-event/dist/type";
+// import {format} from 'date-fns'
 const Transactions = ()=> {
     const [state, dispatch] = useReducer(reducer, initialState)
+
+    const now = new Date()
+    // const date = format(now, 'dd/MM/yyyy\tHH:mm:ss')
+    // console.log(date)
     
     const inputRef = useRef()
      const qtyRef = useRef()
@@ -99,7 +104,8 @@ const Transactions = ()=> {
         // console.log(transArray)
         const transItems = {
             goods: transArray,
-            grandTotal: total
+            grandTotal: total,
+            date: now
             
         }
         const response = await axios.post('/transactions', transItems)
@@ -120,7 +126,8 @@ const Transactions = ()=> {
             if (inv.name === good.name){
                 const goodObj = {
                     name: inv.name,
-                    qty: inv.qty - good.qty
+                    qty: inv.qty - good.qty,
+                    // date
                 }
                 await axios.put(`items/dynam`, goodObj)
             }

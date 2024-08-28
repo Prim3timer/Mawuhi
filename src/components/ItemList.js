@@ -4,10 +4,10 @@ import axios from "../app/api/axios"
 import { useEffect, useReducer, useState, useRef, createContext     } from "react"
 
 import { FaTrashAlt } from "react-icons/fa";
-import SearchItem from "./SearchItem"
+// import SearchItem from "./SearchItem"
 import { Link } from "react-router-dom"
 import EditItem from "./EditItem"
-import { type } from "@testing-library/user-event/dist/type"
+// import { type } from "@testing-library/user-event/dist/type"
 // import { current } from "@reduxjs/toolkit";
 const {v4: uuid} = require('uuid')
 
