@@ -133,7 +133,8 @@ const Transactions = ()=> {
         dispatch({type: 'errMsg', payload: ''})
 
     }, 1000)
-    
+    state.paidAmount = ''
+    state.balance = ''
        
     }
     const assertain = ()=> {
@@ -218,26 +219,25 @@ const handlePay = (e) => {
 
         </form>
         {/* </div> */}
-          <button
-          id="donezo"
-          onClick={doneSales}
-          >Checkout</button>
-
+        
 <section
 className="payment"
 >
             <form
-         
+        //    style={{
+        //     margin: '1rem auto',
+        //     display: 'flex',
+        //     columnGap: '.5rem',
+        //     backgroundColor: 'blue'
+        //    }}
             >
                 <label>Amount Paid:</label>
                 <input
                 className="cash-amount"
               
                 value={state.paidAmount}
-                onChange={(e)=> dispatch({type: 'paidAmount', payload: e.target.value})}
-                /><button
-                    onClick={handlePay}
-                >Confirm</button>
+                onChange={(e)=> dispatch({type: 'difference', payload: e.target.value})}
+                />
             </form>
 
            </section>
@@ -245,12 +245,16 @@ className="payment"
            style={{
             margin: '1rem auto',
             display: 'flex',
-            columnGap: '.5rem'
+            columnGap: '.5rem',
            }}
            >
 
            <h3>Balance: </h3><h3>₦{state.balance}</h3>
            </article>
+           <button
+          id="donezo"
+          onClick={doneSales}
+          >Done</button>
 
             </fieldset>
             <h3 
@@ -358,9 +362,7 @@ className="payment"
                 className="cash-amount"
                 value={state.paidAmount}
                 onChange={(e)=> dispatch({type: 'paidAmount', payload: e.target.value})}
-                /><button
-                    onClick={handlePay}
-                >Confirm</button>
+                />
             </form>
 
            <article
@@ -416,7 +418,7 @@ className="payment"
                        
                         // onClick={assertain}
                          >Cancel</button>
-                         <button onClick={doneSales}>Checkout</button>
+                         <button onClick={doneSales}>Done</button>
                         </div>}
           
            </section>
