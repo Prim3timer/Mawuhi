@@ -463,6 +463,12 @@ form {
   /* background-color: green; */
 }
 
+.payment {
+  display: flex;
+  column-gap: 4rem;
+  align-items: center;
+}
+
 
 @media screen and (max-width: 585px) {
   #sales-total {
@@ -499,7 +505,10 @@ form {
 
 
 .cash-amount {
-  width: 70%;
+  width: 50%;
+}
+.payment {
+  column-gap: 2px;
 }
 
 }

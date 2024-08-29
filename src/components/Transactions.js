@@ -348,7 +348,7 @@ className="payment"
             <h2
                 id="grand-total-two"
            style={{display: `${state.getAllTotals ? 'none' : 'block' }`,
-        margin: ' 0 0 1rem 1rem' 
+        margin: ' 0 0 1rem 2rem' 
         }}
 
         //    >Grand Total: N{parseFloat(state.total).toFixed(2)}</h2>
@@ -357,11 +357,11 @@ className="payment"
 
             <section
             className="payment"
-            style={{
-                display: 'flex',
-                // columnGap: '2rem',
-                // alignItems: 'center'
-            }}
+            // style={{
+            //     display: 'flex',
+            //     columnGap: '1rem',
+         
+            // }}
             >
             <form>
                 <label>Amount Paid:</label>
