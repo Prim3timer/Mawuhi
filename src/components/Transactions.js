@@ -88,6 +88,8 @@ const Transactions = ()=> {
         dispatch({type: 'clear'})
         console.log('CLEARED!')
         dispatch({type: 'cancel', payload: false})
+         state.paidAmount = ''
+    state.balance = ''
     }
     
     
