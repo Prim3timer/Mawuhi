@@ -9,13 +9,13 @@ import { type } from "@testing-library/user-event/dist/type";
 import {format} from 'date-fns'
 const Transactions = ()=> {
     const [state, dispatch] = useReducer(reducer, initialState)
-
+    
     const now = new Date()
     const date = format(now, 'dd/MM/yyyy\tHH:mm:ss')
     console.log(date)
     
     const inputRef = useRef()
-     const qtyRef = useRef()
+    const qtyRef = useRef()
     const getItems = async ()=> {
         dispatch({type: 'clear'})
         const response = await axios.get('/items')
@@ -29,55 +29,55 @@ const Transactions = ()=> {
                 console.log(response.data)
                 console.log(state.getNames)
             }
-
+            
         } catch (error) {
             console.log(error)
         }
         console.log(state.getNames && state.getNames)
     }
-
-
+    
+    
     useEffect(()=> {
         getItems()
     }, [])
     
-
+    
     const handleAdd = (e)=> {
         e.preventDefault()
-      
+        
         if (inputRef.current.value){
             dispatch({type: 'errMsg', payload: ''})
             if (state.success === false) state.success = true
             else state.success = false
-              console.log(inputRef.current.value)
-              const currentItem = state.getNames && state.getNames.find((name)=> `${name.name} ${name.unitMeasure.split(' ')[1]}` === inputRef.current.value)
-              currentItem.total = currentItem.price
-              console.log(currentItem)
-              dispatch({type: 'name', payload: inputRef.current.value})
-              const acutalItem = {...currentItem, qty: 1}
-              const match = state.transArray.find((item) => item.name === acutalItem.name)
-             if(!match){
-
-                 state.transArray.push(acutalItem)
-                 state.transArray.reverse()
+            console.log(inputRef.current.value)
+            const currentItem = state.getNames && state.getNames.find((name)=> `${name.name} ${name.unitMeasure.split(' ')[1]}` === inputRef.current.value)
+            currentItem.total = currentItem.price
+            console.log(currentItem)
+            dispatch({type: 'name', payload: inputRef.current.value})
+            const acutalItem = {...currentItem, qty: 1}
+            const match = state.transArray.find((item) => item.name === acutalItem.name)
+            if(!match){
                 
-             }else if (match) {
-
-                 dispatch({type: 'errMsg', payload: 'item already in list'})
-                 inputRef.current.value = ''
-             }
-              
-              console.log(state.transArray)
-              // console.log(state.getNames)
-              inputRef.current.value = ''
+                state.transArray.push(acutalItem)
+                state.transArray.reverse()
+                
+            }else if (match) {
+                
+                dispatch({type: 'errMsg', payload: 'item already in list'})
+                inputRef.current.value = ''
+            }
+            
+            console.log(state.transArray)
+            // console.log(state.getNames)
+            inputRef.current.value = ''
         } else {
             dispatch({type: 'errMsg', payload: 'Please select an item'})
         }
        
     }
- 
     
-
+    
+    
     const removeItem = (id)=>{
         dispatch({type: 'remove', payload: id})
         
@@ -99,9 +99,10 @@ const Transactions = ()=> {
     
     const doneSales = async()=> {
         const {transArray, total} = state
-       
+        
         
         // console.log(transArray)
+   
         const transItems = {
             goods: transArray,
             grandTotal: total,
