@@ -246,7 +246,7 @@ className="payment"
            <article
            >
 
-           <h3>Balance: </h3><h3>₦{state.balance}</h3>
+           <h3>Balance: </h3><h3>₦{parseFloat(state.balance).toFixed(2)}</h3>
            </article>
            <button
           id="donezo"
@@ -370,7 +370,7 @@ className="payment"
                 />
             </form>
 
-           <h2>Balance: ₦{state.balance}</h2>
+           <h2>Balance: ₦{parseFloat(state.balance).toFixed(2)}</h2>
        
            </section>
             
