@@ -88,8 +88,8 @@ const Transactions = ()=> {
         dispatch({type: 'clear'})
         console.log('CLEARED!')
         dispatch({type: 'cancel', payload: false})
-         state.paidAmount = ''
-    state.balance = ''
+         state.paidAmount = 0
+    state.balance = 0
     }
     
     
@@ -143,8 +143,8 @@ const Transactions = ()=> {
         dispatch({type: 'errMsg', payload: ''})
 
     }, 1000)
-    state.paidAmount = ''
-    state.balance = ''
+    state.paidAmount = 0
+    state.balance = 0
        
     }
     const assertain = ()=> {
