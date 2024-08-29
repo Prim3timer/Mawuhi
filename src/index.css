@@ -512,7 +512,7 @@ form {
 .payment {
   /* background-color: red; */
   justify-content: flex-start;
-  column-gap: 10%;
+  column-gap: 2%;
   
 }
 .payment > :nth-child(1){
@@ -538,8 +538,10 @@ form {
 }
 
 .cash-amount2 {
-  /* background-color: red; */
-  /* width: 45%; */
-}
+  /* background-color: red;  */
+width: 60%;
 
+
+
+}
 }

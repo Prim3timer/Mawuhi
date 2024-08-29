@@ -373,9 +373,16 @@ const handlePay = (e) => {
                 onChange={(e)=> dispatch({type: 'difference', payload: e.target.value})}
                 />
             </form>
-
+            <seciton
+            style={{
+                display: 'flex',
+                flexDirection: 'column'
+            }}
+            >
            <h2
-           >Balance: ₦{parseFloat(state.balance).toFixed(2)}</h2> 
+           >Balance: ₦</h2>
+           <h2>{parseFloat(state.balance).toFixed(2)}</h2> 
+           </seciton>
            </section>
             
             <section
