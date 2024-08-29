@@ -5,11 +5,11 @@ import { useEffect, useReducer, useRef, useState } from "react"
 import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FaTrashAlt } from "react-icons/fa";
-import { type } from "@testing-library/user-event/dist/type";
 import {format} from 'date-fns'
+import { type } from "@testing-library/user-event/dist/type";
+
 const Transactions = ()=> {
-    const [state, dispatch] = useReducer(reducer, initialState)
-    
+    const [state, dispatch] = useReducer(reducer, initialState)   
     const now = new Date()
     const date = format(now, 'dd/MM/yyyy\tHH:mm:ss')
     console.log(date)
@@ -102,7 +102,7 @@ const Transactions = ()=> {
         
         
         // console.log(transArray)
-   
+     
         const transItems = {
             goods: transArray,
             grandTotal: total,
@@ -141,7 +141,8 @@ const Transactions = ()=> {
         dispatch({type: 'errMsg', payload: ''})
 
     }, 1000)
-    
+    state.paidAmount = ''
+    state.balance = ''
        
     }
     const assertain = ()=> {
@@ -158,7 +159,14 @@ const Transactions = ()=> {
     }
     
 
-
+const handlePay = (e) => {
+    e.preventDefault()
+    // console.log(state.paidAmount)
+    // console.log(state.total)
+    const bal = state.paidAmount - state.total
+    dispatch({type: 'balance', payload: bal})
+    console.log(bal)
+}
    
     return (
         <div className="trans-cont"
@@ -219,10 +227,43 @@ const Transactions = ()=> {
 
         </form>
         {/* </div> */}
-          <button
+        
+<section
+className="payment"
+>
+            <form
+        //    style={{
+        //     margin: '1rem auto',
+        //     display: 'flex',
+        //     columnGap: '.5rem',
+        //     backgroundColor: 'blue'
+        //    }}
+            >
+                <label>Amount Paid:</label>
+                <input
+                className="cash-amount"
+              
+                value={state.paidAmount}
+                onChange={(e)=> dispatch({type: 'difference', payload: e.target.value})}
+                />
+            </form>
+
+           </section>
+           <article
+           style={{
+            margin: '1rem auto',
+            display: 'flex',
+            columnGap: '.5rem',
+           }}
+           >
+
+           <h3>Balance: </h3><h3>₦{state.balance}</h3>
+           </article>
+           <button
           id="donezo"
           onClick={doneSales}
           >Done</button>
+
             </fieldset>
             <h3 
             style={{color: `${state.qty ? 'green' : 'red'}`,
@@ -315,11 +356,34 @@ const Transactions = ()=> {
             >
             <h2
                 id="grand-total-two"
-           style={{display: `${state.getAllTotals ? 'none' : 'block' }`}}
+           style={{display: `${state.getAllTotals ? 'none' : 'block' }`,
+        margin: ' 0 0 1rem 0' 
+        }}
 
         //    >Grand Total: N{parseFloat(state.total).toFixed(2)}</h2>
            >Grand Total: ₦{numberWithCommas(parseFloat(state.total).toFixed(2))}</h2>
             </article >
+
+            <section
+            className="payment"
+            style={{
+                display: 'flex',
+                columnGap: '2rem',
+                alignItems: 'center'
+            }}
+            >
+            <form>
+                <label>Amount Paid:</label>
+                <input
+                className="cash-amount"
+                value={state.paidAmount}
+                onChange={(e)=> dispatch({type: 'paidAmount', payload: e.target.value})}
+                />
+            </form>
+
+           <h3>Balance: ₦{state.balance}</h3>
+       
+           </section>
             
             <section
             id="trans-verify-section"
@@ -371,6 +435,8 @@ const Transactions = ()=> {
                         </div>}
           
            </section>
+
+        
         </div>
     )
 }

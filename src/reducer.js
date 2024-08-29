@@ -145,6 +145,15 @@ const reducer = (state, action)=> {
 
     case 'cancel':
         return {...state, cancel: action.payload}
+
+        case 'paidAmount': 
+        return {...state, paidAmount: action.payload}
+        case 'balance':
+          return {...state, balance: action.payload }
+          case 'difference':
+            state.paidAmount = action.payload
+          const newBalance = state.paidAmount - state.total
+          return {...state, balance: newBalance}
  
               default:
                 throw new Error()
