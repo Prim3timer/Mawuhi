@@ -5,9 +5,14 @@ import { useEffect, useReducer, useRef, useState } from "react"
 import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FaTrashAlt } from "react-icons/fa";
+import {format} from 'date-fns'
 import { type } from "@testing-library/user-event/dist/type";
 const Transactions = ()=> {
     const [state, dispatch] = useReducer(reducer, initialState)
+
+    const now = new Date()
+    const date = format(now, 'dd/MM/yyyy\tHH:mm:ss')
+    console.log(date)
     
     const inputRef = useRef()
      const qtyRef = useRef()
@@ -97,9 +102,11 @@ const Transactions = ()=> {
        
         
         // console.log(transArray)
+     
         const transItems = {
             goods: transArray,
-            grandTotal: total
+            grandTotal: total,
+            date
             
         }
         const response = await axios.post('/transactions', transItems)
@@ -348,14 +355,22 @@ className="payment"
             >
             <h2
                 id="grand-total-two"
-           style={{display: `${state.getAllTotals ? 'none' : 'block' }`}}
+           style={{display: `${state.getAllTotals ? 'none' : 'block' }`,
+        margin: ' 0 0 1rem 0' 
+        }}
 
         //    >Grand Total: N{parseFloat(state.total).toFixed(2)}</h2>
            >Grand Total: ₦{numberWithCommas(parseFloat(state.total).toFixed(2))}</h2>
             </article >
 
             <section
-            className="payment">
+            className="payment"
+            style={{
+                display: 'flex',
+                columnGap: '2rem',
+                alignItems: 'center'
+            }}
+            >
             <form>
                 <label>Amount Paid:</label>
                 <input
@@ -365,11 +380,8 @@ className="payment"
                 />
             </form>
 
-           <article
-           >
-
-           <h3>Balance: </h3><h3>₦{state.balance}</h3>
-           </article>
+           <h3>Balance: ₦{state.balance}</h3>
+       
            </section>
             
             <section
