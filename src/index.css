@@ -384,7 +384,7 @@ form {
   #field > *:nth-child(3){
     flex: 1 1 30%;
   margin: auto;
-    max-width:40%;
+    max-width:50%;
   }
   #field > *:nth-child(4){
     flex: 0 1 10%;
@@ -494,4 +494,8 @@ form {
     margin: auto;
       min-width: 30%;
     }
+.cash-amount {
+  width: 80%;
+}
+
 }

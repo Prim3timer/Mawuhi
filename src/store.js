@@ -41,8 +41,8 @@ const initialState = {
    cancel: false,
    qtyArray: [],
    checkout: false,
-   paidAmount: '',
-   balance: ''
+   paidAmount: 0,
+   balance: 0
   
 }
 
