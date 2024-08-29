@@ -250,11 +250,6 @@ className="payment"
 
            </section>
            <article
-           style={{
-            margin: '1rem auto',
-            display: 'flex',
-            columnGap: '.5rem',
-           }}
            >
 
            <h3>Balance: </h3><h3>₦{state.balance}</h3>
