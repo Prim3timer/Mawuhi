@@ -382,9 +382,9 @@ form {
     flex: 1 1 50%;
   }
   #field > *:nth-child(3){
-    flex: 1 1 20%;
+    flex: 1 1 30%;
   margin: auto;
-    max-width: 30%;
+    max-width:40%;
   }
   #field > *:nth-child(4){
     flex: 0 1 10%;

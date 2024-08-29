@@ -232,12 +232,6 @@ const handlePay = (e) => {
 className="payment"
 >
             <form
-        //    style={{
-        //     margin: '1rem auto',
-        //     display: 'flex',
-        //     columnGap: '.5rem',
-        //     backgroundColor: 'blue'
-        //    }}
             >
                 <label>Amount Paid:</label>
                 <input
@@ -352,7 +346,7 @@ className="payment"
             <h2
                 id="grand-total-two"
            style={{display: `${state.getAllTotals ? 'none' : 'block' }`,
-        margin: ' 0 0 1rem 0' 
+        margin: ' 0 0 1rem 1rem' 
         }}
 
         //    >Grand Total: N{parseFloat(state.total).toFixed(2)}</h2>
@@ -376,7 +370,7 @@ className="payment"
                 />
             </form>
 
-           <h3>Balance: ₦{state.balance}</h3>
+           <h2>Balance: ₦{state.balance}</h2>
        
            </section>
             
