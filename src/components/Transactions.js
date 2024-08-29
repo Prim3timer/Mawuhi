@@ -359,8 +359,8 @@ className="payment"
             className="payment"
             style={{
                 display: 'flex',
-                columnGap: '2rem',
-                alignItems: 'center'
+                // columnGap: '2rem',
+                // alignItems: 'center'
             }}
             >
             <form>

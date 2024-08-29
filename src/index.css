@@ -490,12 +490,16 @@ form {
 
     #field > *:nth-child(3){
       font-size: 20px;
-      flex: 0 0 10rem;
-    margin: auto;
+      flex: 0 0 40% ;
+    /* margin: auto; */
       min-width: 30%;
+      justify-content: center;
+      /* background-color: blue; */
     }
+
+
 .cash-amount {
-  width: 80%;
+  width: 70%;
 }
 
 }
