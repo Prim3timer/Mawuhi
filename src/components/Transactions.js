@@ -231,14 +231,13 @@ const handlePay = (e) => {
         {/* </div> */}
         
 <section
-className="payment"
+className="payment1"
 >
             <form
             >
-                <label>Amount Paid:</label>
+                <label>Cash Paid:</label>
                 <input
-                className="cash-amount"
-              
+                className="cash-amount1"
                 value={state.paidAmount}
                 onChange={(e)=> dispatch({type: 'difference', payload: e.target.value})}
                 />
@@ -364,15 +363,16 @@ className="payment"
             // }}
             >
             <form>
-                <label>Amount Paid:</label>
+                <label>Cash Paid:</label>
                 <input
                 className="cash-amount"
                 value={state.paidAmount}
-                onChange={(e)=> dispatch({type: 'paidAmount', payload: e.target.value})}
+                onChange={(e)=> dispatch({type: 'difference', payload: e.target.value})}
                 />
             </form>
 
-           <h2>Balance: ₦{parseFloat(state.balance).toFixed(2)}</h2>
+           <h2
+           >Balance: ₦{parseFloat(state.balance).toFixed(2)}</h2>
        
            </section>
             

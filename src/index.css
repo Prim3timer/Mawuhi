@@ -377,14 +377,16 @@ form {
   }
   #field > *:nth-child(1){
     flex: 1 1 20%;
+    /* background-color: red; */
   }
   #field > *:nth-child(2){
     flex: 1 1 50%;
   }
   #field > *:nth-child(3){
-    flex: 1 1 30%;
+    flex: 0 1 25%;
   margin: auto;
     max-width:50%;
+
   }
   #field > *:nth-child(4){
     flex: 0 1 10%;
@@ -392,7 +394,6 @@ form {
   text-align: center;
   justify-content: center;
     /* max-width: 30%; */
-    /* background-color: red; */
   }
   #field > *:nth-child(5){
     display: block;
@@ -455,13 +456,11 @@ form {
     border-left: 1px solid brown; */
 }
 
-.cash-amount {
-    margin: 0 0 1rem 0
+.cash-amount1 {
+    /* margin: 0 0 1rem 0; */
+  width: 100%;
 }
-.payment {
-  /* display: flex; */
-  /* background-color: green; */
-}
+
 
 .payment {
   display: flex;
@@ -506,9 +505,15 @@ form {
 
 .cash-amount {
   width: 50%;
+  /* justify-content: flex-start; */
 }
 .payment {
-  column-gap: 2px;
+  column-gap: 5%;
+}
+
+.cash-amount {
+  width: 60%;
+  /* background-color: red; */
 }
 
 }
