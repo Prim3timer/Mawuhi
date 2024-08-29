@@ -347,7 +347,8 @@ const handlePay = (e) => {
             <h2
                 id="grand-total-two"
            style={{display: `${state.getAllTotals ? 'none' : 'block' }`,
-        margin: ' 0 0 1rem 2rem' 
+        textAlign: 'center',
+        margin: '1rem 0'
         }}
 
         //    >Grand Total: N{parseFloat(state.total).toFixed(2)}</h2>
