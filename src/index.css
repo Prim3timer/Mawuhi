@@ -409,7 +409,8 @@ form {
     margin: 0 0 1rem 0;
     /* height: 3rem; */
     /* background-color: green; */
-    width: 4rem;
+    font-size: 20px;
+    /* width: 3rem; */
     
   }
   #trans-item-cont {
@@ -545,8 +546,10 @@ form {
 .cash-amount2 {
   /* background-color: red;  */
 width: 60%;
+}
 
-
-
+#field > :nth-child(5){
+  flex: 0 0 15%;
+  /* font-size: 20px; */
 }
 }
