@@ -59,7 +59,7 @@ return (
     <Route path="inventory" element={<Inventory/>}/>
        <Route path="edit" element={<Edit/>}/>
        <Route path="create-item" element={<CreateItem/>}/>
-
+       <Route path="sales" element={<Sales/>}/>
          </Route>
       
        {/* <Route element={<RequireAuth allowedRoles={[1984, 5150]}/>}>
@@ -67,7 +67,7 @@ return (
  </Route> */}
      
        <Route element={<RequireAuth allowedRoles={[5150]}/>}>
- <Route path="sales" element={<Sales/>}/>
+
      <Route path="admin" element={<Admin/>}/>
          </Route>
         
