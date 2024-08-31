@@ -29,7 +29,7 @@ const Home = ()=> {
    
         <Link 
     
-        to="/transaction">transaction</Link>
+        to="/transaction">transactions</Link>
        <br/>
         <Link
        
