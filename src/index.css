@@ -438,7 +438,7 @@ form {
 
   #trans-item > :nth-child(1) {
     /* background-color: red; */
-    flex:  1 1 20%
+    flex:  0 1 10%
   }
 
   
