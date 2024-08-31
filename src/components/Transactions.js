@@ -380,8 +380,8 @@ const handlePay = (e) => {
             }}
             >
            <h2
-           >Balance: ₦</h2>
-           <h2>{parseFloat(state.balance).toFixed(2)}</h2> 
+           >Balance: </h2>
+           <h2>₦{parseFloat(state.balance).toFixed(2)}</h2> 
            </seciton>
            </section>
             
