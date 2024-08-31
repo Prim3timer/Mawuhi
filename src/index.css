@@ -533,7 +533,7 @@ form {
   column-gap: 20%;
 }
 .payment1 > :nth-child(2){
-  width: 70%;
+  width: 100%;
   /* background-color: red; */
 }
 
