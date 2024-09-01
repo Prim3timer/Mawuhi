@@ -387,23 +387,28 @@ const handlePay = (e) => {
             
             <section
             id="trans-verify-section"
-            style={{
-                // margin: '0 auto',
-                display: 'flex',
-                flexDirection: 'row',
-                columnGap: '2rem',
-                alignItems: 'center',
-                justifyContent: 'center',
-                //   backgroundColor: 'teal',
-                //   width: '115vw'
-            }}
+           
             >
                 {state.cancel ? <div
-              
-                ><h2
+               style={{
+                // margin: '0 auto',
+                // display: 'flex',
+                // columnGap: '2rem',
+                // alignItems: 'center',
+                // justifyContent: 'center',
+                margin: '1rem auto',
+                padding: '1rem auto',
+                //   backgroundColor: '#DBBFDB',
+                  borderRadius: '5px',
+                  width: '98vw'
+            }}
+                ><h3
                 id="verify-header"
+                style={{
+                    margin: '.5rem'
+                }}
                 >Are you sure you want to cancel
-                    the transaction?</h2>
+                    the transaction?</h3>
                     <article
                     style={{
                         display: 'flex',
