@@ -44,36 +44,43 @@ const Transactions = ()=> {
     
     const handleAdd = (e)=> {
         e.preventDefault()
-        
-        if (inputRef.current.value){
-            dispatch({type: 'errMsg', payload: ''})
-            if (state.success === false) state.success = true
-            else state.success = false
-            console.log(inputRef.current.value)
-            const currentItem = state.getNames && state.getNames.find((name)=> `${name.name} ${name.unitMeasure.split(' ')[1]}` === inputRef.current.value)
-            currentItem.total = currentItem.price
-            console.log(currentItem)
-            dispatch({type: 'name', payload: inputRef.current.value})
-            const acutalItem = {...currentItem, qty: 1}
-            const match = state.transArray.find((item) => item.name === acutalItem.name)
-            if(!match){
+
+        try {
+            
+            if (inputRef.current.value){
+                dispatch({type: 'errMsg', payload: ''})
+                if (state.success === false) state.success = true
+                else state.success = false
+                console.log(inputRef.current.value)
+                const currentItem = state.getNames && state.getNames.find((name)=> `${name.name} ${name.unitMeasure.split(' ')[1]}` === inputRef.current.value)
+                if (!currentItem) dispatch({type: 'errMsg', payload: 'item not in list'})
+                currentItem.total = currentItem.price
+                console.log(currentItem)
+                dispatch({type: 'name', payload: inputRef.current.value})
+                const acutalItem = {...currentItem, qty: 1}
+                const match = state.transArray.find((item) => item.name === acutalItem.name)
+                if(!match){
+                    
+                    state.transArray.push(acutalItem)
+                    state.transArray.reverse()
+                    
+                }else if (match) {
+                    
+                    dispatch({type: 'errMsg', payload: 'item already in list'})
+                }
                 
-                state.transArray.push(acutalItem)
-                state.transArray.reverse()
-                
-            }else if (match) {
-                
-                dispatch({type: 'errMsg', payload: 'item already in list'})
+                console.log(state.transArray)
+                // console.log(state.getNames)
                 inputRef.current.value = ''
+            } else {
+                dispatch({type: 'errMsg', payload: 'Please select an item'})
             }
             
-            console.log(state.transArray)
-            // console.log(state.getNames)
-            inputRef.current.value = ''
-        } else {
-            dispatch({type: 'errMsg', payload: 'Please select an item'})
+        } catch (error) {
+            console.log(error.message)
         }
-       
+        inputRef.current.value = ''
+        
     }
     
     
@@ -100,51 +107,62 @@ const Transactions = ()=> {
     }, [state.transArray, state.success])
     
     const doneSales = async()=> {
-        const {transArray, total} = state
-        
-        
-        // console.log(transArray)
-     
-        const transItems = {
-            goods: transArray,
-            grandTotal: total,
-            date
+        try {
             
-        }
-        const response = await axios.post('/transactions', transItems)
-        const response2 = await axios.get('/items')
-        console.log(response2)
-        if (response){
-            // so i can effect change in color of the errMsg
-            dispatch({type: 'qty', payload: response})
-            dispatch({type: 'clear'})
-            dispatch({type: 'transArray', payload: []})
+            const {transArray, total} = state
             
-        }
-
-    transItems.goods &&  transItems.goods.map((good)=> {
-        const invs = response2.data.items.map(async(inv)=> {
-            console.log(inv.name)
-            console.log(good.name)
-            if (inv.name === good.name){
-                const goodObj = {
-                    name: inv.name,
-                    qty: inv.qty - good.qty,
-                    // date
+            
+            // console.log(transArray)
+            if (state.transArray.length){
+                const transItems = {
+                    goods: transArray,
+                    grandTotal: total,
+                    date
+                    
                 }
-                await axios.put(`items/dynam`, goodObj)
-            }
-        })
+                const response = await axios.post('/transactions', transItems)
+                const response2 = await axios.get('/items')
+                console.log(response2)
+                if (response){
+                    // so i can effect change in color of the errMsg
+                    dispatch({type: 'qty', payload: response})
+                    dispatch({type: 'clear'})
+                    dispatch({type: 'transArray', payload: []})
+                    
+                }
         
-    })
-    dispatch({type: 'qtyArray', payload: []})
-    dispatch({type: 'errMsg', payload: 'Transactons Complete'})
-    setTimeout(()=> {
-        dispatch({type: 'errMsg', payload: ''})
-
-    }, 1000)
-    state.paidAmount = 0
-    state.balance = 0
+            transItems.goods.map((good)=> {
+                const invs = response2.data.items.map(async(inv)=> {
+                    console.log(inv.name)
+                    console.log(good.name)
+                    if (inv.name === good.name){
+                        const goodObj = {
+                            name: inv.name,
+                            qty: inv.qty - good.qty,
+                            // date
+                        }
+                        await axios.put(`items/dynam`, goodObj)
+                    }
+                })
+                
+            })
+            
+            dispatch({type: 'errMsg', payload: 'Transactons Complete'})
+            dispatch({type: 'qtyArray', payload: []})
+            setTimeout(()=> {
+                dispatch({type: 'errMsg', payload: ''})
+                
+            }, 1000)
+        } 
+        
+        else throw Error('no item purchased')
+        console.log(state.transArray)
+         
+        state.paidAmount = 0
+        state.balance = 0
+        } catch (error) {
+            dispatch({type: 'errMsg', payload: 'no item purchased'})
+        }
        
     }
     const assertain = ()=> {
@@ -160,15 +178,6 @@ const Transactions = ()=> {
         dispatch({type: 'cancel', payload: false})
     }
     
-
-const handlePay = (e) => {
-    e.preventDefault()
-    // console.log(state.paidAmount)
-    // console.log(state.total)
-    const bal = state.paidAmount - state.total
-    dispatch({type: 'balance', payload: bal})
-    console.log(bal)
-}
    
     return (
         <div className="trans-cont"
@@ -255,8 +264,9 @@ const handlePay = (e) => {
           >Done</button>
 
             </fieldset>
+            
             <h3 
-            style={{color: `${state.qty ? 'green' : 'red'}`,
+            style={{color: `${state.transArray.length   ? 'green' : 'red'}`,
                 // position: 'absolute'
                 textAlign: 'center'
                 // width: '6rem'
@@ -318,7 +328,7 @@ const handlePay = (e) => {
                    </article>
                     <article>
                     <p>price/{item.unitMeasure.split(' ')[1].slice(1, -1)}:</p>
-                    <p>N{item.price}</p>
+                    <p>₦{item.price}</p>
 
                     </article>
                     <article>
