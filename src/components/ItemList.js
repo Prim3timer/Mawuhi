@@ -57,7 +57,8 @@ const ItemList = ()=> {
         }
         
         const handleRemove = async (id)=> {
-            // e.preventDefault()     
+            // e.preventDefault()   
+            dispatch({type: 'cancel', payload: true})  
             removeInventory(id)
                 await axios.delete(`/items/delete/${id}`)
             const newGraw = state.items && state.items.filter((item)=> item._id !== id)
@@ -146,6 +147,52 @@ const ItemList = ()=> {
            <td className="items"
            onClick={(e)=>handleRemove(item._id, e)}
            >
+                {state.cancel ? <div
+               style={{
+                // margin: '0 auto',
+                // display: 'flex',
+                // columnGap: '2rem',
+                // alignItems: 'center',
+                // justifyContent: 'center',
+                margin: '1rem auto',
+                padding: '1rem auto',
+                //   backgroundColor: '#DBBFDB',
+                  borderRadius: '5px',
+                  width: '98vw'
+            }}
+                ><h3
+                id="verify-header"
+                style={{
+                    margin: '.5rem'
+                }}
+                >Are you sure you want to delete this item?
+                   </h3>
+                    <article
+                    style={{
+                        display: 'flex',
+                        flexDirection: 'row',
+                        columnGap: '4vw',
+                        justifyContent: 'center',
+                    }}
+                    ><button
+                    
+                    >No</button><button
+                 
+                    style={{backgroundColor: 'red',
+                        borderColor: 'red'
+                    }}
+                    >Yes</button></article></div> : <div
+                    style={{
+                        display: 'flex',
+                        flexDirection: 'row',
+                        columnGap: '4vw',
+                        justifyContent: 'center',
+                        margin: '1rem 0'
+                    }}
+                    >
+                       
+                        </div>}
+          
             {/* remove */}
            <FaTrashAlt role='button'
            
