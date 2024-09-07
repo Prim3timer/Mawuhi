@@ -18,23 +18,28 @@ const Transactions = ()=> {
     const qtyRef = useRef()
     const getItems = async ()=> {
         dispatch({type: 'clear'})
-        const response = await axios.get('/items')
-      
-        dispatch({type: 'getNames', payload: response.data.items})    
         try {
+            dispatch({type: 'errMsg', payload: 'loading...'})
+            const response = await axios.get('/items')
+            dispatch({type: 'errMsg', payload: ''})
+          
+            dispatch({type: 'getNames', payload: response.data.items})    
             if (state.getNames){
                 
                 dispatch({type: 'user', payload: state.getNames && state.getNames[0].name})
                 console.log(state.user)
                 console.log(response.data)
                 console.log(state.getNames)
-            }
-            
+                
+            } 
         } catch (error) {
             console.log(error)
         }
         console.log(state.getNames && state.getNames)
     }
+
+
+    
     
     
     useEffect(()=> {
@@ -256,7 +261,7 @@ const Transactions = ()=> {
            <article
            >
 
-           <h3>Balance: </h3><h3>₦{parseFloat(state.balance).toFixed(2)}</h3>
+           <h3>Balance: </h3><h3>₦{state.paidAmount > state.total  ? parseFloat(state.balance).toFixed(2) : 0}</h3>
            </article>
            <button
           id="donezo"
@@ -391,7 +396,7 @@ const Transactions = ()=> {
             >
            <h2
            >Balance: </h2>
-           <h2>₦{parseFloat(state.balance).toFixed(2)}</h2> 
+           <h2>₦{state.paidAmount > state.total  ? parseFloat(state.balance).toFixed(2) : 0}</h2> 
            </seciton>
            </section>
             
