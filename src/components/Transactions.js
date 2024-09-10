@@ -143,8 +143,7 @@ const Transactions = ()=> {
                     if (inv.name === good.name){
                         const goodObj = {
                             name: inv.name,
-                            qty: inv.qty - good.qty,
-                            // date
+                            qty: inv.qty - good.qty
                         }
                         await axios.put(`items/dynam`, goodObj)
                     }
@@ -406,14 +405,9 @@ const Transactions = ()=> {
             >
                 {state.cancel ? <div
                style={{
-                // margin: '0 auto',
-                // display: 'flex',
-                // columnGap: '2rem',
-                // alignItems: 'center',
-                // justifyContent: 'center',
                 margin: '1rem auto',
                 padding: '1rem auto',
-                //   backgroundColor: '#DBBFDB',
+                  backgroundColor: '#DBBFDB',
                   borderRadius: '5px',
                   width: '98vw'
             }}
