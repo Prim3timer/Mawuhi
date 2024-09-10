@@ -94,7 +94,12 @@ const ItemList = ()=> {
 
 
     const remain = ()=> {
-        dispatch({type: 'cancel', payload: false})
+        // this condition statement is to enable the removal of the confirm window once any part of the 
+        // page is touched.
+        if (state.cancel){
+
+            dispatch({type: 'cancel', payload: false})
+        }
     }
     
 
@@ -105,6 +110,7 @@ const ItemList = ()=> {
       
               <div className="item-list"
               style={{}}
+              onClick={remain}
               >  
               <article id="form-cont">
            <form  className="search-form" 
