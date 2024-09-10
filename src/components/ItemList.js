@@ -1,6 +1,7 @@
 import reducer from "../reducer"
 import initialState from "../store"
 import axios from "../app/api/axios"
+import Cancel from "./Cancel"
 import { useEffect, useReducer, useState, useRef, createContext     } from "react"
 
 import { FaTrashAlt } from "react-icons/fa";
@@ -56,12 +57,11 @@ const ItemList = ()=> {
             
         }
         
-        const handleRemove = async (id)=> {
-            // e.preventDefault()     
-            removeInventory(id)
-                await axios.delete(`/items/delete/${id}`)
-            const newGraw = state.items && state.items.filter((item)=> item._id !== id)
+        const handleRemove = async ()=> {
+                await axios.delete(`/items/delete/${state.id}`)
+            const newGraw = state.items && state.items.filter((item)=> item._id !== state.id)
             dispatch({type: 'items', payload: newGraw})
+            dispatch({type: 'cancel', payload: false})
         }
 
         const removeInventory = async (id)=> {
@@ -84,13 +84,28 @@ const ItemList = ()=> {
             getTrans()
             
     }, [state.search])
-    console.log(state)
+    
+    const assertain = (id) => {
+        dispatch({type: 'cancel', payload: true})
+        dispatch({type: 'id', payload: id})
+        const getItem = state.items && state.items.find((item)=> item._id === id)
+        dispatch({type: 'inItem', payload: getItem})
+    }
+
+
+    const remain = ()=> {
+        dispatch({type: 'cancel', payload: false})
+    }
+    
+
     const watcher = state.isEdit ? 
 
   
-        <EditItem mark={itemRef.current.value}/>: (
+        <EditItem mark={itemRef.current.value}/> : (
       
-              <div className="item-list">  
+              <div className="item-list"
+              style={{}}
+              >  
               <article id="form-cont">
            <form  className="search-form" 
            //   onSubmit={(e)=> e.preventDefault()}
@@ -110,9 +125,13 @@ const ItemList = ()=> {
            <h2 id="invent-header">Items</h2>
        </article>
        <table className="inventory"
-      
+      style={{
+    //   position: 'absolute'
+      }}
       >
-       <tbody>
+       
+       <tbody
+       >
        <tr>
            <th>NAME</th>
            <th>PRICE (N)</th>
@@ -121,9 +140,8 @@ const ItemList = ()=> {
            <th colSpan={2}>ACTIONS</th>
            {/* <th>action</th> */}
            </tr>
-    
-      {state.items && state.items.map((item, index)=> {
-      return (
+          {   state.items &&    state.items.map((item, index)=> {
+        return (
          <tr className="sales-items-cont"
          key={uuid()}
        style={{backgroundColor: index % 2 === 0 ?
@@ -144,7 +162,8 @@ const ItemList = ()=> {
            style={{color: 'blue'}}
            href={'/edit-item'}>edit</a></td>
            <td className="items"
-           onClick={(e)=>handleRemove(item._id, e)}
+       
+           onClick={(e)=> assertain(item._id, e)}
            >
             {/* remove */}
            <FaTrashAlt role='button'
@@ -155,9 +174,46 @@ const ItemList = ()=> {
        </tr>
       )
       })}
+
          </tbody>
       </table>
-      {/* <Edit mark={invRef}/>  */}
+ <div
+            style={{
+                display: `${state.cancel ? 'block' : 'none'}`,
+                position: 'absolute',
+            textAlign: 'center',
+            top: '35%',
+            left: '15%',
+            width: '70%',
+             padding: '1rem',
+               backgroundColor: '#DBBFDB',
+               borderRadius: '5px',
+               opacity: '.85'
+         }}
+         >
+             <h3
+          id="verify-header"
+          style={{
+              margin: '.5rem auto',
+            //   display: 'flex',
+          }}
+          >Are you sure you want to delete "{state.inItem.name}" ?</h3>
+                 <article
+                 style={{
+                     display: 'flex',
+                    //  flexDirection: 'row',
+                     columnGap: '4vw',
+                     justifyContent: 'center',
+                 }}
+                 >
+                    <button
+                 onClick={remain}
+                 >No</button><button
+                  onClick={handleRemove}
+                 style={{backgroundColor: 'red',
+                     borderColor: 'red'
+                 }}
+                 >Yes</button></article></div> 
       </div>
       
     //   </div>

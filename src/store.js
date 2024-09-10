@@ -42,7 +42,8 @@ const initialState = {
    qtyArray: [],
    checkout: false,
    paidAmount: 0,
-   balance: 0
+   balance: 0,
+   id: ''
   
 }
 

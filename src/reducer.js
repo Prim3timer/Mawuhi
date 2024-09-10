@@ -154,6 +154,8 @@ const reducer = (state, action)=> {
             state.paidAmount = action.payload
           const newBalance = state.paidAmount - state.total
           return {...state, balance: newBalance}
+          case 'id':
+            return {...state, id: action.payload}
  
               default:
                 throw new Error()
