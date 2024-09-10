@@ -133,6 +133,7 @@ const ItemList = ()=> {
        <table className="inventory"
       style={{
     //   position: 'absolute'
+    width: '95vw'
       }}
       >
        
