@@ -20,7 +20,9 @@ const ItemList = ()=> {
     const [state, dispatch] = useReducer(reducer, initialState)
     // const [mark, setMark] = useState('')  
 
-
+    const measurements = ['Kilograms (kg)', 'Pieces (pcs)', 'Plates (Plts)', 'Dozen (dzn)', 'Bottles (Btl)', 
+        'Pounds (lbs)', 'Litres (L)', 'Sachet (sct)'
+       ]
     const itemRef = useRef()
     const getTrans = async ()=> {
 
@@ -45,7 +47,39 @@ const ItemList = ()=> {
 
         
        
-       
+        const handleSubmit = async (e)=> {
+            const {name, price, unitMeasure, piecesUnit} = state
+            e.preventDefault()
+            try {
+                const newItem = {
+                    name:  state.afa ? state.afa :  response.data.name,
+                    price: price && price,
+                    unitMeasure: unitMeasure && unitMeasure,
+                    piecesUnit: piecesUnit,
+                    
+                }
+         
+                const response = await axios.patch(`/items/${'jack'}`, newItem)  
+                if (response){  
+        
+                    dispatch({type: 'isMatched', payload: `item, ${newItem.name} Edited` })
+                    setTimeout(()=> {
+                        dispatch({type: 'isMatched', payload: '' })
+                    }, 3000)
+                }
+            }  
+           catch (error) {
+                dispatch({type: 'errMsg', payload: `${error.message}`})
+                setTimeout(()=> {
+                    dispatch({type: 'errMsg', payload: ``})
+                    
+                }, 3000)
+            }
+            finally {
+                    dispatch({type: 'isEdit', payload: false})    
+            }
+    
+        }
 
 
 
@@ -53,6 +87,10 @@ const ItemList = ()=> {
             e.preventDefault()     
             dispatch({type: 'isEdit', payload: true})    
             itemRef.current.value = id
+            const currentItem =  state.items.find((item) => item._id === id)
+            dispatch({type: 'afa', payload: currentItem.name})
+            dispatch({type: 'price', payload: currentItem.price})
+            dispatch({type: 'unitMeasure', payload: currentItem.unitMeasure})
             console.log(itemRef.current.value)
             
         }
@@ -82,6 +120,7 @@ const ItemList = ()=> {
         }
         useEffect(()=> {
             getTrans()
+           
             
     }, [state.search])
     
@@ -100,22 +139,112 @@ const ItemList = ()=> {
 
             dispatch({type: 'cancel', payload: false})
         }
+        // if (state.isEdit){
+
+        //     dispatch({type: 'isEdit', payload: false})
+        // }
     }
     
 
-    const watcher = state.isEdit ? 
-
-  
-        <EditItem mark={itemRef.current.value}/> : (
+  return  (
       
               <div className="item-list"
-              style={{}}
+          
               onClick={remain}
               >  
               <article id="form-cont">
            <form  className="search-form" 
            //   onSubmit={(e)=> e.preventDefault()}
            >
+
+
+<div
+ className="edit-item" 
+style={{display: state.isEdit ? 'block' : 'none',
+    backgroundColor: '#DBBFDB',
+    padding: '0 .5em',
+    position: 'absolute',
+    top: '25%',
+    width: '80%',
+    backgroundColor: '#DBBFDB',
+    borderRadius: '5px',
+    opacity: '.85',
+    zIndex: 5
+}}
+>
+            <form onSubmit={(e)=> e.preventDefault()}
+                id="update-form"
+                >
+                    <h2>Edit Item</h2>
+                <label htmlFor="name">name:</label>
+                <input
+                type="text"
+                placeholder="item name only"
+                id="name"
+                value={state.afa} 
+                onChange={(e)=> dispatch({type: 'afa', payload: e.target.value})}
+                />
+
+                
+<h3 id="ulu"><label>unitMeasure:</label><br/><input type="text"
+        // id="trans-search"
+        // placeholder="pick measurement"
+        // ref={itemRef}
+        style={{
+            width: '100%'
+        }}
+        list="measure"
+        onChange={(e)=> dispatch({type: 'unitMeasure', payload: e.target.value})}
+        value={state.unitMeasure}
+        /></h3>
+        <datalist id="measure"
+        style={{backgroundColor: 'blue',
+            // fontSize: '2.5rem'
+
+        }}
+        >
+            {state.items && measurements.map((measurement)=> {
+                return (
+                    
+                    <option 
+                    value={measurement}
+                    style={{
+                            position: 'relative',
+                            color: 'brown',
+                        }}
+                        >
+                            {measurement}
+                        </option>)
+                    })}
+            </datalist>
+
+
+                <label>price:</label>
+                <input
+                type="text"
+                required
+                value={state.price}
+                onChange={(e)=> dispatch({type: 'price', payload: e.target.value})}
+                />
+
+{/* <label>Pieces/Unit:</label>
+                <input
+                type="text"
+                placeholder="optional"
+                // required
+                value={state.piecesUnit}
+                onChange={(e)=> dispatch({type: 'piecesUnit', payload: e.target.value})}
+                />
+                <br/> */}
+               <button type="submit"
+               onClick={handleSubmit}    
+               className="pop">Update Item</button>
+                 <h2>{state.isMatched}</h2>
+            </form>
+        </div>
+
+
+            
        <input 
        id="invent-search"
        type="text"
@@ -226,7 +355,6 @@ const ItemList = ()=> {
     //   </div>
           )
     
-    return watcher
 }
 
 export default ItemList

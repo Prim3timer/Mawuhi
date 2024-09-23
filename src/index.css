@@ -111,7 +111,8 @@ font-family: 'Nunito', sans-serif;
 font-size: 1.5rem;
 /* padding: 0.25rem; */
 border-radius: 0.5rem;
-width: 20rem;
+width: 70%;
+
 
 } 
 
@@ -439,7 +440,7 @@ form {
 
   #trans-item > :nth-child(1) {
     /* background-color: red; */
-    flex:  0 1 10%
+    flex:  0 1 35%
   }
 
   
