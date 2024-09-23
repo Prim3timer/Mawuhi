@@ -330,12 +330,8 @@ const Transactions = ()=> {
  {/* </section>  */}
  
                    </article>
-                    <article>
-                    <p>price/{item.unitMeasure.split(' ')[1].slice(1, -1)}:</p>
-                    <p>₦{item.price}</p>
 
-                    </article>
-                    <article>
+                   <article>
                     <h4
                     id="grand-total"
                     >sub total: </h4>
@@ -345,6 +341,13 @@ const Transactions = ()=> {
                     >₦{numberWithCommas(parseFloat(item.total).toFixed(2))}</h4>
 
                     </article>
+
+                    <article>
+                    <p>price/{item.unitMeasure.split(' ')[1].slice(1, -1)}:</p>
+                    <p>₦{item.price}</p>
+
+                    </article>
+                   
                     <h2
                         onClick={()=> removeItem(item._id)}
                     >
