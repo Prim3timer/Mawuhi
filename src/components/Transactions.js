@@ -202,7 +202,9 @@ const Transactions = ()=> {
                 > */}
                 <h3
                 id="grand-total-one"
-                // style={{width: '5rem'}}
+                style={{
+                    color: 'green'
+                }}
                 >Grand Total: ₦{numberWithCommas(parseFloat(state.total).toFixed(2))}</h3>
         <form
         
@@ -360,6 +362,9 @@ const Transactions = ()=> {
             </div>
             <article 
             id="grand-two-cont"
+            style={{
+                color: 'green'
+            }}
             >
             <h2
                 id="grand-total-two"
