@@ -112,11 +112,17 @@ font-size: 1.5rem;
 /* padding: 0.25rem; */
 border-radius: 0.5rem;
 width: 70%;
-
-
 } 
 
+.edit-item {
+  height: 75%;
+  top: 15%;
+  width: 70%;
+}
 
+.edit-item input {
+  width: 85%;
+}
 .pop {
   margin: 1rem auto;
   color: white;
@@ -474,14 +480,21 @@ form {
   column-gap: 4rem;
   align-items: center;
 }
-/* .payment1 {
-  display: flex;
-  column-gap: 4rem;
-  align-items: center;
-} */
+
+
 
 
 @media screen and (max-width: 585px) {
+
+  .edit-item {
+    height: 40%;
+    top: 35%;
+    width: 80%;
+  }
+
+  .edit-item input {
+    width: 85%;
+  }
   #sales-total {
     /* width: 80vw; */
     display: flex;
@@ -555,4 +568,5 @@ form {
   font-size: 15px;
   height: 50px;
 }
+
 }

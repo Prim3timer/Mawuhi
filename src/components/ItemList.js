@@ -59,7 +59,7 @@ const ItemList = ()=> {
                     
                 }
          
-                const response = await axios.patch(`/items/${'jack'}`, newItem)  
+                const response = await axios.patch(`/items/${name}`, newItem)  
                 if (response){  
         
                     dispatch({type: 'isMatched', payload: `item, ${newItem.name} Edited` })
@@ -149,7 +149,10 @@ const ItemList = ()=> {
   return  (
       
               <div className="item-list"
-          
+          style={{
+            position: 'relative',
+            zIndex: 1
+          }}
               onClick={remain}
               >  
               <article id="form-cont">
@@ -161,21 +164,18 @@ const ItemList = ()=> {
 <div
  className="edit-item" 
 style={{display: state.isEdit ? 'block' : 'none',
-    backgroundColor: '#DBBFDB',
-    padding: '0 .5em',
+    backgroundColor: '#DBBFDB',  
+    padding: '1em 0',
     position: 'absolute',
-    top: '25%',
-    width: '80%',
-    backgroundColor: '#DBBFDB',
     borderRadius: '5px',
     opacity: '.85',
     zIndex: 5
 }}
 >
-            <form onSubmit={(e)=> e.preventDefault()}
+            <form onSubmit={handleSubmit}
                 id="update-form"
                 >
-                    <h2>Edit Item</h2>
+                    {/* <h2>Edit Item</h2> */}
                 <label htmlFor="name">name:</label>
                 <input
                 type="text"
@@ -186,22 +186,20 @@ style={{display: state.isEdit ? 'block' : 'none',
                 />
 
                 
-<h3 id="ulu"><label>unitMeasure:</label><br/><input type="text"
+<label
+htmlFor="unitMeasure"
+>unitMeasure:</label><input type="text"
         // id="trans-search"
         // placeholder="pick measurement"
         // ref={itemRef}
         style={{
-            width: '100%'
+            // width: '100%',
         }}
         list="measure"
         onChange={(e)=> dispatch({type: 'unitMeasure', payload: e.target.value})}
         value={state.unitMeasure}
-        /></h3>
+        />
         <datalist id="measure"
-        style={{backgroundColor: 'blue',
-            // fontSize: '2.5rem'
-
-        }}
         >
             {state.items && measurements.map((measurement)=> {
                 return (
@@ -236,7 +234,8 @@ style={{display: state.isEdit ? 'block' : 'none',
                 onChange={(e)=> dispatch({type: 'piecesUnit', payload: e.target.value})}
                 />
                 <br/> */}
-               <button type="submit"
+               <button
+                // type="submit"
                onClick={handleSubmit}    
                className="pop">Update Item</button>
                  <h2>{state.isMatched}</h2>
@@ -296,7 +295,8 @@ style={{display: state.isEdit ? 'block' : 'none',
                <a
                onClick={(e) => handleEdit(item._id, e)}
            style={{color: 'blue'}}
-           href={'/edit-item'}>edit</a></td>
+           href={'/edit-item'}
+           >edit</a></td>
            <td className="items"
        
            onClick={(e)=> assertain(item._id, e)}
