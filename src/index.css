@@ -115,7 +115,7 @@ width: 70%;
 } 
 
 .edit-item {
-  position: fixed;
+  position: absolute;
   height: 45%;
   top: 15%;
   width: 70%;
