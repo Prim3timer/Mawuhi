@@ -123,9 +123,10 @@ width: 70%;
 
 .edit-item input {
   width: 85%;
+  font-size: 1rem;
 }
 .pop {
-  margin: 1rem auto;
+  margin: .5rem auto;
   color: white;
   width: 10rem;
   font-size: 1rem;
@@ -489,7 +490,7 @@ form {
 @media screen and (max-width: 585px) {
 
   .edit-item {
-    height: 32%;
+    height: 35%;
     top: 35%;
     width: 80%;
   }

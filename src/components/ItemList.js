@@ -63,7 +63,7 @@ const ItemList = ()=> {
                     const graw = await axios.get('/items')
                     dispatch({type: 'items', payload: graw.data.items})
         
-                    dispatch({type: 'isMatched', payload: `item, ${newItem.name} Edited` })
+                    dispatch({type: 'isMatched', payload: `${newItem.name} Edited` })
                     setTimeout(()=> {
                         dispatch({type: 'isMatched', payload: '' })
                         dispatch({type: 'isEdit', payload: false})    
@@ -231,7 +231,7 @@ htmlFor="unitMeasure"
                 // type="submit"
                onClick={handleSubmit}    
                className="pop">Update Item</button>
-                 <h2>{state.isMatched}</h2>
+                 <h3>{state.isMatched}</h3>
             </form>
         </div>
 
