@@ -32,24 +32,24 @@ const ItemList = ()=> {
             if (graw.data.items.length > 0) {
                 dispatch({type: 'items', payload: graw.data.items})
                 console.log(state.items.data)
-
+                
                 const filterate = graw.data.items.filter((inner)=> inner.name.toLowerCase().includes(state.search.toLowerCase()))
                 dispatch({type: 'items', 
                     payload: filterate})
-            }
-    
-            
-            
-        } catch (error) {
+                }
+                
+                
+                
+            } catch (error) {
             console.log(error)
         }
-        }
+    }
 
         
-       
-        const handleSubmit = async (e)=> {
-            const {name, price, unitMeasure, piecesUnit} = state
-            e.preventDefault()
+    
+    const handleSubmit = async (e)=> {
+        e.preventDefault()
+        const {id, name, price, unitMeasure, piecesUnit} = state
             try {
                 const newItem = {
                     name:  state.afa ? state.afa :  response.data.name,
@@ -58,13 +58,15 @@ const ItemList = ()=> {
                     piecesUnit: piecesUnit,
                     
                 }
-         
-                const response = await axios.patch(`/items/${name}`, newItem)  
+                const response = await axios.patch(`/items/${id}`, newItem)  
                 if (response){  
+                    const graw = await axios.get('/items')
+                    dispatch({type: 'items', payload: graw.data.items})
         
                     dispatch({type: 'isMatched', payload: `item, ${newItem.name} Edited` })
                     setTimeout(()=> {
                         dispatch({type: 'isMatched', payload: '' })
+                        dispatch({type: 'isEdit', payload: false})    
                     }, 3000)
                 }
             }  
@@ -76,7 +78,6 @@ const ItemList = ()=> {
                 }, 3000)
             }
             finally {
-                    dispatch({type: 'isEdit', payload: false})    
             }
     
         }
@@ -86,6 +87,7 @@ const ItemList = ()=> {
         const handleEdit = async (id, e )=> {
             e.preventDefault()     
             dispatch({type: 'isEdit', payload: true})    
+            dispatch({type: 'id', payload: id})
             itemRef.current.value = id
             const currentItem =  state.items.find((item) => item._id === id)
             dispatch({type: 'afa', payload: currentItem.name})
@@ -150,8 +152,6 @@ const ItemList = ()=> {
       
               <div className="item-list"
           style={{
-            position: 'relative',
-            zIndex: 1
           }}
               onClick={remain}
               >  
@@ -166,13 +166,14 @@ const ItemList = ()=> {
 style={{display: state.isEdit ? 'block' : 'none',
     backgroundColor: '#DBBFDB',  
     padding: '1em 0',
-    position: 'absolute',
+    // position: 'absolute',
     borderRadius: '5px',
     opacity: '.85',
     zIndex: 5
 }}
 >
-            <form onSubmit={handleSubmit}
+            <form
+            //  onSubmit={handleSubmit}
                 id="update-form"
                 >
                     {/* <h2>Edit Item</h2> */}
@@ -225,15 +226,7 @@ htmlFor="unitMeasure"
                 onChange={(e)=> dispatch({type: 'price', payload: e.target.value})}
                 />
 
-{/* <label>Pieces/Unit:</label>
-                <input
-                type="text"
-                placeholder="optional"
-                // required
-                value={state.piecesUnit}
-                onChange={(e)=> dispatch({type: 'piecesUnit', payload: e.target.value})}
-                />
-                <br/> */}
+
                <button
                 // type="submit"
                onClick={handleSubmit}    

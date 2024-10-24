@@ -116,7 +116,7 @@ width: 70%;
 
 .edit-item {
   position: absolute;
-  height: 45%;
+  height: 70%;
   top: 15%;
   width: 70%;
 }
@@ -128,7 +128,8 @@ width: 70%;
   margin: 1rem auto;
   color: white;
   width: 10rem;
-  padding: .5rem;
+  font-size: 1rem;
+  /* padding: .5rem; */
   border-radius: 5px;
   border-color: dodgerblue;
   background-color: dodgerblue;
@@ -488,7 +489,7 @@ form {
 @media screen and (max-width: 585px) {
 
   .edit-item {
-    height: 40%;
+    height: 32%;
     top: 35%;
     width: 80%;
   }
