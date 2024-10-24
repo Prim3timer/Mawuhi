@@ -116,7 +116,7 @@ width: 70%;
 
 .edit-item {
   position: absolute;
-  height: 70%;
+  /* height: 60%; */
   top: 15%;
   width: 70%;
 }
@@ -490,7 +490,6 @@ form {
 @media screen and (max-width: 585px) {
 
   .edit-item {
-    height: 35%;
     top: 35%;
     width: 80%;
   }
