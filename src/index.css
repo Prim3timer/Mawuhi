@@ -111,16 +111,25 @@ font-family: 'Nunito', sans-serif;
 font-size: 1.5rem;
 /* padding: 0.25rem; */
 border-radius: 0.5rem;
-width: 20rem;
-
+width: 70%;
 } 
 
+.edit-item {
+  position: absolute;
+  height: 70%;
+  top: 15%;
+  width: 70%;
+}
 
+.edit-item input {
+  width: 85%;
+}
 .pop {
   margin: 1rem auto;
   color: white;
   width: 10rem;
-  padding: .5rem;
+  font-size: 1rem;
+  /* padding: .5rem; */
   border-radius: 5px;
   border-color: dodgerblue;
   background-color: dodgerblue;
@@ -473,14 +482,21 @@ form {
   column-gap: 4rem;
   align-items: center;
 }
-/* .payment1 {
-  display: flex;
-  column-gap: 4rem;
-  align-items: center;
-} */
+
+
 
 
 @media screen and (max-width: 585px) {
+
+  .edit-item {
+    height: 32%;
+    top: 35%;
+    width: 80%;
+  }
+
+  .edit-item input {
+    width: 85%;
+  }
   #sales-total {
     /* width: 80vw; */
     display: flex;
@@ -553,10 +569,5 @@ form {
   flex: 0 0 20%;
   font-size: 15px;
   height: 50px;
-}
-
-#trans-item > :nth-child(1) {
-  /* background-color: red; */
-  flex:  0 1 35%
 }
 }
