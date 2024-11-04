@@ -38,6 +38,13 @@ html {
   font-size: 16px;
 }
 
+.edit {
+  text-align: center;
+    width: 70%;
+    left: 15%;
+}
+
+
 .App {
   width: 100%;
   max-height: 100vh;
@@ -125,6 +132,8 @@ width: 70%;
   width: 85%;
   font-size: 1.5rem;
 }
+
+
 .pop {
   margin: .5rem auto;
   color: white;
@@ -484,10 +493,17 @@ form {
   align-items: center;
 }
 
-
+#update-button {
+  margin: .5rem;
+}
 
 
 @media screen and (max-width: 585px) {
+
+  .edit  {
+    left: 10%;
+    width: 80%;
+  }
 
   .edit-item {
     top: 35%;

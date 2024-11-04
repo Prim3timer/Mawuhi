@@ -16,14 +16,14 @@ const Inventory = ({mark, setMark})=> {
     const [state, dispatch] = useReducer(reducer, initialState)
     // const [mark, setMark] = useState('')  
 
-
     const invRef = useRef()
     const getTrans = async ()=> {
 
           try {
             
               const graw = await axios.get('/items')
-              console.log(graw.data.length)
+              dispatch({type: 'items', payload: graw})
+              console.log(graw.data.items)
               const filterate = graw.data.items.filter((inner)=> inner.name.toLowerCase().includes(state.search.toLowerCase()))
               dispatch({type: 'inventory', 
                   payload: filterate})
@@ -37,17 +37,101 @@ const Inventory = ({mark, setMark})=> {
             
     }, [state.search])
 
-    const handleEdit = async (id, e )=> {
-        e.preventDefault()     
-        dispatch({type: 'isEdit', payload: true})    
-        invRef.current.value = id
+
+     const showEdit = (id, e)=> {
+             dispatch({type: 'isEdit', payload: true})    
+             const currentItem =   state.items.data.items.find((item) => item._id === id)
+             dispatch({type: 'afa', payload: currentItem.name})
+             dispatch({type: 'ole', payload: currentItem.qty})
+            }
+
+
+        const handleEdit = async (e, id )=> {
+                e.preventDefault()     
+                invRef.current.value = id
+                const inventory = {
+                    id,
+                      name: state.afa ? state.afa : state.item.name,
+                    //   name: state.name,
+                      qty: state.ole,
+                    //   qty: state.qty,
+            
+                  }
+                    const response = await axios.patch(`/inventory/${id}`, inventory) 
+                    if (response){
+                        dispatch({type: 'success', payload: 'inventory edited'})
+                        setTimeout(()=> {
+                            dispatch({type: 'success', payload: ''})
+            
+                        }, 3000)
+                        console.log(response)
+                    }        
+            dispatch({type: 'isEdit', payload: false})    
+        
+        
+        
         console.log(invRef.current.value)
       
     }
- 
-    const watcher = state.isEdit ? 
+
+    const remainDelete = ()=> {
+        // this condition statement is to enable the removal of the confirm window once any part of the 
+        // page is touched.
+        if (state.isEdit){
+
+            dispatch({type: 'isEdit', payload: false})
+        }
+        // if (state.isEdit){
+
+        //     dispatch({type: 'isEdit', payload: false})
+        // }
+    }
+
+    // console.log(state.isEdit)
+    return (
+        <section
+        // onClick={remainDelete}
+        // style={{
+        //     textAlign: 'center'
+        // }}
+        >
+            <div
+            className="edit"
+    style={{display: state.isEdit ? 'block' : 'none',
+        backgroundColor: '#008000',
+        position: 'absolute',
+        top: '30%',
+        // left: '15%',
+        padding: '.5rem',
+        opacity: '.85', 
+    }}
+    >
+            <h2>Edit Inventory</h2>
+            <form onSubmit={(e)=> e.preventDefault()}
+                id="update-form"
+                >
+                <label htmlFor="name">name:</label>
+                 <input
+                type="text"
+                id="name"
+                value={state.afa}
+                // onChange={(e)=> dispatch({type: 'afa', payload: e.target.value})}
+                />
+                <label htmlFor="qty">quantity:</label>
+                <input
+                type="text" 
+                id="ole"
+                value={state.ole}
+                onChange={(e)=> dispatch({type: 'ole', payload: e.target.value})}
+                />
+                <button 
+                id="update-button"
+                onClick={handleEdit}
+                type="submit">Update</button>
+                <h2>{state.success}</h2>
+            </form>
+        </div> 
   
-  <Edit mark={invRef.current.value}/>: (
 
         <div className="inventory">  
         <article id="form-cont">
@@ -93,11 +177,11 @@ return (
      <td 
      // style={{backgroundColor: 'blue'}}
      // ref={achoRef}
-     onClick={(e) => handleEdit(inv._id, e)}
+    //  onClick={(e) => handleEdit(inv._id, e)}
      ref={invRef}
      className="sales-items">
          <a
-         onClick={(e) => handleEdit(inv._id, e)}
+         onClick={(e) => showEdit(inv._id, e)}
      style={{color: 'blue'}}
     //  href={'/edit'}
      >edit
@@ -110,9 +194,11 @@ return (
 </table>
 <h3>{state.errMsg}</h3>
 </div>
+</section>
+)
+ 
+    
 
-    )
-    return watcher
 }
 
 export default Inventory

@@ -67,7 +67,7 @@ const ItemList = ()=> {
                     setTimeout(()=> {
                         dispatch({type: 'isMatched', payload: '' })
                         dispatch({type: 'isEdit', payload: false})    
-                    }, 3000)
+                    }, 1000)
                 }
             }  
            catch (error) {
@@ -134,7 +134,7 @@ const ItemList = ()=> {
     }
 
 
-    const remain = ()=> {
+    const remainDelete = ()=> {
         // this condition statement is to enable the removal of the confirm window once any part of the 
         // page is touched.
         if (state.cancel){
@@ -147,13 +147,26 @@ const ItemList = ()=> {
         // }
     }
     
+    const remainEdit = () => {
+            if (state.isEdit) dispatch({type: 'isEdit', payload: false})
+
+    }
+    const bringEdit = () => {
+        dispatch({type: 'isEdit', payload: true})
+    }
+    const generalRemain = () => {
+        remainDelete()
+        remainEdit()
+
+    } 
+    
 
   return  (
       
               <div className="item-list"
           style={{
           }}
-              onClick={remain}
+              onClick={remainDelete}
               >  
               <article id="form-cont">
            <form  className="search-form" 
@@ -166,24 +179,28 @@ const ItemList = ()=> {
 style={{display: state.isEdit ? 'block' : 'none',
     backgroundColor: '#DBBFDB',  
     padding: '1em 0',
-    // position: 'absolute',
+    position: 'absolute',
     borderRadius: '5px',
     opacity: '.85',
     zIndex: 5
 }}
+// onClick={remainEdit
+// }
 >
             <form
             //  onSubmit={handleSubmit}
-                id="update-form"
-                >
+            id="update-form"
+            >
                     {/* <h2>Edit Item</h2> */}
                 <label htmlFor="name">name:</label>
                 <input
+                style={{zIndex: 5}}
                 type="text"
                 placeholder="item name only"
                 id="name"
                 value={state.afa} 
                 onChange={(e)=> dispatch({type: 'afa', payload: e.target.value})}
+                // onClick={bringEdit}
                 />
 
                 
@@ -336,7 +353,7 @@ htmlFor="unitMeasure"
                  }}
                  >
                     <button
-                 onClick={remain}
+                 onClick={remainDelete}
                  >No</button><button
                   onClick={handleRemove}
                  style={{backgroundColor: 'red',
