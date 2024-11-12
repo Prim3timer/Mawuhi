@@ -43,22 +43,26 @@ const Inventory = ({mark, setMark})=> {
              const currentItem =   state.items.data.items.find((item) => item._id === id)
              dispatch({type: 'afa', payload: currentItem.name})
              dispatch({type: 'ole', payload: currentItem.qty})
+             dispatch({type: 'id', payload: id})
+             console.log(state.id)
             }
 
 
-        const handleEdit = async (e, id )=> {
+        const handleEdit = async (e, name, qty )=> {
                 e.preventDefault()     
-                invRef.current.value = id
+              console.log(state.id)
                 const inventory = {
-                    id,
-                      name: state.afa ? state.afa : state.item.name,
+                    // id,
+                      name: state.afa ? state.afa : name,
                     //   name: state.name,
-                      qty: state.ole,
+                      qty: state.ole ? state.ole : qty,
                     //   qty: state.qty,
             
                   }
-                    const response = await axios.patch(`/inventory/${id}`, inventory) 
+                    const response = await axios.patch(`/items/inventory/${state.id}`, inventory) 
                     if (response){
+                        const graw = await axios.get('/items')
+                        dispatch({type: 'items', payload: graw})
                         dispatch({type: 'success', payload: 'inventory edited'})
                         setTimeout(()=> {
                             dispatch({type: 'success', payload: ''})
@@ -162,7 +166,7 @@ const Inventory = ({mark, setMark})=> {
      <th> last udated</th>
      <th>action</th>
      </tr>
-{state.inventory && state.inventory.map((inv, index)=> {
+{state.inventory && state.items.data.items.map((inv, index)=> {
     const invReg = inv.qty < 1 ? inv.qty = 0 : inv.qty
 return (
    <tr className="sales-items-cont"
