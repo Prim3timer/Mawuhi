@@ -102,7 +102,7 @@ const Inventory = ({mark, setMark})=> {
             <div
             className="edit"
     style={{display: state.isEdit ? 'block' : 'none',
-        backgroundColor: '#008000',
+        backgroundColor: '#3cb371',
         position: 'absolute',
         top: '30%',
         // left: '15%',
