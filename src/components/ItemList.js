@@ -281,7 +281,7 @@ htmlFor="unitMeasure"
        >
        <tr>
            <th>NAME</th>
-           <th>PRICE (N)</th>
+           <th>PRICE ($)</th>
            <th> UMT</th>
            {/* <th>P/U</th> */}
            <th colSpan={2}>ACTIONS</th>

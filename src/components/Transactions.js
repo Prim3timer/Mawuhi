@@ -205,7 +205,7 @@ const Transactions = ()=> {
                 style={{
                     color: 'green'
                 }}
-                >Grand Total: ₦{numberWithCommas(parseFloat(state.total).toFixed(2))}</h3>
+                >Grand Total: ${numberWithCommas(parseFloat(state.total).toFixed(2))}</h3>
         <form
         
         >
@@ -262,7 +262,8 @@ const Transactions = ()=> {
            <article
            >
 
-           <h3>Balance: </h3><h3>₦{state.paidAmount > state.total  ? parseFloat(state.balance).toFixed(2) : 0}</h3>
+           <h3>Balance: </h3><h3>${state.paidAmount > state.total  ? parseFloat(state.balance).toFixed(2) : 0}</h3>
+           {/* ₦ */}
            </article>
            <button
           id="donezo"
@@ -340,7 +341,7 @@ const Transactions = ()=> {
                     <h4 
                     style={{display: `${state.getAllTotals ? 'none' : 'block' }`}}
                     // >N{parseFloat(item.total).toFixed(2)}</h3>
-                    >₦{numberWithCommas(parseFloat(item.total).toFixed(2))}</h4>
+                    >${numberWithCommas(parseFloat(item.total).toFixed(2))}</h4>
 
                     </article>
 
@@ -374,7 +375,7 @@ const Transactions = ()=> {
         }}
 
         //    >Grand Total: N{parseFloat(state.total).toFixed(2)}</h2>
-           >Grand Total: ₦{numberWithCommas(parseFloat(state.total).toFixed(2))}</h2>
+           >Grand Total: ${numberWithCommas(parseFloat(state.total).toFixed(2))}</h2>
             </article >
 
             <section
@@ -403,7 +404,7 @@ const Transactions = ()=> {
             >
            <h2
            >Balance: </h2>
-           <h2>₦{state.paidAmount > state.total  ? parseFloat(state.balance).toFixed(2) : 0}</h2> 
+           <h2>${state.paidAmount > state.total  ? parseFloat(state.balance).toFixed(2) : 0}</h2> 
            </seciton>
            </section>
             
