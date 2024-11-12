@@ -21,7 +21,7 @@ const ItemList = ()=> {
     // const [mark, setMark] = useState('')  
 
     const measurements = ['Kilograms (kg)', 'Pieces (pcs)', 'Plates (Plts)', 'Dozen (dzn)', 'Bottles (Btl)', 
-        'Pounds (lbs)', 'Litres (L)', 'Sachet (sct)'
+        'Pounds (lbs)', 'Litres (L)', 'Sachet (sct)', 'Ounces (Oz)', 'grams (g)'
        ]
     const itemRef = useRef()
     const getTrans = async ()=> {
