@@ -110,18 +110,23 @@ const Inventory = ({mark, setMark})=> {
         opacity: '.85', 
     }}
     >
-            <h2>Edit Inventory</h2>
+            {/* <h2>Edit Inventory</h2> */}
             <form onSubmit={(e)=> e.preventDefault()}
                 id="update-form"
                 >
+                    <h3>
+
                 <label htmlFor="name">name:</label>
+                    </h3>
                  <input
                 type="text"
                 id="name"
                 value={state.afa}
                 // onChange={(e)=> dispatch({type: 'afa', payload: e.target.value})}
                 />
+                <h3>
                 <label htmlFor="qty">quantity:</label>
+                </h3>
                 <input
                 type="text" 
                 id="ole"

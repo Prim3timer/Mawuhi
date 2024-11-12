@@ -192,7 +192,10 @@ style={{display: state.isEdit ? 'block' : 'none',
             id="update-form"
             >
                     {/* <h2>Edit Item</h2> */}
+                    <h3>
+
                 <label htmlFor="name">name:</label>
+                    </h3>
                 <input
                 style={{zIndex: 5}}
                 type="text"
