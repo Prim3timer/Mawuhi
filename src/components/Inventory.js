@@ -67,10 +67,10 @@ const Inventory = ({mark, setMark})=> {
                         setTimeout(()=> {
                             dispatch({type: 'success', payload: ''})
             
-                        }, 3000)
+                            dispatch({type: 'isEdit', payload: false})    
+                        }, 1000)
                         console.log(response)
                     }        
-            dispatch({type: 'isEdit', payload: false})    
         
         
         
@@ -132,7 +132,7 @@ const Inventory = ({mark, setMark})=> {
                 id="update-button"
                 onClick={handleEdit}
                 type="submit">Update</button>
-                <h2>{state.success}</h2>
+                <h3>{state.success}</h3>
             </form>
         </div> 
   
