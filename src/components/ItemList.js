@@ -272,7 +272,7 @@ htmlFor="unitMeasure"
        </article>
        <table className="inventory"
       style={{
-    //   position: 'absolute'
+    //   position: 'absolute',
     width: '95vw'
       }}
       >
@@ -293,7 +293,8 @@ htmlFor="unitMeasure"
          key={uuid()}
        style={{backgroundColor: index % 2 === 0 ?
         'white' : 'lavender',
-        fontSize: '2rem'
+        fontSize: '1.5rem',
+        // width: '120vw'
     }}
         >
            <th className="items">{item.name}</th>
