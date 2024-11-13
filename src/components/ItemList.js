@@ -271,7 +271,7 @@ htmlFor="unitMeasure"
        <table className="inventory"
       style={{
     //   position: 'absolute',
-    margin: '0 1rem',
+    // padding: '0 4rem',
     width: '95vw'
       }}
       >
