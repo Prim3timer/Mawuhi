@@ -183,8 +183,6 @@ style={{display: state.isEdit ? 'block' : 'none',
     opacity: '.85',
     zIndex: 5
 }}
-// onClick={remainEdit
-// }
 >
             <form
             //  onSubmit={handleSubmit}
@@ -273,6 +271,7 @@ htmlFor="unitMeasure"
        <table className="inventory"
       style={{
     //   position: 'absolute',
+    margin: '0 1rem',
     width: '95vw'
       }}
       >
