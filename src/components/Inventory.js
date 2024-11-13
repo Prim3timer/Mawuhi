@@ -31,7 +31,6 @@ const Inventory = ({mark, setMark})=> {
             dispatch({type: 'errMsg', payload: error.Message})
           }
         }
-        console.log(state.isEdit)
         useEffect(()=> {
             getTrans()
             
@@ -44,13 +43,11 @@ const Inventory = ({mark, setMark})=> {
              dispatch({type: 'afa', payload: currentItem.name})
              dispatch({type: 'ole', payload: currentItem.qty})
              dispatch({type: 'id', payload: id})
-             console.log(state.id)
             }
 
 
         const handleEdit = async (e, name, qty )=> {
                 e.preventDefault()     
-              console.log(state.id)
                 const inventory = {
                     // id,
                       name: state.afa ? state.afa : name,
@@ -71,10 +68,6 @@ const Inventory = ({mark, setMark})=> {
                         }, 1000)
                         console.log(response)
                     }        
-        
-        
-        
-        console.log(invRef.current.value)
       
     }
 

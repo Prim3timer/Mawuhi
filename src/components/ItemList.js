@@ -292,7 +292,9 @@ htmlFor="unitMeasure"
          <tr className="sales-items-cont"
          key={uuid()}
        style={{backgroundColor: index % 2 === 0 ?
-        'white' : 'lavender'}}
+        'white' : 'lavender',
+        fontSize: '2rem'
+    }}
         >
            <th className="items">{item.name}</th>
            <td className="items">{item.price}</td>
