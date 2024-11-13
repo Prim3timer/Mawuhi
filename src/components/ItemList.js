@@ -20,7 +20,7 @@ const ItemList = ()=> {
     const [state, dispatch] = useReducer(reducer, initialState)
     // const [mark, setMark] = useState('')  
 
-    const measurements = ['Kilogram (kg)', 'Piece (pc)', 'Plate (Plt)', 'Dozen (dzn)', 'Bottle (Btl)', 'Pound (lbs)', 'Litre (L)', 'Sachet (sct)', 'Ounce (Oz)', 'Gram (g)'
+     const measurements = ['Kilogram (kg)', 'Piece (pc)', 'Plate (Plt)', 'Dozen (dzn)', 'Bottle (Btl)', 'Pound (lbs)', 'Litre (L)', 'Sachet (sct)', 'Ounce (Oz)', 'Gram (g)'
        ]
     const itemRef = useRef()
     const getTrans = async ()=> {
