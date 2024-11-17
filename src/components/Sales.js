@@ -85,7 +85,11 @@ const Sales = ()=> {
           {/* <SearchItem/> */}
         </article>
 
-        <table className="sales">
+        <table className="sales"
+        style={{
+            fontSize: '1.5rem'
+        }}
+        >
         <tbody>
         <tr
         style={{backgroundColor: 'khaki'}}
