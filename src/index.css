@@ -500,9 +500,14 @@ form {
 
 @media screen and (max-width: 585px) {
   
-  .inventory .sales {
-      margin: 0 0 0 4rem;
+  .inventory {
+      margin: 0 0 0 9rem;
       min-width: 130vw
+  }
+
+  .sales {
+    margin: 0 0 0 4rem;
+    min-width: 130vw
   }
 
   .sales {
