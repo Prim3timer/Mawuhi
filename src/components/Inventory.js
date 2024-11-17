@@ -156,7 +156,7 @@ const Inventory = ({mark, setMark})=> {
  </article>
  <table className="inventory"
 style={{
-    fontSize: '1.5rem',
+    // fontSize: '1.5rem',
         // margin: '0 0 0 5rem'
 }}
 >
