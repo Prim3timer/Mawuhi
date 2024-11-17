@@ -169,7 +169,6 @@ const ItemList = ()=> {
               >  
               <article id="form-cont">
            <form  className="search-form" 
-           //   onSubmit={(e)=> e.preventDefault()}
            >
 
 
@@ -272,7 +271,9 @@ htmlFor="unitMeasure"
       style={{
     //   position: 'absolute',
     // padding: '0 4rem',
-    width: '95vw'
+    // width: '95vw',
+    fontSize: '1.5rem',
+    minWidth: '130vw',
       }}
       >
        
@@ -292,8 +293,8 @@ htmlFor="unitMeasure"
          key={uuid()}
        style={{backgroundColor: index % 2 === 0 ?
         'white' : 'lavender',
-        fontSize: '1.5rem',
-        // width: '120vw'
+     
+        // minWidth: '120vw'
     }}
         >
            <th className="items">{item.name}</th>

@@ -155,7 +155,9 @@ const Inventory = ({mark, setMark})=> {
      <h2 id="invent-header">Inventory</h2>
  </article>
  <table className="inventory"
-
+style={{
+    fontSize: '1.5rem',
+}}
 >
  <tbody>
  <tr>
