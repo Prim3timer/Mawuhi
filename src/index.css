@@ -499,6 +499,10 @@ form {
 
 
 @media screen and (max-width: 585px) {
+  
+  .inventory {
+      margin: 0 0 0 2rem
+  }
 
   .edit  {
     left: 10%;
