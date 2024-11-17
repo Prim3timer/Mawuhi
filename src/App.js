@@ -37,11 +37,11 @@ return (
   <main className="App">
      <h2 className="header">Retail Tracker</h2>
       <Routes>
-        <Route path="shopping" element={<Reciepts/>}/>
          {/* public routes */}
         <Route path="/" element={<Layout/>}>
      {/* <Route path="emp-inv" element={<EmpInv/>}/> */}
     <Route path="/login" element={<Login/>}/>
+        <Route path="shopping" element={<Reciepts/>}/>
     <Route path="register" element={<Register/>}/>
          <Route path="linkpage" element={<LinkPage/>}/>
       <Route path="unauthorized" element={<Unauthorized/>}/>
