@@ -501,14 +501,14 @@ form {
 @media screen and (max-width: 585px) {
   
   .inventory {
-      margin: 0 0 0 9rem;
+      margin: 0 0 0 8rem;
       min-width: 130vw
   }
 
-  .sales {
+  /* .sales {
     margin: 0 0 0 4rem;
     min-width: 130vw
-  }
+  } */
 
   .sales {
     margin: 0 0 0 6rem;
@@ -541,9 +541,9 @@ form {
     .home {
       min-height: 60vh;
       padding: 1rem 0 0 0 ;
-      row-gap: .5rem;
+      /* row-gap: .5rem; */
       column-gap: 1rem;
-      justify-content: center;
+      /* justify-content: center; */
     }
 
     .home > *{

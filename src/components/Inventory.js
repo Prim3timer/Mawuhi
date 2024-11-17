@@ -158,7 +158,7 @@ const Inventory = ({mark, setMark})=> {
 style={{
     fontSize: '1.5rem',
         // margin: '0 0 0 5rem'
-        marginLeft: '.1rem'
+        marginLeft: 0
 }}
 >
  <tbody>
