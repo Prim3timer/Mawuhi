@@ -87,7 +87,7 @@ html {
 }
 
 .home > * {
-  flex-basis: 15%;
+  flex-basis: 20%;
   background-color: #e6e6fa;
   padding: .5rem;
   text-decoration: none;
@@ -542,7 +542,23 @@ form {
 
     .home > *{
       flex-basis: 20%;
-      flex: 0 1 8em
+      flex: 0 1 7em;
+   
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        column-gap: .5rem;
+        /* row-gap: 1rem; */
+        justify-content: center;
+        /* margin: .5rem 0; */
+        padding: 1rem  .5rem;
+        align-items: center;
+        /* background-color: rgb(194, 234, 94); */
+        border-radius: 5px;
+      
+      
+      
+ 
     }
 
     .payment > *:nth-child(1){

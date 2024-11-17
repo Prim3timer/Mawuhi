@@ -22,6 +22,9 @@ const Home = ()=> {
         <div className="home-cont" >
         <section
         className="home"
+        style={{
+            fontSize: '1.5rem'
+        }}
         >
         <br />
         {/* <p>You are logged in {state.user}</p> */}
