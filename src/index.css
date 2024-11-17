@@ -501,7 +501,8 @@ form {
 @media screen and (max-width: 585px) {
   
   .inventory {
-      /* margin: 0 0 0 2rem */
+      margin: 0 0 0 4rem;
+      min-width: 130vw
   }
 
   .edit  {

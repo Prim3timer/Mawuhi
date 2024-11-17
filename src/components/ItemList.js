@@ -273,7 +273,6 @@ htmlFor="unitMeasure"
     // padding: '0 4rem',
     // width: '95vw',
     fontSize: '1.5rem',
-    minWidth: '130vw',
       }}
       >
        
