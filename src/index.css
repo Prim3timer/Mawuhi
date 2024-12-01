@@ -308,8 +308,14 @@ table {
   width: 80vw;
 }
 td, th  {
-  /* border: 1px solid brown; */
+  /* border-bottem: 1px solid brown; */
   padding: 5px 10px;
+}
+
+tr {
+  border-bottom: 1px solid brown;
+
+
 }
 
 
