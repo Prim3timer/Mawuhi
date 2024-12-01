@@ -300,7 +300,7 @@ label {
 
 
 table {
-  border: 1px solid brown;
+  /* border: 1px solid brown; */
   text-align: center;
   border-collapse: collapse;
   margin: 0 0 1rem 0;
@@ -308,7 +308,7 @@ table {
   width: 80vw;
 }
 td, th  {
-  border: 1px solid brown;
+  /* border: 1px solid brown; */
   padding: 5px 10px;
 }
 
