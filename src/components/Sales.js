@@ -94,7 +94,7 @@ const Sales = ()=> {
         <tr
         style={{backgroundColor: 'khaki'}}
         >
-            <th>name</th>
+            <th>NAME</th>
             <th>qty</th>
             <th>total ($)</th>
             <th>date</th>

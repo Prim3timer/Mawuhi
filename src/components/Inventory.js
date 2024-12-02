@@ -163,7 +163,7 @@ style={{
 >
  <tbody>
  <tr>
-     <th>name</th>
+     <th>NAME</th>
      <th>in-stock</th>
      <th> last udated</th>
      <th>action</th>
