@@ -25,7 +25,7 @@ const Inventory = ({mark, setMark})=> {
               dispatch({type: 'items', payload: graw})
               console.log(graw.data.items)
               const filterate = graw.data.items.filter((inner)=> inner.name.toLowerCase().includes(state.search.toLowerCase()))
-              dispatch({type: 'inventory', 
+              dispatch({type: 'items', 
                   payload: filterate})
           } catch (error) {
             dispatch({type: 'errMsg', payload: error.Message})
@@ -168,7 +168,7 @@ style={{
      <th> last udated</th>
      <th>action</th>
      </tr>
-{state.inventory && state.items.data.items.map((inv, index)=> {
+{state.items && state.items.map((inv, index)=> {
     const invReg = inv.qty < 1 ? inv.qty = 0 : inv.qty
 return (
    <tr className="sales-items-cont"
