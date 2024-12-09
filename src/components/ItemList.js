@@ -272,7 +272,7 @@ htmlFor="unitMeasure"
     //   position: 'absolute',
     // padding: '0 4rem',
     // width: '95vw',
-    fontSize: '1.5rem',
+    // fontSize: '1.5rem',
       }}
       >
        

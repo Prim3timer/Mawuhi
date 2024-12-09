@@ -87,7 +87,7 @@ const Sales = ()=> {
 
         <table className="sales"
         style={{
-            fontSize: '1.5rem'
+            // fontSize: '1.5rem'
         }}
         >
         <tbody>
