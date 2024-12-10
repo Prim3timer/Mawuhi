@@ -39,7 +39,7 @@ const Inventory = ({mark, setMark})=> {
 
      const showEdit = (id, e)=> {
              dispatch({type: 'isEdit', payload: true})    
-             const currentItem =   state.items.data.items.find((item) => item._id === id)
+             const currentItem =   state.items.find((item) => item._id === id)
              dispatch({type: 'afa', payload: currentItem.name})
              dispatch({type: 'ole', payload: currentItem.qty})
              dispatch({type: 'id', payload: id})
