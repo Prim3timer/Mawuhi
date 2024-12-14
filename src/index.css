@@ -50,6 +50,7 @@ html {
   max-height: 100vh;
   display: flex;
   flex-direction: column;
+  /* background-color: red; */
   justify-content: flex-start;
   align-items: center;
   overflow-y: auto;

@@ -23,7 +23,7 @@ const Inventory = ({mark, setMark})=> {
             
               const graw = await axios.get('/items')
               dispatch({type: 'items', payload: graw})
-              console.log(graw.data.items)
+              console.log(graw.data)
               const filterate = graw.data.items.filter((inner)=> inner.name.toLowerCase().includes(state.search.toLowerCase()))
               dispatch({type: 'items', 
                   payload: filterate})
@@ -59,7 +59,7 @@ const Inventory = ({mark, setMark})=> {
                     const response = await axios.patch(`/items/inventory/${state.id}`, inventory) 
                     if (response){
                         const graw = await axios.get('/items')
-                        dispatch({type: 'items', payload: graw})
+                        dispatch({type: 'items', payload: graw.data.items})
                         dispatch({type: 'success', payload: 'inventory edited'})
                         setTimeout(()=> {
                             dispatch({type: 'success', payload: ''})
