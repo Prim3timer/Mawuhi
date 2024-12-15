@@ -85,7 +85,7 @@ const Sales = ()=> {
           {/* <SearchItem/> */}
         </article>
 
-        <table className="sales"
+        <table className="inventory"
         style={{
             // fontSize: '1.5rem'
         }}
