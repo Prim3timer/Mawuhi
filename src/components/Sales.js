@@ -62,7 +62,7 @@ const Sales = ()=> {
     }
  
     return (
-        <div className="sale">
+        <div className="invenotry">
             <article id="form-cont">
             <form  className="search-form"   onSubmit={(e)=> e.preventDefault()}>
         <input 
@@ -79,7 +79,7 @@ const Sales = ()=> {
           </form>
         <h2
         style={{textAlign: 'center',
-            margin: '1rem auto'
+            // margin: '1rem auto'
         }}
         >Sales   </h2>
           {/* <SearchItem/> */}
