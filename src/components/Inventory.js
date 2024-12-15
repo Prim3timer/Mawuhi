@@ -2,6 +2,8 @@ import reducer from "../reducer"
 import initialState from "../store"
 import axios from "../app/api/axios"
 import { useEffect, useReducer, useState, useRef, createContext     } from "react"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPenToSquare } from "@fortawesome/free-solid-svg-icons"
 // import SearchItem from "./SearchItem"
 import { Link } from "react-router-dom"
 import Edit from "./Edit"
@@ -163,7 +165,7 @@ style={{
 >
  <tbody>
  <tr>
-     <th>NAME</th>
+     <th>NAME (SI UNIT)</th>
      <th>in-stock</th>
      <th> last udated</th>
      <th>action</th>
@@ -188,9 +190,10 @@ return (
      className="sales-items">
          <a
          onClick={(e) => showEdit(inv._id, e)}
-     style={{color: 'blue'}}
+    //  style={{color: 'blue'}}
     //  href={'/edit'}
-     >edit
+     >
+      <FontAwesomeIcon icon={faPenToSquare} />
      </a>
      </td>
  </tr>

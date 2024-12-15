@@ -2,6 +2,8 @@ import reducer from "../reducer"
 import initialState from "../store"
 import axios from "../app/api/axios"
 import Cancel from "./Cancel"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPenToSquare } from "@fortawesome/free-solid-svg-icons"
 import { useEffect, useReducer, useState, useRef, createContext     } from "react"
 
 import { FaTrashAlt } from "react-icons/fa";
@@ -281,7 +283,7 @@ htmlFor="unitMeasure"
        <tr>
            <th>NAME</th>
            <th>PRICE ($)</th>
-           <th> UMT</th>
+           <th> SI UNIT</th>
            {/* <th>P/U</th> */}
            <th colSpan={2}>ACTIONS</th>
            {/* <th>action</th> */}
@@ -308,9 +310,11 @@ htmlFor="unitMeasure"
            className="items">
                <a
                onClick={(e) => handleEdit(item._id, e)}
-           style={{color: 'blue'}}
+        //    style={{color: 'blue'}}
            href={'/edit-item'}
-           >edit</a></td>
+           >
+              <FontAwesomeIcon icon={faPenToSquare} />
+           </a></td>
            <td className="items"
        
            onClick={(e)=> assertain(item._id, e)}
