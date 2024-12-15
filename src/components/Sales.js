@@ -96,9 +96,9 @@ const Sales = ()=> {
         style={{backgroundColor: 'khaki'}}
         >
             <th>NAME</th>
-            <th>qty</th>
-            <th>total ($)</th>
-            <th>date</th>
+            <th>QTY</th>
+            <th>TOTAL</th>
+            <th>DATE</th>
             </tr>
   {state.sales && state.sales.map((sale, index)=> {
     return (

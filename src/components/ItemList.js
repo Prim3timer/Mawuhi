@@ -282,7 +282,7 @@ htmlFor="unitMeasure"
        >
        <tr>
            <th>NAME</th>
-           <th>PRICE ($)</th>
+           <th>PRICE</th>
            <th> SI UNIT</th>
            {/* <th>P/U</th> */}
            <th colSpan={2}>ACTIONS</th>

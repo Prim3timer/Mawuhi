@@ -73,6 +73,14 @@ const Inventory = ({mark, setMark})=> {
       
     }
 
+    const remainEdit = () => {
+        if (state.isEdit) dispatch({type: 'isEdit', payload: false})
+
+}
+const bringEdit = () => {
+    dispatch({type: 'isEdit', payload: true})
+}
+
     const remainDelete = ()=> {
         // this condition statement is to enable the removal of the confirm window once any part of the 
         // page is touched.
@@ -80,20 +88,11 @@ const Inventory = ({mark, setMark})=> {
 
             dispatch({type: 'isEdit', payload: false})
         }
-        // if (state.isEdit){
-
-        //     dispatch({type: 'isEdit', payload: false})
-        // }
     }
-
-    // console.log(state.isEdit)
     return (
         <section
-        // onClick={remainDelete}
-        // style={{
-        //     textAlign: 'center'
-        // }}
         className="inventory-spec"
+        // onClick={remainEdit}
         >
             <div
             className="edit"
@@ -105,6 +104,7 @@ const Inventory = ({mark, setMark})=> {
         padding: '.5rem',
         opacity: '.85', 
     }}
+
     >
             {/* <h2>Edit Inventory</h2> */}
             <form onSubmit={(e)=> e.preventDefault()}
@@ -164,9 +164,9 @@ const Inventory = ({mark, setMark})=> {
  <tbody>
  <tr>
      <th>NAME (SI UNIT)</th>
-     <th>in-stock</th>
-     <th> last udated</th>
-     <th>action</th>
+     <th>IN-STOCK</th>
+     <th> LAST UPDATED</th>
+     <th>ACTION</th>
      </tr>
 {state.items && state.items.map((inv, index)=> {
     const invReg = inv.qty < 1 ? inv.qty = 0 : inv.qty
