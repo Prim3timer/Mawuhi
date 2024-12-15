@@ -66,7 +66,7 @@ const Sales = ()=> {
             <article id="form-cont">
             <form  className="search-form"   onSubmit={(e)=> e.preventDefault()}>
         <input 
-        id="sales-search"
+        id="invent-search"
         type="text"
         role="searchbox" 
         placeholder="Search sales by name"
