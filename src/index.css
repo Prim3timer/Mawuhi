@@ -317,7 +317,7 @@ table {
   text-align: center;
   border-collapse: collapse;
   margin: 0 0 1rem 0;
-  font-size: 1.5rem;
+  /* font-size: 1.5rem; */
   width: 100vw; 
 }
 td, th  {
@@ -526,14 +526,9 @@ form {
   
   }
 
-  table {
-    /* border: 1px solid brown; */
-    /* text-align: center;
-    border-collapse: collapse;
-    margin: 0 0 1rem 0; */
-    font-size: 1rem;
-    /* width: 100vw;  */
-  }
+  /* table {
+    
+  } */
   
   .inventory {
       /* min-width: 130vw; */
