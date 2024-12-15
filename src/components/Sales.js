@@ -78,6 +78,7 @@ const Sales = ()=> {
         />
           </form>
         <h2
+        className="invent-header"
         style={{textAlign: 'center',
             // margin: '1rem auto'
         }}
