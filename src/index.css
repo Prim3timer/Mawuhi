@@ -507,7 +507,7 @@ form {
 }
 
 
-.inventory-spec, .item-list {
+.inventory-spec, .item-list, .sale {
   /* margin: 0 0 0 6rem; */
   /* font-size: 4rem; */
   max-width: 100vw;
