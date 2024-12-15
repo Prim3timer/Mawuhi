@@ -312,7 +312,7 @@ table {
 }
 td, th  {
   /* border-bottem: 1px solid brown; */
-  padding: 5px 10px;
+  padding: 1rem;
 }
 
 tr {
@@ -514,6 +514,7 @@ form {
 }
 .inventory {
    font-size: 1.2rem;
+ 
    /* overflow-y: auto; */
    /* max-width: 800px; */
 }
