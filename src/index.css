@@ -524,7 +524,15 @@ form {
     /* font-size: .1rem; */
     width: 130vw;
   
-  
+  }
+
+  table {
+    /* border: 1px solid brown; */
+    /* text-align: center;
+    border-collapse: collapse;
+    margin: 0 0 1rem 0; */
+    font-size: 1rem;
+    /* width: 100vw;  */
   }
   
   .inventory {
