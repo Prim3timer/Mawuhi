@@ -311,7 +311,7 @@ htmlFor="unitMeasure"
                <a
                onClick={(e) => handleEdit(item._id, e)}
         //    style={{color: 'blue'}}
-           href={'/edit-item'}
+        //    href={'/edit-item'}
            >
               <FontAwesomeIcon icon={faPenToSquare} />
            </a></td>

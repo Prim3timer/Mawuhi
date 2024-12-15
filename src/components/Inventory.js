@@ -93,6 +93,7 @@ const Inventory = ({mark, setMark})=> {
         // style={{
         //     textAlign: 'center'
         // }}
+        className="inventory-spec"
         >
             <div
             className="edit"
