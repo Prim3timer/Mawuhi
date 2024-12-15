@@ -62,7 +62,7 @@ const Sales = ()=> {
     }
  
     return (
-        <div className="invenotry">
+        <div className="sale">
             <article id="form-cont">
             <form  className="search-form"   onSubmit={(e)=> e.preventDefault()}>
         <input 

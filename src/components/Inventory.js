@@ -138,7 +138,9 @@ const Inventory = ({mark, setMark})=> {
         </div> 
   
 
-        <div className="inventory">  
+        <div 
+        className="inventory"
+        >  
         <article id="form-cont">
      <form  className="search-form" 
      //   onSubmit={(e)=> e.preventDefault()}
@@ -155,14 +157,9 @@ const Inventory = ({mark, setMark})=> {
  
  />
    </form>
-     <h2 id="invent-header">Inventory</h2>
+     <h2 className="invent-header">Inventory</h2>
  </article>
  <table className="inventory"
-style={{
-    // fontSize: '1.5rem',
-        // margin: '0 0 0 5rem'
-        marginLeft: 0
-}}
 >
  <tbody>
  <tr>

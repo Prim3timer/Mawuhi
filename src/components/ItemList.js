@@ -267,7 +267,7 @@ htmlFor="unitMeasure"
        
        />
          </form>
-           <h2 id="invent-header">Items</h2>
+           <h2 className="invent-header">Items</h2>
        </article>
        <table className="inventory"
       style={{
