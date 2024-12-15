@@ -312,7 +312,7 @@ table {
 }
 td, th  {
   /* border-bottem: 1px solid brown; */
-  padding: .5rem;
+  padding: .5rem 0;
 }
 
 tr {
