@@ -1,7 +1,9 @@
-import { useNavigate, Link } from "react-router-dom";
+    import { useNavigate, Link } from "react-router-dom";
 import { useContext, useReducer } from "react";
 import AuthContext from "../context/authProvider";
 import reducer from "../reducer";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCheck } from "@fortawesome/free-solid-svg-icons"
 // import { init } from "create-react-app/createReactApp";
 import initialState from "../store";
 
@@ -54,6 +56,7 @@ const Home = ()=> {
         {/* <Link to="/linkpage">link page</Link> */}
         <br />
         {/* <Link to="/shopping">Shopping</Link> */}
+        {/* Your <FontAwesomeIcon icon={faCheck} /> is hot and ready! */}
     </section>
         
         <div className="flexGrow"
