@@ -6,6 +6,7 @@ import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icon
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FaTrashAlt } from "react-icons/fa";
 import {format} from 'date-fns'
+import useAuth from '../hooks/useAuth';
 import { type } from "@testing-library/user-event/dist/type";
 
 const Transactions = ()=> {
@@ -13,7 +14,7 @@ const Transactions = ()=> {
     const now = new Date()
     const date = format(now, 'dd/MM/yyyy\tHH:mm:ss')
     console.log(date)
-    
+    const {auth} = useAuth()
     const inputRef = useRef()
     const qtyRef = useRef()
     const getItems = async ()=> {
@@ -121,11 +122,14 @@ const Transactions = ()=> {
             // console.log(transArray)
             if (state.transArray.length){
                 const transItems = {
+                    cashier: auth.user, 
+                    cashierID: auth.picker,
                     goods: transArray,
                     grandTotal: total,
                     date
                     
                 }
+                console.log(transItems)
                 const response = await axios.post('/transactions', transItems)
                 const response2 = await axios.get('/items')
                 console.log(response2)

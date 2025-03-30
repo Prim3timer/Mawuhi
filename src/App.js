@@ -32,6 +32,7 @@ import { useState } from "react"
 
 const App = () => {
   const [afa, setAfa] = useState('');
+  const [userId, setUserId] = useState('');
   const year = new Date().getFullYear()
 return (
 
@@ -44,6 +45,8 @@ return (
     <Route path="/login" element={<Login
     afa={afa}
     setAfa={setAfa}
+    userId={userId}
+    setUserId={setUserId}
     />}/>
         <Route path="shopping" element={<Reciepts/>}/>
     <Route path="register" element={<Register/>}/>
@@ -54,7 +57,10 @@ return (
        {/* protected routes */}
        <Route element={<RequireAuth allowedRoles={[2001]}/>}>
          <Route path="/" element={<Home    afa={afa}
-    setAfa={setAfa}/>}/>
+    setAfa={setAfa}/>}
+    userId={userId}
+    setUserId={setUserId}
+    />
          </Route>
         
         

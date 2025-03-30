@@ -60,7 +60,9 @@ function numberWithCommas(x) {
                         alignItems: 'flex-start'
                     }}
                     >
-                        <h5>ID: {item._id}</h5>
+                        <h3>cashier: {item.cashier}</h3>
+                        {/* <h5>cashierID: {item.cashierID}</h5> */}
+                        <h5>TransID: {item._id}</h5>
                         <h5>Date: {item.date}</h5>
                         {item.goods.map((good)=> {
                             return (
@@ -70,6 +72,7 @@ function numberWithCommas(x) {
                                     justifyContent: 'center',
                                 }}
                                 >
+                                    
                                     <h3>{good.name}</h3>
                                     <h5>Qty: {good.qty} {good.unitMeasure.split(' ')[1].slice(1, -1)}</h5>
                                     <h5>Price: {good.price}</h5>

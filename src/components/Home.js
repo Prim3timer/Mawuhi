@@ -7,25 +7,26 @@ import { faCheck } from "@fortawesome/free-solid-svg-icons"
 // import { init } from "create-react-app/createReactApp";
 import initialState from "../store";
 
-const Home = ({afa})=> {
+const Home = ({afa, userId})=> {
     const [state, dispatch] = useReducer(reducer, initialState)
 
-    // const { setAuth } = useContext(AuthContext);
+    const { setAuth, auth } = useContext(AuthContext);
     const navigate = useNavigate();
     const logout = async () => {
 
     
         // if used in more components, this should be in context 
         // axios to /logout endpoint 
-        dispatch({type: 'auth', payload: ({})});
         navigate('/login');
     }
     return (
         <div className="home-cont" >
              <br />
-        <h3>Welcome, {afa}</h3>
-        <br />
    
+             <h3> Welcome, {auth.user} with ID: {auth.picker}
+
+             </h3>
+             <br />
         <section
         className="home"
         style={{

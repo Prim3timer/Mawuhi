@@ -10,7 +10,7 @@ import initialState from '../store';
 
 const LOGIN_URL = '/auth';
 
-const Login = ({afa, setAfa}) => {
+const Login = () => {
     const [state, dispatch] = useReducer(reducer, initialState)
     const { setAuth } = useAuth()
 
@@ -49,15 +49,12 @@ const Login = ({afa, setAfa}) => {
                 }
             );
             console.log(JSON.stringify(response?.data));
-            console.log(response);
+            console.log(response?.data);
             const accessToken = response?.data?.accessToken;
             const roles = response?.data?.roles;
-            const eji = response?.data?.username
-            setAfa(eji)
-            console.log(afa)
-            setAuth({ user, pwd, roles, accessToken});
-            // console.log(auth)
-            // dispatch({type: 'auth', paylaod: { user, pwd, roles, accessToken }})
+            const picker = response?.data?.id
+            
+            setAuth({ user, pwd, roles, accessToken, picker});
             setUser('');
             setPwd('');
             navigate(from, { replace: true });

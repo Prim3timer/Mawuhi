@@ -48,21 +48,21 @@ html {
 
 
 .App {
-  width: 100%;
-  max-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  /* background-color: red; */
-  justify-content: flex-start;
-  align-items: center;
-  overflow-y: auto;
-  border: 1px solid black;
-  box-shadow: 0px 0px 15px gray;
-  /* max-width: 800px; */
+    width: 100%;
+    max-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    /* background-color: red; */
+    justify-content: flex-start;
+    align-items: center;
+    overflow-y: auto;
+    border: 1px solid black;
+    box-shadow: 0px 0px 15px gray;
+    /* max-width: 800px; */
 }
 
 .App > * {
-  overflow-y: auto;
+  overflow-y: auto; 
 }
 
 .home-cont {
