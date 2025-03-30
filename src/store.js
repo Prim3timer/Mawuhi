@@ -43,7 +43,8 @@ const initialState = {
    checkout: false,
    paidAmount: 0,
    balance: 0,
-   id: ''
+   id: '',
+   backendUser: ''
   
 }
 

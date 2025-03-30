@@ -1,6 +1,6 @@
 import Register from "./components/register"
 import Login from "./components/Login"
-import {Routes, Route} from 'react-router-dom'
+  import {Routes, Route} from 'react-router-dom'
 import Home from "./components/Home"
 import Layout from "./components/Layout"
 import Missing from "./components/Missing"
@@ -20,6 +20,7 @@ import ItemList from "./components/ItemList"
 import EditItem from "./components/EditItem"
 import Reciepts from "./components/Reciepts"
 import EmpInv from "./components/EmpInv"
+import { useState } from "react"
 
 
 
@@ -30,7 +31,7 @@ import EmpInv from "./components/EmpInv"
 // }
 
 const App = () => {
-
+  const [afa, setAfa] = useState('');
   const year = new Date().getFullYear()
 return (
 
@@ -40,7 +41,10 @@ return (
          {/* public routes */}
         <Route path="/" element={<Layout/>}>
      {/* <Route path="emp-inv" element={<EmpInv/>}/> */}
-    <Route path="/login" element={<Login/>}/>
+    <Route path="/login" element={<Login
+    afa={afa}
+    setAfa={setAfa}
+    />}/>
         <Route path="shopping" element={<Reciepts/>}/>
     <Route path="register" element={<Register/>}/>
          <Route path="linkpage" element={<LinkPage/>}/>
@@ -49,7 +53,8 @@ return (
   
        {/* protected routes */}
        <Route element={<RequireAuth allowedRoles={[2001]}/>}>
-         <Route path="/" element={<Home/>}/>
+         <Route path="/" element={<Home    afa={afa}
+    setAfa={setAfa}/>}/>
          </Route>
         
         

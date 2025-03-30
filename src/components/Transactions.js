@@ -23,7 +23,8 @@ const Transactions = ()=> {
             const response = await axios.get('/items')
             dispatch({type: 'errMsg', payload: ''})
           
-            dispatch({type: 'getNames', payload: response.data.items})    
+            dispatch({type: 'getNames', payload: response.data.items})   
+            console.log(response.data.items ) 
             if (state.getNames){
                 
                 dispatch({type: 'user', payload: state.getNames && state.getNames[0].name})

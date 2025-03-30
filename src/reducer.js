@@ -146,6 +146,9 @@ const reducer = (state, action)=> {
     case 'cancel':
         return {...state, cancel: action.payload}
 
+        case 'backendUser':
+          return {...state, backendUser: action.payload}
+
         case 'paidAmount': 
         return {...state, paidAmount: action.payload}
         case 'balance':

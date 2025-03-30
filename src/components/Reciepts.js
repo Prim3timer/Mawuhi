@@ -12,14 +12,12 @@ const getItems = async ()=> {
         console.log(response.data)
         if (response){
             dispatch({type: 'getNames', payload: response.data})
-            console.log(state.transArry)
 
         }
     } catch (error) {
         console.log(error)
     }
 }
-console.log(state.getItems)
 
 const handleRemove = async (id)=> {
     // e.preventDefault()     
@@ -41,13 +39,6 @@ function numberWithCommas(x) {
     return (
         <div
         style={{
-            // display: 'flex',
-            // flexDirection: 'column',
-            // justifyContent: 'center',
-            // flexWrap: 'wrap'
-            // rowGap:'5rem'
-            // backgroundColor: 'blue'
-            // textAlign: 'center'
             margin: ' 0 0 0 1rem'
             
         }}
@@ -67,11 +58,6 @@ function numberWithCommas(x) {
                         flexDirection: 'column',
                         justifyContent: 'flex-start',
                         alignItems: 'flex-start'
-                        // flexWrap: 'wrap',
-                        // rowGap:'5rem',
-                        // backgroundColor: 'blue'
-                        // textAlign: 'center'
-                        
                     }}
                     >
                         <h5>ID: {item._id}</h5>
@@ -82,8 +68,6 @@ function numberWithCommas(x) {
                                 style={{display: 'flex',
                                     flexDirection: 'column',
                                     justifyContent: 'center',
-                                    // rowGap:'5rem'
-                                    
                                 }}
                                 >
                                     <h3>{good.name}</h3>

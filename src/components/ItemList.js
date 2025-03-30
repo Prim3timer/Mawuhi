@@ -111,7 +111,7 @@ const ItemList = ()=> {
             const currentItem = state.items.find((item) => item._id === id)
             console.log(currentItem)
             const invLIst = await axios.get('/inventory')
-            console.log(invLIst.data)
+        console.log(invLIst.data)
             const currentInventory = invLIst.data.find((inv)=> inv.name === `${currentItem.name} ${currentItem.unitMeasure.split(' ')[1]}`)
             console.log(currentInventory)
             if (currentInventory){
@@ -185,72 +185,7 @@ style={{display: state.isEdit ? 'block' : 'none',
     zIndex: 5
 }}
 >
-            <form
-            //  onSubmit={handleSubmit}
-            id="update-form"
-            >
-                    {/* <h2>Edit Item</h2> */}
-                    <h3>
-
-                <label htmlFor="name">name:</label>
-                    </h3>
-                <input
-                style={{zIndex: 5}}
-                type="text"
-                placeholder="item name only"
-                id="name"
-                value={state.afa} 
-                onChange={(e)=> dispatch({type: 'afa', payload: e.target.value})}
-                // onClick={bringEdit}
-                />
-
-                
-<label
-htmlFor="unitMeasure"
->unitMeasure:</label><input type="text"
-        // id="trans-search"
-        // placeholder="pick measurement"
-        // ref={itemRef}
-        style={{
-            // width: '100%',
-        }}
-        list="measure"
-        onChange={(e)=> dispatch({type: 'unitMeasure', payload: e.target.value})}
-        value={state.unitMeasure}
-        />
-        <datalist id="measure"
-        >
-            {state.items && measurements.map((measurement)=> {
-                return (
-                    
-                    <option 
-                    value={measurement}
-                    style={{
-                            position: 'relative',
-                            color: 'brown',
-                        }}
-                        >
-                            {measurement}
-                        </option>)
-                    })}
-            </datalist>
-
-
-                <label>price:</label>
-                <input
-                type="text"
-                required
-                value={state.price}
-                onChange={(e)=> dispatch({type: 'price', payload: e.target.value})}
-                />
-
-
-               <button
-                // type="submit"
-               onClick={handleSubmit}    
-               className="pop">Update Item</button>
-                 <h3>{state.isMatched}</h3>
-            </form>
+        
         </div>
 
 
@@ -320,7 +255,9 @@ htmlFor="unitMeasure"
            onClick={(e)=> assertain(item._id, e)}
            >
             {/* remove */}
-           <FaTrashAlt role='button'
+           <FaTrashAlt 
+           
+           role='button'
            
            /> 
            </td>

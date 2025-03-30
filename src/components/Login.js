@@ -10,7 +10,7 @@ import initialState from '../store';
 
 const LOGIN_URL = '/auth';
 
-const Login = () => {
+const Login = ({afa, setAfa}) => {
     const [state, dispatch] = useReducer(reducer, initialState)
     const { setAuth } = useAuth()
 
@@ -23,6 +23,7 @@ const Login = () => {
 
     const [user, setUser] = useState('');
     const [pwd, setPwd] = useState('');
+
 
     
     // const [errMsg, setErrMsg] = useState('');
@@ -48,10 +49,14 @@ const Login = () => {
                 }
             );
             console.log(JSON.stringify(response?.data));
-            //console.log(JSON.stringify(response));
+            console.log(response);
             const accessToken = response?.data?.accessToken;
             const roles = response?.data?.roles;
-            setAuth({ user, pwd, roles, accessToken });
+            const eji = response?.data?.username
+            setAfa(eji)
+            console.log(afa)
+            setAuth({ user, pwd, roles, accessToken});
+            // console.log(auth)
             // dispatch({type: 'auth', paylaod: { user, pwd, roles, accessToken }})
             setUser('');
             setPwd('');
@@ -74,6 +79,8 @@ const Login = () => {
             errRef.current.focus();
         }
         dispatch({type: 'user', payload: user})
+    
+        console.log(state.backendUser)
     }
 
     return (

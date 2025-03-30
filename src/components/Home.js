@@ -7,7 +7,7 @@ import { faCheck } from "@fortawesome/free-solid-svg-icons"
 // import { init } from "create-react-app/createReactApp";
 import initialState from "../store";
 
-const Home = ()=> {
+const Home = ({afa})=> {
     const [state, dispatch] = useReducer(reducer, initialState)
 
     // const { setAuth } = useContext(AuthContext);
@@ -22,16 +22,17 @@ const Home = ()=> {
     }
     return (
         <div className="home-cont" >
+             <br />
+        <h3>Welcome, {afa}</h3>
+        <br />
+   
         <section
         className="home"
         style={{
             fontSize: '1.5rem'
         }}
         >
-        <br />
-        {/* <p>You are logged in {state.user}</p> */}
-        <br />
-   
+       
         <Link 
     
         to="/transaction">transactions</Link>
