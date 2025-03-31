@@ -35,9 +35,7 @@ return (
     <article
     style={{
         // width: '50vw'
-        // alignItems: 'center',
         // margin: '0 auto'
-        // justifyContent: 'center'
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'center'
@@ -46,7 +44,9 @@ return (
       
         {users?.length
         ? (
-            <table>
+            <table
+            className="item-list"
+            >
            <tbody>
             <tr>
                 <th>Name</th>
