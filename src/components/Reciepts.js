@@ -76,10 +76,10 @@ function numberWithCommas(x) {
                         alignItems: 'flex-start'
                     }}
                     >
-                        <h3>cashier: {item.cashier}</h3>
+                        <h5>Cashier: {item.cashier}</h5>
                         {/* <h5>cashierID: {item.cashierID}</h5> */}
-                        <h5>TransID: {item._id}</h5>
-                        <h5>Date: {item.date}</h5>
+                        <p>TransID: {item._id}</p>
+                        <p>Date: {item.date}</p>
                         {item.goods.map((good)=> {
                             return (
                                 <div
@@ -89,16 +89,16 @@ function numberWithCommas(x) {
                                 }}
                                 >
                                     
-                                    <h3>{good.name}</h3>
-                                    <h5>Qty: {good.qty} {good.unitMeasure.split(' ')[1].slice(1, -1)}</h5>
-                                    <h5>Price: {good.price}</h5>
-                                    <h4>Sub Total: ₦{numberWithCommas(parseFloat(good.total).toFixed(2))}</h4>
+                                    <h5>{good.name}</h5>
+                                    <p>Qty: {good.qty} {good.unitMeasure.split(' ')[1].slice(1, -1)}</p>
+                                    <p>Price: {good.price}</p>
+                                    <h5>Sub Total: ₦{numberWithCommas(parseFloat(good.total).toFixed(2))}</h5>
                                     {/* <br/> */}
                                 </div>
                             )
                         })}
                      
-                        <h3>Grand Total: ₦{ numberWithCommas(parseFloat(item.grandTotal).toFixed(2))}</h3>
+                        <h4>Grand Total: ₦{ numberWithCommas(parseFloat(item.grandTotal).toFixed(2))}</h4>
                         <h3 onClick={(id)=> handleRemove(item._id)}
                             style={{
                                 textAlign: 'center',
