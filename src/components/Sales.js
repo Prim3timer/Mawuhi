@@ -29,25 +29,27 @@ const Sales = ()=> {
                 const cashierSales = graw.data.filter((item)=> item.cashierID === auth.picker)
                 dispatch({type: 'qtyArray', payload: cashierSales})
                 console.log(cashierSales)
+
+                // console.log(xvc)
+                if (cashierSales){
+                    cashierSales.map((gr)=> {
+                        return gr.goods.map((good)=> {
+                            const elements =  {
+                                name: good.name,
+                                qty: good.qty,
+                                unitMeasure: good.unitMeasure,
+                                total: good.total,
+                                date: gr.date
+                
+                            }
+                            innerArray.push(elements)
+                            return innerArray
+                        })
+                    })     
+                }
             }
         
-          console.log(state.qtyArray)
-            if (graw.data.length > 0){
-                state.qtyArray.map((gr)=> {
-                    return gr.goods.map((good)=> {
-                        const elements =  {
-                            name: good.name,
-                            qty: good.qty,
-                            unitMeasure: good.unitMeasure,
-                            total: good.total,
-                            date: gr.date
-            
-                        }
-                        innerArray.push(elements)
-                return innerArray
-                    })
-            })     
-            }
+        
             else return
     }
 
