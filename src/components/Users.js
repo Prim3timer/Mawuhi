@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
 import axios from "../app/api/axios";
+import { FaTrashAlt } from "react-icons/fa";
 
 const Users = ()=> {
     const [users, setUsers] = useState()
-
+    const removeUser = () => {
+        console.log('and i dey in the mood')
+    }
 useEffect(()=> {
 
     let isMounted = true
@@ -43,15 +46,39 @@ return (
       
         {users?.length
         ? (
-            <ol
-            style={{width: '10vw',
-                // justifySelf: 'center'
-            }}
-            >
-                {users.map((user, i)=> <li key={i}
-              
-                >{user?.username}</li>)}
-            </ol>
+            <table>
+           <tbody>
+            <tr>
+                <th>Name</th>
+                <th>User ID</th>
+                <th>Delete</th>
+            </tr>
+          
+                {users.map((user, i)=> {
+                    return <tr key={i}
+                    onClick={removeUser}
+                    >
+
+                        <th 
+                                    
+                        >{user?.username}</th>
+                        <td
+                         onClick={removeUser}
+                        >{user?._id}</td>
+                         <td
+                                                // onClick={()=> removeItem(item._id)}
+                                            >
+                                            <FaTrashAlt role='button'
+                                            tableIndex='0'/> 
+                                            </td>
+                                    
+                    </tr>
+                }
+                
+                
+               )}
+                </tbody>
+           </table>
         ) : <p>no user to display</p>}
     </article>
 )

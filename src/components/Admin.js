@@ -2,12 +2,16 @@ import Users from "./Users";
 import { Link } from "react-router-dom";
 
 const Admin = () => {
+
+    const removeUser = () => {
+        console.log('and i dey in the mood')
+    }
     return (
         <section
         style={{
             display: 'flex',
             flexDirection: 'column',
-            // justifyContent: 'center'
+            alignItems: 'center'
         }}
         >
             <h1>Admin</h1>
@@ -24,6 +28,8 @@ const Admin = () => {
                     color: 'brown',
                     fontSize: '1.5rem'
                 }}
+
+
                 >Home</Link>
             </div>
         </section>
