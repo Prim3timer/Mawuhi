@@ -63,6 +63,7 @@ function numberWithCommas(x) {
                 margin: '1rem'
             }}
             >Reciepts</h2>
+            <h3>{state.getNames.length}</h3>
             {state.getNames && state.getNames.map((item)=> {
                 console.log(item.goods)
                 console.log(item)

@@ -32,7 +32,7 @@ const Sales = ()=> {
             }
         
           console.log(state.qtyArray)
-            if (graw.data.length){
+            if (graw.data.length > 0){
                 state.qtyArray.map((gr)=> {
                     return gr.goods.map((good)=> {
                         const elements =  {
