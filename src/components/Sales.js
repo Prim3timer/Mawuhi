@@ -101,7 +101,7 @@ const Sales = ()=> {
         style={{textAlign: 'center',
             // margin: '1rem auto'
         }}
-        >Sales   </h2>
+        >{auth.user}'s Sales   </h2>
           {/* <SearchItem/> */}
         </article>
 
