@@ -23,7 +23,7 @@ const Home = ({afa, userId})=> {
         <div className="home-cont" >
              <br />
    
-             <h3> Welcome, {auth.user} 
+             <h3> Hi, {auth.user} 
 
              </h3>
              <br />
