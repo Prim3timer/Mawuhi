@@ -3,20 +3,37 @@ import initialState from "../store"
 // import SearchItem from "./SearchItem";
 import {useEffect, useReducer } from "react";
 import axios  from "../app/api/axios";
+import useAuth from '../hooks/useAuth';
 const {v4: uuid} = require('uuid')
 
 
 const Sales = ()=> {
     const [state, dispatch] = useReducer(reducer, initialState)
+    const {auth} = useAuth()
     const getTrans = async ()=> {
-        // const mc = await axios.get('transactions')
+        console.log(auth.picker)
         const graw =  await axios.get('/transactions')
         const innerArray = []
-        dispatch({type: 'qtyArray', payload: graw.data})
-      console.log(state.qtyArray)
         try {
-            if (graw.data.length > 0){
-                graw.data.map((gr)=> {
+
+            if (graw){
+                const newRes = graw.data.map((item)=> {
+                    if (!item.cashierID){
+                        item.cashierID = 'unavailable'
+                        item.cashier = 'unavailable'
+                    }
+                    return item
+                })
+                console.log(newRes)
+                console.log(graw.data)
+                const cashierSales = graw.data.filter((item)=> item.cashierID === auth.picker)
+                dispatch({type: 'qtyArray', payload: cashierSales})
+                console.log(cashierSales)
+            }
+        
+          console.log(state.qtyArray)
+            if (state.qtyArray){
+                state.qtyArray.map((gr)=> {
                     return gr.goods.map((good)=> {
                         const elements =  {
                             name: good.name,

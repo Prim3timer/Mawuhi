@@ -1,17 +1,32 @@
 import initialState from "../store"
-import { useEffect, useReducer } from "react"
+import { useEffect, useContext, useReducer } from "react"
 import reducer from "../reducer"
 import axios from "../app/api/axios"
+import useAuth from '../hooks/useAuth';
+import AuthContext from "../context/authProvider";
 // import { retry } from "@reduxjs/toolkit/query"
 import { FaTrashAlt } from "react-icons/fa";
 const Shopping = ()=> {
 const [state, dispatch] = useReducer(reducer, initialState)
+const { setAuth, auth } = useContext(AuthContext);
 const getItems = async ()=> {
+    console.log(auth.picker)
     try {
         const response = await axios.get('/transactions')
-        console.log(response.data)
         if (response){
-            dispatch({type: 'getNames', payload: response.data})
+            const newRes = response.data.map((item)=> {
+                if (!item.cashierID){
+                    item.cashierID = 'unavailable'
+                    item.cashier = 'unavailable'
+                }
+                return item
+            })
+            console.log(newRes)
+         
+            const cashierTrans = newRes.filter((item) => item.cashierID === auth.picker)
+            console.log(cashierTrans)
+            // dispatch({type: 'getNames', payload: response.data})
+            dispatch({type: 'getNames', payload: cashierTrans})
 
         }
     } catch (error) {
