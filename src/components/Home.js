@@ -22,10 +22,16 @@ const Home = ({afa, userId})=> {
     return (
         <div className="home-cont" >
              <br />
-   
+            <div
+            style={{
+                padding: '0 1rem'
+            }}
+            >
+                
              <h3> Hi, {auth.user} 
 
              </h3>
+            </div>
              <br />
         <section
         className="home"
