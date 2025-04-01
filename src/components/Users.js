@@ -58,13 +58,15 @@ return (
                 <th>Delete</th>
             </tr>
           
-                {users.map((user, i)=> {
-                    return <tr key={i}
+                {users.map((user, index)=> {
+                    return <tr key={index}
                     onClick={removeUser}
+                    style={{backgroundColor: index % 2 === 0 ?
+                        'white' : 'lightsalmon'}}       
                     >
 
                         <th 
-                                    
+                         
                         >{user?.username}</th>
                         <td
                          onClick={removeUser}
