@@ -45,7 +45,11 @@ return (
         {users?.length
         ? (
             <table
-            className="item-list"
+            className="inventory"
+            style={{
+                // backgroundColor: 'blue'
+                marginLeft: '7rem'
+            }}
             >
            <tbody>
             <tr>
