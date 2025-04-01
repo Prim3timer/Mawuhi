@@ -33,7 +33,7 @@ useEffect(()=> {
 }, [])
 return (
     <article
-    className="inventory"
+    className="inventory-spec"
     style={{
         // width: '50vw'
         // margin: '0 auto'
@@ -48,7 +48,7 @@ return (
             <table
             className="inventory"
             style={{
-                marginLeft: '3rem'
+                // marginLeft: '1rem'
             }}
             >
            <tbody>
