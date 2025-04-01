@@ -3,9 +3,7 @@ import { Link } from "react-router-dom";
 
 const Admin = () => {
 
-    const removeUser = () => {
-        console.log('and i dey in the mood')
-    }
+  
     return (
         <section
         style={{
@@ -23,14 +21,24 @@ const Admin = () => {
             <div className="flexGrow"
             
             >
-                <Link to="/"
+                <button
                 style={{
-                    color: 'brown',
-                    fontSize: '1.5rem'
+                    marginBottom: '1rem'
+
                 }}
+                >
 
-
+                <Link to="/"
+                    style={{
+                        color: 'white',
+                        fontSize: '1.5rem',
+                        textDecoration: 'none',
+                        
+                    }}
+                
+                
                 >Home</Link>
+                </button>
             </div>
         </section>
     )
