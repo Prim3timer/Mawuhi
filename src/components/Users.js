@@ -33,12 +33,13 @@ useEffect(()=> {
 }, [])
 return (
     <article
+    className="inventory"
     style={{
         // width: '50vw'
         // margin: '0 auto'
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'center'
+        // display: 'flex',
+        // flexDirection: 'row',
+        justifyContent: 'center',
     }}
     >
       
@@ -47,8 +48,7 @@ return (
             <table
             className="inventory"
             style={{
-                // backgroundColor: 'blue'
-                marginLeft: '7rem'
+                marginLeft: '3rem'
             }}
             >
            <tbody>
