@@ -7,11 +7,11 @@ import useAuth from '../hooks/useAuth';
 const {v4: uuid} = require('uuid')
 
 
-const Sales = ()=> {
+const Sales = ({picker})=> {
     const [state, dispatch] = useReducer(reducer, initialState)
-    const {auth} = useAuth()
+    // const {auth} = useAuth()
     const getTrans = async ()=> {
-        console.log(auth.picker)
+        // console.log(auth.picker)
         const graw =  await axios.get('/transactions')
         const innerArray = []
         try {
@@ -26,7 +26,7 @@ const Sales = ()=> {
                 })
                 console.log(newRes)
                 console.log(graw.data)
-                const cashierSales = graw.data.filter((item)=> item.cashierID === auth.picker)
+                const cashierSales = graw.data.filter((item)=> item.cashierID === picker)
                 dispatch({type: 'qtyArray', payload: cashierSales})
                 console.log(cashierSales)
 
@@ -96,12 +96,12 @@ const Sales = ()=> {
         
         />
           </form>
-        <h2
+        {/* <h2
         className="invent-header"
         style={{textAlign: 'center',
             // margin: '1rem auto'
         }}
-        >{auth.user}'s Sales   </h2>
+        >{picker}'s Sales   </h2> */}
           {/* <SearchItem/> */}
         </article>
 

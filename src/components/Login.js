@@ -52,9 +52,10 @@ const Login = () => {
             console.log(response?.data);
             const accessToken = response?.data?.accessToken;
             const roles = response?.data?.roles;
-            const picker = response?.data?.id
+            const picker = response?.data?.id;
+            const picker2 = ''
             
-            setAuth({ user, pwd, roles, accessToken, picker});
+            setAuth({ user, pwd, roles, accessToken, picker, picker2});
             setUser('');
             setPwd('');
             navigate(from, { replace: true });

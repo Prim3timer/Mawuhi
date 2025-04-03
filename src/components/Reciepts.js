@@ -6,7 +6,7 @@ import useAuth from '../hooks/useAuth';
 import AuthContext from "../context/authProvider";
 // import { retry } from "@reduxjs/toolkit/query"
 import { FaTrashAlt } from "react-icons/fa";
-const Shopping = ()=> {
+const Shopping = ({picker})=> {
 const [state, dispatch] = useReducer(reducer, initialState)
 const { setAuth, auth } = useContext(AuthContext);
 const getItems = async ()=> {
@@ -23,7 +23,7 @@ const getItems = async ()=> {
             })
             console.log(newRes)
          
-            const cashierTrans = newRes.filter((item) => item.cashierID === auth.picker)
+            const cashierTrans = newRes.filter((item) => item.cashierID === picker)
             console.log(cashierTrans)
             // dispatch({type: 'getNames', payload: response.data})
             dispatch({type: 'getNames', payload: cashierTrans})
@@ -62,8 +62,7 @@ function numberWithCommas(x) {
             style={{
                 margin: '1rem'
             }}
-            >Reciepts</h2>
-            <h3>{state.getNames.length}</h3>
+            >Reciepts ({state.getNames.length})</h2>
             {state.getNames && state.getNames.map((item)=> {
                 console.log(item.goods)
                 console.log(item)

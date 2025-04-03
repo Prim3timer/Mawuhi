@@ -1,14 +1,30 @@
 import { useState, useEffect } from "react";
 import axios from "../app/api/axios";
 import { FaTrashAlt } from "react-icons/fa";
-
+import UserSelect from "./UserSelect";
+import useAuth from "../hooks/useAuth"
+import { Link } from "react-router-dom";
+import initialState from "../store";
+import reducer from "../reducer";
+import { useReducer } from "react";
 const Users = ()=> {
     const [users, setUsers] = useState()
-    const removeUser = () => {
-        console.log('and i dey in the mood')
+    const [state, dispatch] = useReducer(reducer, initialState)
+    const [selected, setSelected] = useState(false)
+        const {auth} = useAuth()
+
+        const userPage = (id) => {
+            console.log(users)
+            auth.picker2 = id
+            const currentUser = users.find((user) => user._id = auth.picker)
+            console.log(currentUser)
+            dispatch({type: 'backendUser', payload: currentUser})
+        }
+
+    const removeUser = (id) => {
+        console.log(id)
     }
 useEffect(()=> {
-
     let isMounted = true
     const controller = new AbortController()
 
@@ -32,7 +48,9 @@ useEffect(()=> {
     }
 }, [])
 return (
-    <article
+   selected ? <UserSelect
+   picker2={auth.picker2}
+   /> : <article
     className="inventory-spec"
     style={{
         // width: '50vw'
@@ -60,19 +78,19 @@ return (
           
                 {users.map((user, index)=> {
                     return <tr key={index}
-                    onClick={removeUser}
+                    onClick={() => userPage(user._id)}
                     style={{backgroundColor: index % 2 === 0 ?
                         'white' : 'lightsalmon'}}       
                     >
 
                         <th 
-                         
-                        >{user?.username}</th>
+                        onClick={() => userPage(user._id)}
+                        ><Link to="/user-select">{user?.username}</Link></th>
                         <td
-                         onClick={removeUser}
+                         onClick={() => userPage(user._id)}
                         >{user?._id}</td>
                          <td
-                                                // onClick={()=> removeItem(item._id)}
+                                                onClick={()=> removeUser(user._id)}
                                             >
                                             <FaTrashAlt role='button'
                                             tableIndex='0'/> 

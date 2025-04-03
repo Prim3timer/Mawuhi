@@ -11,7 +11,7 @@ const initialState = {
     salesGrand: '',
     isMatched: '',
 
-    user: '',
+    user: {},
     validName: false,
     userFocus: false,
     pwd: '',
@@ -44,7 +44,7 @@ const initialState = {
    paidAmount: 0,
    balance: 0,
    id: '',
-   backendUser: ''
+   backendUser:    {}
   
 }
 

@@ -21,6 +21,8 @@ import EditItem from "./components/EditItem"
 import Reciepts from "./components/Reciepts"
 import EmpInv from "./components/EmpInv"
 import { useState } from "react"
+import useAuth from "./hooks/useAuth"
+import UserSelect from "./components/UserSelect"
 
 
 
@@ -34,6 +36,9 @@ const App = () => {
   const [afa, setAfa] = useState('');
   const [userId, setUserId] = useState('');
   const year = new Date().getFullYear()
+  const { auth} = useAuth()
+  console.log(auth.picker)
+  console.log(auth.picker2)
 return (
 
   <main className="App">
@@ -48,11 +53,17 @@ return (
     userId={userId}
     setUserId={setUserId}
     />}/>
-        <Route path="shopping" element={<Reciepts/>}/>
+        <Route path="shopping" element={<Reciepts
+         picker={auth.picker}
+        />}/>
     <Route path="register" element={<Register/>}/>
          <Route path="linkpage" element={<LinkPage/>}/>
       <Route path="unauthorized" element={<Unauthorized/>}/>
       <Route path="transaction" element={<Transactions/>}/>
+      <Route path="user-select" element={<UserSelect
+      // picker={auth.picker2}
+      />}/>
+    
   
        {/* protected routes */}
        <Route element={<RequireAuth allowedRoles={[2001]}/>}>
@@ -70,7 +81,10 @@ return (
     <Route path="inventory" element={<Inventory/>}/>
        <Route path="edit" element={<Edit/>}/>
        <Route path="create-item" element={<CreateItem/>}/>
-       <Route path="sales" element={<Sales/>}/>
+       <Route path="sales" element={<Sales
+       picker={auth.picker}
+       />}/>
+     
          </Route>
       
        {/* <Route element={<RequireAuth allowedRoles={[1984, 5150]}/>}>
