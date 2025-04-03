@@ -48,8 +48,21 @@ const getUsers = async ()=> {
     /> : ''
 
     return (
-    <div>
-            <h4>{currentUser.username}'s activity</h4>
+    <div
+        style={{
+            // alignItems: 'center',
+            // justifyContent: 'center'
+            // margin: 'auto'
+        }}
+    >
+            <h3
+            style={{
+                margin: '1rem 2rem',
+                alignItems: 'center',
+                // justifyContent: 'center',
+                // backgroundColor: 'blue'
+            }}
+            >{currentUser.username}'s activity</h3>
             <article
             style={{
                 justifyContent:'center',
@@ -58,7 +71,7 @@ const getUsers = async ()=> {
                 flexDirection: 'row',
                 columnGap: '2rem',
                 width: '90vw',
-                marginLeft: '4rem'
+                marginLeft: '1rem'
             }}
             >
                 <button
@@ -67,7 +80,7 @@ const getUsers = async ()=> {
                 <button
                 onClick={showReciepts}
                 >Reciepts</button>
-                     <Link to="/admin"><button>Admin</button></Link>
+                     {/* <Link to="/admin"><button>Admin</button></Link> */}
             </article>
           {salesReciecpts}
      
