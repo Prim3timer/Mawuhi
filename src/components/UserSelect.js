@@ -58,6 +58,7 @@ const getUsers = async ()=> {
                 flexDirection: 'row',
                 columnGap: '2rem',
                 width: '90vw',
+                marginLeft: '4rem'
             }}
             >
                 <button
