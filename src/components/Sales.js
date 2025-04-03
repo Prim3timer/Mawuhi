@@ -96,12 +96,6 @@ const Sales = ({picker})=> {
         
         />
           </form>
-        {/* <h2
-        className="invent-header"
-        style={{textAlign: 'center',
-            // margin: '1rem auto'
-        }}
-        >{picker}'s Sales   </h2> */}
           {/* <SearchItem/> */}
         </article>
 

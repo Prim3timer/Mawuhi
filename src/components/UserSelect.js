@@ -52,10 +52,12 @@ const getUsers = async ()=> {
             <h4>{currentUser.username}'s activity</h4>
             <article
             style={{
+                justifyContent:'center',
                 margin:'1rem 0',
                 display: 'flex',
                 flexDirection: 'row',
-                columnGap: '2rem'
+                columnGap: '2rem',
+                width: '90vw',
             }}
             >
                 <button
