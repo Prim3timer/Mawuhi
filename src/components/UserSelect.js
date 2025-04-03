@@ -63,7 +63,7 @@ const getUsers = async ()=> {
                 >Sales</button>
                 <button
                 onClick={showReciepts}
-                >Reciept</button>
+                >Reciepts</button>
                      <Link to="/admin"><button>Admin</button></Link>
             </article>
           {salesReciecpts}
