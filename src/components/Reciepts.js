@@ -114,12 +114,20 @@ function numberWithCommas(x) {
                 console.log(item)
                 return (
                  <article
+                 id="receipts"
                     style={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        // justifyContent: 'flex-start',
+                        // display: 'flex',
+                        // flexDirection: 'column',
+                        // justifySelf: 'flex-start',
+                        justifySelf: 'center',
+                        // justifyContent: 'center',
                         // alignItems: 'flex-start',
-                        textAlign: 'center'
+                        // alignItems: 'center',
+                        // textAlign: 'center',
+                     
+                        width: '40%',
+                        textAlign: 'center',
+                        // backgroundColor: 'green'
                     }}
                     onClick={() => oneShow(item._id)}
                     >
@@ -130,22 +138,32 @@ function numberWithCommas(x) {
                         {item.goods.map((good)=> {
                             return (
                                 <div
-                                style={{display: 'flex',
-                                    flexDirection: 'column',
-                                    justifyContent: 'center',
+                                style={{
+                                    // display: 'flex',
+                                    // flexDirection: 'column',
+                                    // alignItems: 'center',
+                                    margin: '0 0 0 4rem',
+                                     textAlign: 'left'
                                 }}
                                 >
                                     
                                     <h5>{good.name}</h5>
                                     <p>Qty: {good.qty} {good.unitMeasure.split(' ')[1].slice(1, -1)}</p>
                                     <p>Price: {good.price}</p>
-                                    <h5>Sub Total: ₦{numberWithCommas(parseFloat(good.total).toFixed(2))}</h5>
+                                    <h5
+                                   
+                                    >Sub Total: ₦{numberWithCommas(parseFloat(good.total).toFixed(2))}</h5>
                                     {/* <br/> */}
                                 </div>
                             )
                         })}
                      
-                        <h4>Grand Total: ₦{ numberWithCommas(parseFloat(item.grandTotal).toFixed(2))}</h4>
+                        <h4
+                         style={{textAlign: 'left',
+                            margin: '0 0 0 4rem',
+                            // color: 'green'
+                        }}
+                        >Grand Total: ₦{ numberWithCommas(parseFloat(item.grandTotal).toFixed(2))}</h4>
                         <h3 onClick={(id)=> handleRemove(item._id)}
                             style={{
                                 textAlign: 'center',

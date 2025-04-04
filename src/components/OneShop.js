@@ -10,10 +10,14 @@ const OneShop = ({items, one}) => {
 
 
     return (
-        <div>
+        <div
+        
+        >
             <h2
             style={{
                 textAlign: 'center',
+                margin: '1rem'
+                
             }}
             >Single Reciept</h2>
 
@@ -22,6 +26,7 @@ const OneShop = ({items, one}) => {
                                     display: 'flex',
                                     flexDirection: 'column',
                                     justifyContent: 'center',
+                                    // textAlign: 'center'
                                     alignItems: 'center'
                                 }}
                                 >
@@ -32,10 +37,10 @@ const OneShop = ({items, one}) => {
                                     {item.goods.map((good)=> {
                                         return (
                                             <div
-                                            style={{display: 'flex',
-                                                flexDirection: 'column',
-                                                justifyContent: 'center',
-                                            }}
+                                            // style={{display: 'flex',
+                                            //     flexDirection: 'column',
+                                            //     justifyContent: 'center',
+                                            // }}
                                             >
                                                 
                                                 <h5>{good.name}</h5>
