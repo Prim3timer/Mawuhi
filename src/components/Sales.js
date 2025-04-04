@@ -88,7 +88,7 @@ const Sales = ({picker})=> {
         id="invent-search"
         type="text"
         role="searchbox" 
-        placeholder="Search sales by name"
+        placeholder="Search by name"
         value={state.search}
         onChange={(e)=> dispatch({type: 'search', payload: e.target.value})}
         

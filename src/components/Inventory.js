@@ -149,7 +149,7 @@ const bringEdit = () => {
  id="invent-search"
  type="text"
  role="searchbox" 
- placeholder="Search items by name"
+ placeholder="Search by name"
  value={state.search}
  onChange={(e)=> dispatch({type: 'search', payload: e.target.value})}
 
