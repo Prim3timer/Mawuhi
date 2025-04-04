@@ -77,7 +77,7 @@ function numberWithCommas(x) {
         id="invent-search"
         type="text"
         role="searchbox" 
-        placeholder="Search sales by name"
+        placeholder="Search receipts by date"
         value={state.search}
         onChange={(e)=> dispatch({type: 'search', payload: e.target.value})}
         
