@@ -1,4 +1,5 @@
 import axios from "../app/api/axios"
+import { Link } from "react-router-dom"
 
 const OneShop = ({items, one}) => {
     console.log(items)
@@ -19,7 +20,12 @@ const OneShop = ({items, one}) => {
                 margin: '1rem'
                 
             }}
-            >Single Reciept</h2>
+            >Single Reciept</h2> 
+            {/* <Link to='/shopping'><button
+            style={{
+                textAlign: 'center'
+            }}
+            >Reciepts</button></Link> */}
 
                <article
                                 style={{

@@ -125,7 +125,7 @@ function numberWithCommas(x) {
                         // alignItems: 'center',
                         // textAlign: 'center',
                      
-                        width: '40%',
+                        // width: '40%',
                         textAlign: 'center',
                         // backgroundColor: 'green'
                     }}
@@ -159,7 +159,8 @@ function numberWithCommas(x) {
                         })}
                      
                         <h4
-                         style={{textAlign: 'left',
+                         style={{
+                            textAlign: 'left',
                             margin: '0 0 0 4rem',
                             // color: 'green'
                         }}
