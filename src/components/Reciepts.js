@@ -80,7 +80,8 @@ function numberWithCommas(x) {
         one={oneId}
         /> : <div
         style={{
-            margin: ' 0 0 0 1rem'
+            margin: ' 0 0 0 1rem',
+           textAlign: 'center'
             
         }}
         >
@@ -116,8 +117,9 @@ function numberWithCommas(x) {
                     style={{
                         display: 'flex',
                         flexDirection: 'column',
-                        justifyContent: 'flex-start',
-                        alignItems: 'flex-start'
+                        // justifyContent: 'flex-start',
+                        // alignItems: 'flex-start',
+                        textAlign: 'center'
                     }}
                     onClick={() => oneShow(item._id)}
                     >

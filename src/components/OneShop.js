@@ -11,14 +11,18 @@ const OneShop = ({items, one}) => {
 
     return (
         <div>
-            <h2>Single Reciept</h2>
+            <h2
+            style={{
+                textAlign: 'center',
+            }}
+            >Single Reciept</h2>
 
                <article
                                 style={{
                                     display: 'flex',
                                     flexDirection: 'column',
-                                    justifyContent: 'flex-start',
-                                    alignItems: 'flex-start'
+                                    justifyContent: 'center',
+                                    alignItems: 'center'
                                 }}
                                 >
                                     <h5>Cashier: {item.cashier}</h5>
