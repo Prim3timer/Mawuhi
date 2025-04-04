@@ -30,7 +30,7 @@ const getItems = async ()=> {
             // dispatch({type: 'getNames', payload: response.data})
             dispatch({type: 'getNames', payload: cashierTrans})
 
-            const filterate = cashierTrans.filter((inner)=> inner.date.includes(state.search))
+            const filterate = cashierTrans.filter((inner)=> inner.date.substring(0, 10).includes(state.search))
             console.log(filterate)
         
             
