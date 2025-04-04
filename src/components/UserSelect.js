@@ -80,6 +80,9 @@ const getUsers = async ()=> {
                 <button
                 onClick={showReciepts}
                 >Reciepts</button>
+                {/* <button
+                onClick={showReciepts}
+                >All </button> */}
                      {/* <Link to="/admin"><button>Admin</button></Link> */}
             </article>
           {salesReciecpts}

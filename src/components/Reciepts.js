@@ -6,6 +6,8 @@ import useAuth from '../hooks/useAuth';
 import AuthContext from "../context/authProvider";
 // import { retry } from "@reduxjs/toolkit/query"
 import { FaTrashAlt } from "react-icons/fa";
+import SearchItem from "./SearchItem";
+
 const Shopping = ({picker})=> {
 const [state, dispatch] = useReducer(reducer, initialState)
 const { setAuth, auth } = useContext(AuthContext);
@@ -28,10 +30,20 @@ const getItems = async ()=> {
             // dispatch({type: 'getNames', payload: response.data})
             dispatch({type: 'getNames', payload: cashierTrans})
 
-        }
+            const filterate = cashierTrans.filter((inner)=> inner.date.includes(state.search))
+            console.log(filterate)
+        
+            
+            console.log(state.getNames)
+            dispatch({type: 'getNames', 
+                payload: filterate})
+                
+            }
     } catch (error) {
         console.log(error)
     }
+   
+    
 }
 
 const handleRemove = async (id)=> {
@@ -43,7 +55,7 @@ const handleRemove = async (id)=> {
 }
 useEffect(()=> {
     getItems()
-}, [])
+}, [state.search])
 
 
 function numberWithCommas(x) {
@@ -58,6 +70,22 @@ function numberWithCommas(x) {
             
         }}
         >
+
+<article id="form-cont">
+            <form  className="search-form"   onSubmit={(e)=> e.preventDefault()}>
+        <input 
+        id="invent-search"
+        type="text"
+        role="searchbox" 
+        placeholder="Search sales by name"
+        value={state.search}
+        onChange={(e)=> dispatch({type: 'search', payload: e.target.value})}
+        
+        // https://www.npmjs.com/package/@react-google-maps/api
+        
+        />
+          </form>
+        </article>
             <h2
             style={{
                 margin: '1rem'
