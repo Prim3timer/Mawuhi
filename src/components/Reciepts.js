@@ -125,7 +125,7 @@ function numberWithCommas(x) {
                         // alignItems: 'center',
                         // textAlign: 'center',
                      
-                        // width: '40%',
+                        width: '40%',
                         textAlign: 'center',
                         // backgroundColor: 'green'
                     }}
