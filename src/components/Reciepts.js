@@ -1,5 +1,5 @@
 import initialState from "../store"
-import { useEffect, useContext, useReducer } from "react"
+import { useEffect, useContext, useReducer, useState } from "react"
 import reducer from "../reducer"
 import axios from "../app/api/axios"
 import useAuth from '../hooks/useAuth';
@@ -7,9 +7,12 @@ import AuthContext from "../context/authProvider";
 // import { retry } from "@reduxjs/toolkit/query"
 import { FaTrashAlt } from "react-icons/fa";
 import SearchItem from "./SearchItem";
+import OneShop from "./OneShop";
 
-const Shopping = ({picker})=> {
+const Shopping = ({picker, setReceipts})=> {
 const [state, dispatch] = useReducer(reducer, initialState)
+const [showOne, setShowOne] = useState(false)
+const [oneId, setOneId] = useState('')
 const { setAuth, auth } = useContext(AuthContext);
 const getItems = async ()=> {
     console.log(auth.picker)
@@ -53,6 +56,14 @@ const handleRemove = async (id)=> {
     const newGraw = state.getNames && state.getNames.filter((item)=> item._id !== id)
     dispatch({type: 'getNames', payload: newGraw})
 }
+
+const oneShow = (id) => {
+    // console.log(id)
+   setOneId(id)
+    console.log(oneId)
+    setShowOne(true)
+    // setReceipts(false)
+}
 useEffect(()=> {
     getItems()
 }, [state.search])
@@ -64,7 +75,10 @@ function numberWithCommas(x) {
 
 
     return (
-        <div
+        showOne ? <OneShop
+        items={state.getNames}
+        one={oneId}
+        /> : <div
         style={{
             margin: ' 0 0 0 1rem'
             
@@ -85,6 +99,9 @@ function numberWithCommas(x) {
         
         />
           </form>
+
+
+          {/* <SearchItem/> */}
         </article>
             <h2
             style={{
@@ -95,13 +112,14 @@ function numberWithCommas(x) {
                 console.log(item.goods)
                 console.log(item)
                 return (
-                    <article
+                 <article
                     style={{
                         display: 'flex',
                         flexDirection: 'column',
                         justifyContent: 'flex-start',
                         alignItems: 'flex-start'
                     }}
+                    onClick={() => oneShow(item._id)}
                     >
                         <h5>Cashier: {item.cashier}</h5>
                         {/* <h5>cashierID: {item.cashierID}</h5> */}

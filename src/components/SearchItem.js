@@ -7,8 +7,8 @@ import useAuth from '../hooks/useAuth';
 const {v4: uuid} = require('uuid')
 
 
-const SearchItem = ({search}) => {
-    // const [state, dispatch] = useReducer(reducer, initialState)
+const SearchItem = () => {
+    const [state, dispatch] = useReducer(reducer, initialState)
     
     return (
         <div>
@@ -19,9 +19,9 @@ const SearchItem = ({search}) => {
         type="text"
         role="searchbox" 
         placeholder="Search sales by name"
-        value={search}
-        // onChange={(e)=> dispatch({type: 'search', payload: e.target.value})}
-        onChange={(e)=> search = e.target.value}
+        value={state.search}
+        onChange={(e)=> dispatch({type: 'search', payload: e.target.value})}
+        // onChange={(e)=> search = e.target.value}
         
         // https://www.npmjs.com/package/@react-google-maps/api
         

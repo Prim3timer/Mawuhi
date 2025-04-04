@@ -5,23 +5,24 @@ import initialState from "../store"
 import reducer from "../reducer"
 import Sales from "./Sales"
 import Shopping from "./Reciepts"
+import OneShop from "./OneShop"
 import { Link } from "react-router-dom"
 
 const UserSelect = ({picker}) => {
     const [state, dispatch] = useReducer(reducer, initialState)
     const [currentUser, setCurrentUser] = useState({})
     const [sales, setSales] = useState(false)
-    const [reciepts, setReciepts] = useState(false)
+    const [reciepts, setReceipts] = useState(false)
 const {auth} = useAuth()
 
 const showSales = () => {
     setSales(true)
-    setReciepts(false)
+    setReceipts(false)
 }
 
 const showReciepts = ()=> {
     setSales(false)
-    setReciepts(true)
+    setReceipts(true)
 }
 
 const getUsers = async ()=> {
@@ -45,6 +46,7 @@ const getUsers = async ()=> {
     picker={auth.picker2}
     /> : reciepts ? <Shopping
     picker={auth.picker2}
+    setReceipts={setReceipts}
     /> : ''
 
     return (
