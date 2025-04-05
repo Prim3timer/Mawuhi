@@ -99,6 +99,12 @@ const Sales = ({picker})=> {
           {/* <SearchItem/> */}
         </article>
 
+        <h2
+          style={{
+            margin: '1rem 0'   
+        }}
+        >Sales</h2>
+
         <table className="inventory"
         style={{
             // fontSize: '1.5rem'

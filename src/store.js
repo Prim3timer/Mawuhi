@@ -9,7 +9,7 @@ const initialState = {
     unitMeasure: '',
     piecesUnit: '',
     salesGrand: '',
-    isMatched: '',
+    isMatched: false,
 
     user: {},
     validName: false,

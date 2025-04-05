@@ -5,7 +5,7 @@ import Home from "./components/Home"
 import Layout from "./components/Layout"
 import Missing from "./components/Missing"
 import Unauthorized from "./components/Unauthorized"
-// import SearchItem from "./components/SearchItem"
+
 import Editor from "./components/Editor"
 import Transactions from "./components/Transactions"
 import Inventory from "./components/Inventory"
@@ -23,6 +23,7 @@ import EmpInv from "./components/EmpInv"
 import { useState } from "react"
 import useAuth from "./hooks/useAuth"
 import UserSelect from "./components/UserSelect"
+import OneShop from "./components/OneShop"
 
 
 
@@ -55,7 +56,8 @@ return (
     />}/>
         <Route path="shopping" element={<Reciepts
          picker={auth.picker}
-        />}/>
+         />}/>
+         {/* <Route path="one-shop" element={<OneShop/>} /> */}
     <Route path="register" element={<Register/>}/>
          <Route path="linkpage" element={<LinkPage/>}/>
       <Route path="unauthorized" element={<Unauthorized/>}/>

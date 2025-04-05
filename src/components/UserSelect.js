@@ -11,7 +11,7 @@ import { Link } from "react-router-dom"
 const UserSelect = ({picker}) => {
     const [state, dispatch] = useReducer(reducer, initialState)
     const [currentUser, setCurrentUser] = useState({})
-    const [sales, setSales] = useState(false)
+    const [sales, setSales] = useState(true)
     const [reciepts, setReceipts] = useState(false)
 const {auth} = useAuth()
 
@@ -79,8 +79,14 @@ const getUsers = async ()=> {
             >
                 <button
                 onClick={showSales}
+                style={{ backgroundColor: sales ? 'red' : 'dodgerblue',
+                    borderColor:  sales ? 'red' : 'dodgerblue'
+                    }}
                 >Sales</button>
                 <button
+                style={{ backgroundColor: reciepts ? 'red' : 'dodgerblue',
+                    borderColor:  reciepts ? 'red' : 'dodgerblue'
+                    }}
                 onClick={showReciepts}
                 >Reciepts</button>
                 {/* <button

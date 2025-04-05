@@ -8,6 +8,7 @@ import AuthContext from "../context/authProvider";
 import { FaTrashAlt } from "react-icons/fa";
 import SearchItem from "./SearchItem";
 import OneShop from "./OneShop";
+import Unauthorized from "./Unauthorized";
 
 const Shopping = ({picker, setReceipts})=> {
 const [state, dispatch] = useReducer(reducer, initialState)
@@ -48,12 +49,35 @@ const getItems = async ()=> {
    
     
 }
+console.log(state.cancel)
+
+const assertain = (id) => {
+    if (auth.roles.includes(5150)){
+        console.log("deleted")
+        
+        dispatch({type: 'cancel', payload: true})
+        console.log(state.cancel)
+        // dispatch({type: 'id', payload: id})
+        const getItem = state.getNames && state.getNames.find((item)=> item._id === id)
+        dispatch({type: 'inItem', payload: getItem})
+        console.log(getItem)
+    }
+    else {
+        dispatch({type: 'isMatched', payload: true})
+    }
+}
+
 
 const handleRemove = async (id)=> {
+    dispatch({type: 'cancel', payload: false})
+
+
     // e.preventDefault()     
     // removeInventory(id)
         await axios.delete(`/transactions/${id}`)
-    const newGraw = state.getNames && state.getNames.filter((item)=> item._id !== id)
+        
+        const newGraw = state.getNames && state.getNames.filter((item)=> item._id !== id)
+        console.log('removed')
     dispatch({type: 'getNames', payload: newGraw})
 }
 
@@ -64,6 +88,20 @@ const oneShow = (id) => {
     setShowOne(true)
     // setReceipts(false)
 }
+
+const remainDelete = ()=> {
+    // this condition statement is to enable the removal of the confirm window once any part of the 
+    // page is touched.
+    if (state.cancel){
+
+        dispatch({type: 'cancel', payload: false})
+    }
+    // if (state.isEdit){
+
+    //     dispatch({type: 'isEdit', payload: false})
+    // }
+}
+
 useEffect(()=> {
     getItems()
 }, [state.search])
@@ -78,12 +116,13 @@ function numberWithCommas(x) {
         showOne ? <OneShop
         items={state.getNames}
         one={oneId}
-        /> : <div
+        /> : state.isMatched ? <Unauthorized/> : <div
         style={{
             margin: ' 0 0 0 1rem',
            textAlign: 'center'
             
         }}
+        // onClick={remainDelete}
         >
 
 <article id="form-cont">
@@ -113,6 +152,7 @@ function numberWithCommas(x) {
                 console.log(item.goods)
                 console.log(item)
                 return (
+                    <section>
                  <article
                  id="receipts"
                     style={{
@@ -165,23 +205,64 @@ function numberWithCommas(x) {
                             // color: 'green'
                         }}
                         >Grand Total: ₦{ numberWithCommas(parseFloat(item.grandTotal).toFixed(2))}</h4>
-                        <h3 onClick={(id)=> handleRemove(item._id)}
+                        
+                   
+           <h5>Cashier: {item.cashier}</h5>
+                     
+                    </article>
+                    {/* <h3 onClick={(id)=> handleRemove(item._id)} */}
+                    <h3 onClick={(e)=> assertain(item._id, e)}
                             style={{
                                 textAlign: 'center',
                             }}
                             >
-                                       <h5>Cashier: {item.cashier}</h5>
                         <FaTrashAlt role='button'
            
            /> 
                         </h3>
                         <br/>
-                    </article>
+                    </section>
                 )
             //    })
             })}
             
-            
+            <div
+            style={{
+                display: `${state.cancel ? 'block' : 'none'}`,
+                position: 'absolute',
+            textAlign: 'center',
+            top: '35%',
+            left: '5%',
+            width: '90%',
+             padding: '1rem',
+               backgroundColor: '#DBBFDB',
+               borderRadius: '5px',
+               opacity: '.85'
+         }}
+         >
+             <h3
+          id="verify-header"
+          style={{
+              margin: '.5rem auto',
+            //   display: 'flex',
+          }}
+          >Are you sure you want to delete this transacton: ({state.inItem.date})?</h3>
+                 <article
+                 style={{
+                     display: 'flex',
+                    //  flexDirection: 'row',
+                     columnGap: '4vw',
+                     justifyContent: 'center',
+                 }}
+                 >
+                    <button
+                 onClick={remainDelete}
+                 >No</button><button
+                  onClick={handleRemove}
+                 style={{backgroundColor: 'red',
+                     borderColor: 'red'
+                 }}
+                 >Yes</button></article></div> 
 
         </div>
     )
