@@ -149,22 +149,22 @@ function numberWithCommas(x) {
                                     <h4>{good.name}</h4>
                                     <p>Qty: {good.qty} {good.unitMeasure.split(' ')[1].slice(1, -1)}</p>
                                     <p>Price: {good.price}</p>
-                                    <h4
+                                    <p
                                    
-                                    >Sub Total: ₦{numberWithCommas(parseFloat(good.total).toFixed(2))}</h4>
+                                    >Sub Total: ₦{numberWithCommas(parseFloat(good.total).toFixed(2))}</p>
                                
                                     {/* <br/> */}
                                 </div>
                             )
                         })}
                      
-                        <h3
+                        <h4
                          style={{
                             textAlign: 'left',
                             // margin: '0 0 0 4rem',
                             // color: 'green'
                         }}
-                        >Grand Total: ₦{ numberWithCommas(parseFloat(item.grandTotal).toFixed(2))}</h3>
+                        >Grand Total: ₦{ numberWithCommas(parseFloat(item.grandTotal).toFixed(2))}</h4>
                         <h3 onClick={(id)=> handleRemove(item._id)}
                             style={{
                                 textAlign: 'center',
