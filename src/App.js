@@ -87,7 +87,7 @@ return (
        <Route path="sales" element={<Sales
        picker={auth.picker}
        />}/>
-     
+     <Route path="receipts" element={<Reciepts/>}/>
          </Route>
       
        {/* <Route element={<RequireAuth allowedRoles={[1984, 5150]}/>}>

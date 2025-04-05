@@ -29,7 +29,7 @@ const getItems = async ()=> {
             })
             console.log(newRes)
          
-            const cashierTrans = newRes.filter((item) => item.cashierID === picker)
+            const cashierTrans = newRes.filter((item) => item.cashierID === auth.picker)
             console.log(cashierTrans)
             // dispatch({type: 'getNames', payload: response.data})
             dispatch({type: 'getNames', payload: cashierTrans})

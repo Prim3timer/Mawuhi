@@ -7,23 +7,26 @@ import Sales from "./Sales"
 import Shopping from "./Reciepts"
 import OneShop from "./OneShop"
 import { Link } from "react-router-dom"
+import AllTransactions from "./AllTransactions"
 
 const UserSelect = ({picker}) => {
     const [state, dispatch] = useReducer(reducer, initialState)
     const [currentUser, setCurrentUser] = useState({})
+    const [allTransactons, setAllTransactions] = useState(false)
     const [sales, setSales] = useState(true)
     const [reciepts, setReceipts] = useState(false)
 const {auth} = useAuth()
 
-const showSales = () => {
-    setSales(true)
-    setReceipts(false)
-}
+// const showSales = () => {
+//     setSales(true)
+//     setReceipts(false)
+// }
 
-const showReciepts = ()=> {
-    setSales(false)
-    setReceipts(true)
-}
+// const showReciepts = ()=> {
+//     setSales(false)
+//     setReceipts(true)
+// }
+
 
 const getUsers = async ()=> {
     try {
@@ -43,12 +46,12 @@ const getUsers = async ()=> {
     }, [])
 
     {console.log(currentUser)}
-    const salesReciecpts = sales ? <Sales
-    picker={auth.picker2}
-    /> : reciepts ? <Shopping
-    picker={auth.picker2}
-    setReceipts={setReceipts}
-    /> : ''
+    // const salesReciecpts = sales ? <Sales
+    // picker={auth.picker2}
+    // /> : reciepts ? <Shopping
+    // picker={auth.picker2}
+    // setReceipts={setReceipts}
+    // /> : allTransactons ? <AllTransactions/> : ''
 
     return (
     <div
@@ -79,24 +82,24 @@ const getUsers = async ()=> {
               
             }}
             >
-                <button
-                onClick={showSales}
+               <Link to='/sales'> <button
                 style={{ backgroundColor: sales ? 'red' : 'dodgerblue',
                     borderColor:  sales ? 'red' : 'dodgerblue'
                     }}
-                >Sales</button>
-                <button
+                >Sales</button></Link>
+               <Link  to='/receipts'> <button
                 style={{ backgroundColor: reciepts ? 'red' : 'dodgerblue',
                     borderColor:  reciepts ? 'red' : 'dodgerblue'
                     }}
-                onClick={showReciepts}
-                >Reciepts</button>
-                {/* <button
-                onClick={showReciepts}
-                >All </button> */}
+              
+                >Reciepts</button></Link>
+
+                <Link to={'/all-transactions'}><button
+            
+                >All Receipts</button></Link>
                      {/* <Link to="/admin"><button>Admin</button></Link> */}
             </article>
-          {salesReciecpts}
+          {/* {salesReciecpts} */}
      
         </div>
     )
