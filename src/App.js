@@ -24,6 +24,7 @@ import { useState } from "react"
 import useAuth from "./hooks/useAuth"
 import UserSelect from "./components/UserSelect"
 import OneShop from "./components/OneShop"
+import AllTransactions from "./components/AllTransactions"
 
 
 
@@ -96,6 +97,7 @@ return (
        <Route element={<RequireAuth allowedRoles={[5150]}/>}>
 
      <Route path="admin" element={<Admin/>}/>
+     <Route path="all-transactions" element={<AllTransactions/>}/>
          </Route>
         
   
