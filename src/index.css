@@ -127,11 +127,11 @@ width: 70%;
 .edit-item {
   position: absolute;
   /* height: 60%; */
-  top: 15%;
+  top: 12%;
   width: 70%;
 }
 
-.edit-item input {
+.edit-item input, datalist {
   width: 85%;
   font-size: 1.5rem;
 }
@@ -549,8 +549,8 @@ form {
   }
 
   .edit-item {
-    top: 35%;
-    width: 80%;
+    top: 25%;
+    width: 90%;
   }
 
   .edit-item input {
