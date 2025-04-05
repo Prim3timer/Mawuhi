@@ -41,8 +41,9 @@ const Transactions = ()=> {
     }
 
 
-    
-    
+    const handleEdit = async () => {
+        await axios.put('/items')
+    }
     
     useEffect(()=> {
         getItems()
@@ -198,7 +199,7 @@ const Transactions = ()=> {
                 textAlign: 'center',
                 margin:'1rem 0' 
             }}
-            >Transactions</h2>
+            >Chekcout</h2>
             <fieldset
             id="field"
             >
@@ -218,7 +219,7 @@ const Transactions = ()=> {
             <article id="trans-add">
        <input type="text"
         id="trans-search"
-        placeholder="search item"
+        placeholder="select item"
         ref={inputRef}
         list="edulevel"
         /><button

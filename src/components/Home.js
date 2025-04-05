@@ -42,7 +42,7 @@ const Home = ({afa, userId})=> {
        
         <Link 
     
-        to="/transaction">transactions</Link>
+        to="/transaction">checkout</Link>
        <br/>
         <Link
        
