@@ -68,7 +68,7 @@ const ItemList = ()=> {
                     setTimeout(()=> {
                         dispatch({type: 'isMatched', payload: '' })
                         dispatch({type: 'isEdit', payload: false})    
-                    }, 1000)
+                    }, 3000)
                 }
             }  
            catch (error) {
