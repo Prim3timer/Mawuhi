@@ -106,7 +106,7 @@ function numberWithCommas(x) {
         </article>
             <h2
             style={{
-                margin: '1rem'
+                margin: '1rem 0'   
             }}
             >Reciepts ({state.getNames.length})</h2>
             {state.getNames && state.getNames.map((item)=> {
@@ -116,12 +116,13 @@ function numberWithCommas(x) {
                  <article
                  id="receipts"
                     style={{
-                        // display: 'flex',
-                        // flexDirection: 'column',
-                        // justifySelf: 'flex-start',
-                        justifySelf: 'center',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifySelf: 'flex-start',
+                        // justifySelf: 'center',
                         // justifyContent: 'center',
-                        // alignItems: 'flex-start',
+                        // justifyContent: 'flex-start',
+                        alignItems: 'flex-start',
                         // alignItems: 'center',
                         // textAlign: 'center',
                      
@@ -131,10 +132,9 @@ function numberWithCommas(x) {
                     }}
                     onClick={() => oneShow(item._id)}
                     >
-                        <h5>Cashier: {item.cashier}</h5>
                         {/* <h5>cashierID: {item.cashierID}</h5> */}
                         <h4>Date: {item.date}</h4>
-                        <p>TransID: {item._id}</p>
+                        <h4>TransID: {item._id}</h4>
                         {item.goods.map((good)=> {
                             return (
                                 <div
@@ -142,34 +142,35 @@ function numberWithCommas(x) {
                                     // display: 'flex',
                                     // flexDirection: 'column',
                                     // alignItems: 'center',
-                                    margin: '0 0 0 4rem',
+                                    // margin: '0 0 0 4rem',
                                      textAlign: 'left'
                                 }}
                                 >
-                                    
-                                    <h5>{good.name}</h5>
+                                    <h4>{good.name}</h4>
                                     <p>Qty: {good.qty} {good.unitMeasure.split(' ')[1].slice(1, -1)}</p>
                                     <p>Price: {good.price}</p>
-                                    <h5
+                                    <h4
                                    
-                                    >Sub Total: ₦{numberWithCommas(parseFloat(good.total).toFixed(2))}</h5>
+                                    >Sub Total: ₦{numberWithCommas(parseFloat(good.total).toFixed(2))}</h4>
+                               
                                     {/* <br/> */}
                                 </div>
                             )
                         })}
                      
-                        <h4
+                        <h3
                          style={{
                             textAlign: 'left',
-                            margin: '0 0 0 4rem',
+                            // margin: '0 0 0 4rem',
                             // color: 'green'
                         }}
-                        >Grand Total: ₦{ numberWithCommas(parseFloat(item.grandTotal).toFixed(2))}</h4>
+                        >Grand Total: ₦{ numberWithCommas(parseFloat(item.grandTotal).toFixed(2))}</h3>
                         <h3 onClick={(id)=> handleRemove(item._id)}
                             style={{
                                 textAlign: 'center',
                             }}
                             >
+                                       <h5>Cashier: {item.cashier}</h5>
                         <FaTrashAlt role='button'
            
            /> 

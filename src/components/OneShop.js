@@ -29,24 +29,25 @@ const OneShop = ({items, one}) => {
 
                <article
                                 style={{
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    justifyContent: 'center',
-                                    // textAlign: 'center'
-                                    alignItems: 'center'
+                                    // display: 'flex',
+                                    // flexDirection: 'column',
+                                    // justifyContent: 'center',
+                               
+                                    // alignItems: 'center'
+                                    marginTop: '10%'
                                 }}
                                 >
-                                    <h5>Cashier: {item.cashier}</h5>
+                              
                                     <h5>cashierID: {item.cashierID}</h5>
                                     <h4>Date: {item.date}</h4>
                                     <p>TransID: {item._id}</p>
                                     {item.goods.map((good)=> {
                                         return (
                                             <div
-                                            // style={{display: 'flex',
-                                            //     flexDirection: 'column',
-                                            //     justifyContent: 'center',
-                                            // }}
+                                            style={{display: 'flex',
+                                                flexDirection: 'column',
+                                                alignItems: 'flex-start',
+                                            }}
                                             >
                                                 
                                                 <h5>{good.name}</h5>
@@ -59,6 +60,7 @@ const OneShop = ({items, one}) => {
                                     })}
                                  
                                     <h4>Grand Total: ₦{ numberWithCommas(parseFloat(item.grandTotal).toFixed(2))}</h4>
+                                    <h5>Cashier: {item.cashier}</h5>
                                     <br/>
                                    
                                 </article>
