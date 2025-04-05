@@ -185,6 +185,69 @@ style={{display: state.isEdit ? 'block' : 'none',
     zIndex: 5
 }}
 >
+    <form>
+  <form onSubmit={(e)=> e.preventDefault()}
+                id="update-form"
+                >
+                    <h3>
+
+                <label htmlFor="name">name:</label>
+                    </h3>
+                 <input
+                type="text"
+                id="name"
+                value={state.afa}
+                onChange={(e)=> dispatch({type: 'afa', payload: e.target.value})}
+                />
+                <h3>
+                <label htmlFor="qty">price:</label>
+                </h3>
+                <input
+                type="text" 
+                id="price"
+                value={state.price}
+                onChange={(e)=> dispatch({type: 'price', payload: e.target.value})}
+                />
+           <h2>Unit Measure:</h2><input type="text"
+        // id="trans-search"
+        // placeholder="pick measurement"
+        style={{width: '20rem',
+            // backgroundColor: 'red'
+        }}
+        // ref={itemRef}
+        list="measure"
+        onChange={(e)=> dispatch({type: 'unitMeasure', payload: e.target.value})}
+        value={state.unitMeasure}
+        />
+        {/* </h3> */}
+        {/* <label>unitMeasure:</label> */}
+        <datalist id="measure"
+        style={{backgroundColor: 'blue',
+            // fontSize: '2.5rem'
+
+        }}
+        >
+            {measurements.map((measurement)=> {
+                return (
+                    
+                    <option 
+                    value={measurement}
+                    style={{
+                            position: 'relative',
+                            color: 'brown',
+                        }}
+                        >
+                            {measurement}
+                        </option>)
+                    })}
+            </datalist>
+                <button 
+                id="update-button"
+                onClick={handleSubmit}
+                type="submit">Update</button>
+                <h3>{state.isMatched}</h3>
+            </form>
+    </form>
         
         </div>
 
@@ -194,7 +257,7 @@ style={{display: state.isEdit ? 'block' : 'none',
        id="invent-search"
        type="text"
        role="searchbox" 
-       placeholder="Search by name"
+       placeholder="Search items by name"
        value={state.search}
        onChange={(e)=> dispatch({type: 'search', payload: e.target.value})}
       

@@ -133,8 +133,8 @@ function numberWithCommas(x) {
                     >
                         <h5>Cashier: {item.cashier}</h5>
                         {/* <h5>cashierID: {item.cashierID}</h5> */}
+                        <h4>Date: {item.date}</h4>
                         <p>TransID: {item._id}</p>
-                        <p>Date: {item.date}</p>
                         {item.goods.map((good)=> {
                             return (
                                 <div
