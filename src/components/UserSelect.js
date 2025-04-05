@@ -52,9 +52,9 @@ const getUsers = async ()=> {
     return (
     <div
         style={{
-            // alignItems: 'center',
-            // justifyContent: 'center'
-            // margin: 'auto'
+           display: 'flex',
+           flexDirection: 'column',
+           alignItems: 'center'
         }}
     >
             <h3
@@ -73,7 +73,8 @@ const getUsers = async ()=> {
                 flexDirection: 'row',
                 columnGap: '2rem',
                 width: '90vw',
-                marginLeft: '1rem'
+                marginLeft: '1rem',
+              
             }}
             >
                 <button
