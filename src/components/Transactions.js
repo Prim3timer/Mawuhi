@@ -93,7 +93,8 @@ const Transactions = ()=> {
     
     
     
-    const removeItem = (id)=>{
+    const removeItem = async (id)=>{
+       
         dispatch({type: 'remove', payload: id})
         
     }

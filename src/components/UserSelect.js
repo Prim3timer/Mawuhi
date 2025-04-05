@@ -42,6 +42,7 @@ const getUsers = async ()=> {
         getUsers()
     }, [])
 
+    {console.log(currentUser)}
     const salesReciecpts = sales ? <Sales
     picker={auth.picker2}
     /> : reciepts ? <Shopping
@@ -64,7 +65,8 @@ const getUsers = async ()=> {
                 // justifyContent: 'center',
                 // backgroundColor: 'blue'
             }}
-            >{currentUser.username}'s activity</h3>
+            >{currentUser && currentUser.username}'s activity</h3>
+            {console.log(currentUser)}
             <article
             style={{
                 justifyContent:'center',

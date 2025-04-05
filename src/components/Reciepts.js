@@ -57,7 +57,7 @@ const assertain = (id) => {
         
         dispatch({type: 'cancel', payload: true})
         console.log(state.cancel)
-        // dispatch({type: 'id', payload: id})
+        dispatch({type: 'id', payload: id})
         const getItem = state.getNames && state.getNames.find((item)=> item._id === id)
         dispatch({type: 'inItem', payload: getItem})
         console.log(getItem)
@@ -68,15 +68,18 @@ const assertain = (id) => {
 }
 
 
-const handleRemove = async (id)=> {
+const handleRemove = async ()=> {
     dispatch({type: 'cancel', payload: false})
+    const response = await axios.delete(`/transactions/${state.id}`)
+    // const newGraw = state.items && state.items.filter((item)=> item._id !== state.id)
+    console.log(response)
 
 
     // e.preventDefault()     
     // removeInventory(id)
-        await axios.delete(`/transactions/${id}`)
+        // await axios.delete(`/transactions/${id}`)
         
-        const newGraw = state.getNames && state.getNames.filter((item)=> item._id !== id)
+        const newGraw = state.getNames && state.getNames.filter((item)=> item._id !== state.id)
         console.log('removed')
     dispatch({type: 'getNames', payload: newGraw})
 }
