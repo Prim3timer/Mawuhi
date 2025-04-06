@@ -126,7 +126,11 @@ function numberWithCommas(x) {
          onClick={generalRemain}
         style={{
             margin: ' 0 0 0 1rem',
-           textAlign: 'center'
+           textAlign: 'center',
+            //   backgroundColor: 'green',
+              display: 'flex',
+              flexDirection: 'column',
+              flexBasis: '30rem'
             
         }}
         // onClick={remainDelete}
@@ -170,12 +174,12 @@ function numberWithCommas(x) {
                         // justifyContent: 'center',
                         // justifyContent: 'flex-start',
                         alignItems: 'flex-start',
-                        // alignItems: 'center',
+                        // alignItems: 'center'
                         // textAlign: 'center',
                      
                         // width: '40%',
                         textAlign: 'center',
-                        // backgroundColor: 'green'
+                     
                     }}
                     onClick={() => oneShow(item._id)}
                     >
