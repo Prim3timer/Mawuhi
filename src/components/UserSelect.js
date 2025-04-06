@@ -74,14 +74,14 @@ const getUsers = async ()=> {
            alignItems: 'center'
         }}
     >
-            <h3
+            <h2
             style={{
                 margin: '1rem 2rem',
                 alignItems: 'center',
                 // justifyContent: 'center',
                 // backgroundColor: 'blue'
             }}
-            >{currentUser && currentUser.username}'s activity</h3>
+            >{currentUser && currentUser.username}'s activity</h2>
             {console.log(currentUser)}
             <article
             style={{
