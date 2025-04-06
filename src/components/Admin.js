@@ -13,7 +13,11 @@ const Admin = () => {
             alignItems: 'center'
         }}
         >
-            <h1>Admin</h1>
+            <h1
+            style={{
+                color: 'darkslateblue'  
+            }}
+            >Admin</h1>
             <h2>Users List</h2>
             <br/>
             

@@ -195,7 +195,11 @@ const bringEdit = () => {
  
  />
    </form>
-     <h2 className="invent-header">Inventory</h2>
+     <h2 className="invent-header"
+     style={{
+        color: 'darkslateblue'  
+     }}
+     >Inventory</h2>
  </article>
  <table className="inventory"
 >

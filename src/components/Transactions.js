@@ -198,7 +198,8 @@ const Transactions = ()=> {
             id="tans-title"
             style={{
                 textAlign: 'center',
-                margin:'1rem 0' 
+                margin:'1rem 0' ,
+                color: 'darkslateblue'  
             }}
             >Chekcout</h2>
             <fieldset

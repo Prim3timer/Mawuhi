@@ -15,10 +15,17 @@ const [state, dispatch] = useReducer(reducer, initialState)
 const [showOne, setShowOne] = useState(false)
 const [oneId, setOneId] = useState('')
 const { auth } = useAuth();
+const [currentUser, setCurrentUser] = useState({})
 const getItems = async ()=> {
     setOneId(auth.picker)
     console.log(auth.picker)
     try {
+          const gog =  await axios.get('/users')
+
+        const person = gog.data.find((user) => user._id === auth.picker2)
+        console.log(person)
+        setCurrentUser(person)
+
         const response = await axios.get('/transactions')
         if (response){
             const newRes = response.data.map((item)=> {
@@ -28,7 +35,11 @@ const getItems = async ()=> {
                 }
                 return item
             })
-            console.log(newRes)
+            const gog =  await axios.get('/users')
+
+            const person = gog.data.find((user) => user._id === auth.picker2)
+            console.log(person)
+            setCurrentUser(person)
          
             const cashierTrans = newRes.filter((item) => item.cashierID === auth.picker2)
             console.log(cashierTrans)
@@ -101,6 +112,7 @@ const remainDelete = ()=> {
         dispatch({type: 'cancel', payload: false})
     }
 
+
     // if (state.isEdit){
         
     //     dispatch({type: 'isEdit', payload: false})
@@ -156,9 +168,10 @@ function numberWithCommas(x) {
         </article>
             <h2
             style={{
-                margin: '1rem 0'   
+                margin: '1rem 0' ,
+                // color: 'darkslateblue'    
             }}
-            >Reciepts ({state.getNames.length})</h2>
+            >{currentUser.username}'s Reciepts ({state.getNames.length})</h2>
             {state.getNames && state.getNames.map((item)=> {
                 console.log(item.goods)
                 console.log(item)

@@ -1,7 +1,7 @@
 import reducer from "../reducer"
 import initialState from "../store"
 // import SearchItem from "./SearchItem";
-import {useEffect, useReducer } from "react";
+import {useEffect, useReducer, useState } from "react";
 import axios  from "../app/api/axios";
 import useAuth from '../hooks/useAuth';
 const {v4: uuid} = require('uuid')
@@ -10,10 +10,21 @@ const {v4: uuid} = require('uuid')
 const Sales = ({picker})=> {
     const [state, dispatch] = useReducer(reducer, initialState)
     const {auth} = useAuth()
+    const [currentUser, setCurrentUser] = useState({})
     // console.log(state.indSales)
     const getTrans = async ()=> {
         console.log(auth.picker)
         const graw =  await axios.get('/transactions')
+        const gog =  await axios.get('/users')
+        if (gog) {
+
+            const person = gog.data.find((user) => user._id === auth.picker2)
+            console.log(person)
+            setCurrentUser(person)
+           
+        }
+     
+        // gog.data.find((user)=> user._id === )
         const innerArray = []
         try {
 
@@ -29,7 +40,8 @@ const Sales = ({picker})=> {
                 console.log(graw.data)
                 const cashierSales = graw.data.filter((item)=> item.cashierID === auth.picker2)
                 dispatch({type: 'qtyArray', payload: cashierSales})
-                // console.log(cashierSales)
+                const currentUser = graw.data.filter((user) => user._id = auth.picker2)
+                console.log(currentUser)
 
                 // console.log(xvc)
                 if (cashierSales){
@@ -61,11 +73,12 @@ const Sales = ({picker})=> {
         // }
         const filterate = state.qtyArray && innerArray.filter((inner)=> inner.name.toLowerCase().includes(state.search.toLowerCase()))
 
-       
         console.log(innerArray)
        dispatch({type: 'sales', 
         payload: filterate})
     }
+
+    console.log(currentUser)
 
     console.log(state.qtyArray.length)
    
@@ -98,12 +111,12 @@ const Sales = ({picker})=> {
           </form>
           {/* <SearchItem/> */}
         </article>
-
         <h2
           style={{
-            margin: '1rem 0'   
+            margin: '1rem 0', 
+            color: 'darkslateblue'  
         }}
-        >Sales</h2>
+        >{currentUser.username}'s Sales</h2>
 
         <table className="inventory"
         style={{
