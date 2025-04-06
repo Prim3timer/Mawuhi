@@ -100,11 +100,16 @@ const remainDelete = ()=> {
 
         dispatch({type: 'cancel', payload: false})
     }
-    // if (state.isEdit){
 
+    // if (state.isEdit){
+        
     //     dispatch({type: 'isEdit', payload: false})
     // }
 }
+const generalRemain = () => {
+    if (state.isMatched) dispatch({type: 'isMatched', payload: false})
+
+ } 
 
 useEffect(()=> {
     getItems()
@@ -117,7 +122,8 @@ function numberWithCommas(x) {
 
 
     return (
-         state.isMatched ? <Unauthorized/> : <div
+         <div
+         onClick={generalRemain}
         style={{
             margin: ' 0 0 0 1rem',
            textAlign: 'center'
@@ -264,6 +270,33 @@ function numberWithCommas(x) {
                      borderColor: 'red'
                  }}
                  >Yes</button></article></div> 
+
+<div
+        style={{
+            display: `${state.isMatched ? 'block' : 'none'}`,
+            position: 'absolute',
+        textAlign: 'center',
+        top: '35%',
+        left: '5%',
+        width: '90%',
+         padding: '1rem',
+           backgroundColor: '#DBBFDB',
+           borderRadius: '5px',
+           opacity: '.85'
+     }}
+     >
+         <h2
+      id="verify-header"
+      style={{
+          margin: '.5rem auto',
+        //   display: 'flex',
+      }}
+      >Unauthorized!</h2>
+      <button 
+      onClick={generalRemain}
+       >
+        ok</button>
+            </div> 
 
         </div>
     )

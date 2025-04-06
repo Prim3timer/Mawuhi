@@ -41,11 +41,16 @@ const Inventory = ({mark, setMark})=> {
 
 
      const showEdit = (id, e)=> {
-             dispatch({type: 'isEdit', payload: true})    
-             const currentItem =   state.items.find((item) => item._id === id)
-             dispatch({type: 'afa', payload: currentItem.name})
-             dispatch({type: 'ole', payload: currentItem.qty})
-             dispatch({type: 'id', payload: id})
+        if (!auth.roles.includes(5150)){
+            dispatch({type: 'isMatched', payload: true})
+        } else {
+            dispatch({type: 'isEdit', payload: true})    
+            const currentItem =   state.items.find((item) => item._id === id)
+            dispatch({type: 'afa', payload: currentItem.name})
+            dispatch({type: 'ole', payload: currentItem.qty})
+            dispatch({type: 'id', payload: id})
+
+        }
             }
 
 
@@ -59,25 +64,25 @@ const Inventory = ({mark, setMark})=> {
                     //   qty: state.qty,
             
                   }
-                  if (auth.roles.includes(5150)){
-                    const response = await axios.patch(`/items/inventory/${state.id}`, inventory) 
-                    if (response){
-                        const graw = await axios.get('/items')
-                        dispatch({type: 'items', payload: graw.data.items})
-                        dispatch({type: 'success', payload: 'inventory edited'})
-                        setTimeout(()=> {
-                            dispatch({type: 'success', payload: ''})
-            
-                            dispatch({type: 'isEdit', payload: false})    
-                        }, 1000)
-                        console.log(response)
-                    }        
-      
-    }
+                  const response = await axios.patch(`/items/inventory/${state.id}`, inventory) 
+                  if (response){
+                      const graw = await axios.get('/items')
+                      dispatch({type: 'items', payload: graw.data.items})
+                      dispatch({type: 'success', payload: 'inventory edited'})
+                      setTimeout(()=> {
+                          dispatch({type: 'success', payload: ''})
+          
+                          dispatch({type: 'isEdit', payload: false})    
+                      }, 1000)
+                      console.log(response)
+                  }        
+    
+     
+     
 }
 
     const remainEdit = () => {
-        if (state.isEdit) dispatch({type: 'isEdit', payload: false})
+       if (state.isMatched) dispatch({type: 'isMatched', payload: false})
 
 }
 const bringEdit = () => {
@@ -92,11 +97,41 @@ const bringEdit = () => {
             dispatch({type: 'isEdit', payload: false})
         }
     }
+
+ 
     return (
-        <section
+       
+    <section
         className="inventory-spec"
-        // onClick={remainEdit}
+        onClick={remainEdit}
         >
+
+
+<div
+        style={{
+            display: `${state.isMatched ? 'block' : 'none'}`,
+            position: 'absolute',
+        textAlign: 'center',
+        top: '35%',
+        left: '5%',
+        width: '90%',
+         padding: '1rem',
+           backgroundColor: '#DBBFDB',
+           borderRadius: '5px',
+           opacity: '.85'
+     }}
+     >
+         <h2
+      id="verify-header"
+      style={{
+          margin: '.5rem auto',
+        //   display: 'flex',
+      }}
+      >Unauthorized!</h2>
+      <button onClick={remainEdit} >ok</button>
+            </div> 
+
+
             <div
             className="edit"
     style={{display: state.isEdit ? 'block' : 'none',

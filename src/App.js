@@ -65,6 +65,8 @@ return (
          <Route path="linkpage" element={<LinkPage/>}/>
       <Route path="unauthorized" element={<Unauthorized/>}/>
       <Route path="transaction" element={<Transactions/>}/>
+      <Route path="item-list" element={<ItemList/>}/>
+ <Route path="inventory" element={<Inventory/>}/>
       <Route path="user-select" element={<UserSelect
       picker={auth.picker2}
       currentUser={currentUser}
@@ -85,8 +87,6 @@ return (
         
        <Route element={<RequireAuth allowedRoles={[1984]}/>}>
          <Route path="editor" element={<Editor/>}/>
-         <Route path="item-list" element={<ItemList/>}/>
-    <Route path="inventory" element={<Inventory/>}/>
        <Route path="edit" element={<Edit/>}/>
        <Route path="create-item" element={<CreateItem/>}/>
        <Route path="sales" element={<Sales

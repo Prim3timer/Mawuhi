@@ -10,6 +10,7 @@ import { FaTrashAlt } from "react-icons/fa";
 // import SearchItem from "./SearchItem"
 import { Link } from "react-router-dom"
 import EditItem from "./EditItem"
+import useAuth from "../hooks/useAuth"
 // import { type } from "@testing-library/user-event/dist/type"
 // import { current } from "@reduxjs/toolkit";
 const {v4: uuid} = require('uuid')
@@ -18,7 +19,7 @@ const {v4: uuid} = require('uuid')
 
 
 const ItemList = ()=> {
-
+const {auth} = useAuth()
     const [state, dispatch] = useReducer(reducer, initialState)
     // const [mark, setMark] = useState('')  
 
@@ -86,15 +87,21 @@ const ItemList = ()=> {
 
 
         const handleEdit = async (id, e )=> {
-            e.preventDefault()     
-            dispatch({type: 'isEdit', payload: true})    
-            dispatch({type: 'id', payload: id})
-            itemRef.current.value = id
-            const currentItem =  state.items.find((item) => item._id === id)
-            dispatch({type: 'afa', payload: currentItem.name})
-            dispatch({type: 'price', payload: currentItem.price})
-            dispatch({type: 'unitMeasure', payload: currentItem.unitMeasure})
-            console.log(itemRef.current.value)
+            e.preventDefault()    
+            if (!auth.roles.includes(5150)){
+                dispatch({type: 'isMatched', payload: 'true'})
+            } 
+            else {
+
+                dispatch({type: 'isEdit', payload: true})    
+                dispatch({type: 'id', payload: id})
+                itemRef.current.value = id
+                const currentItem =  state.items.find((item) => item._id === id)
+                dispatch({type: 'afa', payload: currentItem.name})
+                dispatch({type: 'price', payload: currentItem.price})
+                dispatch({type: 'unitMeasure', payload: currentItem.unitMeasure})
+                console.log(itemRef.current.value)
+            }
             
         }
         
@@ -128,10 +135,16 @@ const ItemList = ()=> {
     }, [state.search])
     
     const assertain = (id) => {
-        dispatch({type: 'cancel', payload: true})
-        dispatch({type: 'id', payload: id})
-        const getItem = state.items && state.items.find((item)=> item._id === id)
-        dispatch({type: 'inItem', payload: getItem})
+        if (!auth.roles.includes(5150)){
+            dispatch({type: 'isMatched', payload: true})
+        }
+        else {
+            dispatch({type: 'cancel', payload: true})
+            dispatch({type: 'id', payload: id})
+            const getItem = state.items && state.items.find((item)=> item._id === id)
+            dispatch({type: 'inItem', payload: getItem})
+
+        }
     }
 
 
@@ -156,8 +169,7 @@ const ItemList = ()=> {
         dispatch({type: 'isEdit', payload: true})
     }
     const generalRemain = () => {
-        remainDelete()
-        remainEdit()
+       if (state.isMatched) dispatch({type: 'isMatched', payload: false})
 
     } 
     
@@ -362,6 +374,31 @@ style={{display: state.isEdit ? 'block' : 'none',
                      borderColor: 'red'
                  }}
                  >Yes</button></article></div> 
+
+                 
+<div
+        style={{
+            display: `${state.isMatched ? 'block' : 'none'}`,
+            position: 'absolute',
+        textAlign: 'center',
+        top: '35%',
+        left: '5%',
+        width: '90%',
+         padding: '1rem',
+           backgroundColor: '#DBBFDB',
+           borderRadius: '5px',
+           opacity: '.85'
+     }}
+     >
+         <h2
+      id="verify-header"
+      style={{
+          margin: '.5rem auto',
+        //   display: 'flex',
+      }}
+      >Unauthorized!</h2>
+      <button onClick={generalRemain} >ok</button>
+            </div> 
       </div>
       
     //   </div>
