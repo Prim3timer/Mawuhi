@@ -91,7 +91,7 @@ const getUsers = async ()=> {
                 flexDirection: 'row',
                 columnGap: '.5rem',
                 // rowGap: '1rem',
-                // flexWrap: 'wrap',
+                flexWrap: 'wrap',
                 // marginLeft: '.5rem'
                 // padding: '.5rem/'
                 // width: '20vw',
