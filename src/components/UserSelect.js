@@ -95,9 +95,10 @@ const getUsers = async ()=> {
                 // marginLeft: '.5rem'
                 // padding: '.5rem/'
                 // width: '20vw',
-                flexBasis: '15rem',
+                // flexBasis: '15rem',
                 // flexWrap: 'nowrap'
                 // backgroundColor: 'green'
+                height: '150hv'
               
             }}
             >
