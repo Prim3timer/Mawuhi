@@ -102,6 +102,9 @@ const getUsers = async ()=> {
                <Link to='/sales'> <button
                onClick={showMe}
                 >Sales</button></Link>
+               <Link> <button
+            //    onClick={showMe}
+                >All Sales</button></Link>
                <Link 
                onClick={showMe}
                to='/receipts'> <button
