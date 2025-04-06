@@ -74,22 +74,23 @@ const getUsers = async ()=> {
             {console.log(currentUser)}
             <article
             style={{
-                justifyContent:'center',
-                margin:'1rem 0',
+                // justifyContent:'center',
+                margin:'1rem 0 1rem .5rem',
                 display: 'flex',
                 flexDirection: 'row',
-                columnGap: '2rem',
-                width: '90vw',
-                marginLeft: '1rem',
+                columnGap: '1rem',
+                rowGap: '1rem',
+                flexWrap: 'wrap',
+                // marginLeft: '.5rem'
+                // padding: '.5rem/'
+                // width: '20vw',
+                // backgroundColor: 'green'
               
             }}
             >
                <Link to='/sales'> <button
                 >Sales</button></Link>
                <Link  to='/receipts'> <button
-                style={{ backgroundColor: reciepts ? 'red' : 'dodgerblue',
-                    borderColor:  reciepts ? 'red' : 'dodgerblue'
-                    }}
               
                 >Reciepts</button></Link>
 
