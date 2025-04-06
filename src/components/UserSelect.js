@@ -89,14 +89,14 @@ const getUsers = async ()=> {
                 margin:'1rem 0 1rem .5rem',
                 display: 'flex',
                 flexDirection: 'row',
-                columnGap: '1rem',
+                columnGap: '.5rem',
                 rowGap: '1rem',
-                flexWrap: 'wrap',
+                // flexWrap: 'wrap',
                 // marginLeft: '.5rem'
                 // padding: '.5rem/'
                 // width: '20vw',
                 flexBasis: '15rem',
-                flexWrap: 'nowrap'
+                // flexWrap: 'nowrap'
                 // backgroundColor: 'green'
               
             }}
