@@ -23,7 +23,7 @@ import EmpInv from "./components/EmpInv"
 import { useState } from "react"
 import useAuth from "./hooks/useAuth"
 import UserSelect from "./components/UserSelect"
-import OneShop from "./components/OneShop"
+
 import AllTransactions from "./components/AllTransactions"
 
 
@@ -35,6 +35,8 @@ import AllTransactions from "./components/AllTransactions"
 // }
 
 const App = () => {
+
+  const [currentUser, setCurrentUser] = useState({})
   const [afa, setAfa] = useState('');
   const [userId, setUserId] = useState('');
   const year = new Date().getFullYear()
@@ -65,7 +67,10 @@ return (
       <Route path="transaction" element={<Transactions/>}/>
       <Route path="user-select" element={<UserSelect
       // picker={auth.picker2}
+      currentUser={currentUser}
+    setCurrentUser={setCurrentUser}
       />}/>
+     
     
   
        {/* protected routes */}

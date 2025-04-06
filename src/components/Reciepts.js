@@ -7,7 +7,7 @@ import AuthContext from "../context/authProvider";
 // import { retry } from "@reduxjs/toolkit/query"
 import { FaTrashAlt } from "react-icons/fa";
 import SearchItem from "./SearchItem";
-import OneShop from "./OneShop";
+
 import Unauthorized from "./Unauthorized";
 
 const Shopping = ({picker, setReceipts})=> {
@@ -86,9 +86,9 @@ const handleRemove = async ()=> {
 }
 
 const oneShow = (id) => {
-    // console.log(id)
-  dispatch({type: 'id', payload: id})
-    console.log(oneId)
+    dispatch({type: 'id', payload: id})
+    console.log(state.id)
+    // console.log(oneId)
     setShowOne(true)
     // setReceipts(false)
 }
@@ -117,10 +117,7 @@ function numberWithCommas(x) {
 
 
     return (
-        showOne ? <OneShop
-        items={state.getNames}
-        one={oneId}
-        /> : state.isMatched ? <Unauthorized/> : <div
+         state.isMatched ? <Unauthorized/> : <div
         style={{
             margin: ' 0 0 0 1rem',
            textAlign: 'center'

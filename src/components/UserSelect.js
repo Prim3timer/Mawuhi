@@ -5,13 +5,13 @@ import initialState from "../store"
 import reducer from "../reducer"
 import Sales from "./Sales"
 import Shopping from "./Reciepts"
-import OneShop from "./OneShop"
+
 import { Link } from "react-router-dom"
 import AllTransactions from "./AllTransactions"
 
-const UserSelect = ({picker}) => {
+const UserSelect = ({currentUser, setCurrentUser}) => {
     const [state, dispatch] = useReducer(reducer, initialState)
-    const [currentUser, setCurrentUser] = useState({})
+ 
     const [allTransactons, setAllTransactions] = useState(false)
     const [sales, setSales] = useState(true)
     const [reciepts, setReceipts] = useState(false)
@@ -34,6 +34,7 @@ const getUsers = async ()=> {
             const response = await axios.get('/users')
             const currentUser = response.data.find((user) => user._id === auth.picker2)
            setCurrentUser(currentUser)
+        //    dispatch({type: 'inItem', payload: currentUser})
                 
                 console.log(currentUser)
                 
@@ -46,7 +47,7 @@ const getUsers = async ()=> {
         getUsers()
     }, [])
 
-    {console.log(currentUser)}
+    {console.log(state.inItem)}
     // const salesReciecpts = sales ? <Sales
     // picker={auth.picker2}
     // /> : reciepts ? <Shopping
@@ -84,9 +85,6 @@ const getUsers = async ()=> {
             }}
             >
                <Link to='/sales'> <button
-                style={{ backgroundColor: sales ? 'red' : 'dodgerblue',
-                    borderColor:  sales ? 'red' : 'dodgerblue'
-                    }}
                 >Sales</button></Link>
                <Link  to='/receipts'> <button
                 style={{ backgroundColor: reciepts ? 'red' : 'dodgerblue',

@@ -126,7 +126,7 @@ const bringEdit = () => {
                 <input
                 type="text" 
                 id="ole"
-                value={state.ole}
+                value={parseFloat(state.ole).toFixed(2)}
                 onChange={(e)=> dispatch({type: 'ole', payload: e.target.value})}
                 />
                 <button 
@@ -144,7 +144,7 @@ const bringEdit = () => {
         <article id="form-cont">
      <form  className="search-form" 
      //   onSubmit={(e)=> e.preventDefault()}
-     >
+     >``
  <input 
  id="invent-search"
  type="text"

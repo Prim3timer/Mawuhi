@@ -27,7 +27,7 @@ const initialState = {
     qty: '',
     getNames: [],
    isEdit: false,
-   inItem: '',
+   inItem: {},
    outItem: '',
    afa: '', 
    ole: '',

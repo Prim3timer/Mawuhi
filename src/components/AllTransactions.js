@@ -5,7 +5,7 @@ import axios from "../app/api/axios"
 import useAuth from '../hooks/useAuth';
 import AuthContext from "../context/authProvider";
 import { FaTrashAlt } from "react-icons/fa";
-import OneShop from "./OneShop";
+
 import Unauthorized from "./Unauthorized";
 
 const AllTransactions = () => {
@@ -93,8 +93,9 @@ const handleRemove = async ()=> {
 const oneShow = (id) => {
     // console.log(id)
    setOneId(id)
+//    dispatch({type: 'id', payload: id})
     console.log(oneId)
-    setShowOne(true)
+    // setShowOne(true)
     // setReceipts(false)
 }
 
@@ -125,10 +126,7 @@ function numberWithCommas(x) {
 
 
     return (
-        showOne ? <OneShop
-        items={state.getNames}
-        one={oneId}
-        /> : state.isMatched ? <Unauthorized/> : <div
+       state.isMatched ? <Unauthorized/> : <div
         style={{
             margin: ' 0 0 0 1rem',
            textAlign: 'center'
