@@ -95,6 +95,7 @@ const getUsers = async ()=> {
                 // marginLeft: '.5rem'
                 // padding: '.5rem/'
                 // width: '20vw',
+                flexBasis: '15rem'
                 // backgroundColor: 'green'
               
             }}
