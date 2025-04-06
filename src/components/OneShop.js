@@ -1,16 +1,30 @@
 import axios from "../app/api/axios"
-import { Link, useNavigate } from "react-router-dom"
+import { Link, useNavigate, useSearchParams } from "react-router-dom"
+import useAuth from "../hooks/useAuth"
+import { useEffect, useContext, useReducer, useState } from "react"
+import initialState from "../store"
+import reducer from "../reducer"
 
 
+const OneShop = ({one, items}) => {
+    const [state, dispatch] = useReducer(reducer, initialState)
+    const {auth} = useAuth()
+    const  [item, setItem] = useState([])
+    const getTrans = async ()=> {
+         const response = await axios.get('/transactions')
+         console.log(auth.picker)
+         if (response){      
+             const currentitem = item.find((item) => item._id === one)
+             setItem(currentitem)
+         }
 
-const OneShop = ({items, one}) => {
-    console.log(items)
-    const item = items.find((item) => item._id=== one)
-    console.log(item)
+     }
     function numberWithCommas(x) {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
-
+useEffect(()=> {
+    getTrans()
+}, [])
 
     return (
         <div
@@ -37,7 +51,7 @@ const OneShop = ({items, one}) => {
                                     <h5>cashierID: {item.cashierID}</h5>
                                     <h4>Date: {item.date}</h4>
                                     <p>TransID: {item._id}</p>
-                                    {/* <br/> */}
+                                    <br/>
                                     {item.goods.map((good)=> {
                                         return (
                                             <div
@@ -60,6 +74,7 @@ const OneShop = ({items, one}) => {
                                     <h5>Cashier: {item.cashier}</h5>
                                     <br/>
                                    
+                                    <h2>One Shop</h2>
                                 </article>
                                
         </div>

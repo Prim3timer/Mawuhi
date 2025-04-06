@@ -29,6 +29,7 @@ const {auth} = useAuth()
 
 
 const getUsers = async ()=> {
+    // auth.picker2 = 
     try {
             const response = await axios.get('/users')
             const currentUser = response.data.find((user) => user._id === auth.picker2)

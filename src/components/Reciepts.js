@@ -16,6 +16,7 @@ const [showOne, setShowOne] = useState(false)
 const [oneId, setOneId] = useState('')
 const { setAuth, auth } = useContext(AuthContext);
 const getItems = async ()=> {
+    setOneId(auth.picker)
     console.log(auth.picker)
     try {
         const response = await axios.get('/transactions')
@@ -86,7 +87,7 @@ const handleRemove = async ()=> {
 
 const oneShow = (id) => {
     // console.log(id)
-   setOneId(id)
+  dispatch({type: 'id', payload: id})
     console.log(oneId)
     setShowOne(true)
     // setReceipts(false)

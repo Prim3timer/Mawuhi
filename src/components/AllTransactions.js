@@ -5,6 +5,8 @@ import axios from "../app/api/axios"
 import useAuth from '../hooks/useAuth';
 import AuthContext from "../context/authProvider";
 import { FaTrashAlt } from "react-icons/fa";
+import OneShop from "./OneShop";
+import Unauthorized from "./Unauthorized";
 
 const AllTransactions = () => {
 const {auth} = useAuth()
@@ -83,9 +85,9 @@ const handleRemove = async ()=> {
     // removeInventory(id)
         // await axios.delete(`/transactions/${id}`)
         
-        const newGraw = state.getNames && state.getNames.filter((item)=> item._id !== state.id)
+        const newGraw = response && allTransi.filter((item)=> item._id !== state.id)
         console.log('removed')
-    dispatch({type: 'getNames', payload: newGraw})
+    setAllTransi(newGraw)
 }
 
 const oneShow = (id) => {
@@ -123,8 +125,18 @@ function numberWithCommas(x) {
 
 
     return (
-        <div>
-            <h2>All Trans</h2>
+        showOne ? <OneShop
+        items={state.getNames}
+        one={oneId}
+        /> : state.isMatched ? <Unauthorized/> : <div
+        style={{
+            margin: ' 0 0 0 1rem',
+           textAlign: 'center'
+            
+        }}
+        // onClick={remainDelete}
+        >
+
             <div
                     style={{
                         margin: ' 0 0 0 1rem',
@@ -156,7 +168,7 @@ function numberWithCommas(x) {
                         style={{
                             margin: '1rem 0'   
                         }}
-                        >Reciepts ({allTransi.length})</h2>
+                        >All Reciepts ({allTransi.length})</h2>
                         {state.getNames && allTransi.map((item)=> {
                             console.log(item.goods)
                             console.log(item)
