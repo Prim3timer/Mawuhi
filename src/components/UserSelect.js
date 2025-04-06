@@ -11,10 +11,13 @@ import AllTransactions from "./AllTransactions"
 
 const UserSelect = ({currentUser, setCurrentUser}) => {
     const [state, dispatch] = useReducer(reducer, initialState)
+
+    // const {indSales} = initialState 
  
     const [allTransactons, setAllTransactions] = useState(false)
-    const [sales, setSales] = useState(true)
+    const [picker, setPicker] = useState('')
     const [reciepts, setReceipts] = useState(false)
+
 const {auth} = useAuth()
 
 // const showSales = () => {
@@ -27,14 +30,22 @@ const {auth} = useAuth()
 //     setReceipts(true)
 // }
 
+const showMe = () => {
+    // dispatch({type: 'indSales', payload: true})
+    setPicker(auth.picker2)
+    console.log(auth.picker2)
+  
+}
+
 
 const getUsers = async ()=> {
     // auth.picker2 = 
     try {
             const response = await axios.get('/users')
-            const currentUser = response.data.find((user) => user._id === auth.picker2)
-           setCurrentUser(currentUser)
-        //    dispatch({type: 'inItem', payload: currentUser})
+            const currentUser = response.data.find((user) => user._id === picker)
+            const currentUser2 = response.data.find((user) => user._id === auth.picker2)
+           setCurrentUser(currentUser2)
+           dispatch({type: 'inItem', payload: currentUser})
                 
                 console.log(currentUser)
                 
@@ -47,7 +58,7 @@ const getUsers = async ()=> {
         getUsers()
     }, [])
 
-    {console.log(state.inItem)}
+    console.log(state.indSales)
     // const salesReciecpts = sales ? <Sales
     // picker={auth.picker2}
     // /> : reciepts ? <Shopping
@@ -89,8 +100,11 @@ const getUsers = async ()=> {
             }}
             >
                <Link to='/sales'> <button
+               onClick={showMe}
                 >Sales</button></Link>
-               <Link  to='/receipts'> <button
+               <Link 
+               onClick={showMe}
+               to='/receipts'> <button
               
                 >Reciepts</button></Link>
 

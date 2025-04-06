@@ -9,9 +9,10 @@ const {v4: uuid} = require('uuid')
 
 const Sales = ({picker})=> {
     const [state, dispatch] = useReducer(reducer, initialState)
-    // const {auth} = useAuth()
+    const {auth} = useAuth()
+    // console.log(state.indSales)
     const getTrans = async ()=> {
-        // console.log(auth.picker)
+        console.log(auth.picker)
         const graw =  await axios.get('/transactions')
         const innerArray = []
         try {
@@ -24,11 +25,11 @@ const Sales = ({picker})=> {
                     }
                     return item
                 })
-                console.log(newRes)
+                // console.log(newRes)
                 console.log(graw.data)
-                const cashierSales = graw.data.filter((item)=> item.cashierID === picker)
+                const cashierSales = graw.data.filter((item)=> item.cashierID === auth.picker2)
                 dispatch({type: 'qtyArray', payload: cashierSales})
-                console.log(cashierSales)
+                // console.log(cashierSales)
 
                 // console.log(xvc)
                 if (cashierSales){
@@ -70,7 +71,6 @@ const Sales = ({picker})=> {
    
     useEffect(()=> {
         getTrans()
-      
         console.log(state.sales)
     }, [state.search])
     console.log(state.sales.data)

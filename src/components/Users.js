@@ -16,15 +16,17 @@ const Users = ()=> {
         const userPage = (id) => {
             console.log(users)
             auth.picker2 = id
+            console.log(auth.picker2)
             const currentUser = users.find((user) => user._id = auth.picker)
-            console.log(currentUser)
             dispatch({type: 'backendUser', payload: currentUser})
+            console.log(state.backendUser)
         }
 
     const removeUser = (id) => {
         console.log(id)
     }
 useEffect(()=> {
+   
     let isMounted = true
     const controller = new AbortController()
 
@@ -45,6 +47,7 @@ useEffect(()=> {
     return ()=> {
         isMounted = false
         controller.abort()
+
     }
 }, [])
 return (
@@ -78,7 +81,7 @@ return (
           
                 {users.map((user, index)=> {
                     return <tr key={index}
-                    onClick={() => userPage(user._id)}
+                    // onClick={() => userPage(user._id)}
                     style={{backgroundColor: index % 2 === 0 ?
                         'white' : 'lightsalmon'}}       
                     >

@@ -4,6 +4,7 @@ import axios from "../app/api/axios"
 import { useEffect, useReducer, useState, useRef, createContext     } from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons"
+import useAuth from "../hooks/useAuth"
 // import SearchItem from "./SearchItem"
 import { Link } from "react-router-dom"
 import Edit from "./Edit"
@@ -16,7 +17,7 @@ const {v4: uuid} = require('uuid')
 
 const Inventory = ({mark, setMark})=> {
     const [state, dispatch] = useReducer(reducer, initialState)
-    // const [mark, setMark] = useState('')  
+    const {auth} = useAuth()
 
     const invRef = useRef()
     const getTrans = async ()=> {
@@ -58,6 +59,7 @@ const Inventory = ({mark, setMark})=> {
                     //   qty: state.qty,
             
                   }
+                  if (auth.roles.includes(5150)){
                     const response = await axios.patch(`/items/inventory/${state.id}`, inventory) 
                     if (response){
                         const graw = await axios.get('/items')
@@ -72,6 +74,7 @@ const Inventory = ({mark, setMark})=> {
                     }        
       
     }
+}
 
     const remainEdit = () => {
         if (state.isEdit) dispatch({type: 'isEdit', payload: false})

@@ -1,24 +1,31 @@
     import { useNavigate, Link } from "react-router-dom";
-import { useContext, useReducer } from "react";
+import { useContext, useEffect, useReducer } from "react";
+import useAuth from "../hooks/useAuth";
 import AuthContext from "../context/authProvider";
 import reducer from "../reducer";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck } from "@fortawesome/free-solid-svg-icons"
 // import { init } from "create-react-app/createReactApp";
 import initialState from "../store";
+import { type } from "@testing-library/user-event/dist/type";
 
 const Home = ({afa, userId})=> {
     const [state, dispatch] = useReducer(reducer, initialState)
 
-    const { setAuth, auth } = useContext(AuthContext);
+    const { setAuth, auth } = useAuth();
     const navigate = useNavigate();
+    console.log(state.indSales)
     const logout = async () => {
+       
+            // if used in more components, this should be in context 
+            // axios to /logout endpoint 
+            navigate('/login');
+        }
+        
+        useEffect(()=>{
+            auth.picker2 = auth.picker
 
-    
-        // if used in more components, this should be in context 
-        // axios to /logout endpoint 
-        navigate('/login');
-    }
+    }, [])
     return (
         <div className="home-cont" >
              <br />
@@ -57,9 +64,14 @@ const Home = ({afa, userId})=> {
         <br />
         <Link to="/admin">admin</Link>
         <br/>
-        <Link to="/sales">sales</Link>
+        <Link 
+        // onClick={showDem}
+        
+        to="/sales">sales</Link>
         <br/>
-        <Link to="/shopping">reciepts</Link>
+        <Link
+        // onClick={}
+        to="/shopping">reciepts</Link>
         {/* <br /> */}
         {/* <Link to="/linkpage">link page</Link> */}
         <br />

@@ -36,8 +36,6 @@ const Admin = () => {
                         textDecoration: 'none',
                         
                     }}
-                
-                
                 >Home</Link>
                 </button>
             </div>

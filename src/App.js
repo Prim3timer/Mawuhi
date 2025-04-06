@@ -66,7 +66,7 @@ return (
       <Route path="unauthorized" element={<Unauthorized/>}/>
       <Route path="transaction" element={<Transactions/>}/>
       <Route path="user-select" element={<UserSelect
-      // picker={auth.picker2}
+      picker={auth.picker2}
       currentUser={currentUser}
     setCurrentUser={setCurrentUser}
       />}/>
@@ -90,9 +90,11 @@ return (
        <Route path="edit" element={<Edit/>}/>
        <Route path="create-item" element={<CreateItem/>}/>
        <Route path="sales" element={<Sales
-       picker={auth.picker}
+      //  picker={auth.picker}
        />}/>
-     <Route path="receipts" element={<Reciepts/>}/>
+     <Route path="receipts" element={<Reciepts
+     foucuser={auth.picker2}
+     />}/>
          </Route>
       
        {/* <Route element={<RequireAuth allowedRoles={[1984, 5150]}/>}>

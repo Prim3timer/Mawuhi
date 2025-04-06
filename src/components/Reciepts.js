@@ -2,19 +2,19 @@ import initialState from "../store"
 import { useEffect, useContext, useReducer, useState } from "react"
 import reducer from "../reducer"
 import axios from "../app/api/axios"
-import useAuth from '../hooks/useAuth';
 import AuthContext from "../context/authProvider";
+import useAuth from "../hooks/useAuth";
 // import { retry } from "@reduxjs/toolkit/query"
 import { FaTrashAlt } from "react-icons/fa";
 import SearchItem from "./SearchItem";
 
 import Unauthorized from "./Unauthorized";
 
-const Shopping = ({picker, setReceipts})=> {
+const Shopping = ({focuser, setReceipts})=> {
 const [state, dispatch] = useReducer(reducer, initialState)
 const [showOne, setShowOne] = useState(false)
 const [oneId, setOneId] = useState('')
-const { setAuth, auth } = useContext(AuthContext);
+const { auth } = useAuth();
 const getItems = async ()=> {
     setOneId(auth.picker)
     console.log(auth.picker)
@@ -30,7 +30,7 @@ const getItems = async ()=> {
             })
             console.log(newRes)
          
-            const cashierTrans = newRes.filter((item) => item.cashierID === auth.picker)
+            const cashierTrans = newRes.filter((item) => item.cashierID === auth.picker2)
             console.log(cashierTrans)
             // dispatch({type: 'getNames', payload: response.data})
             dispatch({type: 'getNames', payload: cashierTrans})

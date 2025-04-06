@@ -71,8 +71,6 @@ const reducer = (state, action)=> {
           return {...state, cart: action.payload}
         case 'total':
           return {...state, total: action.payload}
-        // case 'auth':
-        //   return {...state, total: action.payload}
            case 'inventEdit':
                 return {...state, outItem: action.payload}
         case 'amount':
