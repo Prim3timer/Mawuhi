@@ -10,6 +10,7 @@ import { useReducer } from "react";
 const Users = ()=> {
     const [users, setUsers] = useState()
     const [madu, setMadu] = useState()
+    const [brand, setBrand] = useState()
     const [state, dispatch] = useReducer(reducer, initialState)
     const [currenPerson, setCurrentPerson] = useState()
     const [selected, setSelected] = useState(false)
@@ -40,11 +41,12 @@ const assertain = (id) => {
         console.log("deleted")
         
         dispatch({type: 'cancel', payload: true})
-        console.log(state.cancel)
+        setBrand(id)
         // dispatch({type: 'id', payload: id})
         const getItem = users.find((person)=> person._id === id)
         setMadu(getItem)
         console.log(madu)
+        console.log(brand)
     }
     else {
         // dispatch({type: 'isMatched', payload: true})
@@ -55,11 +57,11 @@ const assertain = (id) => {
 const handleRemove = async ()=> {
     
     
-    const response = await axios.delete(`/users/delete/${madu._id}`)
+    const response = await axios.delete(`/users/delete/${brand}`)
     if (response){
         
         dispatch({type: 'cancel', payload: false})
-        const newGraw =  users.filter((item)=> item._id !== madu._id)
+        const newGraw =  users.filter((item)=> item._id !== brand)
         setUsers(newGraw)
 }
 }
