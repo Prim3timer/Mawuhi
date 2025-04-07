@@ -45,13 +45,13 @@ const getItems = async ()=> {
 
         
 
-            const filterate = cashierTrans.filter((inner)=> inner.date.substring(0, 10).includes(state.search))
-            console.log(filterate)
+            // const filterate = cashierTrans.filter((inner)=> inner.date.substring(0, 10).includes(state.search))
+            // console.log(filterate)
         
             
-            console.log(state.getNames)
-            dispatch({type: 'getNames', 
-                payload: filterate})
+            // console.log(state.getNames)
+            // dispatch({type: 'getNames', 
+            //     payload: filterate})
                 
             }
     } catch (error) {
@@ -72,7 +72,7 @@ useEffect(()=> {
     return (
         <div>
             <h2>One Receipt</h2>
-           {currentTrans && <article
+         {currentTrans && <article
 
 id="receipts"
    style={{
@@ -131,7 +131,7 @@ id="receipts"
   
 <h5>Cashier: {currentTrans.cashier}</h5>
     
-   </article> }
+   </article>}
            
         </div>
     )

@@ -118,7 +118,7 @@ const Register = () => {
                             ref={userRef}
                             autoComplete="off"
                             onChange={(e) =>   dispatch({type: ACTION.USER, payload: e.target.value})}
-                            value={state.user}
+                            value={state.user.username}
                             required
                             aria-invalid={state.validName ? "false" : "true"}
                             aria-describedby="uidnote"
