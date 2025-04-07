@@ -9,6 +9,7 @@ import { FaTrashAlt } from "react-icons/fa";
 import SearchItem from "./SearchItem";
 
 import Unauthorized from "./Unauthorized";
+import { Link } from "react-router-dom";
 
 const Shopping = ({focuser, setReceipts})=> {
 const [state, dispatch] = useReducer(reducer, initialState)
@@ -19,6 +20,8 @@ const [currentUser, setCurrentUser] = useState({})
 const getItems = async ()=> {
     setOneId(auth.picker)
     console.log(auth.picker)
+    // auth.picker3 = state.id
+    console.log(auth)
     try {
           const gog =  await axios.get('/users')
 
@@ -98,7 +101,8 @@ const handleRemove = async ()=> {
 
 const oneShow = (id) => {
     dispatch({type: 'id', payload: id})
-    console.log(state.id)
+    auth.picker3 = id
+    console.log(auth)
     // console.log(oneId)
     setShowOne(true)
     // setReceipts(false)
@@ -122,6 +126,9 @@ const generalRemain = () => {
     if (state.isMatched) dispatch({type: 'isMatched', payload: false})
 
  } 
+const grabId = (id) => {
+    console.log(id)
+}
 
 useEffect(()=> {
     getItems()
@@ -134,6 +141,7 @@ function numberWithCommas(x) {
 
 
     return (
+        
          <div
          onClick={generalRemain}
         style={{
@@ -147,7 +155,7 @@ function numberWithCommas(x) {
         }}
         // onClick={remainDelete}
         >
-
+{/* <Link to="one-receipt"> */}
 <article id="form-cont">
             <form  className="search-form"   onSubmit={(e)=> e.preventDefault()}>
         <input 
@@ -171,13 +179,22 @@ function numberWithCommas(x) {
                 margin: '1rem 0' ,
                 // color: 'darkslateblue'    
             }}
-            >{currentUser.username}'s Reciepts ({state.getNames.length})</h2>
+            >{currentUser &&currentUser.username}'s Reciepts ({state.getNames.length})</h2>
             {state.getNames && state.getNames.map((item)=> {
                 console.log(item.goods)
                 console.log(item)
                 return (
-                    <section>
+                    <section
+                
+                    >
+                        <Link to="/one-receipt"
+                        style={{
+                            textDecoration: 'none',
+                        }}
+                        onClick={() => oneShow(item._id)}
+                        >
                  <article
+
                  id="receipts"
                     style={{
                         display: 'flex',
@@ -189,12 +206,13 @@ function numberWithCommas(x) {
                         alignItems: 'flex-start',
                         // alignItems: 'center'
                         // textAlign: 'center',
+                       
                      
                         // width: '40%',
                         textAlign: 'center',
                      
                     }}
-                    onClick={() => oneShow(item._id)}
+                   
                     >
                         {/* <h5>cashierID: {item.cashierID}</h5> */}
                         <h4>Date: {item.date}</h4>
@@ -207,7 +225,8 @@ function numberWithCommas(x) {
                                     // flexDirection: 'column',
                                     // alignItems: 'center',
                                     // margin: '0 0 0 4rem',
-                                     textAlign: 'left'
+                                     textAlign: 'left',
+                                     textDecoration: 'none'
                                 }}
                                 >
                                     <h4>{good.name}</h4>
@@ -234,6 +253,7 @@ function numberWithCommas(x) {
            <h5>Cashier: {item.cashier}</h5>
                      
                     </article>
+                    </Link>
                     {/* <h3 onClick={(id)=> handleRemove(item._id)} */}
                     <h3 onClick={(e)=> assertain(item._id, e)}
                             style={{

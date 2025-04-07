@@ -7,6 +7,7 @@ import AuthContext from "../context/authProvider";
 import { FaTrashAlt } from "react-icons/fa";
 
 import Unauthorized from "./Unauthorized";
+import { Link } from "react-router-dom";
 
 const AllTransactions = () => {
 const {auth} = useAuth()
@@ -172,6 +173,9 @@ function numberWithCommas(x) {
                             console.log(item)
                             return (
                                 <section>
+                                    <Link to={"/one-receipt"}
+                                    style={{ textDecoration: 'none'}}
+                                    >
                              <article
                              id="receipts"
                                 style={{
@@ -229,6 +233,7 @@ function numberWithCommas(x) {
                        <h5>Cashier: {item.cashier}</h5>
                                  
                                 </article>
+                                </Link>
                                 {/* <h3 onClick={(id)=> handleRemove(item._id)} */}
                                 <h3 onClick={(e)=> assertain(item._id, e)}
                                         style={{

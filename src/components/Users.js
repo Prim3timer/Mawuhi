@@ -10,6 +10,7 @@ import { useReducer } from "react";
 const Users = ()=> {
     const [users, setUsers] = useState()
     const [state, dispatch] = useReducer(reducer, initialState)
+    const [currenPerson, setCurrentPerson] = useState()
     const [selected, setSelected] = useState(false)
         const {auth} = useAuth()
 
@@ -22,8 +23,14 @@ const Users = ()=> {
             console.log(state.backendUser)
         }
 
-    const removeUser = (id) => {
-        console.log(id)
+    const removeUser = async (id) => {
+
+        await axios.delete(`/users/delete/${id}`)
+        const person = users && users.filter((user) => user._id !== id)
+        setUsers(person)
+       
+        // setCurrentPerson(person)
+        console.log(currenPerson)
     }
 useEffect(()=> {
    
@@ -36,12 +43,17 @@ useEffect(()=> {
                 signal: controller.signal
             })
             console.log(response.data)
-            isMounted && setUsers(response.data)
+            if (response ){
+                isMounted && setUsers(response.data)
+               
+
+            }
+            
         } catch (error) {
             console.log(error)
         }
     }
-
+console.log(users)
     getUsers()
     // clean up function
     return ()=> {
@@ -51,9 +63,7 @@ useEffect(()=> {
     }
 }, [])
 return (
-   selected ? <UserSelect
-   picker2={auth.picker2}
-   /> : <article
+    <article
     className="inventory-spec"
     style={{
         // width: '50vw'

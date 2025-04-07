@@ -64,6 +64,10 @@ html {
   
 }
 
+h4 {
+  text-decoration: none;
+}
+
 .App > * {
   overflow-y: auto; 
 }

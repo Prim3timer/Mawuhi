@@ -23,6 +23,7 @@ import EmpInv from "./components/EmpInv"
 import { useState } from "react"
 import useAuth from "./hooks/useAuth"
 import UserSelect from "./components/UserSelect"
+import OneReceipt from "./components/OneReceipt"
 
 import AllTransactions from "./components/AllTransactions"
 
@@ -58,7 +59,7 @@ return (
     setUserId={setUserId}
     />}/>
         <Route path="shopping" element={<Reciepts
-         picker={auth.picker}
+        //  picker={auth.picker}
          />}/>
          {/* <Route path="one-shop" element={<OneShop/>} /> */}
     <Route path="register" element={<Register/>}/>
@@ -82,6 +83,7 @@ return (
     userId={userId}
     setUserId={setUserId}
     />
+      <Route path="one-receipt" element={<OneReceipt/>}/>
          </Route>
         
         
@@ -95,6 +97,7 @@ return (
      <Route path="receipts" element={<Reciepts
      foucuser={auth.picker2}
      />}/>
+        
          </Route>
       
        {/* <Route element={<RequireAuth allowedRoles={[1984, 5150]}/>}>
@@ -105,6 +108,7 @@ return (
 
      <Route path="admin" element={<Admin/>}/>
      <Route path="all-transactions" element={<AllTransactions/>}/>
+
          </Route>
         
   
