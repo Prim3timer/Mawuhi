@@ -10,19 +10,17 @@ import { useReducer } from "react";
 const Users = ()=> {
     const [users, setUsers] = useState()
     const [madu, setMadu] = useState()
-    const [brand, setBrand] = useState()
+    const [brand, setBrand] = useState('')
     const [state, dispatch] = useReducer(reducer, initialState)
-    const [currenPerson, setCurrentPerson] = useState()
+    const [currentPerson, setCurrentPerson] = useState()
     const [selected, setSelected] = useState(false)
         const {auth} = useAuth()
 
         const userPage = (id) => {
             console.log(users)
-            auth.picker2 = id
-            console.log(auth.picker2)
-            const currentUser = users.find((madu) => madu._id = auth.picker)
-            dispatch({type: 'backendUser', payload: currentUser})
-            console.log(state.backendUser)
+          
+           
+            setBrand(id)
         }
 
     const removeUser = async (id) => {
@@ -32,11 +30,14 @@ const Users = ()=> {
         setUsers(person)
        
         // setCurrentPerson(person)
-        console.log(currenPerson)
+        console.log(currentPerson)
     }
 
 
 const assertain = (id) => {
+    auth.picker3 = id
+    console.log(auth.picker3)
+    id &&    setBrand(id)
     if (auth.roles.includes(5150)){
         console.log("deleted")
         
@@ -44,9 +45,12 @@ const assertain = (id) => {
         setBrand(id)
         // dispatch({type: 'id', payload: id})
         const getItem = users.find((person)=> person._id === id)
-        setMadu(getItem)
-        console.log(madu)
-        console.log(brand)
+        if (getItem){
+            setMadu(getItem)
+            console.log(madu)
+        }
+
+        console.log(auth.picker3)
     }
     else {
         // dispatch({type: 'isMatched', payload: true})
@@ -56,14 +60,15 @@ const assertain = (id) => {
 
 const handleRemove = async ()=> {
     
-    
-    const response = await axios.delete(`/users/delete/${brand}`)
+    console.log(auth.picker2)
+    console.log(auth.picker2)
+    const response = await axios.delete(`/users/delete/${auth.picker3}`)
     if (response){
-        
         dispatch({type: 'cancel', payload: false})
-        const newGraw =  users.filter((item)=> item._id !== brand)
+        
+        const newGraw =  users.filter((item)=> item._id !== auth.picker3)
         setUsers(newGraw)
-}
+    }
 }
 
 
@@ -159,7 +164,7 @@ return (
                         onClick={() => userPage(madu._id)}
                         ><Link to="/user-select">{madu?.username}</Link></th>
                         <td
-                         onClick={() => userPage(madu._id)}
+                        //  onClick={() => userPage(madu._id)}
                         >{madu?._id}</td>
                          <td
                                                 onClick={()=> assertain(madu._id)}

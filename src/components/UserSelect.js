@@ -11,6 +11,7 @@ import AllTransactions from "./AllTransactions"
 
 const UserSelect = ({currentUser, setCurrentUser}) => {
     const [state, dispatch] = useReducer(reducer, initialState)
+    const [currentUser2, setCurrentUser2] = useState({})
 
     // const {indSales} = initialState 
  
@@ -43,8 +44,8 @@ const getUsers = async ()=> {
     try {
             const response = await axios.get('/users')
             const currentUser = response.data.find((user) => user._id === picker)
-            const currentUser2 = response.data.find((user) => user._id === auth.picker2)
-           setCurrentUser(currentUser2)
+            const person = response.data.find((user) => user._id === auth.picker2)
+           setCurrentUser2(person)
            dispatch({type: 'inItem', payload: currentUser})
                 
                 console.log(currentUser)
@@ -81,7 +82,7 @@ const getUsers = async ()=> {
                 // justifyContent: 'center',
                 // backgroundColor: 'blue'
             }}
-            >{currentUser && currentUser.username}'s activity</h2>
+            >{currentUser2 && currentUser2.username}'s activity</h2>
             {console.log(currentUser)}
             <article
             style={{

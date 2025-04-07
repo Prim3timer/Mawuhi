@@ -22,10 +22,8 @@ const Home = ({afa, userId})=> {
             navigate('/login');
         }
         
-        useEffect(()=>{
+  
             auth.picker2 = auth.picker
-
-    }, [])
     return (
         <div className="home-cont" >
              <br />
