@@ -151,6 +151,9 @@ const reducer = (state, action)=> {
         return {...state, paidAmount: action.payload}
         case 'balance':
           return {...state, balance: action.payload }
+
+          case 'selectUser': 
+          return {...state, selectUser: action.payload}
           case 'difference':
             state.paidAmount = action.payload
           const newBalance = state.paidAmount - state.total

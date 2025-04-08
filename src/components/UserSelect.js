@@ -11,7 +11,7 @@ import AllTransactions from "./AllTransactions"
 
 const UserSelect = ({currentUser, setCurrentUser}) => {
     const [state, dispatch] = useReducer(reducer, initialState)
-    const [currentUser2, setCurrentUser2] = useState({})
+    const [currentUser2, setCurrentUser2] = useState()
 
     // const {indSales} = initialState 
  
@@ -21,34 +21,25 @@ const UserSelect = ({currentUser, setCurrentUser}) => {
 
 const {auth} = useAuth()
 
-// const showSales = () => {
-//     setSales(true)
-//     setReceipts(false)
-// }
-
-// const showReciepts = ()=> {
-//     setSales(false)
-//     setReceipts(true)
-// }
-
 const showMe = () => {
     // dispatch({type: 'indSales', payload: true})
-    setPicker(auth.picker2)
-    console.log(auth.picker2)
+    setPicker(auth.picker3)
+    console.log(auth.picker3)
   
 }
 
 
+console.log(auth.picker3)
+console.log('hiiii')
 const getUsers = async ()=> {
-    // auth.picker2 = 
     try {
             const response = await axios.get('/users')
-            const currentUser = response.data.find((user) => user._id === picker)
-            const person = response.data.find((user) => user._id === auth.picker2)
+            // const currentUser = response.data.find((user) => user._id === picker)
+            const person = response.data.find((user) => user._id === auth.picker3)
            setCurrentUser2(person)
            dispatch({type: 'inItem', payload: currentUser})
                 
-                console.log(currentUser)
+                console.log(currentUser2)
                 
             } catch (error) {
                 console.log(error)

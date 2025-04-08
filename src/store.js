@@ -44,7 +44,8 @@ const initialState = {
    paidAmount: 0,
    balance: 0,
    id: '',
-   backendUser:    {}
+   backendUser:    {},
+   selectUser: {}
   
 }
 

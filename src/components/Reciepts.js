@@ -25,7 +25,7 @@ const getItems = async ()=> {
     try {
           const gog =  await axios.get('/users')
 
-        const person = gog.data.find((user) => user._id === auth.picker2)
+        const person = gog.data.find((user) => user._id === auth.picker3)
         console.log(person)
         setCurrentUser(person)
 
@@ -38,13 +38,9 @@ const getItems = async ()=> {
                 }
                 return item
             })
-            const gog =  await axios.get('/users')
-
-            const person = gog.data.find((user) => user._id === auth.picker2)
-            console.log(person)
-            setCurrentUser(person)
+    
          
-            const cashierTrans = newRes.filter((item) => item.cashierID === auth.picker2)
+            const cashierTrans = newRes.filter((item) => item.cashierID === auth.picker3)
             console.log(cashierTrans)
             // dispatch({type: 'getNames', payload: response.data})
             dispatch({type: 'getNames', payload: cashierTrans})
@@ -64,7 +60,7 @@ const getItems = async ()=> {
    
     
 }
-console.log(state.cancel)
+console.log(currentUser)
 
 const assertain = (id) => {
     if (auth.roles.includes(5150)){
@@ -179,7 +175,7 @@ function numberWithCommas(x) {
                 margin: '1rem 0' ,
                 // color: 'darkslateblue'    
             }}
-            >{currentUser &&currentUser.username}'s Reciepts ({state.getNames.length})</h2>
+            >{currentUser && currentUser.username}'s Reciepts ({state.getNames.length})</h2>
             {state.getNames && state.getNames.map((item)=> {
                 console.log(item.goods)
                 console.log(item)

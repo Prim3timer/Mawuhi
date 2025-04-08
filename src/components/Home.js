@@ -23,7 +23,9 @@ const Home = ({afa, userId})=> {
         }
         
   
-            auth.picker2 = auth.picker
+         useEffect(()=> {
+            auth.picker3 = auth.picker  
+         }, [])
     return (
         <div className="home-cont" >
              <br />

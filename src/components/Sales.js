@@ -18,7 +18,7 @@ const Sales = ({picker})=> {
         const gog =  await axios.get('/users')
         if (gog) {
 
-            const person = gog.data.find((user) => user._id === auth.picker2)
+            const person = gog.data.find((user) => user._id === auth.picker3)
             console.log(person)
             setCurrentUser(person)
            
@@ -38,10 +38,9 @@ const Sales = ({picker})=> {
                 })
                 // console.log(newRes)
                 console.log(graw.data)
-                const cashierSales = graw.data.filter((item)=> item.cashierID === auth.picker2)
+                const cashierSales = graw.data.filter((item)=> item.cashierID === auth.picker3)
                 dispatch({type: 'qtyArray', payload: cashierSales})
-                const currentUser = graw.data.filter((user) => user._id = auth.picker2)
-                console.log(currentUser)
+              
 
                 // console.log(xvc)
                 if (cashierSales){

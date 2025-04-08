@@ -7,20 +7,27 @@ import { Link } from "react-router-dom";
 import initialState from "../store";
 import reducer from "../reducer";
 import { useReducer } from "react";
+import { use } from "react";
 const Users = ()=> {
     const [users, setUsers] = useState()
     const [madu, setMadu] = useState()
-    const [brand, setBrand] = useState('')
+    const [brand, setBrand] = useState()
     const [state, dispatch] = useReducer(reducer, initialState)
     const [currentPerson, setCurrentPerson] = useState()
     const [selected, setSelected] = useState(false)
-        const {auth} = useAuth()
-
+        const {auth, setAuth} = useAuth()
         const userPage = (id) => {
+            setAuth({...auth, picker3: id})
             console.log(users)
+            console.log(id)
+            console.log(auth)
+      
+            console.log(brand)
+            const person = users.find((user)=> user._id === id)
+            setBrand(person)
+            console.log(brand)
           
-           
-            setBrand(id)
+             
         }
 
     const removeUser = async (id) => {
@@ -35,7 +42,7 @@ const Users = ()=> {
 
 
 const assertain = (id) => {
-    auth.picker3 = id
+    setAuth({...auth, picker3: id})
     console.log(auth.picker3)
     id &&    setBrand(id)
     if (auth.roles.includes(5150)){
@@ -59,19 +66,20 @@ const assertain = (id) => {
 
 
 const handleRemove = async ()=> {
-    
-    console.log(auth.picker2)
-    console.log(auth.picker2)
+    console.log(auth.picker3)
+  
     const response = await axios.delete(`/users/delete/${auth.picker3}`)
     if (response){
-        dispatch({type: 'cancel', payload: false})
-        
+        console.log(response)
         const newGraw =  users.filter((item)=> item._id !== auth.picker3)
         setUsers(newGraw)
+        dispatch({type: 'cancel', payload: false})
     }
 }
 
-
+// useEffect(()=> {
+//     dispatch({type: 'selectUser', payload: madu})
+// }, [userPage])
 const remainDelete = ()=> {
     // this condition statement is to enable the removal of the confirm window once any part of the 
     // page is touched.
@@ -95,6 +103,10 @@ const grabId = (id) => {
 }
 
 useEffect(()=> {
+
+}, [])
+
+useEffect(()=> {
    
     let isMounted = true
     const controller = new AbortController()
@@ -109,7 +121,7 @@ useEffect(()=> {
             if (response ){
                 isMounted && setUsers(response.data)
                
-
+                
             }
             
         } catch (error) {
@@ -158,11 +170,13 @@ return (
                     // onClick={() => userPage(madu._id)}
                     style={{backgroundColor: index % 2 === 0 ?
                         'white' : 'lightsalmon'}}       
-                    >
+                        >
 
                         <th 
+                        ><Link to="/user-select"
                         onClick={() => userPage(madu._id)}
-                        ><Link to="/user-select">{madu?.username}</Link></th>
+                        
+                        >{madu?.username}</Link></th>
                         <td
                         //  onClick={() => userPage(madu._id)}
                         >{madu?._id}</td>
