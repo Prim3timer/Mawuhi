@@ -1,10 +1,13 @@
 import Users from "./Users";
 import { Link } from "react-router-dom";
 import UserSelect from "./UserSelect";
+import useAuth from "../hooks/useAuth"
 
 
 const Admin = () => {
-   
+    const {auth} = useAuth()
+    console.log('picker3 is : ', auth.picker3)
+    console.log('picker is: ', auth.picker)
     return (
         <section
         style={{

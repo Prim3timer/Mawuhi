@@ -10,9 +10,9 @@ const [currentTrans, setCurrentTrans] = useState()
 const [state, dispatch] = useReducer(reducer, initialState)
 const {auth} = useAuth()
 const getItems = async ()=> {
-    // setOneId(auth.picker)
-    // console.log(auth.picker)
-    console.log(auth.picker3)
+   
+    console.log('picker3 is : ', auth.picker3)
+    console.log('picker is: ', auth.picker)
     try {
           const gog =  await axios.get('/users')
 
@@ -28,7 +28,7 @@ const getItems = async ()=> {
                     item.cashier = 'unavailable'
                 }
 
-                const oneTrans = response.data.find((item) => item._id === auth.picker3)
+                const oneTrans = response.data.find((item) => item._id === auth.picker2)
                 // dispatch({type: 'getNames', payload: response.data})
                 setCurrentTrans(oneTrans)
                 console.log(currentTrans)
@@ -37,7 +37,7 @@ const getItems = async ()=> {
             })
             const gog =  await axios.get('/users')
 
-            const person = gog.data.find((user) => user._id === auth.picker2)
+            const person = gog.data.find((user) => user._id === auth.picker3)
             console.log(person)
             setCurrentUser(person)
          

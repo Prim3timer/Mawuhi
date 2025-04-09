@@ -21,40 +21,42 @@ const getItems = async ()=> {
     setOneId(auth.picker)
     console.log(auth.picker)
     // auth.picker3 = state.id
-    console.log(auth.picker3)
     try {
-          const gog =  await axios.get('/users')
 
-        const person = gog.data.find((user) => user._id === auth.picker3)
-        console.log(person)
-        setCurrentUser(person)
-
-        const response = await axios.get('/transactions')
-        if (response){
-            const newRes = response.data.map((item)=> {
-                if (!item.cashierID){
-                    item.cashierID = 'unavailable'
-                    item.cashier = 'unavailable'
-                }
-                return item
-            })
+        console.log('picker3 is : ', auth.picker3)
+        console.log('picker is: ', auth.picker)
+              const gog =  await axios.get('/users')
     
-         
-            const cashierTrans = newRes.filter((item) => item.cashierID === auth.picker3)
-            console.log(cashierTrans)
-            // dispatch({type: 'getNames', payload: response.data})
-            dispatch({type: 'getNames', payload: cashierTrans})
-
-            const filterate = cashierTrans.filter((inner)=> inner.date.substring(0, 10).includes(state.search))
-            console.log(filterate)
+            const person = gog.data.find((user) => user._id === auth.picker3)
+            console.log(person)
+            setCurrentUser(person)
+    
+            const response = await axios.get('/transactions')
+            if (response){
+                const newRes = response.data.map((item)=> {
+                    if (!item.cashierID){
+                        item.cashierID = 'unavailable'
+                        item.cashier = 'unavailable'
+                    }
+                    return item
+                })
         
+             
+                const cashierTrans = newRes.filter((item) => item.cashierID === auth.picker3)
+                console.log(cashierTrans)
+                // dispatch({type: 'getNames', payload: response.data})
+                dispatch({type: 'getNames', payload: cashierTrans})
+    
+                const filterate = cashierTrans.filter((inner)=> inner.date.substring(0, 10).includes(state.search))
+                console.log(filterate)
             
-            console.log(state.getNames)
-            dispatch({type: 'getNames', 
-                payload: filterate})
                 
-            }
-    } catch (error) {
+                console.log(state.getNames)
+                dispatch({type: 'getNames', 
+                    payload: filterate})
+                    
+                }
+    }catch (error) {
         console.log(error)
     }
    
@@ -97,7 +99,7 @@ const handleRemove = async ()=> {
 
 const oneShow = (id) => {
     dispatch({type: 'id', payload: id})
-    auth.picker3 = id
+    auth.picker2 = id
     console.log(auth)
     // console.log(oneId)
     setShowOne(true)

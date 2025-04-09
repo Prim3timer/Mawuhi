@@ -12,19 +12,21 @@ import AllTransactions from "./AllTransactions"
 const UserSelect = ({currentUser, setCurrentUser}) => {
     const [state, dispatch] = useReducer(reducer, initialState)
     const [currentUser2, setCurrentUser2] = useState()
-
+    const {auth} = useAuth()
+    console.log('picker3 is : ', auth.picker3)
+    console.log('picker is: ', auth.picker)
     // const {indSales} = initialState 
  
     const [allTransactons, setAllTransactions] = useState(false)
     const [picker, setPicker] = useState('')
     const [reciepts, setReceipts] = useState(false)
 
-const {auth} = useAuth()
+
 
 const showMe = () => {
     // dispatch({type: 'indSales', payload: true})
     setPicker(auth.picker3)
-    console.log(auth.picker3)
+   
   
 }
 

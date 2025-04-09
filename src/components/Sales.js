@@ -13,7 +13,8 @@ const Sales = ({picker})=> {
     const [currentUser, setCurrentUser] = useState({})
     // console.log(state.indSales)
     const getTrans = async ()=> {
-        console.log(auth.picker)
+        console.log('picker3 is : ', auth.picker3)
+    console.log('picker is: ', auth.picker)
         const graw =  await axios.get('/transactions')
         const gog =  await axios.get('/users')
         if (gog) {
