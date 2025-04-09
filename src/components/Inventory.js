@@ -41,7 +41,7 @@ const Inventory = ({mark, setMark})=> {
 
 
      const showEdit = (id, e)=> {
-        if (!auth.roles.includes(5150)){
+        if (!auth.roles.includes(1984)){
             dispatch({type: 'isMatched', payload: true})
         } else {
             dispatch({type: 'isEdit', payload: true})    

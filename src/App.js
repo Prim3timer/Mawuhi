@@ -90,7 +90,7 @@ return (
        <Route element={<RequireAuth allowedRoles={[1984]}/>}>
          <Route path="editor" element={<Editor/>}/>
        <Route path="edit" element={<Edit/>}/>
-       <Route path="create-item" element={<CreateItem/>}/>
+      
        <Route path="sales" element={<Sales
       //  picker={auth.picker}
        />}/>
@@ -105,7 +105,7 @@ return (
  </Route> */}
      
        <Route element={<RequireAuth allowedRoles={[5150]}/>}>
-
+       <Route path="create-item" element={<CreateItem/>}/>
      <Route path="admin" element={<Admin/>}/>
      <Route path="all-transactions" element={<AllTransactions/>}/>
 
