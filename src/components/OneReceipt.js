@@ -88,6 +88,7 @@ id="receipts"
       
     
        // width: '40%',
+       margin: '2rem',
        textAlign: 'center',
     
    }}
