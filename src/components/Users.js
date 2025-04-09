@@ -226,6 +226,7 @@ return (
                      justifyContent: 'center',
                  }}
                  >
+                 {console.log(auth.picker3)}
                     <button
                  onClick={remainDelete}
                  >No</button><button
