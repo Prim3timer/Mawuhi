@@ -150,8 +150,10 @@ return (
     }}
     >
       
+        <h3>{users && users.length} users</h3>
         {users?.length
         ? (
+
             <table
             className="inventory"
             style={{

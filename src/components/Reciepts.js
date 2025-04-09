@@ -21,7 +21,7 @@ const getItems = async ()=> {
     setOneId(auth.picker)
     console.log(auth.picker)
     // auth.picker3 = state.id
-    console.log(auth)
+    console.log(auth.picker3)
     try {
           const gog =  await axios.get('/users')
 
