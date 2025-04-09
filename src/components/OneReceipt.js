@@ -72,7 +72,6 @@ useEffect(()=> {
 
     return (
         <div>
-            <h2>One Receipt</h2>
          {currentTrans && <article
 
 id="receipts"
