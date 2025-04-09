@@ -201,7 +201,7 @@ const Transactions = ()=> {
                 margin:'1rem 0' ,
                 color: 'darkslateblue'  
             }}
-            >Chekcout</h2>
+            >Checkout</h2>
             <fieldset
             id="field"
             >
