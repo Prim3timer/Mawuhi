@@ -44,19 +44,23 @@ const Admin = () => {
         }
     }, [])
     return (
-        <section
-        style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center'
-        }}
-        >
-            <h1
+      <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center'
+    }}
+      >
+           <h1
             style={{
                 color: 'darkslateblue'  
             }}
             >Admin</h1>
-            <h2>Users ({users && users.length})</h2>
+        { !users?.length ? <h2>Loading</h2> : <section>
+        
+            <h2
+            style={{textAlign: 'center'}}
+            >Users ({users && users.length})</h2>
             <br/>
             
             {<h2>Loading...</h2> && <Users
@@ -65,7 +69,9 @@ const Admin = () => {
             />}
             <br/>
             <div className="flexGrow"
-            
+            style={{
+                textAlign: 'center'
+            }}
             >
                 <button
                 style={{
@@ -84,7 +90,8 @@ const Admin = () => {
                 >Home</Link>
                 </button>
             </div>
-        </section>
+        </section>}
+        </div>
     )
 }
 
