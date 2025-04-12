@@ -72,8 +72,7 @@ const getUsers = async ()=> {
             style={{
                 margin: '1rem 2rem',
                 alignItems: 'center',
-                // justifyContent: 'center',
-                // backgroundColor: 'blue'
+                color: 'darkslateblue'  
             }}
             >{currentUser2 && currentUser2.username}'s activity</h2>
             {console.log(currentUser)}

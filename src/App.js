@@ -47,7 +47,7 @@ const App = () => {
 return (
 
   <main className="App">
-     <h2 className="header">Retail Tracker</h2>
+     <h2 className="header"> Retail Tracker</h2>
       <Routes>
          {/* public routes */}
         <Route path="/" element={<Layout/>}>

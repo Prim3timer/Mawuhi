@@ -8,8 +8,8 @@ import initialState from "../store";
 import reducer from "../reducer";
 import { useReducer } from "react";
 import { use } from "react";
-const Users = ()=> {
-    const [users, setUsers] = useState()
+const Users = ({users, setUsers})=> {
+ 
     const [madu, setMadu] = useState()
     const [brand, setBrand] = useState()
     const [state, dispatch] = useReducer(reducer, initialState)
@@ -39,7 +39,6 @@ const Users = ()=> {
         // setCurrentPerson(person)
         console.log(currentPerson)
     }
-
 
 const assertain = (id) => {
     setAuth({...auth, picker3: id})
@@ -77,9 +76,6 @@ const handleRemove = async ()=> {
     }
 }
 
-// useEffect(()=> {
-//     dispatch({type: 'selectUser', payload: madu})
-// }, [userPage])
 const remainDelete = ()=> {
     // this condition statement is to enable the removal of the confirm window once any part of the 
     // page is touched.
@@ -88,11 +84,6 @@ const remainDelete = ()=> {
         dispatch({type: 'cancel', payload: false})
     }
 
-
-    // if (state.isEdit){
-        
-    //     dispatch({type: 'isEdit', payload: false})
-    // }
 }
 const generalRemain = () => {
     if (state.isMatched) dispatch({type: 'isMatched', payload: false})
@@ -102,55 +93,14 @@ const grabId = (id) => {
     console.log(id)
 }
 
-useEffect(()=> {
-
-}, [])
-
-useEffect(()=> {
-   
-    let isMounted = true
-    const controller = new AbortController()
-
-    const getUsers = async ()=> {
-      
-        try {
-            const response = await axios.get('/users', {
-                signal: controller.signal
-            })
-            console.log(response.data)
-            if (response ){
-                isMounted && setUsers(response.data)
-               
-                
-            }
-            
-        } catch (error) {
-            console.log(error)
-        }
-    }
 console.log(users)
-
-    getUsers()
-    // clean up function
-    return ()=> {
-        isMounted = false
-        controller.abort()
-
-    }
-}, [])
 return (
     <article
     className="inventory-spec"
     style={{
-        // width: '50vw'
-        // margin: '0 auto'
-        // display: 'flex',
-        // flexDirection: 'row',
         justifyContent: 'center',
     }}
     >
-      
-        <h3>{users && users.length} users</h3>
         {users?.length
         ? (
 
@@ -171,7 +121,7 @@ return (
                     return <tr key={index}
                     // onClick={() => userPage(madu._id)}
                     style={{backgroundColor: index % 2 === 0 ?
-                        'white' : 'lightsalmon'}}       
+                        'white' : 'beige'}}       
                         >
 
                         <th 
@@ -186,7 +136,8 @@ return (
                                                 onClick={()=> assertain(madu._id)}
                                             >
                                             <FaTrashAlt role='button'
-                                            tableIndex='0'/> 
+                                            tableindex='0'
+                                            /> 
                                             </td>
                                     
                     </tr>

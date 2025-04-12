@@ -21,7 +21,7 @@ const {v4: uuid} = require('uuid')
 const ItemList = ()=> {
 const {auth} = useAuth()
     const [state, dispatch] = useReducer(reducer, initialState)
-    // const [mark, setMark] = useState('')  
+    const [taskComplete, setTaskComplete] = useState(false)
 
      const measurements = ['Kilogram (kg)', 'Piece (pc)', 'Plate (Plt)', 'Dozen (dzn)', 'Bottle (Btl)', 'Pound (lbs)', 'Litre (L)', 'Sachet (sct)', 'Ounce (Oz)', 'Gram (g)', 'Amortization (Am)', 'Night (Ngt)', 'Trip (Tr)'
        ]
@@ -89,7 +89,7 @@ const {auth} = useAuth()
         const handleEdit = async (id, e )=> {
             e.preventDefault()    
             if (!auth.roles.includes(1984)){
-                dispatch({type: 'isMatched', payload: 'true'})
+                dispatch({type: 'isMatched', payload: true})
             } 
             else {
 
@@ -106,10 +106,13 @@ const {auth} = useAuth()
         }
         
         const handleRemove = async ()=> {
-                await axios.delete(`/items/delete/${state.id}`)
-            const newGraw = state.items && state.items.filter((item)=> item._id !== state.id)
-            dispatch({type: 'items', payload: newGraw})
-            dispatch({type: 'cancel', payload: false})
+                 const response = await axios.delete(`/items/delete/${state.id}`)
+                if (response) {
+
+                    const newGraw = state.items && state.items.filter((item)=> item._id !== state.id)
+                    dispatch({type: 'items', payload: newGraw})
+                    dispatch({type: 'cancel', payload: false})
+                }
         }
 
         const removeInventory = async (id)=> {
