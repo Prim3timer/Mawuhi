@@ -7,19 +7,21 @@ import useAuth from '../hooks/useAuth';
 const {v4: uuid} = require('uuid')
 
 
-const Sales = ({transactions, currentUser, getTrans, search, setSearch})=> {
+const Sales = ({transactions, currentUser, getTrans, search, setSearch,
+    search2, setSearch2
+})=> {
 
-    const [state, dispatch] = useReducer(reducer, initialState)
-    
- 
+    const [state, dispatch] = useReducer(reducer, initialState)  
+
+
     function numberWithCommas(x) {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
  console.log(currentUser)
  useEffect(()=> {
     getTrans()
-    console.log(state.sales)
-}, [search])
+    console.log(state.sales, )
+}, [search, search2])
     return (
         <div className="sale">
             <article id="form-cont">
@@ -31,6 +33,18 @@ const Sales = ({transactions, currentUser, getTrans, search, setSearch})=> {
         placeholder="Search by name"
         value={search}
         onChange={(e)=> setSearch(e.target.value)}
+        
+        // https://www.npmjs.com/package/@react-google-maps/api
+        
+        />
+        <h3>AND OR</h3>
+        <input 
+        id="invent-search"
+        type="text"
+        role="searchbox" 
+        placeholder="Search by date"
+        value={search2}
+        onChange={(e)=> setSearch2(e.target.value)}
         
         // https://www.npmjs.com/package/@react-google-maps/api
         

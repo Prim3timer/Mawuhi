@@ -52,9 +52,10 @@ const App = () => {
   const { auth} = useAuth()
   console.log(auth.picker)
   console.log(auth.picker2)
-
+  
   const [state, dispatch] = useReducer(reducer, initialState)
   const [search, setSearch] = useState('')
+  const [search2, setSearch2] = useState('')
 
 const getTransaction = async ()=> {
   const innerArray = []
@@ -77,9 +78,10 @@ const getTransaction = async ()=> {
         })
     })     
     const filterate = state.qtyArray && innerArray.filter((inner)=> inner.name.toLowerCase().includes(search.toLowerCase()))
+    const filterate2 = filterate && filterate.filter((inner)=> inner.date.substring(0, 10).includes(search2))
     setGenTrans(filterate)
 
-    dispatch({type: 'sales', payload: filterate})
+    dispatch({type: 'sales', payload: filterate2})
     }
     else return
   }
@@ -150,6 +152,8 @@ return (
           search={search}
           setSearch={setSearch}
           getTrans={getTransaction}
+          search2={search2}
+          setSearch2={setSearch2}
        />}/>
      <Route path="receipts" element={<Reciepts
      foucuser={auth.picker2}

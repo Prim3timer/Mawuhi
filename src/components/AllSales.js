@@ -17,7 +17,8 @@ const AllSales = () => {
         const [transactions, setTransactions] = useState([])
         const [last, setLast] = useState([])
         const [search, setSearch] = useState('')
-      
+        const [trueSearh, setTrueSearch] = useState('')
+      const [search2, setSearch2] = useState('')
         const [switcher, setSwitcher] = useState(false)
         // console.log(state.indSales)
         const getTrans = async ()=> {
@@ -70,11 +71,12 @@ const AllSales = () => {
                         })     
                     }
                     const filterate = innerArray && innerArray.filter((inner)=> inner.name.toLowerCase().includes(search.toLowerCase()))
+                    const filterate2 = filterate.filter((inner)=> inner.date.substring(0, 10).includes(search2))
                     setLast(filterate)
 
                     console.log(innerArray)
                     dispatch({type: 'sales', 
-                     payload: filterate})
+                     payload: filterate2})
 
                 }
             
@@ -123,6 +125,8 @@ const AllSales = () => {
             transactions={state.sales}
             search={search}
             setSearch={setSearch}
+            search2={search2}
+            setSearch2={setSearch2}
             currentUser={currentUser}
             getTrans={getTrans}
             />
