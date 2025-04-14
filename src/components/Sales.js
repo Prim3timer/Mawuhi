@@ -37,7 +37,7 @@ const Sales = ({transactions, currentUser, getTrans, search, setSearch,
         // https://www.npmjs.com/package/@react-google-maps/api
         
         />
-        <h3>AND OR</h3>
+        <h3>AND / OR</h3>
         <input 
         id="invent-search"
         type="text"
