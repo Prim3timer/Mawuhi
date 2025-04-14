@@ -95,10 +95,14 @@ const getUsers = async ()=> {
               
             }}
             >
-               <Link to='/sales'> <button
+               <Link
+               to={'/all-sales'}
+               > <button
                onClick={showMe}
                 >Sales</button></Link>
-               <Link> <button
+               <Link
+               to='/sales'
+               > <button
             //    onClick={showMe}
                 >All Sales</button></Link>
                <Link 

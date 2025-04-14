@@ -20,12 +20,19 @@ import ItemList from "./components/ItemList"
 import EditItem from "./components/EditItem"
 import Reciepts from "./components/Reciepts"
 import EmpInv from "./components/EmpInv"
-import { useState } from "react"
+import { useEffect, useState, useReducer } from "react"
 import useAuth from "./hooks/useAuth"
 import UserSelect from "./components/UserSelect"
 import OneReceipt from "./components/OneReceipt"
 
 import AllTransactions from "./components/AllTransactions"
+import AllSales from "./components/AllSales"
+import axios from "./app/api/axios"
+import reducer from "./reducer"
+import initialState from "./store"
+import { FaPaypal } from "react-icons/fa"
+// import SearchItem from "./SearchItem";
+
 
 
 
@@ -40,10 +47,55 @@ const App = () => {
   const [currentUser, setCurrentUser] = useState({})
   const [afa, setAfa] = useState('');
   const [userId, setUserId] = useState('');
+  const [genTrans, setGenTrans] = useState([])
   const year = new Date().getFullYear()
   const { auth} = useAuth()
   console.log(auth.picker)
   console.log(auth.picker2)
+
+  const [state, dispatch] = useReducer(reducer, initialState)
+  const [search, setSearch] = useState('')
+
+const getTransaction = async ()=> {
+  const innerArray = []
+  try {
+    const graw =  await axios.get('/transactions')
+    if (graw){
+      graw.data.map((gr)=> {
+        return gr.goods.map((good)=> {
+            const elements =  {
+                name: good.name,
+                qty: good.qty,
+                unitMeasure: good.unitMeasure,
+                total: good.total,
+                date: gr.date
+
+            }
+            innerArray.push(elements)
+            setGenTrans(innerArray)
+            return innerArray
+        })
+    })     
+    const filterate = state.qtyArray && innerArray.filter((inner)=> inner.name.toLowerCase().includes(search.toLowerCase()))
+    setGenTrans(filterate)
+
+    dispatch({type: 'sales', payload: filterate})
+    }
+    else return
+  }
+   catch (error) {
+    console.log(error)
+  }
+       
+      
+                 
+
+            
+}
+useEffect(()=> {
+  getTransaction()
+}, [state.search])
+
 return (
 
   <main className="App">
@@ -91,8 +143,13 @@ return (
          <Route path="editor" element={<Editor/>}/>
        <Route path="edit" element={<Edit/>}/>
       
+       <Route path="all-sales" element={<AllSales
+       />}/>
        <Route path="sales" element={<Sales
-      //  picker={auth.picker}
+          transactions={state.sales}
+          search={search}
+          setSearch={setSearch}
+          getTrans={getTransaction}
        />}/>
      <Route path="receipts" element={<Reciepts
      foucuser={auth.picker2}

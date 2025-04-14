@@ -67,7 +67,7 @@ const Home = ({afa, userId})=> {
         <Link 
         // onClick={showDem}
         
-        to="/sales">sales</Link>
+        to="/all-sales">sales</Link>
         <br/>
         <Link
         // onClick={}

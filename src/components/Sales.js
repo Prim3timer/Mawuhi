@@ -7,92 +7,19 @@ import useAuth from '../hooks/useAuth';
 const {v4: uuid} = require('uuid')
 
 
-const Sales = ({picker})=> {
+const Sales = ({transactions, currentUser, getTrans, search, setSearch})=> {
+
     const [state, dispatch] = useReducer(reducer, initialState)
-    const {auth} = useAuth()
-    const [currentUser, setCurrentUser] = useState({})
-    // console.log(state.indSales)
-    const getTrans = async ()=> {
-        console.log('picker3 is : ', auth.picker3)
-    console.log('picker is: ', auth.picker)
-        const graw =  await axios.get('/transactions')
-        const gog =  await axios.get('/users')
-        if (gog) {
-
-            const person = gog.data.find((user) => user._id === auth.picker3)
-            console.log(person)
-            setCurrentUser(person)
-           
-        }
-     
-        // gog.data.find((user)=> user._id === )
-        const innerArray = []
-        try {
-
-            if (graw){
-                const newRes = graw.data.map((item)=> {
-                    if (!item.cashierID){
-                        item.cashierID = 'unavailable'
-                        item.cashier = 'unavailable'
-                    }
-                    return item
-                })
-                // console.log(newRes)
-                console.log(graw.data)
-                const cashierSales = graw.data.filter((item)=> item.cashierID === auth.picker3)
-                dispatch({type: 'qtyArray', payload: cashierSales})
-              
-
-                // console.log(xvc)
-                if (cashierSales){
-                    cashierSales.map((gr)=> {
-                        return gr.goods.map((good)=> {
-                            const elements =  {
-                                name: good.name,
-                                qty: good.qty,
-                                unitMeasure: good.unitMeasure,
-                                total: good.total,
-                                date: gr.date
-                
-                            }
-                            innerArray.push(elements)
-                            return innerArray
-                        })
-                    })     
-                }
-            }
-        
-        
-            else return
-    }
-
-             catch (error) {
-            console.log(error)
-        }
-       
-        // }
-        const filterate = state.qtyArray && innerArray.filter((inner)=> inner.name.toLowerCase().includes(state.search.toLowerCase()))
-
-        console.log(innerArray)
-       dispatch({type: 'sales', 
-        payload: filterate})
-    }
-
-    console.log(currentUser)
-
-    console.log(state.qtyArray.length)
-   
-    useEffect(()=> {
-        getTrans()
-        console.log(state.sales)
-    }, [state.search])
-    console.log(state.sales.data)
-
-
+    
+ 
     function numberWithCommas(x) {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
- 
+ console.log(currentUser)
+ useEffect(()=> {
+    getTrans()
+    console.log(state.sales)
+}, [search])
     return (
         <div className="sale">
             <article id="form-cont">
@@ -102,8 +29,8 @@ const Sales = ({picker})=> {
         type="text"
         role="searchbox" 
         placeholder="Search by name"
-        value={state.search}
-        onChange={(e)=> dispatch({type: 'search', payload: e.target.value})}
+        value={search}
+        onChange={(e)=> setSearch(e.target.value)}
         
         // https://www.npmjs.com/package/@react-google-maps/api
         
@@ -116,7 +43,7 @@ const Sales = ({picker})=> {
             margin: '1rem 0', 
             color: 'darkslateblue'  
         }}
-        >{currentUser.username}'s Sales</h2>
+        >{currentUser ? `${currentUser.username}'s Sales` : 'All Sales'}</h2>
 
         <table className="inventory"
         style={{
@@ -132,7 +59,7 @@ const Sales = ({picker})=> {
             <th>TOTAL</th>
             <th>DATE</th>
             </tr>
-  {state.sales && state.sales.map((sale, index)=> {
+  {transactions && transactions.map((sale, index)=> {
     return (
         <tr className="sales-items-cont"
         key={uuid()}
@@ -163,13 +90,13 @@ const Sales = ({picker})=> {
     >
         <h3>Total:</h3>
     <h3>
- {state.sales && state.sales.reduce((a, b)=> {
+ {transactions && transactions.reduce((a, b)=> {
     return  a + parseFloat( b.qty)
 }, 0).toFixed(2)}
 </h3>
     <h3>
 
-{state.sales && numberWithCommas(state.sales.reduce((a, b)=> {
+{transactions && numberWithCommas(transactions.reduce((a, b)=> {
     return  a + parseFloat( b.total)
 }, 0).toFixed(2))}
     </h3>
