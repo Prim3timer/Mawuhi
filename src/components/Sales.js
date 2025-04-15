@@ -37,7 +37,7 @@ const Sales = ({transactions, currentUser, getTrans, search, setSearch,
         // https://www.npmjs.com/package/@react-google-maps/api
         
         />
-        <h3>AND / OR</h3>
+        {/* <h3>AND / OR</h3> */}
         <input 
         id="invent-search"
         type="text"
@@ -57,7 +57,7 @@ const Sales = ({transactions, currentUser, getTrans, search, setSearch,
             margin: '1rem 0', 
             color: 'darkslateblue'  
         }}
-        >{currentUser ? `${currentUser.username}'s Sales` : 'All Sales'}</h2>
+        >{currentUser ? `${currentUser.username}'s Sales` : 'All Sales'} ({transactions.length} rows)</h2>
 
         <table className="inventory"
         style={{

@@ -17,7 +17,7 @@ const AllSales = () => {
         const [transactions, setTransactions] = useState([])
         const [last, setLast] = useState([])
         const [search, setSearch] = useState('')
-        const [trueSearh, setTrueSearch] = useState('')
+        // const [trueSearh, setTrueSearch] = useState('')
       const [search2, setSearch2] = useState('')
         const [switcher, setSwitcher] = useState(false)
         // console.log(state.indSales)
