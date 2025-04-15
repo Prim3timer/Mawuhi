@@ -364,7 +364,7 @@ style={{display: state.isEdit ? 'block' : 'none',
               margin: '.5rem auto',
             //   display: 'flex',
           }}
-          >Are you sure you want to delete "{state.inItem.name}" ?</h3>
+          >Delete {state.inItem.name} from items ?</h3>
                  <article
                  style={{
                      display: 'flex',

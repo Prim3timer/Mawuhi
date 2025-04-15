@@ -186,7 +186,7 @@ return (
               margin: '.5rem auto',
             //   display: 'flex',
           }}
-          >Are you sure you want to delete: {madu && madu.username}</h3>
+          > Delete  {madu && madu.username} from users</h3>
                  <article
                  style={{
                      display: 'flex',

@@ -118,7 +118,11 @@ const AllSales = () => {
             <div>
                 <Link
                 to='/sales'
-                ><button>All Sales</button></Link>
+                ><button
+                style={{
+                    marginTop: '.5rem'
+                }}
+                >All Sales</button></Link>
             </div>
             
             <Sales
