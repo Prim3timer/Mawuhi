@@ -8,6 +8,9 @@ import initialState from "../store";
 import reducer from "../reducer";
 import { useReducer } from "react";
 import { use } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPenToSquare } from "@fortawesome/free-solid-svg-icons"
+
 const Users = ({users, setUsers})=> {
  
     const [madu, setMadu] = useState()
@@ -113,7 +116,8 @@ return (
            <tbody>
             <tr>
                 <th>Name</th>
-                <th>User ID</th>
+                {/* <th>User ID</th> */}
+                <th>Settings</th>
                 <th>Delete</th>
             </tr>
           
@@ -129,9 +133,21 @@ return (
                         onClick={() => userPage(madu._id)}
                         
                         >{madu?.username}</Link></th>
+                        {/* <td
+                        //  onClick={() => userPage(madu._id)}
+                        >{madu?._id}</td> */}
                         <td
                         //  onClick={() => userPage(madu._id)}
-                        >{madu?._id}</td>
+                        >
+                             <a
+                                    //  onClick={(e) => showEdit(inv._id, e)}
+                                //  style={{color: 'blue'}}
+                                //  href={'/edit'}
+                                 >
+                                  <FontAwesomeIcon icon={faPenToSquare} />
+                                 </a>
+                            {/* {madu?._id} */}
+                            </td>
                          <td
                                                 onClick={()=> assertain(madu._id)}
                                             >
