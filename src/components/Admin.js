@@ -6,12 +6,17 @@ import { useState, useEffect } from "react";
 import axios from "../app/api/axios";
 
 
+
 const Admin = () => {
     const {auth} = useAuth()
       const [users, setUsers] = useState([])
+      const [currentPerson, setCurrentPerson] = useState()
+      const [showSettings, setShowSettings] = useState(false)
 
     console.log('picker3 is : ', auth.picker3)
     console.log('picker is: ', auth.picker)
+
+    
 
     useEffect(()=> {
         let isMounted = true
@@ -44,7 +49,7 @@ const Admin = () => {
         }
     }, [])
     return (
-      <div
+        <div
       style={{
         display: 'flex',
         flexDirection: 'column',
@@ -66,6 +71,11 @@ const Admin = () => {
             {<h2>Loading...</h2> && <Users
             users={users}
             setUsers={setUsers}
+            currentPerson={currentPerson}
+            setCurrentPerson={setCurrentPerson}
+            person={currentPerson}
+            showSettings={showSettings}
+            setShowSettings={setShowSettings}
             />}
             <br/>
             <div className="flexGrow"
@@ -73,6 +83,7 @@ const Admin = () => {
                 textAlign: 'center'
             }}
             >
+               
                 <button
                 style={{
                     marginBottom: '1rem'
@@ -92,6 +103,7 @@ const Admin = () => {
             </div>
         </section>}
         </div>
+        
     )
 }
 

@@ -10,14 +10,18 @@ import { useReducer } from "react";
 import { use } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons"
+import UserSettings from "./UserSettings";
 
-const Users = ({users, setUsers})=> {
+const Users = ({users, setUsers, showSettings,
+    setShowSettings
+})=> {
  
     const [madu, setMadu] = useState()
     const [brand, setBrand] = useState()
     const [state, dispatch] = useReducer(reducer, initialState)
     const [currentPerson, setCurrentPerson] = useState()
-    const [selected, setSelected] = useState(false)
+   
+
         const {auth, setAuth} = useAuth()
         const userPage = (id) => {
             setAuth({...auth, picker3: id})
@@ -33,15 +37,21 @@ const Users = ({users, setUsers})=> {
              
         }
 
-    const removeUser = async (id) => {
-
-        await axios.delete(`/users/delete/${id}`)
-        const person = users && users.filter((madu) => madu._id !== id)
-        setUsers(person)
-       
-        // setCurrentPerson(person)
-        console.log(currentPerson)
-    }
+const settingFunc = (id) => {   
+        // e.preventDefault()
+            console.log(id)
+            const person = users.find((user => user._id === id))
+            setCurrentPerson(person)
+            console.log(currentPerson)
+            if (showSettings){
+                setShowSettings(false)
+            } else {
+    
+                setShowSettings(true)
+            }
+            console.log(showSettings)
+        }
+           
 
 const assertain = (id) => {
     setAuth({...auth, picker3: id})
@@ -77,6 +87,9 @@ const handleRemove = async ()=> {
         setUsers(newGraw)
         dispatch({type: 'cancel', payload: false})
     }
+    else{
+        console.log('nothing for you')
+    }
 }
 
 const remainDelete = ()=> {
@@ -92,13 +105,15 @@ const generalRemain = () => {
     if (state.isMatched) dispatch({type: 'isMatched', payload: false})
 
  } 
-const grabId = (id) => {
-    console.log(id)
-}
+
 
 console.log(users)
 return (
-    <article
+ showSettings && currentPerson ? <UserSettings
+ person={currentPerson}
+ settingFunc={settingFunc}
+ showSettings={showSettings}
+ /> : <article
     className="inventory-spec"
     style={{
         justifyContent: 'center',
@@ -140,7 +155,7 @@ return (
                         //  onClick={() => userPage(madu._id)}
                         >
                              <a
-                                    //  onClick={(e) => showEdit(inv._id, e)}
+                                     onClick={(e) => settingFunc(madu._id)}
                                 //  style={{color: 'blue'}}
                                 //  href={'/edit'}
                                  >
