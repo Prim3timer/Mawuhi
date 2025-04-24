@@ -98,7 +98,7 @@ const options = Object.keys(ROLES).map(role => {
                     <input
 
 style={{
-    backgroundColor: 'blue',
+    // backgroundColor: 'blue',
     width: '2rem'
 }}
                         className="form__checkbox"
