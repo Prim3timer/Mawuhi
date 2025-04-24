@@ -63,9 +63,9 @@ const Admin = () => {
             >Admin</h1>
         { !users?.length ? <h2>Loading</h2> : <section>
         
-            <h2
+            {!showSettings ? <h2
             style={{textAlign: 'center'}}
-            >Users ({users && users.length})</h2>
+            >Users ({users && users.length})</h2> : ''}
             <br/>
             
             {<h2>Loading...</h2> && <Users

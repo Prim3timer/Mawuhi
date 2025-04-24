@@ -80,7 +80,7 @@ const options = Object.keys(ROLES).map(role => {
   
     return (
         <div>
-            <h2>User Settings</h2>
+            <h2 id="user-edit-header">Edit User</h2>
             
             <form>
             <label htmlFor="username">Username:</label>
@@ -113,8 +113,8 @@ const options = Object.keys(ROLES).map(role => {
              value={roles}
              onChange={e => onRolesChanged(e)}
              style={{
-                width: '10rem',
-              height: '2.5rem'
+                width: '12rem',
+            //   height: '5rem'
                 // backgroundColor: 'blue'
             }}
              >

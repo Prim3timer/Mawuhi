@@ -130,8 +130,7 @@ return (
             >
            <tbody>
             <tr>
-                <th>Name</th>
-                {/* <th>User ID</th> */}
+                <th>Activity</th>
                 <th>Settings</th>
                 <th>Delete</th>
             </tr>

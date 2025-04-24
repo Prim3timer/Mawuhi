@@ -140,6 +140,10 @@ width: 70%;
   width: 70%;
 }
 
+#user-edit-header {
+  text-align: center;
+}
+
 .edit-item input, datalist {
   width: 85%;
   font-size: 1.5rem;
@@ -526,6 +530,10 @@ form {
  
    /* overflow-y: auto; */
    max-width: 800px;
+}
+
+#roles {
+  margin: 1rem 0;
 }
 
 
