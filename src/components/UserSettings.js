@@ -106,14 +106,17 @@ const options = Object.keys(ROLES).map(role => {
               id="roles"
             >
                 <label>Assign Roles</label>
-             <select name="roles" size="3" multiple={true}
+             <select name="roles"  multiple={true}
+              size="1"
+             
+     
             //  ref={selectRef}
            
              value={roles}
              onChange={e => onRolesChanged(e)}
              style={{
                 width: '10rem',
-                // height: '10rem'
+                height: '2rem'
             }}
              >
               {options}
