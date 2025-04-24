@@ -90,8 +90,11 @@ const options = Object.keys(ROLES).map(role => {
             onChange={e => setPassword(e.target.value)}
             />
             </form>
+            <br/>
             <label className="form__label form__checkbox-container" htmlFor="user-active"
-          style={{ justifyContent: "center", backgroundColor: 'blue'}}
+          style={{ justifyContent: "center", 
+            marginLeft: '2rem'
+          }}
           
             >
                     ACTIVE:
