@@ -66,7 +66,7 @@ const options = Object.keys(ROLES).map(role => {
     return (
         <option
         style={{
-            fontSize: '2rem',
+            fontSize: '1.5rem',
             display: 'flex',
             // height: '6rem',
             alignItems: 'center',
@@ -90,9 +90,17 @@ const options = Object.keys(ROLES).map(role => {
             onChange={e => setPassword(e.target.value)}
             />
             </form>
-            {/* <label className="form__label form__checkbox-container" htmlFor="user-active">
+            <label className="form__label form__checkbox-container" htmlFor="user-active"
+          style={{ justifyContent: "center", backgroundColor: 'blue'}}
+          
+            >
                     ACTIVE:
                     <input
+
+style={{
+    backgroundColor: 'blue',
+    width: '2rem'
+}}
                         className="form__checkbox"
                         id="user-active"
                         name="user-active"
@@ -101,11 +109,11 @@ const options = Object.keys(ROLES).map(role => {
                         onChange={onActiveChanged}
                     />
                 </label>
-            <br/> */}
+            <br/>
             <form
               id="roles"
             >
-                <label>Assign Roles</label>
+                <label>ASSINGED ROLES:</label>
              <select name="roles" size="3"  multiple={true}
               
             //  ref={selectRef}
