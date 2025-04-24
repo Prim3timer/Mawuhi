@@ -114,7 +114,7 @@ const options = Object.keys(ROLES).map(role => {
              onChange={e => onRolesChanged(e)}
              style={{
                 width: '10rem',
-            //   height: '4rem'
+              height: '4rem'
                 // backgroundColor: 'blue'
             }}
              >
