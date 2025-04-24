@@ -68,7 +68,7 @@ const options = Object.keys(ROLES).map(role => {
         style={{
             fontSize: '2rem',
             display: 'flex',
-            height: '1.5rem',
+            height: '3rem',
             alignItems: 'center',
         }}
             key={role}
@@ -114,7 +114,7 @@ const options = Object.keys(ROLES).map(role => {
              onChange={e => onRolesChanged(e)}
              style={{
                 width: '10rem',
-                // height: '6rem',
+              
                 // backgroundColor: 'blue'
             }}
              >
@@ -127,7 +127,8 @@ const options = Object.keys(ROLES).map(role => {
                 display: 'flex',
                 flexDirection:'row',
                 columnGap: '2rem',
-                justifyContent: 'center'
+                justifyContent: 'center',
+              
 
             }}
             >
