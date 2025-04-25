@@ -40,7 +40,7 @@ const updateUser = async () => {
     let newest = {}
     const userChange = roles.map((role)=>{
        if (role === 'Manager' ) newest =  {...newRoles, Manager: 1984}
-       else if (role === 'Admin') newest  = {...newRoles, Editor: 1984, Admin: 5150}
+       else if (role === 'Admin') newest  = {...newRoles, Manager: 1984, Admin: 5150}
        else newest = newRoles
         
         return newest
@@ -84,7 +84,9 @@ const options = Object.keys(ROLES).map(role => {
             
             <form>
             <label htmlFor="username">Username:</label>
-            <input type="text" id="username" value={person.username}/>
+            <input type="text" id="username" value={username}
+            onChange={e => setUsername(e.target.value)}
+            />
             <label htmlFor="password">Password:</label>
             <input type="password" id="password" value={password}
             onChange={e => setPassword(e.target.value)}
