@@ -7,7 +7,7 @@ const UserSettings = ({person, showEdit, showSettings, settingFunc}) => {
     const [roleValue, setRoleValue] = useState('')
     const [password, setPassword] = useState('')
     const [roles, setRoles] =  useState(Object.keys(person.roles))
-    const [username, setUsername] = useState('')
+    const [username, setUsername] = useState(person.username)
     const [active, setActive] = useState(person.active)
 
 console.log(person)
@@ -22,7 +22,7 @@ const onRolesChanged = e => {
         return
        
     } 
-    if (values.length > 1 && !values.includes('Editor')){
+    if (values.length > 1 && !values.includes('Manager')){
         console.log('how double dare you?')
         return
     }else  {
@@ -39,7 +39,7 @@ const updateUser = async () => {
     }
     let newest = {}
     const userChange = roles.map((role)=>{
-       if (role === 'Editor' ) newest =  {...newRoles, Editor: 1984}
+       if (role === 'Manager' ) newest =  {...newRoles, Manager: 1984}
        else if (role === 'Admin') newest  = {...newRoles, Editor: 1984, Admin: 5150}
        else newest = newRoles
         
