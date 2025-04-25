@@ -537,6 +537,17 @@ form {
   /* border: 4px solid black; */
 }
 
+.icon-button {
+  width: 48px;
+  height: 48px;
+  font-size: 2.5rem;
+  background-color: transparent;
+  border: none;
+  color: var(--COLOR);
+  display: grid;
+  place-content: center;
+}
+
 
 @media screen and (max-width: 585px) {
 

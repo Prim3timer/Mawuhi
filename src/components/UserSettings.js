@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from "react"
 import { ROLES } from "../config/roles"
 import { Link } from "react-router-dom"
 import axios from "../app/api/axios"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSave, faTrashCan } from "@fortawesome/free-solid-svg-icons"
 
 const UserSettings = ({person, showEdit, showSettings, settingFunc}) => {
     const [roleValue, setRoleValue] = useState('')
@@ -153,7 +155,10 @@ style={{
 
                Back
                 </button> : ''}
-          <button onClick={updateUser}>Update</button>
+          <button onClick={updateUser}
+          className="icon-button"
+          title="Save"
+          >  <FontAwesomeIcon icon={faSave} /></button>
             </div>
         </div>
     )
