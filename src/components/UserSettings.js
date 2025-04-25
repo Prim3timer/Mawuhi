@@ -59,6 +59,7 @@ const updateUser = async () => {
     }
 
     await axios.patch(`/users/update/${person._id}`, updatedPerson)
+    settingFunc()
 }
 
 const onActiveChanged = () => setActive(prev => !prev)
@@ -148,13 +149,6 @@ style={{
 
             }}
             >
-           {showSettings ? <button
-               
-                onClick={settingFunc}
-                >
-
-               Back
-                </button> : ''}
           <button onClick={updateUser}
           className="icon-button"
           title="Save"
