@@ -159,7 +159,7 @@ style={{
                 flexDirection:'row',
                 columnGap: '2rem',
                 justifyContent: 'center',
-                alignItems: 'flex-start'
+                alignItems: 'center'
               
 
             }}
