@@ -16,7 +16,9 @@ const UserSettings = () => {
     const [username, setUsername] = useState('')
     const [active, setActive] = useState('')
     const [state, dispatch] = useReducer(reducer, initialState)
+    const [shadow, setShadow] = useState(false)
     const {auth} = useAuth()
+    const saveRef = useRef(null)
 
     // picker3 is the not the current user but the user in question
     console.log(auth.picker3)
@@ -41,6 +43,23 @@ const getUsers = async ()=> {
                 console.log(error)
             }
         }
+
+        const shadowing = () => {
+            // saveRef.current.style.backgroundColor = 'blue'
+            setShadow(true)
+
+
+         saveRef.current.style.backgroundColor = 'transparent'
+         saveRef.current.style.boxShadow = '0.2em 0.3em 0.4em gray'
+         saveRef.current.style.borderRadius = '5px'
+         saveRef.current.style.transisitionProperty = 'box-shaddow scale'
+         saveRef.current.style.transform = 'scale(1.15, 1.15)'
+         saveRef.current.style.transitionDuration = '300ms'
+
+       
+        }
+
+        const shadowControll = shadow === false ? `icon-button2` : shadow === true ? `icon-button` : ''
         
     useEffect(()=> {
         getUsers()
@@ -52,6 +71,8 @@ const getUsers = async ()=> {
 
 
 const onRolesChanged = e => {
+    shadowing()
+    setShadow(true)
     const values = Array.from(
         e.target.selectedOptions,
         (option) => option.value
@@ -71,7 +92,7 @@ const onRolesChanged = e => {
 }
 console.log(roles)
 
-
+console.log((saveRef))
 const updateUser = async () => {
     const newRoles = {
         Employee: 2001,
@@ -98,8 +119,10 @@ const updateUser = async () => {
     await axios.patch(`/users/update/${currentUser2._id}`, updatedPerson)
 }
 
-const onActiveChanged = () => setActive(prev => !prev)
-
+const onActiveChanged = () => {
+    
+    shadowing()
+    setActive(prev => !prev)}
 const options = Object.keys(ROLES).map(role => {
     Object.keys(roles)
     return (
@@ -123,11 +146,15 @@ const options = Object.keys(ROLES).map(role => {
             <form>
             <label htmlFor="username">Username:</label>
             <input type="text" id="username" value={username}
-            onChange={e => setUsername(e.target.value)}
+            onChange={e => {
+                shadowing()
+                setUsername(e.target.value)}}
             />
             <label htmlFor="password">Password:</label>
             <input type="password" id="password" value={password}
-            onChange={e => setPassword(e.target.value)}
+            onChange={e => {setPassword(e.target.value)
+                shadowing()
+            }}
             />
             </form>
             <br/>
@@ -188,10 +215,12 @@ style={{
            
             </form>
            
-                  <button onClick={updateUser}
-          className="icon-button"
+                  <p onClick={updateUser}
+          className={`icon-button2`}
+          ref={saveRef}
+        //   className={'icon-button'}
           title="Save"
-          > <Link to={'/admin'}><FontAwesomeIcon icon={faSave} /></Link></button>
+          > <Link to={'/admin'}><FontAwesomeIcon icon={faSave} /></Link></p>
             </div>
           
         </div>
