@@ -152,8 +152,23 @@ style={{
                     />
                 </label>
             <br/>
+            <div
+             style={{
+                margin: '1rem 0',
+                display: 'flex',
+                flexDirection:'row',
+                columnGap: '2rem',
+                justifyContent: 'center',
+                alignItems: 'flex-start'
+              
+
+            }}
+            >
             <form
               id="roles"
+            //   style={{float: 'left',
+             
+            //   }}
             >
                 <label>ASSINGED ROLES:</label>
              <select name="roles" size="3"  multiple={true}
@@ -165,29 +180,20 @@ style={{
              style={{
                 width: '12rem',
             border: '4px solid black',
-            padding: '.5rem'
-                // backgroundColor: 'blue'
+            padding: '.5rem',
             }}
              >
               {options}
              </select>
+           
             </form>
-            <div
-             style={{
-                margin: '1rem 0',
-                display: 'flex',
-                flexDirection:'row',
-                columnGap: '2rem',
-                justifyContent: 'center',
-              
-
-            }}
-            >
-          <button onClick={updateUser}
+           
+                  <button onClick={updateUser}
           className="icon-button"
           title="Save"
           > <Link to={'/admin'}><FontAwesomeIcon icon={faSave} /></Link></button>
             </div>
+          
         </div>
     )
 }
