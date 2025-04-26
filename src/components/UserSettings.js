@@ -1,18 +1,55 @@
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useReducer, useRef, useState } from "react"
 import { ROLES } from "../config/roles"
 import { Link } from "react-router-dom"
 import axios from "../app/api/axios"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSave, faTrashCan } from "@fortawesome/free-solid-svg-icons"
+import initialState from "../store"
+import reducer from "../reducer"
+import useAuth from "../hooks/useAuth"
 
-const UserSettings = ({person, showEdit, showSettings, settingFunc}) => {
+const UserSettings = () => {
     const [roleValue, setRoleValue] = useState('')
     const [password, setPassword] = useState('')
-    const [roles, setRoles] =  useState(Object.keys(person.roles))
-    const [username, setUsername] = useState(person.username)
-    const [active, setActive] = useState(person.active)
+    const [currentUser2, setCurrentUser2] = useState()
+    const [roles, setRoles] =  useState({})
+    const [username, setUsername] = useState('')
+    const [active, setActive] = useState('')
+    const [state, dispatch] = useReducer(reducer, initialState)
+    const {auth} = useAuth()
 
-console.log(person)
+    // picker3 is the not the current user but the user in question
+    console.log(auth.picker3)
+
+
+const getUsers = async ()=> {
+    try {
+            const response = await axios.get('/users')
+            // const currentUser = response.data.find((user) => user._id === picker)
+            const person = response.data.find((user) => user._id === auth.picker3)
+           setCurrentUser2(person)
+        //    dispatch({type: 'inItem', payload: currentUser})
+        if (person){
+            console.log(person)
+            setUsername(person.username) 
+            setRoles(Object.keys(person.roles))
+            setActive(person.active)
+             console.log(roles)
+        }
+                
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        
+    useEffect(()=> {
+        getUsers()
+    }, [])
+
+
+
+
+
 
 const onRolesChanged = e => {
     const values = Array.from(
@@ -58,8 +95,7 @@ const updateUser = async () => {
 
     }
 
-    await axios.patch(`/users/update/${person._id}`, updatedPerson)
-    settingFunc()
+    await axios.patch(`/users/update/${currentUser2._id}`, updatedPerson)
 }
 
 const onActiveChanged = () => setActive(prev => !prev)
@@ -71,7 +107,6 @@ const options = Object.keys(ROLES).map(role => {
         style={{
             fontSize: '1.5rem',
             display: 'flex',
-            // height: '6rem',
             alignItems: 'center',
         }}
             key={role}
@@ -106,7 +141,6 @@ const options = Object.keys(ROLES).map(role => {
                     <input
 
 style={{
-    // backgroundColor: 'blue',
     width: '2rem'
 }}
                         className="form__checkbox"
@@ -152,7 +186,7 @@ style={{
           <button onClick={updateUser}
           className="icon-button"
           title="Save"
-          >  <FontAwesomeIcon icon={faSave} /></button>
+          > <Link to={'/admin'}><FontAwesomeIcon icon={faSave} /></Link></button>
             </div>
         </div>
     )

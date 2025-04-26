@@ -21,9 +21,10 @@ const Home = ({afa, userId})=> {
             // axios to /logout endpoint 
             navigate('/login');
         }
-        
+        console.log(auth.picker3)
   
          useEffect(()=> {
+            // picker is the current user
             auth.picker3 = auth.picker  
          }, [])
     return (

@@ -68,7 +68,14 @@ const Admin = () => {
             >Users ({users && users.length})</h2> : ''}
             <br/>
             
-            {<h2>Loading...</h2> && <Users
+            {<h2>Loading...</h2> && 
+            // showSettings ? <UserSettings
+            //  person={currentPerson}
+            //  settingFunc={settingFunc}
+            //  showSettings={showSettings}
+            //  /> : 
+             
+             <Users
             users={users}
             setUsers={setUsers}
             currentPerson={currentPerson}

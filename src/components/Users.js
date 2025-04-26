@@ -109,11 +109,12 @@ const generalRemain = () => {
 
 console.log(users)
 return (
- showSettings && currentPerson ? <UserSettings
- person={currentPerson}
- settingFunc={settingFunc}
- showSettings={showSettings}
- /> : <article
+//  showSettings && currentPerson ? <UserSettings
+//  person={currentPerson}
+//  settingFunc={settingFunc}
+//  showSettings={showSettings}
+//  /> : 
+ <article
     className="inventory-spec"
     style={{
         justifyContent: 'center',
@@ -151,15 +152,13 @@ return (
                         //  onClick={() => userPage(madu._id)}
                         >{madu?._id}</td> */}
                         <td
-                        //  onClick={() => userPage(madu._id)}
                         >
-                             <a
-                                     onClick={(e) => settingFunc(madu._id)}
-                                //  style={{color: 'blue'}}
-                                //  href={'/edit'}
-                                 >
-                                  <FontAwesomeIcon icon={faPenToSquare} />
-                                 </a>
+                            <Link to={'/user-settings'}
+                            onClick={() => userPage(madu._id)}
+                            >
+                            <FontAwesomeIcon icon={faPenToSquare} />
+                            </Link>
+                          
                             {/* {madu?._id} */}
                             </td>
                          <td

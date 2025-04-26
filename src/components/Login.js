@@ -53,8 +53,7 @@ const Login = () => {
             const accessToken = response?.data?.accessToken;
             const roles = response?.data?.roles;
             const picker = response?.data?.id;
-            const picker2 = ''    
-            setAuth({ user, pwd, roles, accessToken, picker, picker2});
+            setAuth({ user, pwd, roles, accessToken, picker});
             setUser('');
             setPwd('');
             navigate(from, { replace: true });

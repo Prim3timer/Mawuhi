@@ -31,6 +31,7 @@ import axios from "./app/api/axios"
 import reducer from "./reducer"
 import initialState from "./store"
 import { FaPaypal } from "react-icons/fa"
+import UserSettings from "./components/UserSettings"
 // import SearchItem from "./SearchItem";
 
 
@@ -128,7 +129,7 @@ return (
     setCurrentUser={setCurrentUser}
       />}/>
      
-    
+    <Route path="user-settings" element={<UserSettings/>}/>
   
        {/* protected routes */}
        <Route element={<RequireAuth allowedRoles={[2001]}/>}>
