@@ -27,7 +27,6 @@ const UserSettings = () => {
 const getUsers = async ()=> {
     try {
             const response = await axios.get('/users')
-            // const currentUser = response.data.find((user) => user._id === picker)
             const person = response.data.find((user) => user._id === auth.picker3)
            setCurrentUser2(person)
         //    dispatch({type: 'inItem', payload: currentUser})
@@ -45,9 +44,7 @@ const getUsers = async ()=> {
         }
 
         const shadowing = () => {
-            // saveRef.current.style.backgroundColor = 'blue'
             setShadow(true)
-
 
          saveRef.current.style.backgroundColor = 'transparent'
          saveRef.current.style.boxShadow = '0.2em 0.3em 0.4em gray'
@@ -90,9 +87,7 @@ const onRolesChanged = e => {
         setRoles(values)
     }
 }
-console.log(roles)
 
-console.log((saveRef))
 const updateUser = async () => {
     const newRoles = {
         Employee: 2001,
@@ -220,7 +215,7 @@ style={{
           ref={saveRef}
         //   className={'icon-button'}
           title="Save"
-          > <Link to={'/admin'}><FontAwesomeIcon icon={faSave} /></Link></p>
+          > <Link to={shadow ? '/admin' : '/user-settings'}><FontAwesomeIcon icon={faSave} /></Link></p>
             </div>
           
         </div>
