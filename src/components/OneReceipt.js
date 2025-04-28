@@ -71,7 +71,14 @@ useEffect(()=> {
 }, [])
 
     return (
-        <div>
+        <div
+        style={{
+            display: 'flex',
+     
+            justifyContent: 'center',
+            // backgroundColor: 'blue'
+        }}
+        >
          {currentTrans && <article
 
 id="receipts"
@@ -81,9 +88,11 @@ id="receipts"
        justifyContent: 'center',
     //    justifyContent: 'flex-start',
        alignItems: 'flex-start',
-       // alignItems: 'center'
-       // textAlign: 'center',
+       textAlign: 'center',
+    //    alignItems: 'flex-start',
        height: '100vh',
+       fontSize: '1.5rem',
+       padding: '0 1rem'
     
    }}
   
@@ -99,6 +108,7 @@ id="receipts"
                    // flexDirection: 'column',
                    // alignItems: 'center',
                    // margin: '0 0 0 4rem',
+                           
                     textAlign: 'left',
                     textDecoration: 'none'
                }}

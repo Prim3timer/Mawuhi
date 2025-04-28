@@ -131,9 +131,12 @@ function numberWithCommas(x) {
     return (
        state.isMatched ? <Unauthorized/> : <div
         style={{
+            display: 'flex',
             margin: ' 0 0 0 1rem',
            textAlign: 'center',
-           height: '100vh'
+           height: '100vh',
+           justifyContent: 'center',
+           fontSize: '1.5rem'
             
         }}
         // onClick={remainDelete}
@@ -177,7 +180,9 @@ function numberWithCommas(x) {
                             return (
                                 <section>
                                     <Link to={"/one-receipt"}
-                                    style={{ textDecoration: 'none'}}
+                                    style={{ textDecoration: 'none',
+                                      
+                                    }}
                                     >
                              <article
                              id="receipts"
