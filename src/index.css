@@ -522,10 +522,13 @@ form {
 
 
 .inventory-spec, .item-list, .sale, .trans-cont, .edit-user, .login, .register, .create-item {
+  display: flex;
+  flex-direction: column;
   /* font-size: 4rem; */
   max-width: 100vw;
   text-align: center;
   min-height: 100vh;
+  justify-content: center;
 }
 .inventory {
    font-size: 1.2rem;
