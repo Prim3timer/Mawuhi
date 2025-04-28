@@ -89,7 +89,7 @@ const Register = () => {
     }
 
     return (
-        <>
+        <div className="register">
             {state.success ? (
                 <section className="success">
                     <h1>Success!</h1>
@@ -199,7 +199,7 @@ const Register = () => {
                     </p>
                 </section>
             )}
-        </>
+        </div>
     )
 }
 

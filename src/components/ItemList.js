@@ -180,8 +180,6 @@ const {auth} = useAuth()
   return  (
       
               <div className="item-list"
-          style={{
-          }}
               onClick={remainDelete}
               >  
               <article id="form-cont">

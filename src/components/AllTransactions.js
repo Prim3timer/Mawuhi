@@ -132,7 +132,8 @@ function numberWithCommas(x) {
        state.isMatched ? <Unauthorized/> : <div
         style={{
             margin: ' 0 0 0 1rem',
-           textAlign: 'center'
+           textAlign: 'center',
+           height: '100vh'
             
         }}
         // onClick={remainDelete}

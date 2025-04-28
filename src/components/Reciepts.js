@@ -148,7 +148,8 @@ function numberWithCommas(x) {
             //   backgroundColor: 'green',
               display: 'flex',
               flexDirection: 'column',
-              flexBasis: '30rem'
+              flexBasis: '30rem',
+              height: '100vh'
             
         }}
         // onClick={remainDelete}
