@@ -117,7 +117,7 @@ return (
  <article
     className="inventory-spec"
     style={{
-        justifyContent: 'center',
+        // justifyContent: 'center',
     }}
     >
         {users?.length

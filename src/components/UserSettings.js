@@ -136,7 +136,7 @@ const options = Object.keys(ROLES).map(role => {
   
     return (
         <div className="edit-user">
-            <h2 id="user-edit-header">Edit User</h2>
+            <h2 id="user-edit-header">Edit User Settings</h2>
             
             <form>
             <label htmlFor="username">Username:</label>

@@ -54,7 +54,10 @@ const Admin = () => {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        // justifyContent: 'center'
+        justifyContent: 'center',
+        minHeight: '100vh',
+        maxWidth: '100vw'
+        // backgroundColor: 'blue'
     }}
       >
            <h1
