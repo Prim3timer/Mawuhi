@@ -19,7 +19,7 @@ code {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  /* min-height: 100vh; */
 }
 
 
@@ -218,6 +218,8 @@ button:active {
 .header, .footer  {
   width: 100%;
   padding: 1rem;
+  display: flex;
+  justify-content: center;
   background-color: #40e0d0;
   text-align: center;
 }
@@ -519,11 +521,11 @@ form {
 }
 
 
-.inventory-spec, .item-list, .sale, .trans-cont, .edit-user, .login, .register {
+.inventory-spec, .item-list, .sale, .trans-cont, .edit-user, .login, .register, .create-item {
   /* font-size: 4rem; */
   max-width: 100vw;
   text-align: center;
-  max-height: 100vh;
+  min-height: 100vh;
 }
 .inventory {
    font-size: 1.2rem;
