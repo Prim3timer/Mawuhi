@@ -65,7 +65,8 @@ const getUsers = async ()=> {
         style={{
            display: 'flex',
            flexDirection: 'column',
-           alignItems: 'center'
+           alignItems: 'center',
+           height: '80vh'
         }}
     >
             <h2

@@ -80,11 +80,12 @@ id="receipts"
        flexDirection: 'column',
        justifySelf: 'flex-start',
        // justifySelf: 'center',
-       // justifyContent: 'center',
+       justifyContent: 'center',
        // justifyContent: 'flex-start',
        alignItems: 'flex-start',
        // alignItems: 'center'
        // textAlign: 'center',
+       height: '100vh',
       
     
        // width: '40%',

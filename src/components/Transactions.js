@@ -353,7 +353,9 @@ const Transactions = ()=> {
 
                     </article>
 
-                    <article>
+                    <article
+                    
+                    >
                     <p>price/{item.unitMeasure.split(' ')[1].slice(1, -1)}:</p>
                     <p>₦{item.price}</p>
 
@@ -372,7 +374,8 @@ const Transactions = ()=> {
             <article 
             id="grand-two-cont"
             style={{
-                color: 'green'
+                color: 'green',
+                // backgroundColor: 'blue'
             }}
             >
             <h2
@@ -387,6 +390,7 @@ const Transactions = ()=> {
             </article >
 
             <section
+            
                 className="payment"
             // style={{
                 //     display: 'flex',
@@ -426,7 +430,8 @@ const Transactions = ()=> {
                 padding: '1rem auto',
                   backgroundColor: '#DBBFDB',
                   borderRadius: '5px',
-                  width: '98vw'
+                  width: '98vw',
+                //   display: `${state.cancel ? 'block' : 'none'}`
             }}
                 ><h3
                 id="verify-header"
