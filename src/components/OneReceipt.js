@@ -32,7 +32,7 @@ const getItems = async ()=> {
                 // dispatch({type: 'getNames', payload: response.data})
                 setCurrentTrans(oneTrans)
                 console.log(currentTrans)
-                dispatch({type: 'getNames', payload: cashierTrans})
+                // dispatch({type: 'getNames', payload: cashierTrans})
                 return item
             })
             const gog =  await axios.get('/users')
@@ -99,12 +99,6 @@ id="receipts"
            return (
                <div
                style={{
-                   // display: 'flex',
-                   // flexDirection: 'column',
-                   // alignItems: 'center',
-                   // margin: '0 0 0 4rem',
-                //    margin: '1rem',
-                    // textAlign: 'center',
                     textDecoration: 'none'
                }}
                >
