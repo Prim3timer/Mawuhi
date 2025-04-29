@@ -78,7 +78,7 @@ useEffect(()=> {
             alignItems: 'center',
             justifyContent: 'center',
                    fontSize: '1rem',
-                    margin: '0  0 0 1rem',
+                 
             // backgroundColor: 'orange'
         }}
         >
@@ -103,7 +103,7 @@ id="receipts"
                    // flexDirection: 'column',
                    // alignItems: 'center',
                    // margin: '0 0 0 4rem',
-                           
+                //    margin: '1rem',
                     // textAlign: 'center',
                     textDecoration: 'none'
                }}
