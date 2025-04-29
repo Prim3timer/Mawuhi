@@ -60,7 +60,8 @@ const Sales = ({transactions, currentUser, getTrans, search, setSearch,
         }}
         >{currentUser ? `${currentUser.username}'s Sales` : 'All Sales'} ({transactions.length} rows)</h2>
 
-        <table className="inventory"
+        <table
+         className="inventory"
         style={{
             // fontSize: '1.5rem'
         }}
