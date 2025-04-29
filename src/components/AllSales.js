@@ -113,9 +113,6 @@ const AllSales = () => {
     
     return (
         <div
-        style={{textAlign: 'center',
-            height: '100vh'
-        }}
         >   
             <div>
                 <Link

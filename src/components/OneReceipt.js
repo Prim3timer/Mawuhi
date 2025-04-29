@@ -74,27 +74,22 @@ useEffect(()=> {
         <div
         style={{
             display: 'flex',
-     
+            minHeight: '100vh',
+            alignItems: 'center',
             justifyContent: 'center',
-            // backgroundColor: 'blue'
+                   fontSize: '1.5rem',
+                    margin: '0  0 0 1rem',
+            // backgroundColor: 'orange'
         }}
         >
          {currentTrans && <article
 
 id="receipts"
-   style={{
-       display: 'flex',
-       flexDirection: 'column',
-       justifyContent: 'center',
-    //    justifyContent: 'flex-start',
-       alignItems: 'flex-start',
-       textAlign: 'center',
-    //    alignItems: 'flex-start',
-       height: '100vh',
-       fontSize: '1.5rem',
-       padding: '0 1rem'
+//    style={{
+//        display: 'flex',
+//        flexDirection: 'column',
     
-   }}
+//    }}
   
    >
        {/* <h5>cashierID: {item.cashierID}</h5> */}
@@ -109,7 +104,7 @@ id="receipts"
                    // alignItems: 'center',
                    // margin: '0 0 0 4rem',
                            
-                    textAlign: 'left',
+                    // textAlign: 'center',
                     textDecoration: 'none'
                }}
                >

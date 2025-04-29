@@ -150,7 +150,8 @@ function numberWithCommas(x) {
               flexDirection: 'column',
               flexBasis: '30rem',
               height: '100vh',
-              alignItems: 'center'
+              alignItems: 'center',
+              justifyContent: 'center'
             
         }}
         // onClick={remainDelete}

@@ -23,7 +23,8 @@ const Sales = ({transactions, currentUser, getTrans, search, setSearch,
     console.log(state.sales, )
 }, [search, search2])
     return (
-        <div className="sale">
+        <div className="sale"
+        >
             <article id="form-cont">
             <form  className="search-form"   onSubmit={(e)=> e.preventDefault()}>
         <input 

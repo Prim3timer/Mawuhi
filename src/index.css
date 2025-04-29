@@ -221,7 +221,7 @@ button:active {
 
 
 input {
-  width: 20vw;
+  max-width: 40vw;
   padding: 5px;
   font-size: 1.5rem;
   border-radius: 5px;
@@ -353,10 +353,7 @@ tr {
   }
 
    .sale {
-  width: 100%;
-  flex-grow: 1;
-  /* padding:  0 1rem; */
-
+ margin-top: 2rem;
 }
 form {
   display: flex;
@@ -526,13 +523,6 @@ form {
    max-width: 800px;
 }
 
-/* #roles {
-    width: 12rem;
-border: 4px solid black;
-padding: .5rem;
-} */
-
-
 
 .icon-button2 {
   width: 48px;
@@ -570,7 +560,7 @@ padding: .5rem;
   } */
 
   .sales {
-    margin: 0 0 0 6rem;
+    margin: 0 0 0 6rem; 
     min-width: 130vw;
   }
 
