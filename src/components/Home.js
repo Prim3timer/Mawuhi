@@ -73,6 +73,10 @@ const Home = ({afa, userId})=> {
         // onClick={showDem}
         
         to="/all-sales">sales</Link>
+        <Link 
+        // onClick={showDem}
+        
+        to="/editor">bars</Link>
         <br/>
         <Link
         // onClick={}

@@ -541,6 +541,11 @@ form {
   box-shadow: 0em 0e 0em gray;
 }
 
+.bars {
+  border: 20px solid blue;
+  height: 10px;
+}
+
 
 @media screen and (max-width: 585px) {
 
