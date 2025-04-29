@@ -50,6 +50,7 @@ const Admin = () => {
     }, [])
     return (
         <div
+        className="admin"
       style={{
         display: 'flex',
         flexDirection: 'column',

@@ -529,7 +529,7 @@ form {
   width: 48px;
   height: 48px;
   font-size: 2.5rem;
-  background-color: gray;
+  background-color: lightgray;
   /* background-color: green; */
   /* border: 2px solid black; */
   /* padding: .5rem; */
@@ -543,6 +543,10 @@ form {
 
 
 @media screen and (max-width: 585px) {
+
+  .admin {
+    margin-left: 2rem;
+  }
 
   .inventory-spec, .item-list, .sale {
     padding: 0 .5rem;
@@ -564,6 +568,8 @@ form {
     margin: 0 0 0 6rem; 
     min-width: 130vw;
   }
+
+  
 
   .edit  {
     left: 10%;

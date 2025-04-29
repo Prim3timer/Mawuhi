@@ -105,7 +105,7 @@ const bringEdit = () => {
         className="inventory-spec"
         onClick={remainEdit}
         style={{ width: '100vw',
-            maxHeight: '100vh'
+            minHeight: '100vh'
         }}
         >
 
