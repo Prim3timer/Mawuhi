@@ -221,7 +221,7 @@ button:active {
 
 
 input {
-  max-width: 50vw;
+  max-width: 40vw;
   padding: 5px;
   font-size: 1.5rem;
   border-radius: 5px;
@@ -573,9 +573,13 @@ form {
     top: 25%;
     width: 90%;
   }
+  input {
+    max-width: 85vw;
+  }
 
   .edit-item input {
-    width: 85%;
+    width: 85vw;
+    background-color: blue;
   }
   #sales-total {
     display: flex;
