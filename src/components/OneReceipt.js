@@ -77,7 +77,7 @@ useEffect(()=> {
             minHeight: '100vh',
             alignItems: 'center',
             justifyContent: 'center',
-                   fontSize: '1.5rem',
+                   fontSize: '1rem',
                     margin: '0  0 0 1rem',
             // backgroundColor: 'orange'
         }}
