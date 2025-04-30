@@ -45,8 +45,7 @@ const initialState = {
    balance: 0,
    id: '',
    backendUser:    {},
-   selectUser: {}
-  
+   selectUser: '' 
 }
 
 export default initialState

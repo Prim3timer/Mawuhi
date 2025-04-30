@@ -7,7 +7,6 @@ const Editor = ()=> {
             flexDirection: 'row',
             display: 'flex',
             alignItems: 'center',
-            columnGap: '1rem',
             // justifyContent: 'center',
             margin: '0 2rem'
         }}
@@ -39,7 +38,7 @@ const Editor = ()=> {
             style={{
                 display:'flex',
                 width: '650px',
-                height: '250px',
+                height: '300px',
                 columnGap: '3rem',
                 borderLeft: '4px solid brown',
                 borderBottom: '4px solid brown',
@@ -55,9 +54,10 @@ const Editor = ()=> {
                 id="bar-container"
                 style={{display:'flex',
                     flexDirection:'row',
-                    columnGap: '4.5rem',
-                    alignItems: 'flex-end',
-                    margin: '0 0 0 3.4rem',
+                    columnGap: '3rem',
+                    width: '590PX',
+                    alignItems: 'flex-start',
+                    margin: '0 0 0 2rem',
                 
                     // backgroundColor: "yellow"
                     // height: '600px'
@@ -75,8 +75,8 @@ const Editor = ()=> {
             style={{
                 display: 'flex',
                 // width: '600px',
-                columnGap: '5.5rem',
-                margin: '0 0 0 4rem'
+                columnGap: '4rem',
+                margin: '0 0 0 2.6rem'
                 // alignItems: 'flex-start',
                 // backgroundColor: 'blue'
             }}
@@ -86,7 +86,7 @@ const Editor = ()=> {
                 <p>Mar</p>
                 <p>Apr</p>
                 <p>May</p>
-                <p>June</p>
+                <p>Jun</p>
             </div>
             </section>
         </div>

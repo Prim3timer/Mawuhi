@@ -3,13 +3,29 @@ import { ROLES } from "../config/roles"
 import { Link } from "react-router-dom"
 import axios from "../app/api/axios"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSave, faTrashCan } from "@fortawesome/free-solid-svg-icons"
+import { faSave, faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons"
 import initialState from "../store"
 import reducer from "../reducer"
 import useAuth from "../hooks/useAuth"
 
+const USER_REGEX = /^[A-z][A-z0-9-_]{2,23}$/;
+const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
+
+const ACTION = {
+    USER: 'user',
+    PWD: 'pwd',
+    VALIDNAME: 'validName',
+    VALIDPWD: 'validPwd',
+    VALIDMATCH: 'validMatch',
+    ERRMSG: 'errMsg',
+    SUCCESS: 'success',
+    MATCHPWD: 'matchPwd',
+    USERFOCUS: 'userFocus',
+    PWDFOCUS: 'pwdFocus',
+    MATCHFOCUS: 'matchFocus'
+}
+
 const UserSettings = () => {
-    const [roleValue, setRoleValue] = useState('')
     const [password, setPassword] = useState('')
     const [currentUser2, setCurrentUser2] = useState()
     const [roles, setRoles] =  useState({})
@@ -20,48 +36,67 @@ const UserSettings = () => {
     const {auth} = useAuth()
     const saveRef = useRef(null)
 
-    // picker3 is the not the current user but the user in question
+    // picker3 is the not the current user.  It is the user in question.
     console.log(auth.picker3)
 
 
 const getUsers = async ()=> {
     try {
-            const response = await axios.get('/users')
-            const person = response.data.find((user) => user._id === auth.picker3)
-           setCurrentUser2(person)
-        //    dispatch({type: 'inItem', payload: currentUser})
+        const response = await axios.get('/users')
+        const person = response.data.find((user) => user._id === auth.picker3)
         if (person){
-            console.log(person)
+            //    dispatch({type: 'selectUser', payload: person})
+            setCurrentUser2(person)
+            console.log(state.selectUser)
+            console.log(currentUser2)
+            // console.log(person)
             setUsername(person.username) 
             setRoles(Object.keys(person.roles))
             setActive(person.active)
              console.log(roles)
-        }
-                
-            } catch (error) {
-                console.log(error)
             }
+            
+        } catch (error) {
+            console.log(error)
         }
-
+        }
+        
         const shadowing = () => {
             setShadow(true)
-
-         saveRef.current.style.backgroundColor = 'transparent'
+            
+            saveRef.current.style.backgroundColor = 'transparent'
          saveRef.current.style.boxShadow = '0.2em 0.3em 0.4em gray'
          saveRef.current.style.borderRadius = '5px'
          saveRef.current.style.transisitionProperty = 'box-shaddow scale'
          saveRef.current.style.transform = 'scale(1.15, 1.15)'
          saveRef.current.style.transitionDuration = '300ms'
-
-       
+         
+         
         }
-
-        const shadowControll = shadow === false ? `icon-button2` : shadow === true ? `icon-button` : ''
+         
+        // new password: H0locomb1#
         
-    useEffect(()=> {
-        getUsers()
-    }, [])
+        useEffect(()=> {
+            getUsers()
+        }, [])
+        
+     useEffect(() => {
+            dispatch({type: ACTION.VALIDNAME, payload: USER_REGEX.test(state.user)})
+        }, [username])
+    
+        useEffect(() => {
+            dispatch({type: ACTION.VALIDPWD, payload: PWD_REGEX.test(state.pwd)})
+            // dispatch({type: ACTION.VALIDMATCH, payload: state.pwd === state.matchPwd})
+        }, [password, 
+            // state.matchPwd
+        ])
 
+          useEffect(() => {
+                dispatch({type: ACTION.ERRMSG, payload: ''})
+            }, [username, password,
+                // state.matchPwd
+            ])
+        
 
 
 
@@ -106,7 +141,7 @@ const updateUser = async () => {
     const updatedPerson = {
         username: username,
         roles: currentRole,
-        password: password,
+        password: password ? password : currentUser2.password,
         active: active,
 
     }
@@ -145,6 +180,12 @@ const options = Object.keys(ROLES).map(role => {
                 shadowing()
                 setUsername(e.target.value)}}
             />
+             <p id="uidnote" className={state.userFocus && state.user && !state.validName ? "instructions" : "offscreen"}>
+                                        <FontAwesomeIcon icon={faInfoCircle} />
+                                        3 to 24 characters.<br />
+                                        Must begin with a letter.<br />
+                                        Letters, numbers, underscores, hyphens allowed.
+                                    </p>
             <label htmlFor="password">Password:</label>
             <input type="password" id="password" value={password}
             onChange={e => {setPassword(e.target.value)

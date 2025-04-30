@@ -114,12 +114,19 @@ const AllSales = () => {
     return (
         <div
         >   
-            <div>
+            <div
+            style={{
+                textAlign: 'center'
+            }}
+            >
                 <Link
                 to='/sales'
                 ><button
                 style={{
-                    marginTop: '.5rem'
+                    marginTop: '2rem',
+
+                    justifySelf: 'center',
+                    // backgroundColor: 'green'
                 }}
                 >All Sales</button></Link>
             </div>

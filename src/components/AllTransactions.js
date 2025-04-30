@@ -136,8 +136,6 @@ function numberWithCommas(x) {
            textAlign: 'center',
            height: '100vh',
            justifyContent: 'center',
-           fontSize: '1.5rem'
-            
         }}
         // onClick={remainDelete}
         >
@@ -190,14 +188,7 @@ function numberWithCommas(x) {
                                     display: 'flex',
                                     flexDirection: 'column',
                                     justifySelf: 'flex-start',
-                                    // justifySelf: 'center',
-                                    // justifyContent: 'center',
-                                    // justifyContent: 'flex-start',
                                     alignItems: 'flex-start',
-                                    // alignItems: 'center',
-                                    // textAlign: 'center',
-                                 
-                                    // width: '40%',
                                     textAlign: 'center',
                                     // backgroundColor: 'green'
                                 }}
@@ -210,10 +201,6 @@ function numberWithCommas(x) {
                                         return (
                                             <div
                                             style={{
-                                                // display: 'flex',
-                                                // flexDirection: 'column',
-                                                // alignItems: 'center',
-                                                // margin: '0 0 0 4rem',
                                                  textAlign: 'left'
                                             }}
                                             >
