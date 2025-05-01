@@ -38,7 +38,6 @@ const UserSettings = () => {
     const saveRef = useRef(null)
 
     // picker3 is the not the current user.  It is the user in question.
-    console.log(auth.picker3)
 
 
 const getUsers = async ()=> {
@@ -73,21 +72,17 @@ const getUsers = async ()=> {
          saveRef.current.style.transitionDuration = '300ms'
          
          
-        }
-         
-        // new password: H0locomb1#
-        
+        }      
         useEffect(()=> {
             getUsers()
         }, [])
         
      useEffect(() => {
-            dispatch({type: ACTION.VALIDNAME, payload: USER_REGEX.test(state.user)})
+            dispatch({type: ACTION.VALIDNAME, payload: USER_REGEX.test(username)})
         }, [username])
     
         useEffect(() => {
-            dispatch({type: ACTION.VALIDPWD, payload: PWD_REGEX.test(state.pwd)})
-            // dispatch({type: ACTION.VALIDMATCH, payload: state.pwd === state.matchPwd})
+            dispatch({type: ACTION.VALIDPWD, payload: PWD_REGEX.test(password)})
         }, [password, 
             // state.matchPwd
         ])
@@ -182,11 +177,18 @@ const options = Object.keys(ROLES).map(role => {
             <h2 id="user-edit-header">Edit User Settings</h2>
             
             <form>
-            <label htmlFor="username">Username:</label>
+            <label htmlFor="username">Username:
+            <FontAwesomeIcon icon={faCheck} className={state.validName ? "valid" : "hide"} />
+            <FontAwesomeIcon icon={faTimes} className={state.validName || !username ? "hide" : "invalid"} />
+            </label>
             <input type="text" id="username" value={username}
             onChange={e => {
                 shadowing()
                 setUsername(e.target.value)}}
+                aria-invalid={state.validName ? "false" : "true"}
+                            aria-describedby="uidnote"
+                            // onFocus={() => dispatch({type: ACTION.USERFOCUS, payload: true})}
+                            // onBlur={() => dispatch({type: ACTION.USERFOCUS, payload: false})}
             />
              <p id="uidnote" className={username && !state.validName ? "instructions" : "offscreen"}>
                                         <FontAwesomeIcon icon={faInfoCircle} />
@@ -194,12 +196,27 @@ const options = Object.keys(ROLES).map(role => {
                                         Must begin with a letter.<br />
                                         Letters, numbers, underscores, hyphens allowed.
                                     </p>
-            <label htmlFor="password">Password:</label>
-            <input type="password" id="password" value={password}
+            <label htmlFor="password">Password:
+            <FontAwesomeIcon icon={faCheck} className={state.validPwd ? "valid" : "hide"} />
+            <FontAwesomeIcon icon={faTimes} className={state.validPwd || !password ? "hide" : "invalid"} />
+            </label>
+            <input type="password" 
+            id="password" value={password}
             onChange={e => {setPassword(e.target.value)
                 shadowing()
             }}
+                            aria-invalid={state.validMatch ? "false" : "true"}
+                            aria-describedby="confirmnote"
+                            onFocus={() => dispatch({type: ACTION.PWDFOCUS, payload: true})}
+                            onBlur={() => dispatch({type: ACTION.PWDFOCUS, payload: false})}
             />
+                                <p id="pwdnote" className={state.pwdFocus && !state.validPwd ? "instructions" : "offscreen"}>
+                            <FontAwesomeIcon icon={faInfoCircle} />
+                            8 to 24 characters.<br />
+                            Must include uppercase and lowercase letters, a number and a special character.<br />
+                            Allowed special characters: <span aria-label="exclamation mark">!</span> <span aria-label="at symbol">@</span> <span aria-label="hashtag">#</span> <span aria-label="dollar sign">$</span> <span aria-label="percent">%</span>
+                        </p>
+
             </form>
             <br/>
             <label className="form__label form__checkbox-container" htmlFor="user-active"
