@@ -285,7 +285,7 @@ style={{
             </div>
             <div
         style={{
-            display: state.success ? 'block' : 'none',
+            display: state.success && shadow ? 'block' : 'none',
             position: 'absolute',
             margin: '1rem 0',
             top: '35%',

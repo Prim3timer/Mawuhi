@@ -547,7 +547,7 @@ form {
   height: 10px;
 }
 
-.edit-user form {
+.edit-user form label {
   /* background-color: orange; */
   font-size: 1.5rem;
 }
