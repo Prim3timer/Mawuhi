@@ -65,10 +65,12 @@ const Login = () => {
             } else if (err.response?.status === 400) {
                 // setErrMsg('Missing Username or Password');
                 dispatch({type: 'errMsg', payload: 'Missing Username or Password'});
-            } else if (err.response?.status === 401) {
+            }
+             else if (err.response?.status === 401) {
                 // setErrMsg('Unauthorized');
                 dispatch({type: 'errMsg', payload: 'Unauthorized'});
-            } else {
+            }
+             else {
                 // setErrMsg('Login Failed');
                 dispatch({type: 'errMsg', payload: 'Login Failed'});
             }

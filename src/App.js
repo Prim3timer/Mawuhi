@@ -106,7 +106,6 @@ return (
       <Routes>
          {/* public routes */}
         <Route path="/" element={<Layout/>}>
-     {/* <Route path="emp-inv" element={<EmpInv/>}/> */}
     <Route path="/login" element={<Login
     afa={afa}
     setAfa={setAfa}

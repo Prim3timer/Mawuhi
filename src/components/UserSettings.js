@@ -22,7 +22,8 @@ const ACTION = {
     MATCHPWD: 'matchPwd',
     USERFOCUS: 'userFocus',
     PWDFOCUS: 'pwdFocus',
-    MATCHFOCUS: 'matchFocus'
+    MATCHFOCUS: 'matchFocus',
+    SELECTUSER: 'selectUser'
 }
 
 const UserSettings = () => {
@@ -138,17 +139,24 @@ const updateUser = async () => {
 
     const currentRole = userChange.pop()
     console.log(currentRole)
+    console.log(password)
     const updatedPerson = {
         username: username,
         roles: currentRole,
-        password: password ? password : currentUser2.password,
+        password: password,
         active: active,
 
     }
 
-    await axios.patch(`/users/update/${currentUser2._id}`, updatedPerson)
+    const response = await axios.patch(`/users/update/${currentUser2._id}`, updatedPerson)
+if (response) {
+    dispatch({type: ACTION.SELECTUSER, payload: response.data})
+    dispatch({type: ACTION.SUCCESS, payload: true})
+    setTimeout(()=> {
+        dispatch({type: ACTION.SUCCESS, payload: false})
+    }, 3000)
 }
-
+}
 const onActiveChanged = () => {
     
     shadowing()
@@ -180,7 +188,7 @@ const options = Object.keys(ROLES).map(role => {
                 shadowing()
                 setUsername(e.target.value)}}
             />
-             <p id="uidnote" className={state.userFocus && state.user && !state.validName ? "instructions" : "offscreen"}>
+             <p id="uidnote" className={username && !state.validName ? "instructions" : "offscreen"}>
                                         <FontAwesomeIcon icon={faInfoCircle} />
                                         3 to 24 characters.<br />
                                         Must begin with a letter.<br />
@@ -256,9 +264,24 @@ style={{
           ref={saveRef}
         //   className={'icon-button'}
           title="Save"
-          > <Link to={shadow ? '/admin' : '/user-settings'}><FontAwesomeIcon icon={faSave} /></Link></p>
+          > <Link to={'/user-settings'}><FontAwesomeIcon icon={faSave} /></Link></p>
             </div>
-          
+            <div
+        style={{
+            display: state.success ? 'block' : 'none',
+            position: 'absolute',
+            margin: '1rem 0',
+            top: '35%',
+left: '25%',
+width: '40%',
+ padding: '1rem',
+   backgroundColor: '#3CB371',
+   borderRadius: '5px',
+   opacity: '.85'
+        }}
+        >
+          <h4>{state.selectUser}</h4>
+            </div>
         </div>
     )
 }
