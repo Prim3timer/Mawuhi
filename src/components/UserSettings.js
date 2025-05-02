@@ -64,13 +64,7 @@ const getUsers = async ()=> {
         const shadowing = () => {
             setShadow(true)
             
-            saveRef.current.style.backgroundColor = 'transparent'
-         saveRef.current.style.boxShadow = '0.2em 0.3em 0.4em gray'
-         saveRef.current.style.borderRadius = '5px'
-         saveRef.current.style.transisitionProperty = '(box-shaddow scale)'
-         saveRef.current.style.transform = 'scale(1.15, 1.15)'
-         saveRef.current.style.transitionDuration = '300ms'
-         saveRef.current.style.borderColor = 'transparent'
+          
          
          
         }      
@@ -100,7 +94,7 @@ const getUsers = async ()=> {
 
 
 const onRolesChanged = e => {
-    shadowing()
+    // shadowing()
     setShadow(true)
     const values = Array.from(
         e.target.selectedOptions,
@@ -121,18 +115,7 @@ const onRolesChanged = e => {
 }
 
 const updateUser = async () => {
-    saveRef.current.style.transisitionProperty = '(box-shaddow scale)'
-    saveRef.current.style.transform = 'scale(.95, .95)'
-    saveRef.current.style.transitionDuration = '100ms'
-    saveRef.current.style.boxShadow = '0em 0em 0em gray'
-
-    setTimeout(()=> {
-        saveRef.current.style.boxShadow = '0.2em 0.3em 0.4em gray'
-        saveRef.current.style.borderRadius = '5px'
-        saveRef.current.style.transisitionProperty = '(box-shaddow scale)'
-        saveRef.current.style.transform = 'scale(1.15, 1.15)'
-    }, 100)
-
+console.log('shadow is ', shadow)
     const newRoles = {
         Employee: 2001,
     }
@@ -294,7 +277,6 @@ style={{
             </form>
            
                   <button onClick={updateUser}
-        //   className='icon-button2'
         style={
             {
                 width:'48px',
@@ -303,11 +285,11 @@ style={{
                 fontSize: '2rem',
                 display: 'grid',
                 placeContent:'center',
-                backgroundColor: 'lightgray',
-                borderColor: 'lightgray',
-                transitionProperty: 'box-shadow scale',
-                // transform: 'scale(0.95. 0.95)',
-                boxShadow: '0em 0em 0em gray'
+                backgroundColor: 'transparent',
+                borderColor: 'transparent',
+                // transitionProperty: 'box-shadow scale',
+                // // transform: 'scale(0.95. 0.95)',
+                // boxShadow: '0em 0em 0em gray'
             }
         }
           ref={saveRef}
