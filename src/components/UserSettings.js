@@ -187,10 +187,10 @@ const options = Object.keys(ROLES).map(role => {
                 setUsername(e.target.value)}}
                 aria-invalid={state.validName ? "false" : "true"}
                             aria-describedby="uidnote"
-                            // onFocus={() => dispatch({type: ACTION.USERFOCUS, payload: true})}
-                            // onBlur={() => dispatch({type: ACTION.USERFOCUS, payload: false})}
+                            onFocus={() => dispatch({type: ACTION.USERFOCUS, payload: true})}
+                            onBlur={() => dispatch({type: ACTION.USERFOCUS, payload: false})}
             />
-             <p id="uidnote" className={username && !state.validName ? "instructions" : "offscreen"}>
+             <p id="uidnote" className={!state.validName  && state.userFocus? "instructions" : "offscreen"}>
                                         <FontAwesomeIcon icon={faInfoCircle} />
                                         3 to 24 characters.<br />
                                         Must begin with a letter.<br />
