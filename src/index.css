@@ -531,14 +531,14 @@ form {
   height: 48px;
   font-size: 2.5rem;
   background-color: lightgray;
-  /* background-color: green; */
-  /* border: 2px solid black; */
-  /* padding: .5rem; */
+
+  border: 2px solid lightgray;
+
   color: var(--COLOR);
   display: grid;
   place-content: center;
-  /* transition-property: box-shadow scale;
-  transform: scale(0.95, 0.95); */
+  transition-property: box-shadow scale;
+  transform: scale(0.95, 0.95);
   box-shadow: 0em 0e 0em gray;
 }
 
