@@ -265,7 +265,7 @@ textAlign: 'center',
  padding: '1rem',
    backgroundColor: 'lightpink',
    borderRadius: '5px',
-   fontSize: '2rem',
+   fontSize: '1.5rem',
    opacity: '.85'
         }}
         >

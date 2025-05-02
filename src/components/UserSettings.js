@@ -298,6 +298,7 @@ width: '40%',
  padding: '1rem',
    backgroundColor: '#3CB371',
    borderRadius: '5px',
+   fontSize: '1.5rem',
    opacity: '.85'
         }}
         >
