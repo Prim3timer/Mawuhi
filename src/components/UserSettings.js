@@ -258,7 +258,11 @@ style={{
              
             //   }}
             >
-                <label>ASSINGED ROLES:</label>
+                <label
+                style={{
+                    fontSize: '1rem'
+                }}
+                >ASSINGED ROLES:</label>
              <select name="roles" size="3"  multiple={true}
               
             //  ref={selectRef}

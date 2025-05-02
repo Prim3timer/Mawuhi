@@ -44,7 +44,7 @@ const settingFunc = (id) => {
             setCurrentPerson(person)
             console.log(currentPerson)
             if (showSettings){
-                setShowSettings(false)
+                    setShowSettings(false)
             } else {
     
                 setShowSettings(true)
@@ -81,11 +81,19 @@ const handleRemove = async ()=> {
     console.log(auth.picker3)
   
     const response = await axios.delete(`/users/delete/${auth.picker3}`)
+    dispatch({type: 'cancel', payload: false})
+    dispatch({type: 'success', payload: true})
+    console.log(state.success)
+    setTimeout(()=> {
+        dispatch({type: 'success', payload: false})
+    }, 3000)
     if (response){
-        console.log(response)
+        dispatch({type: 'selectUser', payload: response.data})
+        // console.log(response)
+
         const newGraw =  users.filter((item)=> item._id !== auth.picker3)
+
         setUsers(newGraw)
-        dispatch({type: 'cancel', payload: false})
     }
     else{
         console.log('nothing for you')
@@ -243,6 +251,25 @@ return (
       onClick={generalRemain}
        >
         ok</button>
+
+            </div>
+        <div
+        style={{
+            display: state.success ? 'block' : 'none',
+            position: 'absolute',
+            margin: '1rem 0',
+            top: '35%',
+left: '25%',
+width: '40%',
+textAlign: 'center',
+ padding: '1rem',
+   backgroundColor: 'lightpink',
+   borderRadius: '5px',
+   fontSize: '2rem',
+   opacity: '.85'
+        }}
+        >
+          <h4>{state.selectUser}</h4>
             </div>
     </article>
 )

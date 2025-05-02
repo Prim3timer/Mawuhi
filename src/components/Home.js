@@ -73,11 +73,9 @@ const Home = ({afa, userId})=> {
         // onClick={showDem}
         
         to="/all-sales">sales</Link>
-        <Link 
-        // onClick={showDem}
-        
+        {/* <Link         
         to="/editor">bars</Link>
-        <br/>
+        <br/> */}
         <Link
         // onClick={}
         to="/shopping">reciepts</Link>
