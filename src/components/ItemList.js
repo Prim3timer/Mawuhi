@@ -259,7 +259,11 @@ style={{display: state.isEdit ? 'block' : 'none',
         </div>
 
 
-            
+        <h2 className="invent-header"
+           style={{
+            color: 'darkslateblue'  
+           }}
+           >Items</h2>   
        <input 
        id="invent-search"
        type="text"
@@ -272,11 +276,7 @@ style={{display: state.isEdit ? 'block' : 'none',
        
        />
          </form>
-           <h2 className="invent-header"
-           style={{
-            color: 'darkslateblue'  
-           }}
-           >Items</h2>
+        
        </article>
        <table className="inventory"
       style={{

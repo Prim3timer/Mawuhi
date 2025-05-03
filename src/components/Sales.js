@@ -25,6 +25,12 @@ const Sales = ({transactions, currentUser, getTrans, search, setSearch,
     return (
         <div className="sale"
         >
+              <h2
+          style={{
+            margin: '1rem 0', 
+            color: 'darkslateblue'  
+        }}
+        >{currentUser ? `${currentUser.username}'s Sales` : 'All Sales'} ({transactions.length} rows)</h2>
             <article id="form-cont">
             <form  className="search-form"   onSubmit={(e)=> e.preventDefault()}>
         <input 
@@ -53,12 +59,7 @@ const Sales = ({transactions, currentUser, getTrans, search, setSearch,
           </form>
           {/* <SearchItem/> */}
         </article>
-        <h2
-          style={{
-            margin: '1rem 0', 
-            color: 'darkslateblue'  
-        }}
-        >{currentUser ? `${currentUser.username}'s Sales` : 'All Sales'} ({transactions.length} rows)</h2>
+      
 
         <table
          className="inventory"

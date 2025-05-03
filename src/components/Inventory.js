@@ -136,7 +136,11 @@ const bringEdit = () => {
       <button onClick={remainEdit} >ok</button>
             </div> 
 
-
+            <h2 className="invent-header"
+     style={{
+        color: 'darkslateblue'  
+     }}
+     >Inventory</h2>
             <div
             className="edit"
     style={{display: state.isEdit ? 'block' : 'none',
@@ -200,11 +204,7 @@ const bringEdit = () => {
  
  />
    </form>
-     <h2 className="invent-header"
-     style={{
-        color: 'darkslateblue'  
-     }}
-     >Inventory</h2>
+   
  </article>
  <table className="inventory"
 >
