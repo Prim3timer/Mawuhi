@@ -22,13 +22,13 @@ const [allTransi, setAllTransi] = useState([])
         try {
             const response = await axios.get('/transactions')
             if (response){
-                const newRes = response.data.map((item)=> {
-                    if (!item.cashierID){
-                        item.cashierID = 'unavailable'
-                        item.cashier = 'unavailable'
-                    }
-                    return item
-                })
+                // const newRes = response.data.map((item)=> {
+                //     if (!item.cashierID){
+                //         item.cashierID = 'unavailable'
+                //         item.cashier = 'unavailable'
+                //     }
+                //     return item
+                // })
                 
                 // const cashierTrans = newRes.filter((item) => item.cashierID === picker)
                 // console.log(cashierTrans)

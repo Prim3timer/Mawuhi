@@ -120,8 +120,6 @@ const Transactions = ()=> {
             
             const {transArray, total} = state
             
-            
-            // console.log(transArray)
             if (state.transArray.length){
                 const transItems = {
                     cashier: auth.user, 
@@ -176,6 +174,10 @@ const Transactions = ()=> {
         }
        
     }
+
+
+
+
     const assertain = ()=> {
         dispatch({type: 'cancel', payload: true})
      console.log(state.transArray)   

@@ -192,7 +192,7 @@ const options = Object.keys(ROLES).map(role => {
                                         Must begin with a letter.<br />
                                         Letters, numbers, underscores, hyphens allowed.
                                     </p>
-            <label htmlFor="password">Password:
+            <label htmlFor="password">Password: [empty = no change]
             <FontAwesomeIcon icon={faCheck} className={state.validPwd ? "valid" : "hide"} />
             <FontAwesomeIcon icon={faTimes} className={state.validPwd || !password ? "hide" : "invalid"} />
             </label>

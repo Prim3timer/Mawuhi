@@ -33,16 +33,16 @@ const getItems = async ()=> {
     
             const response = await axios.get('/transactions')
             if (response){
-                const newRes = response.data.map((item)=> {
-                    if (!item.cashierID){
-                        item.cashierID = 'unavailable'
-                        item.cashier = 'unavailable'
-                    }
-                    return item
-                })
+            //     const newRes = response.data.map((item)=> {
+            //         if (!item.cashierID){
+            //             item.cashierID = 'unavailable'
+            //             item.cashier = 'unavailable'
+            //         }
+            //         return item
+            //     })
         
              
-                const cashierTrans = newRes.filter((item) => item.cashierID === auth.picker3)
+                const cashierTrans = response.data.filter((item) => item.cashierID === auth.picker3)
                 console.log(cashierTrans)
                 // dispatch({type: 'getNames', payload: response.data})
                 dispatch({type: 'getNames', payload: cashierTrans})
@@ -124,9 +124,6 @@ const generalRemain = () => {
     if (state.isMatched) dispatch({type: 'isMatched', payload: false})
 
  } 
-const grabId = (id) => {
-    console.log(id)
-}
 
 useEffect(()=> {
     getItems()
@@ -136,7 +133,6 @@ useEffect(()=> {
 function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
-
 
     return (
         
