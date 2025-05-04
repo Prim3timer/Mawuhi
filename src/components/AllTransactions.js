@@ -270,7 +270,7 @@ function numberWithCommas(x) {
                           margin: '.5rem auto',
                         //   display: 'flex',
                       }}
-                      >Are you sure you want to delete this transacton: ({state.inItem.date})?</h3>
+                      >Delete from Receipts?</h3>
                              <article
                              style={{
                                  display: 'flex',

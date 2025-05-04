@@ -283,7 +283,7 @@ function numberWithCommas(x) {
               margin: '.5rem auto',
             //   display: 'flex',
           }}
-          >Delete from receipts</h3>
+          >Delete from Receipts</h3>
                  <article
                  style={{
                      display: 'flex',
