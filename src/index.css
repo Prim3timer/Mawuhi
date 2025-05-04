@@ -7,6 +7,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
    /* display: flex;    */
 }
 
@@ -43,8 +44,7 @@ html {
 
 
 .App {
-    /* width: 100%; */
-    /* width: 200vh; */
+
     height: 100vh;
     display: flex;
     /* display: grid;
@@ -508,14 +508,24 @@ form {
   margin: .5rem;
 }
 
+.one-receipt {
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+         font-size: 1rem 
+}
 
-.item-list, .sale, .trans-cont, .edit-user, .login, .register, .create-item {
+
+.item-list, .sale, .trans-cont, .edit-user, .login, .register, .create-item, .inventory-spec, .user-select, 
+.receipts, .all-receipts, .all-transactions   {
   display: flex;
   flex-direction: column;
   /* font-size: 4rem; */
   max-width: 100vw;
   text-align: center;
   min-height: 100vh;
+ 
   /* align-items: center; */
   justify-content: center;
 }

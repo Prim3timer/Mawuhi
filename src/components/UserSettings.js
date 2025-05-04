@@ -169,7 +169,10 @@ const options = Object.keys(ROLES).map(role => {
 })
   
     return (
-        <div className="edit-user">
+        !username ? <h2
+        className="edit-user"
+        >Loading...</h2> : <div className="edit-user"
+        >
             <h2 id="user-edit-header">Edit User Settings</h2>
             
             <form>
@@ -192,7 +195,7 @@ const options = Object.keys(ROLES).map(role => {
                                         Must begin with a letter.<br />
                                         Letters, numbers, underscores, hyphens allowed.
                                     </p>
-            <label htmlFor="password">Password: [empty = no change]
+            <label htmlFor="password">Password:
             <FontAwesomeIcon icon={faCheck} className={state.validPwd ? "valid" : "hide"} />
             <FontAwesomeIcon icon={faTimes} className={state.validPwd || !password ? "hide" : "invalid"} />
             </label>

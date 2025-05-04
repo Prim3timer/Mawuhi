@@ -129,24 +129,29 @@ function numberWithCommas(x) {
 
 
     return (
-       state.isMatched ? <Unauthorized/> : <div
+        !allTransi.length ? <h2
+        style={{
+            display: 'flex',
+            margin: ' 0 0 0 1rem',
+           textAlign: 'center',
+           alignItems: 'center',  
+           height: '100vh',
+           justifyContent: 'center',
+        }}
+        >Loding...</h2> : <div
         style={{
             display: 'flex',
             margin: ' 0 0 0 1rem',
            textAlign: 'center',
            height: '100vh',
            justifyContent: 'center',
+        //    backgroundColor: 'blue'
         }}
         // onClick={remainDelete}
         >
 
-            <div
-                    style={{
-                        margin: ' 0 0 0 1rem',
-                       textAlign: 'center'
-                        
-                    }}
-                    // onClick={remainDelete}
+            {<div
+           onClick={remainDelete}
                     >
             
             <article id="form-cont">
@@ -171,7 +176,7 @@ function numberWithCommas(x) {
                         style={{
                             margin: '1rem 0'   
                         }}
-                        >All Reciepts ({allTransi.length})</h2>
+                        >All Reciepts {allTransi &&  allTransi.length}</h2>
                         {state.getNames && allTransi.map((item)=> {
                             console.log(item.goods)
                             console.log(item)
@@ -281,9 +286,9 @@ function numberWithCommas(x) {
                              style={{backgroundColor: 'red',
                                  borderColor: 'red'
                              }}
-                             >Yes</button></article></div> 
+                             >Yes</button></article></div>
             
-                    </div>
+                    </div>}
             
         </div>
     )

@@ -66,7 +66,7 @@ const Admin = () => {
                 color: 'darkslateblue'  
             }}
             >Admin</h1>
-        { !users?.length ? <h2>Loading</h2> : <section>
+        { !users?.length ? <h2>Loading...</h2> : <section>
         
             {!showSettings ? <h2
             style={{textAlign: 'center'}}

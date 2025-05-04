@@ -179,7 +179,7 @@ const {auth} = useAuth()
 
   return  (
       
-              <div className="item-list"
+              !state.items ? <h2 className="item-list">...Loading</h2> :<div className="item-list"
               onClick={remainDelete}
               >  
               <article id="form-cont">

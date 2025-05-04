@@ -61,14 +61,11 @@ const getUsers = async ()=> {
     // /> : allTransactons ? <AllTransactions/> : ''
 
     return (
-   <div
-        style={{
-           display: 'flex',
-           flexDirection: 'column',
-           alignItems: 'center',
-           justifyContent: 'center',
-           height: '100vh'
-        }}
+   !currentUser2 ? <h2
+   className="user-select"
+   >Loading...</h2> : <div
+
+        className="user-select"
     >
             <h2
             style={{
@@ -80,7 +77,7 @@ const getUsers = async ()=> {
             {console.log(currentUser)}
             <article
             style={{
-                // justifyContent:'center',
+                justifyContent:'center',
                 margin:'1rem 0 1rem .5rem',
                 display: 'flex',
                 flexDirection: 'row',
@@ -92,7 +89,7 @@ const getUsers = async ()=> {
                 // width: '20vw',
                 // flexBasis: '15rem',
                 // flexWrap: 'nowrap'
-                // backgroundColor: 'green'
+                // backgroundColor: 'green',
                 height: '150hv'
               
             }}

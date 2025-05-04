@@ -23,7 +23,7 @@ const Sales = ({transactions, currentUser, getTrans, search, setSearch,
     console.log(state.sales, )
 }, [search, search2])
     return (
-        <div className="sale"
+        !transactions.length ? <h2 className="sale">Loading...</h2> : <div className="sale"
         >
               <h2
           style={{

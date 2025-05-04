@@ -136,18 +136,21 @@ function numberWithCommas(x) {
 
     return (
         
-         <div
+        !state.getNames.length ? <h2
+        className="receipts"
+        >Loading...</h2> : <div
+         className="receipts"
          onClick={generalRemain}
         style={{
-            margin: ' 0 0 0 1rem',
+        //     margin: ' 0 0 0 1rem',
            textAlign: 'center',
-            //   backgroundColor: 'green',
               display: 'flex',
               flexDirection: 'column',
-              flexBasis: '30rem',
-              minHeight: '100vh',
+            //   backgroundColor: 'red',
+        //       flexBasis: '30rem',
+        //       minHeight: '100vh',
               alignItems: 'center',
-              justifyContent: 'center'
+            //   justifyContent: 'center'
              
             
         }}
@@ -198,15 +201,7 @@ function numberWithCommas(x) {
                         display: 'flex',
                         flexDirection: 'column',
                         justifySelf: 'flex-start',
-                        // justifySelf: 'center',
-                        // justifyContent: 'center',
-                        // justifyContent: 'flex-start',
                         alignItems: 'flex-start',
-                        // alignItems: 'center'
-                        // textAlign: 'center',
-                       
-                     
-                        // width: '40%',
                         textAlign: 'center',
                      
                     }}

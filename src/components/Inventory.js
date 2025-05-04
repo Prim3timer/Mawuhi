@@ -101,12 +101,12 @@ const bringEdit = () => {
  
     return (
        
-    <section
+    !state.items ? <h2 className="inventory-spec">...Loading</h2> : <section
         className="inventory-spec"
         onClick={remainEdit}
         style={{ 
-            minWidth: '100vw',
-            minHeight: '100vh',
+            // minWidth: '100vw',
+            // minHeight: '100vh',
             // background: 'blue'
         }}
         >

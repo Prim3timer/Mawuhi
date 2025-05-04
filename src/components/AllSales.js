@@ -112,7 +112,7 @@ const AllSales = () => {
     
     
     return (
-        <div
+        !transactions.length ? <h2 className="sale">Loading...</h2> :<div
         >   
             <div
             style={{
@@ -131,7 +131,7 @@ const AllSales = () => {
                 >All Sales</button></Link>
             </div>
             
-            <Sales
+         <Sales
             transactions={state.sales}
             search={search}
             setSearch={setSearch}

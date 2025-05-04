@@ -71,16 +71,14 @@ useEffect(()=> {
 }, [])
 
     return (
-        <div
-        style={{
-            display: 'flex',
-            minHeight: '100vh',
-            alignItems: 'center',
-            justifyContent: 'center',
-                   fontSize: '1rem',
-                 
-            // backgroundColor: 'orange'
-        }}
+       !currentTrans ? <h2
+       className='one-receipt'
+       style={{
+        fontSize: '1.5rem'
+       }}
+       >Loading...</h2> : <div
+       className='one-receipt'
+      
         >
          {currentTrans && <article
 

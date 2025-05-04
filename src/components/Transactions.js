@@ -20,7 +20,7 @@ const Transactions = ()=> {
     const getItems = async ()=> {
         dispatch({type: 'clear'})
         try {
-            dispatch({type: 'errMsg', payload: 'loading...'})
+            // dispatch({type: 'errMsg', payload: 'loading...'})
             const response = await axios.get('/items')
             dispatch({type: 'errMsg', payload: ''})
           
@@ -193,7 +193,7 @@ const Transactions = ()=> {
     
    
     return (
-        <div className="trans-cont"
+       !state.getNames ? <h2 className="trans-cont">Loading...</h2> : <div className="trans-cont"
        
         >
             <h2
