@@ -88,7 +88,6 @@ h4 {
   /* background-color: blue; */
 
 
-
 }
 
 .home > * {
@@ -306,7 +305,7 @@ table {
   /* border: 1px solid brown; */
   text-align: center;
   border-collapse: collapse;
-  margin: 0 0 1rem 0;
+  /* margin: 0 0 1rem 0; */
   font-size: 1.2rem;
   width: 100vw; 
 }
@@ -531,17 +530,16 @@ form {
 }
 .inventory {
    font-size: 1.2rem;
- 
    /* overflow-y: auto; */
    /* max-width: 800px; */
-}
-
-
-.bars {
-  border: 20px solid blue;
-  height: 10px;
-}
-
+  }
+  
+  
+  .bars {
+    border: 20px solid blue;
+    height: 10px;
+  }
+  
 .edit-user label {
   /* background-color: orange; */
   font-size: 1.5rem;
@@ -592,7 +590,7 @@ form {
 
   .edit-item input {
     width: 85vw;
-    /* background-color: blue; */
+    /* background-color: blue;  */
   }
   #sales-total {
     display: flex;

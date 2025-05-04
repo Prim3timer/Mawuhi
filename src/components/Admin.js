@@ -50,14 +50,15 @@ const Admin = () => {
     }, [])
     return (
         <div
-        className="admin"
+        // className="admin"
       style={{
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        justifyContent: 'center',
+        // justifyContent: 'center',
+        rowGap: '2rem',
         minHeight: '100vh',
-        maxWidth: '100vw'
+        maxWidth: '100vw',
         // backgroundColor: 'blue'
     }}
       >
@@ -71,14 +72,8 @@ const Admin = () => {
             {!showSettings ? <h2
             style={{textAlign: 'center'}}
             >Users ({users && users.length})</h2> : ''}
-            <br/>
             
             {<h2>Loading...</h2> && 
-            // showSettings ? <UserSettings
-            //  person={currentPerson}
-            //  settingFunc={settingFunc}
-            //  showSettings={showSettings}
-            //  /> : 
              
              <Users
             users={users}

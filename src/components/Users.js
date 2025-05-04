@@ -89,7 +89,6 @@ const handleRemove = async ()=> {
     }, 3000)
     if (response){
         dispatch({type: 'selectUser', payload: response.data})
-        // console.log(response)
 
         const newGraw =  users.filter((item)=> item._id !== auth.picker3)
 
@@ -117,15 +116,14 @@ const generalRemain = () => {
 
 console.log(users)
 return (
-//  showSettings && currentPerson ? <UserSettings
-//  person={currentPerson}
-//  settingFunc={settingFunc}
-//  showSettings={showSettings}
-//  /> : 
  <article
-    className="inventory-spec"
     style={{
-        // justifyContent: 'center',
+        display: 'flex',
+        flexDirection: 'column',
+        /* font-size: 4rem; */
+        maxWidth: '100vw',
+        textAlign: 'center',
+        justifyContent: 'center'
     }}
     >
         {users?.length
