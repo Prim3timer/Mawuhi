@@ -138,7 +138,7 @@ function numberWithCommas(x) {
            height: '100vh',
            justifyContent: 'center',
         }}
-        >Loding...</h2> : <div
+        >Loading...</h2> : <div
         style={{
             display: 'flex',
             margin: ' 0 0 0 1rem',
