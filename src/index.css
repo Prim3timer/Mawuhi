@@ -49,7 +49,7 @@ html {
 
 .App {
 
-    min-height: 100vh;
+    height: 100dvh;
     display: flex;
     /* display: grid; */
     /* grid-auto-flow: column; */
