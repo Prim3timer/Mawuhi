@@ -229,10 +229,6 @@ style={{display: state.isEdit ? 'block' : 'none',
         {/* </h3> */}
         {/* <label>unitMeasure:</label> */}
         <datalist id="measure"
-        style={{backgroundColor: 'blue',
-            // fontSize: '2.5rem'
-
-        }}
         >
             {measurements.map((measurement)=> {
                 return (
