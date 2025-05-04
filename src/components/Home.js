@@ -32,13 +32,13 @@ const Home = ({afa, userId})=> {
              {/* <br /> */}
             <div
             style={{
-                padding: '0 1rem'
+                // padding: '0 1rem'
             }}
             >
                 
              <h3
              style={{
-                margin: '1rem 0 0'
+                margin: '1rem 0 0 1rem'
              }}
              > Hi, {auth.user} 
 
