@@ -592,7 +592,7 @@ form {
 
   .edit-item input {
     width: 85vw;
-    background-color: blue;
+    /* background-color: blue; */
   }
   #sales-total {
     display: flex;
