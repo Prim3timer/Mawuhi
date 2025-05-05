@@ -24,7 +24,7 @@ code {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* min-height: 100vh; */
+  min-height: 100vh;
 }
 
 
@@ -49,7 +49,7 @@ html {
 
 .App {
 
-    height: 100dvh;
+    height: 100vh;
     display: flex;
     /* display: grid; */
     /* grid-auto-flow: column; */
