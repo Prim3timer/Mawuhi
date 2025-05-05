@@ -101,7 +101,8 @@ useEffect(()=> {
 
 return (
 
-  <main className="App">
+  <main className="App"
+  >
      <h2 className="header"> Retail Tracker</h2>
       <Routes>
          {/* public routes */}
