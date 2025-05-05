@@ -87,7 +87,9 @@ const Home = ({afa, userId})=> {
     </section>
         
         <div className="flexGrow"
-        style={{textAlign: 'center'}}>
+        style={{textAlign: 'center'}}
+        >
+
             <button onClick={logout}
             style={{
                 fontSize: '1rem',
