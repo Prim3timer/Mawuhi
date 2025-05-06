@@ -79,9 +79,6 @@ let CreateItem = () => {
 <h2>Unit Measure:</h2><input type="text"
         // id="trans-search"
         // placeholder="pick measurement"
-        style={{width: '20rem',
-            // backgroundColor: 'red'
-        }}
         // ref={itemRef}
         list="measure"
         onChange={(e)=> dispatch({type: 'unitMeasure', payload: e.target.value})}

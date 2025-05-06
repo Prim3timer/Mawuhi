@@ -217,7 +217,7 @@ button:active {
 
 .header, .footer  {
   width: 100%;
-  position: fixed;
+  /* position: fixed; */
     padding: 1rem 0;
   /* overflow-y: auto; */
   /* row-gap: 2rem; */
