@@ -150,7 +150,7 @@ function numberWithCommas(x) {
         //       flexBasis: '30rem',
         //       minHeight: '100vh',
               alignItems: 'center',
-            //   justifyContent: 'center'
+              margin: '5rem 0 3rem 0'
              
             
         }}

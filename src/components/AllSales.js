@@ -116,14 +116,15 @@ const AllSales = () => {
         >   
             <div
             style={{
-                textAlign: 'center'
+                textAlign: 'center',
+
             }}
             >
                 <Link
                 to='/sales'
                 ><button
                 style={{
-                    marginTop: '2rem',
+                    marginTop: '5rem',
 
                     justifySelf: 'center',
                     // backgroundColor: 'green'

@@ -50,17 +50,7 @@ const Admin = () => {
     }, [])
     return (
         <div
-        // className="admin"
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        // justifyContent: 'center',
-        rowGap: '2rem',
-        minHeight: '100vh',
-        maxWidth: '100vw',
-        // backgroundColor: 'blue'
-    }}
+        className="admin"
       >
            <h1
             style={{

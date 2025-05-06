@@ -138,7 +138,10 @@ const bringEdit = () => {
 
             <h2 className="invent-header"
      style={{
-        color: 'darkslateblue'  
+        color: 'darkslateblue',
+        // position:'absolute'
+        margin: '6rem 0 0 0',
+        // backgroundColor: 'blue'  
      }}
      >Inventory</h2>
             <div

@@ -141,7 +141,8 @@ function numberWithCommas(x) {
         >Loading...</h2> : <div
         style={{
             display: 'flex',
-            margin: ' 0 0 0 1rem',
+          
+            margin: ' 6rem 0 0rem 0',
            textAlign: 'center',
            height: '100vh',
            justifyContent: 'center',
@@ -193,6 +194,7 @@ function numberWithCommas(x) {
                                     display: 'flex',
                                     flexDirection: 'column',
                                     justifySelf: 'flex-start',
+                                    // justifyContent: 'center',
                                     alignItems: 'flex-start',
                                     textAlign: 'center',
                                     // backgroundColor: 'green'

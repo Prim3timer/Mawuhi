@@ -66,6 +66,9 @@ const getUsers = async ()=> {
    >Loading...</h2> : <div
 
         className="user-select"
+        style={{
+            // justifyContent: 'center'
+        }}
     >
             <h2
             style={{

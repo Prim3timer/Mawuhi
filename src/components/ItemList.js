@@ -180,6 +180,9 @@ const {auth} = useAuth()
   return  (
       
               !state.items ? <h2 className="item-list">...Loading</h2> :<div className="item-list"
+              style={{
+                margin: '5rem 0 2rem 0' 
+              }}
               onClick={remainDelete}
               >  
               <article id="form-cont">
@@ -257,7 +260,8 @@ style={{display: state.isEdit ? 'block' : 'none',
 
         <h2 className="invent-header"
            style={{
-            color: 'darkslateblue'  
+            color: 'darkslateblue', 
+          
            }}
            >Items</h2>   
        <input 
