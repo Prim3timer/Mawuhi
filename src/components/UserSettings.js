@@ -171,6 +171,7 @@ const options = Object.keys(ROLES).map(role => {
     return (
         !username ? <h2
         className="edit-user"
+       
         >Loading...</h2> : <div className="edit-user"
         >
             <h2 id="user-edit-header">Edit User Settings</h2>

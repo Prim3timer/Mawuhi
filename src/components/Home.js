@@ -29,16 +29,13 @@ const Home = ({afa, userId})=> {
          }, [])
     return (
         <div className="home-cont" >
-             {/* <br /> */}
-            <div
-            style={{
-                // padding: '0 1rem'
-            }}
+
+            <div   
             >
                 
              <h3
              style={{
-                margin: '1rem 0 0 1rem'
+                margin: '0 0 0 1rem'
              }}
              > Hi, {auth.user} 
 

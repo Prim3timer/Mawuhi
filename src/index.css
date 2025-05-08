@@ -74,7 +74,7 @@ h4 {
 }
 
 .home-cont {
-  min-height: 100vh;
+  /* min-height: 100vh; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -219,11 +219,8 @@ button:active {
 
 .header, .footer  {
   width: 100%;
-  /* position: absolute; */
+  position: static;
     padding: 1rem 0;
-  /* overflow-y: auto; */
-  /* row-gap: 2rem; */
-  /* display: flex; */
   justify-content: center;
   background-color: #40e0d0;
   text-align: center;
@@ -527,7 +524,10 @@ form {
   min-height: 100vh;
   align-items: center;
   justify-content: center;
-         font-size: 1rem 
+         font-size: 1rem ;
+  
+          margin: 2rem 0;
+     
 }
 
 
@@ -562,12 +562,23 @@ form {
 }
 
 
-.create-item {
-  margin-bottom: 4rem;
-}
+
 @media screen and (max-width: 585px) {
+  .home-cont {
+    min-height: 100vh;
+  }
+.one-receipt {
+  margin: auto;
+}
 
-
+.footer, .header {
+  position: absolute;
+}
+.edit-user {
+  /* height: auto; */
+  margin: .2rem 0;
+  /* background-color: blue;   */
+}
   .inventory-spec, .item-list, .sale {
     padding: 0 .5rem;
     

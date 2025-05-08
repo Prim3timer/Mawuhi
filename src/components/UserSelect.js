@@ -67,6 +67,7 @@ const getUsers = async ()=> {
 
         className="user-select"
         style={{
+            // backgroundColor: 'green'
             // justifyContent: 'center'
             // minHeight: '100vh'
         }}
@@ -82,20 +83,12 @@ const getUsers = async ()=> {
             <article
             style={{
                 justifyContent:'center',
-                margin:'1rem 0 1rem .5rem',
+                // margin:'1rem 0 1rem .5rem',
                 display: 'flex',
                 flexDirection: 'row',
                 columnGap: '.5rem',
                 rowGap: '1rem',
                 flexWrap: 'wrap',
-                // marginLeft: '.5rem'
-                // padding: '.5rem/'
-                // width: '20vw',
-                // flexBasis: '15rem',
-                // flexWrap: 'nowrap'
-                // backgroundColor: 'green',
-                height: '150hv'
-              
             }}
             >
                <Link

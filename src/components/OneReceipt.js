@@ -79,11 +79,6 @@ useEffect(()=> {
        }}
        >Loading...</h2> : <div
        className='one-receipt'
-            style={{
-                    //    backgroundColor: 'blue',
-                    //    margin: '4rem 0',
-                       maxHeight: '100vh',
-            }}
         >
          {currentTrans && <article
 
