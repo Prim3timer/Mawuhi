@@ -583,6 +583,10 @@ form {
   position: absolute;
 }
 
+.footer {
+  top: 93%
+}
+
 
 
 .edit-user {
