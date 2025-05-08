@@ -575,17 +575,8 @@ form {
 
 
 @media screen and (max-width: 585px) {
-.one-receipt  {
-  margin: auto;
-}
 
 
-
-.edit-user {
-  /* height: auto; */
-  margin: .2rem 0;
-  /* background-color: blue;   */
-}
   .inventory-spec, .item-list, .sale {
     padding: 0 .5rem;
     

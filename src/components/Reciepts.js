@@ -162,7 +162,7 @@ function numberWithCommas(x) {
                   flexDirection: 'column',
                 // backgroundColor: 'blue',
                   alignItems: 'center',
-                  margin: '5rem 0  2rem 0'
+                  margin: '2rem 0  2rem 0'
                  
                 
             }}

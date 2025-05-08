@@ -142,7 +142,7 @@ function numberWithCommas(x) {
         style={{
             display: 'flex',
         //   backgroundColor: 'blue',
-            margin: ' 5rem 0',
+            margin: ' 2rem 1rem 0',
            textAlign: 'center',
            minHeight: '100vh',
            justifyContent: 'center',
