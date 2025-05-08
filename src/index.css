@@ -7,7 +7,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-min-height: 100vh;
+min-height: 100%;
   background-size: cover;
   background-position: top right;
   background-blend-mode: multiply;
@@ -20,7 +20,7 @@ code {
 #root {
   flex-flow: nowrap;
   display: flex;
-  min-height: 100vh;
+  /* min-height: 100%; */
 }
 
 
@@ -32,6 +32,8 @@ code {
 
 html {
   font-size: 16px;
+  height: 100vh;
+
 }
 
 
@@ -73,12 +75,11 @@ h4 {
   /* width: 100vw;   */
 }
 
-.home-cont {
-  min-height: 100vh;
+/* .home-cont {
   display: flex;
   flex-direction: column;
   justify-content: center;
-}
+} */
 
 .home {
   display: flex;
@@ -531,7 +532,7 @@ form {
 
 
 .item-list, .sale, .trans-cont, .edit-user, .login, .register, .create-item, .inventory-spec, .user-select, 
-.receipts, .all-receipts, .all-transactions, .admin   {
+.receipts, .all-receipts, .all-transactions, .admin, .home-cont  {
   display: flex;
   flex-direction: column;
   /* font-size: 4rem; */
@@ -576,9 +577,6 @@ form {
 
 
 @media screen and (max-width: 585px) {
-  .home-cont {
-    min-height: 100vh;
-  }
 .one-receipt  {
   margin: auto;
 }
