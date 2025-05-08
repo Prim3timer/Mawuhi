@@ -47,7 +47,7 @@ html {
 
 .App {
 
-    max-height: 100dvh;
+    max-height: 100vh;
     display: flex; 
 
     /* display: grid; */

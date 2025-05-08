@@ -160,7 +160,7 @@ function numberWithCommas(x) {
                textAlign: 'center',
                   display: 'flex',
                   flexDirection: 'column',
-              
+                // backgroundColor: 'blue',
                   alignItems: 'center',
                   margin: '5rem 0  2rem 0'
                  

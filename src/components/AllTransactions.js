@@ -144,7 +144,7 @@ function numberWithCommas(x) {
         //   backgroundColor: 'blue',
             margin: ' 5rem 0',
            textAlign: 'center',
-        //    height: '100vh',
+           minHeight: '100vh',
            justifyContent: 'center',
         //    backgroundColor: 'blue'
         }}
