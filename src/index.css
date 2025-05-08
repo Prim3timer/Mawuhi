@@ -579,14 +579,6 @@ form {
   margin: auto;
 }
 
-.footer, .header {
-  position: absolute;
-}
-
-.footer {
-  top: 93%
-}
-
 
 
 .edit-user {
