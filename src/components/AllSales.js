@@ -124,7 +124,7 @@ const AllSales = () => {
                 to='/sales'
                 ><button
                 style={{
-                    marginTop: '5rem',
+                    marginTop: '2rem',
 
                     justifySelf: 'center',
                     // backgroundColor: 'green'

@@ -51,6 +51,9 @@ const Admin = () => {
     return (
         <div
         className="admin"
+        style={{
+            // margin: '4rem 0'
+        }}
       >
            <h1
             style={{

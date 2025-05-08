@@ -68,6 +68,7 @@ const getUsers = async ()=> {
         className="user-select"
         style={{
             // justifyContent: 'center'
+            // minHeight: '100vh'
         }}
     >
             <h2

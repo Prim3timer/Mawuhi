@@ -141,10 +141,10 @@ function numberWithCommas(x) {
         >Loading...</h2> : <div
         style={{
             display: 'flex',
-          
-            margin: ' 6rem 0 0rem 0',
+        //   backgroundColor: 'blue',
+            margin: ' 2rem 0',
            textAlign: 'center',
-           height: '100vh',
+        //    height: '100vh',
            justifyContent: 'center',
         //    backgroundColor: 'blue'
         }}

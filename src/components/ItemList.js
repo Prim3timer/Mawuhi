@@ -181,7 +181,7 @@ const {auth} = useAuth()
       
               !state.items ? <h2 className="item-list">...Loading</h2> :<div className="item-list"
               style={{
-                margin: '5rem 0 2rem 0' 
+                margin: '2rem 0' 
               }}
               onClick={remainDelete}
               >  

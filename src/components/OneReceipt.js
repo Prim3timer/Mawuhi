@@ -74,20 +74,27 @@ useEffect(()=> {
        !currentTrans ? <h2
        className='one-receipt'
        style={{
-        fontSize: '1.5rem'
+        fontSize: '1.5rem',
+      
        }}
        >Loading...</h2> : <div
        className='one-receipt'
-      
+            style={{
+                    //    backgroundColor: 'blue',
+                    //    margin: '4rem 0',
+                       maxHeight: '100vh',
+            }}
         >
          {currentTrans && <article
 
 id="receipts"
-//    style={{
-//        display: 'flex',
-//        flexDirection: 'column',
+   style={{
+       display: 'flex',
+       flexDirection: 'column',
+
+        //  margin: '2rem 0'
     
-//    }}
+   }}
   
    >
        {/* <h5>cashierID: {item.cashierID}</h5> */}

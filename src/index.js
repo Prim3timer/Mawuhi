@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+// import './alt.css'
 import App from './App';
 // Dave store
 // import { store } from "./app/store"

@@ -140,7 +140,7 @@ const bringEdit = () => {
      style={{
         color: 'darkslateblue',
         // position:'absolute'
-        margin: '6rem 0 0 0',
+        margin: '2rem 0 0 0',
         // backgroundColor: 'blue'  
      }}
      >Inventory</h2>
