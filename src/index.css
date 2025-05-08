@@ -74,7 +74,7 @@ h4 {
 }
 
 .home-cont {
-  /* min-height: 100vh; */
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -91,7 +91,6 @@ h4 {
   /* padding: 1rem  .5rem; */
   align-items: center;
   border-radius: 5px;
-  /* min-height: 100vh; */
   /* background-color: blue; */
 
 
