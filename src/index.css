@@ -584,6 +584,12 @@ form {
 .footer, .header {
   position: absolute;
 }
+
+.footer {
+  top: 93%;
+}
+
+
 .edit-user {
   /* height: auto; */
   margin: .2rem 0;
