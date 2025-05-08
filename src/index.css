@@ -538,7 +538,7 @@ form {
   max-width: 100vw;
   text-align: center;
   min-height: 100vh;
-  /* align-items: center; */
+  align-items: center;
   justify-content: center;
  /* background-color: blue; */
 }
@@ -559,6 +559,19 @@ form {
   /* background-color: orange; */
   font-size: 1.5rem;
 }
+.one-receipt, .receipts {
+  /* text-align: center; */
+     display: flex;
+     flex-direction: column;
+   /* background-color: red; */
+     align-items: center; 
+     justify-content: center;
+     margin: 2rem 0  2rem 0;
+
+}
+       
+      
+
 
 
 
@@ -566,7 +579,7 @@ form {
   .home-cont {
     min-height: 100vh;
   }
-.one-receipt {
+.one-receipt  {
   margin: auto;
 }
 

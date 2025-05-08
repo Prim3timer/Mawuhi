@@ -53,12 +53,6 @@ const getUsers = async ()=> {
     }, [])
 
     console.log(state.indSales)
-    // const salesReciecpts = sales ? <Sales
-    // picker={auth.picker2}
-    // /> : reciepts ? <Shopping
-    // picker={auth.picker2}
-    // setReceipts={setReceipts}
-    // /> : allTransactons ? <AllTransactions/> : ''
 
     return (
    !currentUser2 ? <h2
@@ -66,11 +60,6 @@ const getUsers = async ()=> {
    >Loading...</h2> : <div
 
         className="user-select"
-        style={{
-            // backgroundColor: 'green'
-            // justifyContent: 'center'
-            // minHeight: '100vh'
-        }}
     >
             <h2
             style={{

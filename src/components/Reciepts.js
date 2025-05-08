@@ -137,23 +137,37 @@ function numberWithCommas(x) {
     return (
         
         !state.getNames.length ? <h2
+        style={{
+            //     margin: ' 0 0 0 1rem',
+               textAlign: 'center',
+                  display: 'flex',
+                  flexDirection: 'column',
+                //   backgroundColor: 'red',
+            //       flexBasis: '30rem',
+                //   minHeight: '100vh',
+                  alignItems: 'center',
+                  margin: '5rem 0  2rem 0'
+                 
+                
+            }}
+
         className="receipts"
         >Loading...</h2> : <div
          className="receipts"
+
+         style={{
+            //     margin: ' 0 0 0 1rem',
+               textAlign: 'center',
+                  display: 'flex',
+                  flexDirection: 'column',
+              
+                  alignItems: 'center',
+                  margin: '5rem 0  2rem 0'
+                 
+                
+            }}
          onClick={generalRemain}
-        style={{
-        //     margin: ' 0 0 0 1rem',
-           textAlign: 'center',
-              display: 'flex',
-              flexDirection: 'column',
-            //   backgroundColor: 'red',
-        //       flexBasis: '30rem',
-        //       minHeight: '100vh',
-              alignItems: 'center',
-              margin: '5rem 0 '
-             
-            
-        }}
+       
         // onClick={remainDelete}
         >
 {/* <Link to="one-receipt"> */}

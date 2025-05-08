@@ -82,7 +82,6 @@ useEffect(()=> {
         >
          {currentTrans && <article
 
-id="receipts"
    style={{
        display: 'flex',
        flexDirection: 'column',
