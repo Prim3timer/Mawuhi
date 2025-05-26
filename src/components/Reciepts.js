@@ -136,7 +136,7 @@ function numberWithCommas(x) {
 
     return (
         
-        !state.getNames.length ? <h2
+        !state.getNames ? <h2
         style={{
             //     margin: ' 0 0 0 1rem',
                textAlign: 'center',

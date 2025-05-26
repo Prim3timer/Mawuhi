@@ -2,6 +2,7 @@ import { useEffect, useReducer, useRef, useState } from "react"
 import { ROLES } from "../config/roles"
 import { Link } from "react-router-dom"
 import axios from "../app/api/axios"
+import { FaTrashAlt } from "react-icons/fa";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSave, faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons"
 import initialState from "../store"
@@ -34,6 +35,7 @@ const UserSettings = () => {
     const [active, setActive] = useState('')
     const [state, dispatch] = useReducer(reducer, initialState)
     const [shadow, setShadow] = useState(false)
+    const [ID, setID] = useState('')
     const {auth} = useAuth()
     const saveRef = useRef(null)
 
@@ -51,6 +53,7 @@ const getUsers = async ()=> {
             console.log(currentUser2)
             // console.log(person)
             setUsername(person.username) 
+            setID(person._id)
             setRoles(Object.keys(person.roles))
             setActive(person.active)
              console.log(roles)
@@ -63,11 +66,77 @@ const getUsers = async ()=> {
         
         const shadowing = () => {
             setShadow(true)
-            
+         
+        }     
+        
+           const userPage = () => {
+        
+          console.log(ID)
+
           
-         
-         
-        }      
+             
+        }
+
+
+
+        
+
+const assertain = (id) => {
+    // setAuth({...auth, picker3: id})
+    // console.log(auth.picker3)
+    // id &&    setBrand(id)
+    if (auth.roles.includes(5150)){
+        console.log("deleted")
+        
+        dispatch({type: 'cancel', payload: true})
+        // setBrand(id)
+        // dispatch({type: 'id', payload: id})
+       
+
+    }
+    else {
+        // dispatch({type: 'isMatched', payload: true})
+    }
+}
+
+
+const handleRemove = async ()=> {
+    console.log(auth.picker3)
+  
+    const response = await axios.delete(`/users/delete/${ID}`)
+    dispatch({type: 'cancel', payload: false})
+    dispatch({type: 'success', payload: true})
+    console.log(state.success)
+    setTimeout(()=> {
+        dispatch({type: 'success', payload: false})
+    }, 3000)
+    if (response){
+        dispatch({type: 'selectUser', payload: response.data})
+
+        // const newGraw =  users.filter((item)=> item._id !== auth.picker3)
+
+        // setUsers(newGraw)
+    }
+    else{
+        console.log('nothing for you')
+    }
+}
+
+const remainDelete = ()=> {
+    // this condition statement is to enable the removal of the confirm window once any part of the 
+    // page is touched.
+    if (state.cancel){
+
+        dispatch({type: 'cancel', payload: false})
+    }
+
+}
+const generalRemain = () => {
+    if (state.isMatched) dispatch({type: 'isMatched', payload: false})
+
+ } 
+
+
         useEffect(()=> {
             getUsers()
         }, [])
@@ -106,7 +175,7 @@ const onRolesChanged = e => {
        
     } 
     if (values.length > 1 && !values.includes('Manager')){
-        console.log('how double dare you?')
+        console.log('double how  dare you?')
         return
     }else  {
         console.log('alright * 3')
@@ -241,16 +310,9 @@ style={{
                 </label>
             <br/>
             <div
-             style={{
-                margin: '1rem 0',
-                display: 'flex',
-                flexDirection:'row',
-                columnGap: '2rem',
-                justifyContent: 'center',
-                alignItems: 'center'
-              
 
-            }}
+            className="asinged-roles-cont"
+            
             >
             <form
               id="roles"
@@ -269,11 +331,7 @@ style={{
            
              value={roles}
              onChange={e => onRolesChanged(e)}
-             style={{
-                width: '12rem',
-            border: '4px solid black',
-            padding: '.5rem',
-            }}
+            className="roles-select"
              >
               {options}
              </select>
@@ -281,36 +339,103 @@ style={{
             </form>
            
                   <button onClick={updateUser}
-        style={
-            {
-                width:'48px',
-                height: '48px',
-                color: 'var(--COLOR)',
-                fontSize: '2rem',
-                display: 'grid',
-                placeContent:'center',
-                backgroundColor: 'transparent',
-                borderColor: 'transparent',
-                // transitionProperty: 'box-shadow scale',
-                // // transform: 'scale(0.95. 0.95)',
-                // boxShadow: '0em 0em 0em gray'
-            }
-        }
+                  className="user-action"
+       
           ref={saveRef}
         //   className={'icon-button'}
           title="Save"
           ><FontAwesomeIcon icon={faSave} /></button>
+           <button
+                  className="user-action"
+                onClick={assertain}
+           ><FaTrashAlt role='button'
+                                            tableindex='0'
+                                            /> </button>
             </div>
             <div
+            className={state.success && shadow ? 'show-user-alert' : 'hide-user-alert'}
+      
+        >
+          <h4>{state.selectUser}</h4>
+            </div>
+
+            <div
+            style={{
+                display: `${state.cancel ? 'block' : 'none'}`,
+                position: 'absolute',
+            textAlign: 'center',
+            top: '35%',
+            left: '5%',
+            width: '90%',
+             padding: '1rem',
+               backgroundColor: '#DBBFDB',
+               borderRadius: '5px',
+               opacity: '.85'
+         }}
+         >
+             <h3
+          id="verify-header"
+          style={{
+              margin: '.5rem auto',
+            //   display: 'flex',
+          }}
+          > Delete  {username && username} from users</h3>
+                 <article
+                 style={{
+                     display: 'flex',
+                    //  flexDirection: 'row',
+                     columnGap: '4vw',
+                     justifyContent: 'center',
+                 }}
+                 >
+                 {console.log(auth.picker3)}
+                    <button
+                 onClick={remainDelete}
+                 >No</button><button
+                  onClick={handleRemove}
+                 style={{backgroundColor: 'red',
+                     borderColor: 'red'
+                 }}
+                 >Yes</button></article></div> 
+
+<div
         style={{
-            display: state.success && shadow ? 'block' : 'none',
+            display: `${state.isMatched ? 'block' : 'none'}`,
+            position: 'absolute',
+        textAlign: 'center',
+        top: '35%',
+        left: '5%',
+        width: '90%',
+         padding: '1rem',
+           backgroundColor: '#DBBFDB',
+           borderRadius: '5px',
+           opacity: '.85'
+     }}
+     >
+         <h2
+      id="verify-header"
+      style={{
+          margin: '.5rem auto',
+        //   display: 'flex',
+      }}
+      >Unauthorized!</h2>
+      <button 
+      onClick={generalRemain}
+       >
+        ok</button>
+
+            </div>
+        <div
+        style={{
+            display: state.success ? 'block' : 'none',
             position: 'absolute',
             margin: '1rem 0',
             top: '35%',
 left: '25%',
 width: '40%',
+textAlign: 'center',
  padding: '1rem',
-   backgroundColor: '#3CB371',
+   backgroundColor: 'lightpink',
    borderRadius: '5px',
    fontSize: '1.5rem',
    opacity: '.85'
