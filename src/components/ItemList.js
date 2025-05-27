@@ -216,7 +216,8 @@ const {auth} = useAuth()
                 value={state.price}
                 onChange={(e)=> dispatch({type: 'price', payload: e.target.value})}
                 />
-           <h2>Unit Measure:</h2><input type="text"
+           <h3>
+            <label>unit measure:</label></h3><input type="text"
         list="measure"
         onChange={(e)=> dispatch({type: 'unitMeasure', payload: e.target.value})}
         value={state.unitMeasure}
