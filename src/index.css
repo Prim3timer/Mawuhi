@@ -669,6 +669,7 @@ width: 40%;
 
 .authorization-alert {
   display: block;
+    color: whitesmoke;
             position: absolute;
         text-align: center;
         flex-direction: column;
@@ -689,6 +690,7 @@ width: 40%;
 
 .edit {
   display: block;
+
            background-color: lightslategrey;
         position: absolute;
         top: 20%;
