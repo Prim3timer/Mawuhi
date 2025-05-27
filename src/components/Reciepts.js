@@ -11,7 +11,7 @@ import SearchItem from "./SearchItem";
 import Unauthorized from "./Unauthorized";
 import { Link } from "react-router-dom";
 
-const Shopping = ({focuser, setReceipts})=> {
+const Shopping = ()=> {
 const [state, dispatch] = useReducer(reducer, initialState)
 const [showOne, setShowOne] = useState(false)
 const [oneId, setOneId] = useState('')
@@ -33,13 +33,6 @@ const getItems = async ()=> {
     
             const response = await axios.get('/transactions')
             if (response){
-            //     const newRes = response.data.map((item)=> {
-            //         if (!item.cashierID){
-            //             item.cashierID = 'unavailable'
-            //             item.cashier = 'unavailable'
-            //         }
-            //         return item
-            //     })
         
              
                 const cashierTrans = response.data.filter((item) => item.cashierID === auth.picker3)
@@ -92,7 +85,7 @@ const handleRemove = async ()=> {
     // removeInventory(id)
         // await axios.delete(`/transactions/${id}`)
         
-        const newGraw = state.getNames && state.getNames.filter((item)=> item._id !== state.id)
+        const newGraw = state.getNames.filter((item)=> item._id !== state.id)
         console.log('removed')
     dispatch({type: 'getNames', payload: newGraw})
 }
@@ -133,43 +126,18 @@ useEffect(()=> {
 function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
-
     return (
-        
         !state.getNames ? <h2
-        style={{
-            //     margin: ' 0 0 0 1rem',
-               textAlign: 'center',
-                  display: 'flex',
-                  flexDirection: 'column',
-                //   backgroundColor: 'red',
-            //       flexBasis: '30rem',
-                //   minHeight: '100vh',
-                  alignItems: 'center',
-                  margin: '5rem 0  2rem 0'
-                 
-                
-            }}
-
+        
         className="receipts"
         >Loading...</h2> : <div
-         className="receipts"
-
-         style={{
-            //     margin: ' 0 0 0 1rem',
-               textAlign: 'center',
-                  display: 'flex',
-                  flexDirection: 'column',
-                // backgroundColor: 'blue',
-                  alignItems: 'center',
-                  margin: '2rem 0  2rem 0'
-                 
-                
-            }}
-         onClick={generalRemain}
-       
+        className="receipts"
+        
+        onClick={generalRemain}
+        
         // onClick={remainDelete}
         >
+       
 {/* <Link to="one-receipt"> */}
 <article id="form-cont">
             <form  className="search-form"   onSubmit={(e)=> e.preventDefault()}>
@@ -211,15 +179,6 @@ function numberWithCommas(x) {
                  <article
 
                  id="receipts"
-                    style={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        justifySelf: 'flex-start',
-                        alignItems: 'flex-start',
-                        textAlign: 'center',
-                     
-                    }}
-                   
                     >
                         {/* <h5>cashierID: {item.cashierID}</h5> */}
                         <h4>Date: {item.date}</h4>
@@ -227,14 +186,8 @@ function numberWithCommas(x) {
                         {item.goods.map((good)=> {
                             return (
                                 <div
-                                style={{
-                                    // display: 'flex',
-                                    // flexDirection: 'column',
-                                    // alignItems: 'center',
-                                    // margin: '0 0 0 4rem',
-                                     textAlign: 'left',
-                                     textDecoration: 'none'
-                                }}
+                                className="goods-container"
+                              
                                 >
                                     <h4>{good.name}</h4>
                                     <p>Qty: {good.qty} {good.unitMeasure.split(' ')[1].slice(1, -1)}</p>
@@ -249,11 +202,8 @@ function numberWithCommas(x) {
                         })}
                      
                         <h4
-                         style={{
-                            textAlign: 'left',
-                            // margin: '0 0 0 4rem',
-                            // color: 'green'
-                        }}
+                        className="receipts-grand-total"
+                        
                         >Grand Total: ₦{ numberWithCommas(parseFloat(item.grandTotal).toFixed(2))}</h4>
                         
                    
@@ -278,18 +228,7 @@ function numberWithCommas(x) {
             })}
             
             <div
-            style={{
-                display: `${state.cancel ? 'block' : 'none'}`,
-                position: 'absolute',
-            textAlign: 'center',
-            top: '35%',
-            left: '5%',
-            width: '90%',
-             padding: '1rem',
-               backgroundColor: '#DBBFDB',
-               borderRadius: '5px',
-               opacity: '.85'
-         }}
+             className={state.cancel ? 'delete' : 'no-delete'}
          >
              <h3
           id="verify-header"
@@ -299,12 +238,8 @@ function numberWithCommas(x) {
           }}
           >Delete from Receipts</h3>
                  <article
-                 style={{
-                     display: 'flex',
-                    //  flexDirection: 'row',
-                     columnGap: '4vw',
-                     justifyContent: 'center',
-                 }}
+                 className="delete-buttons"
+               
                  >
                     <button
                  onClick={remainDelete}
@@ -316,18 +251,7 @@ function numberWithCommas(x) {
                  >Yes</button></article></div> 
 
 <div
-        style={{
-            display: `${state.isMatched ? 'block' : 'none'}`,
-            position: 'absolute',
-        textAlign: 'center',
-        top: '35%',
-        left: '5%',
-        width: '90%',
-         padding: '1rem',
-           backgroundColor: '#DBBFDB',
-           borderRadius: '5px',
-           opacity: '.85'
-     }}
+ className={state.isMatched ? 'authorization-alert' : 'authorization'}
      >
          <h2
       id="verify-header"

@@ -191,15 +191,7 @@ const {auth} = useAuth()
 
 
 <div
- className="edit-item" 
-style={{display: state.isEdit ? 'block' : 'none',
-    backgroundColor: '#DBBFDB',  
-    padding: '1em 0',
-    position: 'absolute',
-    borderRadius: '5px',
-    opacity: '.85',
-    zIndex: 5
-}}
+   className={state.isEdit ? "edit" : "no-edit"}
 >
     <form>
   <form onSubmit={(e)=> e.preventDefault()}
@@ -324,7 +316,8 @@ style={{display: state.isEdit ? 'block' : 'none',
            >
               <FontAwesomeIcon icon={faPenToSquare} />
            </a></td>
-           <td className="items"
+           <td 
+           className="items"
        
            onClick={(e)=> assertain(item._id, e)}
            >
@@ -343,18 +336,8 @@ style={{display: state.isEdit ? 'block' : 'none',
          </tbody>
       </table>
  <div
-            style={{
-                display: `${state.cancel ? 'block' : 'none'}`,
-                position: 'absolute',
-            textAlign: 'center',
-            top: '35%',
-            left: '5%',
-            width: '90%',
-             padding: '1rem',
-               backgroundColor: '#DBBFDB',
-               borderRadius: '5px',
-               opacity: '.85'
-         }}
+ className={state.cancel ? 'delete' : 'no-delete'}
+           
          >
              <h3
           id="verify-header"
@@ -382,18 +365,8 @@ style={{display: state.isEdit ? 'block' : 'none',
 
                  
 <div
-        style={{
-            display: `${state.isMatched ? 'block' : 'none'}`,
-            position: 'absolute',
-        textAlign: 'center',
-        top: '35%',
-        left: '5%',
-        width: '90%',
-         padding: '1rem',
-           backgroundColor: '#DBBFDB',
-           borderRadius: '5px',
-           opacity: '.85'
-     }}
+
+  className={state.isMatched ? 'authorization-alert' : 'authorization'}
      >
          <h2
       id="verify-header"

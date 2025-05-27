@@ -1,6 +1,6 @@
 import { useEffect, useReducer, useRef, useState } from "react"
 import { ROLES } from "../config/roles"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import axios from "../app/api/axios"
 import { FaTrashAlt } from "react-icons/fa";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -41,7 +41,7 @@ const UserSettings = () => {
 
     // picker3 is the not the current user.  It is the user in question.
 
-
+const navigate = useNavigate()
 const getUsers = async ()=> {
     try {
         const response = await axios.get('/users')

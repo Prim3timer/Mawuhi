@@ -38,11 +38,7 @@ html {
 
 
 
-.edit {
-  text-align: center;
-    width: 70%;
-    left: 15%;
-}
+
 
 
 .App {
@@ -485,7 +481,11 @@ form {
 
   .invent-header {
     text-align: center;
-    margin:  0 0 1rem 0;
+
+
+
+        color: darkslateblue;
+        margin: 2rem 0 0 0;
   }
 
 #sales-total {
@@ -557,22 +557,56 @@ form {
   /* background-color: orange; */
   font-size: 1.5rem;
 }
+
 .one-receipt, .receipts {
   /* text-align: center; */
      display: flex;
      flex-direction: column;
-   /* background-color: red; */
+     /* background-color: red; */
      align-items: center; 
      justify-content: center;
      margin: 2rem 0;
+     
+    }
+    
+    
+    #receipts {
+      
+      
+      display: flex;
+      flex-direction: column;
+                      
+                        justify-self: flex-start;
+                        align-items: flex-start;
+                        text-align: center;
+}
 
+.goods-container {
+                            
+    text-align: left;
+    text-decoration: none;
+                             
+}
+.receipts-grand-total {
+  text-align: left;
 }
 
 .users {
+  width: 100%;
   text-align: left;
     margin: 2rem 0 2rem 0;
 }
+
+.users th, td {
+  padding-left: .5rem;
+}
        
+.register-button {
+background-color: dodgerblue;
+                            /* border-color: dodgerblue; */
+                            width: 40vw;
+                            margin: 1rem 0
+}      
       
 .asinged-roles-cont {
 
@@ -625,6 +659,80 @@ width: 40%;
   display: none;
 }
 
+#verify-header {
+
+          margin: .5rem auto;
+     
+
+}
+
+
+.authorization-alert {
+  display: block;
+            position: absolute;
+        text-align: center;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+        top: 35%;
+        left: 5%;
+        width: 90%;
+         padding: 1rem;
+             background-color: lightslategrey;
+           border-radius: 5px;
+           opacity: .85;
+}
+
+.authorization {
+  display: none;
+}
+
+.edit {
+  display: block;
+           background-color: lightslategrey;
+        position: absolute;
+        top: 20%;
+ 
+        padding: .5rem;
+        opacity: .85;
+  text-align: center;
+    width: 70%;
+    left: 15%;
+
+}
+.no-edit {
+  display: none;
+}
+
+.delete {
+  display: flex;
+  flex-direction: column;
+                position: absolute;
+            text-align: center;
+            top: 35%;
+            left: 5%;
+            width: 90%;
+             padding: 1rem;
+               background-color: lightslategrey;
+               border-radius: 5px;
+               opacity: .85;
+      
+
+}
+
+.no-delete {
+  display: none;
+}
+
+.delete-buttons {
+  
+                     display: flex;
+                    /* flexDirection: 'row', */
+                    /* background-color: blue; */
+                     column-gap: 4rem;
+                     justify-content: center;
+              
+}
 
 
 @media screen and (max-width: 585px) {

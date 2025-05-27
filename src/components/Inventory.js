@@ -113,47 +113,21 @@ const bringEdit = () => {
 
 
 <div
-        style={{
-            display: `${state.isMatched ? 'block' : 'none'}`,
-            position: 'absolute',
-        textAlign: 'center',
-        top: '35%',
-        left: '5%',
-        width: '90%',
-         padding: '1rem',
-           backgroundColor: '#DBBFDB',
-           borderRadius: '5px',
-           opacity: '.85'
-     }}
+            className={state.isMatched ? 'authorization-alert' : 'authorization'}
      >
          <h2
       id="verify-header"
-      style={{
-          margin: '.5rem auto',
-        //   display: 'flex',
-      }}
+     
       >Unauthorized!</h2>
       <button onClick={remainEdit} >ok</button>
             </div> 
 
             <h2 className="invent-header"
-     style={{
-        color: 'darkslateblue',
-        // position:'absolute'
-        margin: '2rem 0 0 0',
-        // backgroundColor: 'blue'  
-     }}
+    
      >Inventory</h2>
             <div
-            className="edit"
-    style={{display: state.isEdit ? 'block' : 'none',
-        backgroundColor: '#3cb371',
-        position: 'absolute',
-        top: '30%',
-        // left: '15%',
-        padding: '.5rem',
-        opacity: '.85', 
-    }}
+            className={state.isEdit ? "edit" : "no-edit"}
+   
 
     >
             {/* <h2>Edit Inventory</h2> */}

@@ -77,9 +77,6 @@ let CreateItem = () => {
 
 {/* <h3 id="ulu" */}
 <h2>Unit Measure:</h2><input type="text"
-        // id="trans-search"
-        // placeholder="pick measurement"
-        // ref={itemRef}
         list="measure"
         onChange={(e)=> dispatch({type: 'unitMeasure', payload: e.target.value})}
         value={state.unitMeasure}
@@ -116,15 +113,6 @@ let CreateItem = () => {
                 onChange={(e)=> dispatch({type: 'price', payload: e.target.value})}
                 />
               
-                {/* <label>Pieces/Unit:</label>
-                <input
-                type="text"
-                placeholder="optional"
-                // required
-                value={state.piecesUnit}
-                onChange={(e)=> dispatch({type: 'piecesUnit', payload: e.target.value})}
-                />
-                <br/> */}
                <button type="submit" className="pop">Add Item</button>
         <h3>{state.isMatched}</h3>
         <h3>{state.errMsg}</h3>
