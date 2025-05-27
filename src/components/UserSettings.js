@@ -42,6 +42,7 @@ const UserSettings = () => {
     // picker3 is the not the current user.  It is the user in question.
 
 const navigate = useNavigate()
+// dispatch({type: ACTION.SUCCESS, payload: false})
 const getUsers = async ()=> {
     try {
         const response = await axios.get('/users')
@@ -106,6 +107,7 @@ const handleRemove = async ()=> {
     const response = await axios.delete(`/users/delete/${ID}`)
     dispatch({type: 'cancel', payload: false})
     dispatch({type: 'success', payload: true})
+navigate('/admin')
     console.log(state.success)
     setTimeout(()=> {
         dispatch({type: 'success', payload: false})
@@ -156,6 +158,8 @@ const generalRemain = () => {
             }, [username, password,
                 // state.matchPwd
             ])
+
+
         
 
 
@@ -236,6 +240,8 @@ const options = Object.keys(ROLES).map(role => {
         > {role}</option >
     )
 })
+
+
   
     return (
         !username ? <h2
