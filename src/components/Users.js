@@ -103,7 +103,7 @@ return (
                                         
                                             >
                                            
-                                            {(Object.keys(madu.roles)).join(', ')}
+                                            {(Object.keys(madu.roles)).join(', ')}.
                                             </td>
 
                         {/* <td
