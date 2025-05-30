@@ -76,6 +76,9 @@ const Home = ({afa, userId})=> {
         <Link
         // onClick={}
         to="/shopping">reciepts</Link>
+        <Link to="cart">
+        cart
+        </Link>
         {/* <br /> */}
         {/* <Link to="/linkpage">link page</Link> */}
         <br />

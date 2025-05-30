@@ -24,7 +24,6 @@ import { useEffect, useState, useReducer } from "react"
 import useAuth from "./hooks/useAuth"
 import UserSelect from "./components/UserSelect"
 import OneReceipt from "./components/OneReceipt"
-
 import AllTransactions from "./components/AllTransactions"
 import AllSales from "./components/AllSales"
 import axios from "./app/api/axios"
@@ -32,6 +31,7 @@ import reducer from "./reducer"
 import initialState from "./store"
 import { FaPaypal } from "react-icons/fa"
 import UserSettings from "./components/UserSettings"
+import Cart from "./components/Cart"
 // import SearchItem from "./SearchItem";
 
 
@@ -139,6 +139,7 @@ return (
     setUserId={setUserId}
     />
       <Route path="one-receipt" element={<OneReceipt/>}/>
+      <Route path="cart" element={<Cart/>}/>
          </Route>
         
         

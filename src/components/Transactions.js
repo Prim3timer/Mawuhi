@@ -129,7 +129,7 @@ const Transactions = ()=> {
                     date
                     
                 }
-                console.log(transItems)
+                console.log(transItems.goods)
                 const response = await axios.post('/transactions', transItems)
                 const response2 = await axios.get('/items')
                 console.log(response2)
@@ -278,7 +278,7 @@ const Transactions = ()=> {
            <button
           id="donezo"
           onClick={doneSales}
-          >Done</button>
+          >Checkout</button>
 
             </fieldset>
             
@@ -469,7 +469,7 @@ const Transactions = ()=> {
                        
                         // onClick={assertain}
                          >Cancel</button>
-                         <button onClick={doneSales}>Done</button>
+                         <button onClick={doneSales}>checkout</button>
                         </div>}
           
            </section>
