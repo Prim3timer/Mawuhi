@@ -26,7 +26,7 @@ useEffect(() => {
     try {
          const items = [
             {id: '6765034e77246d1f7c9ae781', quantity: 5},    
-            {id: '6765a78f77246d1f7c9ae824', quantity: 2}, 
+            {id: '6765a78f77246d1f7c9ae824', quantity: 20}, 
         ]
         const response = await axios.post('/create-checkout-session', items)
         if (response){

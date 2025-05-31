@@ -38,6 +38,7 @@ const UserSettings = () => {
     const [ID, setID] = useState('')
     const {auth} = useAuth()
     const saveRef = useRef(null)
+        const pwdRef = useRef()
 
     // picker3 is the not the current user.  It is the user in question.
 
@@ -160,6 +161,12 @@ const generalRemain = () => {
             ])
 
 
+              useEffect(() => {
+        pwdRef.current.value = ''
+ 
+    }, [])
+
+
         
 
 
@@ -277,6 +284,7 @@ const options = Object.keys(ROLES).map(role => {
             </label>
             <input type="password" 
             id="password" value={password}
+                ref={pwdRef}
             onChange={e => {setPassword(e.target.value)
                 shadowing()
             }}

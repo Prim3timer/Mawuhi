@@ -32,6 +32,8 @@ import initialState from "./store"
 import { FaPaypal } from "react-icons/fa"
 import UserSettings from "./components/UserSettings"
 import Cart from "./components/Cart"
+import Shop from "./components/Shop"
+
 // import SearchItem from "./SearchItem";
 
 
@@ -88,13 +90,33 @@ const getTransaction = async ()=> {
   }
    catch (error) {
     console.log(error)
-  }
-       
-      
-                 
-
-            
+  }           
 }
+
+ const getItems = async ()=> {
+        dispatch({type: 'clear'})
+        try {
+            // dispatch({type: 'errMsg', payload: 'loading...'})
+            const response = await axios.get('/items')
+            dispatch({type: 'errMsg', payload: ''})
+          
+            dispatch({type: 'getNames', payload: response.data.items})   
+            console.log(response.data.items ) 
+            if (state.getNames){
+                
+                dispatch({type: 'user', payload: state.getNames && state.getNames[0].name})
+                console.log(state.user)
+                console.log(response.data)
+                console.log(state.getNames)
+                
+            } 
+        } catch (error) {
+            console.log(error)
+        }
+        console.log(state.getNames && state.getNames)
+    }
+
+
 useEffect(()=> {
   getTransaction()
 }, [state.search])
@@ -113,6 +135,10 @@ return (
     userId={userId}
     setUserId={setUserId}
     />}/>
+    <Route path="shop" element={<Shop
+    getItems={getItems}
+    items={state.getNames}
+    />}/>
         <Route path="shopping" element={<Reciepts
         //  picker={auth.picker}
          />}/>
@@ -120,7 +146,11 @@ return (
     <Route path="register" element={<Register/>}/>
          <Route path="linkpage" element={<LinkPage/>}/>
       <Route path="unauthorized" element={<Unauthorized/>}/>
-      <Route path="transaction" element={<Transactions/>}/>
+      <Route path="transaction" element={<Transactions
+      getItems={getItems}
+      user={state.user}
+      items={state.getNames}
+      />}/>
       <Route path="item-list" element={<ItemList/>}/>
  <Route path="inventory" element={<Inventory/>}/>
       <Route path="user-select" element={<UserSelect

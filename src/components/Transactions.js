@@ -9,7 +9,7 @@ import {format} from 'date-fns'
 import useAuth from '../hooks/useAuth';
 import { type } from "@testing-library/user-event/dist/type";
 
-const Transactions = ()=> {
+const Transactions = ({getItems, user, items})=> {
     const [state, dispatch] = useReducer(reducer, initialState)   
     const now = new Date()
     const date = format(now, 'dd/MM/yyyy\tHH:mm:ss')
@@ -17,28 +17,7 @@ const Transactions = ()=> {
     const {auth} = useAuth()
     const inputRef = useRef()
     const qtyRef = useRef()
-    const getItems = async ()=> {
-        dispatch({type: 'clear'})
-        try {
-            // dispatch({type: 'errMsg', payload: 'loading...'})
-            const response = await axios.get('/items')
-            dispatch({type: 'errMsg', payload: ''})
-          
-            dispatch({type: 'getNames', payload: response.data.items})   
-            console.log(response.data.items ) 
-            if (state.getNames){
-                
-                dispatch({type: 'user', payload: state.getNames && state.getNames[0].name})
-                console.log(state.user)
-                console.log(response.data)
-                console.log(state.getNames)
-                
-            } 
-        } catch (error) {
-            console.log(error)
-        }
-        console.log(state.getNames && state.getNames)
-    }
+   
 
 
     const handleEdit = async () => {
@@ -60,7 +39,7 @@ const Transactions = ()=> {
                 if (state.success === false) state.success = true
                 else state.success = false
                 console.log(inputRef.current.value)
-                const currentItem = state.getNames && state.getNames.find((name)=> `${name.name} ${name.unitMeasure.split(' ')[1]}` === inputRef.current.value)
+                const currentItem = items.find((name)=> `${name.name} ${name.unitMeasure.split(' ')[1]}` === inputRef.current.value)
                 if (!currentItem) dispatch({type: 'errMsg', payload: 'item not in list'})
                 currentItem.total = currentItem.price
                 console.log(currentItem)
@@ -235,7 +214,7 @@ const Transactions = ()=> {
         >+</button></article>
         <datalist id="edulevel"
         >
-            {state.getNames && state.getNames.map((user)=> {
+            {items.map((user)=> {
                 
                 return (
                     

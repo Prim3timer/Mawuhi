@@ -19,6 +19,7 @@ const Login = () => {
     const from = location.state?.from?.pathname || "/";
 
     const userRef = useRef();
+
     const errRef = useRef();
 
     const [user, setUser] = useState('');
@@ -32,9 +33,7 @@ const Login = () => {
         userRef.current.focus();
     }, [])
 
-    useEffect(() => {
-    //    dispatch({type: 'errMsg', palyoad: ''});
-    }, [user, pwd])
+  
     
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -108,6 +107,7 @@ const Login = () => {
                 <input
                     type="password"
                     id="password"
+                
                     onChange={(e) => setPwd(e.target.value)}
                     value={pwd}
                     // required    

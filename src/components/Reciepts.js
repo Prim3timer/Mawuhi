@@ -6,7 +6,6 @@ import AuthContext from "../context/authProvider";
 import useAuth from "../hooks/useAuth";
 // import { retry } from "@reduxjs/toolkit/query"
 import { FaTrashAlt } from "react-icons/fa";
-import SearchItem from "./SearchItem";
 
 import Unauthorized from "./Unauthorized";
 import { Link } from "react-router-dom";
