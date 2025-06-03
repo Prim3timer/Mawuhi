@@ -121,8 +121,9 @@ const reducer = (state, action)=> {
                  })
                  return {...state, transArray: tempCart4}
             case 'remove':
-              return {...state, transArray: state.transArray.filter((item)=> item._id !== action.payload)
-              }
+              const newArray = state.transArray.filter((item)=> item._id !== action.payload)
+              return {...state, transArray: newArray  }
+           
               case 'getTotal': 
               const {amount, total} = state.transArray.reduce((cartTotal, cartItem)=> {
                 const {price, qty} = cartItem

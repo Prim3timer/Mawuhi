@@ -162,7 +162,7 @@ const generalRemain = () => {
 
 
               useEffect(() => {
-        pwdRef.current.value = ''
+        // pwdRef.current.value = ''
  
     }, [])
 

@@ -10,7 +10,8 @@ import useAuth from '../hooks/useAuth';
 const {v4: uuid} = require('uuid')
 
 
-const Shop = ({getItems, items}) => {
+const Shop = () => {
+  const {getItems, items} = useAuth()
   const upArrow = ">"
   const downArrow = "<"
 
@@ -18,9 +19,7 @@ const Shop = ({getItems, items}) => {
     dispatch({type: 'INCREMENT'})
 
   }
-  useEffect(()=> {
-    getItems()
-  }, [])
+
   const [state, dispatch] = useReducer(reducer, initialState)
   return (
     <div className="shop">

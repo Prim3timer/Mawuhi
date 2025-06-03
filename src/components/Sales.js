@@ -7,10 +7,10 @@ import useAuth from '../hooks/useAuth';
 const {v4: uuid} = require('uuid')
 
 
-const Sales = ({transactions, currentUser, getTrans, search, setSearch,
-    search2, setSearch2
-})=> {
-
+const Sales = ()=> {
+const {transactions, currentUser, getTrans, search, setSearch,
+    search2, setSearch2, sales
+} = useAuth()
     const [state, dispatch] = useReducer(reducer, initialState)  
 
 
@@ -20,17 +20,17 @@ const Sales = ({transactions, currentUser, getTrans, search, setSearch,
  console.log(currentUser)
  useEffect(()=> {
     getTrans()
-    console.log(state.sales, )
+    // console.log(sales)
 }, [search, search2])
     return (
-        !transactions.length ? <h2 className="sale">Loading...</h2> : <div className="sale"
+        !sales.length ? <h2 className="sale">Loading...</h2> : <div className="sale"
         >
               <h2
           style={{
             margin: '1rem 0', 
             color: 'darkslateblue'  
         }}
-        >{currentUser ? `${currentUser.username}'s Sales` : 'All Sales'} ({transactions.length} rows)</h2>
+        >{currentUser ? `${currentUser.username}'s Sales` : 'All Sales'} ({sales.length} rows)</h2>
             <article id="form-cont">
             <form  className="search-form"   onSubmit={(e)=> e.preventDefault()}>
         <input 
@@ -76,7 +76,7 @@ const Sales = ({transactions, currentUser, getTrans, search, setSearch,
             <th>TOTAL</th>
             <th>DATE</th>
             </tr>
-  {transactions && transactions.map((sale, index)=> {
+  {sales.map((sale, index)=> {
     return (
         <tr className="sales-items-cont"
         key={uuid()}

@@ -1,11 +1,10 @@
-import reducer from "../reducer"
-import initialState from "../store"
-import axios from "../app/api/axios"
+
 import Cancel from "./Cancel"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons"
-import { useEffect, useReducer, useState, useRef, createContext     } from "react"
-
+import { useReducer, useState,   } from "react"
+import initialState from "../store"
+import reducer from "../reducer"
 import { FaTrashAlt } from "react-icons/fa";
 // import SearchItem from "./SearchItem"
 import { Link } from "react-router-dom"
@@ -15,171 +14,24 @@ import useAuth from "../hooks/useAuth"
 // import { current } from "@reduxjs/toolkit";
 const {v4: uuid} = require('uuid')
 
+
 // import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 
 
 const ItemList = ()=> {
-const {auth} = useAuth()
+const {auth, getTrans, handleSubmit, handleEdit, handleRemove, itemRef, cancel,
+    generalRemain, remainDelete, items, isEdit, afa, assertain
+} = useAuth()
     const [state, dispatch] = useReducer(reducer, initialState)
     const [taskComplete, setTaskComplete] = useState(false)
 
      const measurements = ['Kilogram (kg)', 'Piece (pc)', 'Plate (Plt)', 'Dozen (dzn)', 'Bottle (Btl)', 'Pound (lbs)', 'Litre (L)', 'Sachet (sct)', 'Ounce (Oz)', 'Gram (g)', 'Amortization (Am)', 'Night (Ngt)', 'Trip (Tr)'
        ]
-    const itemRef = useRef()
-    const getTrans = async ()=> {
-
-        try {
-            const graw = await axios.get('/items')
-            console.log(graw.data.items)
-            if (graw.data.items.length > 0) {
-                dispatch({type: 'items', payload: graw.data.items})
-                console.log(state.items.data)
-                
-                const filterate = graw.data.items.filter((inner)=> inner.name.toLowerCase().includes(state.search.toLowerCase()))
-                dispatch({type: 'items', 
-                    payload: filterate})
-                }
-                
-                
-                
-            } catch (error) {
-            console.log(error)
-        }
-    }
-
-        
-    
-    const handleSubmit = async (e)=> {
-        e.preventDefault()
-        const {id, name, price, unitMeasure, piecesUnit} = state
-            try {
-                const newItem = {
-                    name:  state.afa ? state.afa :  response.data.name,
-                    price: price && price,
-                    unitMeasure: unitMeasure && unitMeasure,
-                    piecesUnit: piecesUnit,
-                    
-                }
-                const response = await axios.patch(`/items/${id}`, newItem)  
-                if (response){  
-                    const graw = await axios.get('/items')
-                    dispatch({type: 'items', payload: graw.data.items})
-        
-                    dispatch({type: 'isMatched', payload: `${newItem.name} Edited` })
-                    setTimeout(()=> {
-                        dispatch({type: 'isMatched', payload: '' })
-                        dispatch({type: 'isEdit', payload: false})    
-                    }, 3000)
-                }
-            }  
-           catch (error) {
-                dispatch({type: 'errMsg', payload: `${error.message}`})
-                setTimeout(()=> {
-                    dispatch({type: 'errMsg', payload: ``})
-                    
-                }, 3000)
-            }
-            finally {
-            }
-    
-        }
-
-
-
-        const handleEdit = async (id, e )=> {
-            e.preventDefault()    
-            if (!auth.roles.includes(1984)){
-                dispatch({type: 'isMatched', payload: true})
-            } 
-            else {
-
-                dispatch({type: 'isEdit', payload: true})    
-                dispatch({type: 'id', payload: id})
-                itemRef.current.value = id
-                const currentItem =  state.items.find((item) => item._id === id)
-                dispatch({type: 'afa', payload: currentItem.name})
-                dispatch({type: 'price', payload: currentItem.price})
-                dispatch({type: 'unitMeasure', payload: currentItem.unitMeasure})
-                console.log(itemRef.current.value)
-            }
-            
-        }
-        
-        const handleRemove = async ()=> {
-                 const response = await axios.delete(`/items/delete/${state.id}`)
-                if (response) {
-
-                    const newGraw = state.items && state.items.filter((item)=> item._id !== state.id)
-                    dispatch({type: 'items', payload: newGraw})
-                    dispatch({type: 'cancel', payload: false})
-                }
-        }
-
-        const removeInventory = async (id)=> {
-            const items = await axios.get('/items')
-            console.log(items)
-            const currentItem = state.items.find((item) => item._id === id)
-            console.log(currentItem)
-            const invLIst = await axios.get('/inventory')
-        console.log(invLIst.data)
-            const currentInventory = invLIst.data.find((inv)=> inv.name === `${currentItem.name} ${currentItem.unitMeasure.split(' ')[1]}`)
-            console.log(currentInventory)
-            if (currentInventory){
-
-                const inventory = await axios.delete(`/inventory/${currentInventory._id}`)
-                // dispatch({type: 'inventory', payload: newList})
-            }
-            // console.log(id)
-        }
-        useEffect(()=> {
-            getTrans()
-           
-            
-    }, [state.search])
-    
-    const assertain = (id) => {
-        if (!auth.roles.includes(5150)){
-            dispatch({type: 'isMatched', payload: true})
-        }
-        else {
-            dispatch({type: 'cancel', payload: true})
-            dispatch({type: 'id', payload: id})
-            const getItem = state.items && state.items.find((item)=> item._id === id)
-            dispatch({type: 'inItem', payload: getItem})
-
-        }
-    }
-
-
-    const remainDelete = ()=> {
-        // this condition statement is to enable the removal of the confirm window once any part of the 
-        // page is touched.
-        if (state.cancel){
-
-            dispatch({type: 'cancel', payload: false})
-        }
-        // if (state.isEdit){
-
-        //     dispatch({type: 'isEdit', payload: false})
-        // }
-    }
-    
-    const remainEdit = () => {
-            if (state.isEdit) dispatch({type: 'isEdit', payload: false})
-
-    }
-    const bringEdit = () => {
-        dispatch({type: 'isEdit', payload: true})
-    }
-    const generalRemain = () => {
-       if (state.isMatched) dispatch({type: 'isMatched', payload: false})
-
-    } 
-    
+   
 
   return  (
       
-              !state.items ? <h2 className="item-list">...Loading</h2> :<div className="item-list"
+             !items ? <h2 className="item-list">...Loading</h2> :<div className="item-list"
               style={{
                 margin: '2rem 0' 
               }}
@@ -191,7 +43,7 @@ const {auth} = useAuth()
 
 
 <div
-   className={state.isEdit ? "edit" : "no-edit"}
+   className={isEdit ? "edit" : "no-edit"}
 >
     <form>
   <form onSubmit={(e)=> e.preventDefault()}
@@ -204,7 +56,7 @@ const {auth} = useAuth()
                  <input
                 type="text"
                 id="name"
-                value={state.afa}
+                value={afa}
                 onChange={(e)=> dispatch({type: 'afa', payload: e.target.value})}
                 />
                 <h3>
@@ -290,7 +142,7 @@ const {auth} = useAuth()
            <th colSpan={2}>ACTIONS</th>
            {/* <th>action</th> */}
            </tr>
-          {   state.items &&    state.items.map((item, index)=> {
+          {  items.map((item, index)=> {
         return (
          <tr className="sales-items-cont"
          key={uuid()}
@@ -305,9 +157,6 @@ const {auth} = useAuth()
            <td className="items">{item.unitMeasure.split(' ')[0]}</td>
            {/* <td className="items"> {item.piecesUnit ? item.piecesUnit: 'N/A' } </td> */}
            <td 
-           // style={{backgroundColor: 'blue'}}
-           // ref={achoRef}
-        //    onClick={(e) => handleEdit(inv._id, e)}
            ref={itemRef}
            className="items">
                <a

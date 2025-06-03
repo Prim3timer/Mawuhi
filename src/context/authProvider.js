@@ -1,14 +1,219 @@
-import { createContext, useState, useReducer } from "react";
-import initialState from "../store";
-import reducer from "../reducer";
+import { createContext, useState, useReducer, useEffect, useRef } from "react";
+import reducer from "../reducer"
+import initialState from "../store"
+import axios from "../app/api/axios"
+// import Transactions from "../components/Transactions";
 
 const AuthContext = createContext({})
 export const AuthProvider = ({children}) => {
-    // const [state, dispatch] = useReducer(reducer, initialState)
+    const [state, dispatch] = useReducer(reducer, initialState)
     const [auth, setAuth] = useState({})
+
+      const [genTrans, setGenTrans] = useState([])
+  const [search, setSearch] = useState('')
+  const [search2, setSearch2] = useState('')
+     const itemRef = useRef()
+   const {cancel, items, isEdit, afa, sales, user, getNames} = state
+
+
+
+ const getItems = async ()=> {
+        dispatch({type: 'clear'})
+        try {
+            // dispatch({type: 'errMsg', payload: 'loading...'})
+            const response = await axios.get('/items')
+            dispatch({type: 'errMsg', payload: ''})
+          
+            dispatch({type: 'getNames', payload: response.data.items})   
+            console.log(response.data.items ) 
+            if (state.getNames){
+                
+                dispatch({type: 'user', payload: state.getNames && state.getNames[0].name})
+                console.log(state.user)
+                console.log(response.data)
+                console.log(state.getNames)
+                
+            } 
+        } catch (error) {
+            console.log(error)
+        }
+        console.log(state.getNames && state.getNames)
+    }
+
+
+
+     const getTrans = async ()=> {
+    
+            try {
+                const graw = await axios.get('/items')
+                console.log(graw.data.items)
+                if (graw.data.items.length > 0) {
+                    dispatch({type: 'items', payload: graw.data.items})
+                    console.log(state.items.data)
+                    
+                    const filterate = graw.data.items.filter((inner)=> inner.name.toLowerCase().includes(state.search.toLowerCase()))
+                    dispatch({type: 'items', 
+                        payload: filterate})
+                    }
+                    
+                    
+                    
+                } catch (error) {
+                console.log(error)
+            }
+        }
+
+        const getTransaction = async ()=> {
+          const innerArray = []
+          try {
+            const graw =  await axios.get('/transactions')
+            if (graw){
+              graw.data.map((gr)=> {
+                return gr.goods.map((good)=> {
+                    const elements =  {
+                        name: good.name,
+                        qty: good.qty,
+                        unitMeasure: good.unitMeasure,
+                        total: good.total,
+                        date: gr.date
+        
+                    }
+                    innerArray.push(elements)
+                    setGenTrans(innerArray)
+                    return innerArray
+                })
+            })     
+            const filterate = state.qtyArray && innerArray.filter((inner)=> inner.name.toLowerCase().includes(search.toLowerCase()))
+            const filterate2 = filterate && filterate.filter((inner)=> inner.date.substring(0, 10).includes(search2))
+            setGenTrans(filterate)
+        
+            dispatch({type: 'sales', payload: filterate2})
+            }
+            else return
+          }
+           catch (error) {
+            console.log(error)
+          }           
+        }
+
+
+         const handleSubmit = async (e)=> {
+        e.preventDefault()
+        const {id, name, price, unitMeasure, piecesUnit} = state
+            try {
+                const newItem = {
+                    name:  state.afa ? state.afa :  response.data.name,
+                    price: price && price,
+                    unitMeasure: unitMeasure && unitMeasure,
+                    piecesUnit: piecesUnit,
+                    
+                }
+                const response = await axios.patch(`/items/${id}`, newItem)  
+                if (response){  
+                    const graw = await axios.get('/items')
+                    dispatch({type: 'items', payload: graw.data.items})
+        
+                    dispatch({type: 'isMatched', payload: `${newItem.name} Edited` })
+                    setTimeout(()=> {
+                        dispatch({type: 'isMatched', payload: '' })
+                        dispatch({type: 'isEdit', payload: false})    
+                    }, 3000)
+                }
+            }  
+           catch (error) {
+                dispatch({type: 'errMsg', payload: `${error.message}`})
+                setTimeout(()=> {
+                    dispatch({type: 'errMsg', payload: ``})
+                    
+                }, 3000)
+            }
+            finally {
+            }
+    
+        }
+
+          const handleEdit = async (id, e )=> {
+                    e.preventDefault()    
+                    if (!auth.roles.includes(1984)){
+                        dispatch({type: 'isMatched', payload: true})
+                    } 
+                    else {
+        
+                        dispatch({type: 'isEdit', payload: true})    
+                        dispatch({type: 'id', payload: id})
+                        itemRef.current.value = id
+                        const currentItem =  state.items.find((item) => item._id === id)
+                        dispatch({type: 'afa', payload: currentItem.name})
+                        dispatch({type: 'price', payload: currentItem.price})
+                        dispatch({type: 'unitMeasure', payload: currentItem.unitMeasure})
+                        console.log(itemRef.current.value)
+                    }
+                    
+                }
+                
+                const handleRemove = async ()=> {
+                         const response = await axios.delete(`/items/delete/${state.id}`)
+                        if (response) {
+        
+                            const newGraw = state.items && state.items.filter((item)=> item._id !== state.id)
+                            dispatch({type: 'items', payload: newGraw})
+                            dispatch({type: 'cancel', payload: false})
+                        }
+                }
+
+                    const assertain = (id) => {
+        if (!auth.roles.includes(5150)){
+            dispatch({type: 'isMatched', payload: true})
+        }
+        else {
+            dispatch({type: 'cancel', payload: true})
+            dispatch({type: 'id', payload: id})
+            const getItem = state.items && state.items.find((item)=> item._id === id)
+            dispatch({type: 'inItem', payload: getItem})
+
+        }
+    }
+
+       const generalRemain = () => {
+       if (state.isMatched) dispatch({type: 'isMatched', payload: false})
+
+    } 
+    
+      const remainDelete = ()=> {
+        // this condition statement is to enable the removal of the confirm window once any part of the 
+        // page is touched.
+        if (cancel){
+
+            dispatch({type: 'cancel', payload: false})
+        }
+        // if (state.isEdit){
+
+        //     dispatch({type: 'isEdit', payload: false})
+        // }
+    }
+    
+     useEffect(()=> {
+            getTrans()
+           
+            
+    }, [state.search])
+
+    useEffect(()=> {
+  getTransaction()
+}, [state.search])
+
+  useEffect(()=> {
+    getItems()
+  }, [])
+        
     return (
 
-        <AuthContext.Provider value={{auth, setAuth}}>
+        <AuthContext.Provider value={{auth, setAuth, getTrans,
+            handleSubmit, handleEdit, handleEdit, assertain, itemRef, cancel,
+            generalRemain, remainDelete, items, isEdit, afa, getTransaction,
+            search, setSearch, setSearch2, search2, sales, getItems, user, getNames, items
+
+        }}>
             {children}
         </AuthContext.Provider>
     )

@@ -50,76 +50,14 @@ const App = () => {
   const [currentUser, setCurrentUser] = useState({})
   const [afa, setAfa] = useState('');
   const [userId, setUserId] = useState('');
-  const [genTrans, setGenTrans] = useState([])
   const year = new Date().getFullYear()
   const { auth} = useAuth()
   console.log(auth.picker)
   console.log(auth.picker2)
   
   const [state, dispatch] = useReducer(reducer, initialState)
-  const [search, setSearch] = useState('')
-  const [search2, setSearch2] = useState('')
-
-const getTransaction = async ()=> {
-  const innerArray = []
-  try {
-    const graw =  await axios.get('/transactions')
-    if (graw){
-      graw.data.map((gr)=> {
-        return gr.goods.map((good)=> {
-            const elements =  {
-                name: good.name,
-                qty: good.qty,
-                unitMeasure: good.unitMeasure,
-                total: good.total,
-                date: gr.date
-
-            }
-            innerArray.push(elements)
-            setGenTrans(innerArray)
-            return innerArray
-        })
-    })     
-    const filterate = state.qtyArray && innerArray.filter((inner)=> inner.name.toLowerCase().includes(search.toLowerCase()))
-    const filterate2 = filterate && filterate.filter((inner)=> inner.date.substring(0, 10).includes(search2))
-    setGenTrans(filterate)
-
-    dispatch({type: 'sales', payload: filterate2})
-    }
-    else return
-  }
-   catch (error) {
-    console.log(error)
-  }           
-}
-
- const getItems = async ()=> {
-        dispatch({type: 'clear'})
-        try {
-            // dispatch({type: 'errMsg', payload: 'loading...'})
-            const response = await axios.get('/items')
-            dispatch({type: 'errMsg', payload: ''})
-          
-            dispatch({type: 'getNames', payload: response.data.items})   
-            console.log(response.data.items ) 
-            if (state.getNames){
-                
-                dispatch({type: 'user', payload: state.getNames && state.getNames[0].name})
-                console.log(state.user)
-                console.log(response.data)
-                console.log(state.getNames)
-                
-            } 
-        } catch (error) {
-            console.log(error)
-        }
-        console.log(state.getNames && state.getNames)
-    }
 
 
-useEffect(()=> {
-  getTransaction()
-}, [state.search])
 
 return (
 
@@ -136,8 +74,7 @@ return (
     setUserId={setUserId}
     />}/>
     <Route path="shop" element={<Shop
-    getItems={getItems}
-    items={state.getNames}
+   
     />}/>
         <Route path="shopping" element={<Reciepts
         //  picker={auth.picker}
@@ -147,9 +84,8 @@ return (
          <Route path="linkpage" element={<LinkPage/>}/>
       <Route path="unauthorized" element={<Unauthorized/>}/>
       <Route path="transaction" element={<Transactions
-      getItems={getItems}
-      user={state.user}
-      items={state.getNames}
+    
+     
       />}/>
       <Route path="item-list" element={<ItemList/>}/>
  <Route path="inventory" element={<Inventory/>}/>
@@ -163,7 +99,8 @@ return (
   
        {/* protected routes */}
        <Route element={<RequireAuth allowedRoles={[2001]}/>}>
-         <Route path="/" element={<Home    afa={afa}
+         <Route path="/" element={<Home  
+           afa={afa}
     setAfa={setAfa}/>}
     userId={userId}
     setUserId={setUserId}
@@ -180,12 +117,6 @@ return (
        <Route path="all-sales" element={<AllSales
        />}/>
        <Route path="sales" element={<Sales
-          transactions={state.sales}
-          search={search}
-          setSearch={setSearch}
-          getTrans={getTransaction}
-          search2={search2}
-          setSearch2={setSearch2}
        />}/>
      <Route path="receipts" element={<Reciepts
      foucuser={auth.picker2}

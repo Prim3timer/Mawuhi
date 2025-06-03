@@ -7,26 +7,17 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FaTrashAlt } from "react-icons/fa";
 import {format} from 'date-fns'
 import useAuth from '../hooks/useAuth';
-import { type } from "@testing-library/user-event/dist/type";
 
-const Transactions = ({getItems, user, items})=> {
+
+const Transactions = ()=> {
     const [state, dispatch] = useReducer(reducer, initialState)   
     const now = new Date()
     const date = format(now, 'dd/MM/yyyy\tHH:mm:ss')
     console.log(date)
-    const {auth} = useAuth()
+    const {auth,user, getNames, items} = useAuth()
     const inputRef = useRef()
     const qtyRef = useRef()
-   
-
-
-    const handleEdit = async () => {
-        await axios.put('/items')
-    }
-    
-    useEffect(()=> {
-        getItems()
-    }, [])
+  
     
     
     const handleAdd = (e)=> {
@@ -172,7 +163,7 @@ const Transactions = ({getItems, user, items})=> {
     
    
     return (
-       !state.getNames ? <h2 className="trans-cont">Loading...</h2> : <div className="trans-cont"
+       !getNames ? <h2 className="trans-cont">Loading...</h2> : <div className="trans-cont"
        
         >
             <h2
@@ -214,7 +205,7 @@ const Transactions = ({getItems, user, items})=> {
         >+</button></article>
         <datalist id="edulevel"
         >
-            {items.map((user)=> {
+            {getNames.map((user)=> {
                 
                 return (
                     
