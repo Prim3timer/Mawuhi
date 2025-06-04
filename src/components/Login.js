@@ -61,7 +61,7 @@ const Login = () => {
             if (!err?.response) {
                 dispatch({type: 'errMsg', payload: 'No server Response'});
                 // setErrMsg('No Server Response');
-            } else if (err.response?.status === 400) {
+            } else if (err.response?.status === 500) {
                 // setErrMsg('Missing Username or Password');
                 dispatch({type: 'errMsg', payload: 'Missing Username or Password'});
             }

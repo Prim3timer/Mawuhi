@@ -9,7 +9,7 @@ const {v4: uuid} = require('uuid')
 
 const Sales = ()=> {
 const {transactions, currentUser, getTrans, search, setSearch,
-    search2, setSearch2, sales
+    search2, setSearch2, sales, currentUser2
 } = useAuth()
     const [state, dispatch] = useReducer(reducer, initialState)  
 
@@ -18,19 +18,16 @@ const {transactions, currentUser, getTrans, search, setSearch,
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
  console.log(currentUser)
- useEffect(()=> {
-    getTrans()
-    // console.log(sales)
-}, [search, search2])
+
     return (
-        !sales.length ? <h2 className="sale">Loading...</h2> : <div className="sale"
+        !sales ? <h2 className="sale">Loading...</h2> : <div className="sale"
         >
               <h2
           style={{
             margin: '1rem 0', 
             color: 'darkslateblue'  
         }}
-        >{currentUser ? `${currentUser.username}'s Sales` : 'All Sales'} ({sales.length} rows)</h2>
+        >{currentUser2 ? `${currentUser2.username}'s Sales` : 'All Sales'} ({sales.length} rows)</h2>
             <article id="form-cont">
             <form  className="search-form"   onSubmit={(e)=> e.preventDefault()}>
         <input 

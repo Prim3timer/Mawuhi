@@ -9,6 +9,8 @@ export const AuthProvider = ({children}) => {
     const [state, dispatch] = useReducer(reducer, initialState)
     const [auth, setAuth] = useState({})
 
+ const [currentUser, setCurrentUser] = useState({})
+  const [currentUser2, setCurrentUser2] = useState({})
       const [genTrans, setGenTrans] = useState([])
   const [search, setSearch] = useState('')
   const [search2, setSearch2] = useState('')
@@ -28,7 +30,7 @@ export const AuthProvider = ({children}) => {
             console.log(response.data.items ) 
             if (state.getNames){
                 
-                dispatch({type: 'user', payload: state.getNames && state.getNames[0].name})
+                // dispatch({type: 'user', payload: state.getNames[0].name})
                 console.log(state.user)
                 console.log(response.data)
                 console.log(state.getNames)
@@ -95,6 +97,27 @@ export const AuthProvider = ({children}) => {
             console.log(error)
           }           
         }
+
+        const getUsers = async ()=> {
+            try {
+                    const response = await axios.get('/users')
+                    // const currentUser = response.data.find((user) => user._id === picker)
+                    const person = response.data.find((user) => user._id === auth.picker3)
+                   setCurrentUser2(person)
+                   dispatch({type: 'inItem', payload: currentUser})
+                        
+                        console.log(currentUser2)
+                        
+                    } catch (error) {
+                        console.log(error)
+                    }
+                }
+
+
+
+                 
+                
+          
 
 
          const handleSubmit = async (e)=> {
@@ -191,6 +214,10 @@ export const AuthProvider = ({children}) => {
         //     dispatch({type: 'isEdit', payload: false})
         // }
     }
+
+
+
+     
     
      useEffect(()=> {
             getTrans()
@@ -202,16 +229,18 @@ export const AuthProvider = ({children}) => {
   getTransaction()
 }, [state.search])
 
-  useEffect(()=> {
+    useEffect(()=> {
     getItems()
   }, [])
+
         
     return (
 
         <AuthContext.Provider value={{auth, setAuth, getTrans,
             handleSubmit, handleEdit, handleEdit, assertain, itemRef, cancel,
             generalRemain, remainDelete, items, isEdit, afa, getTransaction,
-            search, setSearch, setSearch2, search2, sales, getItems, user, getNames, items
+            search, setSearch, setSearch2, search2, sales, getItems, user, getNames, currentUser,
+            setCurrentUser, getUsers, setCurrentUser2, currentUser2, 
 
         }}>
             {children}

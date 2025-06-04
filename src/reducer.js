@@ -82,14 +82,16 @@ const reducer = (state, action)=> {
 
 
           case 'INCREMENT': 
-          const tempCart = state.transArray.map((item)=> {
-              if ( item._id === action.payload){
-                const curretnQty = item.qty + 1
-                  return {...item, qty: item.qty + 1, total: (item.price * curretnQty)}
-              }
-              return item
-          })
-          return {...state, transArray: tempCart}
+         const item = {...state.elItem, qty: state.elItem.qty + 1, total: (state.elItem.price * action.payload)}
+      
+              return {...state, elItem: item}
+              
+              
+              case 'SHOPDECREMENT': 
+                // const {elItem} = state  
+             const item2 = {...state.elItem, qty: state.elItem.qty < 2 ? 1 : state.elItem.qty - 1, total: (action.payload * state.elItem.price)}
+             
+                   return {...state, elItem: item2}      
 
           case 'DECREMENT':
             const tempCart2 = state.transArray.map((item)=> {
@@ -99,6 +101,9 @@ const reducer = (state, action)=> {
                 return item
             }).filter((item)=> item.qty !== 0)
             return {...state, transArray: tempCart2}
+
+            case 'SHOPFIELCHANGE':
+
 
 
                 case 'FIELDCHANGE':
@@ -111,6 +116,8 @@ const reducer = (state, action)=> {
                   return item
                  })
                  return {...state, transArray: tempCart3}
+
+
                  case 'blank': 
                  const tempCart4 = state.transArray.map((item)=> {
                   if (item._id === action.id){
@@ -141,6 +148,9 @@ const reducer = (state, action)=> {
 
     case 'cartItem': 
     return {...state, cartItem: action.payload}
+
+    case 'elItem': 
+    return {...state, elItem: action.payload}
 
     case 'cancel':
         return {...state, cancel: action.payload}

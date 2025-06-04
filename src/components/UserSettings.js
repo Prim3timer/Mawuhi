@@ -374,18 +374,7 @@ style={{
             </div>
 
             <div
-            style={{
-                display: `${state.cancel ? 'block' : 'none'}`,
-                position: 'absolute',
-            textAlign: 'center',
-            top: '35%',
-            left: '5%',
-            width: '90%',
-             padding: '1rem',
-               backgroundColor: '#DBBFDB',
-               borderRadius: '5px',
-               opacity: '.85'
-         }}
+            className={state.cancel ? 'delete' : 'no-delete'}
          >
              <h3
           id="verify-header"
@@ -413,18 +402,8 @@ style={{
                  >Yes</button></article></div> 
 
 <div
-        style={{
-            display: `${state.isMatched ? 'block' : 'none'}`,
-            position: 'absolute',
-        textAlign: 'center',
-        top: '35%',
-        left: '5%',
-        width: '90%',
-         padding: '1rem',
-           backgroundColor: '#DBBFDB',
-           borderRadius: '5px',
-           opacity: '.85'
-     }}
+className={state.isMatched ? 'unauthorization-alert' : 'authorization'}
+       
      >
          <h2
       id="verify-header"

@@ -9,10 +9,10 @@ import Shopping from "./Reciepts"
 import { Link } from "react-router-dom"
 import AllTransactions from "./AllTransactions"
 
-const UserSelect = ({currentUser, setCurrentUser}) => {
+const UserSelect = () => {
     const [state, dispatch] = useReducer(reducer, initialState)
-    const [currentUser2, setCurrentUser2] = useState()
-    const {auth} = useAuth()
+   
+    const {auth, getUsers, setCurrentUser2, currentUser2, currentUser} = useAuth()
     console.log('picker3 is : ', auth.picker3)
     console.log('picker is: ', auth.picker)
     // const {indSales} = initialState 
@@ -20,8 +20,6 @@ const UserSelect = ({currentUser, setCurrentUser}) => {
     const [allTransactons, setAllTransactions] = useState(false)
     const [picker, setPicker] = useState('')
     const [reciepts, setReceipts] = useState(false)
-
-
 
 const showMe = () => {
     // dispatch({type: 'indSales', payload: true})
@@ -33,26 +31,13 @@ const showMe = () => {
 
 console.log(auth.picker3)
 console.log('hiiii')
-const getUsers = async ()=> {
-    try {
-            const response = await axios.get('/users')
-            // const currentUser = response.data.find((user) => user._id === picker)
-            const person = response.data.find((user) => user._id === auth.picker3)
-           setCurrentUser2(person)
-           dispatch({type: 'inItem', payload: currentUser})
-                
-                console.log(currentUser2)
-                
-            } catch (error) {
-                console.log(error)
-            }
-        }
-        
-    useEffect(()=> {
-        getUsers()
-    }, [])
+
 
     console.log(state.indSales)
+
+      useEffect(()=> {
+    getUsers()
+  }, [])
 
     return (
    !currentUser2 ? <h2

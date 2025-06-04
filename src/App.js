@@ -33,6 +33,7 @@ import { FaPaypal } from "react-icons/fa"
 import UserSettings from "./components/UserSettings"
 import Cart from "./components/Cart"
 import Shop from "./components/Shop"
+import SingleItem from "./components/SingleItem"
 
 // import SearchItem from "./SearchItem";
 
@@ -47,13 +48,13 @@ import Shop from "./components/Shop"
 
 const App = () => {
 
-  const [currentUser, setCurrentUser] = useState({})
+ 
   const [afa, setAfa] = useState('');
   const [userId, setUserId] = useState('');
   const year = new Date().getFullYear()
   const { auth} = useAuth()
   console.log(auth.picker)
-  console.log(auth.picker2)
+  console.log(auth.picker3)
   
   const [state, dispatch] = useReducer(reducer, initialState)
 
@@ -67,15 +68,9 @@ return (
       <Routes>
          {/* public routes */}
         <Route path="/" element={<Layout/>}>
-    <Route path="/login" element={<Login
-    afa={afa}
-    setAfa={setAfa}
-    userId={userId}
-    setUserId={setUserId}
-    />}/>
-    <Route path="shop" element={<Shop
-   
-    />}/>
+    <Route path="/login" element={<Login/>}/>
+    <Route path="shop" element={<Shop/>}/>
+    <Route path="single-item" element={<SingleItem/>}/>
         <Route path="shopping" element={<Reciepts
         //  picker={auth.picker}
          />}/>
@@ -90,21 +85,13 @@ return (
       <Route path="item-list" element={<ItemList/>}/>
  <Route path="inventory" element={<Inventory/>}/>
       <Route path="user-select" element={<UserSelect
-      picker={auth.picker2}
-      currentUser={currentUser}
-    setCurrentUser={setCurrentUser}
       />}/>
      
     <Route path="user-settings" element={<UserSettings/>}/>
   
        {/* protected routes */}
        <Route element={<RequireAuth allowedRoles={[2001]}/>}>
-         <Route path="/" element={<Home  
-           afa={afa}
-    setAfa={setAfa}/>}
-    userId={userId}
-    setUserId={setUserId}
-    />
+         <Route path="/" element={<Home/> } />
       <Route path="one-receipt" element={<OneReceipt/>}/>
       <Route path="cart" element={<Cart/>}/>
          </Route>

@@ -9,7 +9,7 @@ import { faCheck } from "@fortawesome/free-solid-svg-icons"
 import initialState from "../store";
 import { type } from "@testing-library/user-event/dist/type";
 
-const Home = ({afa, userId})=> {
+const Home = ()=> {
     const [state, dispatch] = useReducer(reducer, initialState)
 
     const { setAuth, auth } = useAuth();
