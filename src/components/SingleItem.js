@@ -46,33 +46,62 @@ const qtyRef = useRef('')
             <article
             className="single-item"
             >
-                <h2>Single Item</h2>
+              <article className="inner-single-item">
+          
+                {/* <h2>Single Item</h2> */}
                 <div>
                 <h3>{state.elItem.name}</h3>
-                <img src={"https://images.app.goo.gl/ZcZWCKKhGh9Y8sR26"} alt="food"/>
+                {/* <img src={"https://images.app.goo.gl/ZcZWCKKhGh9Y8sR26"} alt="food"/> */}
 
                 </div>
                 <h3>Price: {state.elItem.price}</h3>
               
                   <section
           className="qty-cont"
-            >
-              <h3 
+          >
+              <span
+              className="qty-label"
+              >Qty: </span>
+
+
+                <input
+                className="qty-input"
+ type="text"
+//  ref={qtyRef}
+ value={state.elItem.qty}
+
+ onClick={() => dispatch({type: 'blank', payload: ''})}
+ onChange={(e)=> dispatch({type: 'CARTFIELDCHANGE', payload: e.target.value})}
+ />
+
+
+              {/* <button
           onClick={() => increment(qtyRef.current.value)}
-          >{upArrow}</h3>
-            <h4
+          >{upArrow}</button> */}
+            {/* <h4
             className="shop-qty"
             ref={qtyRef}
             // value={state.elItem.qty}
-            >{state.elItem.qty}</h4>
-              <h3 
+            >{state.elItem.qty}</h4> */}
+
+               
+
+              {/* <button 
               onClick={decrement}
-              >{downArrow}</h3>
+              >{downArrow}</button> */}
 
             </section>
-            <h3>{state.elItem.total}</h3>
+            <h3>Total: ${state.elItem.total}</h3>
+             <section
+            className="cart-action"
+            >
+              <button>Buy Now</button>
+              <button>Add to Cart</button>
+            </section>
             <h3>{state.errMsg}</h3>
             </article>
+              
+              </article>
         </div>
     )
 }

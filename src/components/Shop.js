@@ -14,7 +14,7 @@ const {v4: uuid} = require('uuid')
 const Shop = () => {
   const {getItems, items} = useAuth()
  
-
+console.log(items)
 
 const {setAuth, auth} = useAuth()
   const oneItem  =(id) => {
@@ -40,9 +40,9 @@ const {setAuth, auth} = useAuth()
           className="shopping-items"
           onClick={()=> oneItem(item._id)}
           >
-            <img  className='img'src="https://images.app.goo.gl/K5o2PgzGUTYFtLr19" alt="FOOD"/>
+            {/* <img  className='img'src="https://images.app.goo.gl/K5o2PgzGUTYFtLr19" alt="FOOD"/> */}
             <h3>{item.name}</h3>
-            <h4> {item.price}</h4>
+            <h4> price: {item.price}</h4>
             {/* <h4>{items.find((name)=> `${name.name}` === inputRef.current.value)}</h4> */}
           
           </article>

@@ -114,8 +114,13 @@ const reducer = (state, action)=> {
                     
                   }
                   return item
-                 })
-                 return {...state, transArray: tempCart3}
+                })
+                return {...state, transArray: tempCart3}
+                
+                case 'CARTFIELDCHANGE':
+                   const item3 =  {...state.elItem, qty: action.payload, total: (state.elItem.price * action.payload)}
+                   return {...state, elItem: item3}
+
 
 
                  case 'blank': 
@@ -142,8 +147,6 @@ const reducer = (state, action)=> {
         amount: 0,
         total: 0
     })
-
-   
     return {...state, amount, total}
 
     case 'cartItem': 
