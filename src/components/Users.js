@@ -73,7 +73,7 @@ return (
             }}
             >
            <tbody>
-            <tr>
+            <tr className="user-header-trow">
                 <th>Activity</th>
                 <th className="roles-header">Roles</th>
                 <th>Settings</th>

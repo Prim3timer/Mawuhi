@@ -338,7 +338,9 @@ td, th  {
         justify-content: center;
 }
 
-
+.user-header-trow {
+  border-bottom: 2px solid brown;
+}
 
 
  .success {
