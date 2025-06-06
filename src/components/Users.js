@@ -60,14 +60,8 @@ const settingFunc = (id) => {
 console.log(users)
 return (
  <article
-    style={{
-        display: 'flex',
-        flexDirection: 'column',
-        /* font-size: 4rem; */
-        maxWidth: '100vw',
-        textAlign: 'center',
-        justifyContent: 'center'
-    }}
+ className="users-cont"
+ 
     >
         {users?.length
         ? (
@@ -87,9 +81,9 @@ return (
           
                 {users.map((madu, index)=> {
                     return <tr key={index}
-                    // onClick={() => userPage(madu._id)}
+                   className="header-trow"
                     style={{backgroundColor: index % 2 === 0 ?
-                        'white' : 'beige'}}       
+                        'white' : 'powderblue'}}       
                         >
 
                         <th 

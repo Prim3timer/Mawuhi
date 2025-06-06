@@ -329,10 +329,13 @@ td, th  {
   padding: .5rem 5px;
 }
 
-tr {
-  border-bottom: 1px solid brown;
-
-
+.users-cont {
+   
+        display: flex;
+        flex-direction: column;
+        max-width: 100vw;
+        text-align: center;
+        justify-content: center;
 }
 
 
