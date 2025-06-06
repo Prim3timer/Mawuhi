@@ -8,6 +8,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { faArrowDown, faArrowUp } from "@fortawesome/free-solid-svg-icons"
 
 const SingleItem = ()=> {
+  const [isLoading, setIsLoading] = useState(true)
  const upArrow = "+"
   const downArrow = "-"
 const qtyRef = useRef('')
@@ -16,6 +17,7 @@ const qtyRef = useRef('')
     const [state, dispatch] = useReducer(reducer, initialState)
   const getItem = async () => {
     const response = await axios.get('/items')  
+    setIsLoading(false)
     try {
         const goods = response.data.items.find((item) => item._id === auth.picker4)
    const   newGoods = {...goods, qty: 1, total: goods.price}
@@ -28,21 +30,25 @@ const qtyRef = useRef('')
   }
   console.log(elItem)
     const increment = ()=> {
-    dispatch({type: 'INCREMENT', payload: state.elItem.qty + 1})
+    dispatch({type: 'INCREMENT', payload: state.elItem.qty})
 
 
   }
 
   const decrement = () => {
-    dispatch({type: 'SHOPDECREMENT', payload: state.elItem.qty -1})
+    dispatch({type: 'SHOPDECREMENT', payload: state.elItem.qty})
   }
  
  useEffect(()=> {
     getItem()
  }, [])
 
+ function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
     return (
-        <div>
+        isLoading ? <h2>Loading...</h2> : <div>
             <article
             className="single-item"
             >
@@ -54,7 +60,7 @@ const qtyRef = useRef('')
                 {/* <img src={"https://images.app.goo.gl/ZcZWCKKhGh9Y8sR26"} alt="food"/> */}
 
                 </div>
-                <h3>Price: {state.elItem.price}</h3>
+                <h3>Price: ${parseFloat(state.elItem.price).toFixed(2)} </h3>
               
                   <section
           className="qty-cont"
@@ -91,7 +97,7 @@ const qtyRef = useRef('')
               >{downArrow}</button> */}
 
             </section>
-            <h3>Total: ${state.elItem.total}</h3>
+            <h3>Total: ${numberWithCommas(parseFloat(state.elItem.total).toFixed(2))}</h3>
              <section
             className="cart-action"
             >

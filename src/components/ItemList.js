@@ -136,7 +136,7 @@ const {auth, getTrans, handleSubmit, handleEdit, handleRemove, itemRef, cancel,
        >
        <tr>
            <th>NAME</th>
-           <th>PRICE</th>
+           <th>PRICE ($)</th>
            <th> SI UNIT</th>
            {/* <th>P/U</th> */}
            <th colSpan={2}>ACTIONS</th>
@@ -153,7 +153,7 @@ const {auth, getTrans, handleSubmit, handleEdit, handleRemove, itemRef, cancel,
     }}
         >
            <th className="items">{item.name}</th>
-           <td className="items">{item.price}</td>
+           <td className="items">{ parseFloat(item.price).toFixed(2)}</td>
            <td className="items">{item.unitMeasure.split(' ')[0]}</td>
            {/* <td className="items"> {item.piecesUnit ? item.piecesUnit: 'N/A' } </td> */}
            <td 

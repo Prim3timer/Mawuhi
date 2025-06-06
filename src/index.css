@@ -572,7 +572,7 @@ form {
   font-size: 1.5rem;
   /* margin-top: 1rem; */
   /* place-content: center; */
-
+  
   flex-grow: 1;
 }
 
@@ -587,6 +587,7 @@ form {
   max-width: 5rem;
   text-align: left;
   /* background-color: yellow; */
+  padding: 0 .5rem;
 }
 .qty-label {
   /* background-color: yellowgreen; */
@@ -608,20 +609,23 @@ align-items: flex-start;
     display: flex;
 flex-direction: row;
 column-gap: 3rem;
-background-color: yellowgreen;
-
+text-decoration: none;
 text-align: center;
+background-color: yellowgreen;
 padding: .5rem 0;
 
 
 }
 .shopping-items >* {
   margin: 0 1rem;
-  text-decoration: none;
-    text-align: center;
-   align-content: center;
-   justify-content: center;
-  }
+  text-align: center;
+  align-content: center;
+  justify-content: center;
+}
+
+.linker {
+  text-decoration: none
+}
   
   .bars {
     border: 20px solid blue;

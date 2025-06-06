@@ -14,7 +14,7 @@ const {v4: uuid} = require('uuid')
 const Shop = () => {
   const {getItems, items} = useAuth()
  
-console.log(items)
+
 
 const {setAuth, auth} = useAuth()
   const oneItem  =(id) => {
@@ -35,7 +35,10 @@ const {setAuth, auth} = useAuth()
       {items && items.map((item)=> {
         console.log(state.getNames)
         return (
-        <Link to={'/single-item'}>
+        <Link to={'/single-item'}
+        className="linker"
+        style={{textDecoration: 'none'}}
+        >
           <article
           className="shopping-items"
           onClick={()=> oneItem(item._id)}
