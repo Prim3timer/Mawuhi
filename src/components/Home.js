@@ -51,7 +51,7 @@ const Home = ()=> {
        
         <Link 
     
-        to="/transaction">checkout</Link>
+        to="/transactions">checkout</Link>
        <br/>
         <Link
        
@@ -77,7 +77,7 @@ const Home = ()=> {
         to="/shopping">reciepts</Link>
         <Link
         to="/shop">shop</Link>
-        <Link to="/cart">
+        <Link to="/payment">
         cart
         </Link>
         {/* <br /> */}

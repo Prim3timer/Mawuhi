@@ -31,9 +31,10 @@ import reducer from "./reducer"
 import initialState from "./store"
 import { FaPaypal } from "react-icons/fa"
 import UserSettings from "./components/UserSettings"
-import Cart from "./components/Cart"
+import Payment from "./components/Payment"
 import Shop from "./components/Shop"
 import SingleItem from "./components/SingleItem"
+// import Thanks from "./Thanks"
 
 // import SearchItem from "./SearchItem";
 
@@ -70,18 +71,14 @@ return (
         <Route path="/" element={<Layout/>}>
     <Route path="/login" element={<Login/>}/>
     <Route path="shop" element={<Shop/>}/>
+       {/* <Route path="/thanks" element={<Thanks />}/> */}
     <Route path="single-item" element={<SingleItem/>}/>
-        <Route path="shopping" element={<Reciepts
-        //  picker={auth.picker}
-         />}/>
+        <Route path="shopping" element={<Reciepts />}/>
          {/* <Route path="one-shop" element={<OneShop/>} /> */}
     <Route path="register" element={<Register/>}/>
          <Route path="linkpage" element={<LinkPage/>}/>
       <Route path="unauthorized" element={<Unauthorized/>}/>
-      <Route path="transaction" element={<Transactions
-    
-     
-      />}/>
+      <Route path="transactions" element={<Transactions />}/>
       <Route path="item-list" element={<ItemList/>}/>
  <Route path="inventory" element={<Inventory/>}/>
       <Route path="user-select" element={<UserSelect
@@ -93,7 +90,7 @@ return (
        <Route element={<RequireAuth allowedRoles={[2001]}/>}>
          <Route path="/" element={<Home/> } />
       <Route path="one-receipt" element={<OneReceipt/>}/>
-      <Route path="cart" element={<Cart/>}/>
+      <Route path="payment" element={<Payment/>}/>
          </Route>
         
         

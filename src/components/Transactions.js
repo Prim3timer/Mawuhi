@@ -140,7 +140,7 @@ const Transactions = ()=> {
         state.paidAmount = 0
         state.balance = 0
         } catch (error) {
-            dispatch({type: 'errMsg', payload: 'no item purchased'})
+            dispatch({type: 'errMsg', payload: error.message})
         }
        
     }

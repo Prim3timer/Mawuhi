@@ -592,7 +592,8 @@ form {
   max-width: 5rem;
   text-align: left;
   /* background-color: yellow; */
-  padding: 0 .5rem;
+  border-radius: 2px;
+  padding: .5 .5rem;
 }
 .qty-label {
   /* background-color: yellowgreen; */

@@ -2,9 +2,15 @@ import { useEffect, useReducer } from "react"
 import initialState from "../store"
 import reducer from "../reducer"
 import axios from "../app/api/axios"
+import useAuth from "../hooks/useAuth"
+import {format} from 'date-fns'
 
-const Cart = () => {
+const Payment = () => {
     const [state, dispatch] = useReducer(reducer, initialState)
+    
+
+
+    
 
 const getItems = async () => {
     try {
@@ -41,7 +47,7 @@ useEffect(() => {
     }
     return (
         <div className="checkout">
-            <h3>Cart</h3>
+            <h3>Payment</h3>
 
 
             <button onClick={checkout}>Checkout</button>
@@ -50,4 +56,4 @@ useEffect(() => {
     )
 }
 
-export default Cart
+export default Payment

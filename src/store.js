@@ -46,7 +46,8 @@ const initialState = {
    id: '',
    backendUser:    {},
    selectUser: '' ,
-  elItem: {}
+  elItem: {},
+  singleItemArray: []
 }
 
 export default initialState

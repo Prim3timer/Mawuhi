@@ -37,7 +37,7 @@ const {setAuth, auth} = useAuth()
         return (
         <Link to={'/single-item'}
         className="linker"
-        style={{textDecoration: 'none'}}
+    
         >
           <article
           className="shopping-items"

@@ -37,6 +37,7 @@ const getItems = async ()=> {
                 const cashierTrans = response.data.filter((item) => item.cashierID === auth.picker3)
                 console.log(cashierTrans)
                 // dispatch({type: 'getNames', payload: response.data})
+                cashierTrans.reverse()
                 dispatch({type: 'getNames', payload: cashierTrans})
     
                 const filterate = cashierTrans.filter((inner)=> inner.date.substring(0, 10).includes(state.search))
@@ -161,6 +162,7 @@ function numberWithCommas(x) {
                 margin: '1rem 0' ,
                 // color: 'darkslateblue'    
             }}
+           
             >{currentUser && currentUser.username}'s Reciepts ({state.getNames.length})</h2>
             {state.getNames && state.getNames.map((item)=> {
                 console.log(item.goods)
