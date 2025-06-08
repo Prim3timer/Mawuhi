@@ -33,11 +33,11 @@ const Transactions = ()=> {
                 const currentItem = items.find((name)=> `${name.name} ${name.unitMeasure.split(' ')[1]}` === inputRef.current.value)
                 if (!currentItem) dispatch({type: 'errMsg', payload: 'item not in list'})
                 currentItem.total = currentItem.price
-                console.log(currentItem)
-                dispatch({type: 'name', payload: inputRef.current.value})
-                const acutalItem = {...currentItem, qty: 1}
-                const match = state.transArray.find((item) => item.name === acutalItem.name)
-                if(!match){
+            dispatch({type: 'name', payload: inputRef.current.value})
+            const acutalItem = {...currentItem, qty: 1}
+            const match = state.transArray.find((item) => item.name === acutalItem.name)
+            if(!match){
+                    console.log(currentItem)
                     
                     state.transArray.push(acutalItem)
                     state.transArray.reverse()
@@ -160,7 +160,6 @@ const Transactions = ()=> {
     const remain = ()=> {
         dispatch({type: 'cancel', payload: false})
     }
-    
    
     return (
        !getNames ? <h2 className="trans-cont">Loading...</h2> : <div className="trans-cont"
@@ -446,6 +445,7 @@ const Transactions = ()=> {
 
         
         </div>
+
     )
 }
 

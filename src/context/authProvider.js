@@ -15,7 +15,7 @@ export const AuthProvider = ({children}) => {
   const [search, setSearch] = useState('')
   const [search2, setSearch2] = useState('')
      const itemRef = useRef()
-   const {cancel, items, isEdit, afa, sales, user, getNames} = state
+   const {cancel, items, isEdit, afa, sales, user, getNames, receipt} = state
 
 
 
@@ -240,7 +240,7 @@ export const AuthProvider = ({children}) => {
             handleSubmit, handleEdit, handleEdit, assertain, itemRef, cancel,
             generalRemain, remainDelete, items, isEdit, afa, getTransaction,
             search, setSearch, setSearch2, search2, sales, getItems, user, getNames, currentUser,
-            setCurrentUser, getUsers, setCurrentUser2, currentUser2, 
+            setCurrentUser, getUsers, setCurrentUser2, currentUser2
 
         }}>
             {children}

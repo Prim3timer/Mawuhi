@@ -174,6 +174,8 @@ const reducer = (state, action)=> {
           return {...state, balance: newBalance}
           case 'id':
             return {...state, id: action.payload}
+            case 'RECEIPT':
+              return {...state, receipt: action.payload}
  
               default:
                 throw new Error()

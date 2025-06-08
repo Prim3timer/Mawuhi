@@ -17,9 +17,9 @@ const Shop = () => {
 
 
 const {setAuth, auth} = useAuth()
+console.log(auth)
   const oneItem  =(id) => {
-    console.log(id)
-     setAuth({...auth, picker4: id})
+   auth.picker4 = id
   }
 
   const [state, dispatch] = useReducer(reducer, initialState)

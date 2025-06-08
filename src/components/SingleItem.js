@@ -7,16 +7,19 @@ import useAuth from "../hooks/useAuth"
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { faArrowDown, faArrowUp } from "@fortawesome/free-solid-svg-icons"
 import {format} from 'date-fns'
+import {Link, resolvePath} from 'react-router-dom'
 
 const SingleItem = ()=> {
   const [isLoading, setIsLoading] = useState(true)
   const [state, dispatch] = useReducer(reducer, initialState)
+  state.singleItemArray = []
  const upArrow = "+"
   const downArrow = "-"
 const qtyRef = useRef('')
 console.log(qtyRef.current.value)
 console.log(state.transArray)
-   const {auth, elItem} = useAuth()
+   const {auth, elItem, setAuth} = useAuth()
+   console.log(auth)
 
   const getItem = async () => {
     const response = await axios.get('/items')  
@@ -33,44 +36,29 @@ console.log(state.transArray)
   }
 
 
-    const checkout = async ()=> {
-      try {
-           const items = [
-              {id: '6765034e77246d1f7c9ae781', quantity: 5},    
-              {id: '6765a78f77246d1f7c9ae824', quantity: 20}, 
-          ]
-
-
-          const response = await axios.post('/create-checkout-session', items)
-          if (response){
-             window.location = response.data
-          }else  console.log("no checkout")
-         
-          
-      } catch (error) {
-          console.error(error)
-      }
-         
-      }
-
-
        const now = new Date()
           const date = format(now, 'dd/MM/yyyy\tHH:mm:ss')
       const doneSales = async()=> {
           try {
               const {elItem} = state
-
+state.singleItemArray.push(elItem)
             const goodsObject = {
-              name: elItem.name,
-              price: elItem.price,
-              qty: qtyRef.current.value,
-              total: elItem.total,
+              cashier: auth.user,
+             cashierID: auth.picker,
+            goods: state.singleItemArray,
               grandTotal: elItem.total,
               date
             }
+
+       
+              //  cashier: auth.user, 
+              //       cashierID: auth.picker,
+              //       goods: transArray,
+              //       grandTotal: total,
+              //       date
             console.log(goodsObject)
             console.log(elItem)
-console.log(auth.picker)
+console.log(auth)
 
               const {SingleItemArray, total} = state
               // transArray.push(elItem)
@@ -84,9 +72,9 @@ console.log(auth.picker)
                       
                   // }
                  
-                  // const response = await axios.post('/transactions', transItems)
-                  const response2 = await axios.get('/items')
-                  console.log(response2)
+                  // // const response = await axios.post('/transactions', transItems)
+                  // const response2 = await axios.get('/items')
+                  // console.log(response2)
                   // if (response){
                   //     // so i can effect change in color of the errMsg
                   //     dispatch({type: 'qty', payload: response})
@@ -104,20 +92,17 @@ console.log(auth.picker)
 
           // const halfHope = item.pop()
           // console.log(item)
-          // console.log(halfHope)
           const response = await axios.post('/create-checkout-session', item)
           if (response){
-             window.location = response.data
+             window.location = response.data.url
+             console.log(response.data.receipt)
+             auth.receipt = response.data.receipt
+
           }else  console.log("no checkout")
          
-          
       } catch (error) {
           console.error(error)
       }
-
-
-
-
 
               
               dispatch({type: 'errMsg', payload: 'Transactons Complete'})
@@ -138,7 +123,7 @@ console.log(auth.picker)
          
       }
   
-  
+  console.log(auth.receipt)
 
 
 
@@ -204,7 +189,7 @@ console.log(auth.picker)
              <section
             className="cart-action"
             >
-              <button onClick={doneSales}>Buy Now</button>
+              <Link to='/thanks'><button onClick={doneSales}>Buy Now</button></Link>
               <button>Add to Cart</button>
             </section>
             <h3>{state.errMsg}</h3>

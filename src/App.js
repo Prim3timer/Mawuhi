@@ -34,7 +34,7 @@ import UserSettings from "./components/UserSettings"
 import Payment from "./components/Payment"
 import Shop from "./components/Shop"
 import SingleItem from "./components/SingleItem"
-// import Thanks from "./Thanks"
+import Thanks from "./Thanks"
 
 // import SearchItem from "./SearchItem";
 
@@ -71,6 +71,7 @@ return (
         <Route path="/" element={<Layout/>}>
     <Route path="/login" element={<Login/>}/>
     <Route path="shop" element={<Shop/>}/>
+    <Route path="thanks" element={<Thanks/>}/>
        {/* <Route path="/thanks" element={<Thanks />}/> */}
     <Route path="single-item" element={<SingleItem/>}/>
         <Route path="shopping" element={<Reciepts />}/>
@@ -81,8 +82,7 @@ return (
       <Route path="transactions" element={<Transactions />}/>
       <Route path="item-list" element={<ItemList/>}/>
  <Route path="inventory" element={<Inventory/>}/>
-      <Route path="user-select" element={<UserSelect
-      />}/>
+      <Route path="user-select" element={<UserSelect/>}/>
      
     <Route path="user-settings" element={<UserSettings/>}/>
   
