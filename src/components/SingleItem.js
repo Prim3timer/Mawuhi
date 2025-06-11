@@ -27,13 +27,11 @@ console.log(state.transArray)
     setIsLoading(false)
     try {
         const goods = response.data.items.find((item) => item._id === auth.picker4)
-   const   newGoods = goods.map((good)=> {
-        good.quantity = 1
-        return good
-   })
-
-    dispatch({type: "elItem", payload: newGoods})
-    setCartItem(newGoods)
+const newGoods = {...goods, qty: 1,}
+const newerGoods = {...newGoods, total: newGoods.qty * newGoods.price}
+console.log(newerGoods)
+    dispatch({type: "elItem", payload: newerGoods})
+    setCartItem(newerGoods)
     } catch (error) {
       dispatch({type: 'errMsg',  payload: error.message})
     }
