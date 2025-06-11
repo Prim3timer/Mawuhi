@@ -121,6 +121,15 @@ const reducer = (state, action)=> {
                    const item3 =  {...state.elItem, qty: action.payload, total: (state.elItem.price * action.payload)}
                    return {...state, elItem: item3}
 
+                   case "MAINCARTFIELD":
+                    const tempCart5 = state.cartArray.map((item) => {
+                      if (item._id === action.id){
+                        return {...item, quantity: action.payload}
+                      }
+                      return item
+                    })
+                    return {...state, cartArray: tempCart5}
+
 
 
                  case 'blank': 
@@ -176,6 +185,8 @@ const reducer = (state, action)=> {
             return {...state, id: action.payload}
             case 'RECEIPT':
               return {...state, receipt: action.payload}
+              case "CARTARRAY":
+                return {...state, cartArray: action.payload}
  
               default:
                 throw new Error()

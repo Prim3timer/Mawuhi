@@ -12,27 +12,64 @@ import {Link, resolvePath} from 'react-router-dom'
 const SingleItem = ()=> {
   const [isLoading, setIsLoading] = useState(true)
   const [state, dispatch] = useReducer(reducer, initialState)
+  const [cartItem, setCartItem] = useState()
   state.singleItemArray = []
  const upArrow = "+"
   const downArrow = "-"
 const qtyRef = useRef('')
 console.log(qtyRef.current.value)
 console.log(state.transArray)
-   const {auth, elItem, setAuth} = useAuth()
-   console.log(auth)
+   const {auth, setAuth,users} = useAuth()
+   console.log(users)
 
   const getItem = async () => {
     const response = await axios.get('/items')  
     setIsLoading(false)
     try {
         const goods = response.data.items.find((item) => item._id === auth.picker4)
-   const   newGoods = {...goods, qty: 1, total: goods.price}
+   const   newGoods = goods.map((good)=> {
+        good.quantity = 1
+        return good
+   })
 
     dispatch({type: "elItem", payload: newGoods})
+    setCartItem(newGoods)
     } catch (error) {
       dispatch({type: 'errMsg',  payload: error.message})
     }
   
+  }
+
+  const addToCart = async () => {
+    try {
+      console.log(auth.picker)
+      const {elItem} = state
+      console.log(elItem)
+      console.log(users)
+      const currentUser = users.find((user)=> user._id === auth.picker)
+      console.log(currentUser)
+      console.log(elItem)
+      const actualItem = {
+        name: elItem.name,
+        id: auth.picker4,
+        userId: auth.picker,
+        quantity: Number(elItem.qty)
+      }
+if (actualItem){
+console.log(actualItem)
+
+if (actualItem){
+    const response = await axios.post(`/cart/addcart`, actualItem)
+
+    if (response){
+      console.log(response.data)
+    }
+  }
+}
+    } catch (error) {
+      console.log(error.message)
+    }
+
   }
 
 
@@ -50,12 +87,6 @@ state.singleItemArray.push(elItem)
               date
             }
 
-       
-              //  cashier: auth.user, 
-              //       cashierID: auth.picker,
-              //       goods: transArray,
-              //       grandTotal: total,
-              //       date
             console.log(goodsObject)
             console.log(elItem)
 console.log(auth)
@@ -63,36 +94,17 @@ console.log(auth)
               const {SingleItemArray, total} = state
               // transArray.push(elItem)
               if (goodsObject){
-                  // const transItems = {
-                  //     cashier: auth.user, 
-                  //     cashierID: auth.picker,
-                  //     goods: transArray,
-                  //     grandTotal: elItem.total,
-                  //     date
-                      
-                  // }
-                 
-                  // // const response = await axios.post('/transactions', transItems)
-                  // const response2 = await axios.get('/items')
-                  // console.log(response2)
-                  // if (response){
-                  //     // so i can effect change in color of the errMsg
-                  //     dispatch({type: 'qty', payload: response})
-                  //     dispatch({type: 'clear'})
-                  //     dispatch({type: 'transArray', payload: []})
-                      
-                  // }
           
 
                   try {
            const item = [
-              {id: elItem._id, quantity: qtyRef.current.value},    
+              {usrId: auth.picker4, id: elItem._id, quantity: qtyRef.current.value, name: elItem.name},    
           ]
           item.push(goodsObject)
 
           // const halfHope = item.pop()
           // console.log(item)
-          const response = await axios.post('/create-checkout-session', item)
+          const response = await axios.post('/cart/create-checkout-session', item)
           if (response){
              window.location = response.data.url
              console.log(response.data.receipt)
@@ -122,23 +134,8 @@ console.log(auth)
           }
          
       }
-  
-  console.log(auth.receipt)
 
 
-
-
-
-  console.log(elItem)
-    const increment = ()=> {
-    dispatch({type: 'INCREMENT', payload: state.elItem.qty})
-
-
-  }
-
-  const decrement = () => {
-    dispatch({type: 'SHOPDECREMENT', payload: state.elItem.qty})
-  }
  
  useEffect(()=> {
     getItem()
@@ -189,8 +186,8 @@ console.log(auth)
              <section
             className="cart-action"
             >
-              <Link to='/thanks'><button onClick={doneSales}>Buy Now</button></Link>
-              <button>Add to Cart</button>
+            <button onClick={doneSales}>Buy Now</button>
+              <button onClick={addToCart}>Add to Cart</button>
             </section>
             <h3>{state.errMsg}</h3>
             </article>

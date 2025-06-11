@@ -7,6 +7,7 @@ import axios from "../app/api/axios"
 const AuthContext = createContext({})
 export const AuthProvider = ({children}) => {
     const [state, dispatch] = useReducer(reducer, initialState)
+    const [users, setUsers] = useState([])
     const [auth, setAuth] = useState({})
 
  const [currentUser, setCurrentUser] = useState({})
@@ -103,6 +104,7 @@ export const AuthProvider = ({children}) => {
                     const response = await axios.get('/users')
                     // const currentUser = response.data.find((user) => user._id === picker)
                     const person = response.data.find((user) => user._id === auth.picker3)
+                    setUsers(response.data)
                    setCurrentUser2(person)
                    dispatch({type: 'inItem', payload: currentUser})
                         
@@ -231,6 +233,11 @@ export const AuthProvider = ({children}) => {
 
     useEffect(()=> {
     getItems()
+    console.log(users)
+  }, [])
+
+  useEffect(()=> {
+    getUsers()
   }, [])
 
         
@@ -240,7 +247,7 @@ export const AuthProvider = ({children}) => {
             handleSubmit, handleEdit, handleEdit, assertain, itemRef, cancel,
             generalRemain, remainDelete, items, isEdit, afa, getTransaction,
             search, setSearch, setSearch2, search2, sales, getItems, user, getNames, currentUser,
-            setCurrentUser, getUsers, setCurrentUser2, currentUser2
+            setCurrentUser, getUsers, setCurrentUser2, currentUser2, users
 
         }}>
             {children}

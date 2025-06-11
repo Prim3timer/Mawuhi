@@ -40,6 +40,7 @@ const initialState = {
    cartItem: '',
    cancel: false,
    qtyArray: [],
+   cartArray: [],
    checkout: false,
    paidAmount: 0,
    balance: 0,
