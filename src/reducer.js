@@ -133,6 +133,11 @@ const reducer = (state, action)=> {
                     return {...state, cartArray: tempCart5}
 
 
+                    case 'REMOVECARTITEM': 
+                    const currentCart = state.cartArray.filter((item)=> item._id !== action.payload)
+                    return {...state, cartArray: currentCart}
+
+
 
                  case 'blank': 
                  const tempCart4 = state.transArray.map((item)=> {

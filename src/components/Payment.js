@@ -4,6 +4,7 @@ import reducer from "../reducer"
 import axios from "../app/api/axios"
 import useAuth from "../hooks/useAuth"
 import {format} from 'date-fns'
+import { FaTrash } from "react-icons/fa"
 
 const Payment = () => {
     const [state, dispatch] = useReducer(reducer, initialState)
@@ -63,6 +64,10 @@ try {
          
       }
 
+      const removeItem = async (id)=> {
+        dispatch({type: 'REMOVECARTITEM', payload: id})
+      }
+
 
        function numberWithCommas(x) {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -112,6 +117,9 @@ useEffect(() => {
             />
             </label>
             {/* <h3>total: ${numberWithCommas(parseFloat(item.total).toFixed(2))}</h3> */}
+            <p onClick={() => removeItem(item._id)}>
+                <FaTrash role="button"/>
+            </p>
         </div>
     )
 })}
