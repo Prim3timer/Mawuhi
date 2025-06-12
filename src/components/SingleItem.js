@@ -12,7 +12,6 @@ import {Link, resolvePath} from 'react-router-dom'
 const SingleItem = ()=> {
   const [isLoading, setIsLoading] = useState(true)
   const [state, dispatch] = useReducer(reducer, initialState)
-  const [cartItem, setCartItem] = useState()
   state.singleItemArray = []
  const upArrow = "+"
   const downArrow = "-"
@@ -27,11 +26,8 @@ console.log(state.transArray)
     setIsLoading(false)
     try {
         const goods = response.data.items.find((item) => item._id === auth.picker4)
-const newGoods = {...goods, qty: 1,}
-const newerGoods = {...newGoods, total: newGoods.qty * newGoods.price}
-console.log(newerGoods)
-    dispatch({type: "elItem", payload: newerGoods})
-    setCartItem(newerGoods)
+const newGoods = {...goods, qty: 1, total: goods.price}
+    dispatch({type: "elItem", payload: newGoods})
     } catch (error) {
       dispatch({type: 'errMsg',  payload: error.message})
     }
@@ -49,9 +45,11 @@ console.log(newerGoods)
       console.log(elItem)
       const actualItem = {
         name: elItem.name,
-        id: auth.picker4,
+        id: elItem._id,
         userId: auth.picker,
-        quantity: Number(elItem.qty)
+        quantity: elItem.qty,
+        price: elItem.price,
+        total: elItem.total
       }
 if (actualItem){
 console.log(actualItem)
@@ -96,12 +94,10 @@ console.log(auth)
 
                   try {
            const item = [
-              {usrId: auth.picker4, id: elItem._id, quantity: qtyRef.current.value, name: elItem.name},    
+              {userId: auth.picker4, id: elItem._id, quantity: qtyRef.current.value, name: elItem.name},    
           ]
-          item.push(goodsObject)
 
-          // const halfHope = item.pop()
-          // console.log(item)
+          console.log(item)
           const response = await axios.post('/cart/create-checkout-session', item)
           if (response){
              window.location = response.data.url

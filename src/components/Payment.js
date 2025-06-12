@@ -63,6 +63,12 @@ try {
          
       }
 
+
+       function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+
 useEffect(() => {
     getItems()
 }, [])
@@ -105,7 +111,7 @@ useEffect(() => {
             
             />
             </label>
-            
+            {/* <h3>total: ${numberWithCommas(parseFloat(item.total).toFixed(2))}</h3> */}
         </div>
     )
 })}
