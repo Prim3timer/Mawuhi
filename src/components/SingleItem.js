@@ -58,7 +58,11 @@ if (actualItem){
     const response = await axios.post(`/cart/addcart`, actualItem)
 
     if (response){
-      console.log(response.data)
+      dispatch({type: 'ALERTMSG', payload: 'item added to cart'})
+      setTimeout(()=> {
+        dispatch({type: 'ALERTMSG', payload: ''})
+
+      }, 3000)
     }
   }
 }
@@ -183,7 +187,7 @@ console.log(auth)
             <button onClick={doneSales}>Buy Now</button>
               <button onClick={addToCart}>Add to Cart</button>
             </section>
-            <h3>{state.errMsg}</h3>
+            <h3>{state.alertMsg}</h3>
             </article>
               
               </article>

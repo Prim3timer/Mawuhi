@@ -22,6 +22,7 @@ const initialState = {
     matchFocus: false,
 
     errMsg: '',
+    alertMsg: '',
     success: false,
     auth: {},
     qty: '',

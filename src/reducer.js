@@ -44,6 +44,8 @@ const reducer = (state, action)=> {
         return {...state, matchFocus: action.payload}
        case 'errMsg': 
         return {...state, errMsg: action.payload}
+       case 'ALERTMSG': 
+        return {...state, alertMsg: action.payload}
        case 'success': 
         return {...state, success: action.payload}
        case 'qty': 
