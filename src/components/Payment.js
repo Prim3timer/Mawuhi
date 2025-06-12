@@ -5,6 +5,7 @@ import axios from "../app/api/axios"
 import useAuth from "../hooks/useAuth"
 import {format} from 'date-fns'
 import { FaTrash } from "react-icons/fa"
+import { Link } from "react-router-dom"
 
 const Payment = () => {
     const [state, dispatch] = useReducer(reducer, initialState)
@@ -65,9 +66,33 @@ try {
       }
 
       const removeItem = async (id)=> {
-        dispatch({type: 'REMOVECARTITEM', payload: id})
+        try {
+            
+            dispatch({type: 'REMOVECARTITEM', payload: id})
+            const response = await axios.delete(`/cart/${id}`)
+            if (response){
+                dispatch({type: 'ALERTMSG', payload: 'item removed'})
+                setTimeout(()=> {
+                    dispatch({type: 'ALERTMSG', payload: ''})
+                }, 3000)
+            }
+        } catch (error) {
+            dispatch({type: 'errMsg', payload: error.message})
+        }
+
       }
 
+     const clearCart = async()=> {
+        try {
+            dispatch({type: 'CLEARCART'})
+            const id = auth.picker
+            const response = await axios.delete(`/cart/clear/${auth.picker}`)
+            console.log(response.data)
+            
+        } catch (error) {
+            console.log(error.message)
+        }
+     }
 
        function numberWithCommas(x) {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -101,6 +126,7 @@ useEffect(() => {
     return (
         <div className="checkout">
             <h3>Payment</h3>
+            <h3>{state.cartArray.length} items</h3>
 
 {state.cartArray && state.cartArray.map((item) =>{
     return (
@@ -116,16 +142,22 @@ useEffect(() => {
             
             />
             </label>
-            {/* <h3>total: ${numberWithCommas(parseFloat(item.total).toFixed(2))}</h3> */}
+            <h3>total: ${numberWithCommas(parseFloat(item.total).toFixed(2))}</h3>
             <p onClick={() => removeItem(item._id)}>
                 <FaTrash role="button"/>
             </p>
         </div>
     )
 })}
-            <button
+<div className="cart-action">
+  <button
              onClick={doneSales}
              >Checkout</button>
+              <Link to={'/shop'}><button>Shopping</button></Link>
+             <button onClick={clearCart}>Clear Cart</button>
+             <h3>{state.alertMsg}</h3>
+</div>
+          
 
         </div>
     )

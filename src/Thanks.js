@@ -1,4 +1,5 @@
 import useAuth from "./hooks/useAuth"
+import { Link } from "react-router-dom"
 
 const Thanks = () =>{
 const {auth} = useAuth()
@@ -6,7 +7,7 @@ console.log(auth.receipt)
     return (
         <div className="thanks">
             <h2>Thank you for your order</h2>
-            {/* <h5>{auth.receipt.name}</h5> */}
+            <Link to={'/shop'}><button>Shopping</button></Link>
         </div>
     )
 }

@@ -604,7 +604,7 @@ form {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  column-gap: 4rem;
+  column-gap: 1cap;
   row-gap: 1rem;
   text-align: center;
   padding: 1rem 0;

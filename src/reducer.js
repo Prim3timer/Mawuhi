@@ -81,6 +81,8 @@ const reducer = (state, action)=> {
                 return {...state, qtyArray: action.payload}
         case 'clear':
           return {...state, transArray: []}
+        case 'CLEARCART':
+          return {...state, cartArray: []}
 
 
           case 'INCREMENT': 
