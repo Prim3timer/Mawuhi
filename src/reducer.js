@@ -59,6 +59,8 @@ const reducer = (state, action)=> {
           return {...state, marker: action.payload}
         case 'isEdit':
           return {...state, isEdit: action.payload}
+          case 'ISDELETED':
+             return {...state, isDeleted: action.payload}
         case 'inItem':
           return {...state, inItem: action.payload}
         case 'outItem':
@@ -157,7 +159,7 @@ const reducer = (state, action)=> {
               case 'getTotal': 
               const {amount, total} = state.transArray.reduce((cartTotal, cartItem)=> {
                 cartTotal.total += cartItem.price * cartItem.qty
-                cartTotal.amount += cartItem.qty
+                cartTotal.amount += Number(cartItem.qty)
                 return cartTotal
         },
     {

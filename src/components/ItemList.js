@@ -2,7 +2,7 @@
 import Cancel from "./Cancel"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons"
-import { useReducer, useState,   } from "react"
+import { useEffect, useReducer, useState,   } from "react"
 import initialState from "../store"
 import reducer from "../reducer"
 import { FaTrashAlt } from "react-icons/fa";
@@ -10,6 +10,7 @@ import { FaTrashAlt } from "react-icons/fa";
 import { Link } from "react-router-dom"
 import EditItem from "./EditItem"
 import useAuth from "../hooks/useAuth"
+import axios from "../app/api/axios"
 // import { type } from "@testing-library/user-event/dist/type"
 // import { current } from "@reduxjs/toolkit";
 const {v4: uuid} = require('uuid')
@@ -19,8 +20,8 @@ const {v4: uuid} = require('uuid')
 
 
 const ItemList = ()=> {
-const {auth, getTrans, handleSubmit, handleEdit, handleRemove, itemRef, cancel,
-    generalRemain, remainDelete, items, isEdit, afa, assertain
+const {auth, getTrans, itemRef, 
+
 } = useAuth()
     const [state, dispatch] = useReducer(reducer, initialState)
     const [taskComplete, setTaskComplete] = useState(false)
@@ -28,10 +29,134 @@ const {auth, getTrans, handleSubmit, handleEdit, handleRemove, itemRef, cancel,
      const measurements = ['Kilogram (kg)', 'Piece (pc)', 'Plate (Plt)', 'Dozen (dzn)', 'Bottle (Btl)', 'Pound (lbs)', 'Litre (L)', 'Sachet (sct)', 'Ounce (Oz)', 'Gram (g)', 'Amortization (Am)', 'Night (Ngt)', 'Trip (Tr)'
        ]
    
+       const getItems = async ()=> {
+               dispatch({type: 'clear'})
+               try {
+                   // dispatch({type: 'errMsg', payload: 'loading...'})
+                   const response = await axios.get('/items')
+                   dispatch({type: 'errMsg', payload: ''})
+                 
+                   dispatch({type: 'getNames', payload: response.data.items})   
+                   console.log(response.data.items ) 
+                   if (state.getNames){
+                       
+                       // dispatch({type: 'user', payload: state.getNames[0].name})
+                       console.log(state.user)
+                       console.log(response.data)
+                       console.log(state.getNames)
+                       
+                   } 
+               } catch (error) {
+                   console.log(error)
+               }
+               console.log(state.getNames && state.getNames)
+           }
+       
+
+            const handleSubmit = async (e)=> {
+               e.preventDefault()
+               const {id, name, price, unitMeasure, piecesUnit} = state
+                   try {
+                       const newItem = {
+                           name:  state.afa ? state.afa :  response.data.name,
+                           price: price && price,
+                           unitMeasure: unitMeasure && unitMeasure,
+                           piecesUnit: piecesUnit,
+                           
+                       }
+                       const response = await axios.patch(`/items/${id}`, newItem)  
+                       if (response){  
+                           const graw = await axios.get('/items')
+                           dispatch({type: 'getNames', payload: graw.data.items})
+               
+                           dispatch({type: 'isMatched', payload: `${newItem.name} Edited` })
+                           setTimeout(()=> {
+                               dispatch({type: 'isMatched', payload: '' })
+                               dispatch({type: 'isEdit', payload: false})    
+                           }, 3000)
+                       }
+                   }  
+                  catch (error) {
+                       dispatch({type: 'errMsg', payload: `${error.message}`})
+                       setTimeout(()=> {
+                           dispatch({type: 'errMsg', payload: ``})
+                           
+                       }, 3000)
+                   }
+                   finally {
+                   }
+           
+               }
+
+               const handleEdit = async (id, e )=> {
+                    e.preventDefault()    
+                    if (!auth.roles.includes(1984)){
+                        dispatch({type: 'isMatched', payload: true})
+                    } 
+                    else {
+        
+                        dispatch({type: 'isEdit', payload: true})    
+                        dispatch({type: 'id', payload: id})
+                        itemRef.current.value = id
+                        const currentItem =  state.getNames.find((item) => item._id === id)
+                        
+                        dispatch({type: 'afa', payload: currentItem.name})
+                        dispatch({type: 'price', payload: currentItem.price})
+                        dispatch({type: 'unitMeasure', payload: currentItem.unitMeasure})
+                        console.log(itemRef.current.value)
+                    }
+                    
+                }
+
+                   const handleRemove = async ()=> {
+                                         const response = await axios.delete(`/items/delete/${state.id}`)
+                                        if (response) {
+                        
+                                            const newGraw = state.getNames && state.getNames.filter((item)=> item._id !== state.id)
+                                            dispatch({type: 'getNames', payload: newGraw})
+                                            dispatch({type: 'cancel', payload: false})
+                                        }
+                                }
+
+                                        const assertain = (id) => {
+        if (!auth.roles.includes(5150)){
+            dispatch({type: 'isDelted', payload: true})
+        }
+        else {
+            dispatch({type: 'cancel', payload: true})
+            dispatch({type: 'id', payload: id})
+            const getItem = state.items && state.items.find((item)=> item._id === id)
+            dispatch({type: 'inItem', payload: getItem})
+
+        }
+    }
+
+        const remainDelete = ()=> {
+        // this condition statement is to enable the removal of the confirm window once any part of the 
+        // page is touched.
+        if (state.cancel){
+
+            dispatch({type: 'cancel', payload: false})
+        }
+        // if (state.isEdit){
+
+        //     dispatch({type: 'isEdit', payload: false})
+        // }
+    }
+
+           const generalRemain = () => {
+       if (state.isMatched) dispatch({type: 'isDeleted', payload: false})
+
+    } 
+                
+
+                useEffect(()=> {
+                    getItems()
+                }, [])
 
   return  (
       
-             !items ? <h2 className="item-list">...Loading</h2> :<div className="item-list"
+             !state.getNames ? <h2 className="item-list">...Loading</h2> :<div className="item-list"
               style={{
                 margin: '2rem 0' 
               }}
@@ -43,7 +168,7 @@ const {auth, getTrans, handleSubmit, handleEdit, handleRemove, itemRef, cancel,
 
 
 <div
-   className={isEdit ? "edit" : "no-edit"}
+   className={state.isEdit ? "edit" : "no-edit"}
 >
     <form>
   <form onSubmit={(e)=> e.preventDefault()}
@@ -56,7 +181,7 @@ const {auth, getTrans, handleSubmit, handleEdit, handleRemove, itemRef, cancel,
                  <input
                 type="text"
                 id="name"
-                value={afa}
+                value={state.afa}
                 onChange={(e)=> dispatch({type: 'afa', payload: e.target.value})}
                 />
                 <h3>
@@ -142,7 +267,7 @@ const {auth, getTrans, handleSubmit, handleEdit, handleRemove, itemRef, cancel,
            <th colSpan={2}>ACTIONS</th>
            {/* <th>action</th> */}
            </tr>
-          {  items.map((item, index)=> {
+          {  state.getNames.map((item, index)=> {
         return (
          <tr className="sales-items-cont"
          key={uuid()}
@@ -216,7 +341,7 @@ const {auth, getTrans, handleSubmit, handleEdit, handleRemove, itemRef, cancel,
                  
 <div
 
-  className={state.isMatched ? 'authorization-alert' : 'authorization'}
+  className={state.isDeleted ? 'authorization-alert' : 'authorization'}
      >
          <h2
       id="verify-header"

@@ -185,7 +185,7 @@ const Transactions = ()=> {
                     color: 'green'
                 }}
                 >Grand Total: ₦{numberWithCommas(parseFloat(state.total).toFixed(2))}</h3>
-                <h3>{state.amount}</h3>
+             
         <form
         
         >
@@ -258,12 +258,12 @@ const Transactions = ()=> {
                 textAlign: 'center'
                 // width: '6rem'
             }}>{state.errMsg}</h3>
-         
+            <h3>{state.amount} items</h3>
             <div
             id="trans-item-cont"               
                     >
           
-               {!state.transArray.length ? <h4>Cart is empty.</h4> : state.transArray.map((item, index)=> {
+               {state.transArray.map((item, index)=> {
                 //  console.log(item.unitMeasure)
                 return (
                     
@@ -343,6 +343,7 @@ const Transactions = ()=> {
                 )
             })}{}
             </div>
+          
             <article 
             id="grand-two-cont"
             style={{
@@ -350,6 +351,7 @@ const Transactions = ()=> {
                 // backgroundColor: 'blue'
             }}
             >
+                  
             <h2
                 id="grand-total-two"
            style={{display: `${state.getAllTotals ? 'none' : 'block' }`,

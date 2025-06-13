@@ -51,7 +51,8 @@ const initialState = {
   elItem: {},
   singleItemArray: [],
   cartAmount: 0,
-  totalCart: 0
+  totalCart: 0,
+  isDeleted: false
 
 }
 

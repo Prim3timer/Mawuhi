@@ -16,7 +16,7 @@ export const AuthProvider = ({children}) => {
   const [search, setSearch] = useState('')
   const [search2, setSearch2] = useState('')
      const itemRef = useRef()
-   const {cancel, items, isEdit, afa, sales, user, getNames, receipt} = state
+   let {cancel, items, isEdit, afa, sales, price, unitMeasure, user, getNames, receipt} = state
 
 
 
@@ -244,10 +244,10 @@ export const AuthProvider = ({children}) => {
     return (
 
         <AuthContext.Provider value={{auth, setAuth, getTrans,
-            handleSubmit, handleEdit, handleEdit, assertain, itemRef, cancel,
-            generalRemain, remainDelete, items, isEdit, afa, getTransaction,
+            handleSubmit, handleEdit, assertain, itemRef, cancel,
+            generalRemain, remainDelete, items, isEdit, afa, price, unitMeasure, getTransaction,
             search, setSearch, setSearch2, search2, sales, getItems, user, getNames, currentUser,
-            setCurrentUser, getUsers, setCurrentUser2, currentUser2, users
+            setCurrentUser, getUsers, setCurrentUser2, currentUser2, users, 
 
         }}>
             {children}
