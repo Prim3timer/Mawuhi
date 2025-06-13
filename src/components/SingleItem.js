@@ -12,17 +12,21 @@ import {Link, resolvePath} from 'react-router-dom'
 const SingleItem = ()=> {
   const [isLoading, setIsLoading] = useState(true)
   const [state, dispatch] = useReducer(reducer, initialState)
-  state.singleItemArray = []
+
  const upArrow = "+"
   const downArrow = "-"
 const qtyRef = useRef('')
 console.log(qtyRef.current.value)
 console.log(state.transArray)
    const {auth, setAuth,users} = useAuth()
-   console.log(users)
+
 
   const getItem = async () => {
     const response = await axios.get('/items')  
+    const cartItems = await axios.get('/cart')
+      const userItems = cartItems.data.filter((item) => item.userId === auth.picker)
+    console.log(userItems)
+  dispatch({type: 'SINGLEITEMARRAY', payload: userItems})
     setIsLoading(false)
     try {
         const goods = response.data.items.find((item) => item._id === auth.picker4)
@@ -34,14 +38,12 @@ const newGoods = {...goods, qty: 1, total: goods.price}
   
   }
 
+  console.log(state.singleItemArray)
   const addToCart = async () => {
     try {
       console.log(auth.picker)
       const {elItem} = state
-      console.log(elItem)
-      console.log(users)
       const currentUser = users.find((user)=> user._id === auth.picker)
-      console.log(currentUser)
       console.log(elItem)
       const actualItem = {
         name: elItem.name,
@@ -51,21 +53,16 @@ const newGoods = {...goods, qty: 1, total: goods.price}
         price: elItem.price,
         total: elItem.total
       }
-if (actualItem){
 console.log(actualItem)
-
-if (actualItem){
+const foundItem = state.singleItemArray.find((item) => item.name === actualItem.name)
+if (!foundItem){
     const response = await axios.post(`/cart/addcart`, actualItem)
-
-    if (response){
       dispatch({type: 'ALERTMSG', payload: 'item added to cart'})
       setTimeout(()=> {
         dispatch({type: 'ALERTMSG', payload: ''})
 
       }, 3000)
-    }
-  }
-}
+} else dispatch({type: 'ALERTMSG', payload: 'item already in cart'})
     } catch (error) {
       console.log(error.message)
     }
@@ -137,7 +134,7 @@ console.log(auth)
  
  useEffect(()=> {
     getItem()
- }, [])
+ }, [state.alertMsg])
 
  function numberWithCommas(x) {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -177,7 +174,7 @@ console.log(auth)
  />
 
 
-          
+          <p className="no-qty-alert">{state.elItem.qty === '' || state.elItem.qty === 0 ? 'invalid quantity' : ''}</p>   
 
             </section>
             <h3>Total: ${numberWithCommas(parseFloat(state.elItem.total).toFixed(2))}</h3>

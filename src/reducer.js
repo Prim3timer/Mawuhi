@@ -1,3 +1,4 @@
+import { ca } from "date-fns/locale"
 import { act } from "react"
 
 const reducer = (state, action)=> {
@@ -50,8 +51,7 @@ const reducer = (state, action)=> {
         return {...state, success: action.payload}
        case 'qty': 
      return {...state, qty: action.payload}
-    //   case 'auth': 
-       //  return {...state, auth: action.payload}
+
         case 'getNames':
           return {...state, getNames: action.payload}
         
@@ -106,8 +106,6 @@ const reducer = (state, action)=> {
             }).filter((item)=> item.qty !== 0)
             return {...state, transArray: tempCart2}
 
-            case 'SHOPFIELCHANGE':
-
 
 
                 case 'FIELDCHANGE':
@@ -125,16 +123,18 @@ const reducer = (state, action)=> {
                    const item3 =  {...state.elItem, qty: action.payload, total: (state.elItem.price * action.payload)}
                    return {...state, elItem: item3}
 
+
+                   
                    case "MAINCARTFIELD":
-                    const tempCart5 = state.cartArray.map((item) => {
-                      if (item._id === action.id){
-                        return {...item, quantity: action.payload}
-                      }
-                      return item
-                    })
-                    return {...state, cartArray: tempCart5}
-
-
+                     const tempCart5 = state.cartArray.map((item) => {
+                       if (item._id === action.id){
+                         return {...item, quantity: action.payload, total: item.price * action.payload}
+                        }
+                        return item
+                      })
+                      return {...state, cartArray: tempCart5}
+                      
+                  
                     case 'REMOVECARTITEM': 
                     const currentCart = state.cartArray.filter((item)=> item._id !== action.payload)
                     return {...state, cartArray: currentCart}
@@ -156,9 +156,8 @@ const reducer = (state, action)=> {
            
               case 'getTotal': 
               const {amount, total} = state.transArray.reduce((cartTotal, cartItem)=> {
-                const {price, qty} = cartItem
-                cartTotal.total += price * qty
-                cartTotal.amount += qty
+                cartTotal.total += cartItem.price * cartItem.qty
+                cartTotal.amount += cartItem.qty
                 return cartTotal
         },
     {
@@ -166,6 +165,20 @@ const reducer = (state, action)=> {
         total: 0
     })
     return {...state, amount, total}
+
+    case 'GETCARTTOTAL': 
+    const {cartAmount, totalCart} = state.cartArray.reduce((cartTotal, cartItem) => {
+      cartTotal.cartAmount  += Number(cartItem.quantity)
+      const itemTotal = cartItem.price * cartItem.quantity
+      cartTotal.totalCart += itemTotal
+      return cartTotal
+    },
+  {
+    cartAmount: 0,
+    totalCart: 0
+  })
+    return {...state, cartAmount, totalCart}
+
 
     case 'cartItem': 
     return {...state, cartItem: action.payload}
@@ -196,6 +209,9 @@ const reducer = (state, action)=> {
               return {...state, receipt: action.payload}
               case "CARTARRAY":
                 return {...state, cartArray: action.payload}
+
+                case 'SINGLEITEMARRAY':
+                  return {...state, singleItemArray: action.payload}
  
               default:
                 throw new Error()

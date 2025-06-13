@@ -185,6 +185,7 @@ const Transactions = ()=> {
                     color: 'green'
                 }}
                 >Grand Total: ₦{numberWithCommas(parseFloat(state.total).toFixed(2))}</h3>
+                <h3>{state.amount}</h3>
         <form
         
         >

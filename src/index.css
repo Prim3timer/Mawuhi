@@ -854,6 +854,9 @@ color: whitesmoke;
   flex-grow: 1;
 }
 
+.no-qty-alert {
+  color: red
+}
 @media screen and (max-width: 365px) {
 .shopping-items{
   width: 130vw;

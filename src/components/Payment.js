@@ -32,9 +32,12 @@ const getCartItems = async () => {
         const response = await axios.get('/cart')
         console.log(response.data)
         const userItems = response.data.filter((item) => item.userId === auth.picker)
+        const newUseritems = userItems.map((item) => {
+            return {...item, amount: item.quantity}
+        })
         if (userItems.length){
-            dispatch({type: 'CARTARRAY', payload: userItems})
-            console.log(userItems)
+            dispatch({type: 'CARTARRAY', payload: newUseritems})
+            console.log(newUseritems)
         }
         
         
@@ -105,28 +108,17 @@ useEffect(() => {
 useEffect(() => {
     getCartItems()
 }, [])
-    const checkout = async ()=> {
-    try {
-         const items = [
-            {id: '6765034e77246d1f7c9ae781', quantity: 5},    
-            {id: '6765a78f77246d1f7c9ae824', quantity: 20}, 
-        ]
-        const response = await axios.post('/cart/create-checkout-session', items)
-        console.log(response)
-        if (response){
-           window.location = response.data.url
-        }else  console.log("no checkout")
-       
-        
-    } catch (error) {
-        console.error(error)
-    }
-       
-    }
+
+useEffect(()=> {
+    console.log('changed')
+    dispatch({type: 'GETCARTTOTAL'})
+}, [state.cartArray])
+
+
     return (
         <div className="checkout">
-            <h3>Payment</h3>
-            <h3>{state.cartArray.length} items</h3>
+            <h2>Your Cart</h2>
+            <h3>{state.cartAmount} items</h3>
 
 {state.cartArray && state.cartArray.map((item) =>{
     return (
@@ -142,6 +134,7 @@ useEffect(() => {
             
             />
             </label>
+         
             <h3>total: ${numberWithCommas(parseFloat(item.total).toFixed(2))}</h3>
             <p onClick={() => removeItem(item._id)}>
                 <FaTrash role="button"/>
@@ -149,11 +142,14 @@ useEffect(() => {
         </div>
     )
 })}
+<hr></hr>
+<h2>Grand Total: ${numberWithCommas(parseFloat(state.totalCart).toFixed(2))}</h2>
+<hr></hr>
 <div className="cart-action">
   <button
              onClick={doneSales}
              >Checkout</button>
-              <Link to={'/shop'}><button>Shopping</button></Link>
+              <Link to={'/shop'}><button>Shop</button></Link>
              <button onClick={clearCart}>Clear Cart</button>
              <h3>{state.alertMsg}</h3>
 </div>

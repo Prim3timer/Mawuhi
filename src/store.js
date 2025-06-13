@@ -49,6 +49,9 @@ const initialState = {
    backendUser:    {},
    selectUser: '' ,
   elItem: {},
+  singleItemArray: [],
+  cartAmount: 0,
+  totalCart: 0
 
 }
 
