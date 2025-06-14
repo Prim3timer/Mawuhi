@@ -10,7 +10,7 @@ import {format} from 'date-fns'
 import {Link, resolvePath} from 'react-router-dom'
 
 const SingleItem = ()=> {
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(false)
   const [state, dispatch] = useReducer(reducer, initialState)
 
  const upArrow = "+"
@@ -24,14 +24,20 @@ console.log(state.transArray)
   const getItem = async () => {
     const response = await axios.get('/items')  
     const cartItems = await axios.get('/cart')
-      const userItems = cartItems.data.filter((item) => item.userId === auth.picker)
-    console.log(userItems)
-  dispatch({type: 'SINGLEITEMARRAY', payload: userItems})
-    setIsLoading(false)
     try {
+      if (cartItems?.length){
+  
+        const userItems = cartItems.data.filter((item) => item.userId === auth.picker)
+      console.log(userItems)
+    dispatch({type: 'SINGLEITEMARRAY', payload: userItems})
+      setIsLoading(false)
+      }
         const goods = response.data.items.find((item) => item._id === auth.picker4)
-const newGoods = {...goods, qty: 1, total: goods.price}
-    dispatch({type: "elItem", payload: newGoods})
+        if (goods){
+          
+          const newGoods = {...goods, qty: 1, total: goods.price}
+              dispatch({type: "elItem", payload: newGoods})
+        }
     } catch (error) {
       dispatch({type: 'errMsg',  payload: error.message})
     }
@@ -69,7 +75,7 @@ if (!foundItem){
 
   }
 
-
+// Rhinohorn1#
        const now = new Date()
           const date = format(now, 'dd/MM/yyyy\tHH:mm:ss')
       const doneSales = async()=> {
@@ -141,7 +147,8 @@ console.log(auth)
     }
 
     return (
-        isLoading ? <h2>Loading...</h2> : <div>
+        isLoading ? <h2>Loading...</h2> :
+         <div>
             <article
             className="single-item"
             >
