@@ -25,14 +25,15 @@ console.log(state.transArray)
     const response = await axios.get('/items')  
     const cartItems = await axios.get('/cart')
     try {
+      const userItems = cartItems.data.filter((item) => item.userId === auth.picker)
+    console.log('user items are: ', userItems)
+  dispatch({type: 'SINGLEITEMARRAY', payload: userItems})
+    setIsLoading(false)
       if (cartItems?.length){
   
-        const userItems = cartItems.data.filter((item) => item.userId === auth.picker)
-      console.log(userItems)
-    dispatch({type: 'SINGLEITEMARRAY', payload: userItems})
-      setIsLoading(false)
       }
         const goods = response.data.items.find((item) => item._id === auth.picker4)
+        console.log(auth.picker4)
         if (goods){
           
           const newGoods = {...goods, qty: 1, total: goods.price}
@@ -61,14 +62,17 @@ console.log(state.transArray)
       }
 console.log(actualItem)
 const foundItem = state.singleItemArray.find((item) => item.name === actualItem.name)
-if (!foundItem){
+if (foundItem){
+  dispatch({type: 'ALERTMSG', payload: 'item already in cart'})
+} else {
     const response = await axios.post(`/cart/addcart`, actualItem)
       dispatch({type: 'ALERTMSG', payload: 'item added to cart'})
       setTimeout(()=> {
         dispatch({type: 'ALERTMSG', payload: ''})
 
       }, 3000)
-} else dispatch({type: 'ALERTMSG', payload: 'item already in cart'})
+
+}
     } catch (error) {
       console.log(error.message)
     }
