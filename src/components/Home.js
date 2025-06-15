@@ -21,7 +21,8 @@ const Home = ()=> {
             // axios to /logout endpoint 
             navigate('/login');
         }
-        console.log(auth.picker3)
+        console.log('picker is: ', auth.picker)
+        console.log('picker3 is:', auth.picker3)
   
          useEffect(()=> {
             // picker is the current user
@@ -69,7 +70,7 @@ const Home = ()=> {
         <Link 
         // onClick={showDem}
         
-        to="/all-sales">sales</Link>
+        to="/sales">sales</Link>
         {/* <Link         
         to="/editor">bars</Link>
         <br/> */}

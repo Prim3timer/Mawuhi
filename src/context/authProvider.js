@@ -16,7 +16,7 @@ export const AuthProvider = ({children}) => {
   const [search, setSearch] = useState('')
   const [search2, setSearch2] = useState('')
      const itemRef = useRef()
-   let {cancel, items, isEdit, afa, sales, price, unitMeasure, user, getNames, receipt} = state
+   let {cancel, items, isEdit, afa, sales, price, unitMeasure, user, getNames, receipt, transactions} = state
 
 
 
@@ -86,7 +86,7 @@ export const AuthProvider = ({children}) => {
                     return innerArray
                 })
             })     
-            const filterate = state.qtyArray && innerArray.filter((inner)=> inner.name.toLowerCase().includes(search.toLowerCase()))
+            const filterate = innerArray.filter((inner)=> inner.name.toLowerCase().includes(search.toLowerCase()))
             const filterate2 = filterate && filterate.filter((inner)=> inner.date.substring(0, 10).includes(search2))
             setGenTrans(filterate)
         
@@ -247,7 +247,7 @@ export const AuthProvider = ({children}) => {
             handleSubmit, handleEdit, assertain, itemRef, cancel,
             generalRemain, remainDelete, items, isEdit, afa, price, unitMeasure, getTransaction,
             search, setSearch, setSearch2, search2, sales, getItems, user, getNames, currentUser,
-            setCurrentUser, getUsers, setCurrentUser2, currentUser2, users, 
+            setCurrentUser, getUsers, setCurrentUser2, currentUser2, users, transactions
 
         }}>
             {children}

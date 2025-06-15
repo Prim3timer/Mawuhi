@@ -1,35 +1,81 @@
-import reducer from "../reducer"
-import initialState from "../store"
-// import SearchItem from "./SearchItem";
-import {useEffect, useReducer, useState } from "react";
-import axios  from "../app/api/axios";
-import useAuth from '../hooks/useAuth';
+import {useState, useEffect, useReducer} from 'react'
+import initialState from '../store'
+import reducer from '../reducer'
+import axios from '../app/api/axios'
+import useAuth from '../hooks/useAuth'
 const {v4: uuid} = require('uuid')
-
-
 const Sales = ()=> {
-const {transactions, currentUser, getTrans, search, setSearch,
-    search2, setSearch2, sales, currentUser2
-} = useAuth()
-    const [state, dispatch] = useReducer(reducer, initialState)  
+const [state, dispatch] = useReducer(reducer, initialState)
+const [search, setSearch] = useState('')
+const [specArray, setSpecArray] = useState([])
+     const [currentUser, setCurrenUser] = useState('')
+      const [search2, setSearch2] = useState('')
+    const {auth} = useAuth()
+    const getTrans = async () => {
+        const innerArray =[]
+        console.log(auth.picker3)
+        try {
+            const response = await axios.get('/transactions')
+            const response2 = await axios.get('/users')
+            console.log(response2)
+            const newArray = response.data.filter((item)=> item.cashierID === auth.picker3)
+            console.log(newArray)
+            if (response2){
 
+                const person =  response2.data.find((person) => person._id == auth.picker3)
+                setCurrenUser(person)
+                console.log(person)
+            }
+            if (newArray){
+                 console.log(currentUser)
+                     newArray.map((gr)=> {
+                            return gr.goods.map((good)=> {
+                                const elements =  {
+                                    name: good.name,
+                                    qty: good.qty,
+                                    unitMeasure: good.unitMeasure,
+                                    total: good.total,
+                                    date: gr.date
+                    
+                                }
+                                innerArray.push(elements)
+                                // setTransactions(innerArray)
+                                return innerArray
+                            })
+                        })     
+                        const filterate = innerArray && innerArray.filter((inner)=> inner.name.toLowerCase().includes(search.toLowerCase()))
+                        console.log(filterate)
+                        const filterate2 = filterate.filter((inner)=> inner.date.substring(0, 10).includes(search2))
+                        // setLast(filterate)
+    
+                        console.log(innerArray)
+                        dispatch({type: 'sales', 
+                         payload: filterate2})
+                         setSpecArray(filterate)
+                    }
+                          
 
-    function numberWithCommas(x) {
+                
+        } catch (error) {
+            dispatch({type: 'errMsg', payload: error.message})
+        }
+        console.log(auth.picker)
+        console.log(auth.picker3)
+          console.log(state.sales)
+    }
+
+            function numberWithCommas(x) {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
- console.log(currentUser)
 
+    useEffect(()=> {
+        getTrans()
+           console.log(currentUser)
+    }, [search, search2])
     return (
-        !sales ? <h2 className="sale">Loading...</h2> : <div className="sale"
-        >
-              <h2
-          style={{
-            margin: '1rem 0', 
-            color: 'darkslateblue'  
-        }}
-        >{currentUser2 ? `${currentUser2.username}'s Sales` : 'All Sales'} ({sales.length} rows)</h2>
-            <article id="form-cont">
-            <form  className="search-form"   onSubmit={(e)=> e.preventDefault()}>
+        <di>
+            <h3 className='heading'>{currentUser && currentUser.username}'s Sales ({specArray.length}) rows</h3>
+                   <form  className="search-form"   onSubmit={(e)=> e.preventDefault()}>
         <input 
         id="invent-search"
         type="text"
@@ -54,26 +100,16 @@ const {transactions, currentUser, getTrans, search, setSearch,
         
         />
           </form>
-          {/* <SearchItem/> */}
-        </article>
-      
-
-        <table
-         className="inventory"
-        style={{
-            // fontSize: '1.5rem'
-        }}
-        >
-        <tbody>
-        <tr
-        style={{backgroundColor: 'khaki'}}
-        >
-            <th>NAME</th>
+            <table>
+                <tbody>
+                    <tr className='theader-row'>
+                          <th>NAME</th>
             <th>QTY</th>
             <th>TOTAL</th>
             <th>DATE</th>
-            </tr>
-  {sales.map((sale, index)=> {
+     
+                    </tr>
+                     {specArray && specArray.map((sale, index)=> {
     return (
         <tr className="sales-items-cont"
         key={uuid()}
@@ -87,38 +123,27 @@ const {transactions, currentUser, getTrans, search, setSearch,
         </tr>
     )
 })}
-<tr className="sales-items-cont"
-   
->
- </tr>
- <tr
- 
- >
+                </tbody>
+            </table>
 
- </tr>
-          </tbody>
-    </table>
-    {/* <th> */}
-    <div
-    id="sales-total"
+                <div
+  className="sales-total"
     >
         <h3>Total:</h3>
     <h3>
- {transactions && transactions.reduce((a, b)=> {
+ {state.sales && numberWithCommas(state.sales.reduce((a, b)=> {
     return  a + parseFloat( b.qty)
-}, 0).toFixed(2)}
+}, 0).toFixed(2))}
 </h3>
     <h3>
 
-{transactions && numberWithCommas(transactions.reduce((a, b)=> {
+{state.sales && numberWithCommas(state.sales.reduce((a, b)=> {
     return  a + parseFloat( b.total)
 }, 0).toFixed(2))}
     </h3>
     </div>
-   
-        </div>
+        </di>
     )
 }
-
 
 export default Sales

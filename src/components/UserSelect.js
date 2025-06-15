@@ -16,6 +16,7 @@ const UserSelect = () => {
     console.log('picker3 is : ', auth.picker3)
     console.log('picker is: ', auth.picker)
     // const {indSales} = initialState 
+    console.log('current user 2: ', currentUser2)
  
     const [allTransactons, setAllTransactions] = useState(false)
     const [picker, setPicker] = useState('')
@@ -66,12 +67,12 @@ console.log('hiiii')
             }}
             >
                <Link
-               to={'/all-sales'}
+               to={'/sales'}
                > <button
                onClick={showMe}
                 >Sales</button></Link>
                <Link
-               to='/sales'
+               to='/all-sales'
                > <button
             //    onClick={showMe}
                 >All Sales</button></Link>

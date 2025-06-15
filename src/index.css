@@ -493,8 +493,22 @@ form {
         color: darkslateblue;
         margin: 2rem 0 0 0;
   }
+  .search-form {
+    display:flex;
+   row-gap: 1rem;
+   margin: 0 0 2rem 0;
+  }
 
-#sales-total {
+  .theader-row {
+    background-color: deepskyblue;
+  }
+
+  .heading {
+    text-align: center;
+    margin: 2rem 0;
+  }
+
+.sales-total {
   width: 80vw;
   display: flex;
     justify-content: flex-start;
@@ -505,6 +519,7 @@ form {
     /* border-right: 1px solid brown;
     border-left: 1px solid brown; */
 }
+
 
 .cash-amount1 {
     /* margin: 0 0 1rem 0; */

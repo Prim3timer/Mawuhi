@@ -15,7 +15,7 @@ const [state, dispatch] = useReducer(reducer, initialState)
 const [showOne, setShowOne] = useState(false)
 const [oneId, setOneId] = useState('')
 const [allTransi, setAllTransi] = useState([])
-// const { setAuth, auth } = useContext(AuthContext);
+
     const getItems = async ()=> {
         console.log('picker3 is : ', auth.picker3)
         console.log('picker is: ', auth.picker)
