@@ -74,7 +74,7 @@ const [specArray, setSpecArray] = useState([])
     }, [search, search2])
     return (
         <di>
-            <h3 className='heading'>{currentUser && currentUser.username}'s Sales ({specArray.length}) rows</h3>
+            <h2 className='heading'>{currentUser && currentUser.username}'s Sales ({specArray.length}) rows</h2>
                    <form  className="search-form"   onSubmit={(e)=> e.preventDefault()}>
         <input 
         id="invent-search"

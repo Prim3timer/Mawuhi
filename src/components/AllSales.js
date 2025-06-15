@@ -58,7 +58,7 @@ useEffect(()=> {
 }, [search, search2])
     return (
         <di>
-            <h3 className="heading">All Sales ({state.sales.length} rows)</h3>
+            <h2 className="heading">All Sales ({state.sales.length} rows)</h2>
                <form  className="search-form"   onSubmit={(e)=> e.preventDefault()}>
         <input 
         id="invent-search"
