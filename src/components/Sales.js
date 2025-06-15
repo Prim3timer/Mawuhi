@@ -51,7 +51,7 @@ const [specArray, setSpecArray] = useState([])
                         console.log(innerArray)
                         dispatch({type: 'sales', 
                          payload: filterate2})
-                         setSpecArray(filterate)
+                         setSpecArray(filterate2)
                     }
                           
 

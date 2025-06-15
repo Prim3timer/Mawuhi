@@ -26,6 +26,7 @@ const {auth, getTrans, itemRef,
     const [state, dispatch] = useReducer(reducer, initialState)
     const [taskComplete, setTaskComplete] = useState(false)
 
+
      const measurements = ['Kilogram (kg)', 'Piece (pc)', 'Plate (Plt)', 'Dozen (dzn)', 'Bottle (Btl)', 'Pound (lbs)', 'Litre (L)', 'Sachet (sct)', 'Ounce (Oz)', 'Gram (g)', 'Amortization (Am)', 'Night (Ngt)', 'Trip (Tr)'
        ]
    
@@ -35,21 +36,21 @@ const {auth, getTrans, itemRef,
                    // dispatch({type: 'errMsg', payload: 'loading...'})
                    const response = await axios.get('/items')
                    dispatch({type: 'errMsg', payload: ''})
-                 
-                   dispatch({type: 'getNames', payload: response.data.items})   
-                   console.log(response.data.items ) 
-                   if (state.getNames){
+                 const filterate = response.data.items.filter((item)=> item.name.toLowerCase().includes(state.search.toLowerCase()))
+                 console.log(response.data.items ) 
+                 console.log(filterate)
+                 if (filterate){
+                       dispatch({type: 'getNames', payload: filterate})   
+        
                        
                        // dispatch({type: 'user', payload: state.getNames[0].name})
-                       console.log(state.user)
+                      console.log(state.getNames)
                        console.log(response.data)
-                       console.log(state.getNames)
                        
-                   } 
-               } catch (error) {
-                   console.log(error)
-               }
-               console.log(state.getNames && state.getNames)
+                    } 
+                } catch (error) {
+                    console.log(error)
+                }
            }
        
 
@@ -152,7 +153,7 @@ const {auth, getTrans, itemRef,
 
                 useEffect(()=> {
                     getItems()
-                }, [])
+                }, [state.search])
 
   return  (
       
@@ -233,7 +234,7 @@ const {auth, getTrans, itemRef,
             color: 'darkslateblue', 
           
            }}
-           >Items</h2>   
+           >Items ({state.getNames.length})</h2>   
        <input 
        id="invent-search"
        type="text"
