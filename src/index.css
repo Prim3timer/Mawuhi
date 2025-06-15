@@ -927,7 +927,7 @@ justify-content: center;
   } */
 
   .sales {
-    margin: 0 0 0 6rem; 
+    /* margin: 0 0 0 0rem;  */
     min-width: 130vw;
   }
 

@@ -85,7 +85,7 @@ useEffect(()=> {
         />
           </form>
 
-            <table>
+            <table className="sales">
                 <tbody>
                           <tr
         className="theader-row"

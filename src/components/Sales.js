@@ -100,7 +100,7 @@ const [specArray, setSpecArray] = useState([])
         
         />
           </form>
-            <table>
+            <table className='sales'>
                 <tbody>
                     <tr className='theader-row'>
                           <th>NAME</th>
