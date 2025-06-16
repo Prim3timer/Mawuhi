@@ -31,7 +31,7 @@ import reducer from "./reducer"
 import initialState from "./store"
 import { FaPaypal } from "react-icons/fa"
 import UserSettings from "./components/UserSettings"
-import Payment from "./components/Payment"
+import Cart from "./components/Cart"
 import Shop from "./components/Shop"
 import SingleItem from "./components/SingleItem"
 import Thanks from "./Thanks"
@@ -90,7 +90,7 @@ return (
        <Route element={<RequireAuth allowedRoles={[2001]}/>}>
          <Route path="/" element={<Home/> } />
       <Route path="one-receipt" element={<OneReceipt/>}/>
-      <Route path="payment" element={<Payment/>}/>
+      <Route path="cart" element={<Cart/>}/>
          </Route>
         
         

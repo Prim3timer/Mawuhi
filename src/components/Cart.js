@@ -122,13 +122,13 @@ useEffect(()=> {
 
 {state.cartArray && state.cartArray.map((item) =>{
     // this line is for dynamic image sourcing
-    const jerom =state.items && state.items.find((things) => item.name == things.name)
+    const jerom = state.items && state.items.find((things) => item.name == things.name)
     return (
         <div className="cart-main-container">
             <article className="cart-items-container">
-            <img className="cart-item-image" src={  `${jerom ?  jerom.img : ''}` } alt={item.name}/>
+            <img className="cart-item-image" src={ `${jerom ?  jerom.img : ''}` } alt={item.name}/>
            <section>
-            <h2>{item.name}</h2>
+            <p>{item.name}</p>
             <h3>price: ${item.price}</h3>
             <label>
                 Qty:
@@ -150,7 +150,7 @@ useEffect(()=> {
         </div>
     )
 })}
-<hr></hr>
+{/* <hr></hr> */}
 <h2>Grand Total: ${numberWithCommas(parseFloat(state.totalCart).toFixed(2))}</h2>
 <hr></hr>
 <div className="cart-action">

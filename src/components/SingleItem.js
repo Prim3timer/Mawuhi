@@ -197,7 +197,7 @@ console.log(auth)
             >
             <button onClick={doneSales}>Buy Now</button>
               <button onClick={addToCart}>Add to Cart</button>
-              <Link to={'/payment'}><button>Go To Cart</button></Link>
+              <Link to={'/cart'}><button>Go To Cart</button></Link>
             </section>
             <h3>{state.alertMsg}</h3>
             </article>
