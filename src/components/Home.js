@@ -4,7 +4,7 @@ import useAuth from "../hooks/useAuth";
 import AuthContext from "../context/authProvider";
 import reducer from "../reducer";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCheck } from "@fortawesome/free-solid-svg-icons"
+import { faCheck, faLeftLong } from "@fortawesome/free-solid-svg-icons"
 // import { init } from "create-react-app/createReactApp";
 import initialState from "../store";
 import { type } from "@testing-library/user-event/dist/type";
@@ -78,14 +78,14 @@ const Home = ()=> {
         to="/shopping">reciepts</Link>
         <Link
         to="/shop">shop</Link>
-        <Link to="/payment">
+        <Link to="/cart">
         cart
         </Link>
         {/* <br /> */}
         {/* <Link to="/linkpage">link page</Link> */}
         <br />
         {/* <Link to="/shopping">Shopping</Link> */}
-        {/* Your <FontAwesomeIcon icon={faCheck} /> is hot and ready! */}
+        {/* Your <FontAwesomeIcon icon={faLeftLong} /> is hot and ready! */}
     </section>
         
         <div className="flexGrow"
