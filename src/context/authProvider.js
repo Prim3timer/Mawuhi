@@ -2,6 +2,8 @@ import { createContext, useState, useReducer, useEffect, useRef } from "react";
 import reducer from "../reducer"
 import initialState from "../store"
 import axios from "../app/api/axios"
+import credit from '../images/credit.jpg'
+import food from '../images/meal.jpg'
 // import Transactions from "../components/Transactions";
 
 const AuthContext = createContext({})
@@ -9,6 +11,8 @@ export const AuthProvider = ({children}) => {
     const [state, dispatch] = useReducer(reducer, initialState)
     const [users, setUsers] = useState([])
     const [auth, setAuth] = useState({})
+
+    const imagesArray = ['', credit, food, '']
 
  const [currentUser, setCurrentUser] = useState({})
   const [currentUser2, setCurrentUser2] = useState({})

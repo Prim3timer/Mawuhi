@@ -856,8 +856,10 @@ color: whitesmoke;
 }
 
 .img {
-  width: 200px;
-  margin: 0 1rem
+  width: 100px;
+  height: 100px;
+  margin: 0 1rem;
+  /* object-fit: cover; */
 }
 
 .checkout {
@@ -927,7 +929,7 @@ justify-content: center;
   } */
 
   .sales {
-    /* margin: 0 0 0 0rem;  */
+    margin: 0 0 0 0rem; 
     min-width: 130vw;
   }
 

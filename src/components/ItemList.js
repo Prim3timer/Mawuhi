@@ -63,6 +63,7 @@ const {auth, getTrans, itemRef,
                            price: price && price,
                            unitMeasure: unitMeasure && unitMeasure,
                            piecesUnit: piecesUnit,
+                           img: state.img ? state.img : response.data.img
                            
                        }
                        const response = await axios.patch(`/items/${id}`, newItem)  
@@ -90,6 +91,7 @@ const {auth, getTrans, itemRef,
                }
 
                const handleEdit = async (id, e )=> {
+                // console.log
                     e.preventDefault()    
                     if (!auth.roles.includes(1984)){
                         dispatch({type: 'isMatched', payload: true})
