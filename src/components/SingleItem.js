@@ -10,7 +10,7 @@ import {format} from 'date-fns'
 import {Link, resolvePath} from 'react-router-dom'
 
 const SingleItem = ()=> {
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
   const [state, dispatch] = useReducer(reducer, initialState)
 
  const upArrow = "+"
@@ -151,7 +151,7 @@ console.log(auth)
     }
 
     return (
-        isLoading ? <h2>Loading...</h2> :
+        isLoading ? <h2  className="single-item">Loading...</h2> :
          <div>
             <article
             className="single-item"
@@ -165,6 +165,7 @@ console.log(auth)
                 {/* <img src={"https://images.app.goo.gl/ZcZWCKKhGh9Y8sR26"} alt="food"/> */}
                   
                 </section>
+                <div className="single-item-texts">
                 <h3>Price: ${parseFloat(state.elItem.price).toFixed(2)} </h3>
               
                   <section
@@ -190,6 +191,7 @@ console.log(auth)
 
             </section>
             <h3>Total: ${numberWithCommas(parseFloat(state.elItem.total).toFixed(2))}</h3>
+            </div>
              <section
             className="cart-action"
             >

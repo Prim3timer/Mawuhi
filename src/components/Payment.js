@@ -121,10 +121,12 @@ useEffect(()=> {
             <h3>{state.cartAmount} items, {state.cartArray.length} products</h3>
 
 {state.cartArray && state.cartArray.map((item) =>{
+    // this line is for dynamic image sourcing
+    const jerom =state.items && state.items.find((things) => item.name == things.name)
     return (
         <div className="cart-main-container">
             <article className="cart-items-container">
-            <img className="cart-item-image" src={`${state.items && state.items.find((things) => item.name == things.name).img}`} alt={item.name}/>
+            <img className="cart-item-image" src={  `${jerom ?  jerom.img : ''}` } alt={item.name}/>
            <section>
             <h2>{item.name}</h2>
             <h3>price: ${item.price}</h3>

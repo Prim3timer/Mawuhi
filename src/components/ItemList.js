@@ -124,7 +124,7 @@ const {auth, getTrans, itemRef,
 
                                         const assertain = (id) => {
         if (!auth.roles.includes(5150)){
-            dispatch({type: 'isDelted', payload: true})
+            dispatch({type: 'ISDELETED', payload: true})
         }
         else {
             dispatch({type: 'cancel', payload: true})
@@ -149,7 +149,8 @@ const {auth, getTrans, itemRef,
     }
 
            const generalRemain = () => {
-       if (state.isMatched) dispatch({type: 'isDeleted', payload: false})
+       dispatch({type: 'ISDELETED', payload: false})
+       dispatch({type: 'isMatched', payload: false})
 
     } 
                 
@@ -354,14 +355,10 @@ const {auth, getTrans, itemRef,
                  
 <div
 
-  className={state.isDeleted ? 'authorization-alert' : 'authorization'}
+  className={state.isDeleted || state.isMatched ? 'authorization-alert' : 'authorization'}
      >
          <h2
       id="verify-header"
-      style={{
-          margin: '.5rem auto',
-        //   display: 'flex',
-      }}
       >Unauthorized!</h2>
       <button onClick={generalRemain} >ok</button>
             </div> 

@@ -25,7 +25,7 @@ const Inventory = ({mark, setMark})=> {
           try {
             
               const graw = await axios.get('/items')
-            //   dispatch({type: 'items', payload: graw})
+
               console.log(graw.data)
               const filterate = graw.data.items.filter((inner)=> inner.name.toLowerCase().includes(state.search.toLowerCase()))
               dispatch({type: 'items', 
