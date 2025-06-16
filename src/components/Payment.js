@@ -118,7 +118,7 @@ useEffect(()=> {
     return (
         <div className="checkout">
             <h2>Your Cart</h2>
-            <h3>{state.cartAmount} items</h3>
+            <h3>{state.cartAmount} items, {state.cartArray.length} products</h3>
 
 {state.cartArray && state.cartArray.map((item) =>{
     return (
