@@ -16,13 +16,14 @@ let CreateItem = () => {
  
     const handleSubmit = async (e)=> {
         
-        const {name, price, unitMeasure} = state
+        const {name, price, unitMeasure, image} = state
         e.preventDefault()
         try {
             const newItem = {
                 name: `${name}`,
                 price: price,
                 unitMeasure: unitMeasure,
+                image: image
             }
             
 
@@ -111,6 +112,13 @@ let CreateItem = () => {
                 required
                 value={state.price}
                 onChange={(e)=> dispatch({type: 'price', payload: e.target.value})}
+                />
+                <h2>Image:</h2>
+                <input
+                type="text"
+                required
+                value={state.price}
+                onChange={(e)=> dispatch({type: 'IMAGE', payload: e.target.value})}
                 />
               
                <button type="submit" className="pop">Add Item</button>

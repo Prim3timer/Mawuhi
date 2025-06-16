@@ -122,7 +122,10 @@ useEffect(()=> {
 
 {state.cartArray && state.cartArray.map((item) =>{
     return (
-        <div>
+        <div className="cart-main-container">
+            <article className="cart-items-container">
+            <img className="cart-item-image" src={`${state.items && state.items.find((things) => item.name == things.name).img}`} alt={item.name}/>
+           <section>
             <h3>{item.name}</h3>
             <h3>price: ${item.price}</h3>
             <label>
@@ -139,6 +142,8 @@ useEffect(()=> {
             <p onClick={() => removeItem(item._id)}>
                 <FaTrash role="button"/>
             </p>
+            </section>
+            </article>
         </div>
     )
 })}

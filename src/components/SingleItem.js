@@ -58,7 +58,7 @@ console.log(state.transArray)
         userId: auth.picker,
         quantity: elItem.qty,
         price: elItem.price,
-        total: elItem.total
+        total: elItem.total 
       }
 console.log(actualItem)
 const foundItem = state.singleItemArray.find((item) => item.name === actualItem.name)
@@ -159,11 +159,12 @@ console.log(auth)
               <article className="inner-single-item">
           
                 {/* <h2>Single Item</h2> */}
-                <div>
+                <section className="single-image-container">
+                  <img  className='single-item-image' src={state.elItem.img}/>
                 <h3>{state.elItem.name}</h3>
                 {/* <img src={"https://images.app.goo.gl/ZcZWCKKhGh9Y8sR26"} alt="food"/> */}
-
-                </div>
+                  
+                </section>
                 <h3>Price: ${parseFloat(state.elItem.price).toFixed(2)} </h3>
               
                   <section

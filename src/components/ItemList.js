@@ -56,14 +56,14 @@ const {auth, getTrans, itemRef,
 
             const handleSubmit = async (e)=> {
                e.preventDefault()
-               const {id, name, price, unitMeasure, piecesUnit} = state
+               const {id, name, price, unitMeasure, piecesUnit, image} = state
                    try {
                        const newItem = {
                            name:  state.afa ? state.afa :  response.data.name,
                            price: price && price,
                            unitMeasure: unitMeasure && unitMeasure,
                            piecesUnit: piecesUnit,
-                           img: state.img ? state.img : response.data.img
+                           img: state.image ? state.image: response.data.img
                            
                        }
                        const response = await axios.patch(`/items/${id}`, newItem)  
@@ -106,6 +106,7 @@ const {auth, getTrans, itemRef,
                         dispatch({type: 'afa', payload: currentItem.name})
                         dispatch({type: 'price', payload: currentItem.price})
                         dispatch({type: 'unitMeasure', payload: currentItem.unitMeasure})
+                        dispatch({type: 'IMAGE', payload: currentItem.img})
                         console.log(itemRef.current.value)
                     }
                     
@@ -188,7 +189,7 @@ const {auth, getTrans, itemRef,
                 onChange={(e)=> dispatch({type: 'afa', payload: e.target.value})}
                 />
                 <h3>
-                <label htmlFor="qty">price:</label>
+                <label htmlFor="price">price:</label>
                 </h3>
                 <input
                 type="text" 
@@ -220,6 +221,15 @@ const {auth, getTrans, itemRef,
                         </option>)
                     })}
             </datalist>
+             <h3>
+                <label htmlFor="image">image:</label>
+                </h3>
+                <input
+                type="text" 
+                id="image"
+                value={state.image}
+                onChange={(e)=> dispatch({type: 'IMAGE', payload: e.target.value})}
+                />
                 <button 
                 id="update-button"
                 onClick={handleSubmit}

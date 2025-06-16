@@ -54,6 +54,8 @@ const reducer = (state, action)=> {
 
         case 'getNames':
           return {...state, getNames: action.payload}
+        case 'IMAGE':
+          return {...state, image: action.payload}
         
         case 'marker':
           return {...state, marker: action.payload}
