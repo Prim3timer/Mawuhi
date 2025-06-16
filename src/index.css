@@ -896,10 +896,12 @@ color: whitesmoke;
   /* background-color: yellow; */
 }
 .cart-item-image {
-  width: 150px;
+  margin-left: 1rem;
+  width: 200px;
 }
 
 .cart-items-container {
+
   display: flex;
    column-gap: .5rem;
 align-content: center;
@@ -907,6 +909,7 @@ align-content: center;
 .cart-items-container section {
   width: 200px;
   display: grid;
+  row-gap: .5rem;
   flex-direction: column;
 }
 .single-image-container {

@@ -126,7 +126,7 @@ useEffect(()=> {
             <article className="cart-items-container">
             <img className="cart-item-image" src={`${state.items && state.items.find((things) => item.name == things.name).img}`} alt={item.name}/>
            <section>
-            <h3>{item.name}</h3>
+            <h2>{item.name}</h2>
             <h3>price: ${item.price}</h3>
             <label>
                 Qty:
