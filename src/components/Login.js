@@ -112,7 +112,6 @@ const Login = () => {
                     value={pwd}
                     // required    
                 />
-                Rhinohorn1#
                 <button
                 style={{margin: '1rem 0'}}
                 >Sign In</button>
