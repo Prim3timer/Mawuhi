@@ -161,7 +161,7 @@ console.log(auth)
                 {/* <h2>Single Item</h2> */}
                 <section className="single-image-container">
                   <img  className='single-item-image' src={state.elItem.img}/>
-                <h3>{state.elItem.name}</h3>
+                <p>{state.elItem.name}</p>
                 {/* <img src={"https://images.app.goo.gl/ZcZWCKKhGh9Y8sR26"} alt="food"/> */}
                   
                 </section>
@@ -190,7 +190,7 @@ console.log(auth)
           <p className="no-qty-alert">{state.elItem.qty === '' || state.elItem.qty === 0 ? 'invalid quantity' : ''}</p>   
 
             </section>
-            <h3>Total: ${numberWithCommas(parseFloat(state.elItem.total).toFixed(2))}</h3>
+            <h5>Total: ${numberWithCommas(parseFloat(state.elItem.total).toFixed(2))}</h5>
             </div>
              <section
             className="cart-action"

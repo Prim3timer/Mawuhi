@@ -47,6 +47,7 @@ let CreateItem = () => {
             dispatch({type: 'price', payload: '' })
             dispatch({type: 'unitMeasure', payload: '' })
             dispatch({type: 'piecesUnit', payload: '' })
+            dispatch({type: 'IMAGE', payload: '' })
         }  
         } catch (error) {
             dispatch({type: 'errMsg', payload: `${error.message}`})
@@ -117,7 +118,7 @@ let CreateItem = () => {
                 <input
                 type="text"
                 required
-                value={state.price}
+                value={state.image}
                 onChange={(e)=> dispatch({type: 'IMAGE', payload: e.target.value})}
                 />
               

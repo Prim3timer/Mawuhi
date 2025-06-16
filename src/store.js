@@ -53,7 +53,8 @@ const initialState = {
   cartAmount: 0,
   totalCart: 0,
   isDeleted: false,
-  image: ''
+  image: '',
+  isEdited: false
 
 }
 

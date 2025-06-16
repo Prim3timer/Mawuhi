@@ -71,7 +71,7 @@ const {auth, getTrans, itemRef,
                            const graw = await axios.get('/items')
                            dispatch({type: 'getNames', payload: graw.data.items})
                
-                           dispatch({type: 'isMatched', payload: `${newItem.name} Edited` })
+                           dispatch({type: 'ALERTMSG', payload: `${newItem.name} Edited` })
                            setTimeout(()=> {
                                dispatch({type: 'isMatched', payload: '' })
                                dispatch({type: 'isEdit', payload: false})    
@@ -150,7 +150,6 @@ const {auth, getTrans, itemRef,
 
            const generalRemain = () => {
        dispatch({type: 'ISDELETED', payload: false})
-       dispatch({type: 'isMatched', payload: false})
 
     } 
                 
@@ -235,7 +234,7 @@ const {auth, getTrans, itemRef,
                 id="update-button"
                 onClick={handleSubmit}
                 type="submit">Update</button>
-                <h3>{state.isMatched}</h3>
+                <h3>{state.alertMsg}</h3>
             </form>
     </form>
         
@@ -355,7 +354,7 @@ const {auth, getTrans, itemRef,
                  
 <div
 
-  className={state.isDeleted || state.isMatched ? 'authorization-alert' : 'authorization'}
+  className={state.isMatched ? 'authorization-alert' : 'authorization'}
      >
          <h2
       id="verify-header"
