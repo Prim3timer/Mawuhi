@@ -54,7 +54,9 @@ console.log(auth)
             <h4> price: ${item.price}</h4>
             {/* <h4>{items.find((name)=> `${name.name}` === inputRef.current.value)}</h4> */}
           </div>
+          
           </article>
+          <hr style={{width: '90vw', border:  '.2px solid black'}}></hr>
           </Link>
         )
       })}

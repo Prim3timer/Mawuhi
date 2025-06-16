@@ -142,6 +142,7 @@ useEffect(()=> {
             <p onClick={() => removeItem(item._id)}>
                 <FaTrash role="button"/>
             </p>
+<hr></hr>
             </section>
             </article>
         </div>
