@@ -166,7 +166,7 @@ console.log(auth)
                   
                 </section>
                 <div className="single-item-texts">
-                <h4>Price: ${parseFloat(state.elItem.price).toFixed(2)} </h4>
+                {/* <h4>Price: ${parseFloat(state.elItem.price).toFixed(2)} </h4> */}
               
                   <section
           className="qty-cont"

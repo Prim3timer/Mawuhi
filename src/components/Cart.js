@@ -10,7 +10,7 @@ import { Link } from "react-router-dom"
 const Payment = () => {
     const [state, dispatch] = useReducer(reducer, initialState)
     
-const {auth} = useAuth()
+const {auth, setAuth} = useAuth()
 
     
 
@@ -51,12 +51,14 @@ const getCartItems = async () => {
 
 const doneSales = async()=> {
     console.log(state.cartArray)
-try {
-       const response = await axios.post('/cart/create-checkout-session', state.cartArray)
-       console.log(response.data)
-          if (response){
-             window.location = response.data.url
-          
+    auth.cartArray = state.cartArray
+    console.log(auth.cartArray)
+    try {
+        const response = await axios.post('/cart/create-checkout-session', state.cartArray)
+        console.log(response.data)
+        if (response){
+            window.location = response.data.url
+            
 
           }   else throw Error('no item purchased')
          
@@ -107,29 +109,31 @@ useEffect(() => {
 }, [])
 useEffect(() => {
     getCartItems()
+    auth.cartArray = state.cartArray
 }, [])
 
 useEffect(()=> {
     console.log('changed')
     dispatch({type: 'GETCARTTOTAL'})
 }, [state.cartArray])
-
+const plural = state.cartArray.length === 1 ? '' : 's'
+const plural2 = state.cartAmount.length === 1 ? '' : 's'
 
     return (
         <div className="checkout">
             <h2>Your Cart</h2>
-            <h3>{state.cartAmount} items, {state.cartArray.length} products</h3>
+            <h3>{state.cartAmount} item{plural2}, {state.cartArray.length} product{plural}</h3>
 
 {state.cartArray && state.cartArray.map((item) =>{
     // this line is for dynamic image sourcing
-    const jerom = state.items && state.items.find((things) => item.name == things.name)
+    const jerom = state.items && state.items.find((things) => things.name == item.name)
     return (
         <div className="cart-main-container">
             <article className="cart-items-container">
             <img className="cart-item-image" src={ `${jerom ?  jerom.img : ''}` } alt={item.name}/>
            <section>
             <p>{item.name}</p>
-            <h3>price: ${item.price}</h3>
+            {/* <h3>price: ${item.price}</h3> */}
             <label>
                 Qty:
             <input

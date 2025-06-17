@@ -312,7 +312,7 @@ input {
 }
 
 label {
-  font-weight: bold;
+  /* font-weight: bold; */
 }
 
 
@@ -660,7 +660,8 @@ border-radius: 5px;
 .single-item-image {
    width: 150px;
   height: 150px;
-  border: 2px solid brown;
+  /* border: 2px solid brown; */
+  object-fit: cover;
 
 }
 
@@ -927,6 +928,7 @@ color: whitesmoke;
 .cart-item-image {
   margin-left: 1rem;
   width: 150px;
+  object-fit: cover;
 }
 
 .cart-items-container {
