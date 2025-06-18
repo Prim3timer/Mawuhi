@@ -73,7 +73,7 @@ const {auth, getTrans, itemRef,
                
                            dispatch({type: 'ALERTMSG', payload: `${newItem.name} Edited` })
                            setTimeout(()=> {
-                               dispatch({type: 'isMatched', payload: '' })
+                               dispatch({type: 'ALERTMSG', payload: '' })
                                dispatch({type: 'isEdit', payload: false})    
                            }, 3000)
                        }

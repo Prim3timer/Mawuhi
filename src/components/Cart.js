@@ -106,10 +106,9 @@ const doneSales = async()=> {
 
 useEffect(() => {
     getItems()
-}, [])
+}, [state.mainCartField])
 useEffect(() => {
     getCartItems()
-    auth.cartArray = state.cartArray
 }, [])
 
 useEffect(()=> {
