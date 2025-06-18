@@ -79,7 +79,7 @@ return (
     <Route path="register" element={<Register/>}/>
          <Route path="linkpage" element={<LinkPage/>}/>
       <Route path="unauthorized" element={<Unauthorized/>}/>
-      <Route path="/transactions" element={<Transactions />}/>
+      <Route path="transactions" element={<Transactions />}/>
       <Route path="item-list" element={<ItemList/>}/>
  <Route path="inventory" element={<Inventory/>}/>
       <Route path="user-select" element={<UserSelect/>}/>
