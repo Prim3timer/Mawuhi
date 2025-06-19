@@ -272,6 +272,64 @@ input {
   margin-bottom: 1rem;
 }
 
+#tans-title {
+                text-align: center;
+               margin: 1rem 0;
+                color: darkslateblue;
+}
+
+#grand-total-one {
+    color: green;
+}
+
+.home {
+            font-size: 1.5rem;
+}
+
+.logout {
+            font-size: 1.5rem;
+}
+
+.login-header {
+     text-align: center;
+                margin: 1rem 0; 
+}
+
+.create-item-options {
+    position: relative;
+    color: brown;
+}
+
+.userselect-buttons-container {
+  
+                justify-content:center;
+                margin: 1rem 0 1rem .5rem;
+                display: flex;
+                flex-direction: row;
+                column-gap: .5rem;
+                row-gap: 1rem;
+                flex-wrap: wrap
+}
+
+.admin-header, .users-header {
+                color: darkslateblue; 
+}
+
+.admin-home-link{
+    color: white;
+    font-size: 1.5rem;
+    text-decoration: none;
+                        
+}
+
+.admin-home-button {
+  margin-bottom: 1rem;
+}
+
+.transaction-items-list {
+                            position: relative;
+                            color: brown;
+}
 .offscreen {
   position: absolute;
   left: -9999px;
@@ -389,7 +447,7 @@ form {
   align-items: center;
   justify-content: center;
   text-align: center; 
-  margin: 4rem 0 4rem 0;
+  margin: 1rem 0;
   /* background-color: red; */
   min-height: 100vh;
   }

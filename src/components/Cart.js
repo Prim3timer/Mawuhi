@@ -54,7 +54,7 @@ const doneSales = async()=> {
     auth.cartArray = state.cartArray
     console.log(auth.cartArray)
     try {
-        const response = await axios.post('/cart/create-checkout-session', state.cartArray)
+        const response = await axios.post('/transactions/create-checkout-session', state.cartArray)
         console.log(response.data)
         if (response){
             window.location = response.data.url

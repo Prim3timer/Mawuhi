@@ -85,9 +85,8 @@ const Login = () => {
         <section className='login'>
             <p ref={errRef} className={state.errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{state.errMsg}</p>
             <h1
-            style={{textAlign: 'center',
-                margin: '1rem 0' 
-            }}
+            className='login-header'
+         
             >Sign In</h1>
             <form onSubmit={handleSubmit}
             id='login-form'

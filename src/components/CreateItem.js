@@ -95,11 +95,9 @@ let CreateItem = () => {
                 return (
                     
                     <option 
+                    className="create-item-options"
                     value={measurement}
-                    style={{
-                            position: 'relative',
-                            color: 'brown',
-                        }}
+                  
                         >
                             {measurement}
                         </option>)

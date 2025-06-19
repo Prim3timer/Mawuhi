@@ -35,19 +35,14 @@ const Home = ()=> {
             >
                 
              <h3
-             style={{
-                margin: '0 0 0 1rem'
-             }}
-             > Hi, {auth.user} 
+          > Hi, {auth.user} 
 
              </h3>
             </div>
              <br />
         <section
         className="home"
-        style={{
-            fontSize: '1.5rem'
-        }}
+       
         >
        
         <Link 
@@ -93,10 +88,7 @@ const Home = ()=> {
         >
 
             <button onClick={logout}
-            style={{
-                fontSize: '1rem',
-                margin: '1rem auto'
-            }}
+          className="logout"
             >Sign Out</button>
         </div>
     </div>

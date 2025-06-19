@@ -30,10 +30,6 @@ const showMe = () => {
 }
 
 
-console.log(auth.picker3)
-console.log('hiiii')
-
-
     console.log(state.indSales)
 
       useEffect(()=> {
@@ -56,15 +52,8 @@ console.log('hiiii')
             >{currentUser2 && currentUser2.username}'s activity</h2>
             {console.log(currentUser)}
             <article
-            style={{
-                justifyContent:'center',
-                // margin:'1rem 0 1rem .5rem',
-                display: 'flex',
-                flexDirection: 'row',
-                columnGap: '.5rem',
-                rowGap: '1rem',
-                flexWrap: 'wrap',
-            }}
+            className="userselect-buttons-container"
+         
             >
                <Link
                to={'/sales'}

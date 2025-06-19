@@ -167,12 +167,8 @@ const Transactions = ()=> {
         >
             <h2
             id="tans-title"
-            style={{
-                textAlign: 'center',
-                margin:'1rem 0' ,
-                color: 'darkslateblue'  
-            }}
-            >Checkout</h2>
+           
+            >Transactions</h2>
             <fieldset
             id="field"
             >
@@ -181,9 +177,7 @@ const Transactions = ()=> {
                 > */}
                 <h3
                 id="grand-total-one"
-                style={{
-                    color: 'green'
-                }}
+             
                 >Grand Total: ₦{numberWithCommas(parseFloat(state.total).toFixed(2))}</h3>
              
         <form
@@ -211,10 +205,8 @@ const Transactions = ()=> {
                     
                     <option key={user._id}
                     value={`${user.name} ${user.unitMeasure.split(' ')[1]}`}
-                    style={{
-                            position: 'relative',
-                            color: 'brown',
-                        }}
+                    className="transaction-items-list"
+                  
                         >
                         </option>)
                     })}

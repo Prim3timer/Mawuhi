@@ -51,18 +51,15 @@ const Admin = () => {
     return (
         <div
         className="admin"
-        style={{
-            // margin: '4rem 0'
-        }}
       >
            <h1
-            style={{
-                color: 'darkslateblue'  
-            }}
+           className="admin-header"
+         
             >Admin</h1>
         { !users?.length ? <h2>Loading...</h2> : <section>
         
             {!showSettings ? <h2
+            className="users-header"
             style={{textAlign: 'center'}}
             >Users ({users && users.length})</h2> : ''}
             
@@ -85,19 +82,11 @@ const Admin = () => {
             >
                
                 <button
-                style={{
-                    marginBottom: '1rem'
-
-                }}
+                className="admin-home-button"
                 >
 
                 <Link to="/"
-                    style={{
-                        color: 'white',
-                        fontSize: '1.5rem',
-                        textDecoration: 'none',
-                        
-                    }}
+                  className="admin-home-link"
                 >Home</Link>
                 </button>
             </div>

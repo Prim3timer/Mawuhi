@@ -122,9 +122,9 @@ const {auth, getTrans, itemRef,
                                         }
                                 }
 
-                                        const assertain = (id) => {
+    const assertain = (id) => {
         if (!auth.roles.includes(5150)){
-            dispatch({type: 'ISDELETED', payload: true})
+            dispatch({type: 'isMatched', payload: true})
         }
         else {
             dispatch({type: 'cancel', payload: true})
@@ -149,7 +149,7 @@ const {auth, getTrans, itemRef,
     }
 
            const generalRemain = () => {
-       dispatch({type: 'ISDELETED', payload: false})
+       dispatch({type: 'isMatched', payload: false})
 
     } 
                 
