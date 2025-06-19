@@ -328,8 +328,8 @@ const Transactions = ()=> {
                     <article
                     
                     >
-                    <p>price/{item.unitMeasure.split(' ')[1].slice(1, -1)}:</p>
-                    <p>₦{item.price}</p>
+                    {/* <p>price/{item.unitMeasure.split(' ')[1].slice(1, -1)}:</p>
+                    <p>₦{item.price}</p> */}
 
                     </article>
                    
