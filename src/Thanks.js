@@ -8,7 +8,7 @@ const Thanks = () =>{
 const {auth} = useAuth()
 console.log(auth.cartArray)
 const getRecipt = async ()=> {
-    const response = await axios.get('/thanks')
+    const response = await axios.get('/transactions')
     // setAlert(response.data)
     console.log(response.data)
     console.log('hoolaa')
