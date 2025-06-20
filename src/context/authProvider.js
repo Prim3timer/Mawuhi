@@ -180,15 +180,7 @@ export const AuthProvider = ({children}) => {
                     
                 }
                 
-                const handleRemove = async ()=> {
-                         const response = await axios.delete(`/items/delete/${state.id}`)
-                        if (response) {
-        
-                            const newGraw = state.items && state.items.filter((item)=> item._id !== state.id)
-                            dispatch({type: 'items', payload: newGraw})
-                            dispatch({type: 'cancel', payload: false})
-                        }
-                }
+          
 
                     const assertain = (id) => {
         if (!auth.roles.includes(5150)){

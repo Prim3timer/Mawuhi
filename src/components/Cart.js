@@ -54,7 +54,7 @@ const doneSales = async()=> {
     auth.cartArray = state.cartArray
     console.log(auth.cartArray)
     try {
-        const response = await axios.post('/transactions/create-checkout-session', state.cartArray)
+        const response = await axios.post('/cart/create-checkout-session', state.cartArray)
         console.log(response.data)
         if (response){
             window.location = response.data.url
@@ -119,7 +119,7 @@ const plural = state.cartArray.length === 1 ? '' : 's'
 const plural2 = state.cartAmount.length === 1 ? '' : 's'
 
     return (
-        <div className="checkout">
+       !state.cartArray ? <h2>Loading</h2> : <div className="checkout">
             <h2>Your Cart</h2>
             <h3>{state.cartAmount} item{plural2}, {state.cartArray.length} product{plural}</h3>
 

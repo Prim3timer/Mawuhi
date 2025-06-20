@@ -71,7 +71,7 @@ return (
         <Route path="/" element={<Layout/>}>
     <Route path="/login" element={<Login/>}/>
     <Route path="shop" element={<Shop/>}/>
-    <Route path="thanks" element={<Thanks/>}/>
+    <Route path="cart/thanks" element={<Thanks/>}/>
        {/* <Route path="/thanks" element={<Thanks />}/> */}
     <Route path="single-item" element={<SingleItem/>}/>
         <Route path="shopping" element={<Reciepts />}/>
