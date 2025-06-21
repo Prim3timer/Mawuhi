@@ -150,7 +150,7 @@ const bringEdit = () => {
                 <input
                 type="text" 
                 id="ole"
-                value={parseFloat(state.ole).toFixed(2)}
+                value={state.ole}
                 onChange={(e)=> dispatch({type: 'ole', payload: e.target.value})}
                 />
                 <button 

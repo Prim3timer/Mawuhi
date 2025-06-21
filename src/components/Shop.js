@@ -49,7 +49,7 @@ console.log(auth)
             <img  className='shop-img' src={`${item.img}`} alt={item.name}/>
             <div className="shop-item-texts">
             <p>{item.name}</p>
-            <h4> price: ${item.price}</h4>
+            <h4> ${item.price}</h4>
             {/* <h4>{items.find((name)=> `${name.name}` === inputRef.current.value)}</h4> */}
           </div>
           

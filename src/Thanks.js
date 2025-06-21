@@ -9,16 +9,17 @@ const {auth} = useAuth()
 console.log(auth.cartArray)
 
     
+
 const getRecipt = async ()=> {
     const response = await axios.get('/cart/thanks')
     setAlert(response.data)
     console.log(response.data)
     console.log('hoolaa')
 }
+    getRecipt()
 // console.log(window.location.href)
 // if (window.location == 'http://localhost:3000/thanks'){
 // console.log('yes')
-//     // getRecipt()
 // }
 useEffect(()=> {
     getRecipt()

@@ -112,7 +112,7 @@ let CreateItem = () => {
                 value={state.price}
                 onChange={(e)=> dispatch({type: 'price', payload: e.target.value})}
                 />
-                <h2>Image:</h2>
+                <h2>Image Link:</h2>
                 <input
                 type="text"
                 // required

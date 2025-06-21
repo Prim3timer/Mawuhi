@@ -190,7 +190,7 @@ console.log(auth)
           <p className="no-qty-alert">{state.elItem.qty === '' || state.elItem.qty === 0 ? 'invalid quantity' : ''}</p>   
 
             </section>
-            <h5>Total: ${numberWithCommas(parseFloat(state.elItem.total).toFixed(2))}</h5>
+            <h5>${numberWithCommas(parseFloat(state.elItem.total).toFixed(2))}</h5>
             </div>
              <section
             className="cart-action"
