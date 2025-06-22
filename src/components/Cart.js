@@ -102,7 +102,7 @@ const doneSales = async()=> {
        function numberWithCommas(x) {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
-
+console.log('soccer')
 
 useEffect(() => {
     getItems()
@@ -137,7 +137,7 @@ const plural2 = state.cartAmount.length === 1 ? '' : 's'
                 Qty:
             <input
             className="cart-qty"
-                value={item.quantity}
+                value={item.transQty}
                 onChange={(e) => dispatch({type: "MAINCARTFIELD", payload: e.target.value, id: item._id})}
             
             />
@@ -154,7 +154,7 @@ const plural2 = state.cartAmount.length === 1 ? '' : 's'
     )
 })}
 {/* <hr></hr> */}
-<h2>Grand Total: ${numberWithCommas(parseFloat(state.totalCart).toFixed(2))}</h2>
+<h2>Total: ${numberWithCommas(parseFloat(state.totalCart).toFixed(2))}</h2>
 <hr></hr>
 <div className="cart-action">
   <button

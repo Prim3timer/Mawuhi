@@ -124,7 +124,7 @@ const reducer = (state, action)=> {
                 return {...state, transArray: tempCart3}
                 
                 case 'CARTFIELDCHANGE':
-                   const item3 =  {...state.elItem, qty: action.payload, total: (state.elItem.price * action.payload)}
+                   const item3 =  {...state.elItem, transQty: action.payload, total: (state.elItem.price * action.payload)}
                    return {...state, elItem: item3}
 
 
@@ -132,7 +132,8 @@ const reducer = (state, action)=> {
                    case "MAINCARTFIELD":
                      const tempCart5 = state.cartArray.map((item) => {
                        if (item._id === action.id){
-                         return {...item, quantity: action.payload, total: item.price * action.payload}
+                     
+                         return {...item, transQty: action.payload, total: item.price * action.payload}
                         }
                         return item
                       })
@@ -172,8 +173,8 @@ const reducer = (state, action)=> {
 
     case 'GETCARTTOTAL': 
     const {cartAmount, totalCart} = state.cartArray.reduce((cartTotal, cartItem) => {
-      cartTotal.cartAmount  += Number(cartItem.quantity)
-      const itemTotal = cartItem.price * cartItem.quantity
+      cartTotal.cartAmount  += Number(cartItem.transQty)
+      const itemTotal = cartItem.price * cartItem.transQty
       cartTotal.totalCart += itemTotal
       return cartTotal
     },

@@ -23,9 +23,11 @@ console.log(state.transArray)
 
   const getItem = async () => {
     const response = await axios.get('/items')  
+    console.log(response.data)
     const cartItems = await axios.get('/cart')
     try {
       const userItems = cartItems.data.filter((item) => item.userId === auth.picker)
+      console.log(userItems)
     console.log('user items are: ', userItems)
   dispatch({type: 'SINGLEITEMARRAY', payload: userItems})
     setIsLoading(false)
@@ -36,16 +38,19 @@ console.log(state.transArray)
         console.log(auth.picker4)
         if (goods){
           
-          const newGoods = {...goods, qty: 1, total: goods.price}
+          const newGoods = {...goods, transQty: 1, total: goods.price}
               dispatch({type: "elItem", payload: newGoods})
         }
     } catch (error) {
       dispatch({type: 'errMsg',  payload: error.message})
     }
+    console.log(state.elItem)
   
   }
 
   console.log(state.singleItemArray)
+
+
   const addToCart = async () => {
     try {
       console.log(auth.picker)
@@ -57,6 +62,7 @@ console.log(state.transArray)
         id: elItem._id,
         userId: auth.picker,
         quantity: elItem.qty,
+        transQty: elItem.transQty,
         price: elItem.price,
         total: elItem.total 
       }
@@ -64,7 +70,9 @@ console.log(actualItem)
 const foundItem = state.singleItemArray.find((item) => item.name === actualItem.name)
 if (foundItem){
   dispatch({type: 'ALERTMSG', payload: 'item already in cart'})
-} else {
+ 
+}else if (actualItem.quantity === 0) dispatch({type: 'ALERTMSG', payload: 'out of stock'})
+ else {
     const response = await axios.post(`/cart/addcart`, actualItem)
       dispatch({type: 'ALERTMSG', payload: 'item added to cart'})
       setTimeout(()=> {
@@ -105,7 +113,7 @@ console.log(auth)
 
                   try {
            const item = [
-              {userId: auth.picker4, id: elItem._id, quantity: qtyRef.current.value, name: elItem.name},    
+              {userId: auth.picker4, id: elItem._id, transQty: qtyRef.current.value, name: elItem.name},    
           ]
 
           console.log(item)
@@ -171,6 +179,7 @@ console.log(auth)
                   <section
           className="qty-cont"
           >
+            <p>{state.elItem.qty} Left</p>
               <span
               className="qty-label"
               >Qty: </span>
@@ -180,17 +189,17 @@ console.log(auth)
                 className="qty-input"
  type="text"
  ref={qtyRef}
- value={state.elItem.qty}
+ value={state.elItem.qty === 0 ? state.elItem.qty : state.elItem.transQty}
 
  onClick={() => dispatch({type: 'blank', payload: ''})}
  onChange={(e)=> dispatch({type: 'CARTFIELDCHANGE', payload: e.target.value})}
  />
 
 
-          <p className="no-qty-alert">{state.elItem.qty === '' || state.elItem.qty === 0 ? 'invalid quantity' : ''}</p>   
+          <p className="no-qty-alert">{state.elItem.qty === '' ? 'invalid quantity' : state.elItem.qty === 0 ? 'out of stock' : ''}</p>    
 
             </section>
-            <h5>${numberWithCommas(parseFloat(state.elItem.total).toFixed(2))}</h5>
+            <h5>${state.elItem.qty && numberWithCommas(parseFloat(state.elItem.total).toFixed(2))}</h5>
             </div>
              <section
             className="cart-action"
