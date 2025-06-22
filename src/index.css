@@ -635,12 +635,9 @@ form {
 
   
   }
-  /* .shop-inner-container{
-    display: grid;
-    grid-auto-flow: column;
-    grid-template-columns: repeat(2, 200px);
-  
-  } */
+ .shop h2 {
+  margin-top: 1rem;
+ }
 
   .shop-img {
   width: 100px;
@@ -651,8 +648,15 @@ form {
   object-fit: cover;
 }
 
-  .shop input {
-    margin-top: 2rem;
+  .shop form {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    /* row-gap: 2rem; */
+  }
+
+  .shop form h3 {
+    margin-top: 1rem;
   }
   .qty-cont {
     /* display: grid; */
