@@ -52,6 +52,7 @@ console.log(state.transArray)
 
 
   const addToCart = async () => {
+      dispatch({type: 'success', payload: true})
     try {
       console.log(auth.picker)
       const {elItem} = state
@@ -69,13 +70,16 @@ console.log(state.transArray)
 console.log(actualItem)
 const foundItem = state.singleItemArray.find((item) => item.name === actualItem.name)
 if (foundItem){
+
   dispatch({type: 'ALERTMSG', payload: 'item already in cart'})
- 
+  
 }else if (actualItem.quantity === 0) dispatch({type: 'ALERTMSG', payload: 'out of stock'})
- else {
+  else {
     const response = await axios.post(`/cart/addcart`, actualItem)
-      dispatch({type: 'ALERTMSG', payload: 'item added to cart'})
-      setTimeout(()=> {
+    dispatch({type: 'ALERTMSG', payload: 'item added to cart'})
+    setTimeout(()=> {
+        dispatch({type: 'success', payload: false})
+        
         dispatch({type: 'ALERTMSG', payload: ''})
 
       }, 3000)
@@ -199,7 +203,7 @@ console.log(auth)
           <p className="no-qty-alert">{state.elItem.qty === '' ? 'invalid quantity' : state.elItem.qty === 0 ? 'out of stock' : ''}</p>    
 
             </section>
-            <h5>${state.elItem.qty && numberWithCommas(parseFloat(state.elItem.total).toFixed(2))}</h5>
+            <h5>${numberWithCommas(parseFloat(state.elItem.total).toFixed(2))}</h5>
             </div>
              <section
             className="cart-action"
@@ -208,7 +212,9 @@ console.log(auth)
               <button onClick={addToCart}>Add to Cart</button>
               <Link to={'/cart'}><button>Go To Cart</button></Link>
             </section>
-            <h3>{state.alertMsg}</h3>
+            <h3
+               className={state.success ? 'update-alert' : 'hide-update-alert'}
+            >{state.alertMsg}</h3>
             </article>
               
               </article>

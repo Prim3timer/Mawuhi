@@ -419,20 +419,7 @@ className={state.isMatched ? 'unauthorization-alert' : 'authorization'}
 
             </div>
         <div
-        style={{
-            display: state.success ? 'block' : 'none',
-            position: 'absolute',
-            margin: '1rem 0',
-            top: '35%',
-left: '25%',
-width: '40%',
-textAlign: 'center',
- padding: '1rem',
-   backgroundColor: 'lightpink',
-   borderRadius: '5px',
-   fontSize: '1.5rem',
-   opacity: '.85'
-        }}
+             className={state.success ? 'update-alert' : 'hide-update-alert'}
         >
           <h4>{state.selectUser}</h4>
             </div>

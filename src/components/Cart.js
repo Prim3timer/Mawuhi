@@ -76,8 +76,10 @@ const doneSales = async()=> {
             dispatch({type: 'REMOVECARTITEM', payload: id})
             const response = await axios.delete(`/cart/${id}`)
             if (response){
+                dispatch({type: 'success', payload: true})
                 dispatch({type: 'ALERTMSG', payload: 'item removed'})
                 setTimeout(()=> {
+                    dispatch({type: 'success', payload: false})
                     dispatch({type: 'ALERTMSG', payload: ''})
                 }, 3000)
             }
@@ -162,7 +164,7 @@ const plural2 = state.cartAmount.length === 1 ? '' : 's'
              >Checkout</button>
               <Link to={'/shop'}><button>Shop</button></Link>
              <button onClick={clearCart}>Clear Cart</button>
-             <h3>{state.alertMsg}</h3>
+             <h3 className={state.success ? 'update-alert' : 'hide-update-alert'}>{state.alertMsg}</h3>
 </div>
           
 

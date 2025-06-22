@@ -106,6 +106,9 @@ h4 {
 
 }
 
+.invent-info {
+  color: red
+}
 
 .home > *:active {
   box-shadow: 0em 0em 0em gray;
@@ -758,7 +761,7 @@ border-radius: 5px;
   width: 200px;
   display: flex;
   flex-direction: column;
-  row-gap: 4rem;
+  row-gap: 1rem;
   justify-content: center;
   align-content: center;
   /* background-color: yellow; */
@@ -773,6 +776,27 @@ border-radius: 5px;
 
 .linker {
   text-decoration: none
+}
+
+.update-alert {
+  
+       display: block;
+            position: absolute;
+            margin: 1rem 0;
+            top: 35%;
+left: 25%;
+width: 40%;
+text-align: center; 
+padding: 1rem;
+   background-color: lightpink;
+   border-radius: 5px;
+   font-size: 1.5rem;
+   opacity: .85;
+    
+}
+
+.hide-update-alert {
+display: none;
 }
   
   .bars {
