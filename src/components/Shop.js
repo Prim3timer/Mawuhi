@@ -25,17 +25,28 @@ console.log(auth)
   }
 
   const [state, dispatch] = useReducer(reducer, initialState)
+const enableFilterate = ()=> {
+  const filterItems = items && items.filter((item) => item.name.toLowerCase().includes(state.search.toLowerCase()))
+  console.log(filterItems)
+  dispatch({type: 'getNames', payload: filterItems})
+}
+
+
+  useEffect(()=> {
+    enableFilterate()
+  }, [state.search])
 
 
   return (
     !items ? <h2>Loading...</h2> :<div className="shop">
       <input
       placeholder="search items"
-      
+      value={state.search}
+      onChange={(e)=> dispatch({type: 'search', payload: e.target.value})}
       />
       <h2>Shop</h2>
       <section className="shop-inner-container">
-      {items && items.map((item)=> {
+      {state.getNames && state.getNames.map((item)=> {
         console.log(state.getNames)
         return (
         <Link to={'/single-item'}

@@ -73,7 +73,7 @@ if (foundItem){
 
   dispatch({type: 'ALERTMSG', payload: 'item already in cart'})
   
-}else if (actualItem.quantity === 0) dispatch({type: 'ALERTMSG', payload: 'out of stock'})
+}else if (actualItem.quantity === 0) dispatch({type: 'ALERTMSG', payload: 'item is out of stock'})
   else {
     const response = await axios.post(`/cart/addcart`, actualItem)
     dispatch({type: 'ALERTMSG', payload: 'item added to cart'})
