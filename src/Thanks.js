@@ -9,22 +9,23 @@ const {auth} = useAuth()
 console.log(auth.cartArray)
 
     
+const queryParams = new URLSearchParams(window.location.search)
+const sessionId = queryParams.get("session_id")
+console.log(sessionId)
 
 const getRecipt = async ()=> {
-    const response = await axios.get('/cart/thanks')
-    setAlert(response.data)
-    console.log(response.data)
-    console.log('hoolaa')
+    const response = await axios.post(`/cart/thanks/${sessionId}`)
+console.log(response.data)
 }
-    getRecipt()
+    // getRecipt()
 // console.log(window.location.href)
 // if (window.location == 'http://localhost:3000/thanks'){
 // console.log('yes')
 // }
 useEffect(()=> {
     getRecipt()
-    console.log(alert)
-}, [])
+    // console.log(alert)
+}, [sessionId])
     return (
         <div className="thanks">
             {/* <h3>{alert}</h3> */}

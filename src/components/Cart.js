@@ -57,7 +57,7 @@ const doneSales = async()=> {
         const response = await axios.post('/cart/create-checkout-session', state.cartArray)
         console.log(response.data)
         if (response){
-            window.location = response.data.url
+            window.location.href = response.data?.session?.url
             
 
           }   else throw Error('no item purchased')

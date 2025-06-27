@@ -29,10 +29,10 @@ let CreateItem = () => {
 
 
         console.log(newItem.name)
-        const theMatch = state.items && state.items.data.find((item)=> item.name.toLowerCase() === newItem.name.toLowerCase()) 
+        const theMatch = state.items && state.items.data.find((item)=> item.name.toString().toLowerCase() === newItem.name.toLowerCase()) 
         if (theMatch){
 
-                dispatch({type: 'errMsg', payload: 'There cannot be two intances of the same item'})
+                const myError =  new Error('There cannot be two intances of the same item')
         }
         else {
             const response = await axios.post('/items', newItem)  

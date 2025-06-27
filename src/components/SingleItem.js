@@ -123,10 +123,8 @@ console.log(auth)
           console.log(item)
           const response = await axios.post('/cart/create-checkout-session', item)
           if (response){
-             window.location = response.data.url
-             console.log(response.data.receipt)
-             auth.receipt = response.data.receipt
-
+             window.location = response.data.session.url
+             console.log(response)
           }else  console.log("no checkout")
          
       } catch (error) {
