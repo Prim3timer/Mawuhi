@@ -29,10 +29,10 @@ console.log(auth)
 const enableFilterate = ()=> {
   try {
     const filterItems = items && items.filter((item) => item.name.toLowerCase().includes(state.search.toLowerCase()))
-  dispatch({type: 'getNames', payload: filterItems})
+  dispatch({type: 'items', payload: filterItems})
   if (search2){
   const stockFilter = filterItems && filterItems.filter((item)=> item.qty <= search2)
-  dispatch({type: 'getNames', payload: stockFilter && stockFilter})
+  dispatch({type: 'items', payload: stockFilter && stockFilter})
 
 }
   console.log(filterItems)
@@ -68,7 +68,7 @@ const enableFilterate = ()=> {
    </form>
  
       <section className="shop-inner-container">
-      {state.getNames && state.getNames.map((item)=> {
+      {state.items && state.items.map((item)=> {
         console.log(item.qty)
         console.log(state.getNames)
         return (
