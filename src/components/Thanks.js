@@ -1,6 +1,6 @@
-import useAuth from "./hooks/useAuth"
+import useAuth from "../hooks/useAuth"
 import { Link } from "react-router-dom"
-import axios from "./app/api/axios"
+import axios from "../app/api/axios"
 import { useEffect, useState } from "react"
 
 const Thanks = () =>{

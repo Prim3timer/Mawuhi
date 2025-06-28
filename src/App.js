@@ -34,7 +34,7 @@ import UserSettings from "./components/UserSettings"
 import Cart from "./components/Cart"
 import Shop from "./components/Shop"
 import SingleItem from "./components/SingleItem"
-import Thanks from "./Thanks"
+import Thanks from "./components/Thanks"
 
 // import SearchItem from "./SearchItem";
 
