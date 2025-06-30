@@ -18,18 +18,26 @@ const {v4: uuid} = require('uuid')
 const Inventory = ({mark, setMark})=> {
     const [state, dispatch] = useReducer(reducer, initialState)
     const {auth} = useAuth()
-
+  const [search2, setSearch2] = useState('')
     const invRef = useRef()
     const getTrans = async ()=> {
 
           try {
             
+
+
               const graw = await axios.get('/items')
 
               console.log(graw.data)
               const filterate = graw.data.items.filter((inner)=> inner.name.toLowerCase().includes(state.search.toLowerCase()))
               dispatch({type: 'items', 
                   payload: filterate})
+
+                   if (search2){
+  const stockFilter = filterate && filterate.filter((item)=> item.qty <= search2)
+  dispatch({type: 'items', payload: stockFilter && stockFilter})
+
+}
           } catch (error) {
             dispatch({type: 'errMsg', payload: error.Message})
           }
@@ -37,7 +45,7 @@ const Inventory = ({mark, setMark})=> {
         useEffect(()=> {
             getTrans()
             
-    }, [state.search])
+    }, [state.search, search2])
 
 
      const showEdit = (id, e)=> {
@@ -180,6 +188,15 @@ const bringEdit = () => {
      // https://www.npmjs.com/package/@react-google-maps/api
  
  />
+ <h3>
+      <label>Search by stock level</label>
+</h3>
+     <input
+      placeholder="pick a number"
+       role="searchbox" 
+      value={search2}
+      onChange={(e)=> setSearch2(e.target.value)}
+      />
    </form>
    
  </article>

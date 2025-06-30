@@ -557,8 +557,11 @@ form {
   }
   .search-form {
     display:flex;
-   row-gap: 1rem;
+   /* row-gap: 1rem; */
    margin: 0 0 2rem 0;
+  }
+  .search-form h3 {
+    margin-top: 2rem;
   }
 
   .theader-row {

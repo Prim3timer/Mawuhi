@@ -15,7 +15,6 @@ const {v4: uuid} = require('uuid')
 
 const Shop = () => {
   const { items} = useAuth()
-  const [search2, setSearch2] = useState('')
  
 
 console.log(items)
@@ -30,11 +29,7 @@ const enableFilterate = ()=> {
   try {
     const filterItems = items && items.filter((item) => item.name.toLowerCase().includes(state.search.toLowerCase()))
   dispatch({type: 'items', payload: filterItems})
-  if (search2){
-  const stockFilter = filterItems && filterItems.filter((item)=> item.qty <= search2)
-  dispatch({type: 'items', payload: stockFilter && stockFilter})
-
-}
+ 
   console.log(filterItems)
   } catch (error) {
     dispatch({type: 'errMsg', payload: error.message})
@@ -45,7 +40,7 @@ const enableFilterate = ()=> {
 
   useEffect(()=> {
     enableFilterate()
-  }, [state.search, search2])
+  }, [state.search])
 
 
   return (
@@ -57,14 +52,8 @@ const enableFilterate = ()=> {
       value={state.search}
       onChange={(e)=> dispatch({type: 'search', payload: e.target.value})}
       />
-<h3>
-      <label>Search by stock level</label>
-</h3>
-      <input
-      placeholder="pick a number"
-      value={search2}
-      onChange={(e)=> setSearch2(e.target.value)}
-      />
+
+  
    </form>
  
       <section className="shop-inner-container">
