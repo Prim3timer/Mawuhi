@@ -69,7 +69,7 @@ return (
       <Routes>
          {/* public routes */}
         <Route path="/" element={<Layout/>}>
-    <Route path="/login" element={<Login/>}/>
+    <Route path="/auth" element={<Login/>}/>
     <Route path="/shop" element={<Shop/>}/>
     <Route path="/cart/thanks" element={<Thanks/>}/>
        {/* <Route path="/thanks" element={<Thanks />}/> */}
