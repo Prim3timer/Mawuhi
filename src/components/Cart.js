@@ -35,6 +35,7 @@ const getCartItems = async () => {
         const newUseritems = userItems.map((item) => {
             return {...item, amount: item.quantity}
         })
+
         if (userItems.length){
             dispatch({type: 'CARTARRAY', payload: newUseritems})
             console.log(newUseritems)
@@ -52,12 +53,14 @@ const getCartItems = async () => {
 const doneSales = async()=> {
     console.log(state.cartArray)
     auth.cartArray = state.cartArray
-    console.log(auth.cartArray)
+
     try {
+        console.log(state.cartArray)
         const response = await axios.post('/cart/create-checkout-session', state.cartArray)
         console.log(response.data)
         if (response){
             window.location = response.data?.session?.url
+            // console.log(response.data)
             
 
           }   else throw Error('no item purchased')

@@ -18,7 +18,7 @@ const AllSales = ()=> {
         try {
             const response = await axios.get(('/transactions'))
             
-            console.log(response.data)
+          
                if (response){
                        response.data.map((gr)=> {
                             return gr.goods.map((good)=> {
@@ -40,7 +40,6 @@ const AllSales = ()=> {
                     const filterate2 = filterate.filter((inner)=> inner.date.substring(0, 10).includes(search2))
                     // setLast(filterate)
 
-                    console.log(innerArray)
                     dispatch({type: 'sales', 
                      payload: filterate2})
 

@@ -1,4 +1,4 @@
-import Register from "./components/register"
+  import Register from "./components/register"
 import Login from "./components/Login"
   import {Routes, Route} from 'react-router-dom'
 import Home from "./components/Home"

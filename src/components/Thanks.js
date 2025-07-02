@@ -6,16 +6,16 @@ import { useEffect, useState } from "react"
 const Thanks = () =>{
     const [alert, setAlert] = useState('')
 const {auth} = useAuth()
-console.log(auth.cartArray)
 
-    
+
 const queryParams = new URLSearchParams(window.location.search)
 const sessionId = queryParams.get("session_id")
+const cusomer = queryParams.get("customer")
 console.log(sessionId)
 
 const getRecipt = async ()=> {
     const response = await axios.post(`/cart/thanks/${sessionId}`)
-console.log(response.data)
+    console.log(response.data)
 }
     // getRecipt()
 // console.log(window.location.href)
