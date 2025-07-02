@@ -8,7 +8,7 @@ import reducer from '../reducer';
 import initialState from '../store';
 
 
-const LOGIN_URL = '/login';
+const LOGIN_URL = '/auth';
 
 const Login = () => {
     const [state, dispatch] = useReducer(reducer, initialState)
