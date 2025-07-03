@@ -35,6 +35,7 @@ import Cart from "./components/Cart"
 import Shop from "./components/Shop"
 import SingleItem from "./components/SingleItem"
 import Thanks from "./components/Thanks"
+import Public from "./components/Public"
 
 // import SearchItem from "./SearchItem";
 
@@ -69,6 +70,7 @@ return (
       <Routes>
          {/* public routes */}
         <Route path="/" element={<Layout/>}>
+        < Route index element={<Public/>}/>
     <Route path="/login" element={<Login/>}/>
     <Route path="/shop" element={<Shop/>}/>
     <Route path="/cart/thanks" element={<Thanks/>}/>
