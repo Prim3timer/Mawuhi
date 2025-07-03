@@ -72,6 +72,7 @@ return (
         <Route path="/" element={<Layout/>}>
         < Route index element={<Public/>}/>
     <Route path="/login" element={<Login/>}/>
+      <Route path="/home" element={<Home/> } />
     <Route path="/shop" element={<Shop/>}/>
     <Route path="/cart/thanks" element={<Thanks/>}/>
        {/* <Route path="/thanks" element={<Thanks />}/> */}
@@ -90,7 +91,7 @@ return (
   
        {/* protected routes */}
        <Route element={<RequireAuth allowedRoles={[2001]}/>}>
-         <Route path="/" element={<Home/> } />
+       
       <Route path="one-receipt" element={<OneReceipt/>}/>
       <Route path="cart" element={<Cart/>}/>
          </Route>
