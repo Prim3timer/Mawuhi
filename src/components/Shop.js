@@ -37,6 +37,11 @@ const enableFilterate = ()=> {
   
 }
 
+ function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+    
+
 
   useEffect(()=> {
     enableFilterate()
@@ -73,7 +78,7 @@ const enableFilterate = ()=> {
             <div className="shop-item-texts">
             <p>{item.name}</p>
             <p className="invent-info">{item.qty > 0 ? `${item.qty} left` : 'out of stock'}</p>
-            <h4> ${item.price}</h4>
+            <h4> ₦{numberWithCommas(item.price)}</h4>
             {/* <h4>{items.find((name)=> `${name.name}` === inputRef.current.value)}</h4> */}
           </div>
           

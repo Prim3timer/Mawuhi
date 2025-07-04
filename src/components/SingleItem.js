@@ -150,7 +150,10 @@ console.log(auth)
          
       }
 
-
+function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+    
  
  useEffect(()=> {
     getItem()
@@ -201,7 +204,7 @@ console.log(auth)
           <p className="no-qty-alert">{state.elItem.qty === '' ? 'invalid quantity' : state.elItem.qty === 0 ? 'out of stock' : ''}</p>    
 
             </section>
-            <h5>${numberWithCommas(parseFloat(state.elItem.total).toFixed(2))}</h5>
+            <h5>₦{numberWithCommas(parseFloat(state.elItem.total).toFixed(2))}</h5>
             </div>
              <section
             className="cart-action"

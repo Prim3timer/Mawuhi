@@ -19,7 +19,7 @@ const Home = ()=> {
        
             // if used in more components, this should be in context 
             // axios to /logout endpoint 
-            navigate('/login');
+            navigate('/');
         }
         console.log('picker is: ', auth.picker)
         console.log('picker3 is:', auth.picker3)

@@ -15,7 +15,7 @@ console.log(sessionId)
 
 const getRecipt = async ()=> {
     const response = await axios.post(`/cart/thanks/${sessionId}`)
-    console.log(response.data)
+    console.log({res: response.data})
 }
     // getRecipt()
 // console.log(window.location.href)
@@ -23,9 +23,12 @@ const getRecipt = async ()=> {
 // console.log('yes')
 // }
 useEffect(()=> {
-    getRecipt()
+
+
+        getRecipt()
+
     // console.log(alert)
-}, [sessionId])
+}, [])
     return (
         <div className="thanks">
             {/* <h3>{alert}</h3> */}

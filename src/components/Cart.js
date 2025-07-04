@@ -148,7 +148,7 @@ const plural2 = state.cartAmount.length === 1 ? '' : 's'
             />
             </label>
          
-            <h3> ${numberWithCommas(parseFloat(item.total).toFixed(2))}</h3>
+            <h3>₦{numberWithCommas(parseFloat(item.total).toFixed(2))}</h3>
             <p onClick={() => removeItem(item._id)}>
                 <FaTrash role="button"/>
             </p>
@@ -159,7 +159,7 @@ const plural2 = state.cartAmount.length === 1 ? '' : 's'
     )
 })}
 {/* <hr></hr> */}
-<h2>Total: ${numberWithCommas(parseFloat(state.totalCart).toFixed(2))}</h2>
+<h2>Total: ₦{numberWithCommas(parseFloat(state.totalCart).toFixed(2))}</h2>
 <hr></hr>
 <div className="cart-action">
   <button
