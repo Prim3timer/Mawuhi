@@ -104,6 +104,19 @@ h4 {
 .public >* {
   margin-bottom: 4rem;
 }
+
+.public footer > * {
+  width: 8rem;
+  color: white;
+  padding: .5rem 1rem;
+  text-align: center;
+  background-color: dodgerblue;
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+
+
+
 .thanks {
   justify-items: center;
   min-height: 100vh;
