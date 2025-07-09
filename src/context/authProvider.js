@@ -10,9 +10,7 @@ const AuthContext = createContext({})
 export const AuthProvider = ({children}) => {
     const [state, dispatch] = useReducer(reducer, initialState)
     const [users, setUsers] = useState([])
-    const [auth, setAuth] = useState({})
-
-    const imagesArray = ['', credit, food, '']
+    const [auth, setAuth] = useState({})  
 
  const [currentUser, setCurrentUser] = useState({})
   const [currentUser2, setCurrentUser2] = useState({})

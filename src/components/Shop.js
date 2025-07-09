@@ -1,9 +1,10 @@
 import reducer from "../reducer"
 import initialState from "../store"
 // import SearchItem from "./SearchItem";
-import {useEffect, useReducer, useState } from "react";
+import {useEffect, useReducer, useContext, useState } from "react";
 import credit from '../images/credit.jpg'
 import cellPhone from '../images/sgs25+.webp'
+import AuthContext from "../context/authProvider";
 
 
 import axios  from "../app/api/axios";
@@ -14,14 +15,16 @@ const {v4: uuid} = require('uuid')
 
 
 const Shop = () => {
-  const { items} = useAuth()
+  const { items} = useContext(AuthContext)
  
 
 console.log(items)
 const {setAuth, auth} = useAuth()
 console.log(auth)
   const oneItem  =(id) => {
-   auth.picker4 = id
+    setAuth(prev => {
+      return {...prev, picker3: id}
+    })
   }
 
   const [state, dispatch] = useReducer(reducer, initialState)
@@ -63,8 +66,6 @@ const enableFilterate = ()=> {
  
       <section className="shop-inner-container">
       {state.items && state.items.map((item)=> {
-        console.log(item.qty)
-        console.log(state.getNames)
         return (
         <Link to={'/single-item'}
         className="linker"

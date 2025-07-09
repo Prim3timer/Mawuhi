@@ -1,69 +1,91 @@
-import { useState, useEffect } from "react";
-import axios from "../app/api/axios";
+import { useState, useEffect, useContext, Component } from "react";
+// import useAxiosPrivate from "../hooks/useAxiosPrivate";
 
+import axios from "../app/api/axios";
 import UserSelect from "./UserSelect";
 import useAuth from "../hooks/useAuth"
 import { Link } from "react-router-dom";
 import initialState from "../store";
+import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import reducer from "../reducer";
 import { useReducer } from "react";
 import { use } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons"
 import UserSettings from "./UserSettings";
+import { useNavigate, useLocation } from "react-router-dom";
+import AuthContext from "../context/authProvider";
+import useRefreshToken from "../hooks/useRefreshToken";
 
-const Users = ({users, setUsers, showSettings,
-    setShowSettings
-})=> {
- 
+
+const Users = ()=> {
+    const { users} = useContext(AuthContext)
+    const {auth, setAuth} = useAuth()
+
+        const [currentUsers, setCurrentUsers] = useState()
+ const axiosPrivate = useAxiosPrivate()
     const [madu, setMadu] = useState()
     const [brand, setBrand] = useState()
     const [state, dispatch] = useReducer(reducer, initialState)
     const [currentPerson, setCurrentPerson] = useState()
-   
-
-        const {auth, setAuth} = useAuth()
+ 
+    //   const [users, setUsers] = useState([])
+ const navigate = useNavigate();
+    const location = useLocation();
         const userPage = (id) => {
-            setAuth({...auth, picker3: id})
-            console.log(users)
-            console.log(id)
-            console.log(auth)
-      
-            console.log(brand)
+            // setAuth({...auth, picker3: id})
+  
             const person = users.find((user)=> user._id === id)
             setBrand(person)
-            console.log(brand)
+        
           
              
         }
 
-const settingFunc = (id) => {   
-        // e.preventDefault()
-            console.log(id)
-            const person = users.find((user => user._id === id))
-            setCurrentPerson(person)
-            console.log(currentPerson)
-            if (showSettings){
-                    setShowSettings(false)
-            } else {
+ useEffect(()=> {
+        let isMounted = true
+        // to cancel our request if the Component unmounts
+        const controller = new AbortController()
     
-                setShowSettings(true)
+        const getUsers = async ()=> {
+          
+            try {
+                const response = await axiosPrivate.get('/users', {
+                    signal: controller.signal
+                })
+                // setCurrentUsers(response.data)
+             
+                    isMounted && setCurrentUsers(response.data)
+                    
+                
+            } catch (error) {
+                console.log(error)
+                navigate('/login', { state: { from: location }, replace: true });
             }
-            console.log(showSettings)
         }
-           
+        
+        getUsers()
+        // clean up function
+        return ()=> {
+            isMounted = false
+            // controller.abort()
+            
+        }
+    }, [])
 
+// Rhinohorn1#
 
+// useEffect(()=>{
+//     getUsers()
+// })
 
-
-
-console.log(users)
 return (
  <article
  className="users-cont"
  
     >
-        {users?.length
+        <h4>{auth.user}</h4>
+        {currentUsers?.length
         ? (
 
             <table
@@ -79,7 +101,7 @@ return (
                 <th>Settings</th>
             </tr>
           
-                {users.map((madu, index)=> {
+                {currentUsers && currentUsers.map((madu, index)=> {
                     return <tr key={index}
                    className="header-trow"
                     style={{backgroundColor: index % 2 === 0 ?
@@ -100,9 +122,6 @@ return (
                                             {(Object.keys(madu.roles)).join(', ')}.
                                             </td>
 
-                        {/* <td
-                        //  onClick={() => userPage(madu._id)}
-                        >{madu?._id}</td> */}
                         <td
                         >
                             <Link to={'/user-settings'}
@@ -123,9 +142,6 @@ return (
                 </tbody>
            </table>
         ) : <p>no user to display</p>}
-
-
-
     </article>
 )
 }

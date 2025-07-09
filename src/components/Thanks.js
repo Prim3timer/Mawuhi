@@ -14,14 +14,14 @@ const cusomer = queryParams.get("customer")
 console.log(sessionId)
 
 const getRecipt = async ()=> {
-    const response = await axios.post(`/cart/thanks/${sessionId}`)
-    console.log({res: response.data})
+    try {
+
+        const response = await axios.post(`/cart/thanks/${sessionId}`)
+        console.log({res: response.data})
+    } catch (error){
+        console.error(error)
+    }
 }
-    // getRecipt()
-// console.log(window.location.href)
-// if (window.location == 'http://localhost:3000/thanks'){
-// console.log('yes')
-// }
 useEffect(()=> {
 
 
@@ -34,6 +34,7 @@ useEffect(()=> {
             {/* <h3>{alert}</h3> */}
             <h2>Thank you for your order</h2>
             <Link to={'/shop'}><button>Shopping</button></Link>
+            <Link to={'/home'}><button>Home</button></Link>
         </div>
     )
 }

@@ -36,6 +36,7 @@ import Shop from "./components/Shop"
 import SingleItem from "./components/SingleItem"
 import Thanks from "./components/Thanks"
 import Public from "./components/Public"
+import PersistLogin from "./components/PersistLogin"
 
 // import SearchItem from "./SearchItem";
 
@@ -55,8 +56,7 @@ const App = () => {
   const [userId, setUserId] = useState('');
   const year = new Date().getFullYear()
   const { auth} = useAuth()
-  console.log(auth.picker)
-  console.log(auth.picker3)
+
   
   const [state, dispatch] = useReducer(reducer, initialState)
 
@@ -90,6 +90,7 @@ return (
     <Route path="user-settings" element={<UserSettings/>}/>
   
        {/* protected routes */}
+       <Route element={<PersistLogin/>}>
        <Route element={<RequireAuth allowedRoles={[2001]}/>}>
        
       <Route path="one-receipt" element={<OneReceipt/>}/>
@@ -123,7 +124,7 @@ return (
          </Route>
         
   
-       
+       </Route>
   
          <Route path="*" element={<Missing/>}/>
         </Route>

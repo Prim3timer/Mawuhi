@@ -1,13 +1,14 @@
-import { useEffect, useReducer, useRef, useState } from "react"
+import { useEffect, useReducer, useRef, useState, useContext} from "react"
+import useAuth from "../hooks/useAuth";
 import { ROLES } from "../config/roles"
 import { Link, useNavigate } from "react-router-dom"
+import AuthContext from '../context/authProvider';
 import axios from "../app/api/axios"
 import { FaTrashAlt } from "react-icons/fa";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSave, faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons"
 import initialState from "../store"
 import reducer from "../reducer"
-import useAuth from "../hooks/useAuth"
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{2,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
@@ -36,55 +37,39 @@ const UserSettings = () => {
     const [state, dispatch] = useReducer(reducer, initialState)
     const [shadow, setShadow] = useState(false)
     const [ID, setID] = useState('')
-    const {auth} = useAuth()
+      const { auth, setAuth } = useAuth()
+      const {users} = useContext(AuthContext)
+  
     const saveRef = useRef(null)
         const pwdRef = useRef()
 
     // picker3 is the not the current user.  It is the user in question.
-
+console.log(auth.picker3)
 const navigate = useNavigate()
 // dispatch({type: ACTION.SUCCESS, payload: false})
-const getUsers = async ()=> {
+const getAuser = ()=>{
     try {
-        const response = await axios.get('/users')
-        const person = response.data.find((user) => user._id === auth.picker3)
-        if (person){
-            //    dispatch({type: 'selectUser', payload: person})
-            setCurrentUser2(person)
-            console.log(state.selectUser)
-            console.log(currentUser2)
-            // console.log(person)
-            setUsername(person.username) 
-            setID(person._id)
-            setRoles(Object.keys(person.roles))
-            setActive(person.active)
-             console.log(roles)
-            }
-            
-        } catch (error) {
-            console.log(error)
+        
+        const user = users.find((user) => user._id === auth.picker3)
+        if (user){
+    
+            setCurrentUser2(user)
+            setUsername(user.username)
+            console.log({username})
         }
-        }
+    } catch (error) {
+        console.error(error.message)
+    }
+}
         
         const shadowing = () => {
             setShadow(true)
          
         }     
-        
-           const userPage = () => {
-        
-          console.log(ID)
 
-          
-             
-        }
-
-
-
-        
 
 const assertain = (id) => {
-    // setAuth({...auth, picker3: id})
+    auth.picker3 = id
     // console.log(auth.picker3)
     // id &&    setBrand(id)
     if (auth.roles.includes(5150)){
@@ -104,25 +89,30 @@ const assertain = (id) => {
 
 const handleRemove = async ()=> {
     console.log(auth.picker3)
+    try {
+        
+        const response = await axios.delete(`/users/delete/${currentUser2._id}`)
+        dispatch({type: 'cancel', payload: false})
+        dispatch({type: 'success', payload: true})
+    navigate('/admin')
+        console.log(state.success)
+        setTimeout(()=> {
+            dispatch({type: 'success', payload: false})
+        }, 3000)
+        if (response){
+            dispatch({type: 'selectUser', payload: response.data})
+    
+            // const newGraw =  users.filter((item)=> item._id !== auth.picker3)
+    
+            // setUsers(newGraw)
+        }
+        else{
+            console.log('nothing for you')
+        }
+    } catch (error) {
+        console.error(error.message)
+    }
   
-    const response = await axios.delete(`/users/delete/${ID}`)
-    dispatch({type: 'cancel', payload: false})
-    dispatch({type: 'success', payload: true})
-navigate('/admin')
-    console.log(state.success)
-    setTimeout(()=> {
-        dispatch({type: 'success', payload: false})
-    }, 3000)
-    if (response){
-        dispatch({type: 'selectUser', payload: response.data})
-
-        // const newGraw =  users.filter((item)=> item._id !== auth.picker3)
-
-        // setUsers(newGraw)
-    }
-    else{
-        console.log('nothing for you')
-    }
 }
 
 const remainDelete = ()=> {
@@ -139,10 +129,9 @@ const generalRemain = () => {
 
  } 
 
-
-        useEffect(()=> {
-            getUsers()
-        }, [])
+useEffect(()=>{
+    getAuser()
+}, [])
         
      useEffect(() => {
             dispatch({type: ACTION.VALIDNAME, payload: USER_REGEX.test(username)})

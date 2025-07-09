@@ -1,9 +1,11 @@
 import { useContext, useEffect, useReducer, useRef, useState } from "react"
 import axios from "../app/api/axios"
+import axiosPrivate from "../app/api/axios"
 import initialState from "../store"
 import reducer from "../reducer"
 import { ItemContext } from "./Shop"
 import useAuth from "../hooks/useAuth"
+import useRefreshToken from "../hooks/useRefreshToken"
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { faArrowDown, faArrowUp } from "@fortawesome/free-solid-svg-icons"
 import {format} from 'date-fns'
@@ -12,19 +14,21 @@ import {Link, resolvePath} from 'react-router-dom'
 const SingleItem = ()=> {
   const [isLoading, setIsLoading] = useState(true)
   const [state, dispatch] = useReducer(reducer, initialState)
-
- const upArrow = "+"
+  const upArrow = "+"
   const downArrow = "-"
-const qtyRef = useRef('')
-console.log(qtyRef.current.value)
-console.log(state.transArray)
-   const {auth, setAuth,users} = useAuth()
+  const qtyRef = useRef('')
+  console.log(qtyRef.current.value)
+  console.log(state.transArray)
+  const {auth, setAuth,users} = useAuth()
+  console.log(auth)
 
 
   const getItem = async () => {
+
     const response = await axios.get('/items')  
     console.log(response.data)
     const cartItems = await axios.get('/cart')
+    console.log(auth)
     try {
       const userItems = cartItems.data.filter((item) => item.userId === auth.picker)
       console.log(userItems)
@@ -34,8 +38,7 @@ console.log(state.transArray)
       if (cartItems?.length){
   
       }
-        const goods = response.data.items.find((item) => item._id === auth.picker4)
-        console.log(auth.picker4)
+        const goods = response.data.items.find((item) => item._id === auth.picker3)
         if (goods){
           
           const newGoods = {...goods, transQty: 1, total: goods.price}
@@ -52,9 +55,10 @@ console.log(state.transArray)
 
 
   const addToCart = async () => {
+    console.log(auth)
       dispatch({type: 'success', payload: true})
     try {
-      console.log(auth.picker)
+      console.log(auth)
       const {elItem} = state
       const currentUser = users.find((user)=> user._id === auth.picker)
       console.log(elItem)
@@ -68,6 +72,8 @@ console.log(state.transArray)
         total: elItem.total 
       }
 console.log(actualItem)
+
+console.log({actualItem: actualItem})
 const foundItem = state.singleItemArray.find((item) => item.name === actualItem.name)
 if (foundItem){
 
@@ -220,23 +226,6 @@ function numberWithCommas(x) {
               
               </article>
 
-
-
-
-                  {/* <button
-          onClick={() => increment(qtyRef.current.value)}
-          >{upArrow}</button> */}
-            {/* <h4
-            className="shop-qty"
-            ref={qtyRef}
-            // value={state.elItem.qty}
-            >{state.elItem.qty}</h4> */}
-
-               
-
-              {/* <button 
-              onClick={decrement}
-              >{downArrow}</button> */}
         </div>
     )
 }

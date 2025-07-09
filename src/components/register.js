@@ -140,7 +140,7 @@ const Register = () => {
                         </label>
                         <input
                             type="password"
-                            id="password"
+                            className="password"
                             onChange={(e) => dispatch({type: ACTION.PWD, payload: e.target.value})}
                             value={state.pwd}
                             required

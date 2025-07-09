@@ -1,12 +1,13 @@
 import reducer from "../reducer"
 import initialState from "../store"
 import axios from "../app/api/axios"
-import { useEffect, useReducer, useRef, useState } from "react"
+import { useContext, useEffect, useReducer, useRef, useState } from "react"
 import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FaTrashAlt } from "react-icons/fa";
 import {format} from 'date-fns'
 import useAuth from '../hooks/useAuth';
+import AuthContext from "../context/authProvider";
 
 
 const Transactions = ()=> {
@@ -14,7 +15,7 @@ const Transactions = ()=> {
     const now = new Date()
     const date = format(now, 'dd/MM/yyyy\tHH:mm:ss')
     console.log(date)
-    const {auth,user, getNames, items} = useAuth()
+    const {auth,user, getNames, items} = useContext(AuthContext)
     const inputRef = useRef()
     const qtyRef = useRef()
   

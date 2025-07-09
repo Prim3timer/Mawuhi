@@ -1,5 +1,6 @@
     import { useNavigate, Link } from "react-router-dom";
-import { useContext, useEffect, useReducer } from "react";
+import {useEffect, useReducer, useContext, useState } from "react";
+import axios from "../app/api/axios";
 import useAuth from "../hooks/useAuth";
 import AuthContext from "../context/authProvider";
 import reducer from "../reducer";
@@ -8,25 +9,40 @@ import { faCheck, faLeftLong } from "@fortawesome/free-solid-svg-icons"
 // import { init } from "create-react-app/createReactApp";
 import initialState from "../store";
 import { type } from "@testing-library/user-event/dist/type";
+import useRefreshToken from "../hooks/useRefreshToken";
 
 const Home = ()=> {
     const [state, dispatch] = useReducer(reducer, initialState)
+    const refresh = useRefreshToken()
 
-    const { setAuth, auth } = useAuth();
+    const { setAuth, auth } = useContext(AuthContext);
+    const [newName, setNewName] = useState()
     const navigate = useNavigate();
-    console.log(state.indSales)
+
+    
+    const preserveName = async () =>{
+        try {
+            
+            const {username} = await refresh()
+            console.log(username)
+            if (username) setNewName(username)
+        } catch (error) {
+            console.error(error)
+        }
+
+}
+
     const logout = async () => {
        
             // if used in more components, this should be in context 
             // axios to /logout endpoint 
+            const response = await axios.post('/auth/logout')
+            console.log(response.data)
             navigate('/');
         }
-        console.log('picker is: ', auth.picker)
-        console.log('picker3 is:', auth.picker3)
   
          useEffect(()=> {
-            // picker is the current user
-            auth.picker3 = auth.picker  
+           preserveName()
          }, [])
     return (
         <div className="home-cont" >
@@ -34,9 +50,9 @@ const Home = ()=> {
             <div   
             >
                 
-             <h3
-          > Hi, {auth.user} 
-
+            <h3
+          > Hi, {auth.user ? auth.user : newName} 
+    
              </h3>
             </div>
              <br />

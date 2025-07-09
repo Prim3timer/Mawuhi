@@ -1,21 +1,27 @@
-import { useEffect, useReducer, useState } from "react"
+import { useEffect, useReducer, useState, useContext } from "react"
 import useAuth from "../hooks/useAuth"
 import axios from "../app/api/axios"
 import initialState from "../store"
 import reducer from "../reducer"
 import Sales from "./Sales"
 import Shopping from "./Reciepts"
-
+import AuthContext from "../context/authProvider"
 import { Link } from "react-router-dom"
 import AllTransactions from "./AllTransactions"
 
 const UserSelect = () => {
     const [state, dispatch] = useReducer(reducer, initialState)
-   
-    const {auth, getUsers, setCurrentUser2, currentUser2, currentUser} = useAuth()
+   const {users} = useContext(AuthContext)
+   const [username, setUsername] = useState('')
+   const {auth} = useAuth()
+    const {getUsers, setCurrentUser2, currentUser2, currentUser} = useContext(AuthContext)
     console.log('picker3 is : ', auth.picker3)
     console.log('picker is: ', auth.picker)
     // const {indSales} = initialState 
+ 
+
+      auth.picker = auth.picker3
+
     console.log('current user 2: ', currentUser2)
  
     const [allTransactons, setAllTransactions] = useState(false)
@@ -24,10 +30,25 @@ const UserSelect = () => {
 
 const showMe = () => {
     // dispatch({type: 'indSales', payload: true})
-    setPicker(auth.picker3)
+    // setPicker(auth.picker3)
    
   
 }
+// const getAuser = ()=>{
+//     try {
+        
+//         const user = users.find((user) => user._id === auth.picker3)
+//         if (user){
+    
+//             setCurrentUser2(user)
+//             setUsername(user.username)
+//             console.log({username})
+//         }
+//     } catch (error) {
+//         console.error(error.message)
+//     }
+// }
+
 
 
     console.log(state.indSales)
