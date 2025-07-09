@@ -2,11 +2,24 @@ import useAuth from "../hooks/useAuth"
 import { Link } from "react-router-dom"
 import axios from "../app/api/axios"
 import { useEffect, useState } from "react"
+import useRefreshToken from "../hooks/useRefreshToken";
 
 const Thanks = () =>{
     const [alert, setAlert] = useState('')
 const {auth} = useAuth()
+ const refresh = useRefreshToken()
 
+    const preserveName = async () =>{
+        try {
+            
+            const {username} = await refresh()
+            console.log(username)
+            if (username) setNewName(username)
+        } catch (error) {
+            console.error(error)
+        }
+
+}
 
 const queryParams = new URLSearchParams(window.location.search)
 const sessionId = queryParams.get("session_id")
@@ -29,6 +42,10 @@ useEffect(()=> {
 
     // console.log(alert)
 }, [])
+
+   useEffect(()=> {
+           preserveName()
+         }, [])
     return (
         <div className="thanks">
             {/* <h3>{alert}</h3> */}
