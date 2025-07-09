@@ -14,7 +14,6 @@ const {auth} = useAuth()
             
             const {username} = await refresh()
             console.log(username)
-            if (username) setNewName(username)
         } catch (error) {
             console.error(error)
         }
