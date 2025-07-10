@@ -13,8 +13,8 @@ import useRefreshToken from "../hooks/useRefreshToken";
 
 const Home = ()=> {
     const [state, dispatch] = useReducer(reducer, initialState)
-    const refresh = useRefreshToken()
-
+   
+const refresh = useRefreshToken()
     const { setAuth, auth } = useContext(AuthContext);
     const [newName, setNewName] = useState()
     const navigate = useNavigate();

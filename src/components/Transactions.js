@@ -119,7 +119,7 @@ const Transactions = ()=> {
                     if (inv.name === good.name){
                         const goodObj = {
                             name: inv.name,
-                            qty: inv.qty - inv.qty < 1 ? 0 : inv.qty - good.qty                   
+                            qty: inv.qty - good.qty < 1 ? 0 : inv.qty - good.qty                   
                         }
                         await axios.put(`items/dynam`, goodObj)
                     }
