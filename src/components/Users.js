@@ -33,7 +33,13 @@ const Users = ()=> {
  const navigate = useNavigate();
     const location = useLocation();
         const userPage = (id) => {
-            // setAuth({...auth, picker3: id})
+           setAuth(prev => {
+
+            return {...prev, picker3: id
+            }
+        })
+
+            
   
             const person = users.find((user)=> user._id === id)
             setBrand(person)

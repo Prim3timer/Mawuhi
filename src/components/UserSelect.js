@@ -14,7 +14,7 @@ const UserSelect = () => {
    const {users} = useContext(AuthContext)
    const [username, setUsername] = useState('')
    const {auth} = useAuth()
-    const {getUsers, setCurrentUser2, currentUser2, currentUser} = useContext(AuthContext)
+    const {setCurrentUser2, currentUser2, currentUser} = useContext(AuthContext)
     console.log('picker3 is : ', auth.picker3)
     console.log('picker is: ', auth.picker)
     // const {indSales} = initialState 
@@ -34,27 +34,27 @@ const showMe = () => {
    
   
 }
-// const getAuser = ()=>{
-//     try {
+const getAUser = ()=>{
+    try {
         
-//         const user = users.find((user) => user._id === auth.picker3)
-//         if (user){
+        const user = users.find((user) => user._id === auth.picker3)
+        if (user){
     
-//             setCurrentUser2(user)
-//             setUsername(user.username)
-//             console.log({username})
-//         }
-//     } catch (error) {
-//         console.error(error.message)
-//     }
-// }
+            setCurrentUser2(user)
+            setUsername(user.username)
+            console.log({username})
+        }
+    } catch (error) {
+        console.error(error.message)
+    }
+}
 
 
 
     console.log(state.indSales)
 
       useEffect(()=> {
-    getUsers()
+    getAUser()
   }, [])
 
     return (

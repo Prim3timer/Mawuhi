@@ -36,10 +36,10 @@ const getRecipt = async ()=> {
 }
 useEffect(()=> {
 
+if (sessionId){
+    getRecipt()
 
-        getRecipt()
-
-    // console.log(alert)
+}
 }, [])
 
    useEffect(()=> {

@@ -116,7 +116,7 @@ const Login = () => {
                 <article>
                 <input
                     type={isPassword}
-                    className="password"
+                    className="login-password"
                 
                     onChange={(e) => setPwd(e.target.value)}
                     value={pwd}

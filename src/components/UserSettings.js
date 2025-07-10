@@ -31,31 +31,32 @@ const ACTION = {
 const UserSettings = () => {
     const [password, setPassword] = useState('')
     const [currentUser2, setCurrentUser2] = useState()
-    const [roles, setRoles] =  useState({})
     const [username, setUsername] = useState('')
     const [active, setActive] = useState('')
     const [state, dispatch] = useReducer(reducer, initialState)
     const [shadow, setShadow] = useState(false)
     const [ID, setID] = useState('')
-      const { auth, setAuth } = useAuth()
-      const {users} = useContext(AuthContext)
-  
+    const [roles, setRoles] =  useState({})
+    const { auth, setAuth } = useAuth()
+    const {users} = useContext(AuthContext)
+    
+    
     const saveRef = useRef(null)
-        const pwdRef = useRef()
-
+    const pwdRef = useRef()
+    
     // picker3 is the not the current user.  It is the user in question.
-console.log(auth.picker3)
+console.log('picker3 is :', auth.picker3)
 const navigate = useNavigate()
 // dispatch({type: ACTION.SUCCESS, payload: false})
 const getAuser = ()=>{
     try {
         
         const user = users.find((user) => user._id === auth.picker3)
-        if (user){
-    
+        if (user){    
             setCurrentUser2(user)
             setUsername(user.username)
-            console.log({username})
+            setRoles(user.roles)
+            setActive(user.active)
         }
     } catch (error) {
         console.error(error.message)
@@ -132,6 +133,7 @@ const generalRemain = () => {
 useEffect(()=>{
     getAuser()
 }, [])
+
         
      useEffect(() => {
             dispatch({type: ACTION.VALIDNAME, payload: USER_REGEX.test(username)})
@@ -181,6 +183,7 @@ const onRolesChanged = e => {
         console.log('alright * 3')
         setRoles(values)
     }
+    console.log(values)
 }
 
 const updateUser = async () => {
@@ -189,7 +192,7 @@ console.log('shadow is ', shadow)
         Employee: 2001,
     }
     let newest = {}
-    const userChange = roles.map((role)=>{
+    const userChange = Object.keys(roles).map((role)=>{
        if (role === 'Manager' ) newest =  {...newRoles, Manager: 1984}
        else if (role === 'Admin') newest  = {...newRoles, Manager: 1984, Admin: 5150}
        else newest = newRoles
@@ -197,16 +200,15 @@ console.log('shadow is ', shadow)
         return newest
     })
 
-    const currentRole = userChange.pop()
-    console.log(currentRole)
-    console.log(password)
+
     const updatedPerson = {
         username: username,
-        roles: currentRole,
+        roles: userChange,
         password: password,
         active: active,
 
     }
+    console.log(currentUser2._id)
 
     const response = await axios.patch(`/users/update/${currentUser2._id}`, updatedPerson)
 if (response) {
@@ -221,6 +223,7 @@ const onActiveChanged = () => {
     
     shadowing()
     setActive(prev => !prev)}
+
 const options = Object.keys(ROLES).map(role => {
     Object.keys(roles)
     return (
@@ -332,7 +335,7 @@ style={{
               
             //  ref={selectRef}
            
-             value={roles}
+             value={  Object.keys(roles)}
              onChange={e => onRolesChanged(e)}
             className="roles-select"
              >

@@ -101,6 +101,18 @@ h4 {
   justify-items: center;
 }
 
+.public footer {
+  color: white;
+  background-color: dodgerblue;
+  padding: .5rem 1rem;
+  border-radius: 5px;
+}
+
+ Link {
+ color: white;
+
+}
+
 .public >* {
   margin-bottom: 4rem;
 }
@@ -310,6 +322,21 @@ input {
 
 .logout {
             font-size: 1.5rem;
+}
+
+.login form {
+  /* background-color: blue; */
+}
+
+.login form span {
+  /* position: absolute; */
+}
+
+.login form input {
+ width: 50vw;
+}
+.login-password {
+  margin: 0  .5rem 0 2.2rem;
 }
 
 .login-header {

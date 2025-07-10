@@ -8,8 +8,10 @@ const Public = () => {
             </header>
             <main className="public__main">
             </main>
-            <footer>
-                <Link to="/login">Login</Link>
+            <footer >
+                <Link to="/login" style={{textDecoration: 'none',
+                    color: 'white'
+                }}>Login</Link>
             </footer>
         </section>
 
