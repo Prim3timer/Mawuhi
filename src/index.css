@@ -504,13 +504,14 @@ form {
   text-align: center; 
   margin: 1rem 0;
   /* background-color: red; */
-  min-height: 100vh;
+  max-height: 40vh;
   }
 
   #field {
     width: 98%;
+    min-height: 40vh;
     margin: .5rem 0;
-    flex-grow: 1;
+    /* flex-grow: 1; */
     justify-self: center;
     /* background-color: red; */
     /* justify-content: space-between; */

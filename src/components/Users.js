@@ -19,9 +19,9 @@ import useRefreshToken from "../hooks/useRefreshToken";
 
 
 const Users = ()=> {
-    const { users} = useContext(AuthContext)
+    const { users, setAtHome} = useContext(AuthContext)
     const {auth, setAuth} = useAuth()
-
+setAtHome(false)
         const [currentUsers, setCurrentUsers] = useState()
  const axiosPrivate = useAxiosPrivate()
     const [madu, setMadu] = useState()
@@ -49,6 +49,7 @@ const Users = ()=> {
         }
 
  useEffect(()=> {
+    console.log(auth)
         let isMounted = true
         // to cancel our request if the Component unmounts
         const controller = new AbortController()

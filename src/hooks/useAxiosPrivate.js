@@ -40,8 +40,8 @@ const useAxiosPrivate = () => {
                     // now we should have a new accessToken
                     return axiosPrivate(prevRequest)
                 }
-                return Promise.reject(error)
-            }
+             
+            },    (error) => Promise.reject(error)
         )
 
       

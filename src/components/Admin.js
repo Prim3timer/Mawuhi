@@ -9,11 +9,11 @@ import AuthContext from "../context/authProvider";
 
 
 const Admin = () => {
-    const {auth, users, getUsers} = useContext(AuthContext)
-   
+    const {auth, users, getUsers, setAtHome, atHome} = useContext(AuthContext)
+   console.log({atHome})
       const [currentPerson, setCurrentPerson] = useState()
       const [showSettings, setShowSettings] = useState(false)
-
+  setAtHome(false)
 
 
     useEffect(()=> {

@@ -264,8 +264,7 @@ const options = Object.keys(ROLES).map(role => {
 
             <form>
             <label htmlFor="username">Username:
-            <FontAwesomeIcon icon={faCheck} className={state.validName ? "valid" : "hide"} /
->
+            <FontAwesomeIcon icon={faCheck} className={state.validName ? "valid" : "hide"} />
             <FontAwesomeIcon icon={faTimes} className={state.validName || !username ? "hide"
  : "invalid"} />
             </label>

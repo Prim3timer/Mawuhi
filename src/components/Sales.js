@@ -1,10 +1,13 @@
-import {useState, useEffect, useReducer} from 'react'
+import {useState, useEffect, useReducer,useContext} from 'react'
 import initialState from '../store'
 import reducer from '../reducer'
-import axios from '../app/api/axios'
+import axios, { axiosPrivate } from '../app/api/axios'
 import useAuth from '../hooks/useAuth'
+import AuthContext from '../context/authProvider'
 const {v4: uuid} = require('uuid')
 const Sales = ()=> {
+    const {atHome} = useContext(AuthContext)
+    console.log({atHome})
 const [state, dispatch] = useReducer(reducer, initialState)
 const [search, setSearch] = useState('')
 const [specArray, setSpecArray] = useState([])
@@ -13,16 +16,19 @@ const [specArray, setSpecArray] = useState([])
     const {auth} = useAuth()
     const getTrans = async () => {
         const innerArray =[]
-        console.log(auth.picker3)
+        console.log(auth.picker)
+        console.log({atHome})
+        const pickerChecker = atHome ? auth.picker : auth.picker3
         try {
             const response = await axios.get('/transactions')
-            const response2 = await axios.get('/users')
-            console.log(response2)
-            const newArray = response.data.filter((item)=> item.cashierID === auth.picker3)
+            const response2 = await axiosPrivate.get('/users')
+            // console.log(response2)
+            console.log(response)
+            const newArray = response.data.filter((item)=> item.cashierID === pickerChecker)
             console.log(newArray)
             if (response2){
 
-                const person =  response2.data.find((person) => person._id == auth.picker3)
+                const person =  response2.data.find((person) => person._id == pickerChecker)
                 setCurrenUser(person)
                 console.log(person)
             }

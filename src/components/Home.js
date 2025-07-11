@@ -1,4 +1,4 @@
-    import { useNavigate, Link } from "react-router-dom";
+    import { useNavigate, Link, useLocation } from "react-router-dom";
 import {useEffect, useReducer, useContext, useState } from "react";
 import axios from "../app/api/axios";
 import useAuth from "../hooks/useAuth";
@@ -10,17 +10,19 @@ import { faCheck, faLeftLong } from "@fortawesome/free-solid-svg-icons"
 import initialState from "../store";
 import { type } from "@testing-library/user-event/dist/type";
 import useRefreshToken from "../hooks/useRefreshToken";
+import { axiosPrivate } from "../app/api/axios";
 
 const Home = ()=> {
     const [state, dispatch] = useReducer(reducer, initialState)
    
 const refresh = useRefreshToken()
-    const { setAuth, auth } = useContext(AuthContext);
+    const { setAuth, auth, setAtHome, getUsers } = useContext(AuthContext);
     const [newName, setNewName] = useState()
     const navigate = useNavigate();
-
-    
+    const location = useLocation();
+    setAtHome(true)
     const preserveName = async () =>{
+        console.log(auth)
         try {
             
             const {username} = await refresh()
@@ -40,6 +42,43 @@ const refresh = useRefreshToken()
             console.log(response.data)
             navigate('/');
         }
+
+
+    //     useEffect(()=> {
+    //     let isMounted = true
+    //     // to cancel our request if the Component unmounts
+    //     const controller = new AbortController()
+    
+    //     const getUsers = async ()=> {
+          
+    //         try {
+    //             const response = await axiosPrivate.get('/users', {
+    //                 signal: controller.signal
+    //             })
+    //             // setCurrentUsers(response.data)
+             
+    //                 // isMounted && setCurrentUsers(response.data)
+                    
+                
+    //         } catch (error) {
+    //             console.log(error)
+    //             navigate('/login', { state: { from: location }, replace: true });
+    //         }
+    //     }
+        
+    //     getUsers()
+    //     // clean up function
+    //     return ()=> {
+    //         isMounted = false
+    //         // if (controller){
+    //             // controller.abort()
+
+    //         // }
+            
+    //     }
+    // }, [])
+
+
   
          useEffect(()=> {
            preserveName()

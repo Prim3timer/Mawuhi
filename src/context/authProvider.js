@@ -15,10 +15,11 @@ export const AuthProvider = ({children}) => {
  const [currentUser, setCurrentUser] = useState({})
   const [currentUser2, setCurrentUser2] = useState({})
       const [genTrans, setGenTrans] = useState([])
+      const [atHome, setAtHome] = useState(true)
   const [search, setSearch] = useState('')
   const [search2, setSearch2] = useState('')
      const itemRef = useRef()
-   let {cancel, items, isEdit, afa, sales, price, unitMeasure, user, getNames, receipt, transactions} = state
+   let {cancel, items, isEdit, afa, sales, price, unitMeasure, user, getNames, receipt, transactions, isHome} = state
 
 
 
@@ -241,7 +242,7 @@ export const AuthProvider = ({children}) => {
             handleSubmit, handleEdit, assertain, itemRef, cancel,
             generalRemain, remainDelete, items, isEdit, afa, price, unitMeasure, getTransaction,
             search, setSearch, setSearch2, search2, sales, getItems, user, getNames, currentUser,
-            setCurrentUser, getUsers, setCurrentUser2, currentUser2, users, transactions
+            setCurrentUser, getUsers, setCurrentUser2, currentUser2, users, transactions, atHome, setAtHome, 
 
         }}>
             {children}
