@@ -15,7 +15,7 @@ const {v4: uuid} = require('uuid')
 
 
 const Shop = () => {
-  const { items} = useContext(AuthContext)
+  const { items, getNames, getItems} = useContext(AuthContext)
  
 
 console.log(items)
@@ -50,6 +50,10 @@ const enableFilterate = ()=> {
     enableFilterate()
   }, [state.search])
 
+  useEffect(()=> {
+    getItems()
+  }, [])
+
 
   return (
     !items ? <h2>Loading...</h2> :<div className="shop">
@@ -65,7 +69,7 @@ const enableFilterate = ()=> {
    </form>
  
       <section className="shop-inner-container">
-      {state.items && state.items.map((item)=> {
+      {state.getNames && getNames.map((item)=> {
         return (
         <Link to={'/single-item'}
         className="linker"

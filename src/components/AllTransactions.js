@@ -40,7 +40,7 @@ const [allTransi, setAllTransi] = useState([])
                 const filterate = response.data.filter((inner)=> inner.date.substring(0, 10).includes(state.search))
                 console.log(filterate)
             
-                
+                filterate.reverse()
              setAllTransi(filterate)
                     
                 }

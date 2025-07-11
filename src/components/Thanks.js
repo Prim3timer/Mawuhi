@@ -30,6 +30,7 @@ const getRecipt = async ()=> {
 
         const response = await axios.post(`/cart/thanks/${sessionId}`)
         console.log({res: response.data})
+        console.log('hi')
     } catch (error){
         console.error(error)
     }
