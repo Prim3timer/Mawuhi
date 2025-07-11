@@ -242,7 +242,7 @@ export const AuthProvider = ({children}) => {
             handleSubmit, handleEdit, assertain, itemRef, cancel,
             generalRemain, remainDelete, items, isEdit, afa, price, unitMeasure, getTransaction,
             search, setSearch, setSearch2, search2, sales, getItems, user, getNames, currentUser,
-            setCurrentUser, getUsers, setCurrentUser2, currentUser2, users, transactions, atHome, setAtHome, 
+            setCurrentUser, getUsers, setCurrentUser2, currentUser2, users, transactions, atHome, setAtHome
 
         }}>
             {children}

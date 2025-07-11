@@ -1,4 +1,4 @@
-import  axiosPrivate  from "../app/api/axios";
+import  {axiosPrivate}  from "../app/api/axios";
 import { useEffect } from "react";
 import useRefreshToken from "./useRefreshToken";
 import useAuth from "./useAuth";
@@ -40,8 +40,8 @@ const useAxiosPrivate = () => {
                     // now we should have a new accessToken
                     return axiosPrivate(prevRequest)
                 }
-             
-            },    (error) => Promise.reject(error)
+                return Promise.reject(error)
+            }
         )
 
       

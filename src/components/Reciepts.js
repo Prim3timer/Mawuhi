@@ -16,17 +16,19 @@ const [showOne, setShowOne] = useState(false)
 const [oneId, setOneId] = useState('')
 const { auth } = useAuth();
 const [currentUser, setCurrentUser] = useState({})
+const {atHome, users, getUsers} = useContext(AuthContext)
 const getItems = async ()=> {
     setOneId(auth.picker)
     console.log(auth.picker)
+     const pickerChecker = atHome ? auth.picker : auth.picker3
     // auth.picker3 = state.id
     try {
 
         console.log('picker3 is : ', auth.picker3)
         console.log('picker is: ', auth.picker)
-              const gog =  await axios.get('/users')
+            //   const gog =  await axios.get('/users')
     
-            const person = gog.data.find((user) => user._id === auth.picker3)
+            const person = users.find((user) => user._id === pickerChecker)
             console.log(person)
             setCurrentUser(person)
     
@@ -34,7 +36,7 @@ const getItems = async ()=> {
             if (response){
         
              
-                const cashierTrans = response.data.filter((item) => item.cashierID === auth.picker3)
+                const cashierTrans = response.data.filter((item) => item.cashierID === pickerChecker)
                 console.log(cashierTrans)
                 // dispatch({type: 'getNames', payload: response.data})
                 cashierTrans.reverse()
@@ -120,6 +122,10 @@ const generalRemain = () => {
 
 useEffect(()=> {
     getItems()
+}, [state.search])
+
+useEffect(()=> {
+    getUsers()
 }, [state.search])
 
 

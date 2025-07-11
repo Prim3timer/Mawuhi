@@ -20,18 +20,18 @@ const [specArray, setSpecArray] = useState([])
         console.log({atHome})
         const pickerChecker = atHome ? auth.picker : auth.picker3
         try {
-            const response = await axios.get('/transactions')
-            const response2 = await axiosPrivate.get('/users')
+            const response = await axiosPrivate.get('/transactions')
+            // const response2 = await axiosPrivate.get('/users')
             // console.log(response2)
             console.log(response)
             const newArray = response.data.filter((item)=> item.cashierID === pickerChecker)
-            console.log(newArray)
-            if (response2){
+            // console.log(newArray)
+            // if (response2){
 
-                const person =  response2.data.find((person) => person._id == pickerChecker)
-                setCurrenUser(person)
-                console.log(person)
-            }
+            //     const person =  response2.data.find((person) => person._id == pickerChecker)
+            //     setCurrenUser(person)
+            //     console.log(person)
+            // }
             if (newArray){
                  console.log(currentUser)
                      newArray.map((gr)=> {
