@@ -1,5 +1,6 @@
 import axios from "../app/api/axios";
 import useAuth from "./useAuth";
+import { axiosPrivate } from "../app/api/axios";
 
 const useRefreshToken = ()=> {
     const {setAuth}  = useAuth()
@@ -11,10 +12,10 @@ const useRefreshToken = ()=> {
         })
         setAuth(prev => {
             console.log(JSON.stringify(prev))
-            console.log({data: response.data})
+            console.log(response.data.accessToken)
             return {...prev, accessToken: response.data.accessToken,
                 roles: response.data.roles,
-                username: response.data.username,
+                user: response.data.username,
                 picker: response.data.id
             }
         })

@@ -53,7 +53,7 @@ const Login = () => {
                     withCredentials: true
                 }
             );
-            // console.log(JSON.stringify(response?.data));
+            console.log(JSON.stringify(response?.data));
             // console.log(JSON.stringify(response));
             const accessToken = response?.data?.accessToken;
             const roles = response?.data?.roles;
@@ -86,8 +86,6 @@ const Login = () => {
             errRef.current.focus();
         }
         dispatch({type: 'user', payload: user})
-    
-      console.log(auth)
     }
 
     return (

@@ -10,37 +10,42 @@ import { faCheck, faLeftLong } from "@fortawesome/free-solid-svg-icons"
 import initialState from "../store";
 import { type } from "@testing-library/user-event/dist/type";
 import useRefreshToken from "../hooks/useRefreshToken";
+import useLogout from "../hooks/useLogout";
 import { axiosPrivate } from "../app/api/axios";
 
 const Home = ()=> {
     const [state, dispatch] = useReducer(reducer, initialState)
-   
+   const {auth} = useAuth()
 const refresh = useRefreshToken()
-    const { setAuth, auth, setAtHome, getUsers } = useContext(AuthContext);
+const logout = useLogout()
+    const {  setAtHome, getUsers } = useContext(AuthContext);
     const [newName, setNewName] = useState()
     const navigate = useNavigate();
     const location = useLocation();
-    setAtHome(true)
+    // setAtHome(true)
     const preserveName = async () =>{
-        console.log(auth)
+    
         try {
             
-            const {username} = await refresh()
-            console.log(username)
-            if (username) setNewName(username)
+            const data = await refresh()
+            console.log({data})
+            // if (username) setNewName(username)
         } catch (error) {
             console.error(error)
         }
 
 }
 
-    const logout = async () => {
+    const signOut = async () => {
        
             // if used in more components, this should be in context 
             // axios to /logout endpoint 
-            const response = await axios.post('/auth/logout')
-            console.log(response.data)
-            navigate('/');
+            const response = await logout()
+            console.log(response)
+            navigate('/login');
+            if (response){
+
+            }
         }
 
 
@@ -90,7 +95,7 @@ const refresh = useRefreshToken()
             >
                 
             <h3
-          > Hi, {auth.user ? auth.user : newName} 
+          >  {auth.user ?  `Hi, ${auth.user}`: ''} 
     
              </h3>
             </div>
@@ -142,7 +147,7 @@ const refresh = useRefreshToken()
         style={{textAlign: 'center'}}
         >
 
-            <button onClick={logout}
+            <button onClick={signOut}
           className="logout"
             >Sign Out</button>
         </div>

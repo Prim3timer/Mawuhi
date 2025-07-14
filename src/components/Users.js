@@ -1,7 +1,5 @@
 import { useState, useEffect, useContext, Component } from "react";
-// import useAxiosPrivate from "../hooks/useAxiosPrivate";
 
-import axios from "../app/api/axios";
 import UserSelect from "./UserSelect";
 import useAuth from "../hooks/useAuth"
 import { Link } from "react-router-dom";
@@ -15,20 +13,20 @@ import { faPenToSquare } from "@fortawesome/free-solid-svg-icons"
 import UserSettings from "./UserSettings";
 import { useNavigate, useLocation } from "react-router-dom";
 import AuthContext from "../context/authProvider";
-import useRefreshToken from "../hooks/useRefreshToken";
+
 
 
 const Users = ()=> {
     const { users, setAtHome} = useContext(AuthContext)
     const {auth, setAuth} = useAuth()
-setAtHome(false)
+// setAtHome(false)
         const [currentUsers, setCurrentUsers] = useState()
  const axiosPrivate = useAxiosPrivate()
     const [madu, setMadu] = useState()
     const [brand, setBrand] = useState()
     const [state, dispatch] = useReducer(reducer, initialState)
     const [currentPerson, setCurrentPerson] = useState()
- 
+
     //   const [users, setUsers] = useState([])
  const navigate = useNavigate();
     const location = useLocation();
@@ -49,25 +47,28 @@ setAtHome(false)
         }
 
  useEffect(()=> {
-    console.log(auth)
+    // console.log(auth)
         let isMounted = true
         // to cancel our request if the Component unmounts
         const controller = new AbortController()
     
         const getUsers = async ()=> {
-          
+
             try {
                 const response = await axiosPrivate.get('/users', {
                     signal: controller.signal
                 })
-                // setCurrentUsers(response.data)
+                setCurrentUsers(response.data)
              
                     isMounted && setCurrentUsers(response.data)
                     
                 
             } catch (error) {
-                console.log(error)
-                navigate('/login', { state: { from: location }, replace: true });
+                console.error(error)
+              setTimeout(()=> {
+
+                  navigate('/login', { state: { from: location }, replace: true });
+              }, 32000)
             }
         }
         
@@ -75,14 +76,18 @@ setAtHome(false)
         // clean up function
         return ()=> {
             isMounted = false
-            // if (controller){
-            //     controller.abort()
+            if (controller){
+                setTimeout(()=> {
+                    controller.abort()
+                }, 1000)
+       
+           
 
-            // }
+            }
             
         }
     }, [])
-
+// getUsers()
 // Rhinohorn1#
 
 // useEffect(()=>{
@@ -152,6 +157,7 @@ return (
                 </tbody>
            </table>
         ) : <p>no user to display</p>}
+     
     </article>
 )
 }

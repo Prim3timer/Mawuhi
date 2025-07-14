@@ -1,7 +1,7 @@
 import { createContext, useState, useReducer, useEffect, useRef } from "react";
 import reducer from "../reducer"
 import initialState from "../store"
-import axios from "../app/api/axios"
+import axios, { axiosPrivate } from "../app/api/axios"
 import credit from '../images/credit.jpg'
 import food from '../images/meal.jpg'
 // import Transactions from "../components/Transactions";
@@ -27,7 +27,7 @@ export const AuthProvider = ({children}) => {
         dispatch({type: 'clear'})
         try {
             // dispatch({type: 'errMsg', payload: 'loading...'})
-            const response = await axios.get('/items')
+            const response = await axiosPrivate.get('/items')
             dispatch({type: 'errMsg', payload: ''})
           
             dispatch({type: 'getNames', payload: response.data.items})   
@@ -102,21 +102,21 @@ export const AuthProvider = ({children}) => {
           }           
         }
 
-        const getUsers = async ()=> {
-            try {
-                    const response = await axios.get('/users')
-                    // const currentUser = response.data.find((user) => user._id === picker)
-                    const person = response.data.find((user) => user._id === auth.picker3)
-                    setUsers(response.data)
-                   setCurrentUser2(person)
-                   dispatch({type: 'inItem', payload: currentUser})
+        // const getUsers = async ()=> {
+        //     try {
+        //             const response = await axios.get('/users')
+        //             // const currentUser = response.data.find((user) => user._id === picker)
+        //             const person = response.data.find((user) => user._id === auth.picker3)
+        //             setUsers(response.data)
+        //            setCurrentUser2(person)
+        //            dispatch({type: 'inItem', payload: currentUser})
                         
-                        console.log(currentUser2)
+        //                 console.log(currentUser2)
                         
-                    } catch (error) {
-                        console.log(error)
-                    }
-                }
+        //             } catch (error) {
+        //                 console.log(error)
+        //             }
+        //         }
 
 
 
@@ -231,9 +231,9 @@ export const AuthProvider = ({children}) => {
     console.log(users)
   }, [])
 
-  useEffect(()=> {
-    getUsers()
-  }, [])
+//   useEffect(()=> {
+//     getUsers()
+//   }, [])
 
         
     return (
@@ -242,7 +242,7 @@ export const AuthProvider = ({children}) => {
             handleSubmit, handleEdit, assertain, itemRef, cancel,
             generalRemain, remainDelete, items, isEdit, afa, price, unitMeasure, getTransaction,
             search, setSearch, setSearch2, search2, sales, getItems, user, getNames, currentUser,
-            setCurrentUser, getUsers, setCurrentUser2, currentUser2, users, transactions, atHome, setAtHome
+            setCurrentUser, setCurrentUser2, currentUser2, users, transactions, atHome, setAtHome
 
         }}>
             {children}

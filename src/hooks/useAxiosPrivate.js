@@ -29,15 +29,15 @@ const useAxiosPrivate = () => {
             // if access token has expired
             async (error)=> {
                 const prevRequest = error?.config
-                // if request fail due to expired access token or if sent does 
+                // if request fail due to expired access token and if sent does 
                 // not exist (the custom sent property 
-                // aviods endless loop by making retry happen only once)
+                // aviods endless loop by making sure retry happens only once)
                 if (error?.response?.status === 403 && !prevRequest?.sent){
                     prevRequest.sent = true;
                     const {newAccessToken} = await refresh()
                     prevRequest.headers['Authorization'] = `Bearer ${newAccessToken}`
 
-                    // now we should have a new accessToken
+                    // now we should have a new accessToken with to which to retry the request
                     return axiosPrivate(prevRequest)
                 }
                 return Promise.reject(error)
