@@ -1,10 +1,12 @@
 import { createContext, useState, useReducer, useEffect, useRef } from "react";
 import reducer from "../reducer"
 import initialState from "../store"
-import axios, { axiosPrivate } from "../app/api/axios"
+import axios from "../app/api/axios"
 import credit from '../images/credit.jpg'
 import food from '../images/meal.jpg'
 // import Transactions from "../components/Transactions";
+import { useNavigate, useLocation } from "react-router-dom";
+import useAxiosPrivate from "../hooks/useAxiosPrivate";
 
 const AuthContext = createContext({})
 export const AuthProvider = ({children}) => {
@@ -19,55 +21,60 @@ export const AuthProvider = ({children}) => {
   const [search, setSearch] = useState('')
   const [search2, setSearch2] = useState('')
      const itemRef = useRef()
+
+
+        const axiosPrivate = useAxiosPrivate()
+ const navigate = useNavigate();
+    const location = useLocation();
    let {cancel, items, isEdit, afa, sales, price, unitMeasure, user, getNames, receipt, transactions, isHome} = state
 
 
 
- const getItems = async ()=> {
-        dispatch({type: 'clear'})
-        try {
-            // dispatch({type: 'errMsg', payload: 'loading...'})
-            const response = await axiosPrivate.get('/items')
-            dispatch({type: 'errMsg', payload: ''})
+//  const getItems = async ()=> {
+//         dispatch({type: 'clear'})
+//         try {
+//             // dispatch({type: 'errMsg', payload: 'loading...'})
+//             const response = await axios.get('/items')
+//             dispatch({type: 'errMsg', payload: ''})
           
-            dispatch({type: 'getNames', payload: response.data.items})   
-            console.log(response.data.items ) 
-            if (state.getNames){
+//             dispatch({type: 'getNames', payload: response.data.items})   
+//             console.log(response.data.items ) 
+//             if (state.getNames){
                 
-                // dispatch({type: 'user', payload: state.getNames[0].name})
-                console.log(state.user)
-                console.log(response.data)
-                console.log(state.getNames)
+//                 // dispatch({type: 'user', payload: state.getNames[0].name})
+//                 console.log(state.user)
+//                 console.log(response.data)
+//                 console.log(state.getNames)
                 
-            } 
-        } catch (error) {
-            console.log(error)
-        }
-        console.log(state.getNames && state.getNames)
-    }
+//             } 
+//         } catch (error) {
+//             console.log(error)
+//         }
+//         console.log(state.getNames && state.getNames)
+//     }
 
 
 
-     const getTrans = async ()=> {
+    //  const getTrans = async ()=> {
     
-            try {
-                const graw = await axios.get('/items')
-                console.log(graw.data.items)
-                if (graw.data.items.length > 0) {
-                    dispatch({type: 'items', payload: graw.data.items})
-                    console.log(state.items.data)
+    //         try {
+    //             const graw = await axios.get('/items')
+    //             console.log(graw.data.items)
+    //             if (graw.data.items.length > 0) {
+    //                 dispatch({type: 'items', payload: graw.data.items})
+    //                 console.log(state.items.data)
                     
-                    const filterate = graw.data.items.filter((inner)=> inner.name.toLowerCase().includes(state.search.toLowerCase()))
-                    dispatch({type: 'items', 
-                        payload: filterate})
-                    }
+    //                 const filterate = graw.data.items.filter((inner)=> inner.name.toLowerCase().includes(state.search.toLowerCase()))
+    //                 dispatch({type: 'items', 
+    //                     payload: filterate})
+    //                 }
                     
                     
                     
-                } catch (error) {
-                console.log(error)
-            }
-        }
+    //             } catch (error) {
+    //             console.log(error)
+    //         }
+    //     }
 
         const getTransaction = async ()=> {
           const innerArray = []
@@ -214,22 +221,71 @@ export const AuthProvider = ({children}) => {
 
 
 
+
+    useEffect(()=> {
+    // console.log(auth)
+        let isMounted = true
+        // to cancel our request if the Component unmounts
+        const controller = new AbortController()
+    
+        const getItems = async ()=> {
+            const cookieMap = {}
+           const allCookies = cookieMap['jwt']
+               console.log(allCookies)
+            try {
+                const response = await axiosPrivate.get('/items', {
+                    signal: controller.signal
+                })
+                console.log(response.data)
+             
+                    isMounted && dispatch({type: 'items',payload: response.data.items})
+                    
+                
+            } catch (error) {
+                console.error(error)
+           if(!auth.accessToken){
+
+               navigate('/login', { state: { from: location }, replace: true });
+           }
+
+           
+            }
+        }
+        
+        getItems()
+        // clean up function
+        return ()=> {
+            isMounted = false
+            if (controller){
+                setTimeout(()=> {
+                    controller.abort()
+                }, 1000)
+       
+           
+
+            }
+            
+        }
+    }, [])
+
+
+
      
     
-     useEffect(()=> {
-            getTrans()
+    //  useEffect(()=> {
+    //         getTrans()
            
             
-    }, [state.search])
+    // }, [state.search])
 
     useEffect(()=> {
   getTransaction()
 }, [state.search])
 
-    useEffect(()=> {
-    getItems()
-    console.log(users)
-  }, [])
+//     useEffect(()=> {
+//     getItems()
+//     console.log(users)
+//   }, [])
 
 //   useEffect(()=> {
 //     getUsers()
@@ -238,10 +294,10 @@ export const AuthProvider = ({children}) => {
         
     return (
 
-        <AuthContext.Provider value={{auth, setAuth, getTrans,
+        <AuthContext.Provider value={{auth, setAuth,
             handleSubmit, handleEdit, assertain, itemRef, cancel,
             generalRemain, remainDelete, items, isEdit, afa, price, unitMeasure, getTransaction,
-            search, setSearch, setSearch2, search2, sales, getItems, user, getNames, currentUser,
+            search, setSearch, setSearch2, search2, sales, user, getNames, currentUser,
             setCurrentUser, setCurrentUser2, currentUser2, users, transactions, atHome, setAtHome
 
         }}>

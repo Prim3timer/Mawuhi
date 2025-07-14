@@ -21,13 +21,13 @@ const Users = ()=> {
     const {auth, setAuth} = useAuth()
 // setAtHome(false)
         const [currentUsers, setCurrentUsers] = useState()
- const axiosPrivate = useAxiosPrivate()
-    const [madu, setMadu] = useState()
-    const [brand, setBrand] = useState()
-    const [state, dispatch] = useReducer(reducer, initialState)
-    const [currentPerson, setCurrentPerson] = useState()
-
-    //   const [users, setUsers] = useState([])
+        const [madu, setMadu] = useState()
+        const [brand, setBrand] = useState()
+        const [state, dispatch] = useReducer(reducer, initialState)
+        const [currentPerson, setCurrentPerson] = useState()
+        
+        //   const [users, setUsers] = useState([])
+        const axiosPrivate = useAxiosPrivate()
  const navigate = useNavigate();
     const location = useLocation();
         const userPage = (id) => {
@@ -53,22 +53,24 @@ const Users = ()=> {
         const controller = new AbortController()
     
         const getUsers = async ()=> {
-
+            const cookieMap = {}
+           const allCookies = cookieMap['jwt']
+               console.log(allCookies)
             try {
                 const response = await axiosPrivate.get('/users', {
                     signal: controller.signal
                 })
-                setCurrentUsers(response.data)
+                console.log(response.data)
              
-                    isMounted && setCurrentUsers(response.data)
+                    isMounted && setCurrentUsers(response.data.users)
                     
                 
             } catch (error) {
                 console.error(error)
-              setTimeout(()=> {
+           
 
                   navigate('/login', { state: { from: location }, replace: true });
-              }, 32000)
+           
             }
         }
         

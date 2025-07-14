@@ -51,11 +51,11 @@ import PersistLogin from "./components/PersistLogin"
 
 const App = () => {
 
- 
   const [afa, setAfa] = useState('');
   const [userId, setUserId] = useState('');
   const year = new Date().getFullYear()
   const { auth} = useAuth()
+
 
   
   const [state, dispatch] = useReducer(reducer, initialState)
@@ -72,8 +72,7 @@ return (
         <Route path="/" element={<Layout/>}>
         < Route index element={<Public/>}/>
     <Route path="/login" element={<Login/>}/>
-      <Route path="/home" element={<Home/> } />
-    <Route path="/shop" element={<Shop/>}/>
+   
     <Route path="/cart/thanks" element={<Thanks/>}/>
        {/* <Route path="/thanks" element={<Thanks />}/> */}
     <Route path="single-item" element={<SingleItem/>}/>
@@ -92,7 +91,8 @@ return (
        {/* protected routes */}
        <Route element={<PersistLogin/>}>
        <Route element={<RequireAuth allowedRoles={[2001]}/>}>
-       
+          <Route path="/home" element={<Home/> } />
+    <Route path="/shop" element={<Shop/>}/>
       <Route path="one-receipt" element={<OneReceipt/>}/>
       <Route path="cart" element={<Cart/>}/>
          </Route>

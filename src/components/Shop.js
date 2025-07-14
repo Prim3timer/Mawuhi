@@ -5,7 +5,9 @@ import {useEffect, useReducer, useContext, useState } from "react";
 import credit from '../images/credit.jpg'
 import cellPhone from '../images/sgs25+.webp'
 import AuthContext from "../context/authProvider";
-
+import { useNavigate, useLocation } from "react-router-dom";
+// import useAxiosPrivate from "../hooks/useAxiosPrivate";
+import useAxiosPrivate from "../hooks/useAxiosPrivate";
 
 import axios  from "../app/api/axios";
 import useAuth from '../hooks/useAuth';
@@ -17,7 +19,14 @@ const {v4: uuid} = require('uuid')
 const Shop = () => {
   const { items, getNames, getItems} = useContext(AuthContext)
  
+   const axiosPrivate = useAxiosPrivate()
 
+const navigate = useNavigate();
+    const location = useLocation();
+
+
+
+  
 console.log(items)
 const {setAuth, auth} = useAuth()
 console.log(auth)
@@ -28,17 +37,66 @@ console.log(auth)
   }
 
   const [state, dispatch] = useReducer(reducer, initialState)
-const enableFilterate = ()=> {
-  try {
-    const filterItems = items && items.filter((item) => item.name.toLowerCase().includes(state.search.toLowerCase()))
-  dispatch({type: 'items', payload: filterItems})
+// const enableFilterate = ()=> {
+//   try {
+//     const filterItems = items && items.filter((item) => item.name.toLowerCase().includes(state.search.toLowerCase()))
+//   dispatch({type: 'items', payload: filterItems})
  
-  console.log(filterItems)
-  } catch (error) {
-    dispatch({type: 'errMsg', payload: error.message})
-  }
+//   console.log(filterItems)
+//   } catch (error) {
+//     dispatch({type: 'errMsg', payload: error.message})
+//   }
   
-}
+// }
+
+
+
+  useEffect(()=> {
+    // console.log(auth)
+        let isMounted = true
+        // to cancel our request if the Component unmounts
+        const controller = new AbortController()
+    
+        const getItems = async ()=> {
+            const cookieMap = {}
+           const allCookies = cookieMap['jwt']
+               console.log(allCookies)
+            try {
+                const response = await axiosPrivate.get('/items', {
+                    signal: controller.signal
+                })
+               dispatch({type: 'items',payload: response.data.items})
+             
+                    isMounted && dispatch({type: 'items',payload: response.data.items})
+                    
+                
+            } catch (error) {
+                console.error(error)
+           if(!auth.accessToken){
+             navigate('/login', { state: { from: location }, replace: true });
+
+           }
+
+           
+            }
+        }
+        
+        getItems()
+        // clean up function
+        return ()=> {
+            isMounted = false
+            if (controller){
+                setTimeout(()=> {
+                    controller.abort()
+                }, 1000)
+       
+           
+
+            }
+            
+        }
+    }, [])
+
 
  function numberWithCommas(x) {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -46,13 +104,13 @@ const enableFilterate = ()=> {
     
 
 
-  useEffect(()=> {
-    enableFilterate()
-  }, [state.search])
+  // useEffect(()=> {
+  //   enableFilterate()
+  // }, [state.search])
 
-  useEffect(()=> {
-    getItems()
-  }, [])
+  // useEffect(()=> {
+  //   getItems()
+  // }, [])
 
 
   return (
@@ -69,7 +127,7 @@ const enableFilterate = ()=> {
    </form>
  
       <section className="shop-inner-container">
-      {state.getNames && getNames.map((item)=> {
+      {items && items.map((item)=> {
         return (
         <Link to={'/single-item'}
         className="linker"
