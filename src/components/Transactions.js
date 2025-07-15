@@ -8,10 +8,14 @@ import { FaTrashAlt } from "react-icons/fa";
 import {format} from 'date-fns'
 import useAuth from '../hooks/useAuth';
 import AuthContext from "../context/authProvider";
+{/* ₦ */}
 
 
 const Transactions = ()=> {
     const [state, dispatch] = useReducer(reducer, initialState)   
+   const [cash, setCash] = useState(false)
+   const [card, setCard] = useState(false)
+    const [checkout, setCheckout] = useState(false)
     const now = new Date()
     const date = format(now, 'dd/MM/yyyy\tHH:mm:ss')
     console.log(date)
@@ -79,7 +83,14 @@ const Transactions = ()=> {
     state.balance = 0
     }
     
-    
+    const trueCheckout = () => {
+        setCheckout(true)
+    }
+
+    const trueCash  = ()=> {
+        setCash(true)
+        setCheckout(false)
+    }
     
     useEffect(()=> {
         dispatch({type: 'getTotal'})
@@ -87,6 +98,7 @@ const Transactions = ()=> {
     }, [state.transArray, state.success])
     
     const doneSales = async()=> {
+       
         try {
             
             const {transArray, total} = state
@@ -104,12 +116,13 @@ const Transactions = ()=> {
                 const response = await axios.post('/transactions', transItems)
                 const response2 = await axios.get('/items')
                 console.log(response2)
+              
                 if (response){
+                     setCash(false)
                     // so i can effect change in color of the errMsg
                     dispatch({type: 'qty', payload: response})
                     dispatch({type: 'clear'})
                     dispatch({type: 'transArray', payload: []})
-                    
                 }
         
             transItems.goods.map((good)=> {
@@ -176,10 +189,7 @@ const Transactions = ()=> {
                 {/* <div
                 id="field-grid-container"
                 > */}
-                <h3
-                id="grand-total-one"
-             
-                >Grand Total: ₦{numberWithCommas(parseFloat(state.total).toFixed(2))}</h3>
+              
              
         <form
         
@@ -194,13 +204,12 @@ const Transactions = ()=> {
         /><button
         onClick={handleAdd}
          style={{
-            width: '3rem',
-            // fontSize: '2rem'
+            width: '3rem'
         }}
         >+</button></article>
         <datalist id="edulevel"
         >
-            {items.map((user)=> {
+            {items && items.map((user)=> {
                 
                 return (
                     
@@ -216,32 +225,17 @@ const Transactions = ()=> {
 
 
         </form>
-        {/* </div> */}
+        <article className="checkout-tot-cont">
+
         
-<section
->
-            <form
-    className="payment1"
-            >
-                <label>Cash Paid:</label>
-                <input
-                className="cash-amount1"
-                value={state.paidAmount}
-                onChange={(e)=> dispatch({type: 'difference', payload: e.target.value})}
-                />
-            </form>
-
-           </section>
-           <article
-           >
-
-           <h3>Balance: </h3><h3>₦{state.paidAmount > state.total  ? parseFloat(state.balance).toFixed(2) : 0}</h3>
-           {/* ₦ */}
-           </article>
-           <button
+        {/* </div> */}
+          <button
           id="donezo"
-          onClick={doneSales}
-          >Checkout</button>
+          onClick={trueCheckout}
+          >Checkout</button> 
+        </article>
+
+        
 
             </fieldset>
             
@@ -256,7 +250,7 @@ const Transactions = ()=> {
             id="trans-item-cont"               
                     >
           
-               {state.transArray.map((item, index)=> {
+               {!state.transArray.length ? <p>empty list</p> : state.transArray.map((item, index)=> {
                 //  console.log(item.unitMeasure)
                 return (
                     
@@ -308,9 +302,9 @@ const Transactions = ()=> {
                    </article>
 
                    <article>
-                    <h4
+                    {/* <h4
                     id="grand-total"
-                    >sub total: </h4>
+                    >sub total: </h4> */}
                     <h4 
                     style={{display: `${state.getAllTotals ? 'none' : 'block' }`}}
                     // >N{parseFloat(item.total).toFixed(2)}</h3>
@@ -334,7 +328,7 @@ const Transactions = ()=> {
                     </h2>
         </section>
                 )
-            })}{}
+            })}
             </div>
           
             <article 
@@ -358,13 +352,17 @@ const Transactions = ()=> {
 
             <section
             
-                className="payment"
+                className={cash ? 'cash-payment' : 'non-payment'}
             // style={{
                 //     display: 'flex',
                 //     columnGap: '1rem',
                 
                 // }}
                 >
+                      <h3
+                id="grand-total-one"
+             
+                >Grand Total: ₦{numberWithCommas(parseFloat(state.total).toFixed(2))}</h3>
             <form
             
             >
@@ -385,22 +383,18 @@ const Transactions = ()=> {
            >Balance: </h2>
            <h2>₦{state.paidAmount > state.total  ? parseFloat(state.balance).toFixed(2) : 0}</h2> 
            </seciton>
+           <button onClick={doneSales}>Done</button>
            </section>
             
             <section
             id="trans-verify-section"
            
             >
-                {state.cancel ? <div
-               style={{
-                margin: '1rem auto',
-                padding: '1rem auto',
-                  backgroundColor: '#DBBFDB',
-                  borderRadius: '5px',
-                  width: '98vw',
-                //   display: `${state.cancel ? 'block' : 'none'}`
-            }}
-                ><h3
+             <div
+                className={state.cancel ? 'display-veryfier' : 'hide-veryfier'}
+            
+                >
+                    <h3
                 id="verify-header"
                 style={{
                     margin: '.5rem'
@@ -408,12 +402,8 @@ const Transactions = ()=> {
                 >Are you sure you want to cancel
                     the transaction?</h3>
                     <article
-                    style={{
-                        display: 'flex',
-                        flexDirection: 'row',
-                        columnGap: '4vw',
-                        justifyContent: 'center',
-                    }}
+                    className="inside-veryfier"
+               
                     ><button
                     onClick={remain}
                     >No</button><button
@@ -421,25 +411,43 @@ const Transactions = ()=> {
                     style={{backgroundColor: 'red',
                         borderColor: 'red'
                     }}
-                    >Yes</button></article></div> : <div
-                    style={{
-                        display: 'flex',
-                        flexDirection: 'row',
-                        columnGap: '4vw',
-                        justifyContent: 'center',
-                        margin: '1rem 0'
-                    }}
+                    >Yes</button></article></div>  <div
+                    className="cancel-complete"
+                  
                     >
                          <button onClick={assertain}
                        
                         // onClick={assertain}
                          >Cancel</button>
                          <button onClick={doneSales}>checkout</button>
-                        </div>}
+                        </div>
           
            </section>
+           <div className={checkout ? 'checkout' : 'non-checkout'}>
+            <button onClick={trueCash}>Cash</button>
+            <button>Card</button>
+           </div>
 
-        
+        {/* <section
+
+>
+            <form
+    className="payment1"
+            >
+                <label>Cash Paid:</label>
+                <input
+                className="cash-amount1"
+                value={state.paidAmount}
+                onChange={(e)=> dispatch({type: 'difference', payload: e.target.value})}
+                />
+            </form>
+
+           </section>
+           <article
+           >
+
+           <h3>Balance: </h3><h3>₦{state.paidAmount > state.total  ? parseFloat(state.balance).toFixed(2) : 0}</h3>
+           </article> */}
         </div>
 
     )

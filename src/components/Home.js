@@ -107,7 +107,7 @@ const logout = useLogout()
        
         <Link 
     
-        to="/transactions">checkout</Link>
+        to="/transactions">transaction</Link>
        <br/>
         <Link
        

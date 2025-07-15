@@ -214,18 +214,14 @@ width: 10rem;
 box-shadow: 0.2em 0.3em 0.4em gray;
 }
 
-#grand-total-one {
-  text-align: center;
-  margin: 0  0 0 .5rem;
-  width: 5rem;
-}
+
 
 #grand-total-two {
   /* text-align: left; */
   display: block;
-  margin: 0 0 0 1rem
+  margin: 0 0 0 1rem;
   /* justify-content: flex-start; */
-  /* background-color: green; */
+
 }
 #grand-two-cont {
   width: 100vw;
@@ -234,11 +230,7 @@ box-shadow: 0.2em 0.3em 0.4em gray;
 }
 
 
-#trans-title {
-  /* justify-content: center; */
-  text-align: center;
-  color: red;
-}
+
 
 button:active {
   transition-property: box-shadow scale;
@@ -307,13 +299,18 @@ input {
 }
 
 #tans-title {
+  /* position: fixed; */
+  /* top: 3rem; */
                 text-align: center;
                margin: 1rem 0;
                 color: darkslateblue;
 }
 
 #grand-total-one {
-    color: green;
+  min-width: 80%;
+  justify-items: center;
+    /* background-color: green; */
+  
 }
 
 .home {
@@ -489,6 +486,37 @@ form {
   /* row-gap: -20rem; */
 
   } 
+
+ .display-veryfier {
+display: block;
+    margin: 1rem auto;
+    padding: 1rem auto;
+      background-color: #DBBFDB;
+      border-radius: 5px;
+      width: 98vw;
+        
+ }
+ .hide-veryfier {
+  display: none;
+ }
+
+ .inside-veryfier {
+
+    display: flex;
+    column-gap: 4vw;
+    justify-content: center;
+
+ }
+ .cancel-complete {
+
+    display: flex;
+    flex-direction: row;
+    column-gap: 4rem;
+    justify-content: center;
+    margin: '1rem 0'
+                
+ }
+
   #ulu {text-align: center;}
 
   #trans-search {
@@ -497,19 +525,23 @@ form {
     width: 60%;
   }
 .trans-cont {
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center; 
   margin: 1rem 0;
+  row-gap: 2rem;
   /* background-color: red; */
-  max-height: 40vh;
+
   }
 
   #field {
+/* position: fixed;
+top: 5rem; */
     width: 98%;
-    min-height: 40vh;
+    /* height: 40vh; */
     margin: .5rem 0;
     /* flex-grow: 1; */
     justify-self: center;
@@ -521,7 +553,32 @@ form {
     /* align-items: flex-end; */
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
+    /* align-items: center; */
+  }
+
+  .checkout {
+     display: block;
+color: whitesmoke;
+           background-color: lightslategrey;
+        position: absolute;
+        top: 20%;
+ 
+        padding: .5rem;
+        opacity: .90;
+  /* text-align: center; */
+    width: 80%;
+    /* left: 15%; */
+  }
+  
+  /* .checkout >* {
+    width: 4rem;
+  } */
+  .non-checkout {
+    display: none;
+  }
+
+  #field input {
+    width: 80%;
   }
 
   #field > * {
@@ -529,19 +586,21 @@ form {
   
   }
   #field > *:nth-child(1){
-    flex: 1 1 20%;
+    flex: 1 1 100%;
     /* background-color: red; */
   }
   #field > *:nth-child(2){
     flex: 1 1 50%;
   }
   #field > *:nth-child(3){
-    flex: 0 1 25%;
+    flex: 1 1 25%;
   margin: auto;
     max-width:50%;
+    /* background-color:red; */
 
   }
   #field > *:nth-child(4){
+   
     flex: 0 1 10%;
   margin: auto;
   text-align: center;
@@ -558,28 +617,52 @@ form {
     /* max-width: 30%; */
   }
 
+  .checkout-tot-cont {
+    display: flex;
+    align-items: center;
+
+    justify-content: center;
+  }
 
   #donezo {
-    margin: 0 0 1rem 0;
+   
+    /* margin: 0 0 1rem 0; */
     /* height: 3rem; */
     /* background-color: green; */
+    /* align-self: flex-start; */
     font-size: 20px;
     /* width: 3rem; */
     
   }
+  
+  
+  #grand-total-one {
+  /* background-color: green; */
+   flex: 0 1 50%;
+  text-align: left;
+  margin: 0  0 0 .5rem;
+  width: 5rem;
+}
+
   #trans-item-cont {
+    /* min-height: 50vh; */
+    /* overflow-y:auto; */
+    /* position: relative; */
+    border: 2px solid brown;
     display: flex;
     flex-direction: column;
     row-gap: .2rem;
     align-items: center;
-    margin: 0 0 1rem 0;
+    /* margin: 12rem 0 1rem 0; */
     /* background-color: blue; */
-  /* max-width: 960px; */
+  width: 95vw;
+  min-height: 4rem;
 
 
   }
 
   #trans-item {
+  
     width: 95vw;
     display: flex;
     flex-wrap: wrap;
@@ -651,10 +734,27 @@ form {
 }
 
 
-.payment {
+.cash-payment {
   display: flex;
-  column-gap: 4rem;
+  flex-direction: column;
+row-gap: 1rem;
   align-items: center;
+
+   /* display: block; */
+/* color: whitesmoke; */
+           background-color: pink;
+        position: absolute;
+        top: 20%;
+ 
+        padding: .5rem;
+        opacity: .90;
+  text-align: center;
+    width: 70%;
+    left: 15%;
+}
+
+.non-payment {
+  display: none;
 }
 
 #update-button {
