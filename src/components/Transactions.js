@@ -118,14 +118,14 @@ const Transactions = ()=> {
                 console.log(response2)
               
                 if (response){
-                     setCash(false)
+                    setCash(false)
                     // so i can effect change in color of the errMsg
                     dispatch({type: 'qty', payload: response})
                     dispatch({type: 'clear'})
                     dispatch({type: 'transArray', payload: []})
                 }
-        
-            transItems.goods.map((good)=> {
+                
+                transItems.goods.map((good)=> {
                 const invs = response2.data.items.map(async(inv)=> {
                     console.log(inv.name)
                     console.log(good.name)
@@ -148,9 +148,12 @@ const Transactions = ()=> {
             }, 1000)
         } 
         
-        else throw Error('no item purchased')
+        else {
+            setCash(false)
+            throw Error('no item purchased')
+            // dispatch({type: 'qtyArray', payload: []})
         console.log(state.transArray)
-         
+        }
         state.paidAmount = 0
         state.balance = 0
         } catch (error) {
@@ -229,12 +232,16 @@ const Transactions = ()=> {
 
         
         {/* </div> */}
-          <button
+          {/* <button
           id="donezo"
           onClick={trueCheckout}
-          >Checkout</button> 
+          >Checkout</button>  */}
         </article>
-
+<fieldset className="field2">
+    <legend>Checkout</legend>
+     <button onClick={trueCash}>Cash</button>
+            <button>Card</button>
+</fieldset>
         
 
             </fieldset>
@@ -383,6 +390,7 @@ const Transactions = ()=> {
            >Balance: </h2>
            <h2>₦{state.paidAmount > state.total  ? parseFloat(state.balance).toFixed(2) : 0}</h2> 
            </seciton>
+           <button onClick={doneSales}>cancel</button>
            <button onClick={doneSales}>Done</button>
            </section>
             

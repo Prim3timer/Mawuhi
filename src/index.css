@@ -556,6 +556,14 @@ top: 5rem; */
     /* align-items: center; */
   }
 
+
+.field2 {
+  display: flex;
+  column-gap: 1rem;
+  padding: 1rem 0.5rem;
+  justify-content: center;
+}
+
   .checkout {
      display: block;
 color: whitesmoke;
@@ -590,7 +598,7 @@ color: whitesmoke;
     /* background-color: red; */
   }
   #field > *:nth-child(2){
-    flex: 1 1 50%;
+    flex: 1 1 100%;
   }
   #field > *:nth-child(3){
     flex: 1 1 25%;
