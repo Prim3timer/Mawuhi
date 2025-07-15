@@ -200,7 +200,7 @@ const Transactions = ()=> {
         >+</button></article>
         <datalist id="edulevel"
         >
-            {getNames.map((user)=> {
+            {items.map((user)=> {
                 
                 return (
                     
