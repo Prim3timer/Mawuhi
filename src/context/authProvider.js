@@ -30,51 +30,21 @@ export const AuthProvider = ({children}) => {
 
 
 
-//  const getItems = async ()=> {
-//         dispatch({type: 'clear'})
-//         try {
-//             // dispatch({type: 'errMsg', payload: 'loading...'})
-//             const response = await axios.get('/items')
-//             dispatch({type: 'errMsg', payload: ''})
+ const getItems = async ()=> {
+        dispatch({type: 'clear'})
+        try {
+            // dispatch({type: 'errMsg', payload: 'loading...'})
+            const response = await axios.get('/items')
+            dispatch({type: 'errMsg', payload: ''})
           
-//             dispatch({type: 'getNames', payload: response.data.items})   
-//             console.log(response.data.items ) 
-//             if (state.getNames){
-                
-//                 // dispatch({type: 'user', payload: state.getNames[0].name})
-//                 console.log(state.user)
-//                 console.log(response.data)
-//                 console.log(state.getNames)
-                
-//             } 
-//         } catch (error) {
-//             console.log(error)
-//         }
-//         console.log(state.getNames && state.getNames)
-//     }
+            dispatch({type: 'items', payload: response.data.items})   
+            console.log(response.data.items ) 
+        } catch (error) {
+            console.log(error)
+        }
+        console.log(state.getNames && state.getNames)
+    }
 
-
-
-    //  const getTrans = async ()=> {
-    
-    //         try {
-    //             const graw = await axios.get('/items')
-    //             console.log(graw.data.items)
-    //             if (graw.data.items.length > 0) {
-    //                 dispatch({type: 'items', payload: graw.data.items})
-    //                 console.log(state.items.data)
-                    
-    //                 const filterate = graw.data.items.filter((inner)=> inner.name.toLowerCase().includes(state.search.toLowerCase()))
-    //                 dispatch({type: 'items', 
-    //                     payload: filterate})
-    //                 }
-                    
-                    
-                    
-    //             } catch (error) {
-    //             console.log(error)
-    //         }
-    //     }
 
         const getTransaction = async ()=> {
           const innerArray = []
@@ -109,21 +79,26 @@ export const AuthProvider = ({children}) => {
           }           
         }
 
-        // const getUsers = async ()=> {
-        //     try {
-        //             const response = await axios.get('/users')
-        //             // const currentUser = response.data.find((user) => user._id === picker)
-        //             const person = response.data.find((user) => user._id === auth.picker3)
-        //             setUsers(response.data)
-        //            setCurrentUser2(person)
-        //            dispatch({type: 'inItem', payload: currentUser})
+        const getUsers = async ()=> {
+            try {
+                    const response = await axios.get('/users')
+                console.log(response.data)
+                    if (response){
+
+                        setUsers(response.data)
+                    }
+                    // const currentUser = response.data.find((user) => user._id === picker)
+                    const person = response.data.find((user) => user._id === auth.picker3)
+               
+                   setCurrentUser2(person)
+                   dispatch({type: 'inItem', payload: currentUser})
                         
-        //                 console.log(currentUser2)
+                        console.log(currentUser2)
                         
-        //             } catch (error) {
-        //                 console.log(error)
-        //             }
-        //         }
+                    } catch (error) {
+                        console.log(error)
+                    }
+                }
 
 
 
@@ -220,81 +195,17 @@ export const AuthProvider = ({children}) => {
     }
 
 
-
-
-    useEffect(()=> {
-    // console.log(auth)
-        let isMounted = true
-        // to cancel our request if the Component unmounts
-        const controller = new AbortController()
-    
-        const getItems = async ()=> {
-            const cookieMap = {}
-           const allCookies = cookieMap['jwt']
-               console.log(allCookies)
-            try {
-                const response = await axiosPrivate.get('/items', {
-                    signal: controller.signal
-                })
-                console.log(response.data)
-             
-                    isMounted && dispatch({type: 'items',payload: response.data.items})
-                    
-                
-            } catch (error) {
-                console.error(error)
-           if(!auth.accessToken){
-
-               navigate('/login', { state: { from: location }, replace: true });
-           }
-
-           
-            }
-        }
-        
-        getItems()
-        // clean up function
-        return ()=> {
-            isMounted = false
-            if (controller){
-                setTimeout(()=> {
-                    controller.abort()
-                }, 1000)
-       
-           
-
-            }
-            
-        }
-    }, [])
-
-
-
-     
-    
-    //  useEffect(()=> {
-    //         getTrans()
-           
-            
-    // }, [state.search])
-
     useEffect(()=> {
   getTransaction()
 }, [state.search])
 
-//     useEffect(()=> {
-//     getItems()
-//     console.log(users)
-//   }, [])
+    useEffect(()=> {
+    getItems()
+  }, [])
 
-//   useEffect(()=> {
-//     getUsers()
-//   }, [])
-
-        
     return (
 
-        <AuthContext.Provider value={{auth, setAuth,
+        <AuthContext.Provider value={{auth, setAuth, getUsers,
             handleSubmit, handleEdit, assertain, itemRef, cancel,
             generalRemain, remainDelete, items, isEdit, afa, price, unitMeasure, getTransaction,
             search, setSearch, setSearch2, search2, sales, user, getNames, currentUser,

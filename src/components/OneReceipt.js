@@ -16,7 +16,7 @@ const getItems = async ()=> {
     try {
           const gog =  await axios.get('/users')
 
-        const person = gog.data.find((user) => user._id === auth.picker3)
+        const person = gog.data.find((user) => user._id === auth.picker2)
         console.log(person)
         setCurrentUser(person)
 

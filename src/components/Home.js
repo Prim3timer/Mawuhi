@@ -22,7 +22,7 @@ const logout = useLogout()
     const [newName, setNewName] = useState()
     const navigate = useNavigate();
     const location = useLocation();
-    // setAtHome(true)
+    setAtHome(true)
     const preserveName = async () =>{
     
         try {

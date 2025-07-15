@@ -31,9 +31,10 @@ const Users = ()=> {
  const navigate = useNavigate();
     const location = useLocation();
         const userPage = (id) => {
+            const currentUser = currentUsers.find((user) => user._id === id)
            setAuth(prev => {
 
-            return {...prev, picker3: id
+            return {...prev, currentUser
             }
         })
 
@@ -64,7 +65,12 @@ const Users = ()=> {
              
                     isMounted && setCurrentUsers(response.data.users)
                     
-                
+                    
+                   setAuth(prev => {
+
+            return {...prev, users: response.data.users
+            }
+        })
             } catch (error) {
                 console.error(error)
            

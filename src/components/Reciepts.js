@@ -124,9 +124,9 @@ useEffect(()=> {
     getItems()
 }, [state.search])
 
-useEffect(()=> {
-    getUsers()
-}, [state.search])
+// useEffect(()=> {
+//     getUsers()
+// }, [state.search])
 
 
 function numberWithCommas(x) {
@@ -169,7 +169,7 @@ function numberWithCommas(x) {
                 // color: 'darkslateblue'    
             }}
            
-            >{currentUser && currentUser.username}'s Reciepts ({state.getNames.length})</h2>
+            >{auth.user}'s Reciepts ({state.getNames.length})</h2>
             {state.getNames && state.getNames.map((item)=> {
                 console.log(item.goods)
                 console.log(item)

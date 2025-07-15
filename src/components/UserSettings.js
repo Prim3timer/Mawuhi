@@ -2,7 +2,7 @@
 import { useEffect, useReducer, useRef, useState, useContext } from "react"
 import { ROLES } from "../config/roles"
 import { Link, useNavigate } from "react-router-dom"
-import axios from "../app/api/axios"
+import axios, { axiosPrivate } from "../app/api/axios"
 import { FaTrashAlt } from "react-icons/fa";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSave, faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons"  
@@ -34,40 +34,21 @@ const UserSettings = () => {
     const [currentUser2, setCurrentUser2] = useState()
     const [roles, setRoles] =  useState({})
     const [username, setUsername] = useState('')
-    const [active, setActive] = useState('')
     const [state, dispatch] = useReducer(reducer, initialState)
     const [shadow, setShadow] = useState(false)
-    const {users} = useContext(AuthContext)
+    const {users, getUsers} = useContext(AuthContext)
     const [ID, setID] = useState('')
-    const {auth} = useAuth({})
+    const {auth, setAuth} = useAuth({})
     const saveRef = useRef(null)
-        const pwdRef = useRef()
-
+    const pwdRef = useRef()
+    console.log(users)
     // picker3 is the not the current user.  It is the user in question.
-console.log(auth)
+    console.log(auth.currentUser)
+    const [active, setActive] = useState(auth.currentUser.active)
 const navigate = useNavigate()
 // dispatch({type: ACTION.SUCCESS, payload: false})
-const getUsers = async ()=> {
-    try {
-        // const response = await axios.get('/users')
-        const person = users.find((user) => user._id === auth.picker3)
-        if (person){
-            //    dispatch({type: 'selectUser', payload: person})
-            setCurrentUser2(person)
-            console.log(state.selectUser)
-            // console.log(person)
-            setUsername(person.username) 
-            setID(person._id)
-            setRoles(Object.keys(person.roles))
-            setActive(person.active)
-            console.log(roles)
-        }
 
-    } catch (error) {
-            console.log(error)
-        }
-    }
-        
+console.log(auth.users)   
         const shadowing = () => {
             setShadow(true)
 
@@ -81,8 +62,11 @@ const getUsers = async ()=> {
             
         }
         
+ 
         
-        
+        // useEffect(()=> {
+        //     getAUser()
+        // }, [])
         
         
         const assertain = (id) => {
@@ -199,12 +183,14 @@ const onRolesChanged = e => {
 }
 
 const updateUser = async () => {
-console.log('shadow is ', shadow)
+
+    try {
+        console.log('shadow is ', shadow)
     const newRoles = {
         Employee: 2001,
     }
     let newest = {}
-    const userChange = roles.map((role)=>{
+    const userChange = Object.keys(roles).map((role)=>{
        if (role === 'Manager' ) newest =  {...newRoles, Manager: 1984}
        else if (role === 'Admin') newest  = {...newRoles, Manager: 1984, Admin: 5150}
        else newest = newRoles
@@ -223,7 +209,7 @@ console.log('shadow is ', shadow)
 
     }
 
-    const response = await axios.patch(`/users/update/${currentUser2._id}`, updatedPerson)
+    const response = await axios.patch(`/users/update/${auth.currentUser._id}`, updatedPerson)
 if (response) {
     dispatch({type: ACTION.SELECTUSER, payload: response.data})
     dispatch({type: ACTION.SUCCESS, payload: true})
@@ -231,6 +217,10 @@ if (response) {
         dispatch({type: ACTION.SUCCESS, payload: false})
     }, 3000)
 }
+    } catch (error) {
+        console.error(error)
+    }
+
 }
 const onActiveChanged = () => {
     
@@ -255,7 +245,7 @@ const options = Object.keys(ROLES).map(role => {
 
   
     return (
-        !username ? <h2
+        !users? <h2
         className="edit-user"
        
         >Loading...</h2> : <div className="edit-user"
@@ -268,7 +258,7 @@ const options = Object.keys(ROLES).map(role => {
             <FontAwesomeIcon icon={faTimes} className={state.validName || !username ? "hide"
  : "invalid"} />
             </label>
-            <input type="text" id="username" value={username}
+            <input type="text" id="username" value={auth.currentUser.username}
             onChange={e => {
                 shadowing()
                 setUsername(e.target.value)}}

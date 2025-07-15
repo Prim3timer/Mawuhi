@@ -18,7 +18,7 @@ const {v4: uuid} = require('uuid')
 
 const Shop = () => {
   const { items, getNames, getItems} = useContext(AuthContext)
- 
+ const [shopItems, setShopItems] = useState([])
    const axiosPrivate = useAxiosPrivate()
 
 const navigate = useNavigate();
@@ -27,7 +27,7 @@ const navigate = useNavigate();
 
 
   
-console.log(items)
+// console.log(items)
 const {setAuth, auth} = useAuth()
 console.log(auth)
   const oneItem  =(id) => {
@@ -37,65 +37,19 @@ console.log(auth)
   }
 
   const [state, dispatch] = useReducer(reducer, initialState)
-// const enableFilterate = ()=> {
-//   try {
-//     const filterItems = items && items.filter((item) => item.name.toLowerCase().includes(state.search.toLowerCase()))
-//   dispatch({type: 'items', payload: filterItems})
+const enableFilterate = ()=> {
+  try {
+    const filterItems = items && items.filter((item) => item.name.toLowerCase().includes(state.search.toLowerCase()))
+  setShopItems(filterItems)
  
-//   console.log(filterItems)
-//   } catch (error) {
-//     dispatch({type: 'errMsg', payload: error.message})
-//   }
+  console.log(filterItems)
+  } catch (error) {
+    dispatch({type: 'errMsg', payload: error.message})
+  }
   
-// }
+}
 
 
-
-  useEffect(()=> {
-    // console.log(auth)
-        let isMounted = true
-        // to cancel our request if the Component unmounts
-        const controller = new AbortController()
-    
-        const getItems = async ()=> {
-            const cookieMap = {}
-           const allCookies = cookieMap['jwt']
-               console.log(allCookies)
-            try {
-                const response = await axiosPrivate.get('/items', {
-                    signal: controller.signal
-                })
-               dispatch({type: 'items',payload: response.data.items})
-             
-                    isMounted && dispatch({type: 'items',payload: response.data.items})
-                    
-                
-            } catch (error) {
-                console.error(error)
-           if(!auth.accessToken){
-             navigate('/login', { state: { from: location }, replace: true });
-
-           }
-
-           
-            }
-        }
-        
-        getItems()
-        // clean up function
-        return ()=> {
-            isMounted = false
-            if (controller){
-                setTimeout(()=> {
-                    controller.abort()
-                }, 1000)
-       
-           
-
-            }
-            
-        }
-    }, [])
 
 
  function numberWithCommas(x) {
@@ -104,13 +58,9 @@ console.log(auth)
     
 
 
-  // useEffect(()=> {
-  //   enableFilterate()
-  // }, [state.search])
-
-  // useEffect(()=> {
-  //   getItems()
-  // }, [])
+  useEffect(()=> {
+    enableFilterate()
+  }, [state.search])
 
 
   return (
@@ -127,7 +77,7 @@ console.log(auth)
    </form>
  
       <section className="shop-inner-container">
-      {items && items.map((item)=> {
+      {shopItems && shopItems.map((item)=> {
         return (
         <Link to={'/single-item'}
         className="linker"

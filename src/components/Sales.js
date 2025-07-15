@@ -6,7 +6,7 @@ import useAuth from '../hooks/useAuth'
 import AuthContext from '../context/authProvider'
 const {v4: uuid} = require('uuid')
 const Sales = ()=> {
-    const {atHome} = useContext(AuthContext)
+    const {atHome, setAtHome} = useContext(AuthContext)
     console.log({atHome})
 const [state, dispatch] = useReducer(reducer, initialState)
 const [search, setSearch] = useState('')
@@ -17,7 +17,7 @@ const [specArray, setSpecArray] = useState([])
     const getTrans = async () => {
         const innerArray =[]
         console.log(auth.picker)
-        console.log({atHome})
+      setAtHome(false)
         const pickerChecker = atHome ? auth.picker : auth.picker3
         try {
             const response = await axiosPrivate.get('/transactions')
@@ -80,7 +80,7 @@ const [specArray, setSpecArray] = useState([])
     }, [search, search2])
     return (
         <di>
-            <h2 className='heading'>{currentUser && currentUser.username}'s Sales ({specArray.length}) rows</h2>
+            <h2 className='heading'>{auth.user}'s Sales ({specArray.length}) rows</h2>
                    <form  className="search-form"   onSubmit={(e)=> e.preventDefault()}>
         <input 
         id="invent-search"
