@@ -262,11 +262,11 @@ button:active {
 
 
 input {
-  max-width: 40vw;
+  /* max-width: 40vw; */
   padding: 5px;
   font-size: 1.5rem;
   border-radius: 5px;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   /* height: 6vh; */
   text-align: center;
 }
@@ -379,8 +379,8 @@ input {
 }
 
 .transaction-items-list {
-                            position: relative;
-                            color: brown;
+    position: relative;
+    color: brown;
 }
 .offscreen {
   position: absolute;
@@ -519,11 +519,7 @@ display: block;
 
   #ulu {text-align: center;}
 
-  #trans-search {
-    /* background-color: red; */
-    margin: 0 .5rem;
-    width: 60%;
-  }
+
 .trans-cont {
 
   display: flex;
@@ -532,26 +528,24 @@ display: block;
   justify-content: center;
   text-align: center; 
   margin: 1rem 0;
-  row-gap: 2rem;
+  row-gap: 1rem;
   /* background-color: red; */
 
   }
 
   #field {
+    display: flex;
 /* position: fixed;
 top: 5rem; */
     width: 98%;
     /* height: 40vh; */
     margin: .5rem 0;
     /* flex-grow: 1; */
-    justify-self: center;
-    /* background-color: red; */
-    /* justify-content: space-between; */
-    gap: 1rem;
+  align-items: center;
+    gap: .5rem;
     padding: .5rem .5rem 1rem 0;
-
+/* background-color: red; */
     /* align-items: flex-end; */
-    display: flex;
     flex-wrap: wrap;
     /* align-items: center; */
   }
@@ -559,52 +553,37 @@ top: 5rem; */
 
 .field2 {
   display: flex;
+  width: 80%;
   column-gap: 1rem;
   padding: 1rem 0.5rem;
   justify-content: center;
 }
 
-  .checkout {
-     display: flex;
-color: whitesmoke;
-           background-color: lightslategrey;
-        position: absolute;
-        top: 20%;
- 
-        padding: .5rem;
-        opacity: .90;
-  /* text-align: center; */
-    width: 80%;
-    /* left: 15%; */
-  }
-  
-  /* .checkout >* {
-    width: 4rem;
-  } */
-  .non-checkout {
-    display: none;
-  }
+.field2 >* {
+  flex: 1 1 35%
+}
+
+
 
   #field input {
-    width: 80%;
+    /* width: 80%; */
   }
 
-  #field > * {
-    /* flex: 1 1 100%  */
-  
-  }
+
+
   #field > *:nth-child(1){
     flex: 1 1 100%;
-    /* background-color: red; */
+    /* background-color:red; */
   }
   #field > *:nth-child(2){
     flex: 1 1 100%;
+    /* background-color:red; */
   }
   #field > *:nth-child(3){
-    flex: 1 1 25%;
-  margin: auto;
-    max-width:50%;
     /* background-color:red; */
+    margin: auto;
+    flex: 0 1 85%;
+    /* max-width:50%; */
 
   }
   #field > *:nth-child(4){
@@ -615,14 +594,26 @@ color: whitesmoke;
   justify-content: center;
     /* max-width: 30%; */
   }
-  #field > *:nth-child(5){
-    display: block;
-    flex: 0 0 25%;
-  margin: auto;
-  /* background-color: black; */
-  justify-content: center;
-/* background-color: red; */
-    /* max-width: 30%; */
+ 
+
+    
+  .trans-add {
+    /* width: 90vw; */
+   justify-self: center;
+    display: flex;
+    column-gap: .5rem;
+    /* background-color: green; */
+  }
+
+  .trans-add >*:nth-child(1){
+    flex: 1 1 70%;
+
+    /* background-color: blue; */
+  }
+  .trans-add >*:nth-child(2){
+    flex: 1 1 5%;
+    font-size: 2rem;
+    /* background-color: blue; */
   }
 
   .checkout-tot-cont {
@@ -656,11 +647,12 @@ color: whitesmoke;
     /* min-height: 50vh; */
     /* overflow-y:auto; */
     /* position: relative; */
-    border: 2px solid brown;
+    border: 2px solid gray;
     display: flex;
     flex-direction: column;
     row-gap: .2rem;
     align-items: center;
+    justify-content: center;
     /* margin: 12rem 0 1rem 0; */
     /* background-color: blue; */
   width: 95vw;
@@ -668,6 +660,7 @@ color: whitesmoke;
 
 
   }
+
 
   #trans-item {
   
@@ -741,12 +734,14 @@ color: whitesmoke;
   width: 100%;
 }
 
-
+legend {
+  font-size: 1.5rem;
+}
 .cash-payment {
   display: flex;
   flex-direction: column;
 row-gap: 1rem;
-  align-items: center;
+  /* align-items: center; */
 
    /* display: block; */
 /* color: whitesmoke; */
@@ -754,21 +749,39 @@ row-gap: 1rem;
         position: absolute;
         top: 20%;
  
-        padding: .5rem;
+        padding: 1rem;
         opacity: .90;
   text-align: center;
-    width: 70%;
-    left: 15%;
+    width: 80%;
+    left: 10%;
 }
 
 .cash-confirm {
   display: flex;
   column-gap: 1rem;
+  /* background-color: green; */
+}
+
+.cash-payment >*:nth-child(1){
+  align-self: center;
+  /* justify-content: center; */
+  /* background-color: green; */
+ 
+}
+.cash-payment >*:nth-child(2){
+  align-self: center;
+
+  /* justify-content: center; */
+  /* background-color: green; */
+ 
+}
+.cash-payment >*:nth-child(4){
+  /* background-color: green; */
+  flex: 1 1 80%
 }
 
 .cash-confirm >*{
-  width: 6rem;
-  font-size: 1rem;
+ flex: 1 1 50%;
 }
 
 .non-payment {

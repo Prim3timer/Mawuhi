@@ -169,7 +169,17 @@ const Transactions = ()=> {
     }
 
 const cardCheckout = async () => {
-     const response = await axios.post('/cart/create-checkout-session', state.cartArray)
+       if (state.transArray.length){
+                const transItems = {
+                    cashier: auth.user, 
+                    cashierID: auth.picker,
+                    goods: state.transArray,
+                    grandTotal: state.total,
+                    date
+                    
+                }
+     const response = await axios.post('/cart/create-checkout-session', state.transArray)
+}
 }
 
 
@@ -206,7 +216,7 @@ const cardCheckout = async () => {
         
         >
           
-            <article id="trans-add">
+            <article className="trans-add">
        <input type="text"
         id="trans-search"
         placeholder="select item"
@@ -214,9 +224,7 @@ const cardCheckout = async () => {
         list="edulevel"
         /><button
         onClick={handleAdd}
-         style={{
-            width: '3rem'
-        }}
+     
         >+</button></article>
         <datalist id="edulevel"
         >
@@ -256,7 +264,7 @@ const cardCheckout = async () => {
                 textAlign: 'center'
                 // width: '6rem'
             }}>{state.errMsg}</h3>
-            <h3>{state.amount} items</h3>
+           {state.transArray.length ? <h3>{state.amount} item{state.transArray.length === 1 ? '' : 's'}</h3> : ''} 
             <div
             id="trans-item-cont"               
                     >
@@ -360,7 +368,7 @@ const cardCheckout = async () => {
             <form
             
             >
-                <h5>Cash Paid:</h5>
+                <h3>Cash Paid:</h3>
                 <input
                 ref={cashPaidRef}
                 className="cash-amount2"
@@ -376,7 +384,7 @@ const cardCheckout = async () => {
             >
            <h4
            >Balance: </h4>
-           <h4>₦{state.paidAmount > state.total  ? parseFloat(state.balance).toFixed(2) : 0}</h4> 
+           <h3>₦{state.paidAmount > state.total  ? parseFloat(state.balance).toFixed(2) : 0}</h3> 
            </seciton>
            <article className="cash-confirm">
            <button onClick={doneSales}>Cancel</button>
