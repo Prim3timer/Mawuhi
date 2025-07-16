@@ -102,6 +102,11 @@ const Transactions = ()=> {
         dispatch({type: 'getTotal'})
         
     }, [state.transArray, state.success])
+
+
+    const closeCashWindow = ()=> {
+        setCash(false)
+    }
     
     const doneSales = async()=> {
        
@@ -155,7 +160,7 @@ const Transactions = ()=> {
         } 
         
         else {
-            setCash(false)
+          
             console.log(state.transArray)
             throw Error('no item purchased')
             // dispatch({type: 'qtyArray', payload: []})
@@ -387,7 +392,7 @@ const cardCheckout = async () => {
            <h3>₦{state.paidAmount > state.total  ? parseFloat(state.balance).toFixed(2) : 0}</h3> 
            </seciton>
            <article className="cash-confirm">
-           <button onClick={doneSales}>Cancel</button>
+           <button onClick={closeCashWindow}>Cancel</button>
            <button onClick={doneSales}>Done</button>
            </article>
            </section>
