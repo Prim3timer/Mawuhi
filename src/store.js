@@ -43,7 +43,7 @@ const initialState = {
    qtyArray: [],
    cartArray: [],
    checkout: false,
-   paidAmount: 0,
+   paidAmount: '',
    balance: 0,
    id: '',
    backendUser:    {},

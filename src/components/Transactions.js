@@ -22,6 +22,7 @@ const Transactions = ()=> {
     const {auth,user, getNames, items} = useContext(AuthContext)
     const inputRef = useRef()
     const qtyRef = useRef()
+    const cashPaidRef = useRef(null)
   
     
     
@@ -83,14 +84,19 @@ const Transactions = ()=> {
     state.balance = 0
     }
     
-    const trueCheckout = () => {
-        setCheckout(true)
-    }
+  
 
     const trueCash  = ()=> {
         setCash(true)
+       
         setCheckout(false)
     }
+
+    useEffect(()=>{
+        if (cash){
+            cashPaidRef.current.focus()
+        }
+    }, [cash])
     
     useEffect(()=> {
         dispatch({type: 'getTotal'})
@@ -150,11 +156,11 @@ const Transactions = ()=> {
         
         else {
             setCash(false)
+            console.log(state.transArray)
             throw Error('no item purchased')
             // dispatch({type: 'qtyArray', payload: []})
-        console.log(state.transArray)
         }
-        state.paidAmount = 0
+        // state.paidAmount = 0
         state.balance = 0
         } catch (error) {
             dispatch({type: 'errMsg', payload: error.message})
@@ -162,7 +168,9 @@ const Transactions = ()=> {
        
     }
 
-
+const cardCheckout = async () => {
+     const response = await axios.post('/cart/create-checkout-session', state.cartArray)
+}
 
 
     const assertain = ()=> {
@@ -231,11 +239,7 @@ const Transactions = ()=> {
         <article className="checkout-tot-cont">
 
         
-        {/* </div> */}
-          {/* <button
-          id="donezo"
-          onClick={trueCheckout}
-          >Checkout</button>  */}
+        
         </article>
 <fieldset className="field2">
     <legend>Checkout</legend>
@@ -338,24 +342,7 @@ const Transactions = ()=> {
             })}
             </div>
           
-            <article 
-            id="grand-two-cont"
-            style={{
-                color: 'green',
-                // backgroundColor: 'blue'
-            }}
-            >
-                  
-            <h2
-                id="grand-total-two"
-           style={{display: `${state.getAllTotals ? 'none' : 'block' }`,
-        textAlign: 'center',
-        margin: '1rem 0'
-        }}
-
-        //    >Grand Total: N{parseFloat(state.total).toFixed(2)}</h2>
-           >Grand Total: ₦{numberWithCommas(parseFloat(state.total).toFixed(2))}</h2>
-            </article >
+           
 
             <section
             
@@ -366,15 +353,16 @@ const Transactions = ()=> {
                 
                 // }}
                 >
-                      <h3
+                      <h2
                 id="grand-total-one"
              
-                >Grand Total: ₦{numberWithCommas(parseFloat(state.total).toFixed(2))}</h3>
+                >Total: ₦{numberWithCommas(parseFloat(state.total).toFixed(2))}</h2>
             <form
             
             >
-                <label>Cash Paid:</label>
+                <h5>Cash Paid:</h5>
                 <input
+                ref={cashPaidRef}
                 className="cash-amount2"
                 value={state.paidAmount}
                 onChange={(e)=> dispatch({type: 'difference', payload: e.target.value})}
@@ -386,12 +374,14 @@ const Transactions = ()=> {
                 flexDirection: 'column'
             }}
             >
-           <h2
-           >Balance: </h2>
-           <h2>₦{state.paidAmount > state.total  ? parseFloat(state.balance).toFixed(2) : 0}</h2> 
+           <h4
+           >Balance: </h4>
+           <h4>₦{state.paidAmount > state.total  ? parseFloat(state.balance).toFixed(2) : 0}</h4> 
            </seciton>
-           <button onClick={doneSales}>cancel</button>
+           <article className="cash-confirm">
+           <button onClick={doneSales}>Cancel</button>
            <button onClick={doneSales}>Done</button>
+           </article>
            </section>
             
             <section
@@ -427,35 +417,12 @@ const Transactions = ()=> {
                        
                         // onClick={assertain}
                          >Cancel</button>
-                         <button onClick={doneSales}>checkout</button>
+                       
                         </div>
           
            </section>
-           <div className={checkout ? 'checkout' : 'non-checkout'}>
-            <button onClick={trueCash}>Cash</button>
-            <button>Card</button>
-           </div>
-
-        {/* <section
-
->
-            <form
-    className="payment1"
-            >
-                <label>Cash Paid:</label>
-                <input
-                className="cash-amount1"
-                value={state.paidAmount}
-                onChange={(e)=> dispatch({type: 'difference', payload: e.target.value})}
-                />
-            </form>
-
-           </section>
-           <article
-           >
-
-           <h3>Balance: </h3><h3>₦{state.paidAmount > state.total  ? parseFloat(state.balance).toFixed(2) : 0}</h3>
-           </article> */}
+          
+       
         </div>
 
     )
