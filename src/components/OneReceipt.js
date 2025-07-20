@@ -1,24 +1,21 @@
-import { useEffect, useState, useReducer } from 'react'
+import { useEffect, useState, useReducer, useContext } from 'react'
 import useAuth from '../hooks/useAuth'
 import axios from '../app/api/axios'
 import initialState from '../store'
 import reducer from '../reducer'
+import AuthContext from '../context/authProvider'
 const OneReceipt = () => {
 const [receipts, setReceipts] = useState({})
 const [currentUser, setCurrentUser] = useState()
 const [currentTrans, setCurrentTrans] = useState()
 const [state, dispatch] = useReducer(reducer, initialState)
 const {auth} = useAuth()
+const {currentUsers} = useContext(AuthContext)
 const getItems = async ()=> {
-   
     console.log('picker3 is : ', auth.picker3)
     console.log('picker is: ', auth.picker)
     try {
-          const gog =  await axios.get('/users')
-
-        const person = gog.data.find((user) => user._id === auth.picker2)
-        console.log(person)
-        setCurrentUser(person)
+        console.log(currentUsers)
 
         const response = await axios.get('/transactions')
         if (response){
@@ -27,22 +24,23 @@ const getItems = async ()=> {
                     item.cashierID = 'unavailable'
                     item.cashier = 'unavailable'
                 }
-
+                // const reverseReceipt = response.data.reverse()
+const latestReceipt = response.data.filter((receipt) => receipt.cashierID === auth.picker )
+const reverseReceipt = latestReceipt.reverse()
+console.log(latestReceipt)
                 const oneTrans = response.data.find((item) => item._id === auth.picker2)
+                const seaSaw = oneTrans ? oneTrans : reverseReceipt[0]
                 // dispatch({type: 'getNames', payload: response.data})
-                setCurrentTrans(oneTrans)
+                setCurrentTrans(seaSaw)
                 console.log(currentTrans)
                 // dispatch({type: 'getNames', payload: cashierTrans})
                 return item
             })
-            const gog =  await axios.get('/users')
+            // const gog =  await axios.get('/users')
 
-            const person = gog.data.find((user) => user._id === auth.picker3)
-            console.log(person)
-            setCurrentUser(person)
-         
-            const cashierTrans = newRes.filter((item) => item.cashierID === auth.picker2)
-            console.log(cashierTrans)
+            // const person = gog.data.find((user) => user._id === auth.picker3)
+            // console.log(person)
+            // setCurrentUser(person)
 
         
 
@@ -92,6 +90,7 @@ useEffect(()=> {
   
    >
        {/* <h5>cashierID: {item.cashierID}</h5> */}
+                                           <h2 className="receipt-title">{currentTrans.title}</h2>
        <h4>Date: {currentTrans.date}</h4>
        <h4>TransID: {currentTrans._id}</h4>
        {currentTrans.goods.map((good)=> {
