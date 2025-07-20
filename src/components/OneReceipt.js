@@ -125,7 +125,7 @@ style={{
        >Grand Total: ₦{ numberWithCommas(parseFloat(currentTrans.grandTotal).toFixed(2))}</h4>
        
   
-<h5>Cashier: {currentTrans.cashier}</h5>
+<h5>Operator: {currentTrans.cashier}</h5>
     
    </article>}
            
