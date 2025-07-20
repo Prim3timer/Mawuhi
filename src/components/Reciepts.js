@@ -188,6 +188,7 @@ function numberWithCommas(x) {
                  id="receipts"
                     >
                         {/* <h5>cashierID: {item.cashierID}</h5> */}
+                         <h2 className="receipt-title">{item.title}</h2>
                         <h4>Date: {item.date}</h4>
                         <h4>TransID: {item._id}</h4>
                         {item.goods.map((good)=> {
