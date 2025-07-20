@@ -57,6 +57,7 @@ if (sessionId){
             <h2>Thank you for your order</h2>
             <Link to={'/shop'}><button>Shopping</button></Link>
             <Link to={'/home'}><button>Home</button></Link>
+            <Link to={'/one-receipt'}><button>Get Receipt</button></Link>
         </div>
     )
 }
