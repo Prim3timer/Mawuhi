@@ -17,7 +17,7 @@ import { AuthProvider } from './context/authProvider';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     // <Provider store={store}>
-  <React.StrictMode>
+  // <React.StrictMode>
     <BrowserRouter>
     <AuthProvider>
       <Routes>
@@ -25,7 +25,7 @@ root.render(
       </Routes>
     </AuthProvider>
     </BrowserRouter>
-  </React.StrictMode>
+  // </React.StrictMode>
   // </Provider>
 );
 
