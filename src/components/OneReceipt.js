@@ -72,17 +72,21 @@ useEffect(()=> {
        !currentTrans ? <h2
        className='one-receipt'
        style={{
-        fontSize: '1.5rem',
+        // backgroundColor: 'yellow',
+        textWrap: 'wrap'
       
        }}
        >Loading...</h2> : <div
        className='one-receipt'
-        >
+    >
          {currentTrans && <article
 
-   style={{
-       display: 'flex',
-       flexDirection: 'column',
+style={{
+    display: 'flex',
+    flexDirection: 'column',
+    fontSize: '1.5rem',
+    // backgroundColor: 'yellow',
+    textWrap: 'wrap'
 
         //  margin: '2rem 0'
     
