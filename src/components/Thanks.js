@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"
 import axios from "../app/api/axios"
 import { useEffect, useState } from "react"
 import useRefreshToken from "../hooks/useRefreshToken";
+import { format } from "date-fns";
 
 const Thanks = () =>{
     const [alert, setAlert] = useState('')
@@ -26,11 +27,15 @@ const cusomer = queryParams.get("customer")
 console.log(sessionId)
 
 const getRecipt = async ()=> {
+    const now = new Date()
+    const date = format(now, 'dd/MM/yyyy HH:mm:ss')
+    const dateOjb = {date}
+    console.log({date})
     try {
 
-        const response = await axios.post(`/cart/thanks/${sessionId}`)
+        const response = await axios.post(`/cart/thanks/${sessionId}`, dateOjb)
         console.log({res: response.data})
-        console.log('hi')
+
     } catch (error){
         console.error(error)
     }

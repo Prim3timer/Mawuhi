@@ -43,7 +43,7 @@ const Transactions = ()=> {
             const acutalItem = {...currentItem, qty: 1}
             const match = state.transArray.find((item) => item.name === acutalItem.name)
             if(!match){
-                    console.log(currentItem)
+                    console.log(acutalItem)
                     
                     state.transArray.push(acutalItem)
                     state.transArray.reverse()

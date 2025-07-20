@@ -38,6 +38,8 @@ const getCartItems = async () => {
 
         if (userItems.length){
             dispatch({type: 'CARTARRAY', payload: newUseritems})
+            console.log(state.cart.total)
+            // state.cartArray.push(state.cart.total)
             console.log(newUseritems)
         }
         
@@ -53,9 +55,11 @@ const getCartItems = async () => {
 const doneSales = async()=> {
     console.log(state.cartArray)
     auth.cartArray = state.cartArray
+    const now = new Date()
+    const date = format(now, 'dd/mm/yyyy\tHH:mm:ss')
 
     try {
-        console.log(state.cartArray)
+
         const response = await axios.post('/cart/create-checkout-session', state.cartArray)
         console.log(response.data)
         if (response){
