@@ -533,6 +533,13 @@ display: block;
 
   }
 
+  .receipt-title {
+ width: 100%;
+  /* background-color: yellow; */
+  text-align: center;
+ 
+}
+
   #field {
     display: flex;
 /* position: fixed;
