@@ -86,9 +86,9 @@ style={{
     flexDirection: 'column',
     fontSize: '1.5rem',
     // backgroundColor: 'yellow',
-    textWrap: 'wrap'
+    textWrap: 'wrap',
 
-        //  margin: '2rem 0'
+         margin: '0 1rem'
     
    }}
   
