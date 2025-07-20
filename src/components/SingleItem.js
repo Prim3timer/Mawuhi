@@ -123,7 +123,7 @@ console.log(auth)
 
                   try {
            const item = [
-              {userId: auth.picker4, id: elItem._id, transQty: qtyRef.current.value, name: elItem.name},  
+              {userId: auth.picker, id: elItem._id, transQty: qtyRef.current.value, name: elItem.name, total: elItem.total},  
           ]
 
           console.log(item)
