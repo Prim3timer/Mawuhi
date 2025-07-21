@@ -58,6 +58,7 @@ const Login = () => {
             const accessToken = response?.data?.accessToken;
             const roles = response?.data?.roles;
             const picker = response?.data?.id;
+            
             setAuth({ user,roles, accessToken, picker});
             
             setUser('');
@@ -119,7 +120,8 @@ const Login = () => {
                     onChange={(e) => setPwd(e.target.value)}
                     value={pwd}
                     required    
-                /><span onClick={showPassord} className='show-password'>show</span>
+                />
+                {/* <span onClick={showPassord} className='show-password'>show</span> */}
                 </article>
                 {/* Rhinohorn1# */}
                 <button
