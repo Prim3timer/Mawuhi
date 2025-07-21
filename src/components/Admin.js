@@ -14,7 +14,7 @@ const Admin = () => {
 //    console.log({atHome})
       const [currentPerson, setCurrentPerson] = useState()
       const [showSettings, setShowSettings] = useState(false)
-//   setAtHome(false)
+  setAtHome(false)
 console.log(users)
 
 

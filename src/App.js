@@ -37,6 +37,7 @@ import SingleItem from "./components/SingleItem"
 import Thanks from "./components/Thanks"
 import Public from "./components/Public"
 import PersistLogin from "./components/PersistLogin"
+import LocalThanks from "./components/LocalThanks"
 
 // import SearchItem from "./SearchItem";
 
@@ -74,6 +75,7 @@ return (
     <Route path="/login" element={<Login/>}/>
    
     <Route path="/cart/thanks" element={<Thanks/>}/>
+    <Route path="/transactions/local-thanks" element={<LocalThanks/>}/>
        {/* <Route path="/thanks" element={<Thanks />}/> */}
     <Route path="single-item" element={<SingleItem/>}/>
         <Route path="shopping" element={<Reciepts />}/>

@@ -31,20 +31,20 @@ const ACTION = {
 
 const UserSettings = () => {
     const [password, setPassword] = useState('')
-    const [currentUser2, setCurrentUser2] = useState()
-    const [roles, setRoles] =  useState({})
+    const [currentUser, setCurrentUser] = useState()
+    const {auth, setAuth} = useAuth()
+    const [roles, setRoles] =  useState(auth && auth.users.find((user) => user._id === auth.picker3).roles)
     const [username, setUsername] = useState('')
     const [state, dispatch] = useReducer(reducer, initialState)
     const [shadow, setShadow] = useState(false)
-    const {users, getUsers} = useContext(AuthContext)
+    // const {users, getUsers} = useContext(AuthContext)
     const [ID, setID] = useState('')
-    const {auth, setAuth} = useAuth({})
     const saveRef = useRef(null)
     const pwdRef = useRef()
-    console.log(users)
+    // console.log(users)
     // picker3 is the not the current user.  It is the user in question.
-    console.log(auth.currentUser)
-    const [active, setActive] = useState(auth.currentUser.active)
+    console.log({auth})
+    const [active, setActive] = useState(currentUser && currentUser.active)
 const navigate = useNavigate()
 // dispatch({type: ACTION.SUCCESS, payload: false})
 
@@ -61,16 +61,24 @@ console.log(auth.users)
             
             
         }
+
+        const getAUser = ()=> {
+            const person = auth.users.find((user) => user._id === auth.picker3)
+            if (person){
+
+                setCurrentUser(person)
+            }
+        }
         
  
         
-        // useEffect(()=> {
-        //     getAUser()
-        // }, [])
+        useEffect(()=> {
+            getAUser()
+            console.log(currentUser)
+        }, [])
         
         
         const assertain = (id) => {
-    console.log(currentUser2)
     // setAuth({...auth, picker3: id})
     // console.log(auth.picker3)
     // id &&    setBrand(id)
@@ -128,9 +136,9 @@ const generalRemain = () => {
  } 
 
 
-        useEffect(()=> {
-            getUsers()
-        }, [])
+        // useEffect(()=> {
+        //     getUsers()
+        // }, [])
         
      useEffect(() => {
             dispatch({type: ACTION.VALIDNAME, payload: USER_REGEX.test(username)})
@@ -209,7 +217,7 @@ const updateUser = async () => {
 
     }
 
-    const response = await axios.patch(`/users/update/${auth.currentUser._id}`, updatedPerson)
+    const response = await axios.patch(`/users/update/${currentUser._id}`, updatedPerson)
 if (response) {
     dispatch({type: ACTION.SELECTUSER, payload: response.data})
     dispatch({type: ACTION.SUCCESS, payload: true})
@@ -227,7 +235,7 @@ const onActiveChanged = () => {
     shadowing()
     setActive(prev => !prev)}
 const options = Object.keys(ROLES).map(role => {
-    Object.keys(roles)
+
     return (
         <option
         style={{
@@ -245,10 +253,11 @@ const options = Object.keys(ROLES).map(role => {
 
   
     return (
-        !users? <h2
+        !currentUser? <h2
         className="edit-user"
        
-        >Loading...</h2> : <div className="edit-user"
+        >Loading...</h2> :
+         <div className="edit-user"
         >
             <h2 id="user-edit-header">Edit User Settings</h2>
 
@@ -258,7 +267,8 @@ const options = Object.keys(ROLES).map(role => {
             <FontAwesomeIcon icon={faTimes} className={state.validName || !username ? "hide"
  : "invalid"} />
             </label>
-            <input type="text" id="username" value={auth.currentUser.username}
+            <input type="text" id="username" 
+            value={currentUser.username}
             onChange={e => {
                 shadowing()
                 setUsername(e.target.value)}}
@@ -321,7 +331,7 @@ style={{
                         id="user-active"
                         name="user-active"
                         type="checkbox"
-                        checked={active}
+                        checked={currentUser.active}
                         onChange={onActiveChanged}
                     />
                 </label>
@@ -346,7 +356,7 @@ style={{
 
             //  ref={selectRef}
 
-             value={roles}
+             value={roles && roles}
              onChange={e => onRolesChanged(e)}
             className="roles-select"
              >

@@ -27,8 +27,8 @@ const logout = useLogout()
     
         try {
             
-            const data = await refresh()
-            console.log({data})
+            // const data = await refresh()
+            // console.log({data})
             // if (username) setNewName(username)
         } catch (error) {
             console.error(error)

@@ -31,10 +31,10 @@ const [allTransi, setAllTransi] = useState([])
                 // })
                 
                 // const cashierTrans = newRes.filter((item) => item.cashierID === picker)
-                // console.log(cashierTrans)
-                // dispatch({type: 'getNames', payload: response.data})
+                console.log({responseDate: response.data})
+                dispatch({type: 'getNames', payload: response.data})
                 // dispatch({type: 'getNames', payload: cashierTrans})
-                // setAllTransi(response.data)
+                setAllTransi(response.data)
                 console.log(allTransi)
     console.log(state.getNames)
                 const filterate = response.data.filter((inner)=> inner.date.substring(0, 10).includes(state.search))
@@ -129,7 +129,7 @@ function numberWithCommas(x) {
 
 
     return (
-        !allTransi.length ? <h2
+        !state.getNames.length ? <h2
         style={{
             display: 'flex',
             margin: ' 0 0 0 1rem',
@@ -177,10 +177,10 @@ function numberWithCommas(x) {
                         style={{
                             margin: '1rem 0'   
                         }}
-                        >All Reciepts {allTransi &&  allTransi.length}</h2>
-                        {state.getNames && allTransi.map((item)=> {
-                            console.log(item.goods)
-                            console.log(item)
+                        >All Reciepts {allTransi.length}</h2>
+                        {allTransi.map((item)=> {
+                            // console.log(item.goods)
+                            // console.log(item)
                             return (
                                 <section>
                                     <Link to={"/one-receipt"}
@@ -218,7 +218,7 @@ function numberWithCommas(x) {
                                                
                                                 >Sub Total: ₦{numberWithCommas(parseFloat(good.total).toFixed(2))}</p>
                                            
-                                                {/* <br/> */}
+                                                <br/>
                                             </div>
                                         )
                                     })}

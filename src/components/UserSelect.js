@@ -11,14 +11,16 @@ import AllTransactions from "./AllTransactions"
 
 const UserSelect = () => {
     const [state, dispatch] = useReducer(reducer, initialState)
-   const {users} = useContext(AuthContext)
-   const [username, setUsername] = useState('')
-   const {auth} = useAuth()
-    const {setCurrentUser2, currentUser2, currentUser} = useContext(AuthContext)
-    console.log('picker3 is : ', auth.picker3)
+//    const {users, currentUsers} = useContext(AuthContext)
+const [username, setUsername] = useState('')
+const {auth} = useAuth()
+console.log({auth})
+const {users, setCurrentUser2, currentUser2, currentUser, currentUsers, getUsers} = useContext(AuthContext)
+console.log('picker3 is : ', auth.picker3)
+console.log({users})
     console.log('picker is: ', auth.picker)
     // const {indSales} = initialState 
- 
+ console.log({currentUsers})
 
       auth.picker = auth.picker3
 
@@ -37,7 +39,7 @@ const showMe = () => {
 const getAUser = ()=>{
     try {
         
-        const user = users.find((user) => user._id === auth.picker3)
+        const user = auth.users.find((user) => user._id === auth.picker3)
         if (user){
     
             setCurrentUser2(user)
@@ -56,6 +58,9 @@ const getAUser = ()=>{
       useEffect(()=> {
     getAUser()
   }, [])
+  useEffect(()=> {
+    getUsers()
+  }, [])
 
     return (
    !currentUser2 ? <h2
@@ -70,7 +75,7 @@ const getAUser = ()=>{
                 alignItems: 'center',
                 color: 'darkslateblue'  
             }}
-            >{currentUser2 && currentUser2.username}'s activity</h2>
+            >{username}'s activity</h2>
             {console.log(currentUser)}
             <article
             className="userselect-buttons-container"

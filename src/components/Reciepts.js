@@ -16,10 +16,12 @@ const [showOne, setShowOne] = useState(false)
 const [oneId, setOneId] = useState('')
 const { auth } = useAuth();
 const [currentUser, setCurrentUser] = useState({})
-const {atHome, users, getUsers} = useContext(AuthContext)
+const {atHome, users, getUsers, currentUsers} = useContext(AuthContext)
 const getItems = async ()=> {
+    console.log({currentUsers})
     setOneId(auth.picker)
     console.log(auth.picker)
+    console.log({users})
      const pickerChecker = atHome ? auth.picker : auth.picker3
     // auth.picker3 = state.id
     try {
@@ -29,7 +31,6 @@ const getItems = async ()=> {
             //   const gog =  await axios.get('/users')
     
             const person = users.find((user) => user._id === pickerChecker)
-            console.log(person)
             setCurrentUser(person)
     
             const response = await axios.get('/transactions')
@@ -171,8 +172,8 @@ function numberWithCommas(x) {
            
             >{auth.user}'s Reciepts ({state.getNames.length})</h2>
             {state.getNames && state.getNames.map((item)=> {
-                console.log(item.goods)
-                console.log(item)
+                // console.log(item.goods)
+                // console.log(item)
                 return (
                     <section
                 

@@ -17,10 +17,10 @@ import AuthContext from "../context/authProvider";
 
 
 const Users = ()=> {
-    const { users, setAtHome} = useContext(AuthContext)
+    const { users, setAtHome, currentUsers, setCurrentUsers} = useContext(AuthContext)
     const {auth, setAuth} = useAuth()
 // setAtHome(false)
-        const [currentUsers, setCurrentUsers] = useState()
+        // const [currentUsers, setCurrentUsers] = useState()
         const [madu, setMadu] = useState()
         const [brand, setBrand] = useState()
         const [state, dispatch] = useReducer(reducer, initialState)
@@ -31,10 +31,10 @@ const Users = ()=> {
  const navigate = useNavigate();
     const location = useLocation();
         const userPage = (id) => {
-            const currentUser = currentUsers.find((user) => user._id === id)
+            const currentUser = users.find((user) => user._id === id)
            setAuth(prev => {
 
-            return {...prev, currentUser
+            return {...prev, currentUser, picker3: id
             }
         })
 
@@ -60,8 +60,9 @@ const Users = ()=> {
             try {
                 const response = await axiosPrivate.get('/users', {
                     signal: controller.signal
+                
                 })
-                console.log(response.data)
+                console.log(response.data.users)
              
                     isMounted && setCurrentUsers(response.data.users)
                     

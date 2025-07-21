@@ -173,19 +173,31 @@ const Transactions = ()=> {
        
     }
 
+  
 const cardCheckout = async () => {
-       if (state.transArray.length){
-                const transItems = {
-                    cashier: auth.user, 
-                    cashierID: auth.picker,
-                    goods: state.transArray,
-                    grandTotal: state.total,
-                    date
-                    
-                }
-     const response = await axios.post('/cart/create-checkout-session', state.transArray)
+console.log('on the card')
+    try {
+        if (state.transArray.length){
+                 const transItems = {
+                     cashier: auth.user, 
+                     cashierID: auth.picker,
+                     goods: state.transArray,
+                     grandTotal: state.total,
+                    //  date
+                     
+                 }
+      const response = await axios.post('/transactions/create-checkout-session', transItems)
+        if (response){
+             window.location = response.data.session.url
+             console.log(response.data)
+          }else  console.log("no checkout")
+
 }
+     } catch (error) {
+        console.error(error.message)
+    }
 }
+
 
 
     const assertain = ()=> {
@@ -257,7 +269,7 @@ const cardCheckout = async () => {
 <fieldset className="field2">
     <legend>Checkout</legend>
      <button onClick={trueCash}>Cash</button>
-            <button>Card</button>
+            <button onClick={cardCheckout}>Card</button>
 </fieldset>
         
 

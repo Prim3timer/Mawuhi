@@ -7,13 +7,15 @@ import food from '../images/meal.jpg'
 // import Transactions from "../components/Transactions";
 import { useNavigate, useLocation } from "react-router-dom";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
+import { use } from "react";
 
 const AuthContext = createContext({})
 export const AuthProvider = ({children}) => {
     const [state, dispatch] = useReducer(reducer, initialState)
+   
     const [users, setUsers] = useState([])
     const [auth, setAuth] = useState({})  
-
+const [currentUsers, setCurrentUsers] = useState([])
  const [currentUser, setCurrentUser] = useState({})
   const [currentUser2, setCurrentUser2] = useState({})
       const [genTrans, setGenTrans] = useState([])
@@ -50,6 +52,7 @@ export const AuthProvider = ({children}) => {
           const innerArray = []
           try {
             const graw =  await axios.get('/transactions')
+            console.log({graw})
             if (graw){
               graw.data.map((gr)=> {
                 return gr.goods.map((good)=> {
@@ -81,7 +84,7 @@ export const AuthProvider = ({children}) => {
 
         const getUsers = async ()=> {
             try {
-                    const response = await axios.get('/users')
+                    const response = await axiosPrivate.get('/users')
                 console.log(response.data)
                     if (response){
 
@@ -203,13 +206,18 @@ export const AuthProvider = ({children}) => {
     getItems()
   }, [])
 
+  useEffect(()=> {
+    getUsers()
+  }, [])
+
     return (
 
         <AuthContext.Provider value={{auth, setAuth, getUsers,
             handleSubmit, handleEdit, assertain, itemRef, cancel,
             generalRemain, remainDelete, items, isEdit, afa, price, unitMeasure, getTransaction,
             search, setSearch, setSearch2, search2, sales, user, getNames, currentUser,
-            setCurrentUser, setCurrentUser2, currentUser2, users, transactions, atHome, setAtHome
+            setCurrentUser, setCurrentUser2, currentUser2, users, setUsers, transactions, atHome, setAtHome,
+            currentUsers, setCurrentUsers
 
         }}>
             {children}
