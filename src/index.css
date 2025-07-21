@@ -121,6 +121,14 @@ h4 {
   min-height: 100vh;
 }
 
+.thanks article {
+  display: flex;
+  column-gap: .5rem;
+  row-gap: 1rem;
+  flex-wrap: wrap;
+
+}
+
 .thanks > *  {
   margin: 2rem;
 }
@@ -788,6 +796,7 @@ row-gap: 1rem;
   /* background-color: green; */
  
 }
+
 .cash-payment >*:nth-child(4){
   /* background-color: green; */
   flex: 1 1 80%
@@ -1399,9 +1408,18 @@ justify-content: center;
   /* background-color: red; */
 }
 
-.cash-amount2 {
+.cash-payment form {
+  display: flex;
   /* background-color: red;  */
-  width: 60%;
+}
+.cash-payment form >*:nth-child(2) {
+  flex: 1 1 40%;
+  /* background-color: red;  */
+}
+
+.cash-amount2 {
+  flex-basis: 1 1 40%;
+  width: 40%;
 }
 
 #field > :nth-child(5){

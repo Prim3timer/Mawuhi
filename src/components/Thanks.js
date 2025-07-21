@@ -55,9 +55,11 @@ if (sessionId){
         <div className="thanks">
             {/* <h3>{alert}</h3> */}
             <h2>Thank you for your order</h2>
+            <article>
             <Link to={'/shop'}><button>Shopping</button></Link>
             <Link to={'/home'}><button>Home</button></Link>
             <Link to={'/one-receipt'}><button>Get Receipt</button></Link>
+      </article>
         </div>
     )
 }
