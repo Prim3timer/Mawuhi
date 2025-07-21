@@ -13,7 +13,26 @@ const [search, setSearch] = useState('')
 const [specArray, setSpecArray] = useState([])
      const [currentUser, setCurrenUser] = useState('')
       const [search2, setSearch2] = useState('')
+      const [username, setUsername] = useState('')
     const {auth} = useAuth()
+
+
+
+//     const getAUser = ()=>{
+//     try {
+        
+//         const user = auth.users.find((user) => user._id === auth.picker3)
+//         if (user){
+    
+//             // setCurrentUser2(user)
+//             setUsername(user.username)
+//             console.log({username})
+//         }
+//     } catch (error) {
+//         console.error(error.message)
+//     }
+// }
+
     const getTrans = async () => {
         const innerArray =[]
         console.log(auth.picker)
@@ -78,9 +97,13 @@ const [specArray, setSpecArray] = useState([])
         getTrans()
            console.log(currentUser)
     }, [search, search2])
+
+//           useEffect(()=> {
+//     getAUser()
+//   }, [])
     return (
         <di>
-            <h2 className='heading'>{auth.user}'s Sales ({specArray.length}) rows</h2>
+            <h2 className='heading'>{auth.users.find((user) => user._id === auth.picker3).username}'s Sales ({specArray.length}) rows</h2>
                    <form  className="search-form"   onSubmit={(e)=> e.preventDefault()}>
         <input 
         id="invent-search"

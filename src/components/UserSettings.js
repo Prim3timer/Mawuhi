@@ -33,7 +33,7 @@ const UserSettings = () => {
     const [password, setPassword] = useState('')
     const [currentUser, setCurrentUser] = useState()
     const {auth, setAuth} = useAuth()
-    const [roles, setRoles] =  useState(auth && auth.users.find((user) => user._id === auth.picker3).roles)
+    const [roles, setRoles] =  useState(auth && Object.keys(auth.users.find((user) => user._id === auth.picker3).roles))
     const [username, setUsername] = useState('')
     const [state, dispatch] = useReducer(reducer, initialState)
     const [shadow, setShadow] = useState(false)
@@ -233,7 +233,9 @@ if (response) {
 const onActiveChanged = () => {
     
     shadowing()
-    setActive(prev => !prev)}
+    setActive(prev => !prev)
+}
+
 const options = Object.keys(ROLES).map(role => {
 
     return (
@@ -356,7 +358,7 @@ style={{
 
             //  ref={selectRef}
 
-             value={roles && roles}
+             value={roles}
              onChange={e => onRolesChanged(e)}
             className="roles-select"
              >
