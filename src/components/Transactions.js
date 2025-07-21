@@ -230,7 +230,7 @@ console.log('on the card')
               
              
         <form
-        
+        className="tran-form"
         >
           
             <article className="trans-add">
@@ -261,11 +261,7 @@ console.log('on the card')
 
 
         </form>
-        <article className="checkout-tot-cont">
 
-        
-        
-        </article>
 <fieldset className="field2">
     <legend>Checkout</legend>
      <button onClick={trueCash}>Cash</button>

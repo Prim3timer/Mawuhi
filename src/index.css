@@ -519,6 +519,18 @@ display: block;
 
   #ulu {text-align: center;}
 
+.trans-form {
+/* display: flex; */
+justify-items: center;
+  background-color: yellow;
+  width: 80%;
+}
+
+
+#trans-search {
+    /* background-color: yellow; */
+    /* flex: 1 1 40%; */
+  }
 
 .trans-cont {
 
@@ -531,6 +543,10 @@ display: block;
   row-gap: 1rem;
   /* background-color: red; */
 
+  }
+
+  .one-receipt {
+    
   }
 
   .receipt-title {
@@ -549,6 +565,7 @@ top: 5rem; */
     margin: .5rem 0;
     /* flex-grow: 1; */
   align-items: center;
+  justify-content: center;
     gap: .5rem;
     padding: .5rem .5rem 1rem 0;
 /* background-color: red; */
@@ -556,6 +573,8 @@ top: 5rem; */
     flex-wrap: wrap;
     /* align-items: center; */
   }
+
+
 
 
 .field2 {
@@ -577,11 +596,6 @@ top: 5rem; */
   }
 
 
-
-  #field > *:nth-child(1){
-    flex: 1 1 100%;
-    /* background-color:red; */
-  }
   #field > *:nth-child(2){
     flex: 1 1 100%;
     /* background-color:red; */
@@ -605,30 +619,22 @@ top: 5rem; */
 
     
   .trans-add {
-    /* width: 90vw; */
+    width: 90vw;
    justify-self: center;
     display: flex;
     column-gap: .5rem;
+    justify-content: center;
     /* background-color: green; */
   }
 
-  .trans-add >*:nth-child(1){
-    flex: 1 1 70%;
 
-    /* background-color: blue; */
-  }
   .trans-add >*:nth-child(2){
-    flex: 1 1 5%;
+    flex: 1 1 15%;
     font-size: 2rem;
     /* background-color: blue; */
   }
 
-  .checkout-tot-cont {
-    display: flex;
-    align-items: center;
 
-    justify-content: center;
-  }
 
   #donezo {
    
