@@ -395,9 +395,9 @@ console.log('on the card')
                 flexDirection: 'column'
             }}
             >
-           <h4
-           >Balance: </h4>
-           <h3>₦{state.paidAmount > state.total  ? parseFloat(state.balance).toFixed(2) : 0}</h3> 
+           <h2
+           >Balance: ₦{state.paidAmount > state.total  ? parseFloat(state.balance).toFixed(2) : 0}</h2>
+           {/* <h3>₦{state.paidAmount > state.total  ? parseFloat(state.balance).toFixed(2) : 0}</h3>  */}
            </seciton>
            <article className="cash-confirm">
            <button onClick={closeCashWindow}>Cancel</button>
