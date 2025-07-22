@@ -591,13 +591,14 @@ top: 5rem; */
 .field2 {
   display: flex;
   width: 80%;
-  column-gap: 1rem;
+  column-gap: 2rem;
   padding: 1rem 0.5rem;
   justify-content: center;
+  /* background-color: yellow; */
 }
 
 .field2 >* {
-  flex: 1 1 35%
+  flex: 0 1 35%
 }
 
 
@@ -608,7 +609,7 @@ top: 5rem; */
 
 
   #field > *:nth-child(2){
-    flex: 1 1 100%;
+    flex: 0 1 60%;
     /* background-color:red; */
   }
   #field > *:nth-child(3){
