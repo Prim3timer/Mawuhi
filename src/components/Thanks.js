@@ -26,7 +26,7 @@ console.log({currentUsers})
 const queryParams = new URLSearchParams(window.location.search)
 let sessionId = queryParams.get("session_id")
 const cusomer = queryParams.get("customer")
-console.log(sessionId)
+// console.log(sessionId)
 
 const getRecipt = async ()=> {
      
@@ -60,15 +60,15 @@ const getRecipt = async ()=> {
 
 useEffect(()=> {
 
-if (sessionId){
+// if (sessionId){
     getRecipt()
 
-}
+// }
 }, [])
 
-   useEffect(()=> {
-           preserveName()
-         }, [])
+//    useEffect(()=> {
+//            preserveName()
+//          }, [])
     return (
         <div className="thanks">
             {/* <h3>{alert}</h3> */}

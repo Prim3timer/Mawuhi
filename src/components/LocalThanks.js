@@ -10,16 +10,7 @@ const LocalThanks = () =>{
 const {auth, setAuth} = useAuth()
  const refresh = useRefreshToken()
 
-    const preserveName = async () =>{
-        try {
-            
-            const {username} = await refresh()
-            console.log(username)
-        } catch (error) {
-            console.error(error)
-        }
 
-}
 
 const queryParams = new URLSearchParams(window.location.search)
 let sessionId = queryParams.get("session_id")
@@ -51,15 +42,15 @@ const getRecipt = async ()=> {
 }
 useEffect(()=> {
 
-if (sessionId){
+// if (sessionId){
     getRecipt()
 
-}
+// }
 }, [])
 
-   useEffect(()=> {
-           preserveName()
-         }, [])
+//    useEffect(()=> {
+//            preserveName()
+//          }, [])
     return (
         <div className="thanks">
             {/* <h3>{alert}</h3> */}
