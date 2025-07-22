@@ -32,12 +32,12 @@ const [specArray, setSpecArray] = useState([])
 //         console.error(error.message)
 //     }
 // }
+const pickerChecker = atHome === true ? auth.picker : auth.picker3
 
     const getTrans = async () => {
         const innerArray =[]
         console.log(auth.picker)
       setAtHome(false)
-        const pickerChecker = atHome ? auth.picker : auth.picker3
         try {
             const response = await axiosPrivate.get('/transactions')
             // const response2 = await axiosPrivate.get('/users')
@@ -101,9 +101,11 @@ const [specArray, setSpecArray] = useState([])
 //           useEffect(()=> {
 //     getAUser()
 //   }, [])
+console.log({authUsers: auth.users})
+console.log(pickerChecker && {pickerChecker})
     return (
         <di>
-            <h2 className='heading'>{auth.users.find((user) => user._id === auth.picker3).username}'s Sales ({specArray.length}) rows</h2>
+           {pickerChecker ? <h2 className='heading'>{auth.users && auth.users.find((user) => user._id === pickerChecker).username}'s Sales ({specArray.length}) rows</h2> : ''}
                    <form  className="search-form"   onSubmit={(e)=> e.preventDefault()}>
         <input 
         id="invent-search"

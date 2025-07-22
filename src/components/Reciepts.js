@@ -17,12 +17,13 @@ const [oneId, setOneId] = useState('')
 const { auth } = useAuth();
 const [currentUser, setCurrentUser] = useState({})
 const {atHome, users, getUsers, currentUsers} = useContext(AuthContext)
+const pickerChecker = atHome ? auth.picker : auth.picker3
 const getItems = async ()=> {
     console.log({currentUsers})
     setOneId(auth.picker)
     console.log(auth.picker)
     console.log({users})
-     const pickerChecker = atHome ? auth.picker : auth.picker3
+    const person = users.find((user) => user._id === pickerChecker)
     // auth.picker3 = state.id
     try {
 
@@ -30,7 +31,6 @@ const getItems = async ()=> {
         console.log('picker is: ', auth.picker)
             //   const gog =  await axios.get('/users')
     
-            const person = users.find((user) => user._id === pickerChecker)
             setCurrentUser(person)
     
             const response = await axios.get('/transactions')
@@ -164,13 +164,13 @@ function numberWithCommas(x) {
 
           {/* <SearchItem/> */}
         </article>
-            <h2
+          {pickerChecker ?   <h2
             style={{
                 margin: '1rem 0' ,
                 // color: 'darkslateblue'    
             }}
            
-            >{auth.users.find((user) => user._id === auth.picker3).username}'s Reciepts ({state.getNames.length})</h2>
+            >{auth.users.find((user) => user._id === pickerChecker).username}'s Reciepts ({state.getNames.length})</h2> : ''}
             {state.getNames && state.getNames.map((item)=> {
                 // console.log(item.goods)
                 // console.log(item)
