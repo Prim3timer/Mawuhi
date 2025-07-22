@@ -81,7 +81,7 @@ const enableFilterate = ()=> {
         return (
         <Link to={'/single-item'}
         className="linker"
-    
+    key={item._id}
         >
           <article
           className="shopping-items"

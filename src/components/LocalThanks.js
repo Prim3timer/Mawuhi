@@ -7,7 +7,7 @@ import { format } from "date-fns";
 
 const LocalThanks = () =>{
     const [alert, setAlert] = useState('')
-const {auth} = useAuth()
+const {auth, setAuth} = useAuth()
  const refresh = useRefreshToken()
 
     const preserveName = async () =>{
@@ -22,11 +22,12 @@ const {auth} = useAuth()
 }
 
 const queryParams = new URLSearchParams(window.location.search)
-const sessionId = queryParams.get("session_id")
+let sessionId = queryParams.get("session_id")
 const cusomer = queryParams.get("customer")
-console.log(sessionId)
+console.log({sessionId})
 
 const getRecipt = async ()=> {
+     
     const now = new Date()
     const date = format(now, 'dd/MM/yyyy HH:mm:ss')
     const dateOjb = {date}
@@ -35,6 +36,14 @@ const getRecipt = async ()=> {
 
         const response = await axios.post(`/transactions/local-thanks/${sessionId}`, dateOjb)
         console.log({res: response.data})
+        if (response){
+            setAuth(prev => {
+
+            return {...prev, users: response.data.users
+            }
+        })
+            sessionId = ''
+        }
 
     } catch (error){
         console.error(error)

@@ -164,19 +164,19 @@ function numberWithCommas(x) {
 
           {/* <SearchItem/> */}
         </article>
-          {pickerChecker ?   <h2
+          {pickerChecker && auth.users ?   <h2
             style={{
                 margin: '1rem 0' ,
                 // color: 'darkslateblue'    
             }}
            
-            >{auth.users.find((user) => user._id === pickerChecker).username}'s Reciepts ({state.getNames.length})</h2> : ''}
+            >{auth.users && auth.users.find((user) => user._id === pickerChecker).username}'s Reciepts ({state.getNames.length})</h2> : ''}
             {state.getNames && state.getNames.map((item)=> {
                 // console.log(item.goods)
                 // console.log(item)
                 return (
                     <section
-                
+                key={item._id}
                     >
                         <Link to="/one-receipt"
                         style={{

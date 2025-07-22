@@ -29,11 +29,7 @@ const cusomer = queryParams.get("customer")
 console.log(sessionId)
 
 const getRecipt = async ()=> {
-      setAuth(prev => {
-
-            return {...prev, users: currentUsers
-            }
-        })
+     
     const now = new Date()
     const date = format(now, 'dd/MM/yyyy HH:mm:ss')
     const dateOjb = {date}
@@ -70,9 +66,9 @@ if (sessionId){
 }
 }, [])
 
-//    useEffect(()=> {
-//            preserveName()
-//          }, [])
+   useEffect(()=> {
+           preserveName()
+         }, [])
     return (
         <div className="thanks">
             {/* <h3>{alert}</h3> */}

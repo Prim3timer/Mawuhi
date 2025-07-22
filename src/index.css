@@ -120,6 +120,9 @@ h4 {
   justify-items: center;
   min-height: 100vh;
 }
+.main-sale {
+  margin: 4rem 0;
+}
 
 .thanks article {
   display: flex;
@@ -717,7 +720,7 @@ top: 5rem; */
  
   .search-form {
     display:flex;
-   /* row-gap: 1rem; */
+   row-gap: 1rem;
    margin: 0 0 2rem 0;
    /* align-items: flex-start; */
   }

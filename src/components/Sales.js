@@ -104,7 +104,7 @@ const pickerChecker = atHome === true ? auth.picker : auth.picker3
 console.log({authUsers: auth.users})
 console.log(pickerChecker && {pickerChecker})
     return (
-        <di>
+        <div className='main-sale'>
            {pickerChecker ? <h2 className='heading'>{auth.users && auth.users.find((user) => user._id === pickerChecker).username}'s Sales ({specArray.length}) rows</h2> : ''}
                    <form  className="search-form"   onSubmit={(e)=> e.preventDefault()}>
         <input 
@@ -173,7 +173,7 @@ console.log(pickerChecker && {pickerChecker})
 }, 0).toFixed(2))}
     </h3>
     </div>
-        </di>
+        </div>
     )
 }
 
