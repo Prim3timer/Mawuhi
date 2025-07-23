@@ -33,7 +33,7 @@ console.log(users)
             {!showSettings ? <h2
             className="users-header"
             style={{textAlign: 'center'}}
-            >Users ({users && users.length})</h2> : ''}
+            >Users ({auth.users && auth.users.length})</h2> : ''}
             
             {<h2>Loading...</h2> && 
              
