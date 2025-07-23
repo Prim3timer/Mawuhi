@@ -330,6 +330,7 @@ input {
 
 .logout {
             font-size: 1.5rem;
+            margin: 1rem 0;
 }
 
 .login form {
@@ -594,6 +595,7 @@ top: 5rem; */
   column-gap: 2rem;
   padding: 1rem 0.5rem;
   justify-content: center;
+ 
   /* background-color: yellow; */
 }
 

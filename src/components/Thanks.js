@@ -11,24 +11,24 @@ const Thanks = () =>{
 const {auth, setAuth} = useAuth()
  const refresh = useRefreshToken()
 const {currentUsers} = useContext(AuthContext)
-console.log({currentUsers})
-    const preserveName = async () =>{
-        try {
-            
-            const {username} = await refresh()
-            console.log(username)
-        } catch (error) {
-            console.error(error)
-        }
-
+const preserveName = async () =>{
+    try {
+        
+        const {username} = await refresh()
+        console.log(username)
+    } catch (error) {
+        console.error(error)
+    }
+    
 }
 
-const queryParams = new URLSearchParams(window.location.search)
-let sessionId = queryParams.get("session_id")
-const cusomer = queryParams.get("customer")
-// console.log(sessionId)
 
 const getRecipt = async ()=> {
+    const queryParams = new URLSearchParams(window.location.search)
+    let sessionId = queryParams.get("session_id")
+    const cusomer = queryParams.get("customer")
+    console.log({currentUsers})
+    // console.log(sessionId)
      
     const now = new Date()
     const date = format(now, 'dd/MM/yyyy HH:mm:ss')

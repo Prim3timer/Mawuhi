@@ -33,8 +33,7 @@ const UserSettings = () => {
     const [password, setPassword] = useState('')
     const [currentUser, setCurrentUser] = useState()
     const {auth, setAuth} = useAuth()
-    const [roles, setRoles] =  useState(auth && Object.keys(auth.users.find((user) => user._id === auth.picker3).roles))
-    const [username, setUsername] = useState('')
+    const [username, setUsername] = useState()
     const [state, dispatch] = useReducer(reducer, initialState)
     const [shadow, setShadow] = useState(false)
     // const {users, getUsers} = useContext(AuthContext)
@@ -44,7 +43,8 @@ const UserSettings = () => {
     // console.log(users)
     // picker3 is the not the current user.  It is the user in question.
     console.log({auth})
-    const [active, setActive] = useState(currentUser && currentUser.active)
+    const [active, setActive] = useState('')
+    const [roles, setRoles] =  useState({})
 const navigate = useNavigate()
 // dispatch({type: ACTION.SUCCESS, payload: false})
 
@@ -63,10 +63,13 @@ console.log(auth.users)
         }
 
         const getAUser = ()=> {
-            const person = auth.users.find((user) => user._id === auth.picker3)
+            const person = auth.user && auth.users.find((user) => user._id === auth.picker3)
             if (person){
 
                 setCurrentUser(person)
+                setUsername(person.username)
+                setRoles(person.roles)
+                setActive(person.active)
             }
         }
         
@@ -100,7 +103,8 @@ console.log(auth.users)
 const handleRemove = async ()=> {
     console.log(auth.picker3)
   
-    const response = await axios.delete(`/users/delete/${ID}`)
+    // const response = await axios.delete(`/users/delete/${ID}`)
+    const response = await axios.delete(`items/delete-user/${currentUser._id}`)
     dispatch({type: 'cancel', payload: false})
     dispatch({type: 'success', payload: true})
 navigate('/admin')
@@ -186,6 +190,7 @@ const onRolesChanged = e => {
         return
     }else  {
         console.log('alright * 3')
+        console.log({values})
         setRoles(values)
     }
 }
@@ -206,6 +211,8 @@ const updateUser = async () => {
         return newest
     })
 
+    console.log(userChange)
+
     const currentRole = userChange.pop()
     console.log(currentRole)
     console.log(password)
@@ -217,7 +224,8 @@ const updateUser = async () => {
 
     }
 
-    const response = await axios.patch(`/users/update/${currentUser._id}`, updatedPerson)
+    // const response = await axios.patch(`//update/${currentUser._id}`, updatedPerson)
+    const response = await axios.patch(`/items/update-user/${currentUser._id}`, updatedPerson)
 if (response) {
     dispatch({type: ACTION.SELECTUSER, payload: response.data})
     dispatch({type: ACTION.SUCCESS, payload: true})
@@ -256,7 +264,7 @@ const options = Object.keys(ROLES).map(role => {
   
     return (
         !currentUser? <h2
-        className="edit-user"
+        className="edit-user"q
        
         >Loading...</h2> :
          <div className="edit-user"
@@ -270,7 +278,7 @@ const options = Object.keys(ROLES).map(role => {
  : "invalid"} />
             </label>
             <input type="text" id="username" 
-            value={currentUser.username}
+            value={username}
             onChange={e => {
                 shadowing()
                 setUsername(e.target.value)}}
@@ -333,7 +341,7 @@ style={{
                         id="user-active"
                         name="user-active"
                         type="checkbox"
-                        checked={currentUser.active}
+                        checked={active}
                         onChange={onActiveChanged}
                     />
                 </label>

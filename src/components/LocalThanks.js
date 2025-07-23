@@ -1,7 +1,7 @@
 import useAuth from "../hooks/useAuth"
 import { Link } from "react-router-dom"
 import axios from "../app/api/axios"
-import { useEffect, useState } from "react"
+import { useEffect, useState, memo } from "react"
 import useRefreshToken from "../hooks/useRefreshToken";
 import { format } from "date-fns";
 
@@ -12,12 +12,12 @@ const {auth, setAuth} = useAuth()
 
 
 
-const queryParams = new URLSearchParams(window.location.search)
-let sessionId = queryParams.get("session_id")
-const cusomer = queryParams.get("customer")
-console.log({sessionId})
-
-const getRecipt = async ()=> {
+ 
+ const getRecipt = async ()=> {
+    const queryParams = new URLSearchParams(window.location.search)
+    let sessionId = queryParams.get("session_id")
+    const cusomer = queryParams.get("customer")
+    console.log({sessionId})
      
     const now = new Date()
     const date = format(now, 'dd/MM/yyyy HH:mm:ss')
@@ -37,7 +37,7 @@ const getRecipt = async ()=> {
         }
 
     } catch (error){
-        console.error(error)
+        // console.error(error)
     }
 }
 useEffect(()=> {
@@ -46,7 +46,7 @@ useEffect(()=> {
     getRecipt()
 
 // }
-}, [])
+}, [ ])
 
 //    useEffect(()=> {
 //            preserveName()
@@ -65,3 +65,4 @@ useEffect(()=> {
 }
 
 export default LocalThanks
+// export default memo(LocalThanks)

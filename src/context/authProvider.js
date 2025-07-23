@@ -52,7 +52,7 @@ const [currentUsers, setCurrentUsers] = useState([])
           const innerArray = []
           try {
             const graw =  await axios.get('/transactions')
-            console.log({graw})
+            // console.log({graw})
             if (graw){
               graw.data.map((gr)=> {
                 return gr.goods.map((good)=> {
