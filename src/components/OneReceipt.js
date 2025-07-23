@@ -4,6 +4,9 @@ import axios from '../app/api/axios'
 import initialState from '../store'
 import reducer from '../reducer'
 import AuthContext from '../context/authProvider'
+import { useNavigate, useLocation } from 'react-router-dom'
+
+
 const OneReceipt = () => {
 const [receipts, setReceipts] = useState({})
 const [currentUser, setCurrentUser] = useState()
@@ -11,6 +14,8 @@ const [currentTrans, setCurrentTrans] = useState()
 const [state, dispatch] = useReducer(reducer, initialState)
 const {auth} = useAuth()
 const {currentUsers} = useContext(AuthContext)
+const navigate = useNavigate()
+const location = useLocation()
 const getItems = async ()=> {
     console.log('picker3 is : ', auth.picker3)
     console.log('picker is: ', auth.picker)
@@ -67,6 +72,13 @@ function numberWithCommas(x) {
 useEffect(()=> {
     getItems()
 }, [])
+
+// useEffect(()=> {
+//     const disabledBackButton = ()=> {
+//         window.history.pushState(null,'',window.location.href)}
+// disabledBackButton()
+//     //  navigate('/one-receipt', { state: { from: location }, replace: true });
+// }, [])
 
     return (
        !currentTrans ? <h2

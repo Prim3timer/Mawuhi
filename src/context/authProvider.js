@@ -82,26 +82,26 @@ const [currentUsers, setCurrentUsers] = useState([])
           }           
         }
 
-        const getUsers = async ()=> {
-            try {
-                    const response = await axiosPrivate.get('/users')
-                console.log(response.data)
-                    if (response){
+        // const getUsers = async ()=> {
+        //     try {
+        //             const response = await axiosPrivate.get('/users')
+        //         console.log(response.data)
+        //             if (response){
 
-                        setUsers(response.data)
-                    }
-                    // const currentUser = response.data.find((user) => user._id === picker)
-                    const person = response.data.find((user) => user._id === auth.picker3)
+        //                 setUsers(response.data)
+        //             }
+        //             // const currentUser = response.data.find((user) => user._id === picker)
+        //             const person = response.data.find((user) => user._id === auth.picker3)
                
-                   setCurrentUser2(person)
-                   dispatch({type: 'inItem', payload: currentUser})
+        //            setCurrentUser2(person)
+        //            dispatch({type: 'inItem', payload: currentUser})
                         
-                        console.log(currentUser2)
+        //                 console.log(currentUser2)
                         
-                    } catch (error) {
-                        console.log(error)
-                    }
-                }
+        //             } catch (error) {
+        //                 console.log(error)
+        //             }
+        //         }
 
 
 
@@ -206,13 +206,13 @@ const [currentUsers, setCurrentUsers] = useState([])
     getItems()
   }, [])
 
-  useEffect(()=> {
-    getUsers()
-  }, [])
+//   useEffect(()=> {
+//     getUsers()
+//   }, [])
 
     return (
 
-        <AuthContext.Provider value={{auth, setAuth, getUsers,
+        <AuthContext.Provider value={{auth, setAuth,
             handleSubmit, handleEdit, assertain, itemRef, cancel,
             generalRemain, remainDelete, items, isEdit, afa, price, unitMeasure, getTransaction,
             search, setSearch, setSearch2, search2, sales, user, getNames, currentUser,

@@ -44,11 +44,11 @@ const UserSettings = () => {
     // picker3 is the not the current user.  It is the user in question.
     console.log({auth})
     const [active, setActive] = useState('')
-    const [roles, setRoles] =  useState({})
+    const theRole = auth.users && auth.users.find((user) => user._id === auth.picker3)
+    const [roles, setRoles] =  useState(Object.keys(theRole.roles))
 const navigate = useNavigate()
 // dispatch({type: ACTION.SUCCESS, payload: false})
-
-console.log(auth.users)   
+ 
         const shadowing = () => {
             setShadow(true)
 
@@ -68,7 +68,7 @@ console.log(auth.users)
 
                 setCurrentUser(person)
                 setUsername(person.username)
-                setRoles(person.roles)
+                // setRoles(person.roles)
                 setActive(person.active)
             }
         }
@@ -175,22 +175,21 @@ const generalRemain = () => {
 
 const onRolesChanged = e => {
     // shadowing()
-    setShadow(true)
+    // setShadow(true)
     const values = Array.from(
         e.target.selectedOptions,
         (option) => option.value
     )
     if (!values.includes('Employee')){
-        console.log('how dare you?')
+     
         return
        
     } 
     if (values.length > 1 && !values.includes('Manager')){
-        console.log('double how  dare you?')
+     
         return
     }else  {
-        console.log('alright * 3')
-        console.log({values})
+     
         setRoles(values)
     }
 }
@@ -203,7 +202,7 @@ const updateUser = async () => {
         Employee: 2001,
     }
     let newest = {}
-    const userChange = Object.keys(roles).map((role)=>{
+    const userChange = roles.map((role)=>{
        if (role === 'Manager' ) newest =  {...newRoles, Manager: 1984}
        else if (role === 'Admin') newest  = {...newRoles, Manager: 1984, Admin: 5150}
        else newest = newRoles
@@ -211,10 +210,10 @@ const updateUser = async () => {
         return newest
     })
 
-    console.log(userChange)
-
+    console.log({userChange})
+    
     const currentRole = userChange.pop()
-    console.log(currentRole)
+    console.log({currentRole})
     console.log(password)
     const updatedPerson = {
         username: username,
@@ -225,7 +224,7 @@ const updateUser = async () => {
     }
 
     // const response = await axios.patch(`//update/${currentUser._id}`, updatedPerson)
-    const response = await axios.patch(`/items/update-user/${currentUser._id}`, updatedPerson)
+    const response = await axios.patch(`/items/update-user/${auth.picker3}`, updatedPerson)
 if (response) {
     dispatch({type: ACTION.SELECTUSER, payload: response.data})
     dispatch({type: ACTION.SUCCESS, payload: true})
@@ -414,7 +413,6 @@ style={{
                      justifyContent: 'center',
                  }}
                  >
-                 {console.log(auth.picker3)}
                     <button
                  onClick={remainDelete}
                  >No</button><button

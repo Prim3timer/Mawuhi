@@ -15,7 +15,7 @@ const UserSelect = () => {
 const [username, setUsername] = useState('')
 const {auth} = useAuth()
 console.log({auth})
-const {users, setCurrentUser2, currentUser2, currentUser, currentUsers, getUsers} = useContext(AuthContext)
+const {users, setCurrentUser2, currentUser2, currentUser, currentUsers} = useContext(AuthContext)
 console.log('picker3 is : ', auth.picker3)
 console.log({users})
     console.log('picker is: ', auth.picker)
@@ -58,9 +58,7 @@ const getAUser = ()=>{
       useEffect(()=> {
     getAUser()
   }, [])
-  useEffect(()=> {
-    getUsers()
-  }, [])
+
 
     return (
    !currentUser2 ? <h2
