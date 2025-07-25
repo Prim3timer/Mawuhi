@@ -306,7 +306,7 @@ const options = Object.keys(ROLES).map(role => {
             onChange={e => {setPassword(e.target.value)
                 shadowing()
             }}
-                            aria-invalid={state.validMatch ? "false" : "true"}
+                            aria-invalid={state.validMatch ? false : true}
                             aria-describedby="confirmnote"
                             onFocus={() => dispatch({type: ACTION.PWDFOCUS, payload: true})}
                             onBlur={() => dispatch({type: ACTION.PWDFOCUS, payload: false})}

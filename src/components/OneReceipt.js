@@ -4,7 +4,8 @@ import axios from '../app/api/axios'
 import initialState from '../store'
 import reducer from '../reducer'
 import AuthContext from '../context/authProvider'
-import { useNavigate, useLocation } from 'react-router-dom'
+import { useNavigate, useLocation, router} from 'react-router-dom'
+
 
 
 const OneReceipt = () => {
@@ -12,13 +13,27 @@ const [receipts, setReceipts] = useState({})
 const [currentUser, setCurrentUser] = useState()
 const [currentTrans, setCurrentTrans] = useState()
 const [state, dispatch] = useReducer(reducer, initialState)
-const {auth} = useAuth()
+const {auth, setAuth} = useAuth()
 const {currentUsers} = useContext(AuthContext)
 const navigate = useNavigate()
+
 const location = useLocation()
+window.history.pushState(null, null, '/shop');
+
+
+
+// window.onpopstate = function () {
+//     console.log('hit')
+//   navigate('/shop', { state: { from: location }, replace: true });
+
+// };
+
 const getItems = async ()=> {
+
     console.log('picker3 is : ', auth.picker3)
     console.log('picker is: ', auth.picker)
+
+     
     try {
         console.log(currentUsers)
 
@@ -32,12 +47,12 @@ const getItems = async ()=> {
                 // const reverseReceipt = response.data.reverse()
 const latestReceipt = response.data.filter((receipt) => receipt.cashierID === auth.picker )
 const reverseReceipt = latestReceipt.reverse()
-console.log(latestReceipt)
+
                 const oneTrans = response.data.find((item) => item._id === auth.picker2)
                 const seaSaw = oneTrans ? oneTrans : reverseReceipt[0]
                 // dispatch({type: 'getNames', payload: response.data})
                 setCurrentTrans(seaSaw)
-                console.log(currentTrans)
+                // console.log(currentTrans)
                 // dispatch({type: 'getNames', payload: cashierTrans})
                 return item
             })
@@ -69,16 +84,14 @@ function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
+
 useEffect(()=> {
     getItems()
 }, [])
 
-// useEffect(()=> {
-//     const disabledBackButton = ()=> {
-//         window.history.pushState(null,'',window.location.href)}
-// disabledBackButton()
-//     //  navigate('/one-receipt', { state: { from: location }, replace: true });
-// }, [])
+
+
+
 
     return (
        !currentTrans ? <h2

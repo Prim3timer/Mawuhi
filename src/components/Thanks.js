@@ -1,16 +1,21 @@
 import useAuth from "../hooks/useAuth"
 import { Link } from "react-router-dom"
 import axios from "../app/api/axios"
-import { useEffect, useState, useContext } from "react"
+import { useEffect, useState, useContext} from "react"
 import useRefreshToken from "../hooks/useRefreshToken";
 import AuthContext from "../context/authProvider";
 import { format } from "date-fns";
+import { useNavigate } from "react-router-dom";
 
 const Thanks = () =>{
     const [alert, setAlert] = useState('')
 const {auth, setAuth} = useAuth()
  const refresh = useRefreshToken()
 const {currentUsers} = useContext(AuthContext)
+const [successCounter, setSuccessCounter] = useState(false)
+const navigate = useNavigate()
+
+
 const preserveName = async () =>{
     try {
         
@@ -28,7 +33,7 @@ const getRecipt = async ()=> {
     let sessionId = queryParams.get("session_id")
     const cusomer = queryParams.get("customer")
     console.log({currentUsers})
-    // console.log(sessionId)
+    console.log({sessionId})
      
     const now = new Date()
     const date = format(now, 'dd/MM/yyyy HH:mm:ss')
@@ -36,21 +41,24 @@ const getRecipt = async ()=> {
     console.log({date})
     try {
 
-        const response = await axios.post(`/cart/thanks/${sessionId}`, dateOjb)
-        console.log({res: response.data})
-        if (response){
-              
-                   setAuth(prev => {
 
-            return {...prev, users: response.data.users
-            }
-        })
-            sessionId = ''
-        }
+       
+window.addEventListener('beforeunload', function (e) {
+    e.preventDefault()
+    return "data will get lost"
+});
 
-    } catch (error){
-        console.error(error)
+    const response = await axios.post(`/cart/thanks/${sessionId}`, dateOjb)
+    console.log({res: response.data.successor})
+    if (response){
+        // setSuccessCounter()
+        sessionId = ''
     }
+    
+
+} catch (error){
+    console.error(error)
+}
 }
 
 
@@ -65,6 +73,7 @@ useEffect(()=> {
 
 // }
 }, [])
+
 
 //    useEffect(()=> {
 //            preserveName()

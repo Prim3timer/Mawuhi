@@ -170,7 +170,7 @@ function numberWithCommas(x) {
                 // color: 'darkslateblue'    
             }}
            
-            >{auth.users && auth.users.find((user) => user._id === pickerChecker).username}'s Reciepts ({state.getNames.length})</h2> : ''}
+            >{pickerChecker && auth.users.find((user) => user._id === pickerChecker).username}'s Reciepts ({state.getNames.length})</h2> : ''}
             {state.getNames && state.getNames.map((item)=> {
                 // console.log(item.goods)
                 // console.log(item)

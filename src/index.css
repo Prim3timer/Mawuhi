@@ -148,8 +148,12 @@ h4 {
 
 }
 
-.invent-info {
+.invent-alarm {
   color: red
+}
+
+.invent-info {
+  color: darkslateblue;
 }
 
 .home > *:active {

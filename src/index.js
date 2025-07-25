@@ -5,7 +5,7 @@ import './index.css';
 import App from './App';
 // Dave store
 // import { store } from "./app/store"
-import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import {BrowserRouter, Routes, Route, createBrowserRouter} from 'react-router-dom'
 
 // Nickel Store
 import store from './store'

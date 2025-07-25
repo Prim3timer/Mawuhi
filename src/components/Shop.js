@@ -18,10 +18,11 @@ const {v4: uuid} = require('uuid')
 
 const Shop = () => {
   const { items, getNames, getItems} = useContext(AuthContext)
- const [shopItems, setShopItems] = useState([])
-   const axiosPrivate = useAxiosPrivate()
+  const [shopItems, setShopItems] = useState([])
+  const axiosPrivate = useAxiosPrivate()
+  
+  const navigate = useNavigate();
 
-const navigate = useNavigate();
     const location = useLocation();
 
 
@@ -48,8 +49,6 @@ const enableFilterate = ()=> {
   }
   
 }
-
-
 
 
  function numberWithCommas(x) {
@@ -90,7 +89,7 @@ const enableFilterate = ()=> {
             <img  className='shop-img' src={`${item.img}`} alt={item.name}/>
             <div className="shop-item-texts">
             <p>{item.name}</p>
-            <p className="invent-info">{item.qty > 0 ? `${item.qty} left` : 'out of stock'}</p>
+            <p className={item.qty < 20 ? "invent-alarm" : "invent-info"}>{item.qty > 0 ? `${item.qty} left` : 'out of stock'}</p>
             <h4> ₦{numberWithCommas(item.price)}</h4>
             {/* <h4>{items.find((name)=> `${name.name}` === inputRef.current.value)}</h4> */}
           </div>
