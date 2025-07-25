@@ -11,7 +11,10 @@ const {auth, setAuth} = useAuth()
  const refresh = useRefreshToken()
 
 
-
+// window.addEventListener('beforeunload', function (e) {
+//     e.preventDefault()
+//     return "data will get lost"
+// });
  
  const getRecipt = async ()=> {
     const queryParams = new URLSearchParams(window.location.search)

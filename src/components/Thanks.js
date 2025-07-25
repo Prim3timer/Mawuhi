@@ -43,10 +43,10 @@ const getRecipt = async ()=> {
 
 
        
-window.addEventListener('beforeunload', function (e) {
-    e.preventDefault()
-    return "data will get lost"
-});
+// window.addEventListener('beforeunload', function (e) {
+//     e.preventDefault()
+//     return "data will get lost"
+// });
 
     const response = await axios.post(`/cart/thanks/${sessionId}`, dateOjb)
     console.log({res: response.data.successor})

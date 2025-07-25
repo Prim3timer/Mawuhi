@@ -156,6 +156,13 @@ h4 {
   color: darkslateblue;
 }
 
+.home-shop {
+  margin-top: 2rem;
+  column-gap: 3rem;
+  justify-content: center;
+  display: flex;
+}
+
 .home > *:active {
   box-shadow: 0em 0em 0em gray;
   transition-property: box-shadow scale;

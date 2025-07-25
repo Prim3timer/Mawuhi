@@ -15,8 +15,8 @@ import { Link } from "react-router-dom";
 const {v4: uuid} = require('uuid')
 
 
-
 const Shop = () => {
+  window.history.pushState(null, null, '/home');
   const { items, getNames, getItems} = useContext(AuthContext)
   const [shopItems, setShopItems] = useState([])
   const axiosPrivate = useAxiosPrivate()
@@ -54,7 +54,10 @@ const enableFilterate = ()=> {
  function numberWithCommas(x) {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
-    
+    const goHome = () => {
+
+      navigate('/home')
+    }
 
 
   useEffect(()=> {
@@ -64,7 +67,11 @@ const enableFilterate = ()=> {
 
   return (
     !items ? <h2>Loading...</h2> :<div className="shop">
+      <div className="home-shop">
+    <button onClick={goHome}>Home</button>
        <h2>Shop</h2>
+
+      </div>
       <form>
       <input
       placeholder="search items"
