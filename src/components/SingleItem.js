@@ -22,7 +22,6 @@ const SingleItem = ()=> {
   const {auth, setAuth,users} = useAuth()
   console.log(auth)
 
-console.log({authSuccessor: auth.seccessor})
   const getItem = async () => {
 
     const response = await axios.get('/items')  

@@ -1,6 +1,6 @@
   import Register from "./components/register"
 import Login from "./components/Login"
-  import {Routes, Route} from 'react-router-dom'
+  import {Routes, Route, Link} from 'react-router-dom'
 import Home from "./components/Home"
 import Layout from "./components/Layout"
 import Missing from "./components/Missing"
@@ -67,7 +67,14 @@ return (
 
   <main className="App"
   >
-     <h2 className="header"> Retail Tracker</h2>
+    <div  className="header">
+
+     <h4> Retail Tracker</h4> 
+    { auth.accessToken && <Link to={'/home'}>
+     <button className="head-home">Home</button></Link>}
+     {/* <button className="head-home">Home</button> */}
+    </div>
+    <article className="main">
       <Routes>
          {/* public routes */}
         <Route path="/" element={<Layout/>}>
@@ -131,6 +138,7 @@ return (
          <Route path="*" element={<Missing/>}/>
         </Route>
       </Routes>
+            </article>
       <p
       className="footer"
             >&copy; {year} Amalu Productions.</p>

@@ -161,9 +161,7 @@ const {auth, getTrans, itemRef,
   return  (
       
              !state.getNames ? <h2 className="item-list">...Loading</h2> :<div className="item-list"
-              style={{
-                margin: '2rem 0' 
-              }}
+           
               onClick={remainDelete}
               >  
               <article id="form-cont">
@@ -185,7 +183,7 @@ const {auth, getTrans, itemRef,
                  <input
                 type="text"
                 id="name"
-                value={state.afa}
+                value={state.afa}   
                 onChange={(e)=> dispatch({type: 'afa', payload: e.target.value})}
                 />
                 <h3>
@@ -242,10 +240,7 @@ const {auth, getTrans, itemRef,
 
 
         <h2 className="invent-header"
-           style={{
-            color: 'darkslateblue', 
-          
-           }}
+        //   
            >Items ({state.getNames.length})</h2>   
        <input 
        id="invent-search"

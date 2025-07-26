@@ -98,7 +98,7 @@ const Login = () => {
          
             >Sign In</h1>
             <form onSubmit={handleSubmit}
-            id='login-form'
+            className='login-form'
             >
                 <label htmlFor="username">Username:</label>
                 <input
@@ -125,16 +125,17 @@ const Login = () => {
                 </article>
                 {/* Rhinohorn1# */}
                 <button
+                className='sign-in'
                 style={{margin: '1rem 0'}}
                 >Sign In</button>
             </form>
             <p>
                 Need an Account?<br />
-                <span className="line">
+                <p className="line">
                     <Link 
                     style={{color: 'blue'}}
                     to="/register">Sign Up</Link>
-                </span>
+                </p>
             </p>
         </section>
     )
