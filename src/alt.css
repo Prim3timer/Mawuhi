@@ -415,7 +415,9 @@ box-shadow: 0.2em 0.3em 0.4em gray;
         padding: 1rem 0;
         font-size: 2rem;
     }
+ 
 
+<<<<<<< HEAD
     @media screen and (max-width: 585px) {
       .home-cont {
       margin: 1rem 0;
@@ -452,6 +454,8 @@ box-shadow: 0.2em 0.3em 0.4em gray;
     }
  
 
+=======
+>>>>>>> a671e521d0dfc4eb3462acfe5556f3074f1f62a9
     .home-cont h3 {
 width: 70vw;
       /* background-color: red; */
