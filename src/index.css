@@ -828,9 +828,6 @@ row-gap: 1rem;
   display: none;
 }
 
-#update-button {
-  margin: .5rem;
-}
 
 .one-receipt {
   display: flex;
@@ -861,6 +858,8 @@ row-gap: 1rem;
    /* max-width: 800px; */
    margin: 2rem 0 2rem 0;
   }
+
+  
 
   .shop {
     /* row-gap: .5rem; */

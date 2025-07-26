@@ -99,29 +99,34 @@ const logout = useLogout()
     
              </h3>
             </div>
-             <br />
         <section
         className="home"
        
         >
        
+
         <Link 
     
         to="/transactions">transaction</Link>
-       <br/>
+      
+     
+      
         <Link
        
         to="/create-item">add item</Link>
-        <br />
+      
+   
         <Link to="/item-list">items</Link>
-        <br />
-     
+        
+   
         <Link to="/inventory">inventory</Link>
-        <br />
+
         {/* <Link to="/emp-inv">Inventory2</Link> */}
-        <br />
+      
+       
         <Link to="/admin">admin</Link>
-        <br/>
+       
+
         <Link 
         // onClick={showDem}
         
@@ -129,16 +134,19 @@ const logout = useLogout()
         {/* <Link         
         to="/editor">bars</Link>
         <br/> */}
+     
         <Link
         to="/shopping">reciepts</Link>
+      
         <Link
         to="/shop">shop</Link>
+       
         <Link to="/cart">
         cart
         </Link>
         {/* <br /> */}
         {/* <Link to="/linkpage">link page</Link> */}
-        <br />
+      
         {/* <Link to="/shopping">Shopping</Link> */}
         {/* Your <FontAwesomeIcon icon={faLeftLong} /> is hot and ready! */}
     </section>
