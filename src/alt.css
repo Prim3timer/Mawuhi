@@ -131,29 +131,73 @@ color: whitesmoke;
   /* grid-template-columns: repeat(1, 1fr); */
 }
 
+
 .cash-payment {
   display: flex;
   flex-direction: column;
 row-gap: 1rem;
-  /* align-items: center; */
-
-   /* display: block; */
-/* color: whitesmoke; */
            background-color: pink;
         position: absolute;
         top: 20%;
- 
+  
         padding: 1rem;
         opacity: .90;
   text-align: center;
-    width: 80%;
-    left: 10%;
+    width: 50%;
+    /* left: 30%; */
 }
 
 
 .non-payment {
   display: none;
 }
+
+
+
+
+.cash-confirm {
+  display: flex;
+  column-gap: 1rem;
+  justify-content: center;
+  /* background-color: green; */
+}
+
+.cash-payment >*:nth-child(1){
+  align-self: center;
+  /* justify-content: center; */
+  /* background-color: green; */
+ 
+}
+.cash-payment >*:nth-child(2){
+  align-self: center;
+
+  /* justify-content: center; */
+  /* background-color: green; */
+ 
+}
+
+.cash-payment >*:nth-child(4){
+  /* background-color: green; */
+  flex: 1 1 80%
+}
+
+.cash-confirm >*{
+ flex: 0 1 30%;
+ font-size: 1.5rem
+}
+
+.cash-payment form >*:nth-child(2) {
+  flex: 1 1 40%;
+  /* background-color: red;  */
+}
+
+.cash-amount2 {
+  padding: 10px 0;
+margin: .5rem 0 0 0;
+  width: 6rem
+}
+
+
 
  .display-veryfier {
 display: block;
@@ -497,6 +541,16 @@ button:active {
       width: 95%;
     }
 
+  .cash-payment {
+    width: 90%;
+    /* left: 10%; */
+  }
+
+  .cash-confirm >*{
+    font-size: 1.5rem;
+ flex: 0 1 40%;
+}
+
   
 
     .login {
@@ -584,7 +638,9 @@ button:active {
         row-gap: 2rem;
       }
 
-      
+      .cash-payment {
+        width: 90%;
+      }
       
      .trans-add input {
       width: 20%;
@@ -668,8 +724,12 @@ width: 70vw;
       font-size: 3rem;
     }
    }
-   @media screen and (min-width: 1200px) {
+   @media screen and (max-width: 1200px) {
 
+      .cash-payment {
+        width: 90%;
+      }
+      
     .home-cont h3 {
       /* background-color: red; */
     }
