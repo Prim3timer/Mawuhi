@@ -527,7 +527,12 @@ button:active {
     }
 
      .trans-add input {
-      width: 20%;
+      flex: 0 1 70%
+      /* background-color: red; */
+    }
+
+     .trans-add button {
+      flex: 0 1 15%
       /* background-color: red; */
     }
 
