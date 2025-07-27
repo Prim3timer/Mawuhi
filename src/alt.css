@@ -210,18 +210,11 @@ justify-items: center;
 
 
 .trans-add input {
-  padding: 0 .5rem;
+  padding: .5rem;
   font-size: 1.5rem;
 
 }
 
-.trans-add {
-  margin: .5rem 0;
-  display: grid;
-  grid-template-columns: 450px 20px;
-  column-gap: .5rem;
-  /* grid-template-rows: 100px; */
-}
 
 
 .inventory {
@@ -496,11 +489,11 @@ button:active {
 
       
       
-      .trans-add {
+      /* .trans-add {
       display: flex;
- grid-template-columns: 95vw 10px;
+ grid-template-columns: 75vw 10px;
  justify-items: center;
-    }
+    } */
 
     .field2 {
       column-gap:2rem;
