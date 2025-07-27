@@ -409,7 +409,8 @@ flex: 1 80%;
     display: flex;
     flex-direction: column;
     /* align-items: center; */
-    color: navy
+    color: navy;
+
 }
 
 .main {
@@ -564,8 +565,9 @@ button:active {
   
 
     .login {
-        padding: 1rem 1rem;
+        /* padding: 1rem 1rem; */
     }
+
     .login-form input {
       padding: 10px 5px;
       font-size: 1.5rem;
