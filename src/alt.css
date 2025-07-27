@@ -451,7 +451,7 @@ button:active {
   
   @media screen and (max-width: 431px) {
     .login {
-        padding: 1rem 2.5rem;
+        padding: 1rem .5rem;
     }
 
     .login-form{
@@ -465,7 +465,7 @@ button:active {
       }
   } 
   .trans-add {
-    background-color: red;
+    /* background-color: red; */
   }
 
     @media screen and (max-width: 585px) {
@@ -493,6 +493,7 @@ button:active {
       
       
       .trans-add {
+      width: 95%;
       display: flex;
  /* grid-template-columns: 65vw 10px; */
  justify-items: center;
