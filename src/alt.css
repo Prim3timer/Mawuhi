@@ -494,7 +494,7 @@ button:active {
 
     #field {
       /* background-color: red; */
-      width: 80%;
+      width: 95%;
     }
 
   
@@ -578,7 +578,7 @@ button:active {
       }
 
       .trans-cont{
-        min-height: 100vh;
+        /* min-height: 100vh; */
       
         row-gap: 2rem;
       }
