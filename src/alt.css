@@ -118,7 +118,7 @@ color: whitesmoke;
 
   border-top: 2px solid brown;
   border-bottom: 2px solid brown;
-  
+  padding: .5rem;
   display: grid;
   /* min-height: 100px; */
   width: 95vw;
@@ -503,6 +503,7 @@ button:active {
   @media screen and (max-width: 431px) {
     .field2 {
       column-gap: none;
+      margin: .5rem;
       /* background-color: red; */
     }
 
@@ -616,7 +617,7 @@ width: 70vw;
     }
     
   }
-  @media screen and (max-width: 992px) {
+  @media screen and (min-width: 992px) {
     .home-cont {
       height: 100vh;
       place-content: center;
