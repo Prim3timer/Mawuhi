@@ -360,6 +360,7 @@ flex: 1 80%;
     background-color: #1e293b;;
     padding: .5rem 0;
     color: whitesmoke;
+  
 }
 
 .head-home {
@@ -410,6 +411,7 @@ flex: 1 80%;
     flex-direction: column;
     /* align-items: center; */
     color: navy;
+    overflow-y: auto;
 
 }
 
@@ -542,6 +544,10 @@ button:active {
       width: 20%;
       /* background-color: red; */
     }
+    .shopping-items{
+  width: 130vw;
+}
+
 
     .login-form{
       /* width: ; */
@@ -635,6 +641,9 @@ button:active {
       .home-cont {
       margin: 1rem 0;
     }
+
+
+
       .home {
         flex-grow: 1;
      

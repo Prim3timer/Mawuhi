@@ -46,8 +46,13 @@ const Transactions = ()=> {
                     console.log(acutalItem)
                     
                     state.transArray.push(acutalItem)
+                    dispatch({type: 'errMsg', payload: `${acutalItem.name} added`})
+                    setTimeout(()=> {
+                        dispatch({type: 'errMsg', payload: ``})
+                        
+                    }, 3000)
                     state.transArray.reverse()
-                    
+             
                 }else if (match) {
                     
                     dispatch({type: 'errMsg', payload: 'item already in list'})
@@ -212,7 +217,7 @@ console.log('on the card')
     const remain = ()=> {
         dispatch({type: 'cancel', payload: false})
     }
-   
+
     return (
        !getNames ? <h2 className="trans-cont">Loading...</h2> : <div className="trans-cont"
        
