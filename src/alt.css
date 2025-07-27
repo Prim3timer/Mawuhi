@@ -182,7 +182,7 @@ display: block;
 
 
 #field {
-  width: 95%;
+  /* width: 95%; */
   display: flex;
   flex-direction: column;
   align-items: center;
