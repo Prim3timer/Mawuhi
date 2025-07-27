@@ -4,7 +4,7 @@ import axios from "../app/api/axios"
 import { useContext, useEffect, useReducer, useRef, useState } from "react"
 import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { FaTrashAlt } from "react-icons/fa";
+import { FaTrashAlt, FaPlus } from "react-icons/fa";
 import {format} from 'date-fns'
 import useAuth from '../hooks/useAuth';
 import AuthContext from "../context/authProvider";
@@ -242,7 +242,7 @@ console.log('on the card')
         /><button
         onClick={handleAdd}
      
-        >+</button></article>
+        ><FaPlus/></button></article>
                     
         <datalist id="edulevel"
         >

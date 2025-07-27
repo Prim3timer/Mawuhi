@@ -245,7 +245,9 @@ align-items: center;
 
 .trans-add button {
   /* width: 50px; */
+  /* display: flex; */
   /* grid-column: 9/ 10; */
+  align-items: center;
   font-size: 1.5rem;
   flex: 1 1 5%
   
@@ -255,7 +257,7 @@ align-items: center;
 
 .trans-add input {
   padding: .5rem;
-flex: 1 1 60%;
+flex: 1 80%;
   font-size: 1.5rem;
 
 }
