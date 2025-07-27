@@ -565,7 +565,9 @@ button:active {
   
 
     .login {
+      width: 90%;
         /* padding: 1rem 1rem; */
+        /* background-color: red; */
     }
 
     .login-form input {
