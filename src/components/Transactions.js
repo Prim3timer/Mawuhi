@@ -243,12 +243,12 @@ console.log('on the card')
         onClick={handleAdd}
      
         >+</button></article>
+                    
         <datalist id="edulevel"
         >
             {items && items.map((user)=> {
                 
                 return (
-                    
                     <option key={user._id}
                     value={`${user.name} ${user.unitMeasure.split(' ')[1]}`}
                     className="transaction-items-list"
