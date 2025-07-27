@@ -109,7 +109,7 @@ color: whitesmoke;
  flex-direction: column;
  align-items: center;
  margin: 1rem 0;
- /* row-gap: 1rem; */
+ row-gap: 1rem;
  
 }
 
@@ -120,10 +120,50 @@ color: whitesmoke;
   width: 95vw;
   place-content: center;
   row-gap: .5rem;
+  min-height: 6rem;
+  
   /* grid-template-columns: repeat(3, 1fr); */
 
   /* grid-template-columns: repeat(1, 1fr); */
 }
+
+.cash-payment {
+  display: flex;
+  flex-direction: column;
+row-gap: 1rem;
+  /* align-items: center; */
+
+   /* display: block; */
+/* color: whitesmoke; */
+           background-color: pink;
+        position: absolute;
+        top: 20%;
+ 
+        padding: 1rem;
+        opacity: .90;
+  text-align: center;
+    width: 80%;
+    left: 10%;
+}
+
+
+.non-payment {
+  display: none;
+}
+
+ .display-veryfier {
+display: block;
+    margin: 1rem auto;
+    padding: 1rem auto;
+      background-color: #DBBFDB;
+      border-radius: 5px;
+      width: 98vw;
+        
+ }
+ .hide-veryfier {
+  display: none;
+ }
+
 
  #trans-item {
   
@@ -385,6 +425,16 @@ width: 10rem;
 box-shadow: 0.2em 0.3em 0.4em gray;
 }
 
+button:active {
+  transition-property: box-shadow scale;
+  box-shadow: 0em 0em 0em gray;
+  transform: scale(0.95, 0.95);
+  transition-duration: 0.1s;
+}
+
+
+
+
  .invent-header {
     text-align: center;
 
@@ -414,10 +464,14 @@ box-shadow: 0.2em 0.3em 0.4em gray;
     .login-form{
         padding: 1rem 0;
         font-size: 2rem;
+      
     }
- 
+       .home >* {
+        place-content: center;
+        font-size: 2rem;
+      }
+  }
 
-<<<<<<< HEAD
     @media screen and (max-width: 585px) {
       .home-cont {
       margin: 1rem 0;
@@ -443,19 +497,17 @@ box-shadow: 0.2em 0.3em 0.4em gray;
       
       
       .trans-add {
-      display: grid;
- grid-template-columns: 300px 10px;
+      display: flex;
+ grid-template-columns: 95vw 10px;
  justify-items: center;
     }
 
     .field2 {
-      column-gap: .5rem;
+      column-gap:2rem;
     }
-    }
+    
  
 
-=======
->>>>>>> a671e521d0dfc4eb3462acfe5556f3074f1f62a9
     .home-cont h3 {
 width: 70vw;
       /* background-color: red; */
@@ -478,7 +530,12 @@ width: 70vw;
   }
 
   
-  @media screen and (min-width: 768px) {
+  @media screen and (max-width: 768px) {
+
+      .field2 {
+      column-gap:2rem;
+    }
+    
     .home-cont {
       margin: 1rem 0;
     }
@@ -494,6 +551,7 @@ width: 70vw;
       place-content: center;
       font-size: 2rem;
     }
+    
   }
   @media screen and (min-width: 992px) {
     .home-cont {
