@@ -489,11 +489,11 @@ button:active {
 
       
       
-      /* .trans-add {
+      .trans-add {
       display: flex;
  grid-template-columns: 75vw 10px;
  justify-items: center;
-    } */
+    }
 
     .field2 {
       column-gap:2rem;
