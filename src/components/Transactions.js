@@ -294,13 +294,13 @@ console.log('on the card')
                             
                            
                 <section>
-                    <h3
+                    <h4
                 
                  >
                
                      {item.name}
                     
-                    </h3>
+                    </h4>
                 </section>
                     
                    <article
@@ -310,7 +310,7 @@ console.log('on the card')
                 >
                  
                     <span
-                  style={{fontWeight: 'bold'}}
+               
                     >Qty:</span>
                 
 
@@ -318,8 +318,9 @@ console.log('on the card')
     <input
  type="text"
  ref={qtyRef}
+ className="in-person-qty"
  value={item.qty}
- style={{width: '5rem'}}
+ 
  onClick={() => dispatch({type: 'blank', payload: '', id: item._id})}
  onChange={(e)=> dispatch({type: 'FIELDCHANGE', payload: e.target.value, id: item._id})}
  />
