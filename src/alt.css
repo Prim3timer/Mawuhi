@@ -245,11 +245,12 @@ align-items: center;
 
 .trans-add button {
   /* width: 50px; */
-  /* display: flex; */
+  display: flex;
   /* grid-column: 9/ 10; */
   align-items: center;
+  justify-content: center;
   font-size: 1.5rem;
-  flex: 1 1 5%
+  flex: 1 1 10%
   
 }
 
