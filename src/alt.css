@@ -124,7 +124,7 @@ color: whitesmoke;
   width: 95vw;
   place-content: center;
   row-gap: .5rem;
-  min-height: 6rem;
+  min-height: 8rem;
   
   /* grid-template-columns: repeat(3, 1fr); */
 
