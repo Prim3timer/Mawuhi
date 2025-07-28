@@ -23,6 +23,7 @@ const Transactions = ()=> {
     const inputRef = useRef()
     const qtyRef = useRef()
     const cashPaidRef = useRef(null)
+    const [firstRedChecker, setFirstRedChecker] = useState('')
   
     
     
@@ -33,17 +34,19 @@ const Transactions = ()=> {
             
             if (inputRef.current.value){
                 dispatch({type: 'errMsg', payload: ''})
+                setFirstRedChecker('')
                 if (state.success === false) state.success = true
                 else state.success = false
-                console.log(inputRef.current.value)
+
                 const currentItem = items.find((name)=> `${name.name} ${name.unitMeasure.split(' ')[1]}` === inputRef.current.value)
                 if (!currentItem) dispatch({type: 'errMsg', payload: 'item not in list'})
+                    setFirstRedChecker('tamgible')
                 currentItem.total = currentItem.price
-            dispatch({type: 'name', payload: inputRef.current.value})
-            const acutalItem = {...currentItem, qty: 1}
-            const match = state.transArray.find((item) => item.name === acutalItem.name)
-            if(!match){
-                    console.log(acutalItem)
+                dispatch({type: 'name', payload: inputRef.current.value})
+                const acutalItem = {...currentItem, qty: 1}
+                const match = state.transArray.find((item) => item.name === acutalItem.name)
+                if(!match){
+                    setFirstRedChecker('')
                     
                     state.transArray.push(acutalItem)
                     dispatch({type: 'errMsg', payload: `${acutalItem.name} added`})
@@ -52,16 +55,23 @@ const Transactions = ()=> {
                         
                     }, 3000)
                     state.transArray.reverse()
-             
-                }else if (match) {
                     
+                }else if (match) {
+                    setFirstRedChecker(match)
                     dispatch({type: 'errMsg', payload: 'item already in list'})
+                    setTimeout(()=> {
+                        dispatch({type: 'errMsg', payload: ``})
+                        setFirstRedChecker('')
+                        
+                    }, 3000)
+                    
                 }
                 
                 console.log(state.transArray)
                 // console.log(state.getNames)
                 inputRef.current.value = ''
             } else {
+                setFirstRedChecker('tamgible')
                 dispatch({type: 'errMsg', payload: 'Please select an item'})
             }
             
@@ -277,11 +287,10 @@ console.log('on the card')
             </fieldset>
             
             <h3 
-            style={{color: `${state.transArray.length   ? 'green' : 'red'}`,
-                // position: 'absolute'
-                textAlign: 'center'
-                // width: '6rem'
-            }}>{state.errMsg}</h3>
+            className={!firstRedChecker ? 'err-msg' : 'no-err-msg'}
+          
+            >
+                {state.errMsg}</h3>
            {state.transArray.length ? <h3>{state.amount} item{state.transArray.length === 1 ? '' : 's'}</h3> : ''} 
             <div
             id="trans-item-cont"               

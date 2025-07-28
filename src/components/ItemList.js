@@ -172,7 +172,7 @@ const {auth, getTrans, itemRef,
 <div
    className={state.isEdit ? "edit" : "no-edit"}
 >
-    <form>
+    <form >
   <form onSubmit={(e)=> e.preventDefault()}
                 id="update-form"
                 >
@@ -239,9 +239,13 @@ const {auth, getTrans, itemRef,
         </div>
 
 
+         </form>
+        
+       </article>
+         <section className="item-table-top">
         <h2 className="invent-header"
         //   
-           >Items ({state.getNames.length})</h2>   
+           >Items ({state.getNames.length})</h2>   <br/>
        <input 
        id="invent-search"
        type="text"
@@ -253,9 +257,7 @@ const {auth, getTrans, itemRef,
            // https://www.npmjs.com/package/@react-google-maps/api
        
        />
-         </form>
-        
-       </article>
+       </section>
        <table className="inventory"
       style={{
     //   position: 'absolute',
@@ -264,7 +266,7 @@ const {auth, getTrans, itemRef,
     // fontSize: '1.5rem',
       }}
       >
-       
+     
        <tbody
        >
        <tr>
