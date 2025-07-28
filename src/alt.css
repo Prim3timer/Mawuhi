@@ -116,10 +116,21 @@ color: whitesmoke;
   justify-self: center; */
 }
 
-.item-table-top >*:nth-child(3){
- font-size: 1.5rem;
-padding: 1rem .5rem;
-}
+ .invent-header {
+    text-align: center;
+        /* color: darkslateblue; */
+        margin: 2rem 0 0 0;
+        /* width: 100%; */
+      }
+      
+      #invent-search {
+        /* background-color: red; */
+        width: 60%;
+        height: 2rem;
+        font-size: 2rem;
+       padding: 1.5rem .5rem;
+      }
+      
 
 .trans-cont {
  display: flex;
@@ -540,23 +551,6 @@ button:active {
   transform: scale(0.95, 0.95);
   transition-duration: 0.1s;
 }
-
-
-
-
- .invent-header {
-    text-align: center;
-        /* color: darkslateblue; */
-        margin: 2rem 0 0 0;
-        /* width: 100%; */
-      }
-      
-      #invent-search {
-        /* background-color: red; */
-        width: 60%;
-        height: 2rem;
-      }
-      
  
   
 
