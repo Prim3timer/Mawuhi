@@ -263,7 +263,7 @@ const options = Object.keys(ROLES).map(role => {
   
     return (
         !currentUser? <h2
-        className="edit-user"q
+        className="edit-user"
        
         >Loading...</h2> :
          <div className="edit-user"
@@ -276,7 +276,7 @@ const options = Object.keys(ROLES).map(role => {
             <FontAwesomeIcon icon={faTimes} className={state.validName || !username ? "hide"
  : "invalid"} />
             </label>
-            <input type="text" id="username" 
+            <input type="text" id="settings-username" 
             value={username}
             onChange={e => {
                 shadowing()

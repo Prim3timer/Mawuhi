@@ -106,18 +106,114 @@ input {
   display: none;
 }
 
-.item-list, .create-item {
+.item-list, .create-item, .admin, .users-cont, .edit-user {
      display: flex;
   flex-direction: column;
   max-width: 100%;
   text-align: center;
   /* min-height: 100vh; */
   justify-content: center;
- 
 
+  /* background-color: red; */
+}
+
+.admin, .users-cont {
+  row-gap: 1rem;
+  margin: 2rem 0;
+}
+
+.edit-user {
+align-items: center;
 }
 
 
+.edit-user form {
+  display: flex;
+  flex-direction: column;
+align-items: center;
+}
+
+.admin-home-link {
+  color: whitesmoke;
+  text-decoration: none;
+}
+
+
+#user-edit-header {
+  text-align: center;
+  margin: 1rem 0 1rem 0;
+}
+
+#settings-username {
+  font-size: 2rem;
+}
+#password {
+  font-size: 2rem;
+
+}
+
+.asinged-roles-cont {
+
+                margin: 1rem 0;
+                display: flex;
+                flex-direction: row;
+                column-gap: 2rem;
+                justify-content: center;
+                align-items: center   
+}
+
+.user-action {
+
+ 
+                width: 48px;
+                height: 48px;
+                color: var(--COLOR);
+                font-size: 2rem;
+                display: grid;
+                place-content: center;
+                background-color: transparent;
+                border-color: transparent;
+}
+
+.roles-select {
+
+                width: 12rem;
+            border: 4px solid black;
+            padding: .5rem
+      
+}
+
+
+.hide {
+  display: none;
+}
+
+.valid {
+  color: limegreen;
+  margin-left: 0.25rem;
+}
+
+.invalid {
+  color: red;
+  margin-left: 0.25rem;
+}
+
+
+.instructions {
+  font-size: 0.75rem;
+  border-radius: 0.5rem;
+  background: #000;
+  color: #fff;
+  padding: 0.25rem;
+  position: relative;
+  bottom: -10px;
+  margin-bottom: 1rem;
+}
+
+.offscreen {
+  position: absolute;
+  left: -9999px;
+}
 
 .edit-action {
   margin: 1rem;
@@ -135,7 +231,12 @@ input {
   margin-left: 16rem;
   /* background-color: blue; */
   min-width: 70%;
+  max-width: 40vw;
+  display: flex;
+  flex-direction: column;
 }
+
+ 
 
 #update-form {
   position: fixed;
@@ -192,13 +293,7 @@ margin: 1rem 0;
         /* width: 100%; */
       }
 
-    .search-form {
-      max-width: 40vw;
-        display: flex;
-        flex-direction: column;
-   
-      }
-      
+  
       #invent-search {
         /* background-color: red; */
         width: 60%;
@@ -714,6 +809,10 @@ color: whitesmoke;
   width: 80%;
 }
 
+.edit-user input {
+  max-width: 80vw;
+}
+
 #update-form {
  
   top:15%;
@@ -742,14 +841,12 @@ color: whitesmoke;
 }
 
 .search-form {
-  margin-left: 16rem;
-  /* background-color: blue; */
+  margin-left: 4rem;
   /* background-color: blue; */
   min-width: 40%;
 }
 
 #search-form input {
-  background-color: blue;
   max-width: 60%;
 
 }
