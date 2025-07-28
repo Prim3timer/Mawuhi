@@ -131,11 +131,7 @@ const bringEdit = () => {
             </div> 
 
        
-            <div
-         
-   
 
-    >
             {/* <h2>Edit Inventory</h2> */}
             <form onSubmit={(e)=> e.preventDefault()}
              className={state.isEdit ? "edit" : "no-edit"}
@@ -171,7 +167,7 @@ const bringEdit = () => {
                 </div>
                 <h3>{state.success}</h3>
             </form>
-        </div> 
+    
   
 
         <div 
