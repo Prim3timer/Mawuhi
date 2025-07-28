@@ -80,15 +80,15 @@ place-content: center;
 }
 
 .edit {
-  display: flex;
-  /* flex-direction: column; */
+  flex-direction: column;
 color: whitesmoke;
-           background-color: lightslategrey;
+           /* background-color: lightslategrey; */
         position: absolute;
         top: 20%;
+        /* height: 45vh; */
  
         padding: .5rem;
-        opacity: .90;
+        opacity: 0;
   text-align: center;
     width: 70%;
     left: 15%;
@@ -139,8 +139,14 @@ input {
 
 #update-form {
   position: fixed;
+  top:2%;
   background-color: gray;
   justify-self: center;
+  font-size: 1rem;
+}
+
+#update-form label, input {
+  font-size: 1rem;
 }
 
 
@@ -707,6 +713,18 @@ color: whitesmoke;
   /* background-color: red; */
   width: 80%;
 }
+
+#update-form {
+ 
+  top:15%;
+  background-color: gray;
+  justify-self: center;
+}
+
+#update-form label, input {
+  font-size: 1.5rem;
+}
+
 
 
  .item-list table {

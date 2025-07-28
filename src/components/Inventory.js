@@ -132,13 +132,14 @@ const bringEdit = () => {
 
        
             <div
-            className={state.isEdit ? "edit" : "no-edit"}
+         
    
 
     >
             {/* <h2>Edit Inventory</h2> */}
             <form onSubmit={(e)=> e.preventDefault()}
-                id="update-form"
+             className={state.isEdit ? "edit" : "no-edit"}
+          id="update-form"
                 >
                     <h3>
 

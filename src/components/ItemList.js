@@ -175,11 +175,11 @@ const {auth, getTrans, itemRef,
 
 
 <div
-   className={state.isEdit ? "edit" : "no-edit"}
 >
 
   <form onSubmit={(e)=> e.preventDefault()}
                 id="update-form"
+                className={state.isEdit ? "edit" : "no-edit"}
                 >
                     <h3>
 
