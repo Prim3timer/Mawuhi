@@ -118,7 +118,7 @@ let CreateItem = () => {
                 // required
                 value={state.image}
                 onChange={(e)=> dispatch({type: 'IMAGE', payload: e.target.value})}
-                />
+                /><br/>
               
                <button type="submit" className="pop">Add Item</button>
         <h3>{state.isMatched}</h3>
