@@ -625,6 +625,9 @@ color: whitesmoke;
   /* background-color: red; */
   width: 80%;
 }
+#invent-search {
+  width: 90%;
+}
 
 .edit {
   width: 90%;
@@ -697,6 +700,10 @@ color: whitesmoke;
   width: 80%;
 }
 
+#invent-search {
+  width: 90%;
+}
+
 .edit {
   width: 90%;
   left: 5%
@@ -742,6 +749,10 @@ color: whitesmoke;
       .home-cont {
       margin: 1rem 0;
     }
+
+      #invent-search {
+  width: 90%;
+}
 
    .edit form input {
   /* background-color: red; */
