@@ -152,6 +152,11 @@ const {auth, getTrans, itemRef,
        dispatch({type: 'isMatched', payload: false})
 
     } 
+
+    const negateEdit = (e) => {
+        e.preventDefault()
+        dispatch({type:'isEdit', payload: false})
+    }
                 
 
                 useEffect(()=> {
@@ -227,7 +232,8 @@ const {auth, getTrans, itemRef,
                 id="image"
                 value={state.image}
                 onChange={(e)=> dispatch({type: 'IMAGE', payload: e.target.value})}
-                />
+                /><br/>
+                <button onClick={e => negateEdit(e)}>Cancel</button>
                 <button 
                 id="update-button"
                 onClick={handleSubmit}
@@ -242,22 +248,22 @@ const {auth, getTrans, itemRef,
          </form>
         
        </article>
-         <section className="item-table-top">
-        <h2 className="invent-header"
-        //   
-           >Items ({state.getNames.length})</h2>   <br/>
-       <input 
-       id="invent-search"
-       type="text"
-       role="searchbox" 
-       placeholder="Search items by name"
-       value={state.search}
-       onChange={(e)=> dispatch({type: 'search', payload: e.target.value})}
-      
-           // https://www.npmjs.com/package/@react-google-maps/api
-       
-       />
-       </section>
+          <section className="item-table-top">
+           <h2 className="invent-header"
+           //   
+              >Items ({state.getNames.length})</h2>   <br/>
+          <input 
+          id="invent-search"
+          type="text"
+          role="searchbox" 
+          placeholder="Search items by name"
+          value={state.search}
+          onChange={(e)=> dispatch({type: 'search', payload: e.target.value})}
+         
+              // https://www.npmjs.com/package/@react-google-maps/api
+          
+          />
+          </section>
        <table className="inventory"
       style={{
     //   position: 'absolute',
@@ -266,7 +272,6 @@ const {auth, getTrans, itemRef,
     // fontSize: '1.5rem',
       }}
       >
-     
        <tbody
        >
        <tr>

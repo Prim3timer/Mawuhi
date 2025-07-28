@@ -80,7 +80,8 @@ place-content: center;
 }
 
 .edit {
-  display: block;
+  display: flex;
+  /* flex-direction: column; */
 color: whitesmoke;
            background-color: lightslategrey;
         position: absolute;
@@ -92,6 +93,15 @@ color: whitesmoke;
     width: 70%;
     left: 15%;
 
+}
+
+input {
+  padding: 0 .5rem;
+  font-size: 1.5rem;
+}
+
+.edit button, input {
+  font-size: 1.5rem;
 }
 .no-edit {
   display: none;
