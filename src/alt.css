@@ -96,8 +96,7 @@ color: whitesmoke;
 }
 
 input {
-  padding: 0 .5rem;
-  font-size: 1.5rem;
+  padding: .5rem;
 }
 
 .edit button, input {
@@ -117,10 +116,42 @@ input {
  
 
 }
-.create-item {
-  /* height: 80vh; */
+
+
+
+.edit-action {
+  margin: 1rem;
+}
+
+.item-list table {
+  font-size: 2rem;
+  /* margin: 2rem  .5rem 1rem 12.5rem;
+  width: 145vw; */
+}
+
+
+.search-form {
+  justify-self: center;
+  margin-left: 16rem;
+  /* background-color: blue; */
+  min-width: 70%;
+}
+
+#update-form {
+  position: fixed;
+  background-color: gray;
+  justify-self: center;
+}
+
+
+.inventory-spec table {
+  font-size: 2rem;
   /* background-color: red; */
 
+}
+.create-item {
+  /* height: 80vh; */
+margin: 1rem 0;
           /* flex-grow: 1; */
           row-gap: 2rem;
         
@@ -128,7 +159,8 @@ input {
 
  #create-item-form button {
          font-size: 2rem;
-        margin-top: 1rem;
+        margin: 1rem 0;
+           font-size: 2rem;
         }
 
 .item-table-top {
@@ -139,11 +171,8 @@ input {
   justify-self: center; */
 }
 
-  #create-item-form input {
-         font-size: 1.5rem;
-         padding: .5rem 0;
-        }
-    
+
+  
   
   #create-item-form button{
          font-size: 1.5rem;
@@ -155,6 +184,13 @@ input {
         /* color: darkslateblue; */
         margin: 2rem 0 0 0;
         /* width: 100%; */
+      }
+
+    .search-form {
+      max-width: 40vw;
+        display: flex;
+        flex-direction: column;
+   
       }
       
       #invent-search {
@@ -475,6 +511,10 @@ flex: 1 80%;
 
 }
 
+.App > * {
+  overflow-y: auto;
+}
+
 .main {
     flex-grow: 1;
 
@@ -545,7 +585,7 @@ table {
   text-align: center;
   border-collapse: collapse;
   /* margin: 0 0 1rem 0; */
-  font-size: 1.2rem;
+   font-size: 1.5rem;
   width: 100vw; 
 }
 td, th  {
@@ -560,8 +600,10 @@ td, th  {
 
  .search-form {
     display:flex;
+
    row-gap: 1rem;
    margin: 0 0 2rem 0;
+ 
    /* align-items: flex-start; */
   }
 
@@ -665,8 +707,33 @@ color: whitesmoke;
   /* background-color: red; */
   width: 80%;
 }
-#invent-search {
-  width: 90%;
+
+
+ .item-list table {
+  font-size: 1.5rem;
+  margin: 2rem  .5rem 1rem 12.5rem;
+  width: 145vw;
+}
+
+.inventory-spec table {
+  margin: 2rem  .5rem 1rem 12.5rem;
+  width: 145vw;
+  font-size: 1.5rem;
+  /* background-color: red; */
+  
+}
+
+.search-form {
+  margin-left: 16rem;
+  /* background-color: blue; */
+  /* background-color: blue; */
+  min-width: 40%;
+}
+
+#search-form input {
+  background-color: blue;
+  max-width: 60%;
+
 }
 
 .edit {
@@ -732,7 +799,7 @@ color: whitesmoke;
         margin-top: 1rem;
         }
      #create-item-form button{
-         font-size: 1.5rem;
+      
         margin-top: 1rem;
         align-self: center;
         }
@@ -740,6 +807,26 @@ color: whitesmoke;
   }
   
   @media screen and (max-width: 431px) {
+
+.item-list table {
+  font-size: 1.5rem;
+  margin: 2rem  .5rem 1rem 12.5rem;
+  width: 145vw;
+}
+
+.inventory-spec table {
+  margin: 2rem  .5rem 1rem 12.5rem;
+  width: 145vw;
+  font-size: 1.5rem;
+  /* background-color: red; */
+
+}
+#invent-search {
+  margin-left: 10rem;
+  /* background-color: blue; */
+  max-width: 60%;
+}
+
     .field2 {
       column-gap: none;
       margin: 0 .5rem;
@@ -807,6 +894,18 @@ color: whitesmoke;
   } 
 
     @media screen and (max-width: 585px) {
+
+.item-list table {
+  font-size: 1.5rem;
+  margin: 2rem  .5rem 1rem 12.5rem;
+  width: 145vw;
+}
+#invent-search {
+  margin-left: 10rem;
+  /* background-color: blue; */
+  max-width: 60%;
+}
+
       .home-cont {
       margin: 1rem 0;
     }

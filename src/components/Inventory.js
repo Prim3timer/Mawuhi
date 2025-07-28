@@ -130,9 +130,7 @@ const bringEdit = () => {
       <button onClick={remainEdit} >ok</button>
             </div> 
 
-            <h2 className="invent-header"
-    
-     >Inventory</h2>
+       
             <div
             className={state.isEdit ? "edit" : "no-edit"}
    
@@ -161,10 +159,15 @@ const bringEdit = () => {
                 value={state.ole}
                 onChange={(e)=> dispatch({type: 'ole', payload: e.target.value})}
                 />
+                <div className="edit-action">
+              <button 
+              className="clear-invent-edit"
+              onClick={e => dispatch({type: 'isEdit', payload: false})}>Cancel</button>
                 <button 
                 id="update-button"
                 onClick={handleEdit}
                 type="submit">Update</button>
+                </div>
                 <h3>{state.success}</h3>
             </form>
         </div> 
@@ -172,13 +175,17 @@ const bringEdit = () => {
 
         <div 
         className="inventory"
-        >  
+        > 
         <article id="form-cont">
+
      <form  className="search-form" 
      //   onSubmit={(e)=> e.preventDefault()}
      >
+             <h2 className="invent-header"
+    
+     >Inventory</h2> 
  <input 
- id="invent-search"
+//  id="invent-search"
  type="text"
  role="searchbox" 
  placeholder="Search by name"
