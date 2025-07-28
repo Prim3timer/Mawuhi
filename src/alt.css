@@ -516,20 +516,7 @@ td, th  {
   padding: .5rem 5px;
 }
 
-.edit {
-  display: block;
-color: whitesmoke;
-           background-color: lightslategrey;
-        position: absolute;
-        top: 20%;
- 
-        padding: .5rem;
-        opacity: .90;
-  text-align: center;
-    width: 70%;
-    left: 15%;
 
-}
 .no-edit {
   display: none;
 }
@@ -595,6 +582,9 @@ color: whitesmoke;
     left: 15%;
 
 }
+
+
+
 .no-edit {
   display: none;
 }
@@ -631,6 +621,15 @@ color: whitesmoke;
   }
 
   @media screen and (max-width: 391px) {
+    .edit form input {
+  /* background-color: red; */
+  width: 80%;
+}
+
+.edit {
+  width: 90%;
+  left: 5%
+}
 
     .trans-add input {
       width: 20%;
@@ -693,6 +692,16 @@ color: whitesmoke;
       /* background-color: red; */
     }
 
+       .edit form input {
+  /* background-color: red; */
+  width: 80%;
+}
+
+.edit {
+  width: 90%;
+  left: 5%
+}
+
      .trans-add input {
       flex: 0 1 70%
       /* background-color: red; */
@@ -734,7 +743,15 @@ color: whitesmoke;
       margin: 1rem 0;
     }
 
+   .edit form input {
+  /* background-color: red; */
+  width: 80%;
+}
 
+.edit {
+  width: 90%;
+  left: 5%
+}
 
       .home {
         flex-grow: 1;

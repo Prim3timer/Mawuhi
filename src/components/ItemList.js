@@ -177,7 +177,7 @@ const {auth, getTrans, itemRef,
 <div
    className={state.isEdit ? "edit" : "no-edit"}
 >
-    <form >
+
   <form onSubmit={(e)=> e.preventDefault()}
                 id="update-form"
                 >
@@ -239,7 +239,7 @@ const {auth, getTrans, itemRef,
                 onClick={handleSubmit}
                 type="submit">Update</button>
                 <h3>{state.alertMsg}</h3>
-            </form>
+           
     </form>
         
         </div>
