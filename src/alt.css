@@ -867,6 +867,10 @@ color: whitesmoke;
   background-color: red;
 }
 
+.sales-items {
+  text-align: left;
+}
+
   @media screen and (max-width: 391px) {
     .edit form input {
   /* background-color: red; */
@@ -940,8 +944,12 @@ color: whitesmoke;
 
  .item-list table {
   font-size: 1.5rem;
-  margin: 2rem  .5rem 1rem 12.5rem;
   width: 145vw;
+}
+
+.sales {
+  margin: 2rem  .5rem 1rem 5.5em;
+
 }
 
 .inventory-spec table {
