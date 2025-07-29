@@ -101,12 +101,11 @@ const pickerChecker = atHome === true ? auth.picker : auth.picker3
 //           useEffect(()=> {
 //     getAUser()
 //   }, [])
-console.log({authUsers: auth.users})
-console.log(pickerChecker && {pickerChecker})
+
     return (
         <div className='main-sale'>
            {pickerChecker ? <h2 className='heading'>{ auth.users && auth.users.find((user) => user._id === pickerChecker).username}'s Sales ({specArray.length}) rows</h2> : ''}
-                   <form  className="search-form"   onSubmit={(e)=> e.preventDefault()}>
+                   <form  className="sales-search-form"   onSubmit={(e)=> e.preventDefault()}>
         <input 
         id="invent-search"
         type="text"
@@ -118,7 +117,7 @@ console.log(pickerChecker && {pickerChecker})
         // https://www.npmjs.com/package/@react-google-maps/api
         
         />
-        {/* <h3>AND / OR</h3> */}
+        {/* <p className='injunction'>AND / OR</p > */}
         <input 
         id="invent-search"
         type="text"

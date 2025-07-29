@@ -68,11 +68,7 @@ const getAUser = ()=>{
         className="user-select"
     >
             <h2
-            style={{
-                margin: '1rem 2rem',
-                alignItems: 'center',
-                color: 'darkslateblue'  
-            }}
+          className="user-select-header"
             >{username}'s activity</h2>
             {console.log(currentUser)}
             <article
