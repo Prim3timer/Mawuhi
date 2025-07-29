@@ -66,7 +66,7 @@ const enableFilterate = ()=> {
 
 
   return (
-    !items ? <h2>Loading...</h2> :<div className="shop">
+    !items ? <h2 className="shop">Loading...</h2> :<div className="shop">
       <div className="home-shop">
   
        <h2>Shop</h2>
@@ -102,7 +102,7 @@ const enableFilterate = ()=> {
           </div>
           
           </article>
-          <hr style={{width: '90vw', border:  '.2px solid black'}}></hr>
+          {/* <hr style={{width: '90vw', border:  '.2px solid black'}}></hr> */}
           </Link>
         )
       })}
