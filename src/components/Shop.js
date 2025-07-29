@@ -68,7 +68,7 @@ const enableFilterate = ()=> {
   return (
     !items ? <h2>Loading...</h2> :<div className="shop">
       <div className="home-shop">
-    <button onClick={goHome}>Home</button>
+  
        <h2>Shop</h2>
 
       </div>

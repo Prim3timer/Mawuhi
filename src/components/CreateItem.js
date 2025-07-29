@@ -68,7 +68,7 @@ let CreateItem = () => {
             <h2 id="create-item-heading">Create Item</h2>
             <form onSubmit={handleSubmit}
             id="create-item-form" >
-                <h2>Name:</h2>
+                <h4>Name:</h4>
                 <input
               ref={itemRef}
                 type="text"
@@ -78,7 +78,7 @@ let CreateItem = () => {
                 />
 
 {/* <h3 id="ulu" */}
-<h2>Unit Measure:</h2><input type="text"
+<h4>Unit Measure:</h4><input type="text"
         list="measure"
         onChange={(e)=> dispatch({type: 'unitMeasure', payload: e.target.value})}
         value={state.unitMeasure}
@@ -105,14 +105,14 @@ let CreateItem = () => {
             </datalist>
 
 
-                <h2>Price:</h2>
+                <h4>Price:</h4>
                 <input
                 type="text"
                 required
                 value={state.price}
                 onChange={(e)=> dispatch({type: 'price', payload: e.target.value})}
                 />
-                <h2>Image Link:</h2>
+                <h4>Image Link:</h4>
                 <input
                 type="text"
                 // required
