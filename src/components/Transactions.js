@@ -260,6 +260,7 @@ console.log('on the card')
         ><FaPlus/></button></article>
                     
         <datalist id="edulevel"
+        
         >
             {items && items.map((user)=> {
                 

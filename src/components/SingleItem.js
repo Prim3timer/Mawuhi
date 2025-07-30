@@ -183,13 +183,13 @@ function numberWithCommas(x) {
                 {/* <img src={"https://images.app.goo.gl/ZcZWCKKhGh9Y8sR26"} alt="food"/> */}
                   
                 </section>
+                <p>{state.elItem.qty} Left</p>
                 <div className="single-item-texts">
                 {/* <h4>Price: ${parseFloat(state.elItem.price).toFixed(2)} </h4> */}
               
                   <section
           className="qty-cont"
           >
-            <p>{state.elItem.qty} Left</p>
               <span
               className="qty-label"
               >Qty: </span>
@@ -209,14 +209,14 @@ function numberWithCommas(x) {
           <p className="no-qty-alert">{state.elItem.qty === '' ? 'invalid quantity' : state.elItem.qty === 0 ? 'out of stock' : ''}</p>    
 
             </section>
-            <h5>₦{numberWithCommas(parseFloat(state.elItem.total).toFixed(2))}</h5>
             </div>
+            <h3>₦{numberWithCommas(parseFloat(state.elItem.total).toFixed(2))}</h3>
              <section
             className="cart-action"
             >
             <button onClick={doneSales}>Buy Now</button>
               <button onClick={addToCart}>Add to Cart</button>
-              <Link to={'/cart'}><button>Go To Cart</button></Link>
+             <button > <Link to={'/cart'} className="cart-action-link">Go To Cart</Link></button>
             </section>
             <h3
                className={state.success ? 'update-alert' : 'hide-update-alert'}
