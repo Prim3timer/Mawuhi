@@ -153,18 +153,20 @@ const plural2 = state.cartAmount.length === 1 ? '' : 's'
             </label>
          
             <h3>₦{numberWithCommas(parseFloat(item.total).toFixed(2))}</h3>
-            <p onClick={() => removeItem(item._id)}>
+{/* <hr></hr> */}
+            </section>
+            <p onClick={() => removeItem(item._id)}
+              className="cart-trash"
+                >
                 <FaTrash role="button"/>
             </p>
-<hr></hr>
-            </section>
             </article>
         </div>
     )
 })}
-{/* <hr></hr> */}
 <h2>Total: ₦{numberWithCommas(parseFloat(state.totalCart).toFixed(2))}</h2>
-<hr></hr>
+{/* <hr></hr> */}
+{/* <hr></hr> */}
 <div className="cart-action">
   <button
              onClick={doneSales}
