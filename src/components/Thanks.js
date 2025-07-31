@@ -41,20 +41,33 @@ const getRecipt = async ()=> {
     console.log({date})
     try {
 
+const res = await axios.get(`/cart/thanks/old-session/${sessionId}`)
+console.log(res)
 
-       
+    const oldSession = res.data ? res.data.title : ''
+
+    console.log({oldSession})
+    console.log(oldSession === sessionId)
+
+console.log({sessionId})
+ 
 // window.addEventListener('beforeunload', function (e) {
 //     e.preventDefault()
 //     return "data will get lost"
-// });
+// });  
+// const oldSessionId = res.data._id ? res.data._id : ''
+if (oldSession === sessionId ){
+return
 
+} else if (!oldSession || oldSession !== sessionId) {
     const response = await axios.post(`/cart/thanks/${sessionId}`, dateOjb)
-    console.log({res: response.data.successor})
-    if (response){
-        // setSuccessCounter()
-        sessionId = ''
-    }
     
+    // if (response){
+        
+    //     await axios.delete(`/cart/thanks/${oldSessionId}`)
+    
+    // } 
+}
 
 } catch (error){
     console.error(error)
