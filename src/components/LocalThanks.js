@@ -27,18 +27,24 @@ const {auth, setAuth} = useAuth()
     const dateOjb = {date}
     console.log({date})
     try {
+        const res = await axios.get(`/cart/thanks/old-session/${sessionId}`)
+         const oldSession = res.data ? res.data.title : ''
+if (oldSession === sessionId ){
+return
+ }else {
 
-        const response = await axios.post(`/transactions/local-thanks/${sessionId}`, dateOjb)
-        console.log({res: response.data})
-        if (response){
-            setAuth(prev => {
+     const response = await axios.post(`/transactions/local-thanks/${sessionId}`, dateOjb)
+     console.log({res: response.data})
+     if (response){
+         setAuth(prev => {
 
-            return {...prev, users: response.data.users
-            }
-        })
-            sessionId = ''
-        }
+         return {...prev, users: response.data.users
+         }
+     })
+         sessionId = ''
+     }
 
+ }
     } catch (error){
         // console.error(error)
     }

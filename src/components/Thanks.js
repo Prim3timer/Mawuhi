@@ -56,17 +56,14 @@ console.log({sessionId})
 //     return "data will get lost"
 // });  
 // const oldSessionId = res.data._id ? res.data._id : ''
+// console.log({oldSessionId})
 if (oldSession === sessionId ){
 return
 
 } else if (!oldSession || oldSession !== sessionId) {
     const response = await axios.post(`/cart/thanks/${sessionId}`, dateOjb)
-    
-    // if (response){
-        
-    //     await axios.delete(`/cart/thanks/${oldSessionId}`)
-    
-    // } 
+//   const res = await axios.delete(`/cart/thanks/alot/${oldSessionId}`)
+//   console.log({res})
 }
 
 } catch (error){
