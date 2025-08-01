@@ -478,7 +478,7 @@ useEffect(()=> {
             <form
             
             >
-                <h3>Cash Paid:</h3>
+                <h4>Cash Paid:</h4>
                 <input
                 ref={cashPaidRef}
                 className="cash-amount2"
@@ -492,8 +492,8 @@ useEffect(()=> {
                 flexDirection: 'column'
             }}
             >
-           <h2
-           >Balance: ₦{state.paidAmount > state.total  ? parseFloat(state.balance).toFixed(2) : 0}</h2>
+           <h4
+           >Balance: ₦{state.paidAmount > state.total  ? parseFloat(state.balance).toFixed(2) : 0}</h4>
            {/* <h3>₦{state.paidAmount > state.total  ? parseFloat(state.balance).toFixed(2) : 0}</h3>  */}
            </seciton>
            <article className="cash-confirm">

@@ -565,7 +565,7 @@ margin: 1rem 0;
   flex-direction: column;
 row-gap: 1rem;
            background-color: pink;
-        position: absolute;
+        position: fixed;
         top: 20%;
   
         padding: 1rem;

@@ -18,7 +18,8 @@ const {currentUsers} = useContext(AuthContext)
 const navigate = useNavigate()
 
 const location = useLocation()
-window.history.pushState(null, null, '/shop');
+// window.history.pushState(null, null, '/shop');
+window.history.pushState(null, null, '/transactions');
 
 
 
