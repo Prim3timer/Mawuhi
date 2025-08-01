@@ -334,11 +334,9 @@ useEffect(()=> {
         id="trans-search"
         placeholder="select item"
         ref={inputRef}
+        onChange={handleAdd}
         list="edulevel"
-        /><button
-        onClick={handleAdd}
-     
-        ><FaPlus/></button></article>
+        /></article>
                     
         <datalist id="edulevel"
         

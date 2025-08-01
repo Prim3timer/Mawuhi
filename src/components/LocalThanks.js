@@ -31,18 +31,18 @@ const {auth, setAuth} = useAuth()
          const oldSession = res.data ? res.data.title : ''
 if (oldSession === sessionId ){
 return
- }else {
+ }else if (!oldSession || oldSession !== sessionId){
 
      const response = await axios.post(`/transactions/local-thanks/${sessionId}`, dateOjb)
      console.log({res: response.data})
      if (response){
          setAuth(prev => {
-
+    
          return {...prev, users: response.data.users
          }
      })
-         sessionId = ''
-     }
+ }
+
 
  }
     } catch (error){
@@ -56,6 +56,10 @@ useEffect(()=> {
 
 // }
 }, [ ])
+
+
+
+
 
 //    useEffect(()=> {
 //            preserveName()
