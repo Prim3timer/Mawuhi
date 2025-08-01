@@ -7,7 +7,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FaTrashAlt, FaPlus } from "react-icons/fa";
 import {format} from 'date-fns'
 import useAuth from '../hooks/useAuth';
+import { Link } from "react-router-dom";
 import AuthContext from "../context/authProvider";
+import useRefreshToken from "../hooks/useRefreshToken";
 {/* ₦ */}
 
 
@@ -24,8 +26,9 @@ const Transactions = ()=> {
     const qtyRef = useRef()
     const cashPaidRef = useRef(null)
     const [firstRedChecker, setFirstRedChecker] = useState('')
+    const [success, setSuccess] = useState(false)
   
-    
+     const refresh = useRefreshToken()
     
     const handleAdd = (e)=> {
         e.preventDefault()
@@ -161,12 +164,16 @@ const Transactions = ()=> {
                             qty: inv.qty - good.qty < 1 ? 0 : inv.qty - good.qty                   
                         }
                         await axios.put(`items/dynam`, goodObj)
+                        
                     }
                 })
                 
             })
             
-            dispatch({type: 'errMsg', payload: 'Transactons Complete'})
+           setSuccess(true)
+               setTimeout(()=> {
+            setSuccess(false)
+        }, 5000)
             dispatch({type: 'qtyArray', payload: []})
             setTimeout(()=> {
                 dispatch({type: 'errMsg', payload: ''})
@@ -227,6 +234,80 @@ console.log('on the card')
     const remain = ()=> {
         dispatch({type: 'cancel', payload: false})
     }
+
+
+        const [alert, setAlert] = useState('')
+const {setAuth} = useAuth()
+//  const refresh = useRefreshToken()
+
+
+// window.addEventListener('beforeunload', function (e) {
+//     e.preventDefault()
+//     return "data will get lost"
+// });
+ 
+ const getRecipt = async ()=> {
+    const queryParams = new URLSearchParams(window.location.search)
+    let sessionId = queryParams.get("session_id")
+    const cusomer = queryParams.get("customer")
+    console.log({sessionId})
+     
+    const now = new Date()
+    const date = format(now, 'dd/MM/yyyy HH:mm:ss')
+    const dateOjb = {date}
+    console.log({date})
+    try {
+        if (sessionId){
+
+            const res = await axios.get(`/cart/thanks/old-session/${sessionId}`)
+             const oldSession = res.data ? res.data.title : ''
+    if (oldSession === sessionId ){
+    return
+     }else if (!oldSession || oldSession !== sessionId){
+    
+         const response = await axios.post(`/transactions/${sessionId}`, dateOjb)
+         console.log({res: response.data})
+         if (response){
+            setSuccess(true)
+            setTimeout(()=> {
+                setSuccess(false)
+            }, 5000)
+             setAuth(prev => {
+        
+             return {...prev, users: response.data.users
+             }
+         })
+     }
+    
+    
+     }
+        }
+    } catch (error){
+        // console.error(error)
+    }
+}
+
+const trueSuccess = () => {
+    setSuccess(true)
+}
+
+const falseSuccess = ()=> {
+    setSuccess(false)
+}
+useEffect(()=> {
+
+// if (sessionId){
+    getRecipt()
+
+// }
+}, [ ])
+useEffect(()=> {
+
+// if (sessionId){
+    refresh()
+
+// }
+}, [ ])
 
     return (
        !getNames ? <h2 className="trans-cont">Loading...</h2> : <div className="trans-cont"
@@ -458,7 +539,15 @@ console.log('on the card')
                         </div>
           
            </section>
-          
+
+       <article className={success ? 'success' : 'non-success'}>
+        <h3>Transaction Complete</h3>
+        <h4>Receipt?</h4>
+        <div className="cash-confirm">
+        <button onClick={falseSuccess}>No</button>
+        <button><Link to='/receipts' className="cash-confirm-link">Yes</Link></button>
+        </div>
+        </article> 
        
         </div>
 

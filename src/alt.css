@@ -223,6 +223,30 @@ align-items: center;
   flex-direction: column;
 }
 
+.success {
+   display: flex;
+  flex-direction: column;
+row-gap: 1rem;
+           background-color: limegreen;
+        position: fixed;
+        top: 20%;
+  
+        padding: 1rem;
+        opacity: .90;
+  text-align: center;
+    width: 50%;
+    /* left: 30%; */
+
+}
+
+.non-success {
+  display: none;
+}
+
+.cash-confirm  button Link {
+  text-decoration: none;
+}
+
 
 
 .cart-action {
@@ -252,7 +276,7 @@ align-items: center;
 
 }
 
-.cart-action-link, .cart-shop-linker {
+.cart-action-link, .cart-shop-linker, .cash-confirm-link {
   text-decoration: none;
   color: white;
 }
