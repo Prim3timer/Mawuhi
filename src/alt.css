@@ -616,14 +616,14 @@ row-gap: 1rem;
 
 .cash-payment form >*:nth-child(2) {
   flex: 1 1 40%;
-  /* background-color: red;  */
 }
 
 .cash-amount2 {
+  /* background-color: red;  */
   padding: 0 5px;
 margin: .5rem 0 0 0;
   width: 8rem;
-  font-size: 3rem;
+  font-size: 2.5rem;
   
 }
 
