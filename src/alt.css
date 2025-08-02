@@ -732,8 +732,10 @@ column-gap: .5rem;
 
 .trans-add input {
   padding: .5rem;
-flex: 1 80%;
+/* flex: 1 100%; */
   font-size: 1.5rem;
+  width: 60vw;
+  /* background-color: red; */
 
 }
 
@@ -1257,7 +1259,8 @@ color: whitesmoke;
 }
 
     .trans-add input {
-      width: 20%;
+      width: 80vw;
+      /* background-color: red; */
     }
 
 
@@ -1266,7 +1269,6 @@ color: whitesmoke;
     }
 
     #field {
-      /* background-color: red; */
       width: 95%;
     }
 
@@ -1383,7 +1385,7 @@ max-width: 95%;
 }
 
      .trans-add input {
-      flex: 0 1 70%
+      flex: 0 1 80vw
       /* background-color: red; */
     }
 

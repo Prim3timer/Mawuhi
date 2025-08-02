@@ -42,8 +42,8 @@ const Transactions = ()=> {
                 else state.success = false
 
                 const currentItem = items.find((name)=> `${name.name} ${name.unitMeasure.split(' ')[1]}` === inputRef.current.value)
-                if (!currentItem) dispatch({type: 'errMsg', payload: 'item not in list'})
-                    setFirstRedChecker('tamgible')
+                if (!currentItem) dispatch({type: 'errMsg', payload: 'filtering...'})
+                    // setFirstRedChecker('tamgible')
                 currentItem.total = currentItem.price
                 dispatch({type: 'name', payload: inputRef.current.value})
                 const acutalItem = {...currentItem, qty: 1}
@@ -74,14 +74,14 @@ const Transactions = ()=> {
                 // console.log(state.getNames)
                 inputRef.current.value = ''
             } else {
-                setFirstRedChecker('tamgible')
-                dispatch({type: 'errMsg', payload: 'Please select an item'})
+                // setFirstRedChecker('tamgible')
+                // dispatch({type: 'errMsg', payload: 'Please select an item'})
             }
             
         } catch (error) {
             console.log(error.message)
         }
-        inputRef.current.value = ''
+        // inputRef.current.value = ''
         
     }
     
