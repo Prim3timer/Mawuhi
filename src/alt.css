@@ -229,12 +229,12 @@ align-items: center;
 row-gap: 1rem;
            background-color: limegreen;
         position: fixed;
-        top: 20%;
+        top: 50%;
   
         padding: 1rem;
         opacity: .90;
   text-align: center;
-    width: 50%;
+    width: 60%;
     /* left: 30%; */
 
 }
@@ -1323,6 +1323,11 @@ color: whitesmoke;
     min-width: 90%;
     /* text-align: center; */
    }
+  }
+
+  .success {
+    width: 90%;
+    /* top: 5%; */
   }
 
 
