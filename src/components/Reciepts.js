@@ -4,6 +4,7 @@ import reducer from "../reducer"
 import axios from "../app/api/axios"
 import AuthContext from "../context/authProvider";
 import useAuth from "../hooks/useAuth";
+import useRefreshToken from "../hooks/useRefreshToken";
 // import { retry } from "@reduxjs/toolkit/query"
 import { FaTrashAlt } from "react-icons/fa";
 
@@ -18,6 +19,8 @@ const { auth } = useAuth();
 const [currentUser, setCurrentUser] = useState({})
 const {atHome, users, getUsers, currentUsers} = useContext(AuthContext)
 const pickerChecker = atHome ? auth.picker : auth.picker3
+
+const refresh = useRefreshToken()
 const getItems = async ()=> {
     console.log({currentUsers})
     setOneId(auth.picker)
@@ -126,9 +129,12 @@ useEffect(()=> {
 }, [state.search])
 
 // useEffect(()=> {
-//     getUsers()
-// }, [state.search])
 
+// // if (sessionId){
+//     refresh()
+
+// // }
+// }, [ ])
 
 function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");

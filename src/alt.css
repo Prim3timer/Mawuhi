@@ -861,7 +861,7 @@ column-gap: .5rem;
 .delete, .display-veryfier{
   display: flex;
   flex-direction: column;
-                position: absolute;
+                position: fixed;
             text-align: center;
             color: whitesmoke;
             top: 35%;
@@ -873,6 +873,12 @@ column-gap: .5rem;
                opacity: .90;
       
 
+}
+
+.delete-buttons {
+  display: flex;
+  justify-content: center;
+  column-gap: 1rem;
 }
 
 
