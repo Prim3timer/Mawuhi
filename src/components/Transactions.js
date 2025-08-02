@@ -14,9 +14,10 @@ import useRefreshToken from "../hooks/useRefreshToken";
 
 
 const Transactions = ()=> {
+    
     const [state, dispatch] = useReducer(reducer, initialState)   
-   const [cash, setCash] = useState(false)
-   const [card, setCard] = useState(false)
+    const [cash, setCash] = useState(false)
+    const [card, setCard] = useState(false)
     const [checkout, setCheckout] = useState(false)
     const now = new Date()
     const date = format(now, 'dd/MM/yyyy\tHH:mm:ss')
@@ -27,12 +28,12 @@ const Transactions = ()=> {
     const cashPaidRef = useRef(null)
     const [firstRedChecker, setFirstRedChecker] = useState('')
     const [success, setSuccess] = useState(false)
-  
-     const refresh = useRefreshToken()
+    
+    const refresh = useRefreshToken()
     
     const handleAdd = (e)=> {
         e.preventDefault()
-
+        
         try {
             
             if (inputRef.current.value){
@@ -40,7 +41,7 @@ const Transactions = ()=> {
                 setFirstRedChecker('')
                 if (state.success === false) state.success = true
                 else state.success = false
-
+                
                 const currentItem = items.find((name)=> `${name.name} ${name.unitMeasure.split(' ')[1]}` === inputRef.current.value)
                 if (!currentItem) dispatch({type: 'errMsg', payload: 'filtering...'})
                     // setFirstRedChecker('tamgible')
@@ -88,7 +89,7 @@ const Transactions = ()=> {
     
     
     const removeItem = async (id)=>{
-       
+        
         dispatch({type: 'remove', payload: id})
         
     }
@@ -98,18 +99,18 @@ const Transactions = ()=> {
         dispatch({type: 'clear'})
         console.log('CLEARED!')
         dispatch({type: 'cancel', payload: false})
-         state.paidAmount = 0
-    state.balance = 0
+        state.paidAmount = 0
+        state.balance = 0
     }
     
-  
-
+    
+    
     const trueCash  = ()=> {
         setCash(true)
-       
+        
         setCheckout(false)
     }
-
+    
     useEffect(()=>{
         if (cash){
             cashPaidRef.current.focus()
@@ -120,14 +121,14 @@ const Transactions = ()=> {
         dispatch({type: 'getTotal'})
         
     }, [state.transArray, state.success])
-
-
+    
+    
     const closeCashWindow = ()=> {
         setCash(false)
     }
     
     const doneSales = async()=> {
-       
+        
         try {
             
             const {transArray, total} = state
@@ -145,7 +146,7 @@ const Transactions = ()=> {
                 const response = await axios.post('/transactions', transItems)
                 const response2 = await axios.get('/items')
                 console.log(response2)
-              
+                
                 if (response){
                     setCash(false)
                     // so i can effect change in color of the errMsg
@@ -155,7 +156,7 @@ const Transactions = ()=> {
                 }
                 
                 transItems.goods.map((good)=> {
-                const invs = response2.data.items.map(async(inv)=> {
+                    const invs = response2.data.items.map(async(inv)=> {
                     console.log(inv.name)
                     console.log(good.name)
                     if (inv.name === good.name){
@@ -170,10 +171,10 @@ const Transactions = ()=> {
                 
             })
             
-           setSuccess(true)
-               setTimeout(()=> {
-            setSuccess(false)
-        }, 5000)
+            setSuccess(true)
+            setTimeout(()=> {
+                setSuccess(false)
+            }, 5000)
             dispatch({type: 'qtyArray', payload: []})
             setTimeout(()=> {
                 dispatch({type: 'errMsg', payload: ''})
@@ -182,71 +183,71 @@ const Transactions = ()=> {
         } 
         
         else {
-          
+            
             console.log(state.transArray)
             throw Error('no item purchased')
             // dispatch({type: 'qtyArray', payload: []})
         }
         // state.paidAmount = 0
         state.balance = 0
-        } catch (error) {
-            dispatch({type: 'errMsg', payload: error.message})
-        }
-       
+    } catch (error) {
+        dispatch({type: 'errMsg', payload: error.message})
     }
+    
+}
 
-  
+
 const cardCheckout = async () => {
-console.log('on the card')
+    console.log('on the card')
     try {
         if (state.transArray.length){
-                 const transItems = {
-                     cashier: auth.user, 
-                     cashierID: auth.picker,
-                     goods: state.transArray,
-                     grandTotal: state.total,
-                    //  date
-                     
-                 }
-      const response = await axios.post('/transactions/create-checkout-session', transItems)
-        if (response){
-             window.location = response.data.session.url
-             console.log(response.data)
-          }else  console.log("no checkout")
-
-}
-     } catch (error) {
+            const transItems = {
+                cashier: auth.user, 
+                cashierID: auth.picker,
+                goods: state.transArray,
+                grandTotal: state.total,
+                //  date
+                
+            }
+            const response = await axios.post('/transactions/create-checkout-session', transItems)
+            if (response){
+                window.location = response.data.session.url
+                console.log(response.data)
+            }else  console.log("no checkout")
+            
+        }
+    } catch (error) {
         console.error(error.message)
     }
 }
 
 
 
-    const assertain = ()=> {
-        dispatch({type: 'cancel', payload: true})
-     console.log(state.transArray)   
-    }
+const assertain = ()=> {
+    dispatch({type: 'cancel', payload: true})
+    console.log(state.transArray)   
+}
 
-    function numberWithCommas(x) {
-        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
     
     const remain = ()=> {
         dispatch({type: 'cancel', payload: false})
     }
-
-
+    
+    
         const [alert, setAlert] = useState('')
-const {setAuth} = useAuth()
-//  const refresh = useRefreshToken()
+        const {setAuth} = useAuth()
+        //  const refresh = useRefreshToken()
 
-
-// window.addEventListener('beforeunload', function (e) {
-//     e.preventDefault()
-//     return "data will get lost"
-// });
- 
- const getRecipt = async ()=> {
+        
+        // window.addEventListener('beforeunload', function (e) {
+            //     e.preventDefault()
+            //     return "data will get lost"
+            // });
+            
+            const getRecipt = async ()=> {
     const queryParams = new URLSearchParams(window.location.search)
     let sessionId = queryParams.get("session_id")
     const cusomer = queryParams.get("customer")
@@ -543,7 +544,7 @@ useEffect(()=> {
         <h4>Receipt?</h4>
         <div className="cash-confirm">
         <button onClick={falseSuccess}>No</button>
-        <button><Link to='/receipts' className="cash-confirm-link">Yes</Link></button>
+        <button><Link to='/one-receipt' className="cash-confirm-link">Yes</Link></button>
         </div>
         </article> 
        
