@@ -148,7 +148,7 @@ const Register = () => {
                             aria-describedby="pwdnote"
                             onFocus={() => dispatch({type: ACTION.PWDFOCUS, payload: true})}
                             onBlur={() => dispatch({type: ACTION.PWDFOCUS, payload: false})}
-                        />
+                        /><br/>
                         <p id="pwdnote" className={state.pwdFocus && !state.validPwd ? "instructions" : "offscreen"}>
                             <FontAwesomeIcon icon={faInfoCircle} />
                             8 to 24 characters.<br />
