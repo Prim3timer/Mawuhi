@@ -45,11 +45,14 @@ place-content: center;
 }
 
 .home-cont {
+  height: 100vh;
     display: flex;
     flex-direction: column;
     row-gap: 1rem;
     align-items: center;
 }
+
+
 
 
 .home {
@@ -144,6 +147,11 @@ input {
   padding: 0.5rem 1rem;
   margin: 1rem 0;
   overflow-y: auto;
+}
+
+.nav-bar {
+  /* background-color: green; */
+ width: 80vw;
 }
 
 #username-form button{
@@ -599,6 +607,10 @@ margin: 1rem 0;
  
 }
 
+.trans-img {
+      width: 40%;
+    }
+
 #trans-item-cont {
 
   border-top: 2px solid brown;
@@ -849,18 +861,31 @@ column-gap: .5rem;
 }
 
 .head-home {
-    font-size: 1rem;
-    width: 6rem;
-    background-color: dodgerblue;
-    border: 1px solid dodgerblue;
-    padding: .3rem;
+    font-size: 1.5rem;
+    /* width: 6rem; */
+  /* background-color: yellow; */
+  padding: .3rem .5rem;
 }
 .header {
-    grid-auto-flow: column;
-    column-gap: 2rem;
-    top: 0;
-    justify-content: space-evenly;
+  
+  grid-template-columns: repeat(10, 1fr);
+  column-gap: 2rem;
+  top: 0;
 }
+
+.header >*:nth-child(1){
+  padding: .3rem .5rem;
+  /* background-color: red; */
+  grid-column: 1 / 8;
+}
+
+.header >*:nth-child(2){
+display: none;
+}
+
+
+
+
 
 .footer {
   font-size: 1rem;
@@ -1189,6 +1214,11 @@ color: whitesmoke;
       width: 80%;
     }
 
+    .trans-img {
+      width: 25%;
+    }
+
+
 .cart-trash {
   text-align: center;
     font-size: 3rem;
@@ -1515,7 +1545,33 @@ max-width: 95%;
 
     @media screen and (max-width: 585px) {
 
+.home {
+  display: none;
+  background-color: red;
+}
 
+
+.header >*:nth-child(2){
+  /* background-color: red; */
+  display: block;
+  font-size: 1.5rem;
+ align-self: flex-end;
+  grid-column: 10 / 10;
+}
+
+
+
+.outer-home {
+  flex-grow: 1;
+  /* background-color: yellow; */
+} 
+.nav-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  /* background-color: green; */
+  text-align: left;
+}
       
 .reg-cont {
 min-width: 60vw;
@@ -1581,6 +1637,8 @@ row-gap: 1rem;
       width: 20%;
       /* background-color: red; */
     }
+
+    
 
     .field2 {
       column-gap:1rem;
