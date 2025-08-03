@@ -11,6 +11,8 @@ import { Link } from "react-router-dom"
 import EditItem from "./EditItem"
 import useAuth from "../hooks/useAuth"
 import axios from "../app/api/axios"
+import AuthContext from "../context/authProvider"
+import useRefreshToken from "../hooks/useRefreshToken"
 // import { type } from "@testing-library/user-event/dist/type"
 // import { current } from "@reduxjs/toolkit";
 const {v4: uuid} = require('uuid')
@@ -20,6 +22,7 @@ const {v4: uuid} = require('uuid')
 
 
 const ItemList = ()=> {
+    const refresh = useRefreshToken()
 const {auth, getTrans, itemRef, 
 
 } = useAuth()
@@ -55,15 +58,16 @@ const {auth, getTrans, itemRef,
        
 
             const handleSubmit = async (e)=> {
+                console.log('set')
                e.preventDefault()
                const {id, name, price, unitMeasure, piecesUnit, image} = state
                    try {
                        const newItem = {
-                           name:  state.afa ? state.afa :  response.data.name,
+                           name:  state.afa && state.afa,
                            price: price && price,
                            unitMeasure: unitMeasure && unitMeasure,
-                           piecesUnit: piecesUnit,
-                           img: state.image ? state.image: response.data.img
+                           piecesUnit: piecesUnit && piecesUnit,
+                           img: state.image && state.image
                            
                        }
                        const response = await axios.patch(`/items/${id}`, newItem)  
@@ -123,6 +127,7 @@ const {auth, getTrans, itemRef,
                                 }
 
     const assertain = (id) => {
+        console.log({auth})
         if (!auth.roles.includes(5150)){
             dispatch({type: 'isMatched', payload: true})
         }
@@ -162,6 +167,11 @@ const {auth, getTrans, itemRef,
                 useEffect(()=> {
                     getItems()
                 }, [state.search])
+
+
+                // useEffect(()=> {
+                //     refresh()
+                // }, [])
 
   return  (
       

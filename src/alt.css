@@ -26,7 +26,7 @@ place-content: center;
     background-color: lightseagreen;
     padding: 1rem 4rem;
     width: 95%;
-    justify-self: centerFF;
+    justify-self: center;
 }
 
 .login-form {
@@ -1182,6 +1182,9 @@ color: whitesmoke;
  
 
   @media screen and (max-width: 391px) {
+    .reg-cont {
+      width: 90%;
+    }
     .edit form input {
       width: 80%;
     }
@@ -1192,10 +1195,10 @@ color: whitesmoke;
 
 }
 
-.reg-cont {
+/* .reg-cont {
 width: 90%;
 row-gap: 1rem;
-}
+} */
 
     .cart-action >* {
 
@@ -1403,7 +1406,7 @@ row-gap: 1rem;
   @media screen and (max-width: 431px) {
 
 .reg-cont {
-max-width: 80%;
+width: 90%;
 row-gap: 1rem;
 /* background-color: black; */
 }
@@ -1515,7 +1518,7 @@ max-width: 95%;
 
       
 .reg-cont {
-width: 60%;
+min-width: 60vw;
 row-gap: 1rem;
 }
 
