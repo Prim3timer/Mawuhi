@@ -7,12 +7,15 @@ import food from '../images/meal.jpg'
 // import Transactions from "../components/Transactions";
 import { useNavigate, useLocation } from "react-router-dom";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
+import useRefreshToken from "../hooks/useRefreshToken";
+
 import { use } from "react";
 
 const AuthContext = createContext({})
+// const refresh = useRefreshToken()
 export const AuthProvider = ({children}) => {
     const [state, dispatch] = useReducer(reducer, initialState)
-   
+//    const users = await refresh().users
     const [users, setUsers] = useState([])
     const [auth, setAuth] = useState({})  
 const [currentUsers, setCurrentUsers] = useState([])
@@ -205,6 +208,7 @@ const [currentUsers, setCurrentUsers] = useState([])
     useEffect(()=> {
     getItems()
   }, [])
+
 
 //   useEffect(()=> {
 //     getUsers()

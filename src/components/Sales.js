@@ -16,7 +16,7 @@ const [specArray, setSpecArray] = useState([])
       const [username, setUsername] = useState('')
     const {auth} = useAuth()
 
-
+const pickerChecker = atHome === true ? auth.picker : auth.picker3
 
 //     const getAUser = ()=>{
 //     try {
@@ -32,11 +32,13 @@ const [specArray, setSpecArray] = useState([])
 //         console.error(error.message)
 //     }
 // }
-const pickerChecker = atHome === true ? auth.picker : auth.picker3
+
 
     const getTrans = async () => {
         const innerArray =[]
         console.log(auth.picker)
+        console.log({pickerChecker})
+        console.log(auth)
       setAtHome(false)
         try {
             const response = await axiosPrivate.get('/transactions')
@@ -45,12 +47,12 @@ const pickerChecker = atHome === true ? auth.picker : auth.picker3
             console.log(response)
             const newArray = response.data.filter((item)=> item.cashierID === pickerChecker)
             // console.log(newArray)
-            // if (response2){
+            
 
-            //     const person =  response2.data.find((person) => person._id == pickerChecker)
-            //     setCurrenUser(person)
-            //     console.log(person)
-            // }
+                const person = auth.user && auth.users.find((person) => person._id == pickerChecker)
+                setCurrenUser(person)
+                console.log(person)
+       
             if (newArray){
                  console.log(currentUser)
                      newArray.map((gr)=> {
@@ -104,7 +106,7 @@ const pickerChecker = atHome === true ? auth.picker : auth.picker3
 
     return (
         <div className='main-sale'>
-           {pickerChecker ? <h2 className='heading'>{ auth.users && auth.users.find((user) => user._id === pickerChecker).username}'s Sales ({specArray.length}) rows</h2> : ''}
+      <h2 className='heading'>{ currentUser.username}'s Sales ({specArray.length}) rows</h2>
                    <form  className="sales-search-form"   onSubmit={(e)=> e.preventDefault()}>
         <input 
         id="invent-search"

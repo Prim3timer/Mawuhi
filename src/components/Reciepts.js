@@ -15,18 +15,20 @@ const Shopping = ()=> {
 const [state, dispatch] = useReducer(reducer, initialState)
 const [showOne, setShowOne] = useState(false)
 const [oneId, setOneId] = useState('')
-const { auth } = useAuth();
-const [currentUser, setCurrentUser] = useState({})
-const {atHome, users, getUsers, currentUsers} = useContext(AuthContext)
-const pickerChecker = atHome ? auth.picker : auth.picker3
-
+const { auth, setAuth } = useAuth();
+const [currentUser, setCurrentUser] = useState('')
+const {atHome, getUsers, currentUsers} = useContext(AuthContext)
 const refresh = useRefreshToken()
+const pickerChecker = atHome === true ? auth.picker : auth.picker3
+console.log({pickerChecker})
 const getItems = async ()=> {
+    // const authUsers = await refresh()
+    // console.log(authUsers)
     console.log({currentUsers})
     setOneId(auth.picker)
     console.log(auth.picker)
-    console.log({users})
-    const person = users.find((user) => user._id === pickerChecker)
+    // setAuth(authUsers)
+    // const person = users.find((user) => user._id === pickerChecker)
     // auth.picker3 = state.id
     try {
 
@@ -34,13 +36,21 @@ const getItems = async ()=> {
         console.log('picker is: ', auth.picker)
             //   const gog =  await axios.get('/users')
     
-            setCurrentUser(person)
+            // setCurrentUser(person)
     
             const response = await axios.get('/transactions')
             if (response){
         
              
                 const cashierTrans = response.data.filter((item) => item.cashierID === pickerChecker)
+                console.log({pickerChecker})
+                      const person = auth.user && auth.users.find((person) => person._id == pickerChecker)
+                      console.log(person)
+                      if (person ){
+                          setCurrentUser(person)
+
+                      }
+                      console.log(currentUser)
                 console.log(cashierTrans)
                 // dispatch({type: 'getNames', payload: response.data})
                 cashierTrans.reverse()
@@ -170,13 +180,13 @@ function numberWithCommas(x) {
 
           {/* <SearchItem/> */}
         </article>
-          {pickerChecker && auth.users ?   <h2
+         <h2
             style={{
                 margin: '1rem 0' ,
                 // color: 'darkslateblue'    
             }}
            
-            >{pickerChecker && auth.users.find((user) => user._id === pickerChecker).username}'s Reciepts ({state.getNames.length})</h2> : ''}
+            >{currentUser && currentUser.username}'s Reciepts ({state.getNames.length})</h2>
             {state.getNames && state.getNames.map((item)=> {
                 // console.log(item.goods)
                 // console.log(item)
