@@ -58,7 +58,6 @@ const Login = () => {
             const accessToken = response?.data?.accessToken;
             const roles = response?.data?.roles;
             const picker = response?.data?.id;
-            const user = response?.data?.username
             
             setAuth({ user,roles, accessToken, picker});
             
