@@ -389,7 +389,9 @@ useEffect(()=> {
                             
                            
                 <section>
-                    <h4
+                   
+                    <img className="trans-img" src={item.img} alt={item.img}/>
+                     <h4
                 
                  >
                
