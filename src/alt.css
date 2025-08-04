@@ -907,7 +907,7 @@ column-gap: .5rem;
 .header >*:nth-child(2){
   /* background-color: red; */
   box-shadow: none;
-display: none;
+/* display: none; */
 }
 
 
