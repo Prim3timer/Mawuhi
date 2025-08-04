@@ -388,16 +388,16 @@ useEffect(()=> {
                     >
                             
                            
-                <section>
+                <section className="trans-name-and-img">
                    
                     <img className="trans-img" src={item.img} alt={item.img}/>
-                     <h4
+                     <h6
                 
                  >
                
                      {item.name}
                     
-                    </h4>
+                    </h6>
                 </section>
                     
                    <article
@@ -442,13 +442,13 @@ useEffect(()=> {
 
                     </article>
 
-                    <article
+                    {/* <article
                     
-                    >
+                    > */}
                     {/* <p>price/{item.unitMeasure.split(' ')[1].slice(1, -1)}:</p>
                     <p>₦{item.price}</p> */}
 
-                    </article>
+                    {/* </article> */}
                    
                     <h2
                         onClick={()=> removeItem(item._id)}
