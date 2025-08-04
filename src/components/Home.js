@@ -5,7 +5,7 @@ import useAuth from "../hooks/useAuth";
 import AuthContext from "../context/authProvider";
 import reducer from "../reducer";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCheck, faLeftLong } from "@fortawesome/free-solid-svg-icons"
+import { faCheck, faLeftLong, faBars } from "@fortawesome/free-solid-svg-icons"
 // import { init } from "create-react-app/createReactApp";
 import initialState from "../store";
 import { type } from "@testing-library/user-event/dist/type";
@@ -19,10 +19,15 @@ const Home = ()=> {
 const refresh = useRefreshToken()
 const logout = useLogout()
     const {  setAtHome, getUsers } = useContext(AuthContext);
-    const [newName, setNewName] = useState()
+    const [home, setHome] = useState(false)
     const navigate = useNavigate();
     const location = useLocation();
     setAtHome(true)
+
+    const trueHome = ()=> {
+        if (!home) setHome(true)
+            else setHome(false)
+    }
     const preserveName = async () =>{
     
         try {
@@ -89,19 +94,20 @@ const logout = useLogout()
            preserveName()
          }, [])
     return (
-        <div className="home-cont" >
-
-            <div   
+        <div  className="home-cont">
+            
+            <div 
+            className="outer-home" 
             >
                 
             <h3
           >  {auth.user ?  `Hi, ${auth.user}`: ''} 
     
              </h3>
+          
             </div>
         <section
-        className="home"
-       
+      className={"home"}
         >
        
 
@@ -154,11 +160,11 @@ const logout = useLogout()
         <div className="flexGrow"
         style={{textAlign: 'center'}}
         >
+        </div>
 
             <button onClick={signOut}
           className="logout"
             >Sign Out</button>
-        </div>
     </div>
     )
 }

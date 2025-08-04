@@ -38,7 +38,8 @@ import Thanks from "./components/Thanks"
 import Public from "./components/Public"
 import PersistLogin from "./components/PersistLogin"
 import LocalThanks from "./components/LocalThanks"
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCheck, faLeftLong, faBars } from "@fortawesome/free-solid-svg-icons"
 // import SearchItem from "./SearchItem";
 
 
@@ -56,12 +57,16 @@ const App = () => {
   const [userId, setUserId] = useState('');
   const year = new Date().getFullYear()
   const { auth} = useAuth()
+   const [home, setHome] = useState(false)
 
 
   
   const [state, dispatch] = useReducer(reducer, initialState)
 
-
+    const trueHome = ()=> {
+        if (!home) setHome(true)
+            else setHome(false)
+    }
 
 return (
 
@@ -70,9 +75,10 @@ return (
     <div  className="header">
 
      <h4> Retail Tracker</h4> 
-    { auth.accessToken && <Link to={'/home'}>
-     <button className="head-home">Home</button></Link>}
-     {/* <button className="head-home">Home</button> */}
+    { auth.accessToken &&  <div className="head-home" onClick={trueHome}>
+          {/* <Link> <FontAwesomeIcon className="home-icon"  icon={faBars}/></Link> */}
+<Link to={'/home'}><button>Home</button></Link>
+            </div>}
     </div>
     <article className="main">
       <Routes>
@@ -100,7 +106,7 @@ return (
        {/* protected routes */}
        <Route element={<PersistLogin/>}>
        <Route element={<RequireAuth allowedRoles={[2001]}/>}>
-          <Route path="/home" element={<Home/> } />
+          <Route path="/home" element={<Home home={home}/> } />
     <Route path="/shop" element={<Shop/>}/>
       <Route path="one-receipt" element={<OneReceipt/>}/>
       <Route path="cart" element={<Cart/>}/>
