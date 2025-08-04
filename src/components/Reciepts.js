@@ -18,6 +18,7 @@ const [oneId, setOneId] = useState('')
 const { auth, setAuth } = useAuth();
 const [currentUser, setCurrentUser] = useState('')
 const {atHome, getUsers, currentUsers} = useContext(AuthContext)
+console.log(state.atHome)
 const refresh = useRefreshToken()
 const pickerChecker = atHome === true ? auth.picker : auth.picker3
 console.log({pickerChecker})
@@ -296,3 +297,10 @@ function numberWithCommas(x) {
 }
 
 export default Shopping
+
+
+
+
+
+
+

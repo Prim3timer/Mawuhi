@@ -890,6 +890,17 @@ column-gap: .5rem;
   /* background-color: yellow; */
   padding: .3rem .5rem;
 }
+
+.head-home button {
+  width: 6rem;
+  height: 3rem;
+  box-shadow: none;
+}
+
+.head-home-button-link {
+  text-decoration: none;
+  color: white;
+}
 .header {
   
   grid-template-columns: repeat(10, 1fr);
@@ -901,13 +912,15 @@ column-gap: .5rem;
 .header >*:nth-child(1){
   padding: .3rem .5rem;
   /* background-color: red; */
-  grid-column: 1/ 9;
+  grid-column: 1 / 6;
 }
 
 .header >*:nth-child(2){
+  width: 6rem;
   /* background-color: red; */
   box-shadow: none;
 /* display: none; */
+grid-column: 9/10;
 }
 
 
@@ -1610,8 +1623,9 @@ max-width: 95%;
   /* background-color: red; */
   display: block;
   font-size: 1.5rem;
+  width: 4rem;
  align-self: flex-end;
-  grid-column: 10 / 10;
+  grid-column: 7/ 7;
 }
 
 

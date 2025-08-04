@@ -14,12 +14,17 @@ const Admin = () => {
 //    console.log({atHome})
       const [currentPerson, setCurrentPerson] = useState()
       const [showSettings, setShowSettings] = useState(false)
-  setAtHome(false)
+      const falseHome = ()=> {
+
+          setAtHome(false)
+      }
 console.log(users)
 
 
 
-   
+   useEffect(()=> {
+    falseHome()
+   }, [])
     return (
         <div
         className="admin"

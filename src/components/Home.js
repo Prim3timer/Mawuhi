@@ -18,16 +18,16 @@ const Home = ()=> {
    const {auth} = useAuth()
 const refresh = useRefreshToken()
 const logout = useLogout()
-    const {  setAtHome, getUsers } = useContext(AuthContext);
-    const [home, setHome] = useState(false)
+    const {  setAtHome, getUsers, atHome } = useContext(AuthContext);
+   
     const navigate = useNavigate();
     const location = useLocation();
-    setAtHome(true)
-
     const trueHome = ()=> {
-        if (!home) setHome(true)
-            else setHome(false)
+
+        setAtHome(true)
     }
+
+
     const preserveName = async () =>{
     
         try {
@@ -88,7 +88,9 @@ const logout = useLogout()
     //     }
     // }, [])
 
-
+useEffect(()=> {
+    trueHome()
+}, [])
   
          useEffect(()=> {
            preserveName()

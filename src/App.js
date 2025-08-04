@@ -77,7 +77,7 @@ return (
      <h4> Retail Tracker</h4> 
     { auth.accessToken &&  <div className="head-home" onClick={trueHome}>
           {/* <Link> <FontAwesomeIcon className="home-icon"  icon={faBars}/></Link> */}
-<Link to={'/home'}><button>Home</button></Link>
+<button><Link to={'/home'} className="head-home-button-link">Home</Link></button>
             </div>}
     </div>
     <article className="main">

@@ -88,6 +88,7 @@ const reducer = (state, action)=> {
         case 'CLEARCART':
           return {...state, cartArray: []}
 
+          
 
           case 'INCREMENT': 
          const item = {...state.elItem, qty: state.elItem.qty + 1, total: (state.elItem.price * action.payload)}

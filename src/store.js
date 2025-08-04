@@ -55,6 +55,7 @@ const initialState = {
   isDeleted: false,
   image: '',
   isEdited: false,
+  
 
 }
 

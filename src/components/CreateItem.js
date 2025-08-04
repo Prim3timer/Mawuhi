@@ -15,7 +15,7 @@ let CreateItem = () => {
      
  
     const handleSubmit = async (e)=> {
-        console.log('set')
+        
         const {name, price, unitMeasure, image} = state
         e.preventDefault()
         try {
