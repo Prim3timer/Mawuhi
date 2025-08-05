@@ -391,13 +391,13 @@ useEffect(()=> {
                 <section className="trans-name-and-img">
                    
                     <img className="trans-img" src={item.img} alt={item.img}/>
-                     <h6
+                     <h5
                 
                  >
                
                      {item.name}
                     
-                    </h6>
+                    </h5>
                 </section>
                     
                    <article
