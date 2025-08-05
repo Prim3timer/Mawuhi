@@ -760,7 +760,7 @@ display: block;
   }
   #trans-item >*:nth-child(3) {
     /* background-color: yellow; */
-    grid-row: 2/ 3;
+    grid-row: 3/ 3;
     grid-column: 5 /10;
   }
 
@@ -1603,7 +1603,7 @@ max-width: 95%;
   } */
   #trans-item {
   /* background-color: red; */
-  column-gap: 1rem;
+  column-gap: .5rem;
 }
 
  .trans-name-and-img {
@@ -1617,7 +1617,7 @@ max-width: 95%;
     }
     
     #trans-item >*:nth-child(2) {
-   /* background-color: yellow; */
+   background-color: yellow;
    grid-row: 1 / 2;
    grid-column: 5/10;
  }
