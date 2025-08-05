@@ -1617,7 +1617,7 @@ max-width: 95%;
     }
     
     #trans-item >*:nth-child(2) {
-   background-color: yellow;
+   /* background-color: yellow; */
    grid-row: 1 / 2;
    grid-column: 5/10;
  }
