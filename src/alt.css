@@ -748,8 +748,8 @@ display: block;
 
   .trans-name-and-img {
     /* background-color: red; */
-    grid-column: 1 / 6;
     grid-row: 1 / 3;
+    grid-column: 1 / 6;
 
   }
 
@@ -762,6 +762,11 @@ display: block;
     /* background-color: yellow; */
     grid-row: 2/ 3;
     grid-column: 6 /10;
+  }
+
+  #flex-article span {
+    /* background-color: green; */
+    font-size: 1.2rem;
   }
 
 
