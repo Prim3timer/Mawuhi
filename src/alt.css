@@ -764,9 +764,17 @@ display: block;
     grid-column: 6 /10;
   }
 
-  #flex-article span {
+  #flex-article >*:nth-child(1) {
     /* background-color: green; */
     font-size: 1.2rem;
+  }
+  #flex-article >*:nth-child(2) {
+    /* background-color: green; */
+    font-size: 2rem;
+    padding: 1.2rem 0.2rem !important;
+
+    /* padding: .1rem; */
+   
   }
 
 

@@ -422,9 +422,9 @@ useEffect(()=> {
  onChange={(e)=> dispatch({type: 'FIELDCHANGE', payload: e.target.value, id: item._id})}
  />
  <span
- style={{fontWeight: 'bold',
+//  style={{fontWeight: 'bold',
  
- }}
+//  }}
  > {item.unitMeasure.split(' ')[1].slice(1, -1)}</span>
   
  {/* </section>  */}
