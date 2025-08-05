@@ -30,7 +30,8 @@ const {auth, getTrans, itemRef,
     const [taskComplete, setTaskComplete] = useState(false)
 
 
-     const measurements = ['Kilogram (kg)', 'Piece (pc)', 'Plate (Plt)', 'Dozen (dzn)', 'Bottle (Btl)', 'Pound (lbs)', 'Litre (L)', 'Sachet (sct)', 'Ounce (Oz)', 'Gram (g)', 'Set (St)', 'Bag (Bg)', 'Pairs (pr)'
+     const measurements = ['grams (g)', 'Piece (pc)', 'Plate (Plt)', 'Dozen (dzn)', 'Bottle (Btl)', 'ounce (oz)', 'centiliter (CL)', 'Sachet (sct)', 'Ounce (Oz)', 'Set (St)', 'Bag (Bg)', 'Pairs (pr)',
+        'centimiters (cm)'
        ]
    
        const getItems = async ()=> {
