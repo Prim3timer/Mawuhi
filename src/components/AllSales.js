@@ -56,9 +56,9 @@ useEffect(()=> {
     getTransactions()
 }, [search, search2])
     return (
-        <di>
+        <div className="main-sale">
             <h2 className="heading">All Sales ({state.sales.length} rows)</h2>
-               <form  className="search-form"   onSubmit={(e)=> e.preventDefault()}>
+               <form  className="sales-search-form"   onSubmit={(e)=> e.preventDefault()}>
         <input 
         id="invent-search"
         type="text"
@@ -127,7 +127,7 @@ useEffect(()=> {
     </h3>
     </div>
 
-        </di>
+        </div>
         
     )
 }

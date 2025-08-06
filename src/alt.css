@@ -409,6 +409,11 @@ align-items: center;
 
 .main-sale {
   margin: 4rem 0;
+  /* background-color: red; */
+}
+
+.main-sale .heading {
+  margin-bottom: 2rem;
 }
 
 
@@ -1239,7 +1244,7 @@ color: whitesmoke;
 
 .sales-items {
   text-align: left;
-  /* padding-left: .5rem; */
+  padding-left: 1rem;
 }
 
 .one-receipt, .receipts {
