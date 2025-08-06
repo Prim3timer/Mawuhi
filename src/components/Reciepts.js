@@ -189,7 +189,8 @@ function numberWithCommas(x) {
            
             >{currentUser && currentUser.username}'s Reciepts ({state.getNames.length})</h2>
             {state.getNames && state.getNames.map((item)=> {
-                // console.log(item.goods)
+                console.log(state.getNames)
+                console.log(item.goods && item.goods)
                 // console.log(item)
                 return (
                     <section
@@ -209,7 +210,7 @@ function numberWithCommas(x) {
                          <h2 className="receipt-title">{item.title}</h2>
                         <h4>Date: {item.date}</h4>
                         <h4>TransID: {item._id}</h4>
-                        {item.goods.map((good)=> {
+                        {item.goods && item.goods.map((good)=> {
                             return (
                                 <div
                                 className="goods-container"
