@@ -33,7 +33,7 @@ const Transactions = ()=> {
     
     const handleAdd = (e)=> {
         e.preventDefault()
-        
+     
         try {
             
             if (inputRef.current.value){
@@ -51,8 +51,10 @@ const Transactions = ()=> {
                 const match = state.transArray.find((item) => item.name === acutalItem.name)
                 if(!match){
                     setFirstRedChecker('')
-                    
+                 
                     state.transArray.push(acutalItem)
+                      inputRef.current.value = ''
+                       qtyRef.current.focus()
                     dispatch({type: 'errMsg', payload: `${acutalItem.name} added`})
                     setTimeout(()=> {
                         dispatch({type: 'errMsg', payload: ``})
@@ -73,17 +75,18 @@ const Transactions = ()=> {
                 
                 console.log(state.transArray)
                 // console.log(state.getNames)
-                inputRef.current.value = ''
             } else {
                 // setFirstRedChecker('tamgible')
                 // dispatch({type: 'errMsg', payload: 'Please select an item'})
+              
             }
             
         } catch (error) {
             console.log(error.message)
         }
-        // inputRef.current.value = ''
         
+      
+           
     }
     
     
@@ -114,6 +117,7 @@ const Transactions = ()=> {
     useEffect(()=>{
         if (cash){
             cashPaidRef.current.focus()
+
         }
     }, [cash])
     
@@ -299,6 +303,7 @@ useEffect(()=> {
 
 // if (sessionId){
     getRecipt()
+  
 
 // }
 }, [ ])
@@ -372,7 +377,7 @@ useEffect(()=> {
           
             >
                 {state.errMsg}</h3>
-           {state.transArray.length ? <h3>{state.amount} item{state.transArray.length === 1 ? '' : 's'}</h3> : ''} 
+           {state.transArray.length ? <h3>{state.transArray.length} item{state.transArray.length === 1 ? '' : 's'}</h3> : ''} 
             <div
             id="trans-item-cont"               
                     >
