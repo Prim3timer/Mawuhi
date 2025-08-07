@@ -1041,7 +1041,7 @@ button {
 .authorization-alert {
   display: block;
     color: whitesmoke;
-            position: absolute;
+            position: fixed;
         text-align: center;
         flex-direction: column;
         justify-content: center;
