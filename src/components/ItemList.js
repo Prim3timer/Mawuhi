@@ -303,9 +303,9 @@ const {auth, getTrans, itemRef,
         // minWidth: '120vw'
     }}
         >
-           <th className="items">{item.name}</th>
-           <td className="items">{ parseFloat(item.price).toFixed(2)}</td>
-           <td className="items">{item.unitMeasure.split(' ')[0]}</td>
+           <th className="sales-items">{item.name}</th>
+           <td className="sales-items">{ parseFloat(item.price).toFixed(2)}</td>
+           <td className="sales-items">{item.unitMeasure.split(' ')[0]}</td>
            {/* <td className="items"> {item.piecesUnit ? item.piecesUnit: 'N/A' } </td> */}
            <td 
            ref={itemRef}
