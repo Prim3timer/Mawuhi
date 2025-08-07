@@ -55,11 +55,11 @@ const Transactions = ()=> {
                     state.transArray.push(acutalItem)
                       inputRef.current.value = ''
                        inputRef.current.focus()
-                    dispatch({type: 'errMsg', payload: `${acutalItem.name} added`})
-                    // setTimeout(()=> {
-                        // dispatch({type: 'errMsg', payload: ``})
+                       setTimeout(()=> {
+                        dispatch({type: 'errMsg', payload: `${acutalItem.name} added`})
+                        dispatch({type: 'errMsg', payload: ``})
                         
-                    // }, 3000)
+                    }, 3000)
                     state.transArray.reverse()
                     
                 }else if (match) {
