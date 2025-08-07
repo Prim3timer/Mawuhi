@@ -54,7 +54,7 @@ const Transactions = ()=> {
                  
                     state.transArray.push(acutalItem)
                       inputRef.current.value = ''
-                       qtyRef.current.focus()
+                       inputRef.current.focus()
                     dispatch({type: 'errMsg', payload: `${acutalItem.name} added`})
                     setTimeout(()=> {
                         dispatch({type: 'errMsg', payload: ``})
@@ -166,7 +166,8 @@ const Transactions = ()=> {
                     if (inv.name === good.name){
                         const goodObj = {
                             name: inv.name,
-                            qty: inv.qty - good.qty < 1 ? 0 : inv.qty - good.qty                   
+                            qty: inv.qty - good.qty < 1 ? 0 : inv.qty - good.qty,
+                            date              
                         }
                         await axios.put(`items/dynam`, goodObj)
                         
@@ -303,7 +304,7 @@ useEffect(()=> {
 
 // if (sessionId){
     getRecipt()
-  
+  inputRef.current.focus()
 
 // }
 }, [ ])
