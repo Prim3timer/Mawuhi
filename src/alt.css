@@ -14,6 +14,9 @@
 display: grid;
 place-content: center;
 }
+.update-alert {
+
+}
 
 
 .login {
@@ -1044,7 +1047,7 @@ button {
   display: none;
 }
 
-.authorization-alert {
+.authorization-alert, .update-alert {
   display: block;
     color: whitesmoke;
             position: fixed;
