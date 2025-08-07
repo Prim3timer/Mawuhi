@@ -48,13 +48,17 @@ place-content: center;
 }
 
 .home-cont {
-  height: 100vh;
     display: flex;
     flex-direction: column;
     row-gap: 1rem;
     align-items: center;
-    /* margin: 1rem 0; */
+    margin: 1rem 0;
     /* background-color: red; */
+}
+
+.outer-home {
+  /* background-color: red; */
+  width: 80vw;
 }
 
 
@@ -64,9 +68,10 @@ place-content: center;
     /* background-color: red; */
     width: 95vw;
     justify-content: center;
+    align-items: center;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat((3, 30px));
+    grid-template-rows: repeat(3, 50px);
    /* margin: 1rem 0; */
   gap: .5rem;
 }
@@ -1304,6 +1309,7 @@ row-gap: 1rem;
     .cart-action >* {
 
   min-width: 80vw;
+
 
 }
 

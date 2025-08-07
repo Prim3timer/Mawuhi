@@ -159,8 +159,9 @@ useEffect(()=> {
         {/* Your <FontAwesomeIcon icon={faLeftLong} /> is hot and ready! */}
     </section>
         
-        <div className="flexGrow"
-        style={{textAlign: 'center'}}
+        <div 
+        className="flexGrow"
+        // style={{textAlign: 'center'}}
         >
         </div>
 
