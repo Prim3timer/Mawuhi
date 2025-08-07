@@ -163,7 +163,7 @@ const pickerChecker = atHome === true ? auth.picker : auth.picker3
     >
         <h3>Total:</h3>
     <h3>
- ₦{state.sales && numberWithCommas(state.sales.reduce((a, b)=> {
+ {state.sales && numberWithCommas(state.sales.reduce((a, b)=> {
     return  a + parseFloat( b.qty)
 }, 0).toFixed(2))}
 </h3>
