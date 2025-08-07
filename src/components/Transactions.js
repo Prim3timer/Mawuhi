@@ -55,10 +55,10 @@ const Transactions = ()=> {
                     state.transArray.push(acutalItem)
                       inputRef.current.value = ''
                        inputRef.current.focus()
+                       dispatch({type: 'errMsg', payload: `${acutalItem.name} added`})
                        setTimeout(()=> {
-                        dispatch({type: 'errMsg', payload: `${acutalItem.name} added`})
-                        dispatch({type: 'errMsg', payload: ``})
                         
+                           dispatch({type: 'errMsg', payload: ``})
                     }, 3000)
                     state.transArray.reverse()
                     
@@ -73,7 +73,7 @@ const Transactions = ()=> {
                     
                 }
                 
-                console.log(state.transArray)
+                // console.log(state.transArray)
                 // console.log(state.getNames)
             } else {
                 // setFirstRedChecker('tamgible')
@@ -100,7 +100,7 @@ const Transactions = ()=> {
     
     const clearer = ()=> {
         dispatch({type: 'clear'})
-        console.log('CLEARED!')
+        // console.log('CLEARED!')
         dispatch({type: 'cancel', payload: false})
         state.paidAmount = 0
         state.balance = 0
@@ -189,7 +189,7 @@ const Transactions = ()=> {
         
         else {
             
-            console.log(state.transArray)
+            // console.log(state.transArray)
             throw Error('no item purchased')
             // dispatch({type: 'qtyArray', payload: []})
         }
@@ -203,7 +203,7 @@ const Transactions = ()=> {
 
 
 const cardCheckout = async () => {
-    console.log('on the card')
+    // console.log('on the card')
     try {
         if (state.transArray.length){
             const transItems = {
@@ -230,7 +230,7 @@ const cardCheckout = async () => {
 
 const assertain = ()=> {
     dispatch({type: 'cancel', payload: true})
-    console.log(state.transArray)   
+    // console.log(state.transArray)   
 }
 
 function numberWithCommas(x) {
@@ -246,22 +246,17 @@ function numberWithCommas(x) {
         const {setAuth} = useAuth()
         //  const refresh = useRefreshToken()
 
-        
-        // window.addEventListener('beforeunload', function (e) {
-            //     e.preventDefault()
-            //     return "data will get lost"
-            // });
             
             const getRecipt = async ()=> {
     const queryParams = new URLSearchParams(window.location.search)
     let sessionId = queryParams.get("session_id")
     const cusomer = queryParams.get("customer")
-    console.log({sessionId})
+    // console.log({sessionId})
      
     const now = new Date()
     const date = format(now, 'dd/MM/yyyy HH:mm:ss')
     const dateOjb = {date}
-    console.log({date})
+    // console.log({date})
     try {
         if (sessionId){
 

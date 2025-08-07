@@ -181,12 +181,10 @@ const {auth, getTrans, itemRef,
               onClick={remainDelete}
               >  
               <article id="form-cont">
-           <form  className="search-form" 
-           >
+         
 
 
-<div
->
+
 
   <form onSubmit={(e)=> e.preventDefault()}
                 id="update-form"
@@ -243,17 +241,17 @@ const {auth, getTrans, itemRef,
                 id="image"
                 value={state.image}
                 onChange={(e)=> dispatch({type: 'IMAGE', payload: e.target.value})}
-                /><br/>
+                />
+                <br/>
+                <br/>
                 <button onClick={e => negateEdit(e)}>Cancel</button>
                 <button 
                 id="update-button"
                 onClick={handleSubmit}
                 type="submit">Update</button>
                 <h3>{state.alertMsg}</h3>
-           
-    </form>
         
-        </div>
+       
 
 
          </form>

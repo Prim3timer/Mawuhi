@@ -135,6 +135,7 @@ input {
 }
 
 
+
     .sales-items {
   text-align: left;
   /* padding-left: 1rem; */
@@ -551,14 +552,15 @@ align-items: center;
   flex-direction: column;
 }
 
- 
 
 #update-form {
   position: fixed;
   top:5%;
+  left: 25%;
   background-color: gray;
   justify-self: center;
   font-size: 1rem;
+  width: 50%;
 }
 
 #update-form label, input {
@@ -1154,6 +1156,7 @@ button:active {
       top: 80%;
     /* width: 6rem; */
     /* background-color: antiquewhite; */
+    padding: .5rem 1rem;
     /* width: ; */
     
     
@@ -1386,15 +1389,14 @@ row-gap: 1rem;
   /* padding: 5rem; */
 }
 
-#update-form {
- 
-  top:15%;
-  background-color: gray;
-  justify-self: center;
-}
+
+
 
 #update-form label, input {
   font-size: 1.5rem;
+  /* background-color: red; */
+  width: 90%;
+  height: 3rem;
 }
 
 .sales {
@@ -1827,11 +1829,28 @@ width: 70vw;
     .sales-total >*:nth-child(3) {
       grid-column: 11/14;
     }
+    
+#update-form {
+ 
+  top:15%;
+  background-color: gray;
+  left: 5%;
+  justify-self: center;
+  width: 90%;
+}
 
   }
 
   
   @media screen and (max-width: 768px) {
+#update-form {
+ 
+  top:15%;
+  background-color: gray;
+  left: 5%;
+  justify-self: center;
+  width: 90%;
+}
 
       .field2 {
       column-gap: 2rem;
