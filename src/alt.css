@@ -1665,28 +1665,7 @@ max-width: 95%;
   column-gap: .5rem;
 }
 
-    .err-msg {
-      /* color: green; */
-      position: absolute;
-      text-align: center;
-      top: 35%;
-    /* width: 6rem; */
-    /* background-color: antiquewhite; */
-    /* width: ; */
-    
-    }
-
-    .no-err-msg {
-       color: red;
-      position: absolute;
-      text-align: center;
-      top: 36%;
-    }
-
-    .hide-err-msg {
-      display: none;
-    }
-
+ 
  .trans-name-and-img {
   display: flex;
   flex-direction: column;
