@@ -518,7 +518,7 @@ align-items: center;
 .roles-select {
 
                 width: 12rem;
-                height: 6.7rem;
+                /* height: 6.7rem; */
             border: 4px solid black;
             padding: .5rem
       
