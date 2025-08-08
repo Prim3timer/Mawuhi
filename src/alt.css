@@ -1155,7 +1155,7 @@ button:active {
       text-align: center;
       top: 70%;
     /* width: 6rem; */
-    /* background-color: antiquewhite; */
+    background-color: pink;
     padding: .5rem 1rem;
     /* width: ; */
     
@@ -1168,6 +1168,10 @@ button:active {
       top: 72%;
     /* background-color: antiquewhite; */
   color: red;
+}
+
+.hide-err-msg {
+  display: none;
 }
 
 
@@ -1286,23 +1290,7 @@ color: whitesmoke;
 
   @media screen and (max-width: 391px) {
 
- .err-msg {
-      color: green;
-      position: absolute;
-      text-align: center;
-      top: 40% !important;
-    /* width: 6rem; */
-    /* background-color: antiquewhite; */
-    /* width: ; */
-    
-    }
 
-    .no-err-msg {
-       color: red;
-      position: absolute;
-      text-align: center;
-      top: 40% !important;
-    }
 
     .reg-cont {
       width: 90%;
@@ -1681,7 +1669,7 @@ max-width: 95%;
       text-align: center;
       top: 35%;
     /* width: 6rem; */
-    /* background-color: antiquewhite; */
+    background-color: antiquewhite;
     /* width: ; */
     
     }
@@ -1691,6 +1679,10 @@ max-width: 95%;
       position: absolute;
       text-align: center;
       top: 36%;
+    }
+
+    .hide-err-msg {
+      display: none;
     }
 
  .trans-name-and-img {

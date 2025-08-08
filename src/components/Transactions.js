@@ -27,6 +27,7 @@ const Transactions = ()=> {
     const cashPaidRef = useRef(null)
     const [firstRedChecker, setFirstRedChecker] = useState('')
     const [success, setSuccess] = useState(false)
+    const [noShow, setNoShow] = useState(false)
     
     const refresh = useRefreshToken()
     
@@ -49,24 +50,27 @@ const Transactions = ()=> {
                 const acutalItem = {...currentItem, qty: 1}
                 const match = state.transArray.find((item) => item.name === acutalItem.name)
                 if(!match){
-                    setFirstRedChecker('')
+                    setNoShow(true)
                  
                     state.transArray.push(acutalItem)
                       inputRef.current.value = ''
                        inputRef.current.focus()
                        dispatch({type: 'errMsg', payload: `${acutalItem.name} added`})
                        setTimeout(()=> {
-                        
+                        setNoShow(false)
                            dispatch({type: 'errMsg', payload: ``})
                     }, 3000)
                     state.transArray.reverse()
                     
                 }else if (match) {
+                    setNoShow(true)
                     setFirstRedChecker(match)
                     dispatch({type: 'errMsg', payload: 'item already in list'})
                     setTimeout(()=> {
                         dispatch({type: 'errMsg', payload: ``})
                         setFirstRedChecker('')
+                        setNoShow(false)
+                        
                         
                     }, 3000)
                     
@@ -372,8 +376,8 @@ useEffect(()=> {
             </fieldset>
             
             <h3 
-            className={!firstRedChecker ? 'err-msg' : 'no-err-msg'}
-          
+            className={noShow ? 'err-msg' : 'hide-err-msg'}
+           
             >
                 {state.errMsg}</h3>
            {state.transArray.length ? <h3>{state.transArray.length} item{state.transArray.length === 1 ? '' : 's'}</h3> : ''} 
