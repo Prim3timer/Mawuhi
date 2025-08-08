@@ -1150,22 +1150,24 @@ button:active {
 
 
     .err-msg {
-      color: green;
-      position: absolute;
+      /* color: white; */
+      position: fixed;
       text-align: center;
-      top: 70%;
-    /* width: 6rem; */
-    background-color: pink;
-    padding: .5rem 1rem;
-    /* width: ; */
-    
-    
-  }
-  .no-err-msg {
-     /* color: green; */
-      position: absolute;
+      top: 50%;
+      /* width: 6rem; */
+      background-color: lightgreen;
+      padding: 1rem;
+      /* width: ; */
+      
+      
+    }
+    .no-err-msg {
+      background-color: lightgreen;
+      /* color: green; */
+      position: fixed;
+    padding: 1rem;
       text-align: center;
-      top: 72%;
+      top: 50%;
     /* background-color: antiquewhite; */
   color: red;
 }
@@ -1664,12 +1666,12 @@ max-width: 95%;
 }
 
     .err-msg {
-      color: green;
+      /* color: green; */
       position: absolute;
       text-align: center;
       top: 35%;
     /* width: 6rem; */
-    background-color: antiquewhite;
+    /* background-color: antiquewhite; */
     /* width: ; */
     
     }

@@ -63,9 +63,9 @@ const Transactions = ()=> {
                     state.transArray.reverse()
                     
                 }else if (match) {
-                    setNoShow(true)
                     setFirstRedChecker(match)
                     dispatch({type: 'errMsg', payload: 'item already in list'})
+                        inputRef.current.value = ''
                     setTimeout(()=> {
                         dispatch({type: 'errMsg', payload: ``})
                         setFirstRedChecker('')
@@ -95,7 +95,7 @@ const Transactions = ()=> {
     
     
     const removeItem = async (id)=>{
-        
+
         dispatch({type: 'remove', payload: id})
         
     }
@@ -105,6 +105,12 @@ const Transactions = ()=> {
         dispatch({type: 'clear'})
         // console.log('CLEARED!')
         dispatch({type: 'cancel', payload: false})
+          setNoShow(true)
+    dispatch({type: 'errMsg', payload: 'list cleared'})
+                       setTimeout(()=> {
+                        setNoShow(false)
+                           dispatch({type: 'errMsg', payload: ``})
+                    }, 3000)
         state.paidAmount = 0
         state.balance = 0
     }
@@ -237,6 +243,7 @@ const cardCheckout = async () => {
 const assertain = ()=> {
     dispatch({type: 'cancel', payload: true})
     // console.log(state.transArray)   
+  
 }
 
 function numberWithCommas(x) {
@@ -316,7 +323,8 @@ useEffect(()=> {
     refresh()
 
 // }
-}, [ ])
+}, [])
+
 
     return (
        !getNames ? <h2 className="trans-cont">Loading...</h2> : <div className="trans-cont"
@@ -376,7 +384,7 @@ useEffect(()=> {
             </fieldset>
             
             <h3 
-            className={noShow ? 'err-msg' : 'hide-err-msg'}
+            className={noShow ? 'err-msg' : firstRedChecker ? 'no-err-msg' : 'hide-err-msg'}
            
             >
                 {state.errMsg}</h3>
