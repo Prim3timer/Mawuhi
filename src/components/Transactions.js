@@ -21,7 +21,6 @@ const Transactions = ()=> {
     const [checkout, setCheckout] = useState(false)
     const now = new Date()
     const date = format(now, 'dd/MM/yyyy\tHH:mm:ss')
-    console.log(date)
     const {auth,user, getNames, items} = useContext(AuthContext)
     const inputRef = useRef()
     const qtyRef = useRef()
@@ -37,7 +36,7 @@ const Transactions = ()=> {
         try {
             
             if (inputRef.current.value){
-                dispatch({type: 'errMsg', payload: ''})
+             
                 setFirstRedChecker('')
                 if (state.success === false) state.success = true
                 else state.success = false
@@ -198,6 +197,9 @@ const Transactions = ()=> {
     } catch (error) {
         dispatch({type: 'errMsg', payload: error.message})
     }
+    finally {
+        //    dispatch({type: 'transArray', payload: []})
+    }
     
 }
 
@@ -248,6 +250,7 @@ function numberWithCommas(x) {
 
             
             const getRecipt = async ()=> {
+                dispatch({type: 'transArray', payload: []})
     const queryParams = new URLSearchParams(window.location.search)
     let sessionId = queryParams.get("session_id")
     const cusomer = queryParams.get("customer")

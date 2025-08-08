@@ -557,7 +557,7 @@ align-items: center;
   position: fixed;
   top:5%;
   left: 25%;
-  background-color: gray;
+  background-color: limegreen;
   justify-self: center;
   font-size: 1rem;
   width: 50%;
@@ -1153,7 +1153,7 @@ button:active {
       color: green;
       position: absolute;
       text-align: center;
-      top: 80%;
+      top: 70%;
     /* width: 6rem; */
     /* background-color: antiquewhite; */
     padding: .5rem 1rem;
@@ -1162,6 +1162,10 @@ button:active {
     
   }
   .no-err-msg {
+     /* color: green; */
+      position: absolute;
+      text-align: center;
+      top: 72%;
     /* background-color: antiquewhite; */
   color: red;
 }
@@ -1638,6 +1642,12 @@ max-width: 95%;
 
     @media screen and (max-width: 585px) {
 
+
+
+      .edit-action >* {
+      width: 40%;;
+      }
+
 /* .home {
   display: none;
   } */
@@ -1650,11 +1660,18 @@ max-width: 95%;
       color: green;
       position: absolute;
       text-align: center;
-      top: 38%;
+      top: 35%;
     /* width: 6rem; */
     /* background-color: antiquewhite; */
     /* width: ; */
     
+    }
+
+    .no-err-msg {
+       color: red;
+      position: absolute;
+      text-align: center;
+      top: 36%;
     }
 
  .trans-name-and-img {
@@ -1833,7 +1850,7 @@ width: 70vw;
 #update-form {
  
   top:15%;
-  background-color: gray;
+  background-color: limegreen;
   left: 5%;
   justify-self: center;
   width: 90%;
@@ -1846,7 +1863,7 @@ width: 70vw;
 #update-form {
  
   top:15%;
-  background-color: gray;
+  background-color: limegreen;
   left: 5%;
   justify-self: center;
   width: 90%;

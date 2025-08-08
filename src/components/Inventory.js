@@ -175,27 +175,28 @@ const bringEdit = () => {
         > 
         <article id="form-cont">
 
-     <form  className="search-form" 
+     <form  className="sales-search-form" 
      //   onSubmit={(e)=> e.preventDefault()}
      >
              <h2 className="invent-header"
     
      >Inventory</h2> 
  <input 
-//  id="invent-search"
+ id="invent-search"
  type="text"
  role="searchbox" 
  placeholder="Search by name"
  value={state.search}
  onChange={(e)=> dispatch({type: 'search', payload: e.target.value})}
-
-     // https://www.npmjs.com/package/@react-google-maps/api
+ 
+ // https://www.npmjs.com/package/@react-google-maps/api
  
  />
  <h3>
       <label>Search by stock level</label>
 </h3>
      <input
+ id="invent-search"
       placeholder="pick a number"
        role="searchbox" 
       value={search2}
