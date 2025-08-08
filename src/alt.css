@@ -134,6 +134,30 @@ input {
   
 }
 
+.create-item {
+  align-content: center;
+  /* background-color: red; */
+  margin: 1rem 0;
+          /* flex-grow: 1; */
+          row-gap: 2rem;
+
+}
+.create-item-update {
+   /* color: white; */
+      position: fixed;
+      /* text-align: center; */
+      top: 50%;
+      left: 33%;
+      /* width: 6rem; */
+      background-color: lightgreen;
+      padding: 1rem;
+      /* width: ; */
+}
+
+.hide-create-item-update {
+  display: none;
+}
+
 
 
     .sales-items {
@@ -494,10 +518,21 @@ align-items: center;
 .roles-select {
 
                 width: 12rem;
+                height: 6.7rem;
             border: 4px solid black;
             padding: .5rem
       
 }
+
+  .form-label {
+    display: flex;
+    align-items: center;
+    column-gap: .5rem;
+  }
+  
+  #user-active {
+    width: 2.5rem;
+  }
 
 
 .hide {
@@ -573,13 +608,7 @@ align-items: center;
   /* background-color: red; */
 
 }
-.create-item {
-  /* height: 80vh; */
-margin: 1rem 0;
-          /* flex-grow: 1; */
-          row-gap: 2rem;
-        
-}
+
 
  #create-item-form button {
          font-size: 2rem;
@@ -1458,8 +1487,8 @@ row-gap: 1rem;
     }
 
 
-    .login-form{
-      /* width: ; */
+    .login-form input{
+   width: 80vw;
     }
 
     #field {
@@ -1653,7 +1682,7 @@ max-width: 95%;
 
 
 
-      .edit-action >* {
+      .edit-action   >* {
       width: 40%;;
       }
 
@@ -1823,6 +1852,29 @@ width: 70vw;
 
 }
 
+.create-item {
+  align-content: center;
+  /* background-color: red; */
+  align-items: center;
+  margin: 1rem 0;
+  width: 90vw;
+          /* flex-grow: 1; */
+          row-gap: 2rem;
+
+}
+.create-item-update {
+   /* color: white; */
+      position: fixed;
+      /* text-align: center; */
+      top: 50%;
+      left: 10%;
+      /* width: 6rem; */
+      background-color: lightgreen;
+      padding: 1rem;
+      /* width: ; */
+}
+
+
   #create-item-form input {
          font-size: 1.5rem;
          padding: .5rem 0;
@@ -1838,6 +1890,9 @@ width: 70vw;
     .sales-total >*:nth-child(3) {
       grid-column: 11/14;
     }
+
+
+
     
 #update-form {
  

@@ -1,7 +1,7 @@
 import reducer from "../reducer"
 import initialState from "../store"
 import axios from '../app/api/axios'
-import { useEffect, useReducer, useRef } from "react"
+import { useEffect, useReducer, useRef, useState } from "react"
 import { type } from "@testing-library/user-event/dist/type"
 const {v4: uuid} = require('uuid')
 
@@ -9,6 +9,7 @@ const {v4: uuid} = require('uuid')
 let CreateItem = () => {
        const [state, dispatch] = useReducer(reducer, initialState)
        const itemRef = useRef()
+       const [showUpdate, setShowUpdate] = useState(false)
        const measurements = ['Kilogram (kg)', 'Piece (pc)', 'Plate (Plt)', 'Dozen (dzn)', 'Bottle (Btl)', 'Pound (lbs)', 'Litre (L)', 'Sachet (sct)', 'Ounce (Oz)', 'Gram (g)', 'Set (St)', 'Bag (Bg)'
        ]
 
@@ -37,10 +38,11 @@ let CreateItem = () => {
         else {
             const response = await axios.post('/items', newItem)  
             if (response){  
-    
+                setShowUpdate(true)
                 dispatch({type: 'isMatched', payload: `new item, ${newItem.name} created` })
                 setTimeout(()=> {
                     dispatch({type: 'isMatched', payload: '' })
+                    setShowUpdate(false)
                 }, 3000)
             }
             dispatch({type: 'name', payload: '' })
@@ -121,7 +123,7 @@ let CreateItem = () => {
                 /><br/>
               
                <button type="submit" className="pop">Add Item</button>
-        <h3>{state.isMatched}</h3>
+        <h3 className={showUpdate ? "create-item-update" : "hide-show-update"}>{state.isMatched}</h3>
         <h3>{state.errMsg}</h3>
                
             </form>

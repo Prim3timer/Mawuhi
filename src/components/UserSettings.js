@@ -324,19 +324,15 @@ a-label="dollar sign">$</span> <span aria-label="percent">%</span>
 
             </form>
             <br/>
-            <label className="form__label form__checkbox-container" htmlFor="user-active"
+            <label className="form-label" htmlFor="user-active"
           style={{ justifyContent: "center", 
-            marginLeft: '2rem'
+            // marginLeft: '2rem'
           }}
 
             >
                     ACTIVE:
                     <input
-
-style={{
-    width: '2rem'
-}}
-                        className="form__checkbox"
+                 className="form__checkbox"
                         id="user-active"
                         name="user-active"
                         type="checkbox"
