@@ -1285,6 +1285,25 @@ color: whitesmoke;
  
 
   @media screen and (max-width: 391px) {
+
+ .err-msg {
+      color: green;
+      position: absolute;
+      text-align: center;
+      top: 40% !important;
+    /* width: 6rem; */
+    /* background-color: antiquewhite; */
+    /* width: ; */
+    
+    }
+
+    .no-err-msg {
+       color: red;
+      position: absolute;
+      text-align: center;
+      top: 40% !important;
+    }
+
     .reg-cont {
       width: 90%;
     }
