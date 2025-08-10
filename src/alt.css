@@ -952,11 +952,11 @@ column-gap: .5rem;
   padding: .3rem .5rem;
 }
 
-.head-home button {
+/* .head-home button {
   width: 6rem;
   height: 3rem;
   box-shadow: none;
-}
+} */
 
 .head-home-button-link {
   text-decoration: none;
@@ -964,26 +964,79 @@ column-gap: .5rem;
 }
 .header {
   
-  grid-template-columns: repeat(10, 1fr);
-  /* column-gap: 2rem; */
+  grid-template-columns: repeat(15, 1fr);
+  column-gap: .5rem;
   align-items: end;
   top: 0;
 }
 
+.home-links {
+  color: whitesmoke;
+  text-decoration: none;
+}
+
 .header >*:nth-child(1){
   padding: .3rem .5rem;
+  grid-column: 1 / 4;
   /* background-color: red; */
-  grid-column: 1 / 6;
+  /* background-color: red; */
 }
 
-.header >*:nth-child(2){
-  width: 6rem;
-  /* background-color: red; */
-  box-shadow: none;
-/* display: none; */
-grid-column: 9/10;
+.show-home-links{
+  display: flex;
+column-gap: 1rem;
+grid-column: 4/ 15 ;
+color: whitesmoke;
+align-items: flex-end;
+/* background-color: red; */
+/* width: 100vw; */
+overflow-y: auto;
 }
 
+.hide-home-links {
+  display: none;
+}
+
+.header >*:nth-child(3){
+  grid-column: 15/ 15 ;
+  color: whitesmoke;
+}
+
+
+.admin-links {
+  display: flex;
+  column-gap: 2rem;
+  width: 80vw;
+  position: absolute;
+  justify-content: flex-end;
+  /* background-color: red; */
+  padding-left: 2rem;
+}
+#logout {
+  /* font-size: 1.rem; */
+}
+
+.side {
+  display: grid;
+  row-gap: 1rem;
+  position: fixed;
+  background-color: orange;
+  width: 40vw;
+  padding: 1rem;
+  
+}
+
+.home-icon {
+  color: whitesmoke;
+}
+
+/* transition: property duration timing-function delay */
+/* 
+.home-icon:active {
+  transition-property: transform;
+  transition-duration: 200ms;
+  transform: rotate(-90deg);
+} */
 
 
 
@@ -1733,7 +1786,7 @@ max-width: 95%;
   font-size: 1.5rem;
   width: 4rem;
  align-self: flex-end;
-  grid-column: 8/ 9;
+  /* grid-column: 8/ 9; */
 }
 
 
@@ -1746,7 +1799,7 @@ max-width: 95%;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  /* background-color: green; */
+ 
   text-align: left;
 }
       
@@ -1910,7 +1963,11 @@ width: 70vw;
   }
 
   
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 800px) {
+
+    .header >*:nth-child(2){
+display: none;
+}
 #update-form {
  
   top:15%;

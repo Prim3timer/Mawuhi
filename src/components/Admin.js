@@ -29,17 +29,32 @@ console.log(users)
         <div
         className="admin"
       >
+        
            <h1
            className="admin-header"
          
             >Admin</h1>
       <section>
-        
+       
+                      
             {!showSettings ? <h2
             className="users-header"
             style={{textAlign: 'center'}}
             >Users ({auth.users && auth.users.length})</h2> : ''}
+            <div className="admin-links">
+
+                <Link
+                       
+                       to="/create-item">add item</Link>
             
+              <Link 
+                        // onClick={showDem}
+                        
+                        to="/sales"
+                        
+                        // className="home-links"
+                        >sales</Link>
+            </div>
             {<h2>Loading...</h2> && 
              
              <Users/>}

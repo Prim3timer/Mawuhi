@@ -45,11 +45,11 @@ const pickerChecker = atHome === true ? auth.picker : auth.picker3
             // const response2 = await axiosPrivate.get('/users')
             // console.log(response2)
             console.log(response)
-            const newArray = response.data.filter((item)=> item.cashierID === pickerChecker)
+            const newArray = response.data.filter((item)=> item.cashierID === auth.picker)
             // console.log(newArray)
             
 
-                const person = auth.user && auth.users.find((person) => person._id == pickerChecker)
+                const person = auth.user && auth.users.find((person) => person._id == auth.picker)
                 setCurrenUser(person)
                 console.log(person)
        

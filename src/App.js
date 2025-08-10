@@ -20,7 +20,7 @@ import ItemList from "./components/ItemList"
 import EditItem from "./components/EditItem"
 import Reciepts from "./components/Reciepts"
 import EmpInv from "./components/EmpInv"
-import { useEffect, useState, useReducer } from "react"
+import { useEffect, useState, useReducer, useRef } from "react"
 import useAuth from "./hooks/useAuth"
 import UserSelect from "./components/UserSelect"
 import OneReceipt from "./components/OneReceipt"
@@ -40,6 +40,8 @@ import PersistLogin from "./components/PersistLogin"
 import LocalThanks from "./components/LocalThanks"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck, faLeftLong, faBars } from "@fortawesome/free-solid-svg-icons"
+import NavBar from "./components/NavBar"
+import SideBar from "./components/SideBar"
 // import SearchItem from "./SearchItem";
 
 
@@ -58,9 +60,9 @@ const App = () => {
   const year = new Date().getFullYear()
   const { auth} = useAuth()
    const [home, setHome] = useState(false)
+   
 
 
-  
   const [state, dispatch] = useReducer(reducer, initialState)
 
     const trueHome = ()=> {
@@ -72,14 +74,9 @@ return (
 
   <main className="App"
   >
-    <div  className="header">
+   <NavBar/>
 
-     <h4> Retail Tracker</h4> 
-    { auth.accessToken &&  <div className="head-home" onClick={trueHome}>
-          {/* <Link> <FontAwesomeIcon className="home-icon"  icon={faBars}/></Link> */}
-<button><Link to={'/home'} className="head-home-button-link">Home</Link></button>
-            </div>}
-    </div>
+   {/* <SideBar/> */}
     <article className="main">
       <Routes>
          {/* public routes */}
