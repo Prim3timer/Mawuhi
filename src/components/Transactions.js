@@ -10,6 +10,7 @@ import useAuth from '../hooks/useAuth';
 import { Link } from "react-router-dom";
 import AuthContext from "../context/authProvider";
 import useRefreshToken from "../hooks/useRefreshToken";
+import SideBar from "./SideBar";
 {/* ₦ */}
 
 
@@ -21,7 +22,7 @@ const Transactions = ()=> {
     const [checkout, setCheckout] = useState(false)
     const now = new Date()
     const date = format(now, 'dd/MM/yyyy\tHH:mm:ss')
-    const {auth,user, getNames, items} = useContext(AuthContext)
+    const {auth,user, getNames, items, setAtHome} = useContext(AuthContext)
     const inputRef = useRef()
     const qtyRef = useRef()
     const cashPaidRef = useRef(null)
@@ -309,6 +310,14 @@ const trueSuccess = () => {
 const falseSuccess = ()=> {
     setSuccess(false)
 }
+
+    const trueHome = ()=> {
+
+        setAtHome(true)
+    }
+useEffect(()=> {
+    trueHome()
+}, [])
 useEffect(()=> {
 
 // if (sessionId){
@@ -334,6 +343,7 @@ useEffect(()=> {
             id="tans-title"
            
             >Transactions</h2>
+              {/* <SideBar/> */}
             <fieldset
             id="field"
             >

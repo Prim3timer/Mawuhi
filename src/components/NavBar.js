@@ -4,9 +4,10 @@ import { faCheck, faLeftLong, faBars } from "@fortawesome/free-solid-svg-icons"
 import { Link, useNavigate } from "react-router-dom"
 import useAuth from "../hooks/useAuth"
 import useLogout from "../hooks/useLogout";
+import SideBar from "./SideBar"
 
-const NavBar = ()=> {
-   const [isRotated, setIsRotated] = useState(false)
+const NavBar = ({isRotated, setIsRotated})=> {
+  //  const [isRotated, setIsRotated] = useState(false)
      const navigate = useNavigate();
    const barRef = useRef(null)
   const { auth} = useAuth()
@@ -42,10 +43,11 @@ const logout = useLogout()
 
             }
         }
+     
 
     return (
          <div  className="header">
-        
+ 
              <h4> Retail Tracker</h4> 
              <div className={auth.accessToken ? 'show-home-links' : 'hide-home-links'}>
 
@@ -85,6 +87,13 @@ const logout = useLogout()
                        className="home-links"
                        
                        >admin</Link>
+
+                       
+                    <Link 
+                    // onClick={showDem}
+                    className="home-links"
+                    
+                    to="/sales">sales</Link>
                        
                   <Link to="/login" className="home-links" id="logout" onClick={logout}>
             sign out</Link>
@@ -93,6 +102,7 @@ const logout = useLogout()
             { auth.accessToken &&  <div className="head-home">
                   <p><FontAwesomeIcon ref={barRef} className="home-icon" onClick={workBar} icon={faBars}/></p>
                     </div>}
+                      
             </div>
     )
 }

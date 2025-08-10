@@ -23,6 +23,7 @@ const [currentUsers, setCurrentUsers] = useState([])
   const [currentUser2, setCurrentUser2] = useState({})
       const [genTrans, setGenTrans] = useState([])
       const [atHome, setAtHome] = useState(true)
+       const [isRotated, setIsRotated] = useState(false)
   const [search, setSearch] = useState('')
   const [search2, setSearch2] = useState('')
      const itemRef = useRef()
@@ -221,7 +222,7 @@ const [currentUsers, setCurrentUsers] = useState([])
             generalRemain, remainDelete, items, isEdit, afa, price, unitMeasure, getTransaction,
             search, setSearch, setSearch2, search2, sales, user, getNames, currentUser,
             setCurrentUser, setCurrentUser2, currentUser2, users, setUsers, transactions, atHome, setAtHome,
-            currentUsers, setCurrentUsers
+            currentUsers, setCurrentUsers, setIsRotated, isRotated
 
         }}>
             {children}

@@ -20,7 +20,7 @@ import ItemList from "./components/ItemList"
 import EditItem from "./components/EditItem"
 import Reciepts from "./components/Reciepts"
 import EmpInv from "./components/EmpInv"
-import { useEffect, useState, useReducer, useRef } from "react"
+import { useEffect, useState, useReducer, useRef, useContext} from "react"
 import useAuth from "./hooks/useAuth"
 import UserSelect from "./components/UserSelect"
 import OneReceipt from "./components/OneReceipt"
@@ -42,6 +42,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck, faLeftLong, faBars } from "@fortawesome/free-solid-svg-icons"
 import NavBar from "./components/NavBar"
 import SideBar from "./components/SideBar"
+import AuthContext from "./context/authProvider"
 // import SearchItem from "./SearchItem";
 
 
@@ -61,7 +62,7 @@ const App = () => {
   const { auth} = useAuth()
    const [home, setHome] = useState(false)
    
-
+const {isRotated, setIsRotated} = useContext(AuthContext)
 
   const [state, dispatch] = useReducer(reducer, initialState)
 
@@ -74,9 +75,9 @@ return (
 
   <main className="App"
   >
-   <NavBar/>
+   <NavBar isRotated={isRotated} setIsRotated={setIsRotated}/>
 
-   {/* <SideBar/> */}
+   {isRotated && <SideBar isRotated={isRotated} setIsRotated={setIsRotated}/>}
     <article className="main">
       <Routes>
          {/* public routes */}
