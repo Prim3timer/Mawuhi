@@ -942,6 +942,7 @@ column-gap: .5rem;
     background-color: #1e293b;;
     padding: .5rem 0;
     color: whitesmoke;
+    z-index: 20;
   
 }
 
@@ -2044,14 +2045,14 @@ min-width: 45vw
   display: grid;
   grid-auto-flow: row;
   row-gap: 1rem;
-  position: fixed;
+  position: absolute;
   background-color: wheat;
   /* border: 2px solid brown; */
 z-index: 10;
   width: 35vw;
   /* margin-top: 2rem; */
 
-  padding: 3rem 1.5rem;
+  padding: 1rem 1.5rem;
   
 }
 
