@@ -14,7 +14,7 @@ const [currentUser, setCurrentUser] = useState()
 const [currentTrans, setCurrentTrans] = useState()
 const [state, dispatch] = useReducer(reducer, initialState)
 const {auth, setAuth} = useAuth()
-const {currentUsers} = useContext(AuthContext)
+const {currentUsers, setIsRotated} = useContext(AuthContext)
 const navigate = useNavigate()
 
 const location = useLocation()
@@ -104,6 +104,7 @@ useEffect(()=> {
        }}
        >Loading...</h2> : <div
        className='one-receipt'
+       onClick={() => setIsRotated(false)}
     >
          {currentTrans && <article
 

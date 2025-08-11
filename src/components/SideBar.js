@@ -6,7 +6,8 @@ import { Link, useNavigate } from "react-router-dom"
 import useAuth from "../hooks/useAuth"
 import useLogout from "../hooks/useLogout";
 import AuthContext from "../context/authProvider"
-const SideBar = ({isRotated, setIsRotated}) => {
+const SideBar = () => {
+    const {isRotated, setIsRotated} = useContext(AuthContext)
     const sideRef = useRef()
     const logout = useLogout()
     const moreThanLogout = ()=> {

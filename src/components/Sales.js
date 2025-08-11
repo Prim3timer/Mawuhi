@@ -6,7 +6,7 @@ import useAuth from '../hooks/useAuth'
 import AuthContext from '../context/authProvider'
 const {v4: uuid} = require('uuid')
 const Sales = ()=> {
-    const {atHome, setAtHome} = useContext(AuthContext)
+    const {atHome, setAtHome, setIsRotated} = useContext(AuthContext)
     console.log({atHome})
 const [state, dispatch] = useReducer(reducer, initialState)
 const [search, setSearch] = useState('')
@@ -32,6 +32,11 @@ const pickerChecker = atHome === true ? auth.picker : auth.picker3
 //         console.error(error.message)
 //     }
 // }
+
+ const falseIsRotated = ()=> {
+        setIsRotated(false)
+    }
+    
 
 
     const getTrans = async () => {
@@ -105,8 +110,8 @@ const pickerChecker = atHome === true ? auth.picker : auth.picker3
 //   }, [])
 
     return (
-        <div className='main-sale'>
-      <h2 className='heading'>{ currentUser.username}'s Sales ({specArray.length}) rows</h2>
+        <div className='main-sale' onClick={falseIsRotated}>
+      <h2 className='heading'>{ currentUser && currentUser.username}'s Sales ({specArray.length}) rows</h2>
                    <form  className="sales-search-form"   onSubmit={(e)=> e.preventDefault()}>
         <input 
         id="invent-search"

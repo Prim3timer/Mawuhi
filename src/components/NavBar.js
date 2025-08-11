@@ -1,35 +1,44 @@
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect, useContext } from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck, faLeftLong, faBars } from "@fortawesome/free-solid-svg-icons"
 import { Link, useNavigate } from "react-router-dom"
 import useAuth from "../hooks/useAuth"
 import useLogout from "../hooks/useLogout";
 import SideBar from "./SideBar"
+import AuthContext from "../context/authProvider"
 
-const NavBar = ({isRotated, setIsRotated})=> {
+const NavBar = ()=> {
+  
   //  const [isRotated, setIsRotated] = useState(false)
+  const {isRotated, setIsRotated} = useContext(AuthContext)
      const navigate = useNavigate();
    const barRef = useRef(null)
   const { auth} = useAuth()
     const workBar = ()=> {
   if (isRotated == false){
-    setIsRotated(true)
-
+    
     barRef.current.style.transitionProperty = 'transform'
     barRef.current.style.transitionDuration = '200ms'
     barRef.current.style.transform = 'rotate(-90deg)'
+    setIsRotated(true)
   } else {
-    setIsRotated(false)
     barRef.current.style.transitionProperty = 'transform'
     barRef.current.style.transitionDuration = '200ms'
     barRef.current.style.transform = 'rotate(0deg)'
+    setIsRotated(false)
 
   }
+
+  
 
   
     
 
 }
+
+
+
+
 const logout = useLogout()
 
    const signOut = async () => {

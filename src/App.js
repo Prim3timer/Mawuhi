@@ -66,10 +66,15 @@ const {isRotated, setIsRotated} = useContext(AuthContext)
 
   const [state, dispatch] = useReducer(reducer, initialState)
 
-    const trueHome = ()=> {
-        if (!home) setHome(true)
-            else setHome(false)
-    }
+  //   const trueHome = ()=> {
+  // setHome(true)
+            
+  //   }
+
+  //   useEffect(()=> {
+  //     trueHome()
+  //     console.log(home)
+  //   }, [])
 
 return (
 

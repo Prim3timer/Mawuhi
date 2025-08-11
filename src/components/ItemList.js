@@ -2,7 +2,7 @@
 import Cancel from "./Cancel"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons"
-import { useEffect, useReducer, useState,   } from "react"
+import { useEffect, useReducer, useState, useContext  } from "react"
 import initialState from "../store"
 import reducer from "../reducer"
 import { FaTrashAlt } from "react-icons/fa";
@@ -13,6 +13,7 @@ import useAuth from "../hooks/useAuth"
 import axios from "../app/api/axios"
 import AuthContext from "../context/authProvider"
 import useRefreshToken from "../hooks/useRefreshToken"
+
 // import { type } from "@testing-library/user-event/dist/type"
 // import { current } from "@reduxjs/toolkit";
 const {v4: uuid} = require('uuid')
@@ -22,6 +23,7 @@ const {v4: uuid} = require('uuid')
 
 
 const ItemList = ()=> {
+    const {user, getNames, items, setAtHome, isRotated, setIsRotated} = useContext(AuthContext)
     const refresh = useRefreshToken()
 const {auth, getTrans, itemRef, 
 
@@ -33,6 +35,10 @@ const {auth, getTrans, itemRef,
      const measurements = ['grams (g)', 'Piece (pc)', 'Plate (Plt)', 'Dozen (dzn)', 'Bottle (Btl)', 'ounce (oz)', 'centiliter (CL)', 'Sachet (sct)', 'Ounce (Oz)', 'Set (St)', 'Bag (Bg)', 'Pairs (pr)',
         'centimiters (cm)'
        ]
+
+          const falseIsRotated = ()=> {
+        setIsRotated(false)
+    }
    
        const getItems = async ()=> {
                dispatch({type: 'clear'})
@@ -148,10 +154,8 @@ const {auth, getTrans, itemRef,
 
             dispatch({type: 'cancel', payload: false})
         }
-        // if (state.isEdit){
+        setIsRotated(false)
 
-        //     dispatch({type: 'isEdit', payload: false})
-        // }
     }
 
            const generalRemain = () => {

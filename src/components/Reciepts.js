@@ -17,7 +17,7 @@ const [showOne, setShowOne] = useState(false)
 const [oneId, setOneId] = useState('')
 const { auth, setAuth } = useAuth();
 const [currentUser, setCurrentUser] = useState('')
-const {atHome, getUsers, currentUsers} = useContext(AuthContext)
+const {atHome, getUsers, currentUsers, setIsRotated} = useContext(AuthContext)
 console.log(state.atHome)
 const refresh = useRefreshToken()
 const pickerChecker = atHome === true ? auth.picker : auth.picker3
@@ -132,6 +132,7 @@ const remainDelete = ()=> {
 }
 const generalRemain = () => {
     if (state.isMatched) dispatch({type: 'isMatched', payload: false})
+        setIsRotated(false)
 
  } 
 

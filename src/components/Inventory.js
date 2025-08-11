@@ -1,7 +1,7 @@
 import reducer from "../reducer"
 import initialState from "../store"
 import axios from "../app/api/axios"
-import { useEffect, useReducer, useState, useRef, createContext     } from "react"
+import { useEffect, useReducer, useState, useRef, createContext, useContext } from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons"
 import useAuth from "../hooks/useAuth"
@@ -9,6 +9,7 @@ import useAuth from "../hooks/useAuth"
 import { Link } from "react-router-dom"
 import Edit from "./Edit"
 import { type } from "@testing-library/user-event/dist/type"
+import AuthContext from "../context/authProvider"
 const {v4: uuid} = require('uuid')
 
 // export const idContext = createContext()
@@ -20,6 +21,13 @@ const Inventory = ({mark, setMark})=> {
     const {auth} = useAuth()
   const [search2, setSearch2] = useState('')
     const invRef = useRef()
+    const {setIsRotated} = useContext(AuthContext)
+
+
+
+       const falseIsRotated = ()=> {
+        setIsRotated(false)
+    }
     const getTrans = async ()=> {
 
           try {
@@ -111,7 +119,7 @@ const bringEdit = () => {
        
     !state.items ? <h2 className="inventory-spec">...Loading</h2> : <section
         className="inventory-spec"
-        onClick={remainEdit}
+        onClick={falseIsRotated}
         style={{ 
             // minWidth: '100vw',
             // minHeight: '100vh',

@@ -9,11 +9,15 @@ import AuthContext from "../context/authProvider";
 
 
 const Admin = () => {
-    const {users,  setAtHome, atHome} = useContext(AuthContext)
+    const {users,  setAtHome, atHome, setIsRotated} = useContext(AuthContext)
     const {auth} = useAuth()
 //    console.log({atHome})
       const [currentPerson, setCurrentPerson] = useState()
       const [showSettings, setShowSettings] = useState(false)
+
+       const falseIsRotated = ()=> {
+        setIsRotated(false)
+    }
       const falseHome = ()=> {
 
           setAtHome(false)
@@ -28,6 +32,7 @@ console.log(users)
     return (
         <div
         className="admin"
+        onClick={falseIsRotated}
       >
         
            <h1

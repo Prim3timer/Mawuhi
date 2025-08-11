@@ -22,15 +22,20 @@ const Transactions = ()=> {
     const [checkout, setCheckout] = useState(false)
     const now = new Date()
     const date = format(now, 'dd/MM/yyyy\tHH:mm:ss')
-    const {auth,user, getNames, items, setAtHome} = useContext(AuthContext)
+    const {auth,user, getNames, items, setAtHome, isRotated, setIsRotated} = useContext(AuthContext)
     const inputRef = useRef()
     const qtyRef = useRef()
     const cashPaidRef = useRef(null)
     const [firstRedChecker, setFirstRedChecker] = useState('')
     const [success, setSuccess] = useState(false)
     const [noShow, setNoShow] = useState(false)
+
     
     const refresh = useRefreshToken()
+
+    const falseIsRotated = ()=> {
+        setIsRotated(false)
+    }
     
     const handleAdd = (e)=> {
         e.preventDefault()
@@ -337,6 +342,7 @@ useEffect(()=> {
 
     return (
        !getNames ? <h2 className="trans-cont">Loading...</h2> : <div className="trans-cont"
+       onClick={falseIsRotated}
        
         >
             <h2
