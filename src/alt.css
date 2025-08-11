@@ -2046,9 +2046,10 @@ min-width: 45vw
     /* row-gap: .5rem; */
     position: absolute;
     background-color: wheat;
+    padding: 0 .5rem;
     /* border: 2px solid brown; */
     z-index: 10;
-    width: auto;
+    /* width: auto; */
     /* margin-top: 2rem; */
     list-style-type: none;
     
