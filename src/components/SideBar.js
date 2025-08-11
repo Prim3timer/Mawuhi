@@ -28,75 +28,82 @@ const SideBar = () => {
     console.log(isRotated)
     return (
         <div>
-               <section
-                //   className={isRotated ? 'side' : 'no-side'}
-                  className={'side' }
+               <ul
+                  className={isRotated ? 'side' : 'no-side'}
+                //   className={'side' }
                   ref={sideRef}
                   >
                         {/* <h3>SideBar</h3> */}
                    
             
-                    <Link 
+                <li>    <Link 
                 className="side-links"
-                    to="/transactions">transaction</Link>
+                // className={isRotated ? 'side-links' : 'no-side-links'}
+                to="/transactions">transaction</Link></li>
                   
                  
                   
                     {/* <Link
                    
-                    to="/create-item">add item</Link>
+                   to="/create-item">add item</Link>
                    */}
                
-                    <Link to="/item-list"
+                   <li> <Link to="/item-list"
                     className="side-links"
-                    >items</Link>
+                    // className={isRotated ? 'side-links' : 'no-side-links'}
+                    >items</Link></li>
                     
                
-                    <Link to="/inventory"
+                 <li>   <Link to="/inventory"
                     className="side-links"
-                    >inventory</Link>
+                    >inventory</Link></li>
             
                     {/* <Link to="/emp-inv">Inventory2</Link> */}
                   
                    
-                    <Link to="/admin"
+                 <li>   <Link to="/admin"
                     className="side-links"
-                    >admin</Link>
+                    // className={isRotated ? 'side-links' : 'no-side-links'}
+                    >admin</Link></li>
                    
             
-                    <Link 
+                <li>    <Link 
                     // onClick={showDem}
                     
                     to="/sales"
                     className="side-links"
-                    >sales</Link>
+                    // className={isRotated ? 'side-links' : 'no-side-links'}
+                    >sales</Link></li>
                     {/* <Link         
                     to="/editor">bars</Link>
                     <br/> */}
                  
-                    <Link
+                 <li>   <Link
                     to="/shopping"
                     className="side-links"
-                    
+                    // className={isRotated ? 'side-links' : 'no-side-links'}
                     >
-                        reciepts</Link>
+                        reciepts</Link></li>
                   
                     {/* <Link
                     to="/shop"
-            
+                    
                     >shop</Link>
-                   
+                    
                     <Link to="/cart">
                     cart
                     </Link> */}
                     {/* <br /> */}
                     {/* <Link to="/linkpage">link page</Link> */}
+                    
                   
                     {/* <Link to="/shopping">Shopping</Link> */}
                     {/* Your <FontAwesomeIcon icon={faLeftLong} /> is hot and ready! */}
-                        <Link to="/login" className="side-links" id="logout" onClick={moreThanLogout}>
-            sign out</Link>
-                </section>
+                <li>        <Link to="/login" id="logout" onClick={moreThanLogout}
+                    className={'side-links'}
+                >
+            sign out</Link></li>
+                </ul>
         </div>
     )
 }

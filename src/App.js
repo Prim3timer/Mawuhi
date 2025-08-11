@@ -82,7 +82,7 @@ return (
   >
    <NavBar isRotated={isRotated} setIsRotated={setIsRotated}/>
 
-   {isRotated && <SideBar isRotated={isRotated} setIsRotated={setIsRotated}/>}
+   {<SideBar isRotated={isRotated} setIsRotated={setIsRotated}/>}
     <article className="main">
       <Routes>
          {/* public routes */}

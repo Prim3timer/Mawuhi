@@ -1386,9 +1386,7 @@ color: whitesmoke;
     /* min-width: 90%; */
    }
 
- .side {
-  visibility: hidden;
- }
+ 
 
   @media screen and (max-width: 391px) {
 
@@ -2041,48 +2039,94 @@ min-width: 45vw
 
    .side {
     
-    visibility: visible;
-  display: grid;
-  grid-auto-flow: row;
-  row-gap: 1rem;
-  position: absolute;
-  background-color: wheat;
-  /* border: 2px solid brown; */
-z-index: 10;
-  width: 35vw;
-  /* margin-top: 2rem; */
+    transition-property: height overflow;
+    transition-duration: 500ms;
+    display: grid;
+    grid-auto-flow: row;
+    /* row-gap: .5rem; */
+    position: absolute;
+    background-color: wheat;
+    /* border: 2px solid brown; */
+    z-index: 10;
+    width: auto;
+    /* margin-top: 2rem; */
+    list-style-type: none;
+    
+    /* background-color: darkolivegreen; */
+    height: 55vh;
+    
+    overflow: hidden;
+  }
+  .no-side {
+    transition-property: height;
+    transition-duration: 500ms;
+    display: grid;
+    grid-auto-flow: row;
+    row-gap: .5rem;
+   
+     background-color: wheat;
+    list-style-type: none;
+    /* padding: 1rem 1.5rem 2rem 2rem; */
+    position: absolute;
+    /* display: none; */
+    width: 35vw;
+  height: 0;
+  overflow: hidden;
 
-  padding: 1rem 1.5rem;
+
+
+} 
+
+
+.side li {
+  /* background-color: red; */
+  /* flex-grow: 1; */
+  /* grid-template-rows: repeat(3, 120px); */
+  /* row-gap: 1rem; */
+  /* height: 70vh; */
+  align-content: center;
+  /* margin-bottom: 1rem; */
   
+  /* background-color: #e6e6fa; */
+  padding: .5rem;
+  width: 10rem;
+  /* text-decoration: none; */
+  
+  text-align: center;
+  border-radius: 5px;
+  /* box-shadow: 0.2em 0.3em 0.4em gray; */
 }
 
-
+.side >*:nth-child(1){
+  /* background-color: blue; */
+  /* margin-top: 1rem; */
+}
 
 .side-links {
   text-decoration: none;
-      /* background-color: red; */
-      /* flex-grow: 1; */
-      /* grid-template-rows: repeat(3, 120px); */
-      row-gap: 1rem;
-      /* height: 70vh; */
-      align-content: center;
 
-        background-color: #e6e6fa;
-  padding: .5rem;
-  width: 10rem;
-  text-decoration: none;
-  text-align: center;
-  border-radius: 5px;
-  box-shadow: 0.2em 0.3em 0.4em gray;
 }
 
+/* .no-side-links {
+  display: none;
+} */
 
 
-.side-links:active {
+
+.side li:active {
   transition-property: box-shadow scale;
   box-shadow: 0em 0em 0em gray;
   transform: scale(0.95, 0.95);
   transition-duration: 0.1s;
+}
+
+.side li:hover {
+  transition-property: all;
+  transition-duration: 300ms;
+  /* background: hsl(205, 86%, 81%);
+  color: hsl(205, 78%, 60%); */
+  padding-left: 1.5rem;
+  transform: scale(1.1);
 }
 
 
