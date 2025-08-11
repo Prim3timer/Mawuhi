@@ -975,6 +975,12 @@ column-gap: .5rem;
   text-decoration: none;
 }
 
+
+
+
+
+
+
 .header >*:nth-child(1){
   padding: .3rem .5rem;
   grid-column: 1 / 5;
@@ -1385,7 +1391,14 @@ color: whitesmoke;
 
   @media screen and (max-width: 391px) {
 
-
+.header>*:nth-child(1){
+  /* background-color: red; */
+  grid-column: 1/ 10 !important;
+}
+/* .header>*:nth-child(2){
+  background-color: red;
+  grid-column: 14/ 15;
+} */
 
     .reg-cont {
       width: 90%;
