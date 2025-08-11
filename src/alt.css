@@ -977,7 +977,8 @@ column-gap: .5rem;
 
 .header >*:nth-child(1){
   padding: .3rem .5rem;
-  grid-column: 1 / 4;
+  grid-column: 1 / 6;
+
   /* background-color: red; */
   /* background-color: red; */
 }
@@ -986,7 +987,7 @@ column-gap: .5rem;
   display: grid;
   grid-auto-flow: column;
 column-gap: 1rem;
-grid-column: 4/ 16 ;
+grid-column: 7/ 16 ;
 /* color: whitesmoke; */
 /* background-color: red; */
 /* width: 100vw; */
@@ -2014,6 +2015,12 @@ min-width: 45vw
   
   @media screen and (max-width: 700px) {
 
+    .header >*:nth-child(1){
+      /* background-color: red; */
+      grid-column: 1/8;
+    }
+   
+
     .head-home {
       display: block;
     }
@@ -2117,6 +2124,8 @@ display: none;
       height: 80vh;
       align-content: center;
     }
+
+    
     
     .home-cont h3 {
       font-size: 3rem;
