@@ -62,7 +62,7 @@ const App = () => {
   const { auth} = useAuth()
    const [home, setHome] = useState(false)
    
-const {isRotated, setIsRotated} = useContext(AuthContext)
+const {isRotated, setIsRotated, workbar} = useContext(AuthContext)
 
   const [state, dispatch] = useReducer(reducer, initialState)
 
@@ -79,19 +79,8 @@ const {isRotated, setIsRotated} = useContext(AuthContext)
 return (
 
   <main className="App"
+   onClick={workbar}
   >
-
-
-{/* 
-                <div
-                className={auth.accessToken ? 'show-home-links' : 'hide-home-links'}>
-            {auth.accessToken && mainLinks.map((mainLink)=> {
-                    const {id, name, path} = mainLink
-                return (
-                        <Link to={path} className="home-links" onClick={logout} key={id}>{name}</Link>
-                    )
-                })}
-                </div> */}
 
 
 

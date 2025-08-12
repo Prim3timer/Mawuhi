@@ -2060,25 +2060,19 @@ position: fixed;
     width: 55vw;
     overflow: hidden;
     z-index: 10;
-  }
-  .no-side {
-    display: grid;
-    justify-content: center;
-    transition-property: height;
-    transition-duration: 300ms;
-    /* display: grid;
-    grid-auto-flow: row; */
-     /* z-index: 10; */
-
-    /* list-style-type: none; */
-    /* padding: 1rem 1.5rem 2rem 2rem; */
-    position: absolute;
-    /* display: none; */
-    width: 55vw;
-  height: 0;
-  overflow: hidden;
-
-
+     box-shadow: 0.5em 0.5em 0.4em gray;
+    }
+    .no-side {
+      display: grid;
+      justify-content: center;
+      transition-property: height;
+      transition-duration: 300ms;
+      position: absolute;
+      /* display: none; */
+      width: 55vw;
+      height: 0;
+      overflow: hidden;
+      box-shadow: 0.5em 0.5em 0.4em gray;
 
 } 
 

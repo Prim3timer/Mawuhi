@@ -9,11 +9,11 @@ import AuthContext from "../context/authProvider"
 import mainLinks from "./mainLinks"
 const SideBar = () => {
     const {auth} = useAuth()
-    const {isRotated, setIsRotated} = useContext(AuthContext)
+    const {isRotated, setIsRotated, barRef} = useContext(AuthContext)
     const sideRef = useRef()
     const logout = useLogout()
     const moreThanLogout = ()=> {
-        logout()
+        // logout()
         setIsRotated(false)
     }
     const linkItems = document.getElementsByClassName('side-links')
@@ -37,7 +37,7 @@ const SideBar = () => {
             {mainLinks.map((mainLink)=> {
                     const {id, name, path} = mainLink
                 return (
-                        <li key={id}>
+                        <li key={id} onClick={moreThanLogout}>
                             <Link to={path} className="side-links" >{name}</Link>
                             {/* <hr className="hoz-line"></hr> */}
                             </li>

@@ -10,9 +10,9 @@ import mainLinks from "./mainLinks"
 const NavBar = ()=> {
   
   //  const [isRotated, setIsRotated] = useState(false)
-  const {isRotated, setIsRotated} = useContext(AuthContext)
+  const {isRotated, setIsRotated, barRef} = useContext(AuthContext)
      const navigate = useNavigate();
-   const barRef = useRef(null)
+
   const { auth} = useAuth()
     const workBar = ()=> {
   if (isRotated == false){
@@ -28,12 +28,6 @@ const NavBar = ()=> {
     setIsRotated(false)
 
   }
-
-  
-
-  
-    
-
 }
 
 
