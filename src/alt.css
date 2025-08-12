@@ -2094,7 +2094,7 @@ position: fixed;
    height: 100%;
     /* border: 2px solid brown; */
   overflow-x: auto;
-    width: 50vw;
+    width: 60vw;
     /* margin-top: 2rem; */
     list-style-type: none;
 }
@@ -2105,7 +2105,7 @@ position: fixed;
   /* margin-top: 1rem; */
   background-color: #1e293b;
   padding: .5rem 1rem;
-  min-width: 100%;
+  min-width: 90%;
   box-shadow: 0.2em 0.3em 0.4em gray;
   text-align: center;
 }
