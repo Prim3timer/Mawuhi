@@ -2046,7 +2046,7 @@ min-width: 45vw
     transition-property: height;
     transition-duration: 300ms;
    
-    position: absolute;
+    position: fixed;
     /* background-color: darkolivegreen; */
     height: 60vh;
         /* background-color:blue; */
@@ -2081,6 +2081,7 @@ min-width: 45vw
     justify-items: center;
     align-items: center;
     background-color: mistyrose;
+    opacity: .9;
     /* justify-content: center; */
     padding: 1rem;
     /* width: 100%; */
