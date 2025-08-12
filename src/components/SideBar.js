@@ -32,9 +32,9 @@ const SideBar = () => {
         <div>
 
             <section
-            className={isRotated ? 'side' : 'no-side'}>
+            className={auth.accessToken && isRotated ? 'side' : 'no-side'}>
                 <ul  className="links-container">
-            {auth.accessToken && mainLinks.map((mainLink)=> {
+            {mainLinks.map((mainLink)=> {
                     const {id, name, path} = mainLink
                 return (
                         <li key={id}>
