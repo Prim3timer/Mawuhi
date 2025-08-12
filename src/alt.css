@@ -2018,7 +2018,8 @@ width: 70vw;
 
 .side {
   
-min-width: 45vw
+min-width: 45vw;
+position: fixed;
   /* margin-top: 2rem; */
 
 
