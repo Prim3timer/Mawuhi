@@ -1388,6 +1388,10 @@ color: whitesmoke;
 
  
 
+ .links-container {
+  display: none;
+ }
+
   @media screen and (max-width: 391px) {
 
 .header>*:nth-child(1){
@@ -1770,7 +1774,7 @@ max-width: 95%;
 
   /* margin-top: 2rem; */
   min-width: 55vw !important;
-  background-color: red;
+  /* background-color: red; */
 
 
   
@@ -2039,38 +2043,29 @@ min-width: 45vw
 
    .side {
     
-    transition-property: height overflow;
-    transition-duration: 500ms;
-    display: grid;
-    grid-auto-flow: row;
-    /* row-gap: .5rem; */
+    transition-property: height;
+    transition-duration: 300ms;
+   
     position: absolute;
-    background-color: wheat;
-    padding: 0 .5rem;
-    /* border: 2px solid brown; */
-    z-index: 10;
-    /* width: auto; */
-    /* margin-top: 2rem; */
-    list-style-type: none;
-    
     /* background-color: darkolivegreen; */
-    height: 55vh;
-    
+    height: 50vh;
+        /* background-color:blue; */
+        width: 55vw;
     overflow: hidden;
+    z-index: 10;
   }
   .no-side {
     transition-property: height;
-    transition-duration: 500ms;
-    display: grid;
-    grid-auto-flow: row;
-    row-gap: .5rem;
-   
-     background-color: wheat;
-    list-style-type: none;
+    transition-duration: 300ms;
+    /* display: grid;
+    grid-auto-flow: row; */
+     /* z-index: 10; */
+
+    /* list-style-type: none; */
     /* padding: 1rem 1.5rem 2rem 2rem; */
     position: absolute;
     /* display: none; */
-    width: 35vw;
+    width: 55vw;
   height: 0;
   overflow: hidden;
 
@@ -2078,27 +2073,26 @@ min-width: 45vw
 
 } 
 
-
-.side li {
-  /* background-color: red; */
-  /* flex-grow: 1; */
-  /* grid-template-rows: repeat(3, 120px); */
-  /* row-gap: 1rem; */
-  /* height: 70vh; */
-  align-content: center;
-  /* margin-bottom: 1rem; */
+.links-container {
+ display: grid;
+    grid-auto-flow: row; 
+     row-gap: 1rem;
+    /* position: absolute; */
+    justify-items: center;
+    background-color: mistyrose;
+    /* justify-content: center; */
+    padding: 1rem;
+    /* width: 100%; */
+   height: 100%;
+    /* border: 2px solid brown; */
   
-  /* background-color: #e6e6fa; */
-  padding: .5rem;
-  width: 10rem;
-  /* text-decoration: none; */
-  
-  text-align: center;
-  border-radius: 5px;
-  /* box-shadow: 0.2em 0.3em 0.4em gray; */
+    width: 55vw;
+    /* margin-top: 2rem; */
+    list-style-type: none;
 }
 
-.side >*:nth-child(1){
+
+.links-container >*:nth-child(1){
   /* background-color: blue; */
   /* margin-top: 1rem; */
 }

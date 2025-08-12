@@ -28,9 +28,12 @@ const SideBar = () => {
     console.log(isRotated)
     return (
         <div>
+            <section
+            className={isRotated ? 'side' : 'no-side'}
+            >
                <ul
-                  className={isRotated ? 'side' : 'no-side'}
-                //   className={'side' }
+                
+                  className={'links-container' }
                   ref={sideRef}
                   >
                         {/* <h3>SideBar</h3> */}
@@ -104,6 +107,7 @@ const SideBar = () => {
                 >
             sign out</Link></li>
                 </ul>
+                </section>
         </div>
     )
 }

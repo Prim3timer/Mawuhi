@@ -165,9 +165,7 @@ useEffect(()=> {
         >
         </div>
 
-            <button onClick={signOut}
-          className="logout"
-            >Sign Out</button>
+        
     </div>
     )
 }
