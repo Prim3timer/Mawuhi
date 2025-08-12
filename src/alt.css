@@ -1004,11 +1004,16 @@ overflow-y: auto;
 
 .show-home-links >* {
   background-color: lightcyan;
-  color: darkslateblue;
+  color: #1e293b;
   padding: .3rem;
   width: 9rem;
   text-align: center;
   /* box-shadow: 0.2em 0.3em 0.4em white; */
+}
+
+.show-home-links>*:last-child {
+  background-color: firebrick;
+  color: whitesmoke;
 }
 
 .show-home-links>*:active {
@@ -2105,6 +2110,9 @@ position: fixed;
   text-align: center;
 }
 
+.links-container>*:last-child{
+  background-color: firebrick;
+}
 .side-links {
   color: whitesmoke;
 

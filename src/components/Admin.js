@@ -52,13 +52,7 @@ console.log(users)
                        
                        to="/create-item">add item</Link>
             
-              <Link 
-                        // onClick={showDem}
-                        
-                        to="/sales"
-                        
-                        // className="home-links"
-                        >sales</Link>
+            
             </div>
             {<h2>Loading...</h2> && 
              
