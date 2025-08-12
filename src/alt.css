@@ -2048,7 +2048,8 @@ position: fixed;
     }
 
    .side {
-    
+    display: grid;
+    justify-content: center;
     transition-property: height;
     transition-duration: 300ms;
    
