@@ -6,7 +6,7 @@ import useAuth from "../hooks/useAuth"
 import useLogout from "../hooks/useLogout";
 import SideBar from "./SideBar"
 import AuthContext from "../context/authProvider"
-
+import mainLinks from "./mainLinks"
 const NavBar = ()=> {
   
   //  const [isRotated, setIsRotated] = useState(false)
@@ -58,55 +58,22 @@ const logout = useLogout()
          <div  className="header">
  
              <h4> Retail Tracker</h4> 
-             <div className={auth.accessToken ? 'show-home-links' : 'hide-home-links'}>
 
-             
-                        <Link 
-                        className="home-links"
-                        
-                        to="/transactions">transaction</Link>
-                      
-                     
-                      
-                     
-                   
-                        <Link to="/item-list"
-                       className="home-links"
-                       >items</Link>
-                        
-                   
-                        <Link to="/inventory"
-                       className="home-links"
-                       
-                       >inventory</Link>
-                
-                        {/* <Link to="/emp-inv">Inventory2</Link> */}
-                     
-                        {/* <Link         
-                        to="/editor">bars</Link>
-                        <br/> */}
-                     
-                        <Link
-                        to="/shopping"
-                        
-                        className="home-links"
-                        
-                        >reciepts</Link>
-                           <Link to="/admin"
-                       className="home-links"
-                       
-                       >admin</Link>
+                <div
+                className={auth.accessToken ? 'show-home-links' : 'hide-home-links'}>
+            {mainLinks.map((mainLink)=> {
+                    const {id, name, path} = mainLink
+                return (
+                        <Link to={path} className="home-links" key={id}>{name}</Link>
+                    )
+                })}
+                <Link to="/login" className="home-links" onClick={logout}>logout</Link>
+                </div>
+            
 
-                       
-                    <Link 
-                    // onClick={showDem}
-                    className="home-links"
-                    
-                    to="/sales">sales</Link>
-                       
-                  <Link to="/login" className="home-links" id="logout" onClick={logout}>
-            sign out</Link>
-                        </div>
+
+
+           
              
             { auth.accessToken &&  <div className="head-home">
                   <p><FontAwesomeIcon ref={barRef} className="home-icon" onClick={workBar} icon={faBars}/></p>

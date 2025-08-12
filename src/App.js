@@ -80,9 +80,25 @@ return (
 
   <main className="App"
   >
+
+
+{/* 
+                <div
+                className={auth.accessToken ? 'show-home-links' : 'hide-home-links'}>
+            {auth.accessToken && mainLinks.map((mainLink)=> {
+                    const {id, name, path} = mainLink
+                return (
+                        <Link to={path} className="home-links" onClick={logout} key={id}>{name}</Link>
+                    )
+                })}
+                </div> */}
+
+
+
+
    <NavBar isRotated={isRotated} setIsRotated={setIsRotated}/>
 
-   {<SideBar isRotated={isRotated} setIsRotated={setIsRotated}/>}
+   { <SideBar isRotated={isRotated} setIsRotated={setIsRotated}/>}
     <article className="main">
       <Routes>
          {/* public routes */}
