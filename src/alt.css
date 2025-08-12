@@ -2052,16 +2052,18 @@ position: fixed;
     justify-content: center;
     transition-property: height;
     transition-duration: 300ms;
-   
+    
     position: fixed;
     /* background-color: darkolivegreen; */
     height: 60vh;
-        /* background-color:blue; */
-        width: 55vw;
+    /* background-color:blue; */
+    width: 55vw;
     overflow: hidden;
     z-index: 10;
   }
   .no-side {
+    display: grid;
+    justify-content: center;
     transition-property: height;
     transition-duration: 300ms;
     /* display: grid;
