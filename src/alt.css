@@ -2192,14 +2192,14 @@ width: 70vw;
 
 
 
-.links-container li:active {
+.links-container >*:active {
   transition-property: box-shadow scale;
   box-shadow: 0em 0em 0em gray;
   transform: scale(0.9, 0.9);
   transition-duration: 0.1s;
 }
 
-.links-container li:hover {
+.links-container >*:hover {
   transition-property: all;
   transition-duration: 300ms;
    background: darkslategray;
