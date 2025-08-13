@@ -53,7 +53,8 @@ const logout = useLogout()
  
              {!auth.accessToken &&<h4> Retail Tracker</h4> }
                { auth.accessToken &&  <div className="head-home">
-                  <p><FontAwesomeIcon ref={barRef} className="home-icon" onClick={workBar} icon={faBars}/></p>
+                  <p><FontAwesomeIcon ref={barRef} className={
+                    !isRotated ? "home-icon rotate-icon" : "home-icon"} onClick={workBar} icon={faBars}/></p>
                     </div>}
 
                 <div

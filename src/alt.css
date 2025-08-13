@@ -1054,15 +1054,17 @@ overflow-y: auto;
 
 .home-icon {
   color: whitesmoke;
+  transition-property: transform;
+  transition-duration:  300ms;
+  transform: rotate(90deg)
 }
 
-/* transition: property duration timing-function delay */
-/* 
-.home-icon:active {
+.rotate-icon {
   transition-property: transform;
-  transition-duration: 200ms;
-  transform: rotate(-90deg);
-} */
+  transition-duration:  300ms;
+  transform: rotate(0deg)
+}
+
 
 
 
@@ -2112,7 +2114,7 @@ width: 70vw;
     justify-content: center;
     transition-property: width;
     transition-duration: 300ms;
-    margin-top: -3.5rem;
+    /* margin-top: -3.5rem; */
     
     z-index: 10;
     /* background-color: darkolivegreen; */
@@ -2125,12 +2127,13 @@ width: 70vw;
   .no-side {
     display: grid;
     justify-content: center;
+    position: fixed;
     transition-property: width;
     transition-duration: 300ms;
-    position: fixed;
+    /* margin-top: -3.5rem; */
     /* display: none; */
     width: 0vw;
-    height: 90vh;
+    height: 100vh;
     overflow-x: hidden;
     box-shadow: 0.5em 0.5em 0.4em gray;
     z-index: 10;
