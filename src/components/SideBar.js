@@ -38,7 +38,7 @@ const SideBar = () => {
                     const {id, name, path} = mainLink
                 return (
                         <li key={id} onClick={moreThanLogout}>
-                            <Link to={path} className="side-links" >{name}</Link>
+                            <Link  key={id} to={path} className="side-links" >{name}</Link>
                             {/* <hr className="hoz-line"></hr> */}
                             </li>
                         

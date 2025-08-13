@@ -1019,7 +1019,7 @@ overflow-y: auto;
 .show-home-links>*:active {
     transition-property: box-shadow scale;
   box-shadow: 0em 0em 0em white;
-  transform: scale(0.95, 0.95);
+  transform: scale(0.9, 0.9);
   transition-duration: 0.1s;
 }
 
