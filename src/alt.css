@@ -2118,7 +2118,7 @@ width: 70vw;
     
     z-index: 10;
     /* background-color: darkolivegreen; */
-    height: 100vh;
+    height: 90vh;
     /* background-color:blue; */
     width: 75vw;
     overflow-x: hidden;
@@ -2133,7 +2133,7 @@ width: 70vw;
     /* margin-top: -3.5rem; */
     /* display: none; */
     width: 0vw;
-    height: 100vh;
+    height: 90vh;
     overflow-x: hidden;
     box-shadow: 0.5em 0.5em 0.4em gray;
     z-index: 10;

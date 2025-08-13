@@ -17,14 +17,10 @@ const NavBar = ()=> {
     const workBar = ()=> {
   if (isRotated == false){
     
-    // barRef.current.style.transitionProperty = 'transform'
-    // barRef.current.style.transitionDuration = '200ms'
-    // barRef.current.style.transform = 'rotate(-90deg)'
+    
     setIsRotated(true)
   } else {
-    // barRef.current.style.transitionProperty = 'transform'
-    // barRef.current.style.transitionDuration = '200ms'
-    // barRef.current.style.transform = 'rotate(0deg)'
+
     setIsRotated(false)
 
   }
