@@ -2136,7 +2136,7 @@ width: 70vw;
     position: fixed;
     /* display: none; */
     width: 0vw;
-    /* height: 0; */
+    height: 90vh;
     overflow-x: hidden;
     box-shadow: 0.5em 0.5em 0.4em gray;
     z-index: 10;
