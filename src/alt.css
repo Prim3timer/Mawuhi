@@ -943,8 +943,9 @@ column-gap: .5rem;
     padding: .5rem 0;
     color: whitesmoke;
     z-index: 5;
+    
+  }
   
-}
 
 .head-home {
     display: none;
@@ -1399,15 +1400,6 @@ color: whitesmoke;
  }
 
   @media screen and (max-width: 391px) {
-
-.header>*:nth-child(1){
-  /* background-color: red; */
-  /* grid-column: 1/ 10 !important; */
-}
-/* .header>*:nth-child(2){
-  background-color: red;
-  grid-column: 14/ 15;
-} */
 
     .reg-cont {
       width: 90%;
@@ -2112,16 +2104,19 @@ width: 70vw;
   display: none;
 }
 
+
+
    .side {
     /* display: grid; */
+    position: fixed;
     justify-content: center;
     transition-property: width;
     transition-duration: 300ms;
+    margin-top: -3.5rem;
     
     z-index: 10;
-    position: fixed;
     /* background-color: darkolivegreen; */
-    height: 90vh;
+    height: 100vh;
     /* background-color:blue; */
     width: 75vw;
     overflow-x: hidden;
