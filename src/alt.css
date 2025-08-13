@@ -942,7 +942,7 @@ column-gap: .5rem;
     background-color: #1e293b;;
     padding: .5rem 0;
     color: whitesmoke;
-    z-index: 20;
+    z-index: 5;
   
 }
 
@@ -967,6 +967,7 @@ column-gap: .5rem;
   grid-template-columns: repeat(15, 1fr);
   column-gap: .5rem;
   align-items: center;
+  justify-items: center;
   padding: .5rem 1rem;
   top: 0;
 }
@@ -984,7 +985,7 @@ column-gap: .5rem;
 
 .header >*:nth-child(1){
   padding: .3rem .5rem;
-  grid-column: 1 / 5;
+  grid-column: 1 / 1;
 
   /* background-color: red; */
   /* background-color: red; */
@@ -994,7 +995,7 @@ column-gap: .5rem;
   display: grid;
   grid-auto-flow: column;
 column-gap: 1rem;
-grid-column: 5/ 16 ;
+grid-column: 1/ 16 ;
 /* color: whitesmoke; */
 /* background-color: red; */
 /* width: 100vw; */
@@ -1026,11 +1027,11 @@ overflow-y: auto;
 .hide-home-links {
   display: none;
 }
-
+/* 
 .header >*:nth-child(3){
   grid-column: 14/ 15 ;
   color: whitesmoke;
-}
+} */
 
 
 .admin-links {
@@ -1401,7 +1402,7 @@ color: whitesmoke;
 
 .header>*:nth-child(1){
   /* background-color: red; */
-  grid-column: 1/ 10 !important;
+  /* grid-column: 1/ 10 !important; */
 }
 /* .header>*:nth-child(2){
   background-color: red;
@@ -1635,7 +1636,7 @@ row-gap: 1rem;
 
   .side {
 
-min-width: 60vw
+/* min-width: 60vw */
 /* margin-top: 2rem; */
 
 
@@ -1778,7 +1779,7 @@ max-width: 95%;
        .side {
 
   /* margin-top: 2rem; */
-  min-width: 55vw !important;
+  /* min-width: 55vw !important; */
   /* background-color: red; */
 
 
@@ -2023,8 +2024,8 @@ width: 70vw;
 
 .side {
   
-min-width: 45vw;
-position: fixed;
+/* min-width: 45vw; */
+/* position: fixed; */
   /* margin-top: 2rem; */
 
 
@@ -2035,114 +2036,9 @@ position: fixed;
   }
 
   
-  @media screen and (max-width: 700px) {
+  @media screen and (max-width: 800px) {
 
-    .header >*:nth-child(1){
-      /* background-color: red; */
-      grid-column: 1/8;
-    }
    
-
-    .head-home {
-      display: block;
-    }
-
-   .side {
-    display: grid;
-    justify-content: center;
-    transition-property: height;
-    transition-duration: 300ms;
-    
-    position: fixed;
-    /* background-color: darkolivegreen; */
-    height: 60vh;
-    /* background-color:blue; */
-    width: 55vw;
-    overflow: hidden;
-    z-index: 10;
-     box-shadow: 0.5em 0.5em 0.4em gray;
-    }
-    .no-side {
-      display: grid;
-      justify-content: center;
-      transition-property: height;
-      transition-duration: 300ms;
-      position: absolute;
-      /* display: none; */
-      width: 55vw;
-      height: 0;
-      overflow: hidden;
-      box-shadow: 0.5em 0.5em 0.4em gray;
-
-} 
-
-.links-container {
- display: grid;
-    /* grid-template-columns: repeat(1, 1fr);  */
-     row-gap: 1rem;
-    /* position: absolute; */
-    justify-items: center;
-    align-items: center;
-    background-color: mistyrose;
-    opacity: .9;
-    /* justify-content: center; */
-    padding: 1rem;
-    /* width: 100%; */
-   height: 100%;
-    /* border: 2px solid brown; */
-  overflow-x: auto;
-    width: 60vw;
-    /* margin-top: 2rem; */
-    list-style-type: none;
-}
-
-
-.links-container >*{
-  /* background-color: blue; */
-  /* margin-top: 1rem; */
-  background-color: #1e293b;
-  padding: .5rem 1rem;
-  min-width: 90%;
-  box-shadow: 0.2em 0.3em 0.4em gray;
-  text-align: center;
-}
-
-.links-container>*:last-child{
-  background-color: firebrick;
-}
-.side-links {
-  color: whitesmoke;
-
-
-  text-decoration: none;
-
-}
-
-
-/* .no-side-links {
-  display: none;
-} */
-
-
-
-.links-container li:active {
-  transition-property: box-shadow scale;
-  box-shadow: 0em 0em 0em gray;
-  transform: scale(0.9, 0.9);
-  transition-duration: 0.1s;
-}
-
-.links-container li:hover {
-  transition-property: all;
-  transition-duration: 300ms;
-   background: darkslategray;
-  /* transform: scale(1.1); */
-}
-
-
-    .header >*:nth-child(2){
-display: none;
-}
 #update-form {
  
   top:15%;
@@ -2204,19 +2100,116 @@ display: none;
     }
    }
    @media screen and (max-width: 1200px) {
-/* .sales-total >*:nth-child(1) {
-      grid-column: 2/3;
+ .header >*:nth-child(1){
+  display: block;
+      /* background-color: red; */
+      grid-column: 1/1;
+    }
+   .show-home-links {
+    display: none;
+   }
+
+    /* .head-home {
+      grid-column: 1 / 2;
+    } */
+
+   .side {
+    /* display: grid; */
+    justify-content: center;
+    transition-property: width;
+    transition-duration: 300ms;
     
-    }
-    .sales-total >*:nth-child(2) {
-      grid-column: 5/7;
-    }
-    .sales-total >*:nth-child(3) {
-      grid-column: 9/14;
-    }
-      .cash-payment {
-        width: 90%;
-      } */
+    z-index: 10;
+    position: fixed;
+    /* background-color: darkolivegreen; */
+    height: 90vh;
+    /* background-color:blue; */
+    width: 75vw;
+    overflow-x: hidden;
+    box-shadow: 0.2em 0.3em 0.8em gray;
+  }
+  .no-side {
+    display: grid;
+    justify-content: center;
+    transition-property: width;
+    transition-duration: 300ms;
+    position: fixed;
+    /* display: none; */
+    width: 0vw;
+    /* height: 0; */
+    overflow-x: hidden;
+    box-shadow: 0.5em 0.5em 0.4em gray;
+    z-index: 10;
+
+} 
+
+.links-container {
+ display: grid;
+    /* grid-template-columns: repeat(1, 1fr);  */
+     row-gap: 1rem;
+    /* position: absolute; */
+    justify-items: center;
+    align-items: center;
+    background-color: mistyrose;
+    /* opacity: .9; */
+    /* justify-content: center; */
+    padding: 2rem 0;
+    /* width: 100%; */
+   height: 100%;
+    /* border: 2px solid brown; */
+  overflow-x: auto;
+    /* width: 75vw; */
+    /* margin-top: 2rem; */
+    list-style-type: none;
+}
+
+
+.links-container >*{
+  /* background-color: blue; */
+  /* margin-top: 1rem; */
+  background-color: #1e293b;
+  padding: .5rem 1rem;
+  width: 60%;
+  box-shadow: 0.2em 0.3em 0.4em gray;
+  text-align: center;
+}
+
+.links-container>*:last-child{
+  background-color: firebrick;
+}
+.side-links {
+  color: whitesmoke;
+
+
+  text-decoration: none;
+
+}
+
+
+/* .no-side-links {
+  display: none;
+} */
+
+
+
+.links-container li:active {
+  transition-property: box-shadow scale;
+  box-shadow: 0em 0em 0em gray;
+  transform: scale(0.9, 0.9);
+  transition-duration: 0.1s;
+}
+
+.links-container li:hover {
+  transition-property: all;
+  transition-duration: 300ms;
+   background: darkslategray;
+  /* transform: scale(1.1); */
+}
+
+
+    .header >*:nth-child(2){
+display: none;
+}
       
     .home-cont h3 {
       /* background-color: red; */

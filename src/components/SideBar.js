@@ -14,7 +14,9 @@ const SideBar = () => {
     const logout = useLogout()
     const moreThanLogout = ()=> {
         // logout()
-        setIsRotated(false)
+
+            setIsRotated(false)
+
     }
     const linkItems = document.getElementsByClassName('side-links')
     for (let i; i < linkItems.length; i++){
@@ -37,10 +39,9 @@ const SideBar = () => {
             {mainLinks.map((mainLink)=> {
                     const {id, name, path} = mainLink
                 return (
-                        <li key={id} onClick={moreThanLogout}>
-                            <Link  key={id} to={path} className="side-links" >{name}</Link>
-                            {/* <hr className="hoz-line"></hr> */}
-                            </li>
+                    
+                            <Link  key={id} to={path} className="side-links" onClick={moreThanLogout}><li key={id} >{name}</li></Link>
+                            
                         
                     )
                 })}

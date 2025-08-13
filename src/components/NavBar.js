@@ -51,7 +51,10 @@ const logout = useLogout()
     return (
          <div  className="header">
  
-             <h4> Retail Tracker</h4> 
+             {/* <h4> Retail Tracker</h4>  */}
+               { auth.accessToken &&  <div className="head-home">
+                  <p><FontAwesomeIcon ref={barRef} className="home-icon" onClick={workBar} icon={faBars}/></p>
+                    </div>}
 
                 <div
                 className={auth.accessToken ? 'show-home-links' : 'hide-home-links'}>
@@ -69,9 +72,7 @@ const logout = useLogout()
 
            
              
-            { auth.accessToken &&  <div className="head-home">
-                  <p><FontAwesomeIcon ref={barRef} className="home-icon" onClick={workBar} icon={faBars}/></p>
-                    </div>}
+          
                       
             </div>
     )
