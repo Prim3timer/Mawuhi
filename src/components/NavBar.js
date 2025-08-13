@@ -51,20 +51,20 @@ const logout = useLogout()
     return (
          <div  className="header">
  
-             {/* <h4> Retail Tracker</h4>  */}
+             {!auth.accessToken &&<h4> Retail Tracker</h4> }
                { auth.accessToken &&  <div className="head-home">
                   <p><FontAwesomeIcon ref={barRef} className="home-icon" onClick={workBar} icon={faBars}/></p>
                     </div>}
 
                 <div
                 className={auth.accessToken ? 'show-home-links' : 'hide-home-links'}>
-            {mainLinks.map((mainLink)=> {
+            {auth.accessToken && mainLinks.map((mainLink)=> {
                     const {id, name, path} = mainLink
                 return (
                         <Link to={path} className="home-links" key={id}>{name}</Link>
                     )
                 })}
-                <Link to="/login" className="home-links" onClick={logout}>logout</Link>
+                {auth.accessToken && <Link to="/login" className="home-links" onClick={logout}>logout</Link>}
                 </div>
             
 

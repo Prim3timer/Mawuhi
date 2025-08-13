@@ -28,7 +28,7 @@ const SideBar = () => {
     // if (isRotated){
     //     sideRef.current.style.backgroundColor = 'red'
     // }
-    console.log({mainLinks})
+    // console.log({mainLinks})
     console.log(isRotated)
     return (
         <div>
@@ -45,7 +45,7 @@ const SideBar = () => {
                         
                     )
                 })}
-                <li><Link to='/login' className="side-links" onClick={logout}>logout</Link></li>
+                <Link to='/login' className="side-links" ><li onClick={logout}>logout</li></Link>
                 </ul>
             
             </section>
