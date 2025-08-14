@@ -1056,7 +1056,7 @@ overflow-y: auto;
   color: whitesmoke;
   transition-property: transform;
   transition-duration:  300ms;
-  transform: rotate(90deg)
+  transform: rotate(-90deg)
 }
 
 .rotate-icon {
@@ -2112,30 +2112,32 @@ width: 70vw;
     /* display: grid; */
     position: fixed;
     justify-content: center;
-    transition-property: width;
+    transition-property: all;
     transition-duration: 300ms;
     /* margin-top: -3.5rem; */
     
     z-index: 10;
     /* background-color: darkolivegreen; */
-    height: 90vh;
+    max-height: 90vh;
     /* background-color:blue; */
     width: 75vw;
+    right: 30%;
     overflow-x: hidden;
     box-shadow: 0.2em 0.3em 0.8em gray;
   }
   .no-side {
-    display: grid;
+    /* display: grid; */
     justify-content: center;
     position: fixed;
-    transition-property: width;
+    transition-property: all;
     transition-duration: 300ms;
     /* margin-top: -3.5rem; */
     /* display: none; */
-    width: 0vw;
-    height: 90vh;
-    overflow-x: hidden;
-    box-shadow: 0.5em 0.5em 0.4em gray;
+    width: 75vw;
+    right: 110%;
+    max-height: 90vh;
+    /* overflow-x: hidden; */
+    box-shadow: 0.2em 0.3em 0.8em gray;
     z-index: 10;
 
 } 
@@ -2153,7 +2155,7 @@ width: 70vw;
     /* justify-content: center; */
     padding: 2rem 0;
     /* width: 100%; */
-   height: 100%;
+   /* height: 100%; */
     /* border: 2px solid brown; */
   overflow-x: auto;
     /* width: 75vw; */

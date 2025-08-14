@@ -1,5 +1,5 @@
 
-import { useState, useRef, useContext } from "react"
+import { useState, useRef, useContext, useEffect } from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck, faLeftLong, faBars } from "@fortawesome/free-solid-svg-icons"
 import { Link, useNavigate } from "react-router-dom"
@@ -11,6 +11,7 @@ const SideBar = () => {
     const {auth} = useAuth()
     const {isRotated, setIsRotated, barRef} = useContext(AuthContext)
     const sideRef = useRef()
+    const linksRef = useRef()
     const logout = useLogout()
     const moreThanLogout = ()=> {
         // logout()
@@ -30,17 +31,25 @@ const SideBar = () => {
     // }
     // console.log({mainLinks})
     console.log(isRotated)
+
+    useEffect(()=> {
+        const linksHeight = linksRef.current.getBoundingClientRect().height
+        if (isRotated){
+            sideRef.current.style.height = `${linksHeight}px`
+        } 
+    }, [isRotated])
     return (
         <div>
 
             <section
+            ref={sideRef}
             className={auth.accessToken && isRotated ? 'side' : 'no-side'}>
-                <ul  className="links-container">
+                <ul  className="links-container" ref={linksRef}>
             {mainLinks.map((mainLink)=> {
                     const {id, name, path} = mainLink
                 return (
                     
-                            <Link  key={id} to={path} className="side-links" onClick={moreThanLogout}><li key={id} >{name}</li></Link>
+                            <Link  key={id} to={path} className="side-links" onClick={moreThanLogout} ><li key={id} >{name}</li></Link>
                             
                         
                     )

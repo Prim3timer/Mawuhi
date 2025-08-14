@@ -81,9 +81,6 @@ const Transactions = ()=> {
                     }, 3000)
                     
                 }
-                
-                // console.log(state.transArray)
-                // console.log(state.getNames)
             } else {
                 // setFirstRedChecker('tamgible')
                 // dispatch({type: 'errMsg', payload: 'Please select an item'})
@@ -334,7 +331,7 @@ useEffect(()=> {
 useEffect(()=> {
 
 // if (sessionId){
-    refresh()
+    // refresh()
 
 // }
 }, [])
