@@ -180,7 +180,7 @@ const {auth, getTrans, itemRef,
 
   return  (
       
-             !state.getNames ? <h2 className="item-list">...Loading</h2> :<div className="item-list"
+             !state.getNames.length ? <h2 className="item-list">Loading...</h2> :<div className="item-list"
            
               onClick={remainDelete}
               >  

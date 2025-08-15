@@ -149,7 +149,7 @@ function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
     return (
-        !state.getNames ? <h2
+        !state.getNames.length ? <h2
         
         className="receipts"
         >Loading...</h2> : <div

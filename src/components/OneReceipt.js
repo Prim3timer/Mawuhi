@@ -19,7 +19,7 @@ const navigate = useNavigate()
 
 const location = useLocation()
 // window.history.pushState(null, null, '/shop');
-window.history.pushState(null, null, '/transactions');
+// window.history.pushState(null, null, '/transactions');
 
 
 
