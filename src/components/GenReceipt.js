@@ -11,7 +11,7 @@ import { FaTrashAlt } from "react-icons/fa";
 import Unauthorized from "./Unauthorized";
 import { Link } from "react-router-dom";
 
-const Shopping = ()=> {
+const GenShopping = ()=> {
 const [state, dispatch] = useReducer(reducer, initialState)
 const [showOne, setShowOne] = useState(false)
 const [oneId, setOneId] = useState('')
@@ -41,8 +41,8 @@ const getItems = async ()=> {
             if (response){
         
              
-                const cashierTrans = response.data.filter((item) => item.cashierID === auth.picker3)
-                      const person = auth.user && auth.users.find((person) => person._id == auth.picker3)
+                const cashierTrans = response.data.filter((item) => item.cashierID === auth.picker)
+                      const person = auth.user && auth.users.find((person) => person._id == auth.picker)
                       console.log(person)
                       if (person ){
                           setCurrentUser(person)
@@ -295,7 +295,7 @@ function numberWithCommas(x) {
     )
 }
 
-export default Shopping
+export default GenShopping
 
 
 

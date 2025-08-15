@@ -5,7 +5,8 @@ import axios, { axiosPrivate } from '../app/api/axios'
 import useAuth from '../hooks/useAuth'
 import AuthContext from '../context/authProvider'
 const {v4: uuid} = require('uuid')
-const Sales = ()=> {
+
+const GenSales = ()=> {
     const {atHome, setAtHome, setIsRotated} = useContext(AuthContext)
     console.log({atHome})
 const [state, dispatch] = useReducer(reducer, initialState)
@@ -49,11 +50,11 @@ const [specArray, setSpecArray] = useState([])
             // const response2 = await axiosPrivate.get('/users')
             // console.log(response2)
             console.log(response)
-            const newArray = response.data.filter((item)=> item.cashierID === auth.picker3)
+            const newArray = response.data.filter((item)=> item.cashierID === auth.picker)
             // console.log(newArray)
             
 
-                const person = auth.user && auth.users.find((person) => person._id == auth.picker3)
+                const person = auth.user && auth.users.find((person) => person._id == auth.picker)
                 setCurrenUser(person)
                 console.log(person)
        
@@ -182,4 +183,4 @@ const [specArray, setSpecArray] = useState([])
     )
 }
 
-export default Sales
+export default GenSales

@@ -158,7 +158,7 @@ function numberWithCommas(x) {
             <article id="form-cont">
                         <form  className="search-form"   onSubmit={(e)=> e.preventDefault()}>
                     <input 
-                    id="invent-search"
+                    id="gen-receipt-invent-search"
                     type="text"
                     role="searchbox" 
                     placeholder="Search by date"

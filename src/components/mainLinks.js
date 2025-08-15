@@ -22,12 +22,12 @@ const mainLinks = [
     {
         id: 5,
         name: 'sales',
-        path: '/sales'
+        path: '/gen-sales'
     },
     {
         id: 6,
         name: 'receipts',
-        path: '/receipts'
+        path: '/gen-shopping'
     },
     {
         id: 7,

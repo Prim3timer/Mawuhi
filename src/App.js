@@ -43,6 +43,8 @@ import { faCheck, faLeftLong, faBars } from "@fortawesome/free-solid-svg-icons"
 import NavBar from "./components/NavBar"
 import SideBar from "./components/SideBar"
 import AuthContext from "./context/authProvider"
+import GenSales from "./components/GenSales"
+import GenShopping from "./components/GenReceipt"
 // import SearchItem from "./SearchItem";
 
 
@@ -100,6 +102,7 @@ return (
        {/* <Route path="/thanks" element={<Thanks />}/> */}
     <Route path="single-item" element={<SingleItem/>}/>
         <Route path="shopping" element={<Reciepts />}/>
+        <Route path="gen-shopping" element={<GenShopping />}/>
          {/* <Route path="one-shop" element={<OneShop/>} /> */}
     <Route path="register" element={<Register/>}/>
          <Route path="linkpage" element={<LinkPage/>}/>
@@ -128,6 +131,8 @@ return (
        <Route path="all-sales" element={<AllSales
        />}/>
        <Route path="sales" element={<Sales
+       />}/>
+       <Route path="gen-sales" element={<GenSales
        />}/>
      <Route path="receipts" element={<Reciepts
      foucuser={auth.picker2}

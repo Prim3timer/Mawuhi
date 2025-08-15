@@ -638,11 +638,16 @@ align-items: center;
 
   
       #invent-search {
-        /* background-color: red; */
         width: 60%;
         height: 2rem;
         font-size: 2rem;
-       padding: 1.5rem .5rem;
+        padding: 1.5rem .5rem;
+      }
+      
+      #gen-receipt-invent-search{
+        font-size: 1.5rem;
+        /* background-color: red; */
+
       }
       
 
@@ -1402,7 +1407,7 @@ color: whitesmoke;
   display: none;
  }
 
- .no-side {
+ .side, .no-side {
   max-height: 0px;
  }
 
@@ -1709,7 +1714,7 @@ max-width: 95%;
 #invent-search {
   margin-left: 10rem;
   /* background-color: blue; */
-  max-width: 0%;
+  /* max-width: 0%; */
 }
 
 
