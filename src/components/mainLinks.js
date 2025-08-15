@@ -5,27 +5,32 @@ const mainLinks = [
         path: '/transactions'
     },
     {
-        id: 1,
+        id: 2,
+        name: 'add item',
+        path: '/create-item'
+    },
+    {
+        id: 3,
         name: 'items',
         path: '/item-list'
     },
     {
-        id: 1,
+        id: 4,
         name: 'inventory',
         path: '/inventory'
     },
     {
-        id: 1,
+        id: 5,
         name: 'sales',
         path: '/sales'
     },
     {
-        id: 1,
+        id: 6,
         name: 'receipts',
         path: '/receipts'
     },
     {
-        id: 1,
+        id: 7,
         name: 'admin',
         path: '/admin'
     },

@@ -47,11 +47,6 @@ console.log(users)
             style={{textAlign: 'center'}}
             >Users ({auth.users && auth.users.length})</h2> : ''}
             <div className="admin-links">
-
-                <Link
-                       
-                       to="/create-item">add item</Link>
-            
             
             </div>
             {<h2>Loading...</h2> && 

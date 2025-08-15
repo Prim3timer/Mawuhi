@@ -26,17 +26,20 @@ const SideBar = () => {
     }
 
 
-    // if (isRotated){
-    //     sideRef.current.style.backgroundColor = 'red'
-    // }
-    // console.log({mainLinks})
-    console.log(isRotated)
+
 
     useEffect(()=> {
         const linksHeight = linksRef.current.getBoundingClientRect().height
         if (isRotated){
             sideRef.current.style.height = `${linksHeight}px`
-        } 
+        }
+        //  else {
+        //     setTimeout(()=> {
+
+        //         sideRef.current.style.height = `0px`
+        //     }, 5)
+
+        // }
     }, [isRotated])
     return (
         <div>

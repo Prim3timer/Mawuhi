@@ -968,9 +968,10 @@ column-gap: .5rem;
   grid-template-columns: repeat(15, 1fr);
   column-gap: .5rem;
   align-items: center;
-  justify-items: center;
+  /* justify-items: center; */
   padding: .5rem 1rem;
   top: 0;
+  overflow-x: auto;
 }
 
 .home-links {
@@ -1399,6 +1400,10 @@ color: whitesmoke;
 
  .links-container {
   display: none;
+ }
+
+ .no-side {
+  max-height: 0px;
  }
 
   @media screen and (max-width: 391px) {
@@ -2232,7 +2237,7 @@ width: 70vw;
 
 
     .header >*:nth-child(2){
-display: none;
+/* display: none; */
 }
       
     .home-cont h3 {
