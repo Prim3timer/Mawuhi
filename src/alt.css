@@ -46,9 +46,10 @@ margin: 1rem 0 0 4rem;
 
 #roles select {
     /* background-color: red; */
-    transform: scale(1.2);
+    transform: scale(1.5);
     /* font-size: 1.5rem; */
     /* width: 2rem; */
+    margin-right: 2rem;
 }
 
 #user-active {
@@ -1442,6 +1443,7 @@ color: whitesmoke;
     /* background-color: red; */
     transform: scale(1);
     /* font-size: 1.5rem; */
+    margin:auto;
     /* width: 2rem; */
 }
 
