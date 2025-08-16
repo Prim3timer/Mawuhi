@@ -42,7 +42,7 @@ const getItems = async ()=> {
         
              
                 const cashierTrans = response.data.filter((item) => item.cashierID === auth.picker)
-                      const person = auth.user && auth.users.find((person) => person._id == auth.picker)
+                      const person = auth.users && auth.users.find((person) => person._id == auth.picker)
                       console.log(person)
                       if (person ){
                           setCurrentUser(person)
