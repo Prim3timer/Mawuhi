@@ -527,7 +527,6 @@ align-items: center;
 .form-label input {
   transform: scale(1.8);
   background-color: red;
-  width: 3rem;
 }
 .roles-select {
 
