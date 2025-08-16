@@ -2030,7 +2030,7 @@ width: 70vw;
     justify-content: center;
     transition-property: all;
     transition-duration: 300ms;
-    margin-top: -3rem;
+    margin-top: -4rem;
     
     z-index: 10;
     /* background-color: darkolivegreen; */
@@ -2047,7 +2047,7 @@ width: 70vw;
     position: fixed;
     transition-property: all;
     transition-duration: 300ms;
-    margin-top: -3rem;
+    margin-top: -4rem;
     /* display: none; */
     width: 75vw;
     right: 110%;
