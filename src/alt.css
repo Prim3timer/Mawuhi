@@ -44,6 +44,11 @@ margin: 1rem 0 0 4rem;
 
 }
 
+
+#user-active {
+  margin-left: .5rem;
+}
+
 .home > *:active {
   box-shadow: 0em 0em 0em gray;
   transition-property: box-shadow scale;
