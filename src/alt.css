@@ -18,6 +18,8 @@ place-content: center;
 .greeting {
   /* background-image: radial-gradient(whitesmoke, paleturquoise); */
 
+position: absolute;
+top: 3rem;
 margin: 1rem 0 0 4rem;
 }
 
