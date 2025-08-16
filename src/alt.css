@@ -17,10 +17,8 @@ place-content: center;
 
 .greeting {
   /* background-image: radial-gradient(whitesmoke, paleturquoise); */
-  /* position: fixed; */
-  top: 3rem;
-  margin-bottom: 1rem;
-  padding: .5rem;
+
+margin: 1rem 0 0 4rem;
 }
 
 
@@ -2160,6 +2158,7 @@ width: 70vw;
     /* background-color: darkolivegreen; */
     max-height: 90vh;
     /* background-color:blue; */
+    margin-top: -3rem;
     width: 40vw;
     right: 60%;
     overflow-x: hidden;
@@ -2171,7 +2170,7 @@ width: 70vw;
     position: fixed;
     transition-property: all;
     transition-duration: 300ms;
-    /* margin-top: -3.5rem; */
+    margin-top: -3rem;
     /* display: none; */
     width: 75vw;
     right: 110%;
