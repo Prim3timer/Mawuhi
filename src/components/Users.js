@@ -108,7 +108,7 @@ return (
  className="users-cont"
  
     >
-        <h4>{auth.user}</h4>
+        {/* <h4>{auth.user}</h4> */}
         {currentUsers?.length
         ? (
 
