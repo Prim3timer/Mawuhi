@@ -14,8 +14,13 @@
 display: grid;
 place-content: center;
 }
-.update-alert {
 
+.greeting {
+  /* background-image: radial-gradient(whitesmoke, paleturquoise); */
+  /* position: fixed; */
+  top: 3rem;
+  margin-bottom: 1rem;
+  padding: .5rem;
 }
 
 
@@ -2025,7 +2030,7 @@ width: 70vw;
     justify-content: center;
     transition-property: all;
     transition-duration: 300ms;
-    /* margin-top: -3.5rem; */
+    margin-top: -3rem;
     
     z-index: 10;
     /* background-color: darkolivegreen; */
@@ -2042,7 +2047,7 @@ width: 70vw;
     position: fixed;
     transition-property: all;
     transition-duration: 300ms;
-    /* margin-top: -3.5rem; */
+    margin-top: -3rem;
     /* display: none; */
     width: 75vw;
     right: 110%;
