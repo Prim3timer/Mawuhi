@@ -523,6 +523,12 @@ align-items: center;
 .user-action {
   border-radius: 5px;
 }
+
+.form-label input {
+  transform: scale(1.8);
+  background-color: red;
+  width: 3rem;
+}
 .roles-select {
 
                 width: 12rem;
