@@ -516,10 +516,13 @@ align-items: center;
                 font-size: 2rem;
                 display: grid;
                 place-content: center;
-                background-color: transparent;
+                background-color: white;
                 border-color: transparent;
 }
 
+.user-action {
+  border-radius: 5px;
+}
 .roles-select {
 
                 width: 12rem;

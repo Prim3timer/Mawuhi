@@ -187,9 +187,7 @@ function numberWithCommas(x) {
            
             >{currentUser && currentUser.username}'s Reciepts ({state.getNames.length})</h2>
             {state.getNames && state.getNames.map((item)=> {
-                console.log(state.getNames)
-                console.log(item.goods && item.goods)
-                // console.log(item)
+
                 return (
                     <section
                 key={item._id}

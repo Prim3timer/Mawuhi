@@ -8,7 +8,7 @@ import { useNavigate, useLocation, router} from 'react-router-dom'
 
 
 
-const OneReceipt = () => {
+const OneReceipt = ({setOneReceipt}) => {
 const [receipts, setReceipts] = useState({})
 const [currentUser, setCurrentUser] = useState()
 const [currentTrans, setCurrentTrans] = useState()
@@ -16,6 +16,7 @@ const [state, dispatch] = useReducer(reducer, initialState)
 const {auth, setAuth} = useAuth()
 const {currentUsers, setIsRotated} = useContext(AuthContext)
 const navigate = useNavigate()
+setOneReceipt(true)
 
 const location = useLocation()
 // window.history.pushState(null, null, '/shop');
@@ -97,6 +98,9 @@ useEffect(()=> {
     return (
        !currentTrans ? <h2
        className='one-receipt'
+       onbeforeunload={()=> {
+        console.log('unloaded')
+       }}
        style={{
         // backgroundColor: 'yellow',
         textWrap: 'wrap'

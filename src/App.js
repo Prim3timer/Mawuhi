@@ -62,7 +62,7 @@ const App = () => {
   const [userId, setUserId] = useState('');
   const year = new Date().getFullYear()
   const { auth} = useAuth()
-   const [home, setHome] = useState(false)
+   const [oneReceipt, setOneReceipt] = useState(false)
    
 const {isRotated, setIsRotated, workbar} = useContext(AuthContext)
 
@@ -90,7 +90,7 @@ return (
    <NavBar isRotated={isRotated} setIsRotated={setIsRotated}/>
   <h3
   className="greeting"
-          >  {auth.accessToken ?  `Hi, ${auth.user}`: ''} 
+          >  {auth.accessToken && !oneReceipt ?  `Hi, ${auth.user}`: ''} 
     
              </h3>
    { <SideBar isRotated={isRotated} setIsRotated={setIsRotated}/>}
@@ -121,9 +121,9 @@ return (
        {/* protected routes */}
        <Route element={<PersistLogin/>}>
        <Route element={<RequireAuth allowedRoles={[2001]}/>}>
-          <Route path="/home" element={<Home home={home}/> } />
+          {/* <Route path="/home" element={<Home home={home}/> } /> */}
     <Route path="/shop" element={<Shop/>}/>
-      <Route path="one-receipt" element={<OneReceipt/>}/>
+      <Route path="one-receipt" element={<OneReceipt setOneReceipt={setOneReceipt}/>}/>
       <Route path="cart" element={<Cart/>}/>
          </Route>
         
