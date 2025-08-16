@@ -90,7 +90,7 @@ return (
    <NavBar isRotated={isRotated} setIsRotated={setIsRotated}/>
   <h3
   className="greeting"
-          >  {auth.user ?  `Hi, ${auth.user}`: ''} 
+          >  {auth.accessToken ?  `Hi, ${auth.user}`: ''} 
     
              </h3>
    { <SideBar isRotated={isRotated} setIsRotated={setIsRotated}/>}
