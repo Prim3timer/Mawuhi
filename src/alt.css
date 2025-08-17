@@ -57,7 +57,7 @@ margin: 1rem 0 0 4rem;
   align-items: center;
   width: 90vw;
   flex-direction: column;
-  row-gap: 2rem;
+  /* row-gap: 2rem; */
   /* background-color: red; */
   /* width: 20vw; */
 }
