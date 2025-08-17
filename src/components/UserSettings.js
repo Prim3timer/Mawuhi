@@ -360,23 +360,27 @@ a-label="dollar sign">$</span> <span aria-label="percent">%</span>
                     />
                 </label>
             <br/>
-            <div
-
-            className="asinged-roles-cont"
-
-            >
+           
                 <section className="roles-actions-cont">
             <form
               id="roles"
             //   style={{float: 'left',
 
             //   }}
+            >   
+             <div
+
+            className="asinged-roles-cont"
+
             >
-                <label
+            
+               <label
                 style={{
-                    fontSize: '1.5rem'
+                    fontSize: '1.5rem',
+                    
                 }}
                 >ASSINGED ROLES:</label>
+            
              <select name="roles" size="3"  multiple={true}
 
             //  ref={selectRef}
@@ -385,8 +389,10 @@ a-label="dollar sign">$</span> <span aria-label="percent">%</span>
              onChange={e => onRolesChanged(e)}
             className="roles-select"
              >
+              
               {options}
              </select>
+                 </div>
 
                 <article className="usersetting-actions">
                   <button onClick={updateUser}
@@ -405,7 +411,7 @@ a-label="dollar sign">$</span> <span aria-label="percent">%</span>
                   </article>
             </form>
                   </section>
-            </div>
+        
             
             <div
             className={state.success && shadow ? 'show-user-alert' : 'hide-user-alert'}
