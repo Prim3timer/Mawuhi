@@ -267,7 +267,7 @@ const options = Object.keys(ROLES).map(role => {
     return (
         <option
         style={{
-            fontSize: '1.8rem',
+            fontSize: '2rem',
             display: 'flex',
             alignItems: 'center',
         }}
@@ -380,10 +380,10 @@ a-label="dollar sign">$</span> <span aria-label="percent">%</span>
             >
             
                <label
-                style={{
-                    fontSize: '1.5rem',
+                // style={{
+                //     fontSize: '1.5rem',
                     
-                }}
+                // }}
                 >ASSINGED ROLES:</label>
             
              <select name="roles" size="3"  multiple={true}

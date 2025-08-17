@@ -46,7 +46,7 @@ margin: 1rem 0 0 4rem;
 
 #roles select {
     /* background-color: red; */
-    transform: scale(1.5);
+    /* transform: scale(1.5); */
     /* font-size: 1.5rem; */
     /* width: 2rem; */
     margin-right: 2rem;
@@ -631,10 +631,10 @@ align-items: flex-start;
             
           }
           
-          .roles-select {
+          #roles select {
   /* transform: scale(2); */
   /* background-color: red; */
-  font-size: 2rem;
+  width: 100%;
 }
 
   .form-label {
@@ -1532,9 +1532,14 @@ color: whitesmoke;
  #roles {
   display: flex;
   flex-direction: column;
-/* background-color: red; */
   /* align-content: flex-start; */
   row-gap: 2rem
+}
+
+
+
+.asigned-roles-cont label {
+font-size: 6rem;
 }
 
 
@@ -1552,15 +1557,10 @@ color: whitesmoke;
   align-self: center;
   /* background-color: red; */
  }
+ 
 
   @media screen and (max-width: 391px) {
-    #roles select {
-    /* background-color: red; */
-    transform: scale(1);
-    /* font-size: 1.5rem; */
-    margin:auto;
-    /* width: 2rem; */
-}
+   
 
 
     .reg-cont {
@@ -1944,6 +1944,12 @@ max-width: 95%;
   } 
 
     @media screen and (max-width: 585px) {
+
+
+
+.assigned-roles-cont label{
+  transform: scale(5);
+}
 
 .usersetting-first-form input {
   width: 80vw;
