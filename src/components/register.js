@@ -135,7 +135,7 @@ const Register = () => {
                             aria-describedby="uidnote"
                             onFocus={() => dispatch({type: ACTION.USERFOCUS, payload: true})}
                             onBlur={() => dispatch({type: ACTION.USERFOCUS, payload: false})}
-                        /><br/>
+                        />
                         <p id="uidnote" className={state.userFocus && state.user && !state.validName ? "instructions" : "offscreen"}>
                             <FontAwesomeIcon icon={faInfoCircle} />
                             3 to 24 characters.<br />
