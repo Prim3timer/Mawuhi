@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom"
 import axios, { axiosPrivate } from "../app/api/axios"
 import { FaTrashAlt } from "react-icons/fa";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSave, faCheck, faTimes, faInfoCircle, faEyeSlash, faEye  } from "@fortawesome/free-solid-svg-icons"  
+import { faTrash, faSave, faCheck, faTimes, faInfoCircle, faEyeSlash, faEye  } from "@fortawesome/free-solid-svg-icons"  
 import initialState from "../store"
 import reducer from "../reducer"
 import AuthContext from "../context/authProvider";
@@ -405,7 +405,7 @@ a-label="dollar sign">$</span> <span aria-label="percent">%</span>
            <button
                   className="user-action"
                   onClick={assertain}
-                  ><FaTrashAlt role='button'
+                  ><FontAwesomeIcon  icon={faTrash}
                   tableindex='0'
                   /> </button>
                   </article>

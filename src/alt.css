@@ -600,8 +600,8 @@ align-items: flex-start;
 .user-action {
 
  
-                width: 48px;
-                height: 48px;
+                width: 68px;
+                height: 68px;
                 color: var(--COLOR);
                 font-size: 2rem;
                 display: grid;
@@ -610,8 +610,11 @@ align-items: flex-start;
                 border-color: transparent;
 }
 
-.user-action {
+.user-action >* {
   border-radius: 5px;
+  font-size: 3rem;
+  padding: 1rem;
+  /* background-color: red; */
 }
 
 .form-label input {
