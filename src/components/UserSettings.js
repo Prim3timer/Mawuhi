@@ -267,7 +267,7 @@ const options = Object.keys(ROLES).map(role => {
     return (
         <option
         style={{
-            fontSize: '2rem',
+            fontSize: '2.5rem',
             display: 'flex',
             alignItems: 'center',
         }}
