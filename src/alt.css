@@ -236,10 +236,12 @@ width: 100%;
   width: 80vw;
 }
 
-#username-form >*:nth-child(2) {
+#username-form >*:nth-child(2)  {
   align-self: flex-start;
-  background-color: red;
+  /* background-color: red; */
 }
+
+
 
 #username-form {
   /* min-width: 100%; */
@@ -252,7 +254,7 @@ width: 100%;
 }
 
 #username {
-  background-color: red;
+  /* background-color: red; */
   width: 85%;
 }
 
@@ -586,7 +588,7 @@ align-items: center;
 
 .form-label input {
   transform: scale(1.8);
-  background-color: red;
+  /* background-color: red; */
 }
 .roles-select {
 
