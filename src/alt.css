@@ -1518,19 +1518,15 @@ color: whitesmoke;
   display: flex;
  }
 
- .roles-actions-cont {
+ #roles {
   display: flex;
   flex-direction: column;
 /* background-color: red; */
   /* align-content: flex-start; */
-  row-gap: 2rem;
+  row-gap: 1rem;
 }
 
 
-.roles-actions-cont>*:nth-child(1) {
-   /* background-color: red; */
-
- }
 
 
  .usersetting-actions {
