@@ -47,7 +47,7 @@ const UserSettings = () => {
     console.log({auth})
     const [active, setActive] = useState('')
     const theRole = auth.users && auth.users.find((user) => user._id === auth.picker3)
-    const [roles, setRoles] =  useState(Object.keys(theRole.roles))
+    const [roles, setRoles] =  useState({})
 const navigate = useNavigate()
 // dispatch({type: ACTION.SUCCESS, payload: false})
  
@@ -56,13 +56,18 @@ const navigate = useNavigate()
 
         }     
         
-        const userPage = () => {
-            
-            console.log(ID)
-            
+        const userPage = (e) => {
+            // e.preventDefault()
+            const theRole = auth.users && auth.users.find((user) => user._id === auth.picker3)
+         const newRole =  Object.keys(theRole.roles)
+            setRoles(newRole)
             
             
         }
+
+        useEffect(()=> {
+            userPage()
+        }, [])
 
          const showPassword = () => {
         if (isPassword3 === 'password'){
@@ -75,7 +80,7 @@ const navigate = useNavigate()
             setPasswordCheck3(faEyeSlash)
         } 
     }
-
+console.log(auth.users)
         const getAUser = ()=> {
             const person = auth.user && auth.users.find((user) => user._id === auth.picker3)
             if (person){
@@ -262,7 +267,7 @@ const options = Object.keys(ROLES).map(role => {
     return (
         <option
         style={{
-            fontSize: '1.5rem',
+            fontSize: '2rem',
             display: 'flex',
             alignItems: 'center',
         }}
