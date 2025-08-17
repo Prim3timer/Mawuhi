@@ -1523,7 +1523,7 @@ color: whitesmoke;
   flex-direction: column;
 /* background-color: red; */
   /* align-content: flex-start; */
-  /* row-gap: 1rem; */
+  row-gap: 2rem
 }
 
 
