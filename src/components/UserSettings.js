@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom"
 import axios, { axiosPrivate } from "../app/api/axios"
 import { FaTrashAlt } from "react-icons/fa";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSave, faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons"  
+import { faSave, faCheck, faTimes, faInfoCircle, faEyeSlash, faEye  } from "@fortawesome/free-solid-svg-icons"  
 import initialState from "../store"
 import reducer from "../reducer"
 import AuthContext from "../context/authProvider";
@@ -270,7 +270,7 @@ const options = Object.keys(ROLES).map(role => {
         >
             <h2 id="user-edit-header">Edit User Settings</h2>
 
-            <form>
+            <form className="usersetting-first-form">
             <label htmlFor="username">Username:
             <FontAwesomeIcon icon={faCheck} className={state.validName ? "valid" : "hide"} />
             <FontAwesomeIcon icon={faTimes} className={state.validName || !username ? "hide"
@@ -300,6 +300,9 @@ const options = Object.keys(ROLES).map(role => {
             <FontAwesomeIcon icon={faTimes} className={state.validPwd || !password ? "hide" 
 : "invalid"} />
             </label>
+            <div 
+            // className="field-eye"
+            >
             <input type="password" 
             id="password" value={password}
                 ref={pwdRef}
@@ -310,7 +313,8 @@ const options = Object.keys(ROLES).map(role => {
                             aria-describedby="confirmnote"
                             onFocus={() => dispatch({type: ACTION.PWDFOCUS, payload: true})}
                             onBlur={() => dispatch({type: ACTION.PWDFOCUS, payload: false})}
-            />
+            />  <FontAwesomeIcon icon={faEyeSlash} />
+            </div>
                                 <p id="pwdnote" className={state.pwdFocus && !state.validPwd
  ? "instructions" : "offscreen"}>
                             <FontAwesomeIcon icon={faInfoCircle} />
@@ -324,6 +328,7 @@ a-label="dollar sign">$</span> <span aria-label="percent">%</span>
 
             </form>
             <br/>
+            <div></div>
             <label className="form-label" htmlFor="user-active"
           style={{ justifyContent: "center", 
             // marginLeft: '2rem'
@@ -346,6 +351,7 @@ a-label="dollar sign">$</span> <span aria-label="percent">%</span>
             className="asinged-roles-cont"
 
             >
+                <section className="roles-actions-cont">
             <form
               id="roles"
             //   style={{float: 'left',
@@ -354,7 +360,7 @@ a-label="dollar sign">$</span> <span aria-label="percent">%</span>
             >
                 <label
                 style={{
-                    fontSize: '1rem'
+                    fontSize: '1.5rem'
                 }}
                 >ASSINGED ROLES:</label>
              <select name="roles" size="3"  multiple={true}
@@ -369,21 +375,24 @@ a-label="dollar sign">$</span> <span aria-label="percent">%</span>
              </select>
 
             </form>
-
+                <article className="usersetting-actions">
                   <button onClick={updateUser}
                   className="user-action"
-       
-          ref={saveRef}
-        //   className={'icon-button'}
-          title="Save"
-          ><FontAwesomeIcon icon={faSave} /></button>
+                  
+                  ref={saveRef}
+                  //   className={'icon-button'}
+                  title="Save"
+                  ><FontAwesomeIcon icon={faSave} /></button>
            <button
                   className="user-action"
-                onClick={assertain}
-           ><FaTrashAlt role='button'
-                                            tableindex='0'
-                                            /> </button>
+                  onClick={assertain}
+                  ><FaTrashAlt role='button'
+                  tableindex='0'
+                  /> </button>
+                  </article>
+                  </section>
             </div>
+            
             <div
             className={state.success && shadow ? 'show-user-alert' : 'hide-user-alert'}
       

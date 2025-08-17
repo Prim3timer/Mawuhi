@@ -52,6 +52,16 @@ margin: 1rem 0 0 4rem;
     margin-right: 2rem;
 }
 
+#roles {
+  display: flex;
+  align-items: center;
+  width: 90vw;
+  flex-direction: column;
+  row-gap: 2rem;
+  /* background-color: red; */
+  /* width: 20vw; */
+}
+
 #user-active {
   margin-left: .5rem;
 }
@@ -534,14 +544,22 @@ align-items: center;
 }
 
 .edit-user {
-align-items: center;
+/* align-items: center; */
 }
 
 
 .edit-user form {
   display: flex;
   flex-direction: column;
-align-items: center;
+align-items: flex-start;
+}
+
+.edit-user form >*:nth-child(1){
+  align-self: center;
+}
+.edit-user form >*:nth-child(4){
+  align-self: center;
+  /* background-color: red; */
 }
 
 .admin-home-link {
@@ -1492,6 +1510,18 @@ color: whitesmoke;
   max-height: 0px;
  }
 
+ .roles-actions-cont {
+  display: flex;
+  flex-direction: column;
+  row-gap: 4rem;
+ }
+
+ .usersetting-actions {
+    /* background-color: red; */
+    column-gap: 2rem;
+    display: flex;
+ }
+
   @media screen and (max-width: 391px) {
     #roles select {
     /* background-color: red; */
@@ -1884,10 +1914,13 @@ max-width: 95%;
 
     @media screen and (max-width: 585px) {
 
-
+.usersetting-first-form input {
+  width: 80vw;
+  /* background-color: red; */
+}
 
       .edit-action   >* {
-      width: 40%;;
+      width: 40%;
       }
 
 /* .home {
