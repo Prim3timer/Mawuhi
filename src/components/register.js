@@ -1,6 +1,6 @@
 
 import { useRef, useState, useEffect, useReducer } from "react";
-import { faCheck, faTimes, faInfoCircle, faEye, faEyeCancel } from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faTimes, faInfoCircle, faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from '../app/api/axios';
 import initialState from "../store";
@@ -31,15 +31,32 @@ const Register = () => {
     const errRef = useRef();
    const [isPassword, setisPassword] = useState('password')
    const [isPassword2, setisPassword2] = useState('password')
-    const showPassord = () => {
-        if (isPassword === 'password') setisPassword('text')
-        else setisPassword('password')
+   const [passwordCheck, setPasswordCheck] = useState(faEyeSlash)
+   const [passwordCheck2, setPasswordCheck2] = useState(faEyeSlash)
+    const showPassword = () => {
+        if (isPassword === 'password'){
+            setisPassword('text')
+            setPasswordCheck(faEye)
+        } 
+        else{
+
+            setisPassword('password')
+            setPasswordCheck(faEyeSlash)
+        } 
     }
 
     const showPassord2 = () => {
-        if (isPassword2 === 'password') setisPassword2('text')
-        else setisPassword2('password')
+        if (isPassword2 === 'password'){
+            setisPassword2('text')
+            setPasswordCheck2(faEye)
+        } 
+         else{
+
+            setisPassword2('password')
+            setPasswordCheck2(faEyeSlash)
+        } 
     }
+
     
 
     useEffect(() => {
@@ -162,7 +179,7 @@ const Register = () => {
                             onBlur={() => dispatch({type: ACTION.PWDFOCUS, payload: false})}
                         />
                           {/* <span onClick={showPassord} className='show-password'>show</span> */}
-                          <FontAwesomeIcon icon={faEye} onClick={showPassord} className='show-password'/>
+                          <FontAwesomeIcon icon={passwordCheck} onClick={showPassword} className='show-password'/>
                         </div>
                         <p id="pwdnote" className={state.pwdFocus && !state.validPwd ? "instructions" : "offscreen"}>
                             <FontAwesomeIcon icon={faInfoCircle} />
@@ -189,7 +206,7 @@ const Register = () => {
                             onFocus={() => dispatch({type: ACTION.MATCHFOCUS, payload: true})}
                             onBlur={() => dispatch({type: ACTION.MATCHFOCUS, payload: false})}
                         />
-                          <FontAwesomeIcon icon={faEye} onClick={showPassord2} className='show-password'/>
+                          <FontAwesomeIcon icon={passwordCheck2} onClick={showPassord2} className='show-password'/>
                           </div>
                         <p id="confirmnote" className={state.matchFocus && !state.validMatch ? "instructions" : "offscreen"}>
                             <FontAwesomeIcon icon={faInfoCircle} />
