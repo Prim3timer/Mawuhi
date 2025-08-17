@@ -36,6 +36,8 @@ const UserSettings = () => {
     const [username, setUsername] = useState()
     const [state, dispatch] = useReducer(reducer, initialState)
     const [shadow, setShadow] = useState(false)
+    const [isPassword3, setisPassword3] = useState('password')
+     const [passwordCheck3, setPasswordCheck3] = useState(faEyeSlash)
     // const {users, getUsers} = useContext(AuthContext)
     const [ID, setID] = useState('')
     const saveRef = useRef(null)
@@ -61,6 +63,18 @@ const navigate = useNavigate()
             
             
         }
+
+         const showPassword = () => {
+        if (isPassword3 === 'password'){
+            setisPassword3('text')
+            setPasswordCheck3(faEye)
+        } 
+        else{
+
+            setisPassword3('password')
+            setPasswordCheck3(faEyeSlash)
+        } 
+    }
 
         const getAUser = ()=> {
             const person = auth.user && auth.users.find((user) => user._id === auth.picker3)
@@ -303,7 +317,7 @@ const options = Object.keys(ROLES).map(role => {
             <div 
             // className="field-eye"
             >
-            <input type="password" 
+            <input type={isPassword3}
             id="password" value={password}
                 ref={pwdRef}
             onChange={e => {setPassword(e.target.value)
@@ -313,7 +327,7 @@ const options = Object.keys(ROLES).map(role => {
                             aria-describedby="confirmnote"
                             onFocus={() => dispatch({type: ACTION.PWDFOCUS, payload: true})}
                             onBlur={() => dispatch({type: ACTION.PWDFOCUS, payload: false})}
-            />  <FontAwesomeIcon icon={faEyeSlash} />
+            />     <FontAwesomeIcon icon={passwordCheck3} onClick={showPassword} className='show-password'/>
             </div>
                                 <p id="pwdnote" className={state.pwdFocus && !state.validPwd
  ? "instructions" : "offscreen"}>
