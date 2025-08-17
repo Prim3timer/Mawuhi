@@ -476,7 +476,7 @@ align-items: center;
 
 .admin, .users-cont {
   row-gap: 1rem;
-  margin: 2rem 0;
+  /* margin: 2rem 0; */
 }
 
 .edit-user {
