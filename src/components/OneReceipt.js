@@ -21,14 +21,24 @@ setOneReceipt(true)
 const location = useLocation()
 // window.history.pushState(null, null, '/shop');
 // window.history.pushState(null, null, '/transactions');
-
-
-
+const quitDetector = ()=>{
+// if (OneReceipt){
+    console.log('unloaded')
+    // }
+}
+// window.addEventListener('onbeforunload', quitDetector)
 // window.onpopstate = function () {
-//     console.log('hit')
-//   navigate('/shop', { state: { from: location }, replace: true });
-
-// };
+    //     console.log('unloaded')
+    //   setOneReceipt(false)
+    
+    
+    // };
+    
+    // to detect route change
+    useEffect(()=> {
+    console.log('unloaded')
+    setOneReceipt(false)
+}, [location])
 
 const getItems = async ()=> {
 

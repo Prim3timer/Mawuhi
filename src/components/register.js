@@ -1,6 +1,6 @@
 
 import { useRef, useState, useEffect, useReducer } from "react";
-import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faTimes, faInfoCircle, faEye, faEyeCancel } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from '../app/api/axios';
 import initialState from "../store";
@@ -29,7 +29,18 @@ const Register = () => {
     const [state, dispatch] = useReducer(reducer, initialState)
     const userRef = useRef();
     const errRef = useRef();
+   const [isPassword, setisPassword] = useState('password')
+   const [isPassword2, setisPassword2] = useState('password')
+    const showPassord = () => {
+        if (isPassword === 'password') setisPassword('text')
+        else setisPassword('password')
+    }
 
+    const showPassord2 = () => {
+        if (isPassword2 === 'password') setisPassword2('text')
+        else setisPassword2('password')
+    }
+    
 
     useEffect(() => {
         userRef.current.focus();
@@ -132,14 +143,15 @@ const Register = () => {
                             Letters, numbers, underscores, hyphens allowed.
                         </p>
 
-
+                    {/* <article className="passwords"> */}
                         <label htmlFor="password">
                             Password:
                             <FontAwesomeIcon icon={faCheck} className={state.validPwd ? "valid" : "hide"} />
                             <FontAwesomeIcon icon={faTimes} className={state.validPwd || !state.pwd ? "hide" : "invalid"} />
                         </label>
+                        <div className="field-eye">
                         <input
-                            type="password"
+                             type={isPassword}
                             className="password"
                             onChange={(e) => dispatch({type: ACTION.PWD, payload: e.target.value})}
                             value={state.pwd}
@@ -148,7 +160,10 @@ const Register = () => {
                             aria-describedby="pwdnote"
                             onFocus={() => dispatch({type: ACTION.PWDFOCUS, payload: true})}
                             onBlur={() => dispatch({type: ACTION.PWDFOCUS, payload: false})}
-                        /><br/>
+                        />
+                          {/* <span onClick={showPassord} className='show-password'>show</span> */}
+                          <FontAwesomeIcon icon={faEye} onClick={showPassord} className='show-password'/>
+                        </div>
                         <p id="pwdnote" className={state.pwdFocus && !state.validPwd ? "instructions" : "offscreen"}>
                             <FontAwesomeIcon icon={faInfoCircle} />
                             8 to 24 characters.<br />
@@ -162,8 +177,9 @@ const Register = () => {
                             <FontAwesomeIcon icon={faCheck} className={state.validMatch && state.matchPwd ? "valid" : "hide"} />
                             <FontAwesomeIcon icon={faTimes} className={state.validMatch || !state.matchPwd ? "hide" : "invalid"} />
                         </label>
+                        <div className="field-eye">
                         <input
-                            type="password"
+                            type={isPassword2}
                             id="confirm_pwd"
                             onChange={(e) => dispatch({type: ACTION.MATCHPWD, payload: e.target.value})}
                             value={state.matchPwd}
@@ -173,10 +189,13 @@ const Register = () => {
                             onFocus={() => dispatch({type: ACTION.MATCHFOCUS, payload: true})}
                             onBlur={() => dispatch({type: ACTION.MATCHFOCUS, payload: false})}
                         />
+                          <FontAwesomeIcon icon={faEye} onClick={showPassord2} className='show-password'/>
+                          </div>
                         <p id="confirmnote" className={state.matchFocus && !state.validMatch ? "instructions" : "offscreen"}>
                             <FontAwesomeIcon icon={faInfoCircle} />
                             Must match the first password input field.
                         </p>
+                        {/* </article> */}
 
                         <button 
                         className="register-button"
