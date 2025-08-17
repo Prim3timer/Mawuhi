@@ -1537,6 +1537,11 @@ color: whitesmoke;
     justify-content: flex-start;
  }
 
+ .usersetting-first-form >*:nth-child(4) {
+  align-self: center;
+  /* background-color: red; */
+ }
+
   @media screen and (max-width: 391px) {
     #roles select {
     /* background-color: red; */
