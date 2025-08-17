@@ -374,7 +374,6 @@ a-label="dollar sign">$</span> <span aria-label="percent">%</span>
               {options}
              </select>
 
-            </form>
                 <article className="usersetting-actions">
                   <button onClick={updateUser}
                   className="user-action"
@@ -390,6 +389,7 @@ a-label="dollar sign">$</span> <span aria-label="percent">%</span>
                   tableindex='0'
                   /> </button>
                   </article>
+            </form>
                   </section>
             </div>
             

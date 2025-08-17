@@ -545,10 +545,13 @@ align-items: center;
 
 .edit-user {
 /* align-items: center; */
+align-items: center;
+
 }
 
 
 .edit-user form {
+  /* background-color: red; */
   display: flex;
   flex-direction: column;
 align-items: flex-start;
@@ -557,8 +560,9 @@ align-items: flex-start;
 .edit-user form >*:nth-child(1){
   align-self: center;
 }
-.edit-user form >*:nth-child(4){
+.edit-user form >*:nth-child(3){
   align-self: center;
+  margin-top: 1rem;
   /* background-color: red; */
 }
 
@@ -588,7 +592,9 @@ align-items: flex-start;
                 flex-direction: row;
                 column-gap: 2rem;
                 justify-content: center;
-                align-items: center   
+                align-items: center;
+            
+                
 }
 
 .user-action {
@@ -1509,17 +1515,26 @@ color: whitesmoke;
  .side, .no-side {
   max-height: 0px;
  }
+ .edit-user {
+  display: flex;
+ }
 
  .roles-actions-cont {
   display: flex;
   flex-direction: column;
+
+  /* background-color: red; */
+  align-content: flex-start;
   row-gap: 4rem;
  }
+ 
+
 
  .usersetting-actions {
     /* background-color: red; */
     column-gap: 2rem;
     display: flex;
+    justify-content: flex-start;
  }
 
   @media screen and (max-width: 391px) {
