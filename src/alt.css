@@ -591,7 +591,7 @@ align-items: flex-start;
                 display: flex;
                 flex-direction: column;
               /* row-gap: 3rem; */
-              background-color: red;
+              /* background-color: red; */
             
                 
 }
@@ -1523,7 +1523,7 @@ color: whitesmoke;
   flex-direction: column;
 /* background-color: red; */
   /* align-content: flex-start; */
-  row-gap: 1rem;
+  /* row-gap: 1rem; */
 }
 
 
@@ -1531,7 +1531,7 @@ color: whitesmoke;
 
  .usersetting-actions {
     /* background-color: red; */
-    margin-top: 4rem;
+    /* margin-top: 4rem; */
     column-gap: 6rem;
     display: flex;
     justify-content: flex-start;
