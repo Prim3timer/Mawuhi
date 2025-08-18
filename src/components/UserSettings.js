@@ -59,8 +59,9 @@ const navigate = useNavigate()
         const userPage = (e) => {
             // e.preventDefault()
             const theRole = auth.users && auth.users.find((user) => user._id === auth.picker3)
-         const newRole =  Object.keys(theRole.roles)
-            setRoles(newRole)
+            console.log({theRole})
+        //  const newRole =  Object.keys(theRole.roles)
+        //     setRoles(newRole)
             
             
         }
@@ -89,6 +90,7 @@ console.log(auth.users)
                 setUsername(person.username)
                 // setRoles(person.roles)
                 setActive(person.active)
+                console.log({auth})
             }
         }
         
@@ -101,21 +103,10 @@ console.log(auth.users)
         
         
         const assertain = (id) => {
-    // setAuth({...auth, picker3: id})
-    // console.log(auth.picker3)
+    setAuth({...auth, picker3: id})
+    console.log(auth.picker3)
     // id &&    setBrand(id)
-    if (auth.roles.includes(5150)){
-        console.log("deleted")
-        
-        dispatch({type: 'cancel', payload: true})
-        // setBrand(id)
-        // dispatch({type: 'id', payload: id})
-       
-
-    }
-    else {
-        // dispatch({type: 'isMatched', payload: true})
-    }
+    // dispatch({type: 'cancel', payload: true})
 }
 
 
@@ -409,8 +400,9 @@ a-label="dollar sign">$</span> <span aria-label="percent">%</span>
                   ><FontAwesomeIcon icon={faSave} /></button>
            <button
                   className="user-action"
-                  onClick={assertain}
+                  
                   ><FontAwesomeIcon  icon={faTrash}
+                  onClick={assertain}
                   tableindex='0'
                   /> </button>
                   </article>

@@ -1539,14 +1539,15 @@ color: whitesmoke;
 
 
 .asigned-roles-cont label {
-font-size: 6rem;
+  /* background-color: red; */
+  transform: scale(3);
+
 }
 
 
 
 
  .usersetting-actions {
-    /* background-color: red; */
     /* margin-top: 4rem; */
     column-gap: 6rem;
     display: flex;
@@ -1947,9 +1948,6 @@ max-width: 95%;
 
 
 
-.assigned-roles-cont label{
-  transform: scale(5);
-}
 
 .usersetting-first-form input {
   width: 80vw;

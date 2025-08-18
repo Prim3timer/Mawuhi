@@ -139,7 +139,7 @@ return (
        <Route path="gen-sales" element={<GenSales
        />}/>
      <Route path="receipts" element={<Reciepts
-     foucuser={auth.picker2}
+    //  foucuser={auth.picker2}
      />}/>
         
          </Route>

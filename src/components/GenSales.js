@@ -43,8 +43,8 @@ const [specArray, setSpecArray] = useState([])
     const getTrans = async () => {
         const innerArray =[]
         console.log(auth.picker)
-        console.log(auth)
-      setAtHome(false)
+         console.log({authUsers: auth.users})
+    //   setAtHome(false)
         try {
             const response = await axiosPrivate.get('/transactions')
             // const response2 = await axiosPrivate.get('/users')
@@ -102,7 +102,7 @@ const [specArray, setSpecArray] = useState([])
 
     useEffect(()=> {
         getTrans()
-           console.log(currentUser)
+           console.log('current user is : ',currentUser)
     }, [search, search2])
 
 //           useEffect(()=> {

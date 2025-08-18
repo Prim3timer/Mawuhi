@@ -34,6 +34,15 @@ const mainLinks = [
         name: 'admin',
         path: '/admin'
     },
+    {
+        id: 8,
+        name: 'shop',
+        path: '/shop'
+    },
+    {id: 9,
+        name: 'cart',
+        path: '/cart'
+    },
 ]
 
 export default mainLinks

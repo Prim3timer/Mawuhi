@@ -1,7 +1,7 @@
 import initialState from "../store"
 import { useEffect, useContext, useReducer, useState } from "react"
 import reducer from "../reducer"
-import axios from "../app/api/axios"
+import axios, { axiosPrivate } from "../app/api/axios"
 import AuthContext from "../context/authProvider";
 import useAuth from "../hooks/useAuth";
 import useRefreshToken from "../hooks/useRefreshToken";
@@ -15,39 +15,36 @@ const GenShopping = ()=> {
 const [state, dispatch] = useReducer(reducer, initialState)
 const [showOne, setShowOne] = useState(false)
 const [oneId, setOneId] = useState('')
-const { auth, setAuth } = useAuth();
+const { auth} = useAuth();
 const [currentUser, setCurrentUser] = useState('')
 const {atHome, getUsers, currentUsers, setIsRotated} = useContext(AuthContext)
 console.log(state.atHome)
 const refresh = useRefreshToken()
 const getItems = async ()=> {
     // const authUsers = await refresh()
-    // console.log(authUsers)
+    console.log({authUsers: auth})
     console.log({currentUsers})
-    setOneId(auth.picker)
-    console.log(auth.picker)
+  
     // setAuth(authUsers)
     // const person = users.find((user) => user._id === pickerChecker)
     // auth.picker3 = state.id
     try {
 
-        console.log('picker3 is : ', auth.picker3)
-        console.log('picker is: ', auth.picker)
+        
             //   const gog =  await axios.get('/users')
     
             // setCurrentUser(person)
     
-            const response = await axios.get('/transactions')
-            if (response){
+            const response = await axiosPrivate.get('/transactions')
         
              
                 const cashierTrans = response.data.filter((item) => item.cashierID === auth.picker)
-                      const person = auth.users && auth.users.find((person) => person._id == auth.picker)
+                      const person = auth.user && auth.users.find((person) => person._id == auth.picker)
                       console.log(person)
-                      if (person ){
+                
                           setCurrentUser(person)
 
-                      }
+                      
                       console.log(currentUser)
                 console.log(cashierTrans)
                 // dispatch({type: 'getNames', payload: response.data})
@@ -62,7 +59,6 @@ const getItems = async ()=> {
                 dispatch({type: 'getNames', 
                     payload: filterate})
                     
-                }
     }catch (error) {
         console.log(error)
     }
@@ -134,6 +130,7 @@ const generalRemain = () => {
  } 
 
 useEffect(()=> {
+    console.log('current user is : ',currentUser)
     getItems()
 }, [state.search])
 
@@ -149,7 +146,7 @@ function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
     return (
-        !state.getNames.length ? <h2
+        !currentUser ? <h2
         
         className="receipts"
         >Loading...</h2> : <div
