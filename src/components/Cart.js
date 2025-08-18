@@ -38,7 +38,7 @@ const getCartItems = async () => {
 
         if (userItems.length){
             dispatch({type: 'CARTARRAY', payload: newUseritems})
-            console.log(state.cart.total)
+        
             // state.cartArray.push(state.cart.total)
             console.log(newUseritems)
         }
