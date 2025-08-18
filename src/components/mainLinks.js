@@ -39,10 +39,16 @@ const mainLinks = [
         name: 'shop',
         path: '/shop'
     },
+    
     {id: 9,
         name: 'cart',
         path: '/cart'
     },
+    // {
+    //     id: 10,
+    //     name: 'single item',
+    //     path: '/single-item'
+    // }
 ]
 
 export default mainLinks

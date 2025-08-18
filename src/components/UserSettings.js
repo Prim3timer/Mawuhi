@@ -1,4 +1,3 @@
-
 import { useEffect, useReducer, useRef, useState, useContext } from "react"
 import { ROLES } from "../config/roles"
 import { Link, useNavigate } from "react-router-dom"
@@ -46,8 +45,8 @@ const UserSettings = () => {
     // picker3 is the not the current user.  It is the user in question.
     console.log({auth})
     const [active, setActive] = useState('')
-    const theRole = auth.users && auth.users.find((user) => user._id === auth.picker3)
-    const [roles, setRoles] =  useState({})
+    const theRole = auth && auth.users.find((user) => user._id === auth.picker3)
+    const [roles, setRoles] =  useState(theRole ? Object.keys(theRole.roles) : '')
 const navigate = useNavigate()
 // dispatch({type: ACTION.SUCCESS, payload: false})
  
@@ -56,19 +55,18 @@ const navigate = useNavigate()
 
         }     
         
-        const userPage = (e) => {
-            // e.preventDefault()
-            const theRole = auth.users && auth.users.find((user) => user._id === auth.picker3)
-            console.log({theRole})
+        // const userPage = (e) => {
+            
+        //     console.log({theRole})
         //  const newRole =  Object.keys(theRole.roles)
         //     setRoles(newRole)
             
             
-        }
+        // }
 
-        useEffect(()=> {
-            userPage()
-        }, [])
+        // useEffect(()=> {
+        //     userPage()
+        // }, [])
 
          const showPassword = () => {
         if (isPassword3 === 'password'){
@@ -103,10 +101,11 @@ console.log(auth.users)
         
         
         const assertain = (id) => {
+            // e.preventDefault()
     setAuth({...auth, picker3: id})
     console.log(auth.picker3)
     // id &&    setBrand(id)
-    // dispatch({type: 'cancel', payload: true})
+    dispatch({type: 'cancel', payload: true})
 }
 
 
@@ -204,8 +203,8 @@ const onRolesChanged = e => {
     }
 }
 
-const updateUser = async () => {
-
+const updateUser = async (e) => {
+    e.preventDefault()
     try {
         console.log('shadow is ', shadow)
     const newRoles = {
@@ -280,7 +279,7 @@ const options = Object.keys(ROLES).map(role => {
         >
             <h2 id="user-edit-header">Edit User Settings</h2>
 
-            <form className="usersetting-first-form">
+            <form className="usersetting-first-form" onSubmit={(e)=> e.preventDefault()} >
             <label htmlFor="username">Username:
             <FontAwesomeIcon icon={faCheck} className={state.validName ? "valid" : "hide"} />
             <FontAwesomeIcon icon={faTimes} className={state.validName || !username ? "hide"
@@ -338,7 +337,7 @@ a-label="dollar sign">$</span> <span aria-label="percent">%</span>
 
             </form>
             <br/>
-            <div></div>
+         
             <label className="form-label" htmlFor="user-active"
           style={{ justifyContent: "center", 
             // marginLeft: '2rem'
@@ -358,7 +357,7 @@ a-label="dollar sign">$</span> <span aria-label="percent">%</span>
             <br/>
            
                 <section className="roles-actions-cont">
-            <form
+            <form onSubmit={(e)=> e.preventDefault()}
               id="roles"
             //   style={{float: 'left',
 
@@ -391,7 +390,7 @@ a-label="dollar sign">$</span> <span aria-label="percent">%</span>
                  </div>
 
                 <article className="usersetting-actions">
-                  <button onClick={updateUser}
+                  <button onClick={(e) => updateUser(e)}
                   className="user-action"
                   
                   ref={saveRef}
@@ -408,14 +407,6 @@ a-label="dollar sign">$</span> <span aria-label="percent">%</span>
                   </article>
             </form>
                   </section>
-        
-            
-            <div
-            className={state.success && shadow ? 'show-user-alert' : 'hide-user-alert'}
-      
-        >
-          <h4>{state.selectUser}</h4>
-            </div>
 
             <div
             className={state.cancel ? 'delete' : 'no-delete'}
@@ -464,10 +455,10 @@ className={state.isMatched ? 'unauthorization-alert' : 'authorization'}
         <div
         style={{
             display: state.success ? 'block' : 'none',
-            position: 'absolute',
+            position: 'fixed',
             margin: '1rem 0',
-            top: '35%',
-left: '25%',
+            top: '40%',
+left: '30%',
 width: '40%',
 textAlign: 'center',
  padding: '1rem',

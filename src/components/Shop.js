@@ -16,7 +16,7 @@ const {v4: uuid} = require('uuid')
 
 
 const Shop = () => {
-  window.history.pushState(null, null, '/home');
+  // window.history.pushState(null, null, '/home');
   const { items, getNames, getItems} = useContext(AuthContext)
   const [shopItems, setShopItems] = useState([])
   const axiosPrivate = useAxiosPrivate()

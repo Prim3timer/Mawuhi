@@ -1946,7 +1946,9 @@ max-width: 95%;
 
     @media screen and (max-width: 585px) {
 
-
+.admin {
+  margin-top: 4rem;
+}
 
 
 .usersetting-first-form input {
