@@ -1487,8 +1487,12 @@ color: whitesmoke;
   text-align: center;
 }
 
+.sales-search-form article {
+  /* min-width: 100%; */
+  /* background-color: red; */
+}
 .sales-search-form article input {
-  min-width: 100%;
+  min-width: 80%;
   /* background-color: red; */
 }
 
