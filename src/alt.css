@@ -449,7 +449,7 @@ row-gap: 1rem;
 .cart-action >* {
   padding: .5rem;
 
-  min-width: 60vw;
+  min-width: 80vw;
 
 }
 
@@ -459,12 +459,12 @@ row-gap: 1rem;
   padding: .5rem;
   color: white;
 
-  width: 60vw;
+  width: 80vw;
   
 }
 
 .cart-action-button2 {
-  width: 60vw;
+  width: 80vw;
 }
 
 .cart-action-link, .cart-shop-linker, .cash-confirm-link {
@@ -1838,13 +1838,6 @@ row-gap: 1rem;
 /* background-color: black; */
 }
 
-
-.cart-action >* {
-     /* background-color: red; */
-
-  /* width: 100%; */
-
-}
 
 .cart-action-link {
   /* width: 80vw; */
