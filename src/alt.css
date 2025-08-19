@@ -1474,7 +1474,7 @@ color: whitesmoke;
 
 
         color: darkslateblue;
-        margin: 2rem 0 0 0;
+        /* margin: 2rem 0 0 0; */
   }
 
   .sales-search-form {
@@ -1485,6 +1485,11 @@ color: whitesmoke;
   /* background-color: red; */
   row-gap: 1rem;
   text-align: center;
+}
+
+.sales-search-form article input {
+  min-width: 100%;
+  /* background-color: red; */
 }
 
 .heading {

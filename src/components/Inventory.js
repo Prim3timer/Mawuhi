@@ -200,6 +200,7 @@ const bringEdit = () => {
  // https://www.npmjs.com/package/@react-google-maps/api
  
  />
+ <article>
  <h3>
       <label>Search by stock level</label>
 </h3>
@@ -210,6 +211,7 @@ const bringEdit = () => {
       value={search2}
       onChange={(e)=> setSearch2(e.target.value)}
       />
+      </article>
    </form>
    
  </article>
