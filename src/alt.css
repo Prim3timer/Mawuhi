@@ -1609,7 +1609,7 @@ color: whitesmoke;
     .shopping-items {
 
   justify-self: center;
-  /* max-width: 70%; */
+  max-width: 70%;
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   
@@ -1835,11 +1835,11 @@ color: whitesmoke;
 .reg-cont {
 /* width: 90%; */
 row-gap: 1rem;
-/* background-color: black; */
 }
 
 
 .shopping-items {
+  /* background-color: black; */
 
 
 max-width: 95%;
@@ -1948,7 +1948,10 @@ max-width: 95%;
   margin: 3rem;
 }
 
-
+.shop form {
+  width: 90vw;
+  /* background-color: red; */
+}
 
 
 .usersetting-first-form input {
