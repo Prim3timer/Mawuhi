@@ -170,7 +170,7 @@ const plural2 = state.cartAmount.length === 1 ? '' : 's'
   <button
              onClick={doneSales}
              >Checkout</button>
-           <Link to={'/shop'} className="cart-shop-linker">  <button> Shop</button></Link>
+           <Link to={'/shop'} className="cart-shop-linker">  <button className="cart-action-button2"> Shop</button></Link>
              <button onClick={clearCart}>Clear Cart</button>
 </div>
              <h3 className={state.success ? 'update-alert' : 'hide-update-alert'}>{state.alertMsg}</h3>

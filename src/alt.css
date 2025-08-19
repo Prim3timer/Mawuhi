@@ -455,13 +455,16 @@ row-gap: 1rem;
 
 
 
-.cart-action >*:nth-child(3) {
-  /* background-color: red; */
+.cart-action-button {
   padding: .5rem;
   color: white;
 
-  /* width: 60%; */
+  width: 60vw;
+  
+}
 
+.cart-action-button2 {
+  width: 60vw;
 }
 
 .cart-action-link, .cart-shop-linker, .cash-confirm-link {
@@ -1596,7 +1599,7 @@ row-gap: 1rem;
 
     .cart-action >* {
 
-  min-width: 80vw;
+  /* min-width: 80vw; */
 
 
 }
@@ -1839,7 +1842,7 @@ row-gap: 1rem;
 .cart-action >* {
      /* background-color: red; */
 
-  width: 100%;
+  /* width: 100%; */
 
 }
 
@@ -1956,11 +1959,7 @@ max-width: 95%;
   margin: 3rem;
 }
 
-.cart-action-button {
-  /* background-color: red; */
-    justify-self: center;
-  width: 60vw;
-}
+
 
 
 .usersetting-first-form input {
