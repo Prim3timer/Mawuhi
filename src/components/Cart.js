@@ -152,7 +152,7 @@ const plural2 = state.cartAmount.length === 1 ? '' : 's'
             </label>
          
             <h3>₦{numberWithCommas(parseFloat(item.total).toFixed(2))}</h3>
-{/* <hr></hr> */}
+
             </section>
             <p onClick={() => removeItem(item._id)}
               className="cart-trash"
@@ -170,7 +170,7 @@ const plural2 = state.cartAmount.length === 1 ? '' : 's'
   <button
              onClick={doneSales}
              >Checkout</button>
-            <button>  <Link to={'/shop'} className="cart-shop-linker">Shop</Link></button>
+           <Link to={'/shop'} className="cart-shop-linker">  <button> Shop</button></Link>
              <button onClick={clearCart}>Clear Cart</button>
 </div>
              <h3 className={state.success ? 'update-alert' : 'hide-update-alert'}>{state.alertMsg}</h3>
