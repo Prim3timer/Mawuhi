@@ -1032,10 +1032,7 @@ column-gap: .5rem;
 
 
 .inventory {
-   font-size: 1.2rem;
-   /* overflow-y: auto; */
-   /* max-width: 800px; */
-   margin: 2rem 0 2rem 0;
+   margin: 2rem 0;
    color: darkslateblue;
   }
 
