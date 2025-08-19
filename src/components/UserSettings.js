@@ -45,28 +45,31 @@ const UserSettings = () => {
     // picker3 is the not the current user.  It is the user in question.
     console.log({auth})
     const [active, setActive] = useState('')
-    const theRole = auth && auth.users.find((user) => user._id === auth.picker3)
-    const [roles, setRoles] =  useState(theRole ? Object.keys(theRole.roles) : '')
-const navigate = useNavigate()
-// dispatch({type: ACTION.SUCCESS, payload: false})
- 
-        const shadowing = () => {
-            setShadow(true)
-
-        }     
+    const theRole = auth.users.find((user) => user._id === auth.picker3)
+    const [roles, setRoles] =  useState(Object.keys(theRole.roles))
+    // const [roles, setRoles] =  useState({})
+    const navigate = useNavigate()
+    // dispatch({type: ACTION.SUCCESS, payload: false})
+    
+    const shadowing = () => {
+        setShadow(true)
         
-        // const userPage = (e) => {
+    }     
+    
+    // const userPage = (e) => {
+        
+    //     const theRole = auth.users.find((user) => user._id === auth.picker3)
+    //     console.log({theRole})
+    //      const newRole =  Object.keys(theRole.roles)
+    //         setRoles(newRole)
             
-        //     console.log({theRole})
-        //  const newRole =  Object.keys(theRole.roles)
-        //     setRoles(newRole)
             
-            
-        // }
+    //     }
 
-        // useEffect(()=> {
-        //     userPage()
-        // }, [])
+    //     useEffect(()=> {
+    //         console.log('pager')
+    //         userPage()
+    //     }, [])
 
          const showPassword = () => {
         if (isPassword3 === 'password'){
@@ -100,11 +103,7 @@ console.log(auth.users)
         }, [])
         
         
-        const assertain = (id) => {
-            // e.preventDefault()
-    setAuth({...auth, picker3: id})
-    console.log(auth.picker3)
-    // id &&    setBrand(id)
+        const assertain = () => {
     dispatch({type: 'cancel', payload: true})
 }
 
