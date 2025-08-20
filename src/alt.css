@@ -186,6 +186,13 @@ input {
 }
 
 
+.sales-items-cont>*:first-child {
+  padding-left: .5rem;
+}
+.sales-items-cont>*:last-child {
+  text-align: center;
+}
+
 
     .sales-items {
   text-align: left;
@@ -732,8 +739,14 @@ align-items: flex-start;
 
 .inventory-spec table {
   font-size: 2rem;
-  /* background-color: red; */
+  
+}
 
+
+.invent-header-trow>:first-child {
+
+  padding-left: .5rem;
+  height: 5.5rem;
 }
 
 

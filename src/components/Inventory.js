@@ -218,7 +218,7 @@ const bringEdit = () => {
  <table className="inventory"
 >
  <tbody>
- <tr>
+ <tr className="invent-header-trow">
      <th>NAME (SI UNIT)</th>
      <th>IN-STOCK</th>
      <th> LAST UPDATED</th>
