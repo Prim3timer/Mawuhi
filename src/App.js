@@ -1,6 +1,6 @@
   import Register from "./components/register"
 import Login from "./components/Login"
-  import {Routes, Route, Link} from 'react-router-dom'
+  import {Routes, Route, Link, useLocation} from 'react-router-dom'
 import Home from "./components/Home"
 import Layout from "./components/Layout"
 import Missing from "./components/Missing"
@@ -63,7 +63,8 @@ const App = () => {
   const year = new Date().getFullYear()
   const { auth} = useAuth()
    const [oneReceipt, setOneReceipt] = useState(false)
-   
+   const location = useLocation()
+   console.log(location.pathname)
 const {isRotated, setIsRotated, workbar} = useContext(AuthContext)
 
   const [state, dispatch] = useReducer(reducer, initialState)
@@ -90,7 +91,7 @@ return (
    <NavBar isRotated={isRotated} setIsRotated={setIsRotated}/>
   <h3
   className="greeting"
-          >  {auth.accessToken && !oneReceipt ?  `Hi, ${auth.user}`: ''} 
+          >  {auth.accessToken && location.pathname !== '/one-receipt' ?  `Hi, ${auth.user}`: ''} 
     
              </h3>
    { <SideBar isRotated={isRotated} setIsRotated={setIsRotated}/>}
