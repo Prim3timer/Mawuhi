@@ -516,7 +516,7 @@ useEffect(()=> {
                 onChange={(e)=> dispatch({type: 'difference', payload: e.target.value})}
                 />
             </form>
-            <seciton
+            <section
             style={{
                 display: 'flex',
                 flexDirection: 'column'
@@ -525,7 +525,7 @@ useEffect(()=> {
            <h4
            >Balance: ₦{state.paidAmount > state.total  ? parseFloat(state.balance).toFixed(2) : 0}</h4>
            {/* <h3>₦{state.paidAmount > state.total  ? parseFloat(state.balance).toFixed(2) : 0}</h3>  */}
-           </seciton>
+           </section>
            <article className="cash-confirm">
            <button onClick={closeCashWindow}>Cancel</button>
            <button onClick={doneSales}>Done</button>

@@ -39,13 +39,11 @@ console.log(users)
            className="admin-header"
          
             >Admin</h1>
-      <section>
-       
-                      
-            {!showSettings ? <h2
+      <section>                   
+            {!showSettings ? <h4
             className="users-header"
             style={{textAlign: 'center'}}
-            >Users ({auth.users && auth.users.length})</h2> : ''}
+            >Users ({auth.users && auth.users.length})</h4> : ''}
             <div className="admin-links">
             
             </div>

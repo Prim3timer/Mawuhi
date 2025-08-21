@@ -223,10 +223,11 @@ const {auth, getTrans, itemRef,
         {/* <label>unitMeasure:</label> */}
         <datalist id="measure"
         >
-            {measurements.map((measurement)=> {
+            {measurements.map((measurement, index)=> {
                 return (
                     
                     <option 
+                    key={index}
                     value={measurement}
                     style={{
                             position: 'relative',

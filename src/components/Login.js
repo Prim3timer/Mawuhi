@@ -70,17 +70,17 @@ const Login = () => {
         } catch (err) {
             if (!err?.response) {
                 dispatch({type: 'errMsg', payload: 'No server Response'});
-                // setErrMsg('No Server Response');
+                
             } else if (err.response?.status === 400) {
-                // setErrMsg('Missing Username or Password');
+           
                 dispatch({type: 'errMsg', payload: 'Missing Username or Password'});
             }
              else if (err.response?.status === 401) {
-                // setErrMsg('Unauthorized');
+              
                 dispatch({type: 'errMsg', payload: 'Unauthorized'});
             }
              else {
-                // setErrMsg('Login Failed');
+            
                 dispatch({type: 'errMsg', payload: 'Login Failed'});
             }
             // set the focus on error display so the screen reader can read that info
@@ -92,7 +92,7 @@ const Login = () => {
     return (
      
         <section className='login'>
-            <p ref={errRef} className={state.errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{state.errMsg}</p>
+            <p  ref={errRef} className={state.errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{state.errMsg}</p>
             <h1
             className='login-header'
          
@@ -130,13 +130,12 @@ const Login = () => {
                 >Sign In</button>
             </form>
             <p>
-                Need an Account?<br />
-                <p className="line">
+                Need an Account?
+                </p>
                     <Link 
                     style={{color: 'blue'}}
                     to="/register">Sign Up</Link>
-                </p>
-            </p>
+            
         </section>
     )
 }
