@@ -224,9 +224,9 @@ const Register = () => {
                    
                             {/*put router link here*/}
                             <Link 
-                            // style={{
-                            //     color: 'blue'
-                            // }}
+                            style={{
+                                color: 'blue'
+                            }}
                             to={'/login'}>Sign In</Link>
                      
                   
