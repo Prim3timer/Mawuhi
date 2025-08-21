@@ -53,6 +53,8 @@ margin: 1rem 0 0 4rem;
   margin-bottom: 0.5rem;
 }
 
+
+
 #roles select {
     /* background-color: red; */
     /* transform: scale(1.5); */
@@ -1074,6 +1076,7 @@ column-gap: .5rem;
 }
 
 .sign-in {
+  margin: 1rem 0;
     color: whitesmoke;
     padding: 5px 0;
     font-size: 1.2rem;
@@ -1974,6 +1977,9 @@ max-width: 95%;
 
 .admin {
   margin: 3rem;
+}
+.sign-in {
+  padding: .5rem 0;
 }
 
 .shop form {

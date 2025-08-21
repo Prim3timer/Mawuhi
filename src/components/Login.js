@@ -126,7 +126,7 @@ const Login = () => {
                 {/* Rhinohorn1# */}
                 <button
                 className='sign-in'
-                style={{margin: '1rem 0'}}
+           
                 >Sign In</button>
             </form>
             <p>
