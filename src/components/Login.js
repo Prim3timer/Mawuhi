@@ -129,13 +129,14 @@ const Login = () => {
            
                 >Sign In</button>
             </form>
+            <article className='sign-up-cont'>
             <p>
                 Need an Account?
                 </p>
                     <Link 
-                    style={{color: 'blue'}}
+                 className='sign-in-link'
                     to="/register">Sign Up</Link>
-            
+            </article>
         </section>
     )
 }

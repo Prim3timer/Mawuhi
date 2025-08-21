@@ -54,7 +54,16 @@ margin: 1rem 0 0 4rem;
 }
 
 
+.sign-in-link {
+  font-size: 1.5rem;
+}
 
+.sign-up-cont{
+  /* color: whitesmoke; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 #roles select {
     /* background-color: red; */
     /* transform: scale(1.5); */
