@@ -27,7 +27,7 @@ margin: 1rem 0 0 4rem;
 
 .login {
     color: darkslateblue;
-    font-size: 1rem;
+    /* font-size: 1rem; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -59,13 +59,18 @@ margin: 1rem 0 0 4rem;
 }
 
 .sign-up-cont{
+
   /* color: whitesmoke; */
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* background-color: red; */
+}
+
+.sign-up-cont p {
+  font-size: 1rem;
 }
 #roles select {
-    /* background-color: red; */
     /* transform: scale(1.5); */
     /* font-size: 1.5rem; */
     /* width: 2rem; */
