@@ -220,13 +220,13 @@ const Register = () => {
                         disabled={!state.validName || !state.validPwd || !state.validMatch ? true : false}>Sign Up</button>
                     </form>
                     <p>
-                        Already registered?  </p><br />
+                        Already registered?  </p>
                    
                             {/*put router link here*/}
                             <Link 
-                            style={{
-                                color: 'blue'
-                            }}
+                            // style={{
+                            //     color: 'blue'
+                            // }}
                             to={'/login'}>Sign In</Link>
                      
                   
