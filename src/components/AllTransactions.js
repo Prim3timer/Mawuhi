@@ -255,7 +255,7 @@ function numberWithCommas(x) {
                         <div
                         style={{
                             display: `${state.cancel ? 'block' : 'none'}`,
-                            position: 'absolute',
+                            position: 'fixed',
                         textAlign: 'center',
                         top: '35%',
                         left: '5%',
@@ -275,6 +275,7 @@ function numberWithCommas(x) {
                       >Delete from Receipts?</h3>
                              <article
                              style={{
+                              
                                  display: 'flex',
                                 //  flexDirection: 'row',
                                  columnGap: '4vw',
