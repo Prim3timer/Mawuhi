@@ -46,7 +46,7 @@ const [specArray, setSpecArray] = useState([])
          console.log({authUsers: auth.users})
     //   setAtHome(false)
         try {
-            const response = await axiosPrivate.get('/transactions')
+            const response = await axios.get('/transactions')
             // const response2 = await axiosPrivate.get('/users')
             // console.log(response2)
             console.log(response)
