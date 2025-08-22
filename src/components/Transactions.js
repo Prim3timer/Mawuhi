@@ -246,9 +246,9 @@ const cardCheckout = async () => {
 
 
 const assertain = ()=> {
-    dispatch({type: 'cancel', payload: true})
-    // console.log(state.transArray)   
-  
+    if (state.transArray.length){
+        dispatch({type: 'cancel', payload: true})
+    }
 }
 
 function numberWithCommas(x) {
