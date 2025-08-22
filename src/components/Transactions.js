@@ -121,9 +121,11 @@ const Transactions = ()=> {
     
     
     const trueCash  = ()=> {
-        setCash(true)
+        if (state.transArray.length){
+
+            setCash(true)
+        }
         
-        setCheckout(false)
     }
     
     useEffect(()=>{
