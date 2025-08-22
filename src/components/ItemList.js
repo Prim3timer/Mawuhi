@@ -248,7 +248,6 @@ const {auth, getTrans, itemRef,
                 onChange={(e)=> dispatch({type: 'IMAGE', payload: e.target.value})}
                 />
                 <br/>
-                <br/>
                 <button onClick={e => negateEdit(e)}>Cancel</button>
                 <button 
                 id="update-button"
