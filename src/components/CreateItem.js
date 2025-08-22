@@ -1,8 +1,10 @@
 import reducer from "../reducer"
 import initialState from "../store"
 import axios from '../app/api/axios'
-import { useEffect, useReducer, useRef, useState } from "react"
+import { useEffect, useReducer, useRef, useState, useContext } from "react"
+import useRefreshToken from "../hooks/useRefreshToken"
 import { type } from "@testing-library/user-event/dist/type"
+import AuthContext from "../context/authProvider"
 const {v4: uuid} = require('uuid')
 
 
@@ -12,8 +14,8 @@ let CreateItem = () => {
        const [showUpdate, setShowUpdate] = useState(false)
        const measurements = ['Kilogram (kg)', 'Piece (pc)', 'Plate (Plt)', 'Dozen (dzn)', 'Bottle (Btl)', 'Pound (lbs)', 'Litre (L)', 'Sachet (sct)', 'Ounce (Oz)', 'Gram (g)', 'Set (St)', 'Bag (Bg)'
        ]
-
-     
+    const {setIsRotated} = useContext(AuthContext)
+     const refresh = useRefreshToken()
  
     const handleSubmit = async (e)=> {
         
@@ -62,10 +64,22 @@ let CreateItem = () => {
 
     }
 
-  
+   const remainDelete = ()=> {
+        // this condition statement is to enable the removal of the confirm window once any part of the 
+        // page is touched.
+        if (state.cancel){
+
+            dispatch({type: 'cancel', payload: false})
+        }
+        setIsRotated(false)
+
+    }
+
+
 
     return (
         <div className="create-item"
+           onClick={remainDelete}
         >
             <h2 id="create-item-heading">Create Item</h2>
             <form onSubmit={handleSubmit}

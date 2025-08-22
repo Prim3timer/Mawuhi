@@ -45,6 +45,7 @@ import SideBar from "./components/SideBar"
 import AuthContext from "./context/authProvider"
 import GenSales from "./components/GenSales"
 import GenShopping from "./components/GenReceipt"
+
 // import SearchItem from "./SearchItem";
 
 

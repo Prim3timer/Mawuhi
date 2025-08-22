@@ -174,9 +174,9 @@ const {auth, getTrans, itemRef,
                 }, [state.search])
 
 
-                // useEffect(()=> {
-                //     refresh()
-                // }, [])
+                useEffect(()=> {
+                    refresh()
+                }, [])
 
   return  (
       

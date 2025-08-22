@@ -16,16 +16,7 @@ const [successCounter, setSuccessCounter] = useState(false)
 const navigate = useNavigate()
 
 
-const preserveName = async () =>{
-    try {
-        
-        const {username} = await refresh()
-        console.log(username)
-    } catch (error) {
-        console.error(error)
-    }
-    
-}
+
 
 
 const getRecipt = async ()=> {
@@ -73,7 +64,9 @@ return
 
 
 
-
+useEffect(()=> {
+    refresh()
+}, [])
 
 
 useEffect(()=> {
@@ -94,7 +87,7 @@ useEffect(()=> {
             <h2>Thank you for your order</h2>
             <article>
             <Link to={'/shop'}><button>Shopping</button></Link>
-            <Link to={'/home'}><button>Home</button></Link>
+            {/* <Link to={'/home'}><button>Home</button></Link> */}
             <Link to={'/one-receipt'}><button>Get Receipt</button></Link>
       </article>
         </div>

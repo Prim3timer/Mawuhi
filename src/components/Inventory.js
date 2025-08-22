@@ -10,6 +10,7 @@ import { Link } from "react-router-dom"
 import Edit from "./Edit"
 import { type } from "@testing-library/user-event/dist/type"
 import AuthContext from "../context/authProvider"
+import useRefreshToken from "../hooks/useRefreshToken"
 const {v4: uuid} = require('uuid')
 
 // export const idContext = createContext()
@@ -23,7 +24,7 @@ const Inventory = ({mark, setMark})=> {
     const invRef = useRef()
     const {setIsRotated} = useContext(AuthContext)
 
-
+const refresh = useRefreshToken()
 
        const falseIsRotated = ()=> {
         setIsRotated(false)
@@ -101,18 +102,10 @@ const Inventory = ({mark, setMark})=> {
        if (state.isMatched) dispatch({type: 'isMatched', payload: false})
 
 }
-const bringEdit = () => {
-    dispatch({type: 'isEdit', payload: true})
-}
 
-    const remainDelete = ()=> {
-        // this condition statement is to enable the removal of the confirm window once any part of the 
-        // page is touched.
-        if (state.isEdit){
-
-            dispatch({type: 'isEdit', payload: false})
-        }
-    }
+    useEffect(()=> {
+    refresh()
+}, [])
 
  
     return (

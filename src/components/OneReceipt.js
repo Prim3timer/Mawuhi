@@ -41,11 +41,6 @@ const quitDetector = ()=>{
 }, [location])
 
 const getItems = async ()=> {
-
-    console.log('picker3 is : ', auth.picker3)
-    console.log('picker is: ', auth.picker)
-
-     
     try {
         console.log(currentUsers)
 

@@ -10,6 +10,7 @@ import useAuth from '../hooks/useAuth';
 import { Link } from "react-router-dom";
 import AuthContext from "../context/authProvider";
 import useRefreshToken from "../hooks/useRefreshToken";
+import { axiosPrivate } from '../app/api/axios'
 import SideBar from "./SideBar";
 {/* ₦ */}
 
@@ -332,8 +333,8 @@ useEffect(()=> {
 }, [ ])
 useEffect(()=> {
 
+    refresh()
 // if (sessionId){
-    // refresh()
 
 // }
 }, [])
