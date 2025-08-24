@@ -34,21 +34,21 @@ const mainLinks = [
         name: 'admin',
         path: '/admin'
     },
-    // {
-    //     id: 8,
-    //     name: 'shop',
-    //     path: '/shop'
-    // },
+    {
+        id: 8,
+        name: 'shop',
+        path: '/shop'
+    },
     
-    // {id: 9,
-    //     name: 'cart',
-    //     path: '/cart'
-    // },
-    // {
-    //     id: 10,
-    //     name: 'single item',
-    //     path: '/single-item'
-    // }
+    {id: 9,
+        name: 'cart',
+        path: '/cart'
+    },
+    {
+        id: 10,
+        name: 'single item',
+        path: '/single-item'
+    }
 ]
 
 export default mainLinks
