@@ -18,8 +18,8 @@ place-content: center;
 .greeting {
   /* background-image: radial-gradient(whitesmoke, paleturquoise); */
 
-position: absolute;
-top: 4rem;
+position: relative;
+/* top: 4rem; */
 margin: 1rem 0 0 4rem;
 }
 
@@ -1182,7 +1182,7 @@ column-gap: 5rem;
   /* justify-items: center; */
   padding: .5rem 1rem;
   top: 0;
-  margin-bottom: 2rem;
+  /* margin-bottom: 2rem; */
   overflow-x: auto;
 }
 
