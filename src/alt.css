@@ -2439,6 +2439,9 @@ width: 70vw;
     /* position: absolute; */
     justify-items: center;
     background-color: mistyrose;
+     background-color: #e6e6fa;
+
+
     /* opacity: .9; */
     /* justify-content: center; */
     padding: 2rem 0;
@@ -2455,7 +2458,7 @@ width: 70vw;
 .links-container >*{
   /* background-color: blue; */
   /* margin-top: 1rem; */
-  background-color: #1e293b;
+  /* background-color: #1e293b; */
   padding: .5rem 1rem;
   width: 60%;
   box-shadow: 0.2em 0.3em 0.4em gray;
@@ -2466,7 +2469,7 @@ width: 70vw;
   background-color: firebrick;
 }
 .side-links {
-  color: whitesmoke;
+  /* color: darkslateblue; */
 
 
   text-decoration: none;
@@ -2490,7 +2493,8 @@ width: 70vw;
 .links-container :hover {
   transition-property: all;
   transition-duration: 300ms;
-   background: darkslategray;
+   /* background: darkslategray; */
+     transform: scale(1.1, 1.1);
   /* transform: scale(1.1); */
 }
 
