@@ -2459,6 +2459,7 @@ width: 70vw;
   /* background-color: blue; */
   /* margin-top: 1rem; */
   /* background-color: #1e293b; */
+  background-color: whitesmoke;
   padding: .5rem 1rem;
   width: 60%;
   box-shadow: 0.2em 0.3em 0.4em gray;
@@ -2467,6 +2468,7 @@ width: 70vw;
 
 .links-container>*:last-child{
   background-color: firebrick;
+  color: white;
 }
 .side-links {
   /* color: darkslateblue; */
