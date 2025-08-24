@@ -277,7 +277,8 @@ const {auth, getTrans, itemRef,
           
           />
           </section>
-       <table className="inventory"
+       <table 
+       className="item-table-inventory"
       style={{
     //   position: 'absolute',
     // padding: '0 4rem',
