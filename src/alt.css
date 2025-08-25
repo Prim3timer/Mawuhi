@@ -2417,7 +2417,7 @@ width: 70vw;
     /* background-color: darkolivegreen; */
     max-height: 90vh;
     /* background-color:blue; */
-    margin-top: -2rem;
+    margin-top: -4rem;
     width: 50vw;
     right: 50%;
     overflow-x: hidden;
@@ -2432,7 +2432,7 @@ width: 70vw;
     transition-delay: 50ms;
     transition-timing-function: ease-out;
 
-    margin-top: -2rem;
+    margin-top: -4rem;
     /* display: none; */
     width: 50vw;
     right: 110%;
