@@ -21,7 +21,7 @@ place-content: center;
 position: relative;
 /* top: 4rem; */
 /* padding: 1rem 0 1rem 1rem; */
-/* margin: 1rem 0 0 4rem; */
+margin: 1rem 0 0 4rem;
 /* background-color: red; */
 }
 
@@ -1212,7 +1212,7 @@ column-gap: 5rem;
 
 
 .header >*:nth-child(1){
-  padding: .3rem .5rem;
+  /* padding: .3rem .5rem; */
   grid-column: 1 / 1;
 
   /* background-color: red; */
