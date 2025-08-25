@@ -179,7 +179,8 @@ const refresh = useRefreshToken()
      <form  className="sales-search-form" 
      //   onSubmit={(e)=> e.preventDefault()}
      >
-             <h2 className="invent-header"
+             <h2 
+             className="invent-header"
     
      >Inventory</h2> 
  <input 

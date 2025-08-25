@@ -859,16 +859,17 @@ justify-content: center;
       
       #gen-receipt-invent-search{
         font-size: 1.5rem;
-        /* background-color: red; */
-
+        
       }
       
-
-.trans-cont {
+      
+      .trans-cont {
+  /* background-color: red; */
+  /* height: 100vh; */
  display: flex;
  flex-direction: column;
  align-items: center;
- margin: 1rem 0;
+ /* margin: 1rem 0; */
  row-gap: 1rem;
 
  
@@ -994,6 +995,11 @@ display: block;
    /* background-color: rebeccapurple; */
    margin-bottom: 1rem;
    /* width: 95%; */
+ }
+ .item-counter {
+  /* background-color: red; */
+  text-align: center;
+  padding: .5rem 0;
  }
 
  #trans-item {
@@ -2167,8 +2173,8 @@ row-gap: 1rem;
 
       .trans-cont{
         /* min-height: 100vh; */
-    margin-top: 4rem;
-        row-gap: 2rem;
+    /* margin-top: 4rem; */
+        row-gap: 6rem;
       }
 
 

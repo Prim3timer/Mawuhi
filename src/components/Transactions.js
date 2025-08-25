@@ -350,6 +350,7 @@ useEffect(()=> {
            
             >Transactions</h2>
               {/* <SideBar/> */}
+              <section>
             <fieldset
             id="field"
             >
@@ -396,15 +397,16 @@ useEffect(()=> {
             <button onClick={cardCheckout}>Card</button>
 </fieldset>
         
-
             </fieldset>
+ {state.transArray.length ? <h3 className="item-counter">{state.transArray.length} item{state.transArray.length === 1 ? '' : 's'}</h3> : ''}
+            </section>
             
             <h3 
             className={noShow ? 'err-msg' : firstRedChecker ? 'no-err-msg' : 'hide-err-msg'}
            
             >
                 {state.errMsg}</h3>
-           {state.transArray.length ? <h3>{state.transArray.length} item{state.transArray.length === 1 ? '' : 's'}</h3> : ''} 
+           
             <div
             id="trans-item-cont"               
                     >
