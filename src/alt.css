@@ -829,6 +829,10 @@ justify-content: center;
   justify-self: center; */
 }
 
+/* .inventory-spec {
+  background-color: red;
+  padding: none;
+} */
 
   
   
@@ -840,8 +844,9 @@ justify-content: center;
  .invent-header {
     text-align: center;
         /* color: darkslateblue; */
-        margin: 2rem 0 0 0;
+        /* margin: 2rem 0 0 0; */
         /* width: 100%; */
+        /* background-color: red; */
       }
 
   
@@ -1792,7 +1797,7 @@ color: whitesmoke;
   margin: 2rem .5rem 1rem 12rem;
   width: 145vw;
   font-size: 1.5rem;
-  /* background-color: red; */
+  /* background-color: blue; */
   
 }
 
