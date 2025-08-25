@@ -1320,7 +1320,7 @@ overflow-y: auto;
 
 
 .App {
-    /* margin: .5rem; */
+    /* padding: .5rem 0; */
     font-family:  "Roboto", sans-serif;
     background-color: #475569;
     background-image: radial-gradient(whitesmoke, paleturquoise);
@@ -1567,7 +1567,7 @@ color: whitesmoke;
   }
 
   .sales-search-form {
-    margin: 2rem 0;
+    /* margin: 2rem 0; */
     display: flex;
     flex-direction: column;
     align-items: center;
