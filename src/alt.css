@@ -197,8 +197,12 @@ input {
   text-align: center;
   /* min-height: 100vh; */
   justify-content: center;
+ 
   
 }
+
+
+
 
 .create-item {
   align-content: center;
@@ -2047,6 +2051,17 @@ max-width: 95%;
 }
 .sign-in {
   padding: .5rem 0;
+}
+
+.edit-user {
+  justify-content: flex-start;
+  /* background-color: red; */
+  height: 80vh;
+  /* flex-grow: 1; */
+}
+
+.usersetting-first-form {
+  /* background-color: red; */
 }
 
 .shop form {

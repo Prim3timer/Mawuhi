@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom"
 import axios, { axiosPrivate } from "../app/api/axios"
 import { FaTrashAlt } from "react-icons/fa";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrash, faSave, faCheck, faTimes, faInfoCircle, faEyeSlash, faEye  } from "@fortawesome/free-solid-svg-icons"  
+import { faTrash, faSave, faCheck, faTimes, faInfoCircle, faEyeSlash, faEye } from "@fortawesome/free-solid-svg-icons"
 import initialState from "../store"
 import reducer from "../reducer"
 import AuthContext from "../context/authProvider";
@@ -31,39 +31,39 @@ const ACTION = {
 const UserSettings = () => {
     const [password, setPassword] = useState('')
     const [currentUser, setCurrentUser] = useState()
-    const {auth, setAuth} = useAuth()
+    const { auth, setAuth } = useAuth()
     const [username, setUsername] = useState()
     const [state, dispatch] = useReducer(reducer, initialState)
     const [shadow, setShadow] = useState(false)
     const [isPassword3, setisPassword3] = useState('password')
-     const [passwordCheck3, setPasswordCheck3] = useState(faEyeSlash)
+    const [passwordCheck3, setPasswordCheck3] = useState(faEyeSlash)
     // const {users, getUsers} = useContext(AuthContext)
     const [ID, setID] = useState('')
     const saveRef = useRef(null)
     const pwdRef = useRef()
     // console.log(users)
     // picker3 is the not the current user.  It is the user in question.
-    console.log({auth})
+    // console.log({ auth })
     const [active, setActive] = useState('')
     const theRole = auth.users.find((user) => user._id === auth.picker3)
-    const [roles, setRoles] =  useState(Object.keys(theRole.roles))
+    const [roles, setRoles] = useState(Object.keys(theRole.roles))
     // const [roles, setRoles] =  useState({})
     const navigate = useNavigate()
     // dispatch({type: ACTION.SUCCESS, payload: false})
-    
+
     const shadowing = () => {
         setShadow(true)
-        
-    }     
-    
+
+    }
+
     // const userPage = (e) => {
-        
+
     //     const theRole = auth.users.find((user) => user._id === auth.picker3)
     //     console.log({theRole})
     //      const newRole =  Object.keys(theRole.roles)
     //         setRoles(newRole)
-            
-            
+
+
     //     }
 
     //     useEffect(()=> {
@@ -71,281 +71,284 @@ const UserSettings = () => {
     //         userPage()
     //     }, [])
 
-         const showPassword = () => {
-        if (isPassword3 === 'password'){
+    const showPassword = () => {
+        if (isPassword3 === 'password') {
             setisPassword3('text')
             setPasswordCheck3(faEye)
-        } 
-        else{
+        }
+        else {
 
             setisPassword3('password')
             setPasswordCheck3(faEyeSlash)
-        } 
-    }
-console.log(auth.users)
-        const getAUser = ()=> {
-            const person = auth.user && auth.users.find((user) => user._id === auth.picker3)
-            if (person){
-
-                setCurrentUser(person)
-                setUsername(person.username)
-                // setRoles(person.roles)
-                setActive(person.active)
-                console.log({auth})
-            }
         }
-        
- 
-        
-        useEffect(()=> {
-            getAUser()
-            console.log(currentUser)
-        }, [])
-        
-        
-        const assertain = () => {
-    dispatch({type: 'cancel', payload: true})
-}
-
-
-const handleRemove = async ()=> {
-    console.log(auth.picker3)
-  
-    // const response = await axios.delete(`/users/delete/${ID}`)
-    const response = await axios.delete(`items/delete-user/${currentUser._id}`)
-    dispatch({type: 'cancel', payload: false})
-    dispatch({type: 'success', payload: true})
-navigate('/admin')
-    console.log(state.success)
-    setTimeout(()=> {
-        dispatch({type: 'success', payload: false})
-    }, 3000)
-    if (response){
-        dispatch({type: 'selectUser', payload: response.data})
-
-        // const newGraw =  users.filter((item)=> item._id !== auth.picker3)
-
-        // setUsers(newGraw)
-    }
-    else{
-        console.log('nothing for you')
-    }
-}
-
-const remainDelete = ()=> {
-    // this condition statement is to enable the removal of the confirm window once any part
- // of the 
-    // page is touched.
-    if (state.cancel){
-
-        dispatch({type: 'cancel', payload: false})
     }
 
-}
-const generalRemain = () => {
-    if (state.isMatched) dispatch({type: 'isMatched', payload: false})
+    const getAUser = () => {
+        const person = auth.user && auth.users.find((user) => user._id === auth.picker3)
+        if (person) {
 
- } 
-
-
-        // useEffect(()=> {
-        //     getUsers()
-        // }, [])
-        
-     useEffect(() => {
-            dispatch({type: ACTION.VALIDNAME, payload: USER_REGEX.test(username)})
-        }, [username])
-    
-        useEffect(() => {
-            dispatch({type: ACTION.VALIDPWD, payload: PWD_REGEX.test(password)})
-        }, [password, 
-            // state.matchPwd
-        ])
-
-          useEffect(() => {
-                dispatch({type: ACTION.ERRMSG, payload: ''})
-            }, [username, password,
-                // state.matchPwd
-            ])
+            setCurrentUser(person)
+            setUsername(person.username)
+            // setRoles(person.roles)
+            setActive(person.active)
+            console.log({ auth })
+        }
+    }
 
 
-              useEffect(() => {
-        // pwdRef.current.value = ''
- 
+
+    useEffect(() => {
+        getAUser()
+        console.log(currentUser)
     }, [])
 
 
-        
-
-
-
-
-
-const onRolesChanged = e => {
-    // shadowing()
-    // setShadow(true)
-    const values = Array.from(
-        e.target.selectedOptions,
-        (option) => option.value
-    )
-    if (!values.includes('Employee')){
-     
-        return
-       
-    } 
-    if (values.length > 1 && !values.includes('Manager')){
-     
-        return
-    }else  {
-     
-        setRoles(values)
+    const assertain = () => {
+        dispatch({ type: 'cancel', payload: true })
     }
-}
 
-const updateUser = async (e) => {
-    e.preventDefault()
-    try {
-        console.log('shadow is ', shadow)
-    const newRoles = {
-        Employee: 2001,
+
+    const handleRemove = async () => {
+        console.log(auth.picker3)
+
+        // const response = await axios.delete(`/users/delete/${ID}`)
+        const response = await axios.delete(`items/delete-user/${currentUser._id}`)
+        dispatch({ type: 'cancel', payload: false })
+        dispatch({ type: 'success', payload: true })
+        navigate('/admin')
+        console.log(state.success)
+        setTimeout(() => {
+            dispatch({ type: 'success', payload: false })
+        }, 3000)
+        if (response) {
+            dispatch({ type: 'selectUser', payload: response.data })
+
+            // const newGraw =  users.filter((item)=> item._id !== auth.picker3)
+
+            // setUsers(newGraw)
+        }
+        else {
+            console.log('nothing for you')
+        }
     }
-    let newest = {}
-    const userChange = roles.map((role)=>{
-       if (role === 'Manager' ) newest =  {...newRoles, Manager: 1984}
-       else if (role === 'Admin') newest  = {...newRoles, Manager: 1984, Admin: 5150}
-       else newest = newRoles
-        
-        return newest
+
+    const remainDelete = () => {
+        // this condition statement is to enable the removal of the confirm window once any part
+        // of the 
+        // page is touched.
+        if (state.cancel) {
+
+            dispatch({ type: 'cancel', payload: false })
+        }
+
+    }
+    const generalRemain = () => {
+        if (state.isMatched) dispatch({ type: 'isMatched', payload: false })
+
+    }
+
+
+    // useEffect(()=> {
+    //     getUsers()
+    // }, [])
+
+    useEffect(() => {
+        dispatch({ type: ACTION.VALIDNAME, payload: USER_REGEX.test(username) })
+    }, [username])
+
+    useEffect(() => {
+        dispatch({ type: ACTION.VALIDPWD, payload: PWD_REGEX.test(password) })
+    }, [password,
+        // state.matchPwd
+    ])
+
+    useEffect(() => {
+        dispatch({ type: ACTION.ERRMSG, payload: '' })
+    }, [username, password,
+        // state.matchPwd
+    ])
+
+
+    useEffect(() => {
+        // pwdRef.current.value = ''
+
+    }, [])
+
+
+
+
+
+
+
+
+    const onRolesChanged = e => {
+        // shadowing()
+        // setShadow(true)
+        const values = Array.from(
+            e.target.selectedOptions,
+            (option) => option.value
+        )
+        if (!values.includes('Employee')) {
+
+            return
+
+        }
+        if (values.length > 1 && !values.includes('Manager')) {
+
+            return
+        } else {
+
+            setRoles(values)
+        }
+    }
+
+    const updateUser = async (e) => {
+        e.preventDefault()
+        try {
+            console.log('shadow is ', shadow)
+            const newRoles = {
+                Employee: 2001,
+            }
+            let newest = {}
+            const userChange = roles.map((role) => {
+                if (role === 'Manager') newest = { ...newRoles, Manager: 1984 }
+                else if (role === 'Admin') newest = { ...newRoles, Manager: 1984, Admin: 5150 }
+                else newest = newRoles
+
+                return newest
+            })
+
+            console.log({ userChange })
+
+            const currentRole = userChange.pop()
+            console.log({ currentRole })
+            console.log(password)
+            const updatedPerson = {
+                username: username,
+                roles: currentRole,
+                password: password,
+                active: active,
+
+            }
+
+            // const response = await axios.patch(`//update/${currentUser._id}`, updatedPerson)
+            const response = await axios.patch(`/items/update-user/${auth.picker3}`, updatedPerson)
+            if (response) {
+                dispatch({ type: ACTION.SELECTUSER, payload: response.data })
+                dispatch({ type: ACTION.SUCCESS, payload: true })
+                setTimeout(() => {
+                    dispatch({ type: ACTION.SUCCESS, payload: false })
+                }, 3000)
+            }
+        } catch (error) {
+            console.error(error)
+        }
+
+    }
+    const onActiveChanged = () => {
+
+        shadowing()
+        setActive(prev => !prev)
+    }
+
+    const options = Object.keys(ROLES).map(role => {
+
+        return (
+            <option
+                style={{
+                    fontSize: '2.5rem',
+                    display: 'flex',
+                    alignItems: 'center',
+                }}
+                key={role}
+                value={role}
+
+            > {role}</option >
+        )
     })
 
-    console.log({userChange})
-    
-    const currentRole = userChange.pop()
-    console.log({currentRole})
-    console.log(password)
-    const updatedPerson = {
-        username: username,
-        roles: currentRole,
-        password: password,
-        active: active,
 
-    }
-
-    // const response = await axios.patch(`//update/${currentUser._id}`, updatedPerson)
-    const response = await axios.patch(`/items/update-user/${auth.picker3}`, updatedPerson)
-if (response) {
-    dispatch({type: ACTION.SELECTUSER, payload: response.data})
-    dispatch({type: ACTION.SUCCESS, payload: true})
-    setTimeout(()=> {
-        dispatch({type: ACTION.SUCCESS, payload: false})
-    }, 3000)
-}
-    } catch (error) {
-        console.error(error)
-    }
-
-}
-const onActiveChanged = () => {
-    
-    shadowing()
-    setActive(prev => !prev)
-}
-
-const options = Object.keys(ROLES).map(role => {
 
     return (
-        <option
-        style={{
-            fontSize: '2.5rem',
-            display: 'flex',
-            alignItems: 'center',
-        }}
-            key={role}
-            value={role}
+        !currentUser ? <h2
+            className="edit-user"
 
-        > {role}</option >
-    )
-})
-
-
-  
-    return (
-        !currentUser? <h2
-        className="edit-user"
-       
         >Loading...</h2> :
-         <div className="edit-user"
-        >
-            <h2 id="user-edit-header">Edit User Settings</h2>
-
-            <form className="usersetting-first-form" onSubmit={(e)=> e.preventDefault()} >
-            <label htmlFor="username">Username:
-            <FontAwesomeIcon icon={faCheck} className={state.validName ? "valid" : "hide"} />
-            <FontAwesomeIcon icon={faTimes} className={state.validName || !username ? "hide"
- : "invalid"} />
-            </label>
-            <input type="text" id="settings-username" 
-            value={username}
-            onChange={e => {
-                shadowing()
-                setUsername(e.target.value)}}
-                aria-invalid={state.validName ? "false" : "true"}
-                            aria-describedby="uidnote"
-                            onFocus={() => dispatch({type: ACTION.USERFOCUS, payload: true})
-}
-                            onBlur={() => dispatch({type: ACTION.USERFOCUS, payload: false})
-}
-            />
-             <p id="uidnote" className={!state.validName  && state.userFocus? "instructions"
- : "offscreen"}>
-                                        <FontAwesomeIcon icon={faInfoCircle} />
-                                        3 to 24 characters.<br />
-                                        Must begin with a letter.<br />
-                                        Letters, numbers, underscores, hyphens allowed.
-                                    </p>
-            <label htmlFor="password">Password:
-            <FontAwesomeIcon icon={faCheck} className={state.validPwd ? "valid" : "hide"} />
-            <FontAwesomeIcon icon={faTimes} className={state.validPwd || !password ? "hide" 
-: "invalid"} />
-            </label>
-            <div 
-            // className="field-eye"
+            <div className="edit-user"
             >
-            <input type={isPassword3}
-            id="password" value={password}
-                ref={pwdRef}
-            onChange={e => {setPassword(e.target.value)
-                shadowing()
-            }}
+                <h2 id="user-edit-header">Edit User Settings</h2>
+
+                <form className="usersetting-first-form" onSubmit={(e) => e.preventDefault()} >
+                    <label htmlFor="username">Username:
+                        <FontAwesomeIcon icon={faCheck} className={state.validName ? "valid" : "hide"} />
+                        <FontAwesomeIcon icon={faTimes} className={state.validName || !username ? "hide"
+                            : "invalid"} />
+                    </label>
+                    <input type="text" id="settings-username"
+                        value={username}
+                        onChange={e => {
+                            shadowing()
+                            setUsername(e.target.value)
+                        }}
+                        aria-invalid={state.validName ? "false" : "true"}
+                        aria-describedby="uidnote"
+                        onFocus={() => dispatch({ type: ACTION.USERFOCUS, payload: true })
+                        }
+                        onBlur={() => dispatch({ type: ACTION.USERFOCUS, payload: false })
+                        }
+                    />
+                    <p id="uidnote" className={!state.validName && state.userFocus ? "instructions"
+                        : "offscreen"}>
+                        <FontAwesomeIcon icon={faInfoCircle} />
+                        3 to 24 characters.<br />
+                        Must begin with a letter.<br />
+                        Letters, numbers, underscores, hyphens allowed.
+                    </p>
+                    <label htmlFor="password">Password:
+                        <FontAwesomeIcon icon={faCheck} className={state.validPwd ? "valid" : "hide"} />
+                        <FontAwesomeIcon icon={faTimes} className={state.validPwd || !password ? "hide"
+                            : "invalid"} />
+                    </label>
+                    <div
+                    // className="field-eye"
+                    >
+                        <input type={isPassword3}
+                            id="password" value={password}
+                            ref={pwdRef}
+                            onChange={e => {
+                                setPassword(e.target.value)
+                                shadowing()
+                            }}
                             aria-invalid={state.validMatch ? false : true}
                             aria-describedby="confirmnote"
-                            onFocus={() => dispatch({type: ACTION.PWDFOCUS, payload: true})}
-                            onBlur={() => dispatch({type: ACTION.PWDFOCUS, payload: false})}
-            />     <FontAwesomeIcon icon={passwordCheck3} onClick={showPassword} className='show-password'/>
-            </div>
-                                <p id="pwdnote" className={state.pwdFocus && !state.validPwd
- ? "instructions" : "offscreen"}>
-                            <FontAwesomeIcon icon={faInfoCircle} />
-                            8 to 24 characters.<br />
-                            Must include uppercase and lowercase letters, a number and a spe
-cial character.<br />
-                            Allowed special characters: <span aria-label="exclamation mark">
-!</span> <span aria-label="at symbol">@</span> <span aria-label="hashtag">#</span> <span ari
-a-label="dollar sign">$</span> <span aria-label="percent">%</span>
-                        </p>
+                            onFocus={() => dispatch({ type: ACTION.PWDFOCUS, payload: true })}
+                            onBlur={() => dispatch({ type: ACTION.PWDFOCUS, payload: false })}
+                        />     <FontAwesomeIcon icon={passwordCheck3} onClick={showPassword} className='show-password' />
+                    </div>
+                    <p id="pwdnote" className={state.pwdFocus && !state.validPwd
+                        ? "instructions" : "offscreen"}>
+                        <FontAwesomeIcon icon={faInfoCircle} />
+                        8 to 24 characters.<br />
+                        Must include uppercase and lowercase letters, a number and a spe
+                        cial character.<br />
+                        Allowed special characters: <span aria-label="exclamation mark">
+                            !</span> <span aria-label="at symbol">@</span> <span aria-label="hashtag">#</span> <span ari
+                                a-label="dollar sign">$</span> <span aria-label="percent">%</span>
+                    </p>
 
-            </form>
-            <br/>
-         
-            <label className="form-label" htmlFor="user-active"
-          style={{ justifyContent: "center", 
-            // marginLeft: '2rem'
-          }}
+                </form>
+                <br />
 
-            >
+                <label className="form-label" htmlFor="user-active"
+                    style={{
+                        justifyContent: "center",
+                        // marginLeft: '2rem'
+                    }}
+
+                >
                     ACTIVE:
                     <input
-                 className="form__checkbox"
+                        className="form__checkbox"
                         id="user-active"
                         name="user-active"
                         type="checkbox"
@@ -353,125 +356,126 @@ a-label="dollar sign">$</span> <span aria-label="percent">%</span>
                         onChange={onActiveChanged}
                     />
                 </label>
-            <br/>
-           
+                <br />
+
                 <section className="roles-actions-cont">
-            <form onSubmit={(e)=> e.preventDefault()}
-              id="roles"
-            //   style={{float: 'left',
+                    <form onSubmit={(e) => e.preventDefault()}
+                        id="roles"
+                    //   style={{float: 'left',
 
-            //   }}
-            >   
-             <div
+                    //   }}
+                    >
+                        <div
 
-            className="asinged-roles-cont"
+                            className="asinged-roles-cont"
 
-            >
-            
-               <label
-                // style={{
-                //     fontSize: '1.5rem',
-                    
-                // }}
-                >ASSINGED ROLES:</label>
-            
-             <select name="roles" size="3"  multiple={true}
+                        >
 
-            //  ref={selectRef}
+                            <label
+                            // style={{
+                            //     fontSize: '1.5rem',
 
-             value={roles}
-             onChange={e => onRolesChanged(e)}
-            className="roles-select"
-             >
-              
-              {options}
-             </select>
-                 </div>
+                            // }}
+                            >ASSINGED ROLES:</label>
 
-                <article className="usersetting-actions">
-                  <button onClick={(e) => updateUser(e)}
-                  className="user-action"
-                  
-                  ref={saveRef}
-                  //   className={'icon-button'}
-                  title="Save"
-                  ><FontAwesomeIcon icon={faSave} /></button>
-           <button
-                  className="user-action"
-                  
-                  ><FontAwesomeIcon  icon={faTrash}
-                  onClick={assertain}
-                  tableindex='0'
-                  /> </button>
-                  </article>
-            </form>
-                  </section>
+                            <select name="roles" size="3" multiple={true}
 
-            <div
-            className={state.cancel ? 'delete' : 'no-delete'}
-         >
-             <h3
-          id="verify-header"
-          style={{
-              margin: '.5rem auto',
-            //   display: 'flex',
-          }}
-          > Delete  {username && username} from users</h3>
-                 <article
-                 style={{
-                     display: 'flex',
-                    //  flexDirection: 'row',
-                     columnGap: '4vw',
-                     justifyContent: 'center',
-                 }}
-                 >
+                                //  ref={selectRef}
+
+                                value={roles}
+                                onChange={e => onRolesChanged(e)}
+                                className="roles-select"
+                            >
+
+                                {options}
+                            </select>
+                        </div>
+
+                        <article className="usersetting-actions">
+                            <button onClick={(e) => updateUser(e)}
+                                className="user-action"
+
+                                ref={saveRef}
+                                //   className={'icon-button'}
+                                title="Save"
+                            ><FontAwesomeIcon icon={faSave} /></button>
+                            <button
+                                className="user-action"
+
+                            ><FontAwesomeIcon icon={faTrash}
+                                onClick={assertain}
+                                tableindex='0'
+                                /> </button>
+                        </article>
+                    </form>
+                </section>
+
+                <div
+                    className={state.cancel ? 'delete' : 'no-delete'}
+                >
+                    <h3
+                        id="verify-header"
+                        style={{
+                            margin: '.5rem auto',
+                            //   display: 'flex',
+                        }}
+                    > Delete  {username && username} from users</h3>
+                    <article
+                        style={{
+                            display: 'flex',
+                            //  flexDirection: 'row',
+                            columnGap: '4vw',
+                            justifyContent: 'center',
+                        }}
+                    >
+                        <button
+                            onClick={remainDelete}
+                        >No</button><button
+                            onClick={handleRemove}
+                            style={{
+                                backgroundColor: 'red',
+                                borderColor: 'red'
+                            }}
+                        >Yes</button></article></div>
+
+                <div
+                    className={state.isMatched ? 'unauthorization-alert' : 'authorization'}
+
+                >
+                    <h2
+                        id="verify-header"
+                        style={{
+                            margin: '.5rem auto',
+                            //   display: 'flex',
+                        }}
+                    >Unauthorized!</h2>
                     <button
-                 onClick={remainDelete}
-                 >No</button><button
-                  onClick={handleRemove}
-                 style={{backgroundColor: 'red',
-                     borderColor: 'red'
-                 }}
-                 >Yes</button></article></div> 
+                        onClick={generalRemain}
+                    >
+                        ok</button>
 
-<div
-className={state.isMatched ? 'unauthorization-alert' : 'authorization'}
-       
-     >
-         <h2
-      id="verify-header"
-      style={{
-          margin: '.5rem auto',
-        //   display: 'flex',
-      }}
-      >Unauthorized!</h2>
-      <button 
-      onClick={generalRemain}
-       >
-        ok</button>
-
+                </div>
+                <div
+                    style={{
+                        display: state.success ? 'block' : 'none',
+                        position: 'fixed',
+                        margin: '1rem 0',
+                        top: '40%',
+                        left: '30%',
+                        width: '40%',
+                        textAlign: 'center',
+                        padding: '1rem',
+                        backgroundColor: 'lightpink',
+                        borderRadius: '5px',
+                        fontSize: '1.5rem',
+                        opacity: '.85'
+                    }}
+                >
+                    <h4>{state.selectUser}</h4>
+                </div>
             </div>
-        <div
-        style={{
-            display: state.success ? 'block' : 'none',
-            position: 'fixed',
-            margin: '1rem 0',
-            top: '40%',
-left: '30%',
-width: '40%',
-textAlign: 'center',
- padding: '1rem',
-   backgroundColor: 'lightpink',
-   borderRadius: '5px',
-   fontSize: '1.5rem',
-   opacity: '.85'
-        }}
-        >
-          <h4>{state.selectUser}</h4>
-            </div>
-        </div>
     )
-    
+
 }
 
 
