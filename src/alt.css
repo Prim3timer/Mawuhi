@@ -2188,9 +2188,9 @@ row-gap: 1rem;
     
 
       .trans-cont{
-        /* min-height: 100vh; */
+        min-height: 80vh;
     /* margin-top: 4rem; */
-        row-gap: 6rem;
+        row-gap: 2rem;
       }
 
 
