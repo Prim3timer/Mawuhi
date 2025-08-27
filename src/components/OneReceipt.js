@@ -131,8 +131,8 @@ style={{
    >
        {/* <h5>cashierID: {item.cashierID}</h5> */}
                                            <h2 className="receipt-title">{currentTrans.title}</h2>
-       <h4>Date: {currentTrans.date}</h4>
-       <h4>TransID: {currentTrans._id}</h4>
+       <p>Date: {currentTrans.date}</p>
+       <p>TransID: {currentTrans._id}</p>
        {currentTrans.goods.map((good)=> {
            return (
                <div

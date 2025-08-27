@@ -206,8 +206,8 @@ function numberWithCommas(x) {
                     >
                         {/* <h5>cashierID: {item.cashierID}</h5> */}
                          <h2 className="receipt-title">{item.title}</h2>
-                        <h4>Date: {item.date}</h4>
-                        <h4>TransID: {item._id}</h4>
+                        <p>Date: {item.date}</p>
+                        <p>TransID: {item._id}</p>
                         {item.goods && item.goods.map((good)=> {
                             return (
                                 <div
