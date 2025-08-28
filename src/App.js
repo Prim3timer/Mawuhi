@@ -90,12 +90,12 @@ return (
 
 
    <NavBar isRotated={isRotated} setIsRotated={setIsRotated}/>
-  <h3
+  <h5
   className="greeting"
   // show greeting if we are logged in (access token present) and we are not in the one receipt page.
           >  {auth.accessToken && location.pathname !== '/one-receipt' ?  `Hi, ${auth.user}`: ''} 
     
-             </h3>
+             </h5>
    { <SideBar isRotated={isRotated} setIsRotated={setIsRotated}/>}
     <article className="main">
       <Routes>
