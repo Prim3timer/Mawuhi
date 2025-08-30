@@ -1636,19 +1636,12 @@ color: whitesmoke;
     }
 
    .search-form input{
-    /* background-color: yellow; */
-    /* min-width: 90%; */
-   }
-
- 
-
- .links-container {
-  display: none;
- }
-
- .side, .no-side {
-  max-height: 0px;
- }
+     /* min-width: 90%; */
+    }
+    
+    
+    
+    
  .edit-user {
   display: flex;
  }
@@ -2440,7 +2433,7 @@ width: 70vw;
     /* background-color: darkolivegreen; */
     max-height: 90vh;
     /* background-color:blue; */
-    margin-top: -5rem;
+    margin-top: -4.5rem;
     width: 50vw;
     right: 50%;
     overflow-x: hidden;
@@ -2455,7 +2448,7 @@ width: 70vw;
     transition-delay: 50ms;
     transition-timing-function: ease-out;
 
-    margin-top: -5rem;
+    margin-top: -4.5rem;
     /* display: none; */
     width: 50vw;
     right: 110%;
