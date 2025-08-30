@@ -287,6 +287,10 @@ function numberWithCommas(x) {
      }else if (!oldSession || oldSession !== sessionId){
     
          const response = await axios.post(`/transactions/${sessionId}`, dateOjb)
+
+         if (res.data){
+            
+         }
          console.log({res: response.data})
          if (response){
             setSuccess(true)

@@ -176,7 +176,7 @@ const refresh = useRefreshToken()
         > 
         <article id="form-cont">
 
-     <form  className="sales-search-form" 
+    <form  className="sales-search-form" 
      //   onSubmit={(e)=> e.preventDefault()}
      >
              <h2 
@@ -209,7 +209,7 @@ const refresh = useRefreshToken()
    </form>
    
  </article>
- <table className="inventory"
+ <table className="inventory-table"
 >
  <tbody>
  <tr className="invent-header-trow">
