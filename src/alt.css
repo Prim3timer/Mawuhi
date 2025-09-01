@@ -753,6 +753,10 @@ align-items: flex-start;
   width: 145vw; */
 }
 
+.item-table-inventory {
+  /* font-size: 1.5rem; */
+}
+
 
 .search-form {
   justify-self: center;
