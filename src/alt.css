@@ -157,7 +157,7 @@ margin: 0 0 1rem 0;
 
 .edit {
   flex-direction: column;
-color: whitesmoke;
+/* color: darkslateblue; */
            /* background-color: lightslategrey; */
         position: absolute;
         top: 20%;
@@ -757,6 +757,11 @@ align-items: flex-start;
   /* font-size: 1.5rem; */
 }
 
+#update-form button {
+  /* background-color: red; */
+  /* box-shadow: none; */
+}
+
 
 .search-form {
   justify-self: center;
@@ -773,7 +778,9 @@ align-items: flex-start;
   position: fixed;
   top:14%;
   left: 25%;
-  background-color: darkcyan;
+  /* background-color: darkcyan; */
+  background-color: powderblue;
+  
   justify-self: center;
   font-size: 1rem;
   width: 50%;
@@ -1530,7 +1537,7 @@ button:active {
 
 .edit {
   display: block;
-color: whitesmoke;
+/* color: whitesmoke; */
            background-color: lightslategrey;
         position: absolute;
         top: 20%;
