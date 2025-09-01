@@ -126,6 +126,7 @@ const reducer = (state, action)=> {
                 
                 case 'CARTFIELDCHANGE':
                    const item3 =  {...state.elItem, transQty: action.payload, total: (state.elItem.price * action.payload)}
+                   state.onlineQty = action.payload
                    return {...state, elItem: item3}
 
 

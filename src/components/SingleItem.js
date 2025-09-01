@@ -79,6 +79,15 @@ if (foundItem){
   dispatch({type: 'ALERTMSG', payload: 'item already in cart'})
   
 }else if (actualItem.quantity === 0) dispatch({type: 'ALERTMSG', payload: 'item is out of stock'})
+  else if (state.elItem.qty < state.onlineQty){
+    dispatch({type: 'ALERTMSG', payload: 'not enough in stock choose a lower amount' })
+    setTimeout(()=> {
+        dispatch({type: 'success', payload: false})
+      // dispatch({type: 'ALERTMSG', payload: '' })
+
+    }, 3000)
+  
+  }
   else {
     const response = await axios.post(`/cart/addcart`, actualItem)
     dispatch({type: 'ALERTMSG', payload: 'item added to cart'})
@@ -155,6 +164,8 @@ console.log(auth)
          
       }
 
+      console.log(state.onlineQty)
+
 function numberWithCommas(x) {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
@@ -206,7 +217,7 @@ function numberWithCommas(x) {
  />
 
 
-          <p className="no-qty-alert">{state.elItem.qty === '' ? 'invalid quantity' : state.elItem.qty === 0 ? 'out of stock' : ''}</p>    
+          <p className="no-qty-alert">{state.elItem.qty === '' ? 'invalid quantity'  : state.elItem.qty === 0 ? 'out of stock' : ''}</p>    
 
             </section>
             </div>
