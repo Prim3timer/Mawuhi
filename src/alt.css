@@ -807,8 +807,18 @@ justify-content: center;
 }
 
 
+/* .links-container{
+  display: none;
+} */
 
+/* .side {
+  display: none;
+} */
 
+.no-side {
+  position: absolute;
+  opacity: 0;
+}
 
 
 .invent-header-trow>:first-child {
@@ -2317,6 +2327,7 @@ width: 70vw;
     right: 110%;
     max-height: 90vh;
     /* overflow-x: hidden; */
+ 
     box-shadow: 0.2em 0.3em 0.8em gray;
     z-index: 10;
 
@@ -2440,7 +2451,7 @@ width: 70vw;
     transition-duration: 300ms;
     transition-delay: 50ms;
     transition-timing-function: ease-out;
-
+   opacity: 1;
     margin-top: -4.5rem;
     /* display: none; */
     width: 50vw;
