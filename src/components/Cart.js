@@ -66,7 +66,7 @@ const doneSales = async()=> {
         console.log(excessItem)
         if (excessCheck.length){
             dispatch({type:'success', payload: true})
-            dispatch({type: 'ALERTMSG', payload: `${excessItem.map((item) => item).join(', ')}  have been selected in excess`})
+            dispatch({type: 'ALERTMSG', payload: `${excessItem.map((item) => item).join(', ')}  ${excessItem.length > 1 ? 'have' : 'has'} been selected in excess`})
             setTimeout(()=> {
                 dispatch({type: 'success', payload: false})
                 
