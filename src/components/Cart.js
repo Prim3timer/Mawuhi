@@ -1,15 +1,16 @@
-import { useEffect, useReducer } from "react"
+import { useEffect, useReducer, useState, useRef } from "react"
 import initialState from "../store"
 import reducer from "../reducer"
 import axios from "../app/api/axios"
 import useAuth from "../hooks/useAuth"
 import {format} from 'date-fns'
 import { FaTrash } from "react-icons/fa"
-import { Link } from "react-router-dom"
+import { Link, useSearchParams } from "react-router-dom"
 
 const Payment = () => {
     const [state, dispatch] = useReducer(reducer, initialState)
-    
+    const [cartItems, setCartItems] = useState([])
+    const cartQtyRef = useRef(null)
 const {auth, setAuth} = useAuth()
 
     
@@ -31,6 +32,7 @@ const getCartItems = async () => {
     try {
         const response = await axios.get('/cart')
         console.log(response.data)
+        setCartItems(response.data)
         const userItems = response.data.filter((item) => item.userId === auth.picker)
         const newUseritems = userItems.map((item) => {
             return {...item, amount: item.quantity}
@@ -59,15 +61,29 @@ const doneSales = async()=> {
     const date = format(now, 'dd/mm/yyyy\tHH:mm:ss')
 
     try {
-
-        const response = await axios.post('/cart/create-checkout-session', state.cartArray)
-        console.log(response.data)
-        if (response){
-            window.location = response.data?.session?.url
-            // console.log(response.data)
+        const excessCheck = state.cartArray.filter((item) =>  item.quantity < Number(item.transQty))
+        const excessItem = excessCheck.map((item) => item.name)
+        console.log(excessItem)
+        if (excessCheck.length){
+            dispatch({type:'success', payload: true})
+            dispatch({type: 'ALERTMSG', payload: `${excessItem.map((item) => item).join(', ')}  have been selected in excess`})
+            setTimeout(()=> {
+                dispatch({type: 'success', payload: false})
+                
+            },3000)
             
+        }
+        
+        else {
+          const response = await axios.post('/cart/create-checkout-session', state.cartArray)
+          
+          if (response){
+              window.location = response.data?.session?.url
+              // console.log(response.data)
+              
+      } 
 
-          }   else throw Error('no item purchased')
+          }
          
 } catch (error) {
     console.log(error.message)
@@ -145,6 +161,7 @@ const plural2 = state.cartAmount.length === 1 ? '' : 's'
                 Qty:
             <input
             className="cart-qty"
+            ref={cartQtyRef}
                 value={item.transQty}
                 onChange={(e) => dispatch({type: "MAINCARTFIELD", payload: e.target.value, id: item._id})}
             

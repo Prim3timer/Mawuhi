@@ -135,11 +135,23 @@ console.log(auth)
           ]
 
           console.log(item)
-          const response = await axios.post('/cart/create-checkout-session', item)
-          if (response){
-             window.location = response.data.session.url
-             console.log(response)
-          }else  console.log("no checkout")
+          if (state.elItem.qty >= qtyRef.current.value){
+
+            const response = await axios.post('/cart/create-checkout-session', item)
+            if (response){
+               window.location = response.data.session.url
+               console.log(response)
+          }
+        }else {
+            dispatch({type: 'success', payload: true})
+            dispatch({type: 'ALERTMSG', payload: 'not enough in stock choose a lower amount' })
+    setTimeout(()=> {
+        dispatch({type: 'success', payload: false})
+      // dispatch({type: 'ALERTMSG', payload: '' })
+
+    }, 3000)
+
+          } 
          
       } catch (error) {
           console.error(error)
