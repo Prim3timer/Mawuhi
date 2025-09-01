@@ -209,7 +209,8 @@ const refresh = useRefreshToken()
    </form>
    
  </article>
- <table className="inventory-table"
+ <table 
+ className="inventory-table"
 >
  <tbody>
  <tr className="invent-header-trow">

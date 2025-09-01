@@ -809,12 +809,6 @@ justify-content: center;
 
 
 
-.inventory-spec table {
-  /* margin: 0 2rem; */
-  /* min-width: 100%; */
-  font-size: 2rem;
-  
-}
 
 
 .invent-header-trow>:first-child {
@@ -2332,7 +2326,6 @@ width: 70vw;
   margin: 2rem .5rem 1rem 13rem;
   width: 145vw;
   font-size: 1.5rem;
-  /* background-color: blue; */
   
 }
 
