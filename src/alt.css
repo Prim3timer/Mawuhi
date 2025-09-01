@@ -1429,6 +1429,11 @@ button {
            opacity: .85;
 }
 
+.hide-update-alert {
+  /* display: none; */
+  margin: 0 1rem;
+
+}
 .authorization {
   display: none;
 }
