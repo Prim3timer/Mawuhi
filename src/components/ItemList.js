@@ -108,7 +108,8 @@ const {auth, getTrans, itemRef,
                         dispatch({type: 'isMatched', payload: true})
                     } 
                     else {
-        
+          
+                        
                         dispatch({type: 'isEdit', payload: true})    
                         dispatch({type: 'id', payload: id})
                         itemRef.current.value = id
@@ -165,7 +166,10 @@ const {auth, getTrans, itemRef,
 
     const negateEdit = (e) => {
         e.preventDefault()
-        dispatch({type:'isEdit', payload: false})
+                      setTimeout(()=> {
+
+                          dispatch({type:'isEdit', payload: false})
+                        }, 50)
     }
                 
 
