@@ -79,7 +79,7 @@ if (foundItem){
   dispatch({type: 'ALERTMSG', payload: 'item already in cart'})
   
 }else if (actualItem.quantity === 0) dispatch({type: 'ALERTMSG', payload: 'item is out of stock'})
-  else if (state.elItem.qty < state.onlineQty){
+  else if (state.elItem.qty < qtyRef.current.value){
     dispatch({type: 'ALERTMSG', payload: 'not enough in stock choose a lower amount' })
     setTimeout(()=> {
         dispatch({type: 'success', payload: false})

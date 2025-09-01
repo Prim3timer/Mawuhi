@@ -47,7 +47,6 @@ const initialState = {
    balance: 0,
    id: '',
    backendUser:    {},
-   onlineQty: 0,
    selectUser: '' ,
   elItem: {},
   singleItemArray: [],
