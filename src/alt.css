@@ -1558,7 +1558,7 @@ button:active {
   text-align: center;
     width: 70%;
     left: 15%;
-
+    box-shadow: .2rem .3rem .6rem gray;
 }
 
 
