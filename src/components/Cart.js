@@ -10,6 +10,7 @@ import { Link, useSearchParams } from "react-router-dom"
 const Payment = () => {
     const [state, dispatch] = useReducer(reducer, initialState)
     const [cartItems, setCartItems] = useState([])
+    const [excessQty, setExcessQty] = useState('')
     const cartQtyRef = useRef(null)
 const {auth, setAuth} = useAuth()
 
@@ -64,10 +65,11 @@ const doneSales = async()=> {
         const excessCheck = state.cartArray.filter((item) =>  item.quantity < Number(item.transQty))
         const excessItem = excessCheck.map((item) => item.name)
         console.log(excessItem)
-        if (excessCheck.length){
+        setExcessQty(excessItem)
+        if (excessItem.length){
             dispatch({type:'success', payload: true})
             console.log(excessItem.length)
-            dispatch({type: 'ALERTMSG', payload: `the ${excessItem.length > 1 ? 'quantities' : 'quantity'} of ${excessItem.map((item) => item).join(', ')} slected ${excessItem.length > 1 ? 'exceed' : 'exceeds'} the quantity in stock`})
+            dispatch({type: 'ALERTMSG', payload: `the ${excessItem.length > 1 ? 'quantities' : 'quantity'} of ${excessItem.map((item) => item).join(', ')} slected ${excessQty.length > 1 ? 'exceed' : 'exceeds'} the quantity in stock`})
             setTimeout(()=> {
                 dispatch({type: 'success', payload: false})
                 

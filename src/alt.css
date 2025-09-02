@@ -1414,7 +1414,7 @@ button {
 
 .authorization-alert, .update-alert {
   display: block;
-    color: red;
+    /* color: red; */
             position: fixed;
         text-align: center;
         flex-direction: column;
@@ -1428,6 +1428,11 @@ button {
            border-radius: 5px;
            opacity: .85;
            box-shadow: .2rem .3rem .6rem gray;
+}
+
+.update-red-alert {
+  /* color: red;
+  color: darkslateblue; */
 }
 
 .hide-update-alert {
