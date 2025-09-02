@@ -1414,7 +1414,7 @@ button {
 
 .authorization-alert, .update-alert {
   display: block;
-    color: whitesmoke;
+    color: red;
             position: fixed;
         text-align: center;
         flex-direction: column;
@@ -1424,9 +1424,10 @@ button {
         left: 5%;
         width: 90%;
          padding: 1rem;
-             background-color: lightslategrey;
+             background-color: gainsboro;
            border-radius: 5px;
            opacity: .85;
+           box-shadow: .2rem .3rem .6rem gray;
 }
 
 .hide-update-alert {
