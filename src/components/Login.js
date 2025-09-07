@@ -18,7 +18,7 @@ const Login = () => {
 
     const navigate = useNavigate();
     const location = useLocation();
-    const from = location.state?.from?.pathname || "/transactions";
+    const from = location.state?.from?.pathname || "/shop";
     const [isPassword, setisPassword] = useState('password')
 
     const userRef = useRef();
