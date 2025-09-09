@@ -138,16 +138,18 @@ const refresh = useRefreshToken()
              className={state.isEdit ? "edit" : "no-edit"}
           id="invent-update-form"
                 >
-                    <h3>
+                    <h3
+                    
+                    id="name"
+                    >
 
-                <label htmlFor="name">name:</label>
+             {state.afa}
                     </h3>
-                 <input
+                 {/* <input
                 type="text"
-                id="name"
                 value={state.afa}
-                // onChange={(e)=> dispatch({type: 'afa', payload: e.target.value})}
-                />
+                onChange={(e)=> dispatch({type: 'afa', payload: e.target.value})}
+                /> */}
                 <h3>
                 <label htmlFor="qty">quantity:</label>
                 </h3>
