@@ -150,9 +150,9 @@ const refresh = useRefreshToken()
                 value={state.afa}
                 onChange={(e)=> dispatch({type: 'afa', payload: e.target.value})}
                 /> */}
-                <h3>
-                <label htmlFor="qty">quantity:</label>
-                </h3>
+                {/* <h3> */}
+                <label htmlFor="qty">qty:</label>
+                {/* </h3> */}
                 <input
                 type="text" 
                 id="ole"

@@ -151,7 +151,11 @@ margin: 0 0 1rem 0;
   width: 70%;
 }
 
-
+#ole {
+  /* background-color: red; */
+  width: 6rem;
+  font-size: 1.5rem;
+}
 
 
 
@@ -176,6 +180,10 @@ margin: 0 0 1rem 0;
     top:20%;
   /* left: 25%; */
   background-color: mediumaquamarine;
+}
+
+#invent-update-form input {
+  margin-left: .5rem;
 }
 
 input {
@@ -2182,14 +2190,15 @@ row-gap: 1rem;
 
 
    .edit form input {
-  /* background-color: red; */
-  width: 80%;
+  /* background-color: red;
+  width: 80%; */
 }
 
 .edit {
   width: 90%;
   left: 5%
 }
+
 
       .home{
         flex-grow: 1;
