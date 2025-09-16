@@ -186,6 +186,10 @@ margin: 0 0 1rem 0;
   margin-left: .5rem;
 }
 
+#invent-update-form h3 {
+  margin: .5rem 0;
+}
+
 input {
   padding: .5rem;
 }
