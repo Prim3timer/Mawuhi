@@ -18,12 +18,11 @@ const [oneId, setOneId] = useState('')
 const { auth} = useAuth();
 const [currentUser, setCurrentUser] = useState('')
 const {atHome, getUsers, currentUsers, setIsRotated} = useContext(AuthContext)
-console.log(state.atHome)
+
 const refresh = useRefreshToken()
 const getItems = async ()=> {
     // const authUsers = await refresh()
-    console.log({authUsers: auth})
-    console.log({currentUsers})
+    
   
     // setAuth(authUsers)
     // const person = users.find((user) => user._id === pickerChecker)
@@ -40,22 +39,18 @@ const getItems = async ()=> {
              
                 const cashierTrans = response.data.filter((item) => item.cashierID === auth.picker)
                       const person = auth.user && auth.users.find((person) => person._id == auth.picker)
-                      console.log(person)
+            
                 
                           setCurrentUser(person)
 
                       
-                      console.log(currentUser)
-                console.log(cashierTrans)
+
                 // dispatch({type: 'getNames', payload: response.data})
                 cashierTrans.reverse()
                 dispatch({type: 'getNames', payload: cashierTrans})
     
                 const filterate = cashierTrans.filter((inner)=> inner.date.substring(0, 10).includes(state.search))
-                console.log(filterate)
-            
-                
-                console.log(state.getNames)
+               
                 dispatch({type: 'getNames', 
                     payload: filterate})
                     
@@ -65,18 +60,18 @@ const getItems = async ()=> {
    
     
 }
-console.log(currentUser)
+
 
 const assertain = (id) => {
     if (auth.roles.includes(5150)){
-        console.log("deleted")
+        
         
         dispatch({type: 'cancel', payload: true})
-        console.log(state.cancel)
+       
         dispatch({type: 'id', payload: id})
         const getItem = state.getNames && state.getNames.find((item)=> item._id === id)
         dispatch({type: 'inItem', payload: getItem})
-        console.log(getItem)
+       
     }
     else {
         dispatch({type: 'isMatched', payload: true})
@@ -88,7 +83,7 @@ const handleRemove = async ()=> {
     dispatch({type: 'cancel', payload: false})
     const response = await axios.delete(`/transactions/${state.id}`)
     // const newGraw = state.items && state.items.filter((item)=> item._id !== state.id)
-    console.log(response)
+ 
 
 
     // e.preventDefault()     
@@ -96,15 +91,14 @@ const handleRemove = async ()=> {
         // await axios.delete(`/transactions/${id}`)
         
         const newGraw = state.getNames.filter((item)=> item._id !== state.id)
-        console.log('removed')
+        
     dispatch({type: 'getNames', payload: newGraw})
 }
 
 const oneShow = (id) => {
     dispatch({type: 'id', payload: id})
     auth.picker2 = id
-    console.log(auth)
-    // console.log(oneId)
+    
     setShowOne(true)
     // setReceipts(false)
 }

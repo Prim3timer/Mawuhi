@@ -169,6 +169,7 @@ const Register = () => {
                         <div className="field-eye">
                         <input
                              type={isPassword}
+                  
                             className="password"
                             onChange={(e) => dispatch({type: ACTION.PWD, payload: e.target.value})}
                             value={state.pwd}
