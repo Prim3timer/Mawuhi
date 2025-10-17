@@ -4,6 +4,8 @@ import AuthContext from '../context/authProvider';
 import useAuth from '../hooks/useAuth';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import useRefreshToken from '../hooks/useRefreshToken';
+import { faCheck, faTimes, faInfoCircle, faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import axios from '../app/api/axios';
 import reducer from '../reducer';
@@ -20,6 +22,8 @@ const Login = () => {
     const location = useLocation();
     const from = location.state?.from?.pathname || "/shop";
     const [isPassword, setisPassword] = useState('password')
+    const [passwordCheck2, setPasswordCheck2] = useState(faEyeSlash)
+     const [isPassword2, setisPassword2] = useState('password')
 
     const userRef = useRef();
     const errRef = useRef();
@@ -28,10 +32,24 @@ const Login = () => {
     const [pwd, setPwd] = useState('');
 
 
-    const showPassord = () => {
-        if (isPassword === 'password') setisPassword('text')
-        else setisPassword('password')
-    }
+     const showPassord = () => {
+            if (isPassword === 'password'){
+                setisPassword('text')
+                setPasswordCheck2(faEye)
+            } 
+             else{
+    
+                setisPassword('password')
+                setPasswordCheck2(faEyeSlash)
+            } 
+        }
+    
+
+
+    // const showPassord = () => {
+    //     if (isPassword === 'password') setisPassword('text')
+    //     else setisPassword('password')
+    // }
     
     // const [errMsg, setErrMsg] = useState('');
 
@@ -109,6 +127,7 @@ const Login = () => {
                     onChange={(e) => setUser(e.target.value)}
                     value={user}
                     required
+                   
                 />
 
                 <label htmlFor="password">Password:</label>
@@ -116,11 +135,12 @@ const Login = () => {
                 <input
                     type={isPassword}
                     className="login-password"
-                
+                    //  placeholder='password'
                     onChange={(e) => setPwd(e.target.value)}
                     value={pwd}
                     required    
-                />
+                ></input>
+                 <section className='password-icon-container'>  <FontAwesomeIcon icon={passwordCheck2} onClick={showPassord} className='show-password'/></section>
                 {/* <span onClick={showPassord} className='show-password'>show</span> */}
                 </article>
                 {/* Rhinohorn1# */}

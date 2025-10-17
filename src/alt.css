@@ -15,6 +15,14 @@ display: grid;
 place-content: center;
 }
 
+
+
+.home-links {
+  color: red;
+  /* transform: scale(1.5);
+  font-size: bold; */
+}
+
 .greeting {
 
 
@@ -49,6 +57,21 @@ margin: 0 0 1rem 0;
     display: flex;
     flex-direction: column;
     align-items: center;
+
+}
+
+.login-password::placeholder {
+  text-align: right;
+}
+
+.show-password {
+}
+
+.password-icon-container {
+  margin: .5rem 0;
+  /* width: 100vw; */
+  /* background-color: red; */
+  text-align: right;
 
 }
 
@@ -1237,7 +1260,12 @@ column-gap: 5rem;
 .home-links {
   /* color: whitesmoke; */
   text-decoration: none;
+
 }
+
+
+
+
 
 
 

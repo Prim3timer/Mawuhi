@@ -13,6 +13,7 @@ import useAuth from "../hooks/useAuth"
 import axios from "../app/api/axios"
 import AuthContext from "../context/authProvider"
 import useRefreshToken from "../hooks/useRefreshToken"
+import useAxiosPrivate from "../hooks/useAxiosPrivate"
 
 // import { type } from "@testing-library/user-event/dist/type"
 // import { current } from "@reduxjs/toolkit";
@@ -23,6 +24,8 @@ const {v4: uuid} = require('uuid')
 
 
 const ItemList = ()=> {
+
+    const axiosPrivate = useAxiosPrivate()
     const {user, getNames, items, setAtHome, isRotated, setIsRotated} = useContext(AuthContext)
     const refresh = useRefreshToken()
 const {auth, getTrans, itemRef, 
@@ -44,7 +47,7 @@ const {auth, getTrans, itemRef,
                dispatch({type: 'clear'})
                try {
                    // dispatch({type: 'errMsg', payload: 'loading...'})
-                   const response = await axios.get('/items')
+                   const response = await axiosPrivate.get('/items')
                    dispatch({type: 'errMsg', payload: ''})
                  const filterate = response.data.items.filter((item)=> item.name.toLowerCase().includes(state.search.toLowerCase()))
                  console.log(response.data.items ) 
