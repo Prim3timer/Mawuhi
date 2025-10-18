@@ -85,15 +85,9 @@ const Users = ()=> {
         // clean up function
         return ()=> {
             isMounted = false
-            if (controller){
-                setTimeout(()=> {
+    
                     controller.abort()
-                }, 1000)
        
-           
-
-            }
-            
         }
     }, [])
 // getUsers()

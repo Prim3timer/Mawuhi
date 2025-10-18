@@ -34,7 +34,8 @@ const useAxiosPrivate = () => {
                 // aviods endless loop by making sure retry happens only once)
                 if (error?.response?.status === 403 && !prevRequest?.sent){
                     prevRequest.sent = true;
-                    const {newAccessToken} = await refresh()
+                    const newAccessToken = await refresh()
+                    console.log(newAccessToken)
                     prevRequest.headers['Authorization'] = `Bearer ${newAccessToken}`
 
                     // now we should have a new accessToken with to which to retry the request
