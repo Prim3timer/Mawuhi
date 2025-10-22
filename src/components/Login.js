@@ -1,5 +1,5 @@
 
-import { useRef, useState, useEffect, useReducer} from 'react';
+import { useRef, useState, useEffect, useReducer, useContext} from 'react';
 import AuthContext from '../context/authProvider';
 import useAuth from '../hooks/useAuth';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
@@ -15,8 +15,10 @@ import initialState from '../store';
 const LOGIN_URL = '/auth';
 
 const Login = () => {
+       const { setAuth, persistor, setPersistor} = useContext(AuthContext);
+
     const [state, dispatch] = useReducer(reducer, initialState)
-    const { setAuth, auth } = useAuth()
+  
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -107,6 +109,14 @@ const Login = () => {
         dispatch({type: 'user', payload: user})
     }
 
+        const togglePersist = () => {
+        setPersistor(prev => !prev)
+    }
+
+    useEffect(()=> {
+        localStorage.setItem("persistor", persistor)
+    }, [persistor])
+
     return (
      
         <section className='login'>
@@ -156,6 +166,15 @@ const Login = () => {
                     <Link 
                  className='sign-in-link'
                     to="/register">Sign Up</Link>
+                        <div className='persistCheck'>
+                    <input 
+                        type='checkbox'
+                        id='persist'
+                        onChange={togglePersist}
+                        checked={persistor}
+                    />
+                    <label htmlFor='persist'>trust this device</label>
+                </div>
             </article>
         </section>
     )

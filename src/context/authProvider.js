@@ -15,6 +15,7 @@ const AuthContext = createContext({})
 // const refresh = useRefreshToken()
 export const AuthProvider = ({children}) => {
     const [state, dispatch] = useReducer(reducer, initialState)
+    const [persistor, setPersistor] = useState(JSON.parse(localStorage.getItem("persistor")) || false)
 //    const users = await refresh().users
     const [users, setUsers] = useState([])
     const [auth, setAuth] = useState({})  
@@ -223,7 +224,7 @@ const [currentUsers, setCurrentUsers] = useState([])
             generalRemain, remainDelete, items, isEdit, afa, price, unitMeasure, getTransaction,
             search, setSearch, setSearch2, search2, sales, user, getNames, currentUser,
             setCurrentUser, setCurrentUser2, currentUser2, users, setUsers, transactions, atHome, setAtHome,
-            currentUsers, setCurrentUsers, setIsRotated, isRotated, barRef
+            currentUsers, setCurrentUsers, setIsRotated, isRotated, barRef, persistor, setPersistor
 
         }}>
             {children}
