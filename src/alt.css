@@ -60,16 +60,18 @@ margin: 0 0 1rem 0;
 
 }
 
-.persitCheck {
+.persistCheck {
     font-size: .75rem;
     margin-top: 10px;
     display: flex;
     justify-content: flex-start;
     align-items: flex-end;
+    /* background-color: red; */
 }
 
-.persitCheck label {
+.persistCheck label {
     margin: 0;
+    font-size: 1.2rem;
 }
 
 [type="checkbox"]{
