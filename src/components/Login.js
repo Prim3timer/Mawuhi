@@ -22,6 +22,7 @@ const Login = () => {
 
     const navigate = useNavigate();
     const location = useLocation();
+    console.log(location.pathname)
     const from = location.state?.from?.pathname || "/transactions";
     const [isPassword, setisPassword] = useState('password')
     const [passwordCheck2, setPasswordCheck2] = useState(faEyeSlash)
