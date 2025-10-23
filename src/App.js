@@ -107,23 +107,23 @@ return (
     <Route path="/cart/thanks" element={<Thanks/>}/>
     <Route path="/transactions/local-thanks" element={<LocalThanks/>}/>
        {/* <Route path="/thanks" element={<Thanks />}/> */}
-    <Route path="single-item" element={<SingleItem/>}/>
         <Route path="shopping" element={<Reciepts />}/>
         <Route path="gen-shopping" element={<GenShopping />}/>
          {/* <Route path="one-shop" element={<OneShop/>} /> */}
     <Route path="register" element={<Register/>}/>
          <Route path="linkpage" element={<LinkPage/>}/>
       <Route path="unauthorized" element={<Unauthorized/>}/>
-      <Route path="transactions" element={<Transactions />}/>
-      <Route path="item-list" element={<ItemList/>}/>
- <Route path="inventory" element={<Inventory/>}/>
       <Route path="user-select" element={<UserSelect/>}/>
      
     <Route path="user-settings" element={<UserSettings/>}/>
   
        {/* protected routes */}
        <Route element={<PersistLogin/>}>
+    <Route path="single-item" element={<SingleItem/>}/>
        <Route element={<RequireAuth allowedRoles={[2001]}/>}>
+      <Route path="item-list" element={<ItemList/>}/>
+ <Route path="inventory" element={<Inventory/>}/>
+      <Route path="transactions" element={<Transactions />}/>
           {/* <Route path="/home" element={<Home home={home}/> } /> */}
     <Route path="/shop" element={<Shop/>}/>
       <Route path="one-receipt" element={<OneReceipt setOneReceipt={setOneReceipt}/>}/>
@@ -152,9 +152,9 @@ return (
  </Route> */}
      
        <Route element={<RequireAuth allowedRoles={[5150]}/>}>
-       <Route path="create-item" element={<CreateItem/>}/>
      <Route path="admin" element={<Admin/>}/>
      <Route path="all-transactions" element={<AllTransactions/>}/>
+ <Route path="create-item" element={<CreateItem/>}/>
 {/*  */}
          </Route>
         

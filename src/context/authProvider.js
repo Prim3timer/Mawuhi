@@ -42,7 +42,7 @@ const [currentUsers, setCurrentUsers] = useState([])
         dispatch({type: 'clear'})
         try {
             // dispatch({type: 'errMsg', payload: 'loading...'})
-            const response = await axios.get('/items')
+            const response = await axiosPrivate.get('/items')
             dispatch({type: 'errMsg', payload: ''})
           
             dispatch({type: 'items', payload: response.data.items})   
@@ -224,7 +224,7 @@ const [currentUsers, setCurrentUsers] = useState([])
             generalRemain, remainDelete, items, isEdit, afa, price, unitMeasure, getTransaction,
             search, setSearch, setSearch2, search2, sales, user, getNames, currentUser,
             setCurrentUser, setCurrentUser2, currentUser2, users, setUsers, transactions, atHome, setAtHome,
-            currentUsers, setCurrentUsers, setIsRotated, isRotated, barRef, persistor, setPersistor
+            currentUsers, setCurrentUsers, setIsRotated, isRotated, barRef, persistor, setPersistor, getItems
 
         }}>
             {children}

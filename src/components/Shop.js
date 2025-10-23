@@ -18,14 +18,16 @@ const {v4: uuid} = require('uuid')
 const Shop = () => {
   // window.history.pushState(null, null, '/home');
   const { items, getNames, getItems} = useContext(AuthContext)
+  console.log(items)
   const [shopItems, setShopItems] = useState([])
   const axiosPrivate = useAxiosPrivate()
   
   const navigate = useNavigate();
 
     const location = useLocation();
-
-
+useEffect(()=> {
+  getItems()
+}, [])
 
   
 // console.log(items)
@@ -83,7 +85,7 @@ const enableFilterate = ()=> {
    </form>
  
       <section className="shop-inner-container">
-      {shopItems && shopItems.map((item)=> {
+      {items.map((item)=> {
         return (
         <Link to={'/single-item'}
         className="linker"

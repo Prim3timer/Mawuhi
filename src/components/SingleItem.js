@@ -8,6 +8,7 @@ import useAuth from "../hooks/useAuth"
 import useRefreshToken from "../hooks/useRefreshToken"
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { faArrowDown, faArrowUp } from "@fortawesome/free-solid-svg-icons"
+import useAxiosPrivate from "../hooks/useAxiosPrivate"
 import {format} from 'date-fns'
 import {Link, resolvePath} from 'react-router-dom'
 
@@ -20,11 +21,12 @@ const SingleItem = ()=> {
   console.log(qtyRef.current.value)
   console.log(state.transArray)
   const {auth, setAuth,users} = useAuth()
+  const axiosPrivate = useAxiosPrivate()
   console.log(auth)
 
   const getItem = async () => {
 
-    const response = await axios.get('/items')  
+    const response = await axiosPrivate.get('/items')  
     console.log(response.data)
     const cartItems = await axios.get('/cart')
     console.log(auth)

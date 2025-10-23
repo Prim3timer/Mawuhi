@@ -11,7 +11,10 @@ import Edit from "./Edit"
 import { type } from "@testing-library/user-event/dist/type"
 import AuthContext from "../context/authProvider"
 import useRefreshToken from "../hooks/useRefreshToken"
+import useAxiosPrivate from "../hooks/useAxiosPrivate"
+import { useNavigate, useLocation } from "react-router-dom";
 const {v4: uuid} = require('uuid')
+
 
 // export const idContext = createContext()
 // console.log(idContext)
@@ -19,12 +22,58 @@ const {v4: uuid} = require('uuid')
 
 const Inventory = ({mark, setMark})=> {
     const [state, dispatch] = useReducer(reducer, initialState)
-    const {auth} = useAuth()
+    const {auth, setAuth} = useAuth()
   const [search2, setSearch2] = useState('')
     const invRef = useRef()
-    const {setIsRotated} = useContext(AuthContext)
+    const {setIsRotated, setCurrentUsers} = useContext(AuthContext)
+    const axiosPrivate = useAxiosPrivate()
 
-const refresh = useRefreshToken()
+     const navigate = useNavigate();
+    const location = useLocation();
+
+ useEffect(()=> {
+    // console.log(auth)
+        let isMounted = true
+        // to cancel our request if the Component unmounts
+        const controller = new AbortController()
+    
+        const getUsers = async ()=> {
+            const cookieMap = {}
+           const allCookies = cookieMap['jwt']
+               console.log(allCookies)
+            try {
+                const response = await axiosPrivate.get('/users', {
+                    signal: controller.signal
+                
+                })
+                console.log(response.data.users)
+             
+                    isMounted && setCurrentUsers(response.data.users)
+                    
+                    
+                   setAuth(prev => {
+
+            return {...prev, users: response.data.users
+            }
+        })
+            } catch (error) {
+                console.error(error)
+           
+
+                  navigate('/login', { state: { from: location }, replace: true });
+           
+            }
+        }
+        
+        getUsers()
+        // clean up function
+        return ()=> {
+            isMounted = false
+    
+                    controller.abort()
+       
+        }
+    }, [])
 
        const falseIsRotated = ()=> {
         setIsRotated(false)
@@ -35,7 +84,7 @@ const refresh = useRefreshToken()
             
 
 
-              const graw = await axios.get('/items')
+              const graw = await axiosPrivate.get('/items')
 
               console.log(graw.data)
               const filterate = graw.data.items.filter((inner)=> inner.name.toLowerCase().includes(state.search.toLowerCase()))
@@ -103,9 +152,6 @@ const refresh = useRefreshToken()
 
 }
 
-    useEffect(()=> {
-    refresh()
-}, [])
 
  
     return (
