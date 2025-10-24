@@ -112,9 +112,7 @@ const UserSettings = () => {
 
     const handleRemove = async () => {
         console.log(auth.picker3)
-
-        // const response = await axios.delete(`/users/delete/${ID}`)
-        const response = await axiosPrivate.delete(`items/delete-user/${currentUser._id}`)
+        const response = await axiosPrivate.delete(`/users/delete/${currentUser._id}`)
         dispatch({ type: 'cancel', payload: false })
         dispatch({ type: 'success', payload: true })
         navigate('/admin')
@@ -231,8 +229,7 @@ const UserSettings = () => {
 
             }
 
-            // const response = await axiosPrivate.patch(`/update/${auth.picker3}`, updatedPerson)
-            const response = await axiosPrivate.patch(`/items/update-user/${auth.picker3}`, updatedPerson)
+            const response = await axiosPrivate.patch(`/users/update/${currentUser._id}`, updatedPerson)
             console.log(response.data)
             if (response) {
                 dispatch({ type: ACTION.SELECTUSER, payload: response.data })

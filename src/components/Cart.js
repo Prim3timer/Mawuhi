@@ -6,6 +6,7 @@ import useAuth from "../hooks/useAuth"
 import {format} from 'date-fns'
 import { FaTrash } from "react-icons/fa"
 import { Link, useSearchParams } from "react-router-dom"
+import useAxiosPrivate from "../hooks/useAxiosPrivate"
 
 const Payment = () => {
     const [state, dispatch] = useReducer(reducer, initialState)
@@ -14,11 +15,11 @@ const Payment = () => {
     const cartQtyRef = useRef(null)
 const {auth, setAuth} = useAuth()
 
-    
+    const axiosPrivate = useAxiosPrivate()
 
 const getItems = async () => {
     try {
-         const response = await axios.get('/items')
+         const response = await axiosPrivate.get('/items')
          if (response){
              dispatch({type: 'items', payload: response.data.items})
          
