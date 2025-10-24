@@ -1,7 +1,7 @@
 import { useEffect, useReducer, useRef, useState, useContext } from "react"
 import { ROLES } from "../config/roles"
 import { Link, useNavigate } from "react-router-dom"
-import axios, { axiosPrivate } from "../app/api/axios"
+import axios from "../app/api/axios"
 import { FaTrashAlt } from "react-icons/fa";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash, faSave, faCheck, faTimes, faInfoCircle, faEyeSlash, faEye } from "@fortawesome/free-solid-svg-icons"
@@ -9,6 +9,7 @@ import initialState from "../store"
 import reducer from "../reducer"
 import AuthContext from "../context/authProvider";
 import useAuth from "../hooks/useAuth"
+import useAxiosPrivate from "../hooks/useAxiosPrivate";
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{2,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
@@ -37,6 +38,7 @@ const UserSettings = () => {
     const [shadow, setShadow] = useState(false)
     const [isPassword3, setisPassword3] = useState('password')
     const [passwordCheck3, setPasswordCheck3] = useState(faEyeSlash)
+    const axiosPrivate = useAxiosPrivate()
     // const {users, getUsers} = useContext(AuthContext)
     const [ID, setID] = useState('')
     const saveRef = useRef(null)
@@ -112,7 +114,7 @@ const UserSettings = () => {
         console.log(auth.picker3)
 
         // const response = await axios.delete(`/users/delete/${ID}`)
-        const response = await axios.delete(`items/delete-user/${currentUser._id}`)
+        const response = await axiosPrivate.delete(`items/delete-user/${currentUser._id}`)
         dispatch({ type: 'cancel', payload: false })
         dispatch({ type: 'success', payload: true })
         navigate('/admin')
@@ -221,8 +223,6 @@ const UserSettings = () => {
             console.log({ userChange })
 
             const currentRole = userChange.pop()
-            console.log({ currentRole })
-            console.log(password)
             const updatedPerson = {
                 username: username,
                 roles: currentRole,
@@ -231,8 +231,9 @@ const UserSettings = () => {
 
             }
 
-            // const response = await axios.patch(`//update/${currentUser._id}`, updatedPerson)
-            const response = await axios.patch(`/items/update-user/${auth.picker3}`, updatedPerson)
+            // const response = await axiosPrivate.patch(`/update/${auth.picker3}`, updatedPerson)
+            const response = await axiosPrivate.patch(`/items/update-user/${auth.picker3}`, updatedPerson)
+            console.log(response.data)
             if (response) {
                 dispatch({ type: ACTION.SELECTUSER, payload: response.data })
                 dispatch({ type: ACTION.SUCCESS, payload: true })
