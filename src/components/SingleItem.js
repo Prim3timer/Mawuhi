@@ -28,7 +28,7 @@ const SingleItem = ()=> {
 
     const response = await axiosPrivate.get('/items')  
     console.log(response.data)
-    const cartItems = await axios.get('/cart')
+    const cartItems = await axiosPrivate.get('/cart')
     console.log(auth)
     try {
       const userItems = cartItems.data.filter((item) => item.userId === auth.picker)

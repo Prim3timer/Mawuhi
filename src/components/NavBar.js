@@ -47,10 +47,9 @@ const logout = useLogout()
     return (
          <div  className="header">
  
-             {location.pathname === '/login' ? <h4> Retail Tracker</h4> : ''}
+             {location.pathname === '/login' ? <h4> Retail Tracker</h4> : <p><FontAwesomeIcon ref={barRef} className={
+                    !isRotated ? "home-icon rotate-icon" : "home-icon"} onClick={workBar} icon={faBars}/></p>}
                { auth.accessToken &&  <div className="head-home">
-                  {location.pathname !== '/login' ? <p><FontAwesomeIcon ref={barRef} className={
-                    !isRotated ? "home-icon rotate-icon" : "home-icon"} onClick={workBar} icon={faBars}/></p>: ''}
                     </div>}
 
                 <div

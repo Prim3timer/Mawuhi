@@ -2,7 +2,7 @@
 import { useState, useRef, useContext, useEffect } from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck, faLeftLong, faBars } from "@fortawesome/free-solid-svg-icons"
-import { Link, useNavigate } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import useAuth from "../hooks/useAuth"
 import useLogout from "../hooks/useLogout";
 import AuthContext from "../context/authProvider"
@@ -12,6 +12,7 @@ const SideBar = () => {
     const {isRotated, setIsRotated, barRef} = useContext(AuthContext)
     const sideRef = useRef()
     const linksRef = useRef()
+    const location = useLocation()
     const logout = useLogout()
     const moreThanLogout = ()=> {
         // logout()
@@ -46,7 +47,7 @@ const SideBar = () => {
 
             <section
             ref={sideRef}
-            className={auth.accessToken && isRotated ? 'side' : 'no-side'}>
+            className={location.pathname !==  '/login' && isRotated ? 'side' : 'no-side'}>
                 <ul  className="links-container" ref={linksRef}>
             {mainLinks.map((mainLink)=> {
                     const {id, name, path} = mainLink
