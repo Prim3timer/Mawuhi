@@ -85,7 +85,7 @@ const enableFilterate = ()=> {
    </form>
  
       <section className="shop-inner-container">
-      {items.map((item)=> {
+      {shopItems.map((item)=> {
         return (
         <Link to={'/single-item'}
         className="linker"
