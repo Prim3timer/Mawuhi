@@ -5,15 +5,16 @@ import { useContext } from "react"
 
 const useLogout = ()=> {
     const {setAuth} = useAuth()
-    const {setIsRotated} = useContext(AuthContext)
+    const {setIsRotated, isRotated} = useContext(AuthContext)
     
     const logout = async () => {
         setAuth({})
+        setIsRotated(false)
+        console.log(isRotated)
         try {
-            const response = await axios('/auth/logout', {
+            const response = await axios.post('/auth/logout', {
                 withCredentials: true
             })
-            setIsRotated(false)
          
         } catch (error) {
             console.error(error)

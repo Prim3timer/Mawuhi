@@ -10,7 +10,7 @@ import useAuth from '../hooks/useAuth';
 import { Link } from "react-router-dom";
 import AuthContext from "../context/authProvider";
 import useRefreshToken from "../hooks/useRefreshToken";
-import { axiosPrivate } from '../app/api/axios'
+import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import SideBar from "./SideBar";
 {/* ₦ */}
 
@@ -23,13 +23,17 @@ const Transactions = ()=> {
     const [checkout, setCheckout] = useState(false)
     const now = new Date()
     const date = format(now, 'dd/MM/yyyy\tHH:mm:ss')
-    const {auth,user, getNames, items, setAtHome, isRotated, setIsRotated} = useContext(AuthContext)
+    const {auth,user, getNames, setAtHome, isRotated, setIsRotated} = useContext(AuthContext)
     const inputRef = useRef()
     const qtyRef = useRef()
     const cashPaidRef = useRef(null)
     const [firstRedChecker, setFirstRedChecker] = useState('')
     const [success, setSuccess] = useState(false)
     const [noShow, setNoShow] = useState(false)
+    const [items, setItems] = useState([])
+    console.log(items)
+
+    const axiosPrivate = useAxiosPrivate()
 
     
     const refresh = useRefreshToken()
@@ -95,7 +99,12 @@ const Transactions = ()=> {
       
            
     }
-    
+
+    const getItems = async () => {
+        const response = await axiosPrivate.get('/items')
+        console.log(response.data.items)
+        setItems(response.data.items)
+    }
     
     
     const removeItem = async (id)=>{
@@ -163,7 +172,7 @@ const Transactions = ()=> {
                 }
                 console.log(transItems.goods)
                 const response = await axios.post('/transactions', transItems)
-                const response2 = await axios.get('/items')
+                const response2 = await axiosPrivate.get('/items')
                 console.log(response2)
                 
                 if (response){
@@ -175,7 +184,7 @@ const Transactions = ()=> {
                 }
                 
                 transItems.goods.map((good)=> {
-                    const invs = response2.data.items.map(async(inv)=> {
+                    const invs = items.map(async(inv)=> {
                     console.log(inv.name)
                     console.log(good.name)
                     if (inv.name === good.name){
@@ -184,7 +193,7 @@ const Transactions = ()=> {
                             qty: inv.qty - good.qty < 1 ? 0 : inv.qty - good.qty,
                             date              
                         }
-                        await axios.put(`items/dynam`, goodObj)
+                        await axiosPrivate.put(`items/dynam`, goodObj)
                         
                     }
                 })
@@ -341,6 +350,10 @@ useEffect(()=> {
 // if (sessionId){
 
 // }
+}, [])
+
+useEffect(()=> {
+    getItems()
 }, [])
 
 

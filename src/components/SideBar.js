@@ -47,7 +47,7 @@ const SideBar = () => {
 
             <section
             ref={sideRef}
-            className={location.pathname !==  '/login' && isRotated ? 'side' : 'no-side'}>
+            className={isRotated ? 'side' : 'no-side'}>
                 <ul  className="links-container" ref={linksRef}>
             {mainLinks.map((mainLink)=> {
                     const {id, name, path} = mainLink
