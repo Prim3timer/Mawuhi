@@ -107,10 +107,11 @@ let CreateItem = () => {
 
         }}
         >
-            {measurements.map((measurement)=> {
+            {measurements.map((measurement, i)=> {
                 return (
                     
                     <option 
+                    key={i}
                     className="create-item-options"
                     value={measurement}
                   

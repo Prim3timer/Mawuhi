@@ -22,7 +22,7 @@ const SingleItem = ()=> {
   console.log(state.transArray)
   const {auth, setAuth,users} = useAuth()
   const axiosPrivate = useAxiosPrivate()
-  console.log(auth)
+  console.log(auth.picker3)
 
   const getItem = async () => {
 
@@ -196,13 +196,13 @@ function numberWithCommas(x) {
     return (
         isLoading ? <h2  className="single-item">Loading...</h2> :
          <div>
-            <article
+           {state.elItem &&   <article
             className="single-item"
             >
               <article className="inner-single-item">
           
                 {/* <h2>Single Item</h2> */}
-                <section className="single-image-container">
+              <section className="single-image-container">
                   <img  className='single-item-image' src={state.elItem.img}/>
                 <p>{state.elItem.name}</p>
                 {/* <img src={"https://images.app.goo.gl/ZcZWCKKhGh9Y8sR26"} alt="food"/> */}
@@ -248,7 +248,7 @@ function numberWithCommas(x) {
             >{state.alertMsg}</h3>
             </article>
               
-              </article>
+              </article> }
 
         </div>
     )
