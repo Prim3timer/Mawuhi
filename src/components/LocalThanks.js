@@ -29,6 +29,7 @@ const {auth, setAuth} = useAuth()
     try {
         const res = await axios.get(`/cart/thanks/old-session/${sessionId}`)
          const oldSession = res.data ? res.data.title : ''
+        console.log(oldSession)
 if (oldSession === sessionId ){
 return
  }else if (!oldSession || oldSession !== sessionId){
