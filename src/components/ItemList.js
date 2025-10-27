@@ -25,6 +25,10 @@ const {v4: uuid} = require('uuid')
 
 const ItemList = ()=> {
 
+    function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
     const axiosPrivate = useAxiosPrivate()
     const {user, getNames, items, setAtHome, isRotated, setIsRotated} = useContext(AuthContext)
     const refresh = useRefreshToken()
@@ -80,9 +84,9 @@ const {auth, getTrans, itemRef,
                            img: state.image && state.image
                            
                        }
-                       const response = await axios.patch(`/items/${id}`, newItem)  
+                       const response = await axiosPrivate.patch(`/items/${id}`, newItem)  
                        if (response){  
-                           const graw = await axios.get('/items')
+                           const graw = await axiosPrivate.get('/items')
                            dispatch({type: 'getNames', payload: graw.data.items})
                
                            dispatch({type: 'ALERTMSG', payload: `${newItem.name} Edited` })
@@ -217,6 +221,7 @@ const {auth, getTrans, itemRef,
                 <input
                 type="text" 
                 id="price"
+                // value={numberWithCommas(parseFloat(state.price).toFixed(2))}
                 value={state.price}
                 onChange={(e)=> dispatch({type: 'price', payload: e.target.value})}
                 />
@@ -314,7 +319,7 @@ const {auth, getTrans, itemRef,
     }}
         >
            <th className="sales-items">{item.name}</th>
-           <td className="sales-items">{ parseFloat(item.price).toFixed(2)}</td>
+           <td className="sales-items">{ numberWithCommas(parseFloat(item.price).toFixed(2))}</td>
            <td className="sales-items">{item.unitMeasure.split(' ')[0]}</td>
            {/* <td className="items"> {item.piecesUnit ? item.piecesUnit: 'N/A' } </td> */}
            <td 

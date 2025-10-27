@@ -29,7 +29,12 @@ const SingleItem = ()=> {
     const response = await axiosPrivate.get('/items')  
     console.log(response.data)
     const cartItems = await axiosPrivate.get('/cart')
-    console.log(auth)
+
+    setAuth(prev => {
+      
+      return {...prev, singleItemId: auth.picker3}
+    })
+      
     try {
       const userItems = cartItems.data.filter((item) => item.userId === auth.picker)
       console.log(userItems)
@@ -39,6 +44,7 @@ const SingleItem = ()=> {
       if (cartItems?.length){
   
       }
+      
         const goods = response.data.items.find((item) => item._id === auth.picker3)
         if (goods){
           
@@ -53,6 +59,7 @@ const SingleItem = ()=> {
   }
 
   console.log(state.singleItemArray)
+    console.log(auth)
 
 
   const addToCart = async () => {
