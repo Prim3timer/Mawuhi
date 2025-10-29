@@ -86,7 +86,7 @@ return (
 
   >
 
-
+  {console.log(location.pathname)}
 
 
    <NavBar isRotated={isRotated} setIsRotated={setIsRotated}/>

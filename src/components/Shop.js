@@ -17,17 +17,37 @@ const {v4: uuid} = require('uuid')
 
 const Shop = () => {
   // window.history.pushState(null, null, '/home');
-  const { items, getNames, getItems} = useContext(AuthContext)
-  console.log(items)
+  const [state, dispatch] = useReducer(reducer, initialState)
+  const { getNames} = useContext(AuthContext)
+
   const [shopItems, setShopItems] = useState([])
   const axiosPrivate = useAxiosPrivate()
   
   const navigate = useNavigate();
 
     const location = useLocation();
-useEffect(()=> {
-  getItems()
-}, [])
+
+
+     const getItems = async ()=> {
+        dispatch({type: 'clear'})
+        try {
+            // dispatch({type: 'errMsg', payload: 'loading...'})
+            const response = await axiosPrivate.get('/items')
+            dispatch({type: 'errMsg', payload: ''})
+          
+            dispatch({type: 'items', payload: response.data.items})   
+            console.log(response.data.items ) 
+
+             const filterItems = response.data.items.filter((item) => item.name.toLowerCase().includes(state.search.toLowerCase()))
+          console.log(filterItems)
+  
+          
+      setShopItems(filterItems)
+      console.log(shopItems)
+        } catch (error) {
+    dispatch({type: 'errMsg', payload: error.message})
+  }
+    }
 
   
 // console.log(items)
@@ -39,18 +59,24 @@ console.log(auth)
     })
   }
 
-  const [state, dispatch] = useReducer(reducer, initialState)
 const enableFilterate = ()=> {
   try {
-    const filterItems = items && items.filter((item) => item.name.toLowerCase().includes(state.search.toLowerCase()))
-  setShopItems(filterItems)
+    const filterItems = state.items && state.items.filter((item) => item.name.toLowerCase().includes(state.search.toLowerCase()))
+    if (filterItems){
+
+      setShopItems(filterItems)
+    }
+  console.log(shopItems)
  
-  console.log(filterItems)
   } catch (error) {
     dispatch({type: 'errMsg', payload: error.message})
   }
   
 }
+
+useEffect(()=> {
+  getItems()
+}, [state.search])
 
 
  function numberWithCommas(x) {
@@ -62,13 +88,10 @@ const enableFilterate = ()=> {
     }
 
 
-  useEffect(()=> {
-    enableFilterate()
-  }, [state.search])
 
 
   return (
-    !items ? <h2 className="shop">Loading...</h2> :<div className="shop">
+    !state.items ? <h2 className="shop">Loading...</h2> :<div className="shop">
       <div className="home-shop">
   
        <h2>Shop</h2>
@@ -85,7 +108,7 @@ const enableFilterate = ()=> {
    </form>
  
       <section className="shop-inner-container">
-      {items.map((item)=> {
+      {shopItems && shopItems.map((item)=> {
         return (
         <Link to={'/single-item'}
         className="linker"

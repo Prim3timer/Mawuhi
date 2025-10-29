@@ -1,9 +1,12 @@
 import axios from "../app/api/axios";
 import useAuth from "./useAuth";
 import { axiosPrivate } from "../app/api/axios";
+import AuthProvider  from "../context/authProvider";
+import { useContext } from "react";
 
 const useRefreshToken = ()=> {
-    const {setAuth}  = useAuth()
+    // const {setAuth}  = useAuth()
+    const {setAuth} = useContext(AuthProvider)
     const refresh = async () => {
         console.log('on refersh')
         const response = await axios.get('/refresh', {
