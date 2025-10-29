@@ -81,7 +81,7 @@ const {auth, getTrans, itemRef,
                            price: price && price,
                            unitMeasure: unitMeasure && unitMeasure,
                            piecesUnit: piecesUnit && piecesUnit,
-                           img: state.image && state.image``
+                           img: state.image && state.image
                            
                        }
                        const response = await axiosPrivate.patch(`/items/${id}`, newItem)  
