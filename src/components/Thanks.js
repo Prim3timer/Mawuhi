@@ -2,7 +2,6 @@ import useAuth from "../hooks/useAuth"
 import { Link } from "react-router-dom"
 import axios from "../app/api/axios"
 import { useEffect, useState, useContext} from "react"
-import useRefreshToken from "../hooks/useRefreshToken";
 import AuthContext from "../context/authProvider";
 import { format } from "date-fns";
 import { useNavigate } from "react-router-dom";
@@ -10,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 const Thanks = () =>{
     const [alert, setAlert] = useState('')
 const {auth, setAuth} = useAuth()
- const refresh = useRefreshToken()
+//  const refresh = useRefreshToken()
 const {currentUsers} = useContext(AuthContext)
 const [successCounter, setSuccessCounter] = useState(false)
 const navigate = useNavigate()
@@ -65,11 +64,6 @@ return
 
 
 useEffect(()=> {
-    refresh()
-}, [])
-
-
-useEffect(()=> {
 
 // if (sessionId){
     getRecipt()
@@ -78,9 +72,6 @@ useEffect(()=> {
 }, [])
 
 
-//    useEffect(()=> {
-//            preserveName()
-//          }, [])
     return (
         <div className="thanks">
             {/* <h3>{alert}</h3> */}

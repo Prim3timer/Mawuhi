@@ -18,7 +18,6 @@ const {v4: uuid} = require('uuid')
 const Shop = () => {
   // window.history.pushState(null, null, '/home');
   const [state, dispatch] = useReducer(reducer, initialState)
-  const { getNames} = useContext(AuthContext)
 
   const [shopItems, setShopItems] = useState([])
   const axiosPrivate = useAxiosPrivate()
@@ -59,20 +58,6 @@ console.log(auth)
     })
   }
 
-const enableFilterate = ()=> {
-  try {
-    const filterItems = state.items && state.items.filter((item) => item.name.toLowerCase().includes(state.search.toLowerCase()))
-    if (filterItems){
-
-      setShopItems(filterItems)
-    }
-  console.log(shopItems)
- 
-  } catch (error) {
-    dispatch({type: 'errMsg', payload: error.message})
-  }
-  
-}
 
 useEffect(()=> {
   getItems()
@@ -82,11 +67,6 @@ useEffect(()=> {
  function numberWithCommas(x) {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
-    const goHome = () => {
-
-      navigate('/home')
-    }
-
 
 
 

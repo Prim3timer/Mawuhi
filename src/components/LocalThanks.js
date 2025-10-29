@@ -2,19 +2,11 @@ import useAuth from "../hooks/useAuth"
 import { Link } from "react-router-dom"
 import axios from "../app/api/axios"
 import { useEffect, useState, memo } from "react"
-import useRefreshToken from "../hooks/useRefreshToken";
 import { format } from "date-fns";
 
 const LocalThanks = () =>{
-    const [alert, setAlert] = useState('')
 const {auth, setAuth} = useAuth()
- const refresh = useRefreshToken()
-
-
-// window.addEventListener('beforeunload', function (e) {
-//     e.preventDefault()
-//     return "data will get lost"
-// });
+ 
  
  const getRecipt = async ()=> {
     const queryParams = new URLSearchParams(window.location.search)
@@ -58,13 +50,6 @@ useEffect(()=> {
 // }
 }, [ ])
 
-
-
-
-
-//    useEffect(()=> {
-//            preserveName()
-//          }, [])
     return (
         <div className="thanks">
             {/* <h3>{alert}</h3> */}
@@ -79,4 +64,3 @@ useEffect(()=> {
 }
 
 export default LocalThanks
-// export default memo(LocalThanks)
