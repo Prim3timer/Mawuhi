@@ -31,49 +31,6 @@ const Inventory = ({mark, setMark})=> {
      const navigate = useNavigate();
     const location = useLocation();
 
- useEffect(()=> {
-    // console.log(auth)
-        let isMounted = true
-        // to cancel our request if the Component unmounts
-        const controller = new AbortController()
-    
-        const getUsers = async ()=> {
-            const cookieMap = {}
-           const allCookies = cookieMap['jwt']
-               console.log(allCookies)
-            try {
-                const response = await axiosPrivate.get('/users', {
-                    signal: controller.signal
-                
-                })
-                console.log(response.data.users)
-             
-                    isMounted && setCurrentUsers(response.data.users)
-                    
-                    
-                   setAuth(prev => {
-
-            return {...prev, users: response.data.users
-            }
-        })
-            } catch (error) {
-                console.error(error)
-           
-
-                  navigate('/login', { state: { from: location }, replace: true });
-           
-            }
-        }
-        
-        getUsers()
-        // clean up function
-        return ()=> {
-            isMounted = false
-    
-                    controller.abort()
-       
-        }
-    }, [])
 
        const falseIsRotated = ()=> {
         setIsRotated(false)
@@ -130,9 +87,9 @@ const Inventory = ({mark, setMark})=> {
                     //   qty: state.qty,
             
                   }
-                  const response = await axios.patch(`/items/inventory/${state.id}`, inventory) 
+                  const response = await axiosPrivate.patch(`/items/inventory/${state.id}`, inventory) 
                   if (response){
-                      const graw = await axios.get('/items')
+                      const graw = await axiosPrivate.get('/items')
                       dispatch({type: 'items', payload: graw.data.items})
                       dispatch({type: 'success', payload: 'inventory edited'})
                       setTimeout(()=> {
