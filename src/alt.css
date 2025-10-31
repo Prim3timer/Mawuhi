@@ -15,6 +15,9 @@ display: grid;
 place-content: center;
 }
 
+.footer {
+  margin-top: .5rem;
+}
 
 
 .home-links {
