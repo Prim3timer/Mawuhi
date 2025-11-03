@@ -132,7 +132,7 @@ const reducer = (state, action)=> {
                    
                    case "MAINCARTFIELD":
                      const tempCart5 = state.cartArray.map((item) => {
-                       if (item._id === action.id){
+                       if (item.id === action.id){
                      
                          return {...item, transQty: action.payload, total: item.price * action.payload}
                         }
@@ -142,7 +142,7 @@ const reducer = (state, action)=> {
                       
                   
                     case 'REMOVECARTITEM': 
-                    const currentCart = state.cartArray.filter((item)=> item._id !== action.payload)
+                    const currentCart = state.cartArray.filter((item)=> item.id !== action.payload)
                     return {...state, cartArray: currentCart}
 
 

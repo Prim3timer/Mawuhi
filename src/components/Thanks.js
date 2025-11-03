@@ -1,3 +1,4 @@
+
 import useAuth from "../hooks/useAuth"
 import { Link } from "react-router-dom"
 import axios from "../app/api/axios"
@@ -34,26 +35,18 @@ const getRecipt = async ()=> {
 const res = await axios.get(`/cart/thanks/old-session/${sessionId}`)
 console.log(res)
 
-    const oldSession = res.data ? res.data.title : ''
+    const oldSession = res.data ? res.data : ''
 
     console.log({oldSession})
     console.log(oldSession === sessionId)
 
 console.log({sessionId})
- 
-// window.addEventListener('beforeunload', function (e) {
-//     e.preventDefault()
-//     return "data will get lost"
-// });  
-// const oldSessionId = res.data._id ? res.data._id : ''
-// console.log({oldSessionId})
+
 if (oldSession === sessionId ){
 return
 
 } else if (!oldSession || oldSession !== sessionId) {
     const response = await axios.post(`/cart/thanks/${sessionId}`, dateOjb)
-//   const res = await axios.delete(`/cart/thanks/alot/${oldSessionId}`)
-//   console.log({res})
 }
 
 } catch (error){

@@ -2,7 +2,9 @@
 import Cancel from "./Cancel"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons"
-import { useEffect, useReducer, useState, useContext  } from "react"
+import { useEffect, useReducer, useState, useContext} from "react"
+import { useLocation } from "react-router-dom"
+import usePreviousLocation from "../hooks/usePreviousLocation"
 import initialState from "../store"
 import reducer from "../reducer"
 import { FaTrashAlt } from "react-icons/fa";
@@ -24,6 +26,16 @@ const {v4: uuid} = require('uuid')
 
 
 const ItemList = ()=> {
+
+    const location = useLocation()
+
+    
+
+const previousLocation = usePreviousLocation()
+const previouPath = previousLocation ? previousLocation : 'N/A'
+
+ console.log(location.pathname)
+ console.log(previouPath.pathname)
 
     function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");

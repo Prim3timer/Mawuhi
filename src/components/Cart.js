@@ -5,17 +5,19 @@ import axios from "../app/api/axios"
 import useAuth from "../hooks/useAuth"
 import {format} from 'date-fns'
 import { FaTrash } from "react-icons/fa"
-import { Link, useSearchParams } from "react-router-dom"
+import { Link, useSearchParams, useLocation } from "react-router-dom"
 import useAxiosPrivate from "../hooks/useAxiosPrivate"
 
 const Payment = () => {
     const [state, dispatch] = useReducer(reducer, initialState)
     const [cartItems, setCartItems] = useState([])
     const [excessQty, setExcessQty] = useState('')
+    const [userId, setUserId] = useState('')
     const cartQtyRef = useRef(null)
 const {auth, setAuth} = useAuth()
 
     const axiosPrivate = useAxiosPrivate()
+
 
 const getItems = async () => {
     try {
@@ -32,15 +34,18 @@ const getItems = async () => {
 
 const getCartItems = async () => {
     try {
-        const response = await axios.get('/cart')
+        const response = await axiosPrivate.get('/users')
         console.log(response.data)
         setCartItems(response.data)
-        const userItems = response.data.filter((item) => item.userId === auth.picker)
-        const newUseritems = userItems.map((item) => {
+        const currentUser = response.data.users.find((user) => user._id === auth.picker)
+        console.log(currentUser)
+        const newUseritems = currentUser.cart.map((item) => {
             return {...item, amount: item.quantity}
         })
-
-        if (userItems.length){
+        setUserId(currentUser._id)
+     
+console.log(newUseritems)
+        if (newUseritems){
             dispatch({type: 'CARTARRAY', payload: newUseritems})
         
             // state.cartArray.push(state.cart.total)
@@ -78,8 +83,12 @@ const doneSales = async()=> {
             
         }
         
+        
         else {
-          const response = await axios.post('/cart/create-checkout-session', state.cartArray)
+            const oneElement = [userId]
+            const newerArray = [...oneElement, ...state.cartArray]
+            console.log(newerArray)
+          const response = await axios.post(`/cart/create-checkout-session`, newerArray)
           
           if (response){
               window.location = response.data?.session?.url
@@ -98,10 +107,11 @@ const doneSales = async()=> {
       }
 
       const removeItem = async (id)=> {
+        console.log({id})
         try {
             
             dispatch({type: 'REMOVECARTITEM', payload: id})
-            const response = await axios.delete(`/cart/${id}`)
+            const response = await axiosPrivate.delete(`/users/cart/delete?itemId=${id}&userId=${auth.picker}`)
             if (response){
                 dispatch({type: 'success', payload: true})
                 dispatch({type: 'ALERTMSG', payload: 'item removed'})
@@ -116,6 +126,7 @@ const doneSales = async()=> {
 
       }
 
+      
      const clearCart = async()=> {
         try {
             dispatch({type: 'CLEARCART'})
@@ -149,6 +160,8 @@ const plural2 = state.cartAmount.length === 1 ? '' : 's'
     return (
        !state.cartArray ? <h2>Loading</h2> : <div className="checkout">
             <h2>Your Cart</h2>
+
+
             <h3>{state.cartAmount} item{plural2}, {state.cartArray.length} product{plural}</h3>
 
 {state.cartArray && state.cartArray.map((item) =>{
@@ -167,7 +180,7 @@ const plural2 = state.cartAmount.length === 1 ? '' : 's'
             className="cart-qty"
             ref={cartQtyRef}
                 value={item.transQty}
-                onChange={(e) => dispatch({type: "MAINCARTFIELD", payload: e.target.value, id: item._id})}
+                onChange={(e) => dispatch({type: "MAINCARTFIELD", payload: e.target.value, id: item.id})}
             
             />
             </label>
@@ -175,7 +188,7 @@ const plural2 = state.cartAmount.length === 1 ? '' : 's'
             <h3>₦{numberWithCommas(parseFloat(item.total).toFixed(2))}</h3>
 
             </section>
-            <p onClick={() => removeItem(item._id)}
+            <p onClick={() => removeItem(item.id)}
               className="cart-trash"
                 >
                 <FaTrash role="button"/>

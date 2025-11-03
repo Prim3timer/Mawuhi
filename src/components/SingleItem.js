@@ -27,8 +27,11 @@ const SingleItem = ()=> {
   const getItem = async () => {
 
     const response = await axiosPrivate.get('/items')  
-    console.log(response.data)
-    const cartItems = await axiosPrivate.get('/cart')
+    // console.log(response.data)
+    const users = await axiosPrivate.get('/users')
+
+    const currentUser = users && users.data.users.find((user)=> user._id === auth.picker)
+    console.log(currentUser.cart)
 
     setAuth(prev => {
       
@@ -36,14 +39,14 @@ const SingleItem = ()=> {
     })
       
     try {
-      const userItems = cartItems.data.filter((item) => item.userId === auth.picker)
-      console.log(userItems)
-    console.log('user items are: ', userItems)
-  dispatch({type: 'SINGLEITEMARRAY', payload: userItems})
+  //     const userItems = cartItems.data.filter((item) => item.userId === auth.picker)
+  //     console.log(userItems)
+  //   console.log('user items are: ', userItems)
+  dispatch({type: 'SINGLEITEMARRAY', payload: currentUser.cart})
     setIsLoading(false)
-      if (cartItems?.length){
+  //     if (cartItems?.length){
   
-      }
+  //     }
       
         const goods = response.data.items.find((item) => item._id === auth.picker3)
         if (goods){
@@ -70,10 +73,10 @@ const SingleItem = ()=> {
       const {elItem} = state
       const currentUser = users.find((user)=> user._id === auth.picker)
       console.log(elItem)
-      const actualItem = {
+        const actualItem = {
         name: elItem.name,
         id: elItem._id,
-        userId: auth.picker,
+        // userId: auth.picker,
         quantity: elItem.qty,
         transQty: elItem.transQty,
         price: elItem.price,
@@ -98,7 +101,7 @@ if (foundItem){
   
   }
   else {
-    const response = await axios.post(`/cart/addcart`, actualItem)
+    const response = await axiosPrivate.post(`/users/cart/${auth.picker}`, actualItem)
     dispatch({type: 'ALERTMSG', payload: 'item added to cart'})
     setTimeout(()=> {
         dispatch({type: 'success', payload: false})
@@ -112,6 +115,27 @@ if (foundItem){
       console.log(error.message)
     }
 
+  }
+
+
+  const cartProperty = async () => {
+    console.log('on user cart')
+        const {elItem} = state
+      try {
+            const actualItem = {
+        name: elItem.name,
+        id: elItem._id,
+        // userId: auth.picker,
+        quantity: elItem.qty,
+        transQty: elItem.transQty,
+        price: elItem.price,
+        total: elItem.total 
+      }
+            const response = await axiosPrivate.patch(`/users/cart/${auth.picker}`, actualItem)
+            console.log(response.data)
+        } catch (error) {
+            console.error(error)
+        }
   }
 
 // Rhinohorn1#
@@ -203,6 +227,7 @@ function numberWithCommas(x) {
     return (
         isLoading ? <h2  className="single-item">Loading...</h2> :
          <div>
+          <button onClick={cartProperty}>User Prop Cart</button>
            {state.elItem &&   <article
             className="single-item"
             >
