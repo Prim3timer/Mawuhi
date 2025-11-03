@@ -22,6 +22,7 @@ const SingleItem = ()=> {
   console.log(state.transArray)
   const {auth, setAuth,users} = useAuth()
   const axiosPrivate = useAxiosPrivate()
+  const [userId, setUserId] = useState('')
   console.log(auth.picker3)
 
   const getItem = async () => {
@@ -32,6 +33,7 @@ const SingleItem = ()=> {
 
     const currentUser = users && users.data.users.find((user)=> user._id === auth.picker)
     console.log(currentUser.cart)
+     setUserId(currentUser._id)
 
     setAuth(prev => {
       
@@ -118,25 +120,6 @@ if (foundItem){
   }
 
 
-  const cartProperty = async () => {
-    console.log('on user cart')
-        const {elItem} = state
-      try {
-            const actualItem = {
-        name: elItem.name,
-        id: elItem._id,
-        // userId: auth.picker,
-        quantity: elItem.qty,
-        transQty: elItem.transQty,
-        price: elItem.price,
-        total: elItem.total 
-      }
-            const response = await axiosPrivate.patch(`/users/cart/${auth.picker}`, actualItem)
-            console.log(response.data)
-        } catch (error) {
-            console.error(error)
-        }
-  }
 
 // Rhinohorn1#
        const now = new Date()
@@ -163,8 +146,8 @@ console.log(auth)
           
 
                   try {
-           const item = [
-              {userId: auth.picker, id: elItem._id, transQty: qtyRef.current.value, name: elItem.name, total: elItem.total},  
+           const item = [userId,
+              {id: elItem._id, transQty: qtyRef.current.value, name: elItem.name, total: elItem.total},  
           ]
 
           console.log(item)
@@ -172,7 +155,7 @@ console.log(auth)
 
             const response = await axios.post('/cart/create-checkout-session', item)
             if (response){
-               window.location = response.data.session.url
+               window.location = response.data?.session?.url
                console.log(response)
           }
         }else {
@@ -227,7 +210,7 @@ function numberWithCommas(x) {
     return (
         isLoading ? <h2  className="single-item">Loading...</h2> :
          <div>
-          <button onClick={cartProperty}>User Prop Cart</button>
+         
            {state.elItem &&   <article
             className="single-item"
             >
