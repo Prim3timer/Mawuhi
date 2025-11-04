@@ -104,7 +104,8 @@ if (foundItem){
   }
   else {
     const response = await axiosPrivate.post(`/users/cart/${auth.picker}`, actualItem)
-    dispatch({type: 'ALERTMSG', payload: 'item added to cart'})
+    console.log(response.data)
+    dispatch({type: 'ALERTMSG', payload: response.data.message})
     setTimeout(()=> {
         dispatch({type: 'success', payload: false})
         

@@ -112,9 +112,10 @@ const doneSales = async()=> {
             
             dispatch({type: 'REMOVECARTITEM', payload: id})
             const response = await axiosPrivate.delete(`/users/cart/delete?itemId=${id}&userId=${auth.picker}`)
+            console.log(response.data)
             if (response){
                 dispatch({type: 'success', payload: true})
-                dispatch({type: 'ALERTMSG', payload: 'item removed'})
+                dispatch({type: 'ALERTMSG', payload: response.data})
                 setTimeout(()=> {
                     dispatch({type: 'success', payload: false})
                     dispatch({type: 'ALERTMSG', payload: ''})
