@@ -5,6 +5,7 @@ import { useEffect, useReducer, useRef, useState, useContext } from "react"
 import useRefreshToken from "../hooks/useRefreshToken"
 import { type } from "@testing-library/user-event/dist/type"
 import AuthContext from "../context/authProvider"
+import useAxiosPrivate from "../hooks/useAxiosPrivate"
 const {v4: uuid} = require('uuid')
 
 
@@ -16,7 +17,7 @@ let CreateItem = () => {
        ]
     const {setIsRotated} = useContext(AuthContext)
      const refresh = useRefreshToken()
- 
+ const axiosPrivate = useAxiosPrivate()
     const handleSubmit = async (e)=> {
         
         const {name, price, unitMeasure, image} = state
@@ -38,7 +39,7 @@ let CreateItem = () => {
                 const myError =  new Error('There cannot be two intances of the same item')
         }
         else {
-            const response = await axios.post('/items', newItem)  
+            const response = await axiosPrivate.post('/items', newItem)  
             if (response){  
                 setShowUpdate(true)
                 dispatch({type: 'isMatched', payload: `new item, ${newItem.name} created` })

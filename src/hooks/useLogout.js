@@ -12,7 +12,7 @@ const useLogout = ()=> {
         setIsRotated(false)
         console.log(isRotated)
         try {
-            const response = await axios.post('/auth/logout', {
+            const response = await axios('/auth/logout', {
                 withCredentials: true
             })
          

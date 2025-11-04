@@ -144,7 +144,7 @@ const {auth, getTrans, itemRef,
                 }
 
                    const handleRemove = async ()=> {
-                                         const response = await axios.delete(`/items/delete/${state.id}`)
+                                         const response = await axiosPrivate.delete(`/items/delete/${state.id}`)
                                         if (response) {
                         
                                             const newGraw = state.getNames && state.getNames.filter((item)=> item._id !== state.id)
