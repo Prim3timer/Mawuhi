@@ -110,8 +110,8 @@ const doneSales = async()=> {
         console.log({id})
         try {
             
-            dispatch({type: 'REMOVECARTITEM', payload: id})
             const response = await axiosPrivate.delete(`/users/cart/delete?itemId=${id}&userId=${auth.picker}`)
+            dispatch({type: 'REMOVECARTITEM', payload: id})
             console.log(response.data)
             if (response){
                 dispatch({type: 'success', payload: true})
