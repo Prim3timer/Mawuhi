@@ -36,9 +36,9 @@ const getCartItems = async () => {
     try {
         const response = await axiosPrivate.get('/users')
         console.log(response.data)
-        setCartItems(response.data)
         const currentUser = response.data.users.find((user) => user._id === auth.picker)
-        console.log(currentUser)
+        setCartItems(currentUser.cart)
+        console.log(cartItems)
         const newUseritems = currentUser.cart.map((item) => {
             return {...item, amount: item.quantity}
         })
@@ -132,8 +132,18 @@ const doneSales = async()=> {
         try {
             dispatch({type: 'CLEARCART'})
             const id = auth.picker
-            const response = await axios.delete(`/cart/clear/${auth.picker}`)
-            console.log(response.data)
+            if (cartItems.length){
+
+                const response = await axiosPrivate.delete(`/users/clear/${id}`)
+                 if (response){
+                    dispatch({type: 'success', payload: true})
+                    dispatch({type: 'ALERTMSG', payload: response.data})
+                    setTimeout(()=> {
+                        dispatch({type: 'success', payload: false})
+                        dispatch({type: 'ALERTMSG', payload: ''})
+                    }, 3000)
+                }   
+            }
             
         } catch (error) {
             console.log(error.message)
