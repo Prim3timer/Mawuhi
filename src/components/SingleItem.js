@@ -23,7 +23,7 @@ const SingleItem = ()=> {
   const {auth, setAuth,users} = useAuth()
   const axiosPrivate = useAxiosPrivate()
   const [userId, setUserId] = useState('')
-  console.log(auth.picker3)
+  console.log(auth.accessToken)
 
   const getItem = async () => {
 
@@ -154,7 +154,7 @@ console.log(auth)
           console.log(item)
           if (state.elItem.qty >= qtyRef.current.value){
 
-            const response = await axios.post('/cart/create-checkout-session', item)
+            const response = await axios.post('/sessions/create-checkout-session', item)
             if (response){
                window.location = response.data?.session?.url
                console.log(response)
