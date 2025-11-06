@@ -136,6 +136,7 @@ const doneSales = async()=> {
 
                 const response = await axiosPrivate.delete(`/users/clear/${id}`)
                  if (response){
+                    setCartItems([])
                     dispatch({type: 'success', payload: true})
                     dispatch({type: 'ALERTMSG', payload: response.data})
                     setTimeout(()=> {
