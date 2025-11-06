@@ -257,7 +257,7 @@ function numberWithCommas(x) {
             >
             <button onClick={doneSales}>Buy Now</button>
               <button onClick={addToCart}>Add to Cart</button>
-            <Link to={'/cart'} className="cart-action-link"> <button className="cart-action-button" > Go To Cart</button></Link>
+            <Link to={'/cart'} className="cart-action-link"> <button className="cart-action-button" > View Cart</button></Link>
             </section>
             <h3
                className={state.success ? 'update-alert' : 'hide-update-alert'}
