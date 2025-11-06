@@ -8,15 +8,7 @@ import { format } from "date-fns";
 import { useNavigate } from "react-router-dom";
 
 const Thanks = () =>{
-    const [alert, setAlert] = useState('')
-const {auth, setAuth} = useAuth()
-//  const refresh = useRefreshToken()
 const {currentUsers} = useContext(AuthContext)
-const [successCounter, setSuccessCounter] = useState(false)
-const navigate = useNavigate()
-
-
-
 
 
 const getRecipt = async ()=> {
@@ -32,7 +24,7 @@ const getRecipt = async ()=> {
     console.log({date})
     try {
 
-const res = await axios.get(`/cart/thanks/old-session/${sessionId}`)
+const res = await axios.get(`/sessions/thanks/old-session/${sessionId}`)
 console.log(res)
 
     const oldSession = res.data ? res.data : ''
@@ -46,7 +38,7 @@ if (oldSession === sessionId ){
 return
 
 } else if (!oldSession || oldSession !== sessionId) {
-    const response = await axios.post(`/cart/thanks/${sessionId}`, dateOjb)
+    const response = await axios.post(`/sessions/thanks/${sessionId}`, dateOjb)
 }
 
 } catch (error){

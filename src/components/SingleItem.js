@@ -103,7 +103,7 @@ if (foundItem){
   
   }
   else {
-    const response = await axiosPrivate.post(`/users/cart/${auth.picker}`, actualItem)
+    const response = await axiosPrivate.post(`/users/sessions/${auth.picker}`, actualItem)
     console.log(response.data)
     dispatch({type: 'ALERTMSG', payload: response.data.message})
     setTimeout(()=> {

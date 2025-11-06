@@ -88,7 +88,7 @@ const doneSales = async()=> {
             const oneElement = [userId]
             const newerArray = [...oneElement, ...state.cartArray]
             console.log(newerArray)
-          const response = await axios.post(`/cart/create-checkout-session`, newerArray)
+          const response = await axios.post(`/sessions/create-checkout-session`, newerArray)
           
           if (response){
               window.location = response.data?.session?.url
@@ -110,7 +110,7 @@ const doneSales = async()=> {
         console.log({id})
         try {
             
-            const response = await axiosPrivate.delete(`/users/cart/delete?itemId=${id}&userId=${auth.picker}`)
+            const response = await axiosPrivate.delete(`/users/sessions/delete?itemId=${id}&userId=${auth.picker}`)
             dispatch({type: 'REMOVECARTITEM', payload: id})
             console.log(response.data)
             if (response){
