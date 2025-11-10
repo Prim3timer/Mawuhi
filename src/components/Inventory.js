@@ -104,6 +104,10 @@ const Inventory = ({mark, setMark})=> {
      
 }
 
+const checkForUnitMeasurValues = () => {
+    console.log('hello  unit')
+}
+
     const remainEdit = () => {
        if (state.isMatched) dispatch({type: 'isMatched', payload: false})
 
@@ -169,6 +173,7 @@ const Inventory = ({mark, setMark})=> {
                 <button 
                 id="update-button"
                 onClick={handleEdit}
+                // onClick={checkForUnitMeasurValues}
                 type="submit">Update</button>
                 </div>
                 <h3>{state.success}</h3>
