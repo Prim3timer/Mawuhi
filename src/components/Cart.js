@@ -194,7 +194,7 @@ const plural2 = state.cartAmount.length === 1 ? '' : 's'
                 value={item.transQty}
                 onChange={(e) => dispatch({type: "MAINCARTFIELD", payload: e.target.value, id: item.id})}
             
-            /> {item.unitMeasure}
+            /> {item.unitMeasure.split(' ')[1].slice(1, -1)}
             </label>
          
             <h3>₦{numberWithCommas(parseFloat(item.total).toFixed(2))}</h3>

@@ -27,20 +27,21 @@ const SingleItem = ()=> {
 
   const getItem = async () => {
 
-    const response = await axiosPrivate.get('/items')  
-    // console.log(response.data)
-    const users = await axiosPrivate.get('/users')
-
-    const currentUser = users && users.data.users.find((user)=> user._id === auth.picker)
-    console.log(currentUser.cart)
-     setUserId(currentUser._id)
-
-    setAuth(prev => {
-      
-      return {...prev, singleItemId: auth.picker3}
-    })
-      
+    
     try {
+      const response = await axiosPrivate.get('/items')  
+      // console.log(response.data)
+      const users = await axiosPrivate.get('/users')
+  
+      const currentUser = users && users.data.users.find((user)=> user._id === auth.picker)
+      console.log(currentUser.cart)
+       setUserId(currentUser._id)
+  
+      setAuth(prev => {
+        
+        return {...prev, singleItemId: auth.picker3}
+      })
+      
   //     const userItems = cartItems.data.filter((item) => item.userId === auth.picker)
   //     console.log(userItems)
   //   console.log('user items are: ', userItems)
@@ -83,7 +84,7 @@ const SingleItem = ()=> {
         transQty: elItem.transQty,
         price: elItem.price,
         total: elItem.total,
-        unitMeasure: elItem.unitMeasure.split(' ')[1].slice(1, -1)
+        unitMeasure: elItem.unitMeasure
       }
 console.log(actualItem)
 
@@ -135,6 +136,7 @@ state.singleItemArray.push(elItem)
              cashierID: auth.picker,
             goods: state.singleItemArray,
               grandTotal: elItem.total,
+             
               date
             }
 
@@ -149,7 +151,7 @@ console.log(auth)
 
                   try {
            const item = [userId,
-              {id: elItem._id, transQty: qtyRef.current.value, name: elItem.name, total: elItem.total},  
+              {id: elItem._id, transQty: qtyRef.current.value, name: elItem.name, total: elItem.total,  unitMeasure: elItem.unitMeasure,},  
           ]
 
           console.log(item)
