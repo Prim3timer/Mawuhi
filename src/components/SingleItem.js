@@ -82,7 +82,8 @@ const SingleItem = ()=> {
         quantity: elItem.qty,
         transQty: elItem.transQty,
         price: elItem.price,
-        total: elItem.total 
+        total: elItem.total,
+        unitMeasure: elItem.unitMeasure.split(' ')[1].slice(1, -1)
       }
 console.log(actualItem)
 
@@ -233,7 +234,7 @@ function numberWithCommas(x) {
           >
               <span
               className="qty-label"
-              >Qty: </span>
+              >Qty:</span>
 
 
                 <input
@@ -244,8 +245,7 @@ function numberWithCommas(x) {
 
  onClick={() => dispatch({type: 'blank', payload: ''})}
  onChange={(e)=> dispatch({type: 'CARTFIELDCHANGE', payload: e.target.value})}
- />
-
+ /> {state.elItem.unitMeasure.split(' ')[1].slice(1, -1)}
 
           <p className="no-qty-alert">{state.elItem.qty === '' ? 'invalid quantity'  : state.elItem.qty === 0 ? 'out of stock' : ''}</p>    
 
