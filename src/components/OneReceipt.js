@@ -94,6 +94,7 @@ function numberWithCommas(x) {
 
 useEffect(()=> {
     getItems()
+    console.log(currentTrans)
 }, [])
 
 
