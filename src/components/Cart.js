@@ -42,6 +42,7 @@ const getCartItems = async () => {
         const newUseritems = currentUser.cart.map((item) => {
             return {...item, amount: item.quantity}
         })
+        console.log(newUseritems)
         setUserId(currentUser._id)
      
 console.log(newUseritems)
@@ -63,12 +64,12 @@ console.log(newUseritems)
 
 const doneSales = async()=> {
     console.log(state.cartArray)
-    auth.cartArray = state.cartArray
+    // auth.cartArray = state.cartArray
     const now = new Date()
     const date = format(now, 'dd/mm/yyyy\tHH:mm:ss')
 
     try {
-        const excessCheck = state.cartArray.filter((item) =>  item.quantity < Number(item.transQty))
+        const excessCheck = cartItems.filter((item) =>  item.quantity < Number(item.transQty))
         const excessItem = excessCheck.map((item) => item.name)
         console.log(excessItem)
         setExcessQty(excessItem)

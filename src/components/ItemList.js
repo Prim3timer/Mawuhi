@@ -52,7 +52,7 @@ const {auth, getTrans, itemRef,
 
 
      const measurements = ['grams (g)', 'Piece (pc)', 'Plate (Plt)', 'Dozen (dzn)', 'Bottle (Btl)', 'ounce (oz)', 'centiliter (CL)', 'Sachet (sct)', 'Ounce (Oz)', 'Set (St)', 'Bag (Bg)', 'Pairs (pr)',
-        'centimiters (cm)', 'Kilowatthour (KWh)', 'Kilowatt (KW)'
+        'centimiters (cm)', 'Kilogram (Kg)', 'Kilowatthour (KWh)', 'Kilowatt (KW)', 'Litre (L)'
        ]
 
           const falseIsRotated = ()=> {

@@ -136,7 +136,6 @@ state.singleItemArray.push(elItem)
              cashierID: auth.picker,
             goods: state.singleItemArray,
               grandTotal: elItem.total,
-             
               date
             }
 
@@ -151,7 +150,7 @@ console.log(auth)
 
                   try {
            const item = [userId,
-              {id: elItem._id, transQty: qtyRef.current.value, name: elItem.name, total: elItem.total,  unitMeasure: elItem.unitMeasure,},  
+              {id: elItem._id, transQty: Number(qtyRef.current.value), name: elItem.name, total: elItem.total,  unitMeasure: elItem.unitMeasure,},  
           ]
 
           console.log(item)
@@ -227,7 +226,7 @@ function numberWithCommas(x) {
                 {/* <img src={"https://images.app.goo.gl/ZcZWCKKhGh9Y8sR26"} alt="food"/> */}
                   
                 </section>
-                <p>{state.elItem.qty} Left</p>
+                <p>{parseFloat(state.elItem.qty).toFixed(2)} Left</p>
                 <div className="single-item-texts">
                 {/* <h4>Price: ${parseFloat(state.elItem.price).toFixed(2)} </h4> */}
               
