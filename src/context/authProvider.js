@@ -42,7 +42,7 @@ const [currentUsers, setCurrentUsers] = useState([])
         dispatch({type: 'clear'})
         try {
             // dispatch({type: 'errMsg', payload: 'loading...'})
-            const response = await axiosPrivate.get('/items')
+            const response = await axios.get('/items')
             dispatch({type: 'errMsg', payload: ''})
           
             dispatch({type: 'items', payload: response.data.items})   

@@ -291,8 +291,7 @@ function numberWithCommas(x) {
 
             const res = await axios.get(`/sessions/thanks/old-session/${sessionId}`)
              const oldSession = res.data ? res.data : ''
-
-             console.log(oldSession)
+             
     if (oldSession === sessionId ){
     return
      }else if (!oldSession || oldSession !== sessionId){
