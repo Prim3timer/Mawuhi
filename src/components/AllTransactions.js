@@ -212,7 +212,7 @@ function numberWithCommas(x) {
                                             }}
                                             >
                                                 <h4>{good.name}</h4>
-                                                <p>Qty: {good.qty} {good.unitMeasure.split(' ')[1].slice(1, -1)}</p>
+                                                <p>Qty: {good.qty}{good.unitMeasure.split(' ')[1].slice(1, -1)}</p>
                                                 <p>Price: {good.price}</p>
                                                 <p
                                                
