@@ -59,13 +59,13 @@ const logout = useLogout()
          ref={navRef}
          >
  
-             {location.pathname === '/' || location.pathname === '/login' || location.pathname === '/register' ? <h4> Retail Tracker</h4>  : width < 800 ? <p><FontAwesomeIcon ref={barRef} className={
+             {location.pathname === '/' || location.pathname === '/login' || location.pathname === '/register' ? <h4> Retail Tracker</h4>  : width < 650 ? <p><FontAwesomeIcon ref={barRef} className={
                     !isRotated ? "home-icon rotate-icon" : "home-icon"} onClick={workBar} icon={faBars}/></p> : ''}
                { auth.accessToken &&  <div className="head-home">
                     </div>}
 
                 <div
-                className={width > 800 ? 'show-home-links' : 'hide-home-links'}>
+                className={width > 650 ? 'show-home-links' : 'hide-home-links'}>
             {auth.accessToken && mainLinks.map((mainLink)=> {
                     const {id, name, path} = mainLink
                 return (
