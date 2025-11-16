@@ -202,6 +202,11 @@ const [currentUsers, setCurrentUsers] = useState([])
         // }
     }
 
+    
+    const falseIsRotated = ()=> {
+        setIsRotated(false)
+    }
+
 
     useEffect(()=> {
   getTransaction()
@@ -216,7 +221,7 @@ const [currentUsers, setCurrentUsers] = useState([])
             generalRemain, remainDelete,  isEdit, afa, price, unitMeasure, getTransaction,
             search, setSearch, setSearch2, search2, sales, user, currentUser,
             setCurrentUser, setCurrentUser2, currentUser2, users, setUsers, transactions, atHome, setAtHome,
-            currentUsers, setCurrentUsers, setIsRotated, isRotated, barRef, persistor, setPersistor
+            currentUsers, setCurrentUsers, setIsRotated, isRotated, barRef, persistor, setPersistor, falseIsRotated
 
         }}>
             {children}

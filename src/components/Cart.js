@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useState, useRef } from "react"
+import { useEffect, useReducer, useState, useRef, useContext } from "react"
 import initialState from "../store"
 import reducer from "../reducer"
 import axios from "../app/api/axios"
@@ -7,6 +7,7 @@ import {format} from 'date-fns'
 import { FaTrash } from "react-icons/fa"
 import { Link, useSearchParams, useLocation } from "react-router-dom"
 import useAxiosPrivate from "../hooks/useAxiosPrivate"
+import AuthContext from "../context/authProvider"
 
 const Payment = () => {
     const [state, dispatch] = useReducer(reducer, initialState)
@@ -15,7 +16,7 @@ const Payment = () => {
     const [userId, setUserId] = useState('')
     const cartQtyRef = useRef(null)
 const {auth, setAuth} = useAuth()
-
+const {falseIsRotated} = useContext(AuthContext)
     const axiosPrivate = useAxiosPrivate()
 
 
@@ -171,11 +172,13 @@ const plural = state.cartArray.length === 1 ? '' : 's'
 const plural2 = state.cartAmount.length === 1 ? '' : 's'
 
     return (
-       !state.cartArray ? <h2>Loading</h2> : <div className="checkout">
+       !state.cartArray ? <h2>Loading</h2> : <div className="checkout"
+       onClick={falseIsRotated}
+       >
             <h2>Your Cart</h2>
 
 
-            <h3>{state.cartAmount} item{plural2}, {state.cartArray.length} product{plural}</h3>
+            { state.cartArray.length ? <h3>{state.cartAmount} item{plural2}, {state.cartArray.length} product{plural}</h3> : 'Empty Cart'}
 
 {state.cartArray && state.cartArray.map((item) =>{
     // this line is for dynamic image sourcing

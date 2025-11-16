@@ -9,6 +9,7 @@ import useRefreshToken from "../hooks/useRefreshToken"
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { faArrowDown, faArrowUp } from "@fortawesome/free-solid-svg-icons"
 import useAxiosPrivate from "../hooks/useAxiosPrivate"
+import AuthContext from "../context/authProvider"
 import {format} from 'date-fns'
 import {Link, resolvePath} from 'react-router-dom'
 import ole from '../images/credit.jpg'
@@ -34,6 +35,7 @@ const SingleItem = ()=> {
   console.log(state.transArray)
   const {auth, setAuth,users} = useAuth()
   const axiosPrivate = useAxiosPrivate()
+  const {falseIsRotated} = useContext(AuthContext)
   const [userId, setUserId] = useState('')
   console.log(auth.accessToken)
 
@@ -240,6 +242,7 @@ function numberWithCommas(x) {
 
            {state.elItem &&   <article
             className="single-item"
+            onClick={falseIsRotated}
             >
               <article className="inner-single-item">
           

@@ -14,7 +14,7 @@ const [currentUser, setCurrentUser] = useState()
 const [currentTrans, setCurrentTrans] = useState()
 const [state, dispatch] = useReducer(reducer, initialState)
 const {auth, setAuth} = useAuth()
-const {currentUsers, setIsRotated} = useContext(AuthContext)
+const {currentUsers, setIsRotated, falseRotated} = useContext(AuthContext)
 const navigate = useNavigate()
 setOneReceipt(true)
 
@@ -104,9 +104,7 @@ useEffect(()=> {
     return (
        !currentTrans ? <h2
        className='one-receipt'
-       onbeforeunload={()=> {
-        console.log('unloaded')
-       }}
+   onClick={falseRotated}
        style={{
         // backgroundColor: 'yellow',
         textWrap: 'wrap'

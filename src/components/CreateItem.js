@@ -15,7 +15,7 @@ let CreateItem = () => {
        const [showUpdate, setShowUpdate] = useState(false)
        const measurements = ['Kilogram (kg)', 'Piece (pc)', 'Plate (Plt)', 'Dozen (dzn)', 'Bottle (Btl)', 'Pound (lbs)', 'Litre (L)', 'Sachet (sct)', 'Ounce (Oz)', 'Gram (g)', 'Set (St)', 'Bag (Bg)', 'Kilowatthour (KWh)', 'Kilowatt (KW)'
        ]
-    const {setIsRotated} = useContext(AuthContext)
+    const {falseIsRotated} = useContext(AuthContext)
      const refresh = useRefreshToken()
  const axiosPrivate = useAxiosPrivate()
     const handleSubmit = async (e)=> {
@@ -65,22 +65,13 @@ let CreateItem = () => {
 
     }
 
-   const remainDelete = ()=> {
-        // this condition statement is to enable the removal of the confirm window once any part of the 
-        // page is touched.
-        if (state.cancel){
-
-            dispatch({type: 'cancel', payload: false})
-        }
-        setIsRotated(false)
-
-    }
+    
 
 
 
     return (
         <div className="create-item"
-           onClick={remainDelete}
+           onClick={falseIsRotated}
         >
             <h2 id="create-item-heading">Create Item</h2>
             <form onSubmit={handleSubmit}

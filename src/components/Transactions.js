@@ -24,7 +24,7 @@ const Transactions = ()=> {
     const [checkout, setCheckout] = useState(false)
     const now = new Date()
     const date = format(now, 'dd/MM/yyyy\tHH:mm:ss')
-    const {auth,user, getNames, setAtHome, isRotated, setIsRotated} = useContext(AuthContext)
+    const {auth,user, getNames, setAtHome, isRotated, setIsRotated, falseIsRotated} = useContext(AuthContext)
     const inputRef = useRef()
     const qtyRef = useRef()
     const cashPaidRef = useRef(null)
@@ -38,9 +38,6 @@ const Transactions = ()=> {
     
     const refresh = useRefreshToken()
 
-    const falseIsRotated = ()=> {
-        setIsRotated(false)
-    }
     
     const handleAdd = (e)=> {
         e.preventDefault()

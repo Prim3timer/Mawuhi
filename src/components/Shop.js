@@ -18,7 +18,7 @@ const {v4: uuid} = require('uuid')
 const Shop = () => {
   // window.history.pushState(null, null, '/home');
   const [state, dispatch] = useReducer(reducer, initialState)
-
+  const {falseIsRotated} = useContext(AuthContext)
   const [shopItems, setShopItems] = useState([])
   const axiosPrivate = useAxiosPrivate()
   
@@ -70,7 +70,9 @@ useEffect(()=> {
 
 
   return (
-    !state.items ? <h2 className="shop">Loading...</h2> :<div className="shop">
+    !state.items ? <h2 className="shop">Loading...</h2> :<div className="shop"
+    onClick={falseIsRotated}
+    >
       <div className="home-shop">
   
        <h2>Shop</h2>

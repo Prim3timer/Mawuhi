@@ -55,10 +55,7 @@ const {auth, getTrans, itemRef,
         'centimiters (cm)', 'Kilogram (Kg)', 'Kilowatthour (KWh)', 'Kilowatt (KW)', 'Litre (L) Pound ('
        ]
 
-          const falseIsRotated = ()=> {
-        setIsRotated(false)
-    }
-   
+
        const getItems = async ()=> {
                dispatch({type: 'clear'})
                try {
@@ -170,6 +167,7 @@ const {auth, getTrans, itemRef,
         const remainDelete = ()=> {
         // this condition statement is to enable the removal of the confirm window once any part of the 
         // page is touched.
+        setIsRotated(false)
         if (state.cancel){
 
             dispatch({type: 'cancel', payload: false})

@@ -16,6 +16,8 @@ const [showOne, setShowOne] = useState(false)
 const [oneId, setOneId] = useState('')
 const [allTransi, setAllTransi] = useState([])
 
+const {falseIsRotated} = useContext(AuthContext)
+
     const getItems = async ()=> {
         console.log('picker3 is : ', auth.picker3)
         console.log('picker is: ', auth.picker)
@@ -139,6 +141,7 @@ function numberWithCommas(x) {
            justifyContent: 'center',
         }}
         >Loading...</h2> : <div
+        onClick={falseIsRotated}
         style={{
             display: 'flex',
         //   backgroundColor: 'blue',
