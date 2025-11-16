@@ -1718,8 +1718,7 @@ button:active {
 }
 
 
-
-.one-receipt, .receipts {
+ .receipts {
   /* text-align: center; */
      display: flex;
      flex-direction: column;
@@ -1731,6 +1730,11 @@ button:active {
     }
 
     .one-receipt {
+       display: flex;
+     flex-direction: column;
+     /* background-color: red; */
+     align-items: center; 
+     justify-content: center; 
       background-color: white;
       height: 80vh;
       width: 100vw;
