@@ -24,15 +24,15 @@ const SideBar = () => {
     useEffect(()=> {
         const linksHeight = linksRef.current.getBoundingClientRect().height
         if (isRotated){
-            // sideRef.current.style.height = `${linksHeight}px`
+            sideRef.current.style.height = `${linksHeight}px`
         }
-        //  else {
-        //     setTimeout(()=> {
+         else {
+            setTimeout(()=> {
 
-        //         sideRef.current.style.height = `0px`
-        //     }, 5)
+                sideRef.current.style.height = `0px`
+            }, 5)
 
-        // }
+        }
     }, [isRotated])
     return (
         <div>
@@ -51,6 +51,9 @@ const SideBar = () => {
                     )
                 })}
                 <Link to='/login' className="side-links" ><li onClick={logout}>logout</li></Link>
+                {/* <Link to='/login' className="side-links" ><li onClick={logout}>logout</li></Link>
+                <Link to='/login' className="side-links" ><li onClick={logout}>logout</li></Link>
+                <Link to='/login' className="side-links" ><li onClick={logout}>logout</li></Link> */}
                 </ul>
             
             </section>
