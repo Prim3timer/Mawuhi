@@ -7,14 +7,24 @@ import useLogout from "../hooks/useLogout";
 import SideBar from "./SideBar"
 import AuthContext from "../context/authProvider"
 import mainLinks from "./mainLinks"
+import useWindowSize from "../hooks/useWindowSize"
 const NavBar = ()=> {
   
   //  const [isRotated, setIsRotated] = useState(false)
   const {isRotated, setIsRotated, barRef} = useContext(AuthContext)
+  const [currentWidth, setCurrentWidth] = useState()
      const navigate = useNavigate();
 const location = useLocation()
   const { auth} = useAuth()
-    const workBar = ()=> {
+const navRef = useRef()
+const {width} = useWindowSize()
+
+console.log(width)
+
+  const workBar = ()=> {
+      const navWidth = navRef.current.getBoundingClientRect().width
+      // setCurrentWidth(navWidth)
+      console.log(navWidth)
   if (isRotated == false){
     
     
@@ -42,18 +52,20 @@ const logout = useLogout()
 
             }
         }
-     
+     const pix = 1200
 
     return (
-         <div  className="header">
+         <div  className="header"
+         ref={navRef}
+         >
  
-             {location.pathname === '/' || location.pathname === '/login' || location.pathname === '/register' ? <h4> Retail Tracker</h4> : <p><FontAwesomeIcon ref={barRef} className={
-                    !isRotated ? "home-icon rotate-icon" : "home-icon"} onClick={workBar} icon={faBars}/></p>}
+             {location.pathname === '/' || location.pathname === '/login' || location.pathname === '/register' ? <h4> Retail Tracker</h4>  : width < 800 ? <p><FontAwesomeIcon ref={barRef} className={
+                    !isRotated ? "home-icon rotate-icon" : "home-icon"} onClick={workBar} icon={faBars}/></p> : ''}
                { auth.accessToken &&  <div className="head-home">
                     </div>}
 
                 <div
-                className={auth.accessToken ? 'show-home-links' : 'hide-home-links'}>
+                className={width > 800 ? 'show-home-links' : 'hide-home-links'}>
             {auth.accessToken && mainLinks.map((mainLink)=> {
                     const {id, name, path} = mainLink
                 return (

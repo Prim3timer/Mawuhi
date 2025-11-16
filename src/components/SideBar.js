@@ -20,19 +20,11 @@ const SideBar = () => {
             setIsRotated(false)
 
     }
-    const linkItems = document.getElementsByClassName('side-links')
-    for (let i; i < linkItems.length; i++){
-        console.log('hello world')
-        console.log(linkItems[i])
-    }
-
-
-
 
     useEffect(()=> {
         const linksHeight = linksRef.current.getBoundingClientRect().height
         if (isRotated){
-            sideRef.current.style.height = `${linksHeight}px`
+            // sideRef.current.style.height = `${linksHeight}px`
         }
         //  else {
         //     setTimeout(()=> {

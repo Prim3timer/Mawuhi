@@ -2496,9 +2496,7 @@ width: 70vw;
       /* background-color: red; */
       grid-column: 1/4;
     }
-   .show-home-links {
-    display: none;
-   }
+
 
     /* .head-home {
       grid-column: 1 / 2;
