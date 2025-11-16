@@ -38,20 +38,19 @@ const [currentUsers, setCurrentUsers] = useState([])
 
 
 
- const getItems = async ()=> {
-        dispatch({type: 'clear'})
-        try {
-            // dispatch({type: 'errMsg', payload: 'loading...'})
-            const response = await axios.get('/items')
-            dispatch({type: 'errMsg', payload: ''})
+//  const getItems = async ()=> {
+//         dispatch({type: 'clear'})
+//         try {
+//             // dispatch({type: 'errMsg', payload: 'loading...'})
+//             const response = await axios.get('/items')
+//             dispatch({type: 'errMsg', payload: ''})
           
-            dispatch({type: 'items', payload: response.data.items})   
-            console.log(response.data.items ) 
-        } catch (error) {
-            console.log(error)
-        }
-        console.log(state.getNames && state.getNames)
-    }
+//             dispatch({type: 'items', payload: response.data.items})   
+//             console.log(response.data.items ) 
+//         } catch (error) {
+//             console.log(error)
+//         }
+//     }
 
 
         const getTransaction = async ()=> {
@@ -208,23 +207,16 @@ const [currentUsers, setCurrentUsers] = useState([])
   getTransaction()
 }, [state.search])
 
-    useEffect(()=> {
-    getItems()
-  }, [])
 
-
-//   useEffect(()=> {
-//     getUsers()
-//   }, [])
 
     return (
 
         <AuthContext.Provider value={{auth, setAuth,
             handleSubmit, handleEdit, assertain, itemRef, cancel,
-            generalRemain, remainDelete, items, isEdit, afa, price, unitMeasure, getTransaction,
-            search, setSearch, setSearch2, search2, sales, user, getNames, currentUser,
+            generalRemain, remainDelete,  isEdit, afa, price, unitMeasure, getTransaction,
+            search, setSearch, setSearch2, search2, sales, user, currentUser,
             setCurrentUser, setCurrentUser2, currentUser2, users, setUsers, transactions, atHome, setAtHome,
-            currentUsers, setCurrentUsers, setIsRotated, isRotated, barRef, persistor, setPersistor, getItems
+            currentUsers, setCurrentUsers, setIsRotated, isRotated, barRef, persistor, setPersistor
 
         }}>
             {children}

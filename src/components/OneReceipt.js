@@ -55,8 +55,8 @@ const getItems = async ()=> {
 const latestReceipt = response.data.filter((receipt) => receipt.cashierID === auth.picker )
 const reverseReceipt = latestReceipt.reverse()
 
-                // const oneTrans = response.data.find((item) => item._id === auth.picker2)
-                const seaSaw =  reverseReceipt[0]
+                const oneTrans = response.data.find((item) => item._id === auth.picker2)
+                const seaSaw = oneTrans ? oneTrans : reverseReceipt[0]
                 // dispatch({type: 'getNames', payload: response.data})
                 setCurrentTrans(seaSaw)
                 // console.log(currentTrans)

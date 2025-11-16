@@ -11,12 +11,10 @@ import { Link } from "react-router-dom";
 import AuthContext from "../context/authProvider";
 import useRefreshToken from "../hooks/useRefreshToken";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
-import SideBar from "./SideBar";
 {/* ₦ */}
 
 
 const Transactions = ()=> {
-    
     const [state, dispatch] = useReducer(reducer, initialState)   
     const [cash, setCash] = useState(false)
     const [card, setCard] = useState(false)
@@ -31,7 +29,6 @@ const Transactions = ()=> {
     const [success, setSuccess] = useState(false)
     const [noShow, setNoShow] = useState(false)
     const [items, setItems] = useState([])
-    console.log(items)
 
     const axiosPrivate = useAxiosPrivate()
 
@@ -118,12 +115,12 @@ const Transactions = ()=> {
         dispatch({type: 'clear'})
         // console.log('CLEARED!')
         dispatch({type: 'cancel', payload: false})
-          setNoShow(true)
-    dispatch({type: 'errMsg', payload: 'list cleared'})
-                       setTimeout(()=> {
-                        setNoShow(false)
-                           dispatch({type: 'errMsg', payload: ``})
-                    }, 3000)
+        setNoShow(true)
+        dispatch({type: 'errMsg', payload: 'list cleared'})
+        setTimeout(()=> {
+            setNoShow(false)
+            dispatch({type: 'errMsg', payload: ``})
+        }, 3000)
         state.paidAmount = 0
         state.balance = 0
     }
@@ -132,7 +129,7 @@ const Transactions = ()=> {
     
     const trueCash  = ()=> {
         if (state.transArray.length){
-
+            
             setCash(true)
         }
         
@@ -141,7 +138,7 @@ const Transactions = ()=> {
     useEffect(()=>{
         if (cash){
             cashPaidRef.current.focus()
-
+            
         }
     }, [cash])
     
@@ -173,13 +170,15 @@ const Transactions = ()=> {
                 console.log(transItems.goods)
                 const response = await axios.post('/transactions', transItems)
                 const response2 = await axiosPrivate.get('/items')
-                console.log(response2)
+                console.log(response.data)
                 
                 if (response){
                     setCash(false)
+                    dispatch({type: 'cancel', payload: false})
                     // so i can effect change in color of the errMsg
                     dispatch({type: 'qty', payload: response})
                     dispatch({type: 'clear'})
+                    dispatch({type: 'ALERTMSG', payload: response.data.message})
                     dispatch({type: 'transArray', payload: []})
                 }
                 
@@ -301,9 +300,9 @@ function numberWithCommas(x) {
          if (res.data){
             
          }
-         console.log({res: response.data})
          if (response){
-            setSuccess(true)
+             setSuccess(true)
+            dispatch({type: 'ALERTMSG', payload: response.data.message})
             setTimeout(()=> {
                 setSuccess(false)
             }, 5000)
@@ -359,7 +358,7 @@ useEffect(()=> {
 
 
     return (
-       !getNames ? <h2 className="trans-cont">Loading...</h2> : <div className="trans-cont"
+       !items ? <h2 className="trans-cont">Loading...</h2> : <div className="trans-cont"
        onClick={falseIsRotated}
        
         >
@@ -594,12 +593,15 @@ useEffect(()=> {
            </section>
 
        <article className={success ? 'success' : 'non-success'}>
-        <h3>Transaction Complete</h3>
+        <h3>{state.alertMsg}</h3>
+        { state.alertMsg ? <div>
+
         <h4>Receipt?</h4>
         <div className="cash-confirm">
         <button onClick={falseSuccess}>No</button>
         <button><Link to='/one-receipt' className="cash-confirm-link">Yes</Link></button>
-        </div>
+        </div> 
+        </div> : ''}
         </article> 
        
         </div>
