@@ -11,10 +11,13 @@ import { Link } from "react-router-dom";
 import AuthContext from "../context/authProvider";
 import useRefreshToken from "../hooks/useRefreshToken";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
+
 {/* ₦ */}
 
 
 const Transactions = ()=> {
+
+    
     const [state, dispatch] = useReducer(reducer, initialState)   
     const [cash, setCash] = useState(false)
     const [card, setCard] = useState(false)
@@ -362,6 +365,7 @@ useEffect(()=> {
        onClick={falseIsRotated}
        
         >
+          
             <h2
             id="tans-title"
            

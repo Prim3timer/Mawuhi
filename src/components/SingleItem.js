@@ -11,8 +11,20 @@ import { faArrowDown, faArrowUp } from "@fortawesome/free-solid-svg-icons"
 import useAxiosPrivate from "../hooks/useAxiosPrivate"
 import {format} from 'date-fns'
 import {Link, resolvePath} from 'react-router-dom'
+import ole from '../images/credit.jpg'
+import ego from '../images/dollars.jpg'
+{/* ₦ */}
+
+
 
 const SingleItem = ()=> {
+  const Beef = []
+  const BeefObj = {
+    first: ole,
+    second: ego
+  }
+  Beef.push(BeefObj)
+  console.log(BeefObj)
   const [isLoading, setIsLoading] = useState(true)
   const [state, dispatch] = useReducer(reducer, initialState)
   const upArrow = "+"
@@ -214,6 +226,18 @@ function numberWithCommas(x) {
         isLoading ? <h2  className="single-item">Loading...</h2> :
          <div>
          
+
+  {/* <div style={{
+                width: '200px',
+                height: '200px',
+                overflow: 'auto',
+                display: 'flex',
+                columnGap: '.5rem'
+            }}>
+                <img className="mult-pics" src={Beef.map((pic) => pic.first)} alt="credit" />
+                
+            </div> */}
+
            {state.elItem &&   <article
             className="single-item"
             >
@@ -226,7 +250,8 @@ function numberWithCommas(x) {
                 {/* <img src={"https://images.app.goo.gl/ZcZWCKKhGh9Y8sR26"} alt="food"/> */}
                   
                 </section>
-                <p>{parseFloat(state.elItem.qty).toFixed(2)} Left</p>
+                <p>{state.elItem.unitMeasure === 'Kilogram (Kg)' || state.elItem.unitMeasure === 'Kilowatthour (KWh)' 
+                    || state.elItem.unitMeasure === 'Kilowatt (KW)'  || state.elItem.unitMeasure === 'Pound (lbs)' ||  state.elItem.unitMeasure === 'Litre (L)' ? parseFloat(state.elItem.qty).toFixed(2) : state.elItem.qty} Left</p>
                 <div className="single-item-texts">
                 {/* <h4>Price: ${parseFloat(state.elItem.price).toFixed(2)} </h4> */}
               
