@@ -205,7 +205,7 @@ function numberWithCommas(x) {
                                 >
                                     <h4>{good.name}</h4>
                                     <p>Qty: {parseFloat(good.qty).toFixed(2)}{good.unitMeasure.split(' ')[1].slice(1, -1)}</p>
-                                    <p>Unit Price: {good.price}</p>
+                                    <p>Unit Price: {numberWithCommas(parseFloat(good.price).toFixed(2))}</p>
                                     <p
                                    
                                     >Sub Total: ₦{numberWithCommas(parseFloat(good.total).toFixed(2))}</p>
