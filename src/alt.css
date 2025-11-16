@@ -2432,6 +2432,7 @@ width: 70vw;
   
   @media screen and (max-width: 800px) {
 
+
    
 #update-form {
  
@@ -2459,10 +2460,11 @@ width: 70vw;
       font-size: 2rem;
     }
 
-  
-    
-  }
+
   @media screen and (min-width: 992px) {
+
+        
+}
     .home-cont {
       height: 100vh;
       place-content: center;
@@ -2488,7 +2490,21 @@ width: 70vw;
       font-size: 3rem;
     }
    }
+
+@media screen and (min-width: 800px) {
+
+  .one-receipt {
+   /* display: block; */
+           /* margin: 2rem; */
+           /* align-items: flex-start; */
+      justify-content: flex-start; 
+      height: 140vh;
+   
+  }
+}
+
    @media screen and (max-width: 1200px) {
+
  .header >*:nth-child(1){
   display: block;
   text-align: left;
@@ -2497,7 +2513,7 @@ width: 70vw;
       grid-column: 1/4;
     }
 
-
+   
     /* .head-home {
       grid-column: 1 / 2;
     } */
