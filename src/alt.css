@@ -22,6 +22,7 @@ place-content: center;
 
 .home-links {
   color: red;
+  font-size: .8rem;
   /* transform: scale(1.5);
   font-size: bold; */
 }
@@ -1325,9 +1326,8 @@ overflow-y: auto;
   /* color: #1e293b; */
   color: whitesmoke;
   padding: .3rem;
-  width: 9rem;
+  width: 5rem;
   text-align: center;
-  /* box-shadow: 0.2em 0.3em 0.4em white; */
 }
 
 .show-home-links>*:last-child {
