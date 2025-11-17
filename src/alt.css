@@ -1774,7 +1774,7 @@ button:active {
 
 }
  .usersetting-actions {
-    /* margin-top: 4rem; */
+    margin-top: 1rem;
     column-gap: 6rem;
     display: flex;
     justify-content: flex-start;
