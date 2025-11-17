@@ -175,10 +175,10 @@ const plural2 = state.cartAmount.length === 1 ? '' : 's'
        !state.cartArray ? <h2>Loading</h2> : <div className="checkout"
        onClick={falseIsRotated}
        >
-            <h2>Your Cart</h2>
+            <h2>Your Cart:</h2>
 
 
-            { state.cartArray.length ? <h3>{state.cartAmount} item{plural2}, {state.cartArray.length} product{plural}</h3> : 'Empty Cart'}
+            { state.cartArray.length ? <h3>{state.cartAmount} item{plural2}, {state.cartArray.length} product{plural}</h3> : 'Empty'}
 
 {state.cartArray && state.cartArray.map((item) =>{
     // this line is for dynamic image sourcing
