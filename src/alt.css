@@ -1292,11 +1292,13 @@ column-gap: 5rem;
 .plain-header {
   display: grid;
    position: sticky;
+     top: 0;
     background-color: #1e293b;;
     padding: .5rem;
     color: whitesmoke;
     /* z-index: 5; */
 }
+
 
 .home-links {
   /* color: whitesmoke; */
@@ -1756,10 +1758,10 @@ button:active {
      align-items: center; 
      justify-content: center; 
       background-color: white;
-      height: 80vh;
+      /* height: 89vh; */
       width: 100vw;
       /* margin-top: -2rem; */
-      padding: 1rem 0;
+      padding: 2rem 0;
     }
 
    .search-form input{
@@ -2518,7 +2520,7 @@ width: 70vw;
            /* margin: 2rem; */
            /* align-items: flex-start; */
       justify-content: flex-start; 
-      height: 140vh;
+ 
    
   }
 }
