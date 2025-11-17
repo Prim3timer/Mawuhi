@@ -55,7 +55,9 @@ const logout = useLogout()
      const pix = 1200
 
     return (
-         <div  className="header"
+      // making the class name dynamic because of the 'retail tracker' text conflicing with the first element, 'transaction' in
+      // the header list of items
+         <div  className={location.pathname === '/' || location.pathname === '/login' || location.pathname === '/register' ? 'plain-header' : 'header'}
          ref={navRef}
          >
  
@@ -69,7 +71,14 @@ const logout = useLogout()
             {auth.accessToken && mainLinks.map((mainLink)=> {
                     const {id, name, path} = mainLink
                 return (
-                        <Link to={path} className="home-links" key={id}>{name}</Link>
+                  <div className="home-names">
+
+                    <Link to={path} className="home-links" key={id}>{name}</Link>
+                    {/* <br/> */}
+                    {/* <br/> */}
+                    {/* <p>|</p> */}
+                  </div>
+                      
                     )
                 })}
                 {auth.accessToken && <Link to="/login" className="home-links" onClick={logout}>logout</Link>}

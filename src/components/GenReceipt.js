@@ -17,7 +17,7 @@ const [showOne, setShowOne] = useState(false)
 const [oneId, setOneId] = useState('')
 const { auth} = useAuth();
 const [currentUser, setCurrentUser] = useState('')
-const {atHome, getUsers, currentUsers, setIsRotated} = useContext(AuthContext)
+const {atHome, getUsers, currentUsers, setIsRotated, falseRotated} = useContext(AuthContext)
 
 const refresh = useRefreshToken()
 const getItems = async ()=> {
@@ -176,7 +176,7 @@ function numberWithCommas(x) {
                 // color: 'darkslateblue'    
             }}
            
-            >{currentUser && currentUser.username}'s Reciepts ({state.getNames.length})</h2>
+            >Reciepts ({state.getNames.length})</h2>
             {state.getNames && state.getNames.map((item)=> {
 
                 return (
