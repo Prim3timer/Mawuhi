@@ -602,7 +602,7 @@ row-gap: 1rem;
 }
 
 .qty-input, .cart-qty {
-  width: 4rem;
+  width: 8rem;
   padding: 0.2rem .5rem;
   font-size: 1.8rem;
 }
@@ -1326,12 +1326,19 @@ column-gap: 5rem;
   display: grid;
   grid-auto-flow: column;
 column-gap: .5rem;
-grid-column: 1/ 16 ;
+/* grid-column: 1/ 16 ; */
 /* color: whitesmoke; */
 /* background-color: red; */
-/* width: 100vw; */
+width: 90vw;
 justify-content: start;
 overflow-y: auto;
+padding: 0 1rem;
+}
+
+.link-names {
+  display: flex;
+  column-gap: .5rem;
+
 }
 
 .show-home-links >* {
@@ -1339,7 +1346,7 @@ overflow-y: auto;
   /* color: #1e293b; */
   color: whitesmoke;
   padding: .3rem;
-  width: 6rem;
+  /* width: 6rem; */
   text-align: center;
 }
 

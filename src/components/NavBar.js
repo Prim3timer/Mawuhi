@@ -71,8 +71,10 @@ const logout = useLogout()
             {auth.accessToken && mainLinks.map((mainLink)=> {
                     const {id, name, path} = mainLink
                 return (
-
+                  // <div className="link-names">
                     <Link to={path} className="home-links" key={id}>{name}</Link>
+                 
+                    // </div>
                
                       
                     )
