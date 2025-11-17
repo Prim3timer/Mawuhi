@@ -1758,7 +1758,7 @@ button:active {
      align-items: center; 
      justify-content: center; 
       background-color: white;
-      /* height: 89vh; */
+      min-height: 89vh;
       width: 100vw;
       /* margin-top: -2rem; */
       padding: 2rem 0;
