@@ -1326,7 +1326,7 @@ overflow-y: auto;
   /* color: #1e293b; */
   color: whitesmoke;
   padding: .3rem;
-  width: 5rem;
+  width: 6rem;
   text-align: center;
 }
 
@@ -2508,7 +2508,7 @@ width: 70vw;
  .header >*:nth-child(1){
   display: block;
   text-align: left;
-  width:14rem;
+  /* width:14rem; */
       /* background-color: red; */
       grid-column: 1/4;
     }
