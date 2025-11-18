@@ -507,7 +507,7 @@ grid-template-rows: repeat(2, 150px);
 width: 150px;
 grid-column: 2 /2;
     /* line-height: 2rem; */
-    font-size: .8rem;
+    font-size: 1rem;
 }
 
 .invent-alarm {
