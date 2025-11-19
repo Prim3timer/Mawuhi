@@ -150,7 +150,13 @@ function numberWithCommas(x) {
         
         // onClick={remainDelete}
         >
-       
+       <h2
+            style={{
+                margin: '1rem 0' ,
+                // color: 'darkslateblue'    
+            }}
+           
+            >Reciepts ({state.getNames.length})</h2>
 {/* <Link to="one-receipt"> */}
 <article id="form-cont">
             <form  className="receipt-search-form"   onSubmit={(e)=> e.preventDefault()}>
@@ -170,13 +176,7 @@ function numberWithCommas(x) {
 
           {/* <SearchItem/> */}
         </article>
-         <h2
-            style={{
-                margin: '1rem 0' ,
-                // color: 'darkslateblue'    
-            }}
-           
-            >Reciepts ({state.getNames.length})</h2>
+         
             {state.getNames && state.getNames.map((item)=> {
 
                 return (

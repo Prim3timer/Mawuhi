@@ -111,7 +111,7 @@ const [specArray, setSpecArray] = useState([])
 
     return (
          !specArray ? <div>Loading...</div>: <div className='main-sale' onClick={falseIsRotated}>
-      <h2 className='heading'>{ currentUser && currentUser.username}'s Sales ({specArray.length}) rows</h2>
+      <h2 className='heading'> Sales ({specArray.length}) rows</h2>
                    <form  className="sales-search-form"   onSubmit={(e)=> e.preventDefault()}>
         <input 
         id="invent-search"

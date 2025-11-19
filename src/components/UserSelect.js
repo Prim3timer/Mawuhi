@@ -69,7 +69,7 @@ const getAUser = ()=>{
     >
             <h2
           className="user-select-header"
-            >{username}'s activity</h2>
+            >{username}{username ? "'s" : ''} activity</h2>
             {console.log(currentUser)}
             <article
             className="userselect-buttons-container"

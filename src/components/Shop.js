@@ -21,11 +21,6 @@ const Shop = () => {
   const {falseIsRotated} = useContext(AuthContext)
   const [shopItems, setShopItems] = useState([])
   const axiosPrivate = useAxiosPrivate()
-  
-  const navigate = useNavigate();
-
-    const location = useLocation();
-
 
      const getItems = async ()=> {
         dispatch({type: 'clear'})
