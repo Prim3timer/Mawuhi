@@ -172,7 +172,7 @@ const [specArray, setSpecArray] = useState([])
     return  a + parseFloat( b.qty)
 }, 0).toFixed(2))}
 </h3>
-    <h3>
+    <h3 className='sales-grand-total'>
 
 ₦{state.sales && numberWithCommas(state.sales.reduce((a, b)=> {
     return  a + parseFloat( b.total)
