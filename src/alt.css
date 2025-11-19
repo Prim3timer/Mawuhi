@@ -429,10 +429,11 @@ width: 100%;
 }
 
 .shop {
-  display: grid;
+  display: flex;
   text-align: center;
  flex-direction: column;
  justify-content: center;
+ align-items: center;
   width:100vw;
   /* margin: 1rem 0; */
   background-color: snow;
@@ -459,11 +460,10 @@ width: 100%;
   display: grid;
   /* background-color: yellow; */
   width: 90vw;
-  /* justify-content: center; */
-  align-items: center;
+ /* place-content: center; */
   grid-template-columns: repeat(2, 100px);
   
-  column-gap: 4rem;
+  column-gap: 5rem;
   /* align-items: center; */
   
 }
