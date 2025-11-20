@@ -472,28 +472,29 @@ text-decoration: none;
 
 
 .shopping-items {
-  display: grid;
+  /* display: grid; */
 grid-auto-rows: minmax(100px, auto);
+/* grid-template-rows: 200px 100px; */
   /* background-color: yellow; */
-  min-width: 150px;
+  /* min-width: 150px; */
   margin: 2rem 1rem;
 row-gap: .5rem;
 
 }
 
   .shop-img {
-  width: 150px;
-  height: 150px;
+  width: 160px;
+  height: 160px;
   border-radius: 5px;
   object-fit: cover;
-  grid-row: 1 / 1;
+  /* grid-row: 1 / 1;s */
 }
 
 .shop-item-texts {
   /* background-color: yellow; */
 width: 150px;
     /* line-height: 2rem; */
-    font-size: 1rem;
+    font-size: 1.2rem;
 }
 
 .invent-alarm {
