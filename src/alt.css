@@ -2014,7 +2014,9 @@ button:active {
   }
 
 
-
+.shop-inner-container {
+       grid-template-columns: repeat(1, 1fr);
+     }
 
   }
 
@@ -2514,7 +2516,6 @@ width: 70vw;
     }
    }
 
-  
   @media screen and (min-width: 844px) {
   .shop-inner-container {
     grid-template-columns: repeat(3, 1fr);
