@@ -495,9 +495,9 @@ row-gap: .5rem;
 .shop-item-texts {
   text-align: left;
   /* background-color: yellow; */
-  /* padding-left: .5rem; */
+  padding-left: .5rem;
 width: 11.5rem;
-    line-height: 1.7rem;
+    line-height: 1.2rem;
     font-size: 1rem;
 }
 
@@ -2537,11 +2537,6 @@ width: 70vw;
   width: 15rem;
   height: 15rem;
   
-}
-
-.shop-item-texts {
-  line-height: 1.2rem;
-  font-size: .8rem;
 }
 }
 
