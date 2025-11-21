@@ -436,7 +436,7 @@ width: 100%;
  row-gap: 1rem;
  align-items: center;
   width:100vw;
-  /* margin: 1rem 0; */
+ padding-bottom: 1rem;
   background-color: snow;
 }
 
