@@ -2015,7 +2015,7 @@ button:active {
 
 
 .shop-inner-container {
-       grid-template-columns: repeat(1, 1fr);
+       /* grid-template-columns: repeat(1, 1fr); */
      }
 
   }
@@ -2516,13 +2516,13 @@ width: 70vw;
     }
    }
 
-  @media screen and (min-width: 844px) {
+  @media screen and (min-width: 754px) {
   .shop-inner-container {
     grid-template-columns: repeat(3, 1fr);
   }
       .shop-img {
-  width: 17rem;
-  height: 17rem;
+  width: 15rem;
+  height: 15rem;
   
 }
 
@@ -2531,13 +2531,13 @@ width: 70vw;
 }
 }
 
-@media screen and (min-width: 1222px){
+@media screen and (min-width: 1231px){
   .shop-inner-container {
     grid-template-columns: repeat(4, 1fr);
     /* background-color: red; */
   }
   .shop-img {
-  width: 18.5rem;
+  width: 16rem;
   height: 18rem;
   
   }
