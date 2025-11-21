@@ -2516,7 +2516,20 @@ width: 70vw;
     }
    }
 
-  @media screen and (min-width: 754px) {
+   @media screen   and (min-width: 350px) {
+      .shop-img {
+        width: 10.5rem;
+        height: 9rem;
+      }
+
+      .shop-item-texts {
+        /* background-color: yellow; */
+        width: 10.5rem;
+      }
+    
+   }
+
+  @media screen and (min-width: 740px) {
   .shop-inner-container {
     grid-template-columns: repeat(3, 1fr);
   }
