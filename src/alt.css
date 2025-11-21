@@ -498,7 +498,7 @@ row-gap: .5rem;
   /* padding-left: .5rem; */
 width: 11.5rem;
     line-height: 1.7rem;
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 .invent-alarm {
@@ -2540,7 +2540,8 @@ width: 70vw;
 }
 
 .shop-item-texts {
-  font-size: 1.5rem;
+  line-height: 1.2rem;
+  font-size: .8rem;
 }
 }
 
@@ -2550,15 +2551,16 @@ width: 70vw;
     /* background-color: red; */
   }
   .shop-img {
-  width: 16rem;
+  width: 18rem;
   height: 18rem;
   
   }
   .shop-item-texts {
     /* background-color: red; */
-    width: 18.5rem;
-    font-size: 1.5rem;
+    width: 18rem;
+    font-size: 1.2rem;
     line-height: 2rem;
+    /* padding-left: .5rem; */
   }
 
 }
