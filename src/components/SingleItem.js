@@ -253,8 +253,8 @@ function numberWithCommas(x) {
                 {/* <img src={"https://images.app.goo.gl/ZcZWCKKhGh9Y8sR26"} alt="food"/> */}
                   
                 </section>
-                <p>{state.elItem.unitMeasure === 'Kilogram (Kg)' || state.elItem.unitMeasure === 'Kilowatthour (KWh)' 
-                    || state.elItem.unitMeasure === 'Kilowatt (KW)'  || state.elItem.unitMeasure === 'Pound (lbs)' ||  state.elItem.unitMeasure === 'Litre (L)' ? parseFloat(state.elItem.qty).toFixed(2) : state.elItem.qty} Left</p>
+                <p>{state.elItem.unitMeasure === 'Kilogram (kg)' || state.elItem.unitMeasure === 'Kilowatthour (kWh)' 
+                    || state.elItem.unitMeasure === 'Kilowatt (kW)'  || state.elItem.unitMeasure === 'Pound (lbs)' ||  state.elItem.unitMeasure === 'Litre (L)' ? parseFloat(state.elItem.qty).toFixed(2) : state.elItem.qty} Left</p>
                 <div className="single-item-texts">
                 {/* <h4>Price: ${parseFloat(state.elItem.price).toFixed(2)} </h4> */}
               
