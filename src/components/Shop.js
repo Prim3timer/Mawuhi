@@ -96,12 +96,13 @@ useEffect(()=> {
           >
             <img  className='shop-img' src={`${item.img}`} alt={item.name}/>
             <div className="shop-item-texts">
+                <h4>${numberWithCommas(item.price)}</h4> 
             <p style={{
               // text
             }}>{item.name}</p>
             <p className={item.qty < 20 ? "invent-alarm" : "invent-info"}>{item.qty > 0 ? `${item.unitMeasure === 'Kilogram (Kg)' || item.unitMeasure === 'Kilowatthour (KWh)' 
-                    || item.unitMeasure === 'Kilowatt (KW)'  || item.unitMeasure === 'Pound (lbs)' ||  item.unitMeasure === 'Litre (L)' ? parseFloat(item.qty).toFixed(2) : item.qty} left` : 'out of stock'}</p>
-            <h4> ₦{numberWithCommas(item.price)}</h4>
+                    || item.unitMeasure === 'Kilowatt (KW)'  || item.unitMeasure === 'Pound (lbs)' ||  item.unitMeasure === 'Litre (L)' ? parseFloat(item.qty).toFixed(2) : item.qty} ${item.unitMeasure} left` : 'out of stock'}</p>
+          
             {/* <h4>{items.find((name)=> `${name.name}` === inputRef.current.value)}</h4> */}
           </div>
           
