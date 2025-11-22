@@ -224,7 +224,7 @@ const checkForUnitMeasurValues = () => {
 >
  <tbody>
  <tr className="invent-header-trow">
-     <th>NAME (SI UNIT)</th>
+     <th>NAME (UM)</th>
      <th>IN-STOCK</th>
      <th> LAST UPDATED</th>
      <th>ACTION</th>
