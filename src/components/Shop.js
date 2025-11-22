@@ -101,7 +101,7 @@ useEffect(()=> {
               // text
             }}>{item.name}</p>
             <p className={item.qty < 20 ? "invent-alarm" : "invent-info"}>{item.qty > 0 ? `${item.unitMeasure === 'Kilogram (Kg)' || item.unitMeasure === 'Kilowatthour (KWh)' 
-                    || item.unitMeasure === 'Kilowatt (KW)'  || item.unitMeasure === 'Pound (lbs)' ||  item.unitMeasure === 'Litre (L)' ? parseFloat(item.qty).toFixed(2) : item.qty} ${item.unitMeasure} left` : 'out of stock'}</p>
+                    || item.unitMeasure === 'Kilowatt (KW)'  || item.unitMeasure === 'Pound (lbs)' ||  item.unitMeasure === 'Litre (L)' ? parseFloat(item.qty).toFixed(2) : item.qty}${item.unitMeasure.split(' ')[1].slice(1, -1)} left` : 'out of stock'}</p>
           
             {/* <h4>{items.find((name)=> `${name.name}` === inputRef.current.value)}</h4> */}
           </div>
