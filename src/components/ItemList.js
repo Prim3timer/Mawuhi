@@ -206,7 +206,6 @@ const {auth, getTrans, itemRef,
            
               onClick={remainDelete}
               >  
-              <img src={image && image} alt="image"/>
               <article id="form-cont">
          
 
