@@ -208,7 +208,7 @@ function numberWithCommas(x) {
                                     <p>Unit Price: {numberWithCommas(parseFloat(good.price).toFixed(2))}</p>
                                     <p
                                    
-                                    >Sub Total: ₦{numberWithCommas(parseFloat(good.total).toFixed(2))}</p>
+                                    >Sub Total: ${numberWithCommas(parseFloat(good.total).toFixed(2))}</p>
                                
                                     {/* <br/> */}
                                 </div>
@@ -218,7 +218,7 @@ function numberWithCommas(x) {
                         <h4
                         className="receipts-grand-total"
                         
-                        >Grand Total: ₦{ numberWithCommas(parseFloat(item.grandTotal).toFixed(2))}</h4>
+                        >Grand Total: ${ numberWithCommas(parseFloat(item.grandTotal).toFixed(2))}</h4>
                         
                    
            <h5>Cashier: {item.cashier}</h5>
