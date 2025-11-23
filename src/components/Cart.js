@@ -178,7 +178,7 @@ const plural2 = state.cartAmount.length === 1 ? '' : 's'
             <h2>Your Cart:</h2>
 
 
-            { state.cartArray.length ? <h3>{state.cartAmount} item{plural2}, {state.cartArray.length} product{plural}</h3> : 'Empty'}
+            { state.cartArray.length ? <h3>{parseFloat(state.cartAmount).toFixed(2)} item{plural2}, {state.cartArray.length} product{plural}</h3> : 'Empty'}
 
 {state.cartArray && state.cartArray.map((item) =>{
     // this line is for dynamic image sourcing
@@ -201,7 +201,7 @@ const plural2 = state.cartAmount.length === 1 ? '' : 's'
             /> {item.unitMeasure.split(' ')[1].slice(1, -1)}
             </label>
          
-            <h3>₦{numberWithCommas(parseFloat(item.total).toFixed(2))}</h3>
+            <h3>${numberWithCommas(parseFloat(item.total).toFixed(2))}</h3>
 
             </section>
             <p onClick={() => removeItem(item.id)}
@@ -213,7 +213,7 @@ const plural2 = state.cartAmount.length === 1 ? '' : 's'
         </div>
     )
 })}
-<h2>Total: ₦{numberWithCommas(parseFloat(state.totalCart).toFixed(2))}</h2>
+<h2>Total: ${numberWithCommas(parseFloat(state.totalCart).toFixed(2))}</h2>
 {/* <hr></hr> */}
 {/* <hr></hr> */}
 <div className="cart-action">

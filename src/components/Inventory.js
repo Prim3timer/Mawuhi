@@ -238,9 +238,9 @@ return (
      'white' : 'palegreen'}}
      >
         
-     <td className="sales-items">{`${inv.name} ${inv.unitMeasure.split(' ')[1]}`}</td>
+     <td className="sales-items">{`${inv.name}`}</td>
      <th className="sales-items" style={{color: inv.qty < 20 ? 'red' : ''}}>{inv.unitMeasure === 'Kilogram (kg)' || inv.unitMeasure === 'Kilowatthour (kWh)' 
-                    || inv.unitMeasure === 'Kilowatt (kW)'  || inv.unitMeasure === 'Pound (lbs)' ||  inv.unitMeasure === 'Litre (L)' ? parseFloat(invReg).toFixed(2) : invReg}</th>
+                    || inv.unitMeasure === 'Kilowatt (kW)'  || inv.unitMeasure === 'Pound (lbs)' ||  inv.unitMeasure === 'Litre (L)' ? parseFloat(invReg).toFixed(2) : invReg} {inv.unitMeasure.split(' ')[1].slice(1, -1)}</th>
      <td className="sales-items" >{inv.date.substring(0, 10)}</td>
      <td 
      // style={{backgroundColor: 'blue'}}

@@ -29,7 +29,7 @@ const ItemList = ()=> {
 
     const location = useLocation()
 
-    
+    const [image, setImage] = useState('')
 
 const previousLocation = usePreviousLocation()
 const previouPath = previousLocation ? previousLocation : 'N/A'
@@ -72,6 +72,7 @@ const {auth, getTrans, itemRef,
                        // dispatch({type: 'user', payload: state.getNames[0].name})
                       console.log(state.getNames)
                        console.log(response.data)
+                       setImage(response.newData)
                        
                     } 
                 } catch (error) {
@@ -205,6 +206,7 @@ const {auth, getTrans, itemRef,
            
               onClick={remainDelete}
               >  
+              <img src={image && image} alt="image"/>
               <article id="form-cont">
          
 

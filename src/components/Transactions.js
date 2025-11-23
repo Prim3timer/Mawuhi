@@ -12,7 +12,7 @@ import AuthContext from "../context/authProvider";
 import useRefreshToken from "../hooks/useRefreshToken";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 
-{/* ₦ */}
+{/* $ */}
 
 
 const Transactions = ()=> {
@@ -50,7 +50,7 @@ const Transactions = ()=> {
                 if (state.success === false) state.success = true
                 else state.success = false
                 
-                const currentItem = items.find((name)=> `${name.name} ${name.unitMeasure.split(' ')[1]}` === inputRef.current.value)
+                const currentItem = items.find((name)=> `${name.name}` === inputRef.current.value)
                 if (!currentItem) dispatch({type: 'errMsg', payload: 'filtering...'})
                     // setFirstRedChecker('tamgible')
                 currentItem.total = currentItem.price
@@ -397,7 +397,7 @@ useEffect(()=> {
                 
                 return (
                     <option key={user._id}
-                    value={`${user.name} ${user.unitMeasure.split(' ')[1]}`}
+                    value={`${user.name}`}
                     className="transaction-items-list"
                   
                         >
@@ -490,7 +490,7 @@ useEffect(()=> {
                     <h4 
                     style={{display: `${state.getAllTotals ? 'none' : 'block' }`}}
                     // >N{parseFloat(item.total).toFixed(2)}</h3>
-                    >₦{numberWithCommas(parseFloat(item.total).toFixed(2))}</h4>
+                    >${numberWithCommas(parseFloat(item.total).toFixed(2))}</h4>
 
                     </article>
 
@@ -498,7 +498,7 @@ useEffect(()=> {
                     
                     > */}
                     {/* <p>price/{item.unitMeasure.split(' ')[1].slice(1, -1)}:</p>
-                    <p>₦{item.price}</p> */}
+                    <p>${item.price}</p> */}
 
                     {/* </article> */}
                    
@@ -527,7 +527,7 @@ useEffect(()=> {
                       <h2
                 id="grand-total-one"
              
-                >Total: ₦{numberWithCommas(parseFloat(state.total).toFixed(2))}</h2>
+                >Total: ${numberWithCommas(parseFloat(state.total).toFixed(2))}</h2>
             <form
             
             >
@@ -546,8 +546,8 @@ useEffect(()=> {
             }}
             >
            <h4
-           >Balance: ₦{state.paidAmount > state.total  ? parseFloat(state.balance).toFixed(2) : 0}</h4>
-           {/* <h3>₦{state.paidAmount > state.total  ? parseFloat(state.balance).toFixed(2) : 0}</h3>  */}
+           >Balance: ${state.paidAmount > state.total  ? parseFloat(state.balance).toFixed(2) : 0}</h4>
+           {/* <h3>${state.paidAmount > state.total  ? parseFloat(state.balance).toFixed(2) : 0}</h3>  */}
            </section>
            <article className="cash-confirm">
            <button onClick={closeCashWindow}>Cancel</button>

@@ -254,7 +254,7 @@ function numberWithCommas(x) {
                   
                 </section>
                 <p>{state.elItem.unitMeasure === 'Kilogram (kg)' || state.elItem.unitMeasure === 'Kilowatthour (kWh)' 
-                    || state.elItem.unitMeasure === 'Kilowatt (kW)'  || state.elItem.unitMeasure === 'Pound (lbs)' ||  state.elItem.unitMeasure === 'Litre (L)' ? parseFloat(state.elItem.qty).toFixed(2) : state.elItem.qty} Left</p>
+                    || state.elItem.unitMeasure === 'Kilowatt (kW)'  || state.elItem.unitMeasure === 'Pound (lbs)' ||  state.elItem.unitMeasure === 'Litre (L)' ? parseFloat(state.elItem.qty).toFixed(2) : state.elItem.qty }{state.elItem.unitMeasure.split(' ')[1].slice(1, -1)} Left</p>
                 <div className="single-item-texts">
                 {/* <h4>Price: ${parseFloat(state.elItem.price).toFixed(2)} </h4> */}
               
