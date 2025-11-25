@@ -52,7 +52,7 @@ const {auth, getTrans, itemRef,
 
 
      const measurements = ['grams (g)', 'Piece (pc)', 'Plate (Plt)', 'Dozen (dz)', 'Bottle (Btl)', 'ounce (oz)', 'centiliter (CL)', 'Sachet (sct)', 'Ounce (Oz)', 'Set (St)', 'Bag (Bg)', 'Pairs (pr)',
-        'centimiters (cm)', 'Kilogram (kg)', 'Kilowatthour (kWh)', 'Kilowatt (kW)', 'Litre (L) Pound (lbs)'
+        'centimiters (cm)', 'Kilogram (kg)', 'Kilowatthour (kWh)', 'Kilowatt (kW)', 'Litre (L)', 'Pound (lbs)'
        ]
 
 
