@@ -274,7 +274,7 @@ function numberWithCommas(x) {
 
  onClick={() => dispatch({type: 'blank', payload: ''})}
  onChange={(e)=> dispatch({type: 'CARTFIELDCHANGE', payload: e.target.value})}
- /> {state.elItem.unitMeasure.split(' ')[1].slice(1, -1)}
+ />
 
           <p className="no-qty-alert">{state.elItem.qty === '' ? 'invalid quantity'  : state.elItem.qty === 0 ? 'out of stock' : ''}</p>    
 

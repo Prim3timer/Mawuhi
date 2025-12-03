@@ -13,7 +13,7 @@ let CreateItem = () => {
        const [state, dispatch] = useReducer(reducer, initialState)
        const itemRef = useRef()
        const [showUpdate, setShowUpdate] = useState(false)
-       const measurements = ['Kilogram (kg)', 'Piece (pc)', 'Plate (Plt)', 'Dozen (dz)', 'Bottle (Btl)', 'Pound (lbs)', 'Litre (L)', 'Sachet (sct)', 'Ounce (Oz)', 'Gram (g)', 'Set (St)', 'Bag (Bg)',  'Pairs (pr)', 'Kilowatthour (kWh)', 'Kilowatt (kW)'
+       const unitMeasures = ['Kilogram (kg)', 'Piece (pc)', 'Plate (Plt)', 'Dozen (dz)', 'Bottle (Btl)', 'Pound (lbs)', 'Litre (L)', 'Sachet (sct)', 'Ounce (Oz)', 'Gram (g)', 'Set (St)', 'Bag (Bg)',  'Pairs (pr)', 'Kilowatthour (kWh)', 'Kilowatt (kW)'
        ]
     const {falseIsRotated} = useContext(AuthContext)
      const refresh = useRefreshToken()
@@ -99,7 +99,7 @@ let CreateItem = () => {
 
         }}
         >
-            {measurements.map((measurement, i)=> {
+            {unitMeasures.map((measurement, i)=> {
                 return (
                     
                     <option 
