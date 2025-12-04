@@ -264,12 +264,13 @@ const {auth, getTrans, itemRef,
              <h3>
                 <label htmlFor="image">image:</label>
                 </h3>
-                <input
-                type="text" 
-                id="image"
-                value={state.image}
+               <input
+                type="file"
+                // required
+                // value={state.image}
                 onChange={(e)=> dispatch({type: 'IMAGE', payload: e.target.value})}
                 />
+               <button type="submit" className="pop">Upload</button>
                 <br/>
                 <button onClick={e => negateEdit(e)}>Cancel</button>
                 <button 

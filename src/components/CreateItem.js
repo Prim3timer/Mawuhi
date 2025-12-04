@@ -121,13 +121,17 @@ let CreateItem = () => {
                 value={state.price}
                 onChange={(e)=> dispatch({type: 'price', payload: e.target.value})}
                 />
-                <h4>Image Link:</h4>
+                <br/>   
+                <br/>   
+                <h4>Add Image</h4>
                 <input
-                type="text"
+                type="file"
                 // required
                 value={state.image}
                 onChange={(e)=> dispatch({type: 'IMAGE', payload: e.target.value})}
-                /><br/>
+                />
+               <button type="submit" className="pop">Upload</button>
+                <br/>
               
                <button type="submit" className="pop">Add Item</button>
         <h3 className={showUpdate ? "create-item-update" : "hide-show-update"}>{state.isMatched}</h3>
