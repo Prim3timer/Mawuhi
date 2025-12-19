@@ -39,6 +39,9 @@ console.log(users)
            className="admin-header"
          
             >Admin</h1>
+         
+            <Link to={'/order'}>Orders</Link>
+         
       <section>                   
             {!showSettings ? <h4
             className="users-header"

@@ -2,8 +2,7 @@ import reducer from "../reducer"
 import initialState from "../store"
 // import SearchItem from "./SearchItem";
 import {useEffect, useReducer, useContext, useState } from "react";
-import credit from '../images/credit.jpg'
-import cellPhone from '../images/sgs25+.webp'
+
 import AuthContext from "../context/authProvider";
 import { useNavigate, useLocation } from "react-router-dom";
 // import useAxiosPrivate from "../hooks/useAxiosPrivate";

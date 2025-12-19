@@ -12,20 +12,13 @@ import useAxiosPrivate from "../hooks/useAxiosPrivate"
 import AuthContext from "../context/authProvider"
 import {format} from 'date-fns'
 import {Link, resolvePath} from 'react-router-dom'
-import ole from '../images/credit.jpg'
-import ego from '../images/dollars.jpg'
+
 {/* ₦ */}
 
 
 
 const SingleItem = ()=> {
-  const Beef = []
-  const BeefObj = {
-    first: ole,
-    second: ego
-  }
-  Beef.push(BeefObj)
-  console.log(BeefObj)
+
   const [isLoading, setIsLoading] = useState(true)
   const [state, dispatch] = useReducer(reducer, initialState)
   const upArrow = "+"
@@ -43,6 +36,9 @@ const SingleItem = ()=> {
 
     
     try {
+      if (!state.elItem){
+        throw new Error('no items found')
+      }
       const response = await axiosPrivate.get('/items')  
       // console.log(response.data)
       const users = await axiosPrivate.get('/users')
@@ -73,13 +69,11 @@ const SingleItem = ()=> {
         }
     } catch (error) {
       dispatch({type: 'errMsg',  payload: error.message})
+      console.log(error.message)
     }
     console.log(state.elItem)
   
   }
-
-  console.log(state.singleItemArray)
-    console.log(auth)
 
 
   const addToCart = async () => {
@@ -253,10 +247,9 @@ function numberWithCommas(x) {
                 {/* <img src={"https://images.app.goo.gl/ZcZWCKKhGh9Y8sR26"} alt="food"/> */}
                   
                 </section>
-                <p>{state.elItem.unitMeasure === 'Kilogram (kg)' || state.elItem.unitMeasure === 'Kilowatthour (kWh)' 
-                    || state.elItem.unitMeasure === 'Kilowatt (kW)'  || state.elItem.unitMeasure === 'Pound (lbs)' ||  state.elItem.unitMeasure === 'Litre (L)' ? parseFloat(state.elItem.qty).toFixed(2) : state.elItem.qty }{state.elItem.unitMeasure.split(' ')[1].slice(1, -1)} Left</p>
+                <p> { state.elItem.unitMeasure === 'Kilogram (kg)' || state.elItem.unitMeasure === 'Kilowatthour (kWh)' 
+                    || state.elItem.unitMeasure === 'Kilowatt (kW)'  || state.elItem.unitMeasure === 'Pound (lbs)' ||  state.elItem.unitMeasure === 'Litre (L)' ? parseFloat(state.elItem.qty).toFixed(2) : state.elItem.qty }{state.elItem.unitMeasure && state.elItem.unitMeasure.split(' ')[1].slice(1, -1)} Left</p>
                 <div className="single-item-texts">
-                {/* <h4>Price: ${parseFloat(state.elItem.price).toFixed(2)} </h4> */}
               
                   <section
           className="qty-cont"

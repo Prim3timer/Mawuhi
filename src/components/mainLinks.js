@@ -44,6 +44,7 @@ const mainLinks = [
         name: 'cart',
         path: '/cart'
     },
+    
     // {
     //     id: 10,
     //     name: 'single item',

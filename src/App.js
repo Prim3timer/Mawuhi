@@ -45,6 +45,7 @@ import SideBar from "./components/SideBar"
 import AuthContext from "./context/authProvider"
 import GenSales from "./components/GenSales"
 import GenShopping from "./components/GenReceipt"
+import Orders from "./components/Order"
 
 // import SearchItem from "./SearchItem";
 
@@ -129,6 +130,7 @@ return (
     <Route path="/shop" element={<Shop/>}/>
       <Route path="one-receipt" element={<OneReceipt setOneReceipt={setOneReceipt}/>}/>
       <Route path="cart" element={<Cart/>}/>
+      <Route path="order" element={<Orders/>}/>
          </Route>
         
         

@@ -2,8 +2,7 @@ import { createContext, useState, useReducer, useEffect, useRef } from "react";
 import reducer from "../reducer"
 import initialState from "../store"
 import axios from "../app/api/axios"
-import credit from '../images/credit.jpg'
-import food from '../images/meal.jpg'
+
 // import Transactions from "../components/Transactions";
 import { useNavigate, useLocation } from "react-router-dom";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";

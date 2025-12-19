@@ -125,7 +125,7 @@ let CreateItem = () => {
                 <br/>   
                 <h4>Add Image</h4>
                 <input
-                type="file"
+                type="text"
                 // required
                 value={state.image}
                 onChange={(e)=> dispatch({type: 'IMAGE', payload: e.target.value})}
