@@ -150,7 +150,7 @@ style={{
                </div>
            )
        })}
-    
+    <p>card ending in: ...{currentTrans.last4 ? currentTrans.last4 : ''}</p>
        <h4
         style={{
            textAlign: 'left',

@@ -465,6 +465,23 @@ width: 100%;
   gap: 1rem .5rem;
   
 }
+
+.shipped {
+  font-size: 1rem;
+  width:6rem;
+  margin: 1rem;
+}
+.order-details {
+  display: flex;
+  column-gap: .5rem;
+  background-color: lightgray;
+  margin: .5rem 0;
+  padding: .5rem;
+}
+
+.item-dets {
+  margin: .5rem 0;
+}
 .linker {
 text-decoration: none;
 }

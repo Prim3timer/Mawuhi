@@ -214,7 +214,7 @@ function numberWithCommas(x) {
                                 </div>
                             )
                         })}
-                     
+                     <p>card ending in: ...{item.last4 ? item.last4 : ''}</p>
                         <h4
                         className="receipts-grand-total"
                         
