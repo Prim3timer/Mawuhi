@@ -63,7 +63,7 @@ useEffect(()=> {
             <p>{line2}</p>
             <p>{city}</p>
              {/* i counld't detructure state. looks like it's a keyword */}
-            <p>{tran.state}</p>
+            <p>{tran.address.state}</p>
             <p>{country}</p>
             <p>{postal_code}</p>
             </div>
