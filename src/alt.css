@@ -501,10 +501,10 @@ width: 100%;
 }
 
 .name-date {
-  background-color: gainsboro;
+  /* background-color: gainsboro; */
   /* margin: .5rem 0; */
   /* width: 100vw;   */
-  padding: .5rem;
+  /* padding: .5rem; */
 }
 
 .item-dets {
