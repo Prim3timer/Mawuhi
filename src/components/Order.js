@@ -50,7 +50,7 @@ useEffect(()=> {
         tran.goods.map((good) => {
           return (
            <div >
-          <p>{good.name}: {good.qty}{good.unitMeasure.split(' ')[1].slice(1, -1)}</p>
+          <p>{good.name}: {good.qty} {good.unitMeasure.split(' ')[0]}{good.qty > 1 ? 's' : ''}</p>
           {/* <p>unit price: {good.price}</p> */}
           {/* <p>{good.qty}{good.unitMeasure.split(' ')[1].slice(1, -1)}</p> */}
          {/* <br/> */}
