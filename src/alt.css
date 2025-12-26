@@ -500,20 +500,17 @@ width: 100%;
   padding: .5rem;
 }
 
-.name-date {
-  /* background-color: gainsboro; */
-  /* margin: .5rem 0; */
-  /* width: 100vw;   */
-  /* padding: .5rem; */
-}
-
 .item-dets {
   background-color: gainsboro;
   padding: 1rem;
-  line-height: 2.5rem;
+
 }
-.items-dets h4 {
+.item-dets h4 {
   margin: .5rem 0;
+}
+.item-dets div p {
+  margin: 1rem 0;
+  /* background-color: red ; */
 }
 .linker {
 text-decoration: none;
