@@ -483,7 +483,14 @@ width: 100%;
   column-gap: .5rem;
   background-color: oldlace ;
   margin: .5rem 0;
-  padding: .5rem;
+  padding: .5rem 0;
+  padding-right: 2rem;
+}
+
+.inner-order-dets {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
 }
 .shipping-address {
   background-color: gainsboro;
@@ -492,7 +499,7 @@ width: 100%;
 
 .name-date {
   background-color: lightblue;
-  margin: .5rem 0;
+  /* margin: .5rem 0; */
   padding: .5rem;
 }
 

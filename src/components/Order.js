@@ -38,7 +38,7 @@ useEffect(()=> {
         return (
        tran.address ?     <section className='order-details'>
             <p>{i + 1}.</p>
-            <article>
+            <article className='inner-order-dets'>
               <div className='name-date'>
              <p>name: {tran.cashier}</p>
       <p>date: {tran.date}</p>
@@ -58,7 +58,6 @@ useEffect(()=> {
       })
     }
     </section>
-        <br/>
       <div>
       {
         
