@@ -293,9 +293,9 @@ function numberWithCommas(x) {
              
     if (oldSession === sessionId ){
     return
-     }else if (!oldSession || oldSession !== sessionId){
-    
+     }else if (!oldSession || oldSession !== sessionId){  
          const response = await axios.post(`/transactions/sessions/${sessionId}`, dateOjb)
+         console.log(response.data)
 
          if (res.data){
             
