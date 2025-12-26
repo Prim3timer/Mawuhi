@@ -40,11 +40,12 @@ useEffect(()=> {
             <p>{i + 1}.</p>
             <article className='inner-order-dets'>
               <div className='name-date'>
-             <p>name: {tran.cashier}</p>
+             <p>cusotmer: {tran.cashier}</p>
       <p>date: {tran.date}</p>
       </div>
-      <section className='item-dets'>
+      <article>
         <h4>items quantity</h4>
+      <section className='item-dets'>
       {
         tran.goods.map((good) => {
           return (
@@ -58,11 +59,13 @@ useEffect(()=> {
       })
     }
     </section>
+    </article>
+    <section>
+        <h4>shipping address</h4>
       <div>
       {
         
          <div className='shipping-address'>
-       <h4>shipping address:</h4>
             <p>{ tran.address.line1}</p>
             <p>{tran.address.line2}</p>
             <p>{tran.address.city}</p>
@@ -74,10 +77,10 @@ useEffect(()=> {
             </div>
       }
       </div>
+      </section>
       <section className='shipped'>
       <button  onClick={() => hanldeShipped(tran._id)}>Shipped</button>
       </section>
-      <br/>
       </article>
           </section> : ''
         )
