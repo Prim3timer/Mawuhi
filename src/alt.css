@@ -493,20 +493,22 @@ width: 100%;
   row-gap: .5rem;
   width: 70vw;
 }
+
+
 .shipping-address {
   background-color: gainsboro;
   padding: .5rem;
 }
 
 .name-date {
-  background-color: lightblue;
+  background-color: gainsboro;
   /* margin: .5rem 0; */
   /* width: 100vw;   */
   padding: .5rem;
 }
 
 .item-dets {
-  background-color: lightgreen;
+  background-color: gainsboro;
   padding: 1rem;
 }
 
