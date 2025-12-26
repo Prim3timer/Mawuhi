@@ -478,8 +478,23 @@ width: 100%;
   margin: .5rem 0;
   padding: .5rem;
 }
+.shipping-address {
+  background-color: yellow;
+  padding: .5rem;
+}
+
+.name-date {
+  background-color: lightblue;
+  margin: .5rem 0;
+  padding: .5rem;
+}
 
 .item-dets {
+  background-color: lightgreen;
+  padding: 1rem;
+}
+
+.items-dets h4 {
   margin: .5rem 0;
 }
 .linker {
