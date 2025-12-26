@@ -75,7 +75,9 @@ useEffect(()=> {
             </div>
       }
       </div>
-      <button className='shipped' onClick={() => hanldeShipped(tran._id)}>Shipped</button>
+      <section className='shipped'>
+      <button  onClick={() => hanldeShipped(tran._id)}>Shipped</button>
+      </section>
       <br/>
       </article>
           </section> : ''

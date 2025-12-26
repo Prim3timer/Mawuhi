@@ -467,19 +467,26 @@ width: 100%;
 }
 
 .shipped {
-  font-size: 1rem;
+ 
+  text-align: center;
+  /* background-color: blue; */
+  width: 100%;
+}
+
+.shipped button {
+ font-size: 1rem;
   width:6rem;
   margin: 1rem;
 }
 .order-details {
   display: flex;
   column-gap: .5rem;
-  background-color: lightgray;
+  background-color: oldlace ;
   margin: .5rem 0;
   padding: .5rem;
 }
 .shipping-address {
-  background-color: yellow;
+  background-color: gainsboro;
   padding: .5rem;
 }
 
