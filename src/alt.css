@@ -485,7 +485,7 @@ width: 100%;
   display: flex;
   column-gap: .5rem;
   margin: 1rem 0;
-  padding: 2rem;
+  padding: 1rem;
   padding-right: 2rem;
   background-color: gainsboro;
 }
