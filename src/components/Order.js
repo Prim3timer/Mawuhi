@@ -20,7 +20,7 @@ const axiosPrivate = useAxiosPrivate()
 
 
   const setTransArray = () => {
-   setAllTransactions(genTrans)
+   setAllTransactions(genTrans.reverse())
   }
         const remainDelete = ()=> {
         // this condition statement is to enable the removal of the confirm window once any part of the 
@@ -39,7 +39,8 @@ const assertain = (id) => {
           dispatch({type: 'inItem', payload: foundTransacton})
       }
       
-      const hanldeShipped = async () => {
+      const hanldeShipped = async (e) => {
+        e.preventDefault()
   const completed = {
     status: state.inItem.completed
   }
@@ -54,7 +55,7 @@ const assertain = (id) => {
         return item
       })
       
-      setAllTransactions(latestTrans)
+      setAllTransactions(latestTrans.reverse())
       console.log(response.data)
      } else {
       throw new Error('something went wrong')
@@ -104,8 +105,8 @@ useEffect(()=> {
             <p>{i + 1}.</p>
             <article className='inner-order-dets'>
               <div className='name-date'>
+      <p>{tran.date}</p>
              <p>cusotmer: {tran.cashier}</p>
-      <p>date: {tran.date}</p>
       </div>
       <article>
         <h4>items quantity</h4>
@@ -137,13 +138,13 @@ useEffect(()=> {
             <p>{tran.address.state}</p>
             <p>{tran.address.country}</p>
             <p>{tran.address.postal_code}</p>
-            <p>status: {tran.completed ? 'shipped' : 'open'}</p>
+            <p className={tran.completed === false ? 'status' : 'done-status'}>{tran.completed ? 'shipped' : 'open'}</p>
             </div>
       }
       </div>
       </section>
       <section className='shipped'>
-      <button  onClick={() => assertain(tran._id)}>Ship</button>
+      <button  onClick={() => assertain(tran._id)}>{`${tran.completed === false ? 'ship' : 'reverse'}`}</button>
       </section>
       </article>
           </section> : ''

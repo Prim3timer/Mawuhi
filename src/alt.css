@@ -489,7 +489,13 @@ width: 100%;
   padding-right: 2rem;
 }
 
+.status {
+  color: red;
+}
 
+.done-status {
+  color: green;
+}
 
 .orders form input  {
   min-width: 100%;
