@@ -20,7 +20,7 @@ const axiosPrivate = useAxiosPrivate()
 
 
   const setTransArray = () => {
-   setAllTransactions(genTrans.reverse())
+   setAllTransactions(genTrans)
   }
         const remainDelete = ()=> {
         // this condition statement is to enable the removal of the confirm window once any part of the 
@@ -55,7 +55,7 @@ const assertain = (id) => {
         return item
       })
       
-      setAllTransactions(latestTrans.reverse())
+      setAllTransactions(latestTrans)
       console.log(response.data)
      } else {
       throw new Error('something went wrong')
