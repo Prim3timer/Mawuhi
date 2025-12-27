@@ -54,36 +54,37 @@ const [currentUsers, setCurrentUsers] = useState([])
 
         const getTransaction = async ()=> {
           const innerArray = []
-          try {
-            const graw =  await axios.get('/transactions')
-            // console.log({graw})
-            if (graw){
-              graw.data.map((gr)=> {
-                return gr.goods.map((good)=> {
-                    const elements =  {
-                        name: good.name,
-                        qty: good.qty,
-                        unitMeasure: good.unitMeasure,
-                        total: good.total,
-                        date: gr.date
+          const graw =  await axios.get('/transactions')
+          setGenTrans(graw.data)
+        //   try {
+        //     // console.log({graw})
+        //     if (graw){
+        //       graw.data.map((gr)=> {
+        //         return gr.goods.map((good)=> {
+        //             const elements =  {
+        //                 name: good.name,
+        //                 qty: good.qty,
+        //                 unitMeasure: good.unitMeasure,
+        //                 total: good.total,
+        //                 date: gr.date
         
-                    }
-                    innerArray.push(elements)
-                    setGenTrans(innerArray)
-                    return innerArray
-                })
-            })     
-            const filterate = innerArray.filter((inner)=> inner.name.toLowerCase().includes(search.toLowerCase()))
-            const filterate2 = filterate && filterate.filter((inner)=> inner.date.substring(0, 10).includes(search2))
-            setGenTrans(filterate)
+        //             }
+        //             innerArray.push(elements)
+        //             setGenTrans(innerArray)
+        //             return innerArray
+        //         })
+        //     })     
+        //     const filterate = innerArray.filter((inner)=> inner.name.toLowerCase().includes(search.toLowerCase()))
+        //     const filterate2 = filterate && filterate.filter((inner)=> inner.date.substring(0, 10).includes(search2))
+        //     setGenTrans(filterate)
         
-            dispatch({type: 'sales', payload: filterate2})
-            }
-            else return
-          }
-           catch (error) {
-            console.log(error)
-          }           
+        //     dispatch({type: 'sales', payload: filterate2})
+        //     }
+        //     else return
+        //   }
+        //    catch (error) {
+        //     console.log(error)
+        //   }           
         }
 
         // const getUsers = async ()=> {
@@ -220,7 +221,8 @@ const [currentUsers, setCurrentUsers] = useState([])
             generalRemain, remainDelete,  isEdit, afa, price, unitMeasure, getTransaction,
             search, setSearch, setSearch2, search2, sales, user, currentUser,
             setCurrentUser, setCurrentUser2, currentUser2, users, setUsers, transactions, atHome, setAtHome,
-            currentUsers, setCurrentUsers, setIsRotated, isRotated, barRef, persistor, setPersistor, falseIsRotated
+            currentUsers, setCurrentUsers, setIsRotated, isRotated, barRef, persistor, setPersistor, falseIsRotated,
+            genTrans, setGenTrans
 
         }}>
             {children}

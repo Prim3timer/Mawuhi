@@ -467,8 +467,10 @@ width: 100%;
 }
 
 .shipped {
- 
-  text-align: center;
+ display: flex;
+  align-items: center;
+  place-content: center;
+  column-gap: 20%;
   /* background-color: blue; */
   width: 100%;
 }
@@ -485,6 +487,13 @@ width: 100%;
   margin: 1rem 0;
   padding: .5rem;
   padding-right: 2rem;
+}
+
+
+
+.orders form input  {
+  min-width: 100%;
+
 }
 
 .inner-order-dets {
