@@ -501,11 +501,11 @@ width: 100%;
   column-gap: .5rem;
   color: green;
 }
-.done-status div{
+/* .done-status div{
 background-color: lightgray;
 padding: .2rem .5rem;
 
-}
+} */
 
 .orders form input  {
   min-width: 100%;
