@@ -3,7 +3,7 @@ import initialState from '../store'
 import useAxiosPrivate from '../hooks/useAxiosPrivate'
 import reducer from '../reducer'
 import axios from '../app/api/axios'
-import {FaTrash} from 'react-icons/fa'
+import {FaCheck, FaExclamationTriangle} from 'react-icons/fa'
 import { addDays, subDays } from 'date-fns'
 import AuthContext from '../context/authProvider'
 
@@ -138,7 +138,7 @@ useEffect(()=> {
             <p>{tran.address.state}</p>
             <p>{tran.address.country}</p>
             <p>{tran.address.postal_code}</p>
-            <p className={tran.completed === false ? 'status' : 'done-status'}>{tran.completed ? 'shipped' : 'open'}</p>
+            <p className={tran.completed === false ? 'status' : 'done-status'}>{tran.completed ? 'shipped' : 'pending'}{tran.completed ? <div><FaCheck/></div> : <div><FaExclamationTriangle/></div>}</p>
             </div>
       }
       </div>
