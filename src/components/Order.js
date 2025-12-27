@@ -137,7 +137,7 @@ useEffect(()=> {
             <p>{tran.address.state}</p>
             <p>{tran.address.country}</p>
             <p>{tran.address.postal_code}</p>
-            <p>status: {tran.completed ? 'closed' : 'open'}</p>
+            <p>status: {tran.completed ? 'shipped' : 'open'}</p>
             </div>
       }
       </div>
