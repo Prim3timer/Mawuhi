@@ -130,7 +130,9 @@ useEffect(()=> {
         <h4>shipping address</h4>
       <div>
       {
+
         <div className='shipping-address'>
+          <p>{tran.name}</p>
             <p>{ tran.address.line1}</p>
             <p>{tran.address.line2}</p>
             <p>{tran.address.city}</p>
