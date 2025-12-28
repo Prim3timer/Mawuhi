@@ -100,6 +100,7 @@ useEffect(()=> {
           />
           </form>
       {allTransactions && allTransactions.map((tran, i) => {
+        console.log(tran)
         return (
           tran.address  ?     <section className='order-details' key={tran._id}>
             <p>{i + 1}.</p>
@@ -163,7 +164,7 @@ useEffect(()=> {
               margin: '.5rem auto',
             //   display: 'flex',
           }}
-          >{`${state.inItem && state.inItem.completed === false ? 'are you sure this order has shipped?' : 'do you want to reverse order status to open?'}`}</h3>
+          >{`${state.inItem && state.inItem.completed === false ? 'are you sure this order has shipped?' : 'do you want to reverse order status to "pending"?'}`}</h3>
                  <article
                  style={{
                      display: 'flex',
