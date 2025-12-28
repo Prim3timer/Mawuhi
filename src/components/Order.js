@@ -17,10 +17,12 @@ const axiosPrivate = useAxiosPrivate()
   const [completedTrans, setCompletedTrans] = useState()
   const [allTransactions, setAllTransactions] = useState()
   const [ allOrders, setAllOrders] = useState(false)
+  const [search, setSearch] = useState()
 
 
   const setTransArray = () => {
-   setAllTransactions(genTrans)
+
+      setAllTransactions(genTrans)
   }
         const remainDelete = ()=> {
         // this condition statement is to enable the removal of the confirm window once any part of the 
@@ -68,15 +70,23 @@ const assertain = (id) => {
   }
 }
 
-const handleOrderLister = () => {
-    console.log(genTrans)
-  if (allOrders === false) setAllOrders(true)
-    else setAllOrders(false)
+const falseBoole = (e) => {
+  e.preventDefault()
+  const filterate = genTrans.filter((item) => item.completed === false)
+  setAllTransactions(filterate)
 }
+
+const trueBoole = (e) => {
+  
+  e.preventDefault()
+  const filterate = genTrans.filter((item) => item.completed === true)
+  setAllTransactions(filterate)
+}
+
 
 useEffect(()=> {
   setTransArray()
-}, [])
+}, [search])
   return (
     <div
     className='orders'
@@ -84,19 +94,17 @@ useEffect(()=> {
     >
       <h2>Orders</h2>
       <form className='search-form'>
+        <div className='form-buttons'>
+    <button onClick={(e) => falseBoole(e)}>show pending</button>
+    <button onClick={(e) => trueBoole(e)}>show shippped</button>
+    </div>
         <input 
           id="invent-search"
           type="text"
           role="searchbox" 
           placeholder="Search by date"
-          value={state.search}        
-          />
-        <input 
-          id="invent-search"
-          type="text"
-          role="searchbox" 
-          placeholder="search by status"
-          value={state.search}        
+          value={search}        
+          onChange={(e)=> setSearch(e.target.value)}
           />
           </form>
       {allTransactions && allTransactions.map((tran, i) => {
