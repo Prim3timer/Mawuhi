@@ -18,12 +18,14 @@ const axiosPrivate = useAxiosPrivate()
   const [completedTrans, setCompletedTrans] = useState()
   const [allTransactions, setAllTransactions] = useState()
   const [ allOrders, setAllOrders] = useState(false)
-  const [search, setSearch] = useState()
+  const [search, setSearch] = useState('2025')
 
 
   const setTransArray = () => {
 
-      setAllTransactions(genTrans)
+      // setAllTransactions(genTrans)
+      const filterate = genTrans.filter((item) => item.date.includes(search))
+      setAllTransactions(genTrans &&filterate)
   }
         const remainDelete = ()=> {
         // this condition statement is to enable the removal of the confirm window once any part of the 
@@ -100,14 +102,16 @@ useEffect(()=> {
     <button onClick={(e) => trueBoole(e)}>shippped</button>
     </div>
     <h5>{allTransactions && allTransactions.filter((item) => item.address).length} items</h5>
+    <label>Filter By Date
         <input 
           id="invent-search"
           type="text"
           role="searchbox" 
-          placeholder="Search by date"
+          placeholder="yyyy-MM-dd"
           value={search}        
           onChange={(e)=> setSearch(e.target.value)}
           />
+          </label>
           </form>
       {allTransactions && allTransactions.map((tran, i) => {
         const theDay = new Date(tran.date).toDateString().substring(0, 15)
