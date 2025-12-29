@@ -4,6 +4,7 @@ import reducer from '../reducer'
 import axios, { axiosPrivate } from '../app/api/axios'
 import useAuth from '../hooks/useAuth'
 import AuthContext from '../context/authProvider'
+import { format } from 'date-fns'
 const {v4: uuid} = require('uuid')
 
 const GenSales = ()=> {
@@ -147,6 +148,7 @@ const [specArray, setSpecArray] = useState([])
      
                     </tr>
                      {specArray && specArray.map((sale, index)=> {
+                           const theDay = new Date(sale.date).getDate()
     return (
         <tr className="sales-items-cont"
         key={uuid()}
@@ -156,7 +158,7 @@ const [specArray, setSpecArray] = useState([])
             <th className="sales-items">{`${sale.name.split(' ').join(' ')} ${sale.unitMeasure.split(' ')[1]}`}</th>
             <td className="sales-items">{sale.qty}</td>
             <th className="sales-items">{parseFloat(sale.total).toFixed(2)}</th>
-            <td className="sales-items">{sale.date.substring(0, 10)}</td>
+            <td className="sales-items">{format(sale.date.substring(0, 10), `${theDay} MMM, yyyy`)}</td>
         </tr>
     )
 })}

@@ -19,7 +19,7 @@ const getRecipt = async ()=> {
     console.log({sessionId})
      
     const now = new Date()
-    const date = format(now, 'dd/MM/yyyy HH:mm:ss')
+    const date = format(now, 'yyyy-MM-dd HH:mm:ss')
     const dateOjb = {date}
     console.log({date})
     try {

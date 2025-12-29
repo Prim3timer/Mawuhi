@@ -500,7 +500,7 @@ width: 100%;
   column-gap: 1rem;
 }
 .form-buttons >* {
- font-size: 1rem;
+ /* font-size: 1rem; */
 }
 
 .done-status {
@@ -531,6 +531,10 @@ padding: .2rem .5rem;
   background-color: whitesmoke ;
   padding: .5rem;
   
+}
+
+.name-date {
+  line-height: 2rem;
 }
 .item-dets {
   background-color: whitesmoke; 

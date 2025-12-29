@@ -6,11 +6,12 @@ import axios from '../app/api/axios'
 import {FaCheck, FaExclamationTriangle} from 'react-icons/fa'
 import { addDays, subDays } from 'date-fns'
 import AuthContext from '../context/authProvider'
+import { format } from 'date-fns'
 
 const Order = () => {
 const {genTrans, setGenTrans} = useContext(AuthContext)
-  const today = new Date()
-  console.log(today)
+
+  // console.log(today)
 const axiosPrivate = useAxiosPrivate()
   const [state, dispatch] = useReducer(reducer, initialState)
   const [incompletedTrans, setIncompletedTrans] = useState()
@@ -95,9 +96,10 @@ useEffect(()=> {
       <h2>Orders</h2>
       <form className='search-form'>
         <div className='form-buttons'>
-    <button onClick={(e) => falseBoole(e)}>show pending</button>
-    <button onClick={(e) => trueBoole(e)}>show shippped</button>
+    <button onClick={(e) => falseBoole(e)}>pending</button>
+    <button onClick={(e) => trueBoole(e)}>shippped</button>
     </div>
+    <h5>{allTransactions && allTransactions.length} items</h5>
         <input 
           id="invent-search"
           type="text"
@@ -108,14 +110,20 @@ useEffect(()=> {
           />
           </form>
       {allTransactions && allTransactions.map((tran, i) => {
-        console.log(tran)
+        console.log(tran.date.substring(0, 10))
+        const theDay = new Date(tran.date).getDate()
+        
+     const aDate = format(tran.date.substring(0, 10), `${theDay} MMM, yyyy`)
+        // const aDate = format(tran.date.substring(0, 10), 'DD-MM-YYYY')
+        console.log(aDate)
+        console.log(theDay)
         return (
           tran.address  ?     <section className='order-details' key={tran._id}>
             <p>{i + 1}.</p>
             <article className='inner-order-dets'>
               <div className='name-date'>
-      <p>{tran.date}</p>
-             <p>cusotmer: {tran.cashier}</p>
+      <p>{aDate}</p>
+             <p>{tran._id}</p>
       </div>
       <article>
         <h4>items quantity</h4>
