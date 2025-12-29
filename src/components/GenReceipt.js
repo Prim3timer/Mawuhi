@@ -5,6 +5,7 @@ import axios, { axiosPrivate } from "../app/api/axios"
 import AuthContext from "../context/authProvider";
 import useAuth from "../hooks/useAuth";
 import useRefreshToken from "../hooks/useRefreshToken";
+import { format } from "date-fns";
 // import { retry } from "@reduxjs/toolkit/query"
 import { FaTrashAlt } from "react-icons/fa";
 
@@ -19,6 +20,8 @@ const { auth} = useAuth();
 const [currentUser, setCurrentUser] = useState('')
 const {atHome, getUsers, currentUsers, setIsRotated, falseRotated} = useContext(AuthContext)
 
+// const theDay = new Date(inv.date).getDate()
+//     const aDate = format(inv.date.substring(0, 10), `${theDay} MMM, yyyy`)
 const refresh = useRefreshToken()
 const getItems = async ()=> {
     // const authUsers = await refresh()
@@ -178,6 +181,9 @@ function numberWithCommas(x) {
         </article>
          
             {state.getNames && state.getNames.map((item)=> {
+                const theDay = new Date(item.date).toDateString().substring(4, 15)
+                console.log(theDay)
+    const aDate = format(item.date.substring(0, 10), `dd MMM, yyyy`)
 
                 return (
                     <section
@@ -195,7 +201,7 @@ function numberWithCommas(x) {
                     >
                         {/* <h5>cashierID: {item.cashierID}</h5> */}
                          <h2 className="receipt-title">{item.title}</h2>
-                        <p>Date: {item.date}</p>
+                        <p>{theDay}</p>
                         <p>TransID: {item._id}</p>
                         {item.goods && item.goods.map((good)=> {
                             return (

@@ -205,8 +205,8 @@ function numberWithCommas(x) {
                                 onClick={() => oneShow(item._id)}
                                 >
                                     {/* <h5>cashierID: {item.cashierID}</h5> */}
-                                    <p>Date: {item.date}</p>
-                                    <p>TransID: {item._id}</p>
+                                    <p>{new Date(item.date).toDateString().substring(4, 15)}</p>
+                                    <p>{item._id}</p>
                                     {item.goods.map((good)=> {
                                         return (
                                             <div

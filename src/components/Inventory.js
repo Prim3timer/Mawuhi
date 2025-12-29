@@ -13,6 +13,7 @@ import AuthContext from "../context/authProvider"
 import useRefreshToken from "../hooks/useRefreshToken"
 import useAxiosPrivate from "../hooks/useAxiosPrivate"
 import { useNavigate, useLocation } from "react-router-dom";
+import { format } from "date-fns"
 const {v4: uuid} = require('uuid')
 
 
@@ -230,7 +231,11 @@ const checkForUnitMeasurValues = () => {
      <th>ACTION</th>
      </tr>
 {state.items && state.items.map((inv, index)=> {
+    console.log(inv.date)
     const invReg = inv.qty < 1 ? inv.qty = 0 : inv.qty
+    // console.log(correctFormat)
+    // const theDay = new Date(inv.date).getDate()
+    // const aDate = format(inv.date.substring(0, 10), `${theDay} MMM, yyyy`)
 return (
    <tr className="sales-items-cont"
    key={uuid()}
@@ -241,7 +246,7 @@ return (
      <td className="sales-items">{`${inv.name}`}</td>
      <th className="sales-items" style={{color: inv.qty < 20 ? 'red' : ''}}>{inv.unitMeasure === 'Kilogram (kg)' || inv.unitMeasure === 'Kilowatthour (kWh)' 
                     || inv.unitMeasure === 'Kilowatt (kW)'  || inv.unitMeasure === 'Pound (lbs)' ||  inv.unitMeasure === 'Litre (L)' ? parseFloat(invReg).toFixed(2) : invReg} {inv.unitMeasure.split(' ')[1].slice(1, -1)}</th>
-     <td className="sales-items" >{inv.date.substring(0, 10)}</td>
+     <td className="sales-items" >{new Date(inv.date).toDateString().substring(4, 15)}</td>
      <td 
      // style={{backgroundColor: 'blue'}}
      // ref={achoRef}

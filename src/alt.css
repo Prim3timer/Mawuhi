@@ -533,8 +533,10 @@ padding: .2rem .5rem;
   
 }
 
-.name-date {
+.name-date p {
   line-height: 2rem;
+ overflow-x: auto;
+
 }
 .item-dets {
   background-color: whitesmoke; 

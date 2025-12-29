@@ -5,6 +5,7 @@ import initialState from '../store'
 import reducer from '../reducer'
 import AuthContext from '../context/authProvider'
 import { useNavigate, useLocation, router} from 'react-router-dom'
+import { format } from "date-fns";
 
 
 
@@ -97,7 +98,8 @@ useEffect(()=> {
     console.log(currentTrans)
 }, [])
 
-
+   const theDay = new Date(currentTrans && currentTrans.date).toDateString().substring(4, 15)
+//    console.log(theDay)
 
 
 
@@ -130,8 +132,9 @@ style={{
    >
        {/* <h5>cashierID: {item.cashierID}</h5> */}
                                            <h2 className="receipt-title">{currentTrans.title}</h2>
-       <p>Date: {currentTrans.date}</p>
-       <p>TransID: {currentTrans._id}</p>
+       {/* <p>{new Date(currentTrans.date).toDateString().substring(4, 15)}</p> */}
+       <p>{theDay}</p>
+       <p>{currentTrans._id}</p>
        {currentTrans.goods.map((good)=> {
            return (
                <div

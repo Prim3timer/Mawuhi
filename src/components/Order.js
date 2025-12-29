@@ -99,7 +99,7 @@ useEffect(()=> {
     <button onClick={(e) => falseBoole(e)}>pending</button>
     <button onClick={(e) => trueBoole(e)}>shippped</button>
     </div>
-    <h5>{allTransactions && allTransactions.length} items</h5>
+    <h5>{allTransactions && allTransactions.filter((item) => item.address).length} items</h5>
         <input 
           id="invent-search"
           type="text"
@@ -110,19 +110,13 @@ useEffect(()=> {
           />
           </form>
       {allTransactions && allTransactions.map((tran, i) => {
-        console.log(tran.date.substring(0, 10))
-        const theDay = new Date(tran.date).getDate()
-        
-     const aDate = format(tran.date.substring(0, 10), `${theDay} MMM, yyyy`)
-        // const aDate = format(tran.date.substring(0, 10), 'DD-MM-YYYY')
-        console.log(aDate)
-        console.log(theDay)
+        const theDay = new Date(tran.date).toDateString().substring(0, 15)
         return (
           tran.address  ?     <section className='order-details' key={tran._id}>
             <p>{i + 1}.</p>
             <article className='inner-order-dets'>
               <div className='name-date'>
-      <p>{aDate}</p>
+      <p>{theDay}</p>
              <p>{tran._id}</p>
       </div>
       <article>

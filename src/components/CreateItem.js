@@ -6,13 +6,18 @@ import useRefreshToken from "../hooks/useRefreshToken"
 import { type } from "@testing-library/user-event/dist/type"
 import AuthContext from "../context/authProvider"
 import useAxiosPrivate from "../hooks/useAxiosPrivate"
+import { format } from "date-fns"
 const {v4: uuid} = require('uuid')
+
 
 
 let CreateItem = () => {
        const [state, dispatch] = useReducer(reducer, initialState)
        const itemRef = useRef()
        const [showUpdate, setShowUpdate] = useState(false)
+       const now = new Date()
+       const formatted = format(now, `yyyy-MM-dd`)
+       console.log(now)
        const unitMeasures = ['Kilogram (kg)', 'Piece (pc)', 'Plate (Plt)', 'Dozen (dz)', 'Bottle (Btl)', 'Pound (lbs)', 'Litre (L)', 'Sachet (sct)', 'Ounce (Oz)', 'Gram (g)', 'Set (St)', 'Bag (Bg)',  'Pairs (pr)', 'Kilowatthour (kWh)', 'Kilowatt (kW)'
        ]
     const {falseIsRotated} = useContext(AuthContext)
@@ -27,7 +32,8 @@ let CreateItem = () => {
                 name: `${name}`,
                 price: price,
                 unitMeasure: unitMeasure,
-                image: image
+                image: image,
+                now
             }
             
 

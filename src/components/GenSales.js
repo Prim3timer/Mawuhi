@@ -148,7 +148,8 @@ const [specArray, setSpecArray] = useState([])
      
                     </tr>
                      {specArray && specArray.map((sale, index)=> {
-                           const theDay = new Date(sale.date).getDate()
+                          const theDay = new Date(sale.date).toDateString().substring(0, 15)
+                          console.log(theDay)
     return (
         <tr className="sales-items-cont"
         key={uuid()}
@@ -158,7 +159,7 @@ const [specArray, setSpecArray] = useState([])
             <th className="sales-items">{`${sale.name.split(' ').join(' ')} ${sale.unitMeasure.split(' ')[1]}`}</th>
             <td className="sales-items">{sale.qty}</td>
             <th className="sales-items">{parseFloat(sale.total).toFixed(2)}</th>
-            <td className="sales-items">{format(sale.date.substring(0, 10), `${theDay} MMM, yyyy`)}</td>
+            <td className="sales-items">{theDay}</td>
         </tr>
     )
 })}
