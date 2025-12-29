@@ -86,6 +86,7 @@ const Inventory = ({mark, setMark})=> {
                     //   name: state.name,
                       qty: state.ole ? state.ole : qty,
                     //   qty: state.qty,
+                    date:   new Date()
             
                   }
                   const response = await axiosPrivate.patch(`/items/inventory/${state.id}`, inventory) 
@@ -103,10 +104,6 @@ const Inventory = ({mark, setMark})=> {
     
      
      
-}
-
-const checkForUnitMeasurValues = () => {
-    console.log('hello  unit')
 }
 
     const remainEdit = () => {

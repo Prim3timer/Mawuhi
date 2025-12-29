@@ -148,7 +148,7 @@ const [specArray, setSpecArray] = useState([])
      
                     </tr>
                      {specArray && specArray.map((sale, index)=> {
-                          const theDay = new Date(sale.date).toDateString().substring(0, 15)
+                          const theDay = new Date(sale.date).toDateString().substring(4, 15)
                           console.log(theDay)
     return (
         <tr className="sales-items-cont"
