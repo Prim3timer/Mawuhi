@@ -182,8 +182,6 @@ function numberWithCommas(x) {
          
             {state.getNames && state.getNames.map((item)=> {
                 const theDay = new Date(item.date).toDateString().substring(4, 15)
-                console.log(theDay)
-    const aDate = format(item.date.substring(0, 10), `dd MMM, yyyy`)
 
                 return (
                     <section
@@ -202,7 +200,7 @@ function numberWithCommas(x) {
                         {/* <h5>cashierID: {item.cashierID}</h5> */}
                          <h2 className="receipt-title">{item.title}</h2>
                         <p>{theDay}</p>
-                        <p>TransID: {item._id}</p>
+                        <p>{item._id}</p>
                         {item.goods && item.goods.map((good)=> {
                             return (
                                 <div

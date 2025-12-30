@@ -18,14 +18,29 @@ const axiosPrivate = useAxiosPrivate()
   const [completedTrans, setCompletedTrans] = useState()
   const [allTransactions, setAllTransactions] = useState()
   const [ allOrders, setAllOrders] = useState(false)
-  const [search, setSearch] = useState('2025')
+  const [search, setSearch] = useState('pending')
+  const [search2, setSearch2] = useState('2025')
+  const [cat, setCat] = useState('all')
+  const pending = 'pending'
+  const shipped = 'shipped'
 
 
   const setTransArray = () => {
-
+  
+     const boolChanger =  genTrans.map((tran)=> {
+      if (tran.completed === true){
+        return {...tran, completed: 'shipped'}
+      }else {
+        return {...tran, completed: 'pending'}
+      }
+    })
+console.log(boolChanger)
       // setAllTransactions(genTrans)
-      const filterate = genTrans.filter((item) => item.date.includes(search))
-      setAllTransactions(genTrans &&filterate)
+      const filterate = boolChanger.filter((item) => item.completed.toLowerCase().includes(search))
+      const dynamFilter = filterate.length ? filterate : boolChanger
+      const filterate2 = dynamFilter.filter((item) => item.date.includes(search2))
+      setAllTransactions(filterate2)
+    
   }
         const remainDelete = ()=> {
         // this condition statement is to enable the removal of the confirm window once any part of the 
@@ -73,23 +88,9 @@ const assertain = (id) => {
   }
 }
 
-const falseBoole = (e) => {
-  e.preventDefault()
-  const filterate = genTrans.filter((item) => item.completed === false)
-  setAllTransactions(filterate)
-}
-
-const trueBoole = (e) => {
-  
-  e.preventDefault()
-  const filterate = genTrans.filter((item) => item.completed === true)
-  setAllTransactions(filterate)
-}
-
-
 useEffect(()=> {
   setTransArray()
-}, [search])
+}, [search, search2])
   return (
     <div
     className='orders'
@@ -97,19 +98,26 @@ useEffect(()=> {
     >
       <h2>Orders</h2>
       <form className='search-form'>
-        <div className='form-buttons'>
-    <button onClick={(e) => falseBoole(e)}>pending</button>
-    <button onClick={(e) => trueBoole(e)}>shippped</button>
-    </div>
-    <h5>{allTransactions && allTransactions.filter((item) => item.address).length} items</h5>
+
+    <h5>{search.includes(pending.substring(0, 4)) ? 'pending' : search.includes(shipped.substring(0, 1)) ? 'shipped' : ''} orders ({allTransactions && allTransactions.filter((item) => item.address).length}) </h5>
+    <label>Filter By Status
+        <input 
+          id="invent-search"
+          type="text"
+          role="searchbox" 
+          placeholder="pending / shipped"
+          value={search}        
+          onChange={(e)=> setSearch(e.target.value)}
+          />
+          </label>
     <label>Filter By Date
         <input 
           id="invent-search"
           type="text"
           role="searchbox" 
           placeholder="yyyy-MM-dd"
-          value={search}        
-          onChange={(e)=> setSearch(e.target.value)}
+          value={search2}        
+          onChange={(e)=> setSearch2(e.target.value)}
           />
           </label>
           </form>
@@ -155,7 +163,7 @@ useEffect(()=> {
             <p>{tran.address.state}</p>
             <p>{tran.address.country}</p>
             <p>{tran.address.postal_code}</p>
-            <p className={tran.completed === false ? 'status' : 'done-status'}>{tran.completed ? 'shipped' : 'pending'}{tran.completed ? <div><FaCheck/></div> : <div><FaExclamationTriangle/></div>}</p>
+            <p className={tran.completed === 'pending' ? 'status' : 'done-status'}>{tran.completed === 'shipped' ? 'shipped' : 'pending'}{tran.completed === 'shipped' ? <div><FaCheck/></div> : <div><FaExclamationTriangle/></div>}</p>
             </div>
       }
       </div>

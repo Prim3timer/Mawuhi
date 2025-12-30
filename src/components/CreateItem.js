@@ -15,8 +15,8 @@ let CreateItem = () => {
        const [state, dispatch] = useReducer(reducer, initialState)
        const itemRef = useRef()
        const [showUpdate, setShowUpdate] = useState(false)
+       const [files, setFiles] = useState()
        const now = new Date()
-       const formatted = format(now, `yyyy-MM-dd`)
        console.log(now)
        const unitMeasures = ['Kilogram (kg)', 'Piece (pc)', 'Plate (Plt)', 'Dozen (dz)', 'Bottle (Btl)', 'Pound (lbs)', 'Litre (L)', 'Sachet (sct)', 'Ounce (Oz)', 'Gram (g)', 'Set (St)', 'Bag (Bg)',  'Pairs (pr)', 'Kilowatthour (kWh)', 'Kilowatt (kW)'
        ]
@@ -27,12 +27,15 @@ let CreateItem = () => {
         
         const {name, price, unitMeasure, image} = state
         e.preventDefault()
+        const formData = new FormData()
+        // files.map((file)=> )
+        console.log(files)
         try {
             const newItem = {
                 name: `${name}`,
                 price: price,
                 unitMeasure: unitMeasure,
-                image: image,
+                // image: files,
                 now
             }
             
@@ -71,7 +74,11 @@ let CreateItem = () => {
 
     }
 
-    
+    const handleFile = (e) => {
+        const allFiles = Object.values(e.target.files)
+        setFiles(allFiles)
+        console.log(files)
+    }
 
 
 
@@ -126,17 +133,18 @@ let CreateItem = () => {
                 required
                 value={state.price}
                 onChange={(e)=> dispatch({type: 'price', payload: e.target.value})}
+              
                 />
                 <br/>   
                 <br/>   
-                <h4>Add Image</h4>
+                <h4>Add Images</h4>
                 <input
-                type="text"
+                type="file"
                 // required
                 value={state.image}
-                onChange={(e)=> dispatch({type: 'IMAGE', payload: e.target.value})}
+                onChange={handleFile}
+                  multiple
                 />
-               <button type="submit" className="pop">Upload</button>
                 <br/>
               
                <button type="submit" className="pop">Add Item</button>
