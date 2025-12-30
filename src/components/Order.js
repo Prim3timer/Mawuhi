@@ -95,7 +95,7 @@ useEffect(()=> {
       <h2>Orders</h2>
       <form className='search-form'>
 
-    <h5>{search.includes('pending') ? 'pending' : search.includes('shipped') ? 'shipped' : ''} orders ({allTransactions && allTransactions.filter((item) => item.address).length}) </h5>
+    <h5>{search.toLowerCase().includes('pen') ? 'pending' : search.toLowerCase().includes('s') ? 'shipped' : ''} orders ({allTransactions && allTransactions.filter((item) => item.address).length}) </h5>
     <label>Filter By Status
         <input 
           id="invent-search"
