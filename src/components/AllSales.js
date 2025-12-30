@@ -2,7 +2,8 @@ import useAuth from "../hooks/useAuth"
 import axios from "../app/api/axios"
 import reducer from "../reducer"
 import initialState from "../store"
-import {useEffect, useReducer, useState } from "react";
+import {useContext, useEffect, useReducer, useState } from "react";
+import AuthContext from "../context/authProvider";
 const {v4: uuid} = require('uuid')
 // import SearchItem from "./SearchItem";
 
@@ -11,6 +12,7 @@ const AllSales = ()=> {
  const [state, dispatch] = useReducer(reducer, initialState)
     const [search, setSearch] = useState('')
         // const [trueSearh, setTrueSearch] = useState('')
+        const {currency} = useContext(AuthContext)
       const [search2, setSearch2] = useState('')
          const [transactions, setTransactions] = useState([])
     const getTransactions = async ()=> {
@@ -121,7 +123,7 @@ useEffect(()=> {
 </h3>
     <h3>
 
-${state.sales && numberWithCommas(state.sales.reduce((a, b)=> {
+{currency}{state.sales && numberWithCommas(state.sales.reduce((a, b)=> {
     return  a + parseFloat( b.total)
 }, 0).toFixed(2))}
     </h3>
