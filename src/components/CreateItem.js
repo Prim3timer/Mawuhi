@@ -17,7 +17,6 @@ let CreateItem = () => {
        const [showUpdate, setShowUpdate] = useState(false)
        const [files, setFiles] = useState()
        const now = new Date()
-       console.log(now)
        const unitMeasures = ['Kilogram (kg)', 'Piece (pc)', 'Plate (Plt)', 'Dozen (dz)', 'Bottle (Btl)', 'Pound (lbs)', 'Litre (L)', 'Sachet (sct)', 'Ounce (Oz)', 'Gram (g)', 'Set (St)', 'Bag (Bg)',  'Pairs (pr)', 'Kilowatthour (kWh)', 'Kilowatt (kW)'
        ]
     const {falseIsRotated} = useContext(AuthContext)

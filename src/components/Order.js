@@ -18,27 +18,17 @@ const axiosPrivate = useAxiosPrivate()
   const [completedTrans, setCompletedTrans] = useState()
   const [allTransactions, setAllTransactions] = useState()
   const [ allOrders, setAllOrders] = useState(false)
-  const [search, setSearch] = useState('pending')
-  const [search2, setSearch2] = useState('2025')
+  const [search, setSearch] = useState('')
+  const [search2, setSearch2] = useState('')
+  const [status, setStatus] = useState()
   const [cat, setCat] = useState('all')
-  const pending = 'pending'
-  const shipped = 'shipped'
-
 
   const setTransArray = () => {
-  
-     const boolChanger =  genTrans.map((tran)=> {
-      if (tran.completed === true){
-        return {...tran, completed: 'shipped'}
-      }else {
-        return {...tran, completed: 'pending'}
-      }
-    })
-console.log(boolChanger)
-      // setAllTransactions(genTrans)
-      const filterate = boolChanger.filter((item) => item.completed.toLowerCase().includes(search))
-      const dynamFilter = filterate.length ? filterate : boolChanger
-      const filterate2 = dynamFilter.filter((item) => item.date.includes(search2))
+  console.log(genTrans)
+ 
+      setAllTransactions(genTrans)
+      const filterate = genTrans.filter((item) => item.status.toLowerCase().includes(search.toLowerCase()))
+      const filterate2 = filterate.filter((item) => item.date.includes(search2))
       setAllTransactions(filterate2)
     
   }
@@ -52,7 +42,9 @@ console.log(boolChanger)
      
     }
 
-const assertain = (id) => {
+const assertain = (id, status) => {
+  setStatus(status)
+  console.log(status)
   dispatch({type: 'id', payload: id})
   const foundTransacton = allTransactions.find((item)=> item._id === id)
     dispatch({type: 'cancel', payload: true})
@@ -61,15 +53,19 @@ const assertain = (id) => {
       
       const hanldeShipped = async (e) => {
         e.preventDefault()
+              const dynamStatus = status === 'pending' ? 'shipped' : 'pending'
+        console.log(dynamStatus)
+        setStatus(dynamStatus)
   const completed = {
-    status: state.inItem.completed
+    status: dynamStatus
   }
   
   try {
     const response = await axios.put(`/transactions/status-update/${state.id}`, completed)
     if (response){
       const foundTransacton = allTransactions.find((item) => item._id === state.id)
-      const currentTrans = {...foundTransacton, completed: !foundTransacton.completed }
+      console.log(foundTransacton)
+      const currentTrans = {...foundTransacton, status: dynamStatus }
       const latestTrans = allTransactions.map((item) => {
         if (item._id === currentTrans._id) return currentTrans
         return item
@@ -99,7 +95,7 @@ useEffect(()=> {
       <h2>Orders</h2>
       <form className='search-form'>
 
-    <h5>{search.includes(pending.substring(0, 4)) ? 'pending' : search.includes(shipped.substring(0, 1)) ? 'shipped' : ''} orders ({allTransactions && allTransactions.filter((item) => item.address).length}) </h5>
+    <h5>{search.includes('pending') ? 'pending' : search.includes('shipped') ? 'shipped' : ''} orders ({allTransactions && allTransactions.filter((item) => item.address).length}) </h5>
     <label>Filter By Status
         <input 
           id="invent-search"
@@ -163,13 +159,13 @@ useEffect(()=> {
             <p>{tran.address.state}</p>
             <p>{tran.address.country}</p>
             <p>{tran.address.postal_code}</p>
-            <p className={tran.completed === 'pending' ? 'status' : 'done-status'}>{tran.completed === 'shipped' ? 'shipped' : 'pending'}{tran.completed === 'shipped' ? <div><FaCheck/></div> : <div><FaExclamationTriangle/></div>}</p>
+            <p className={tran.status === 'pending' ? 'status' : 'done-status'}>{tran.status === 'shipped' ? 'shipped' : 'pending'}{tran.status === 'shipped' ? <div><FaCheck/></div> : <div><FaExclamationTriangle/></div>}</p>
             </div>
       }
       </div>
       </section>
       <section className='shipped'>
-      <button  onClick={() => assertain(tran._id)}>{`${tran.completed === false ? 'ship' : 'reverse'}`}</button>
+      <button  onClick={() => assertain(tran._id, tran.status)}>{`${tran.status === 'pending' ? 'ship' : 'reverse'}`}</button>
       </section>
       </article>
           </section> : ''
@@ -186,7 +182,7 @@ useEffect(()=> {
               margin: '.5rem auto',
             //   display: 'flex',
           }}
-          >{`${state.inItem && state.inItem.completed === false ? 'are you sure this order has shipped?' : 'do you want to reverse order status to "pending"?'}`}</h3>
+          >{`${state.inItem && state.inItem.status === 'pending' ? 'are you sure this order has shipped?' : 'do you want to reverse order status to "pending"?'}`}</h3>
                  <article
                  style={{
                      display: 'flex',

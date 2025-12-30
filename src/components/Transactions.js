@@ -23,8 +23,6 @@ const Transactions = ()=> {
     const [card, setCard] = useState(false)
     const [checkout, setCheckout] = useState(false)
     const now = new Date()
-    const date = format(now, 'yyyy-MM-dd tHH:mm:ss')
-    console.log(date)
     const {auth,user, getNames, setAtHome, isRotated, setIsRotated, falseIsRotated, currency} = useContext(AuthContext)
     const inputRef = useRef()
     const qtyRef = useRef()
@@ -165,7 +163,8 @@ const Transactions = ()=> {
                     cashierID: auth.picker,
                     goods: transArray,
                     grandTotal: total,
-                    date
+                      status: 'shipped',
+                    date: now
                     
                 }
                 console.log(transItems.goods)
@@ -191,7 +190,7 @@ const Transactions = ()=> {
                         const goodObj = {
                             name: inv.name,
                             qty: inv.qty - good.qty < 1 ? 0 : inv.qty - good.qty,
-                            date              
+                            // date: now            
                         }
                         await axiosPrivate.put(`items/dynam`, goodObj)
                         
@@ -237,8 +236,9 @@ const cardCheckout = async () => {
                 cashier: auth.user, 
                 cashierID: auth.picker,
                 goods: state.transArray,
+                status: 'shipped',
                 grandTotal: state.total,
-                //  date
+                 date: now
                 
             }
             const response = await axios.post('/transactions/create-checkout-session', transItems)
