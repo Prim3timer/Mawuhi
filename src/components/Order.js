@@ -92,10 +92,10 @@ useEffect(()=> {
     className='orders'
     onClick={remainDelete}
     >
-      <h2>Orders</h2>
+      <h2 className='order-header'>{search.toLowerCase().includes('pen') ? 'Pending' : search.toLowerCase().includes('s') ? 'Shipped' : ''} Orders  ({allTransactions && allTransactions.filter((item) => item.address).length})</h2>
       <form className='search-form'>
 
-    <h5>{search.toLowerCase().includes('pen') ? 'pending' : search.toLowerCase().includes('s') ? 'shipped' : ''} orders ({allTransactions && allTransactions.filter((item) => item.address).length}) </h5>
+    {/* <h5> orders </h5> */}
     <label>Filter By Status
         <input 
           id="invent-search"

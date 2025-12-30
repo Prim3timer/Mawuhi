@@ -543,6 +543,10 @@ padding: .2rem .5rem;
   padding: .2rem 1rem;
 
 }
+.order-header {
+  /* background-color: red; */
+  text-align: center;
+}
 .item-dets h4 {
   margin: .5rem 0;
 }
