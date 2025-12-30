@@ -8,7 +8,7 @@ import { format } from 'date-fns'
 const {v4: uuid} = require('uuid')
 
 const GenSales = ()=> {
-    const {atHome, setAtHome, setIsRotated} = useContext(AuthContext)
+    const {atHome, setAtHome, setIsRotated, currency} = useContext(AuthContext)
     console.log({atHome})
 const [state, dispatch] = useReducer(reducer, initialState)
 const [search, setSearch] = useState('')
@@ -177,7 +177,7 @@ const [specArray, setSpecArray] = useState([])
 </h3>
     <h3 className='sales-grand-total'>
 
-${state.sales && numberWithCommas(state.sales.reduce((a, b)=> {
+{currency}{state.sales && numberWithCommas(state.sales.reduce((a, b)=> {
     return  a + parseFloat( b.total)
 }, 0).toFixed(2))}
     </h3>

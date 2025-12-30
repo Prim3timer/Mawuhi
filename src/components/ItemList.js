@@ -42,7 +42,7 @@ const previouPath = previousLocation ? previousLocation : 'N/A'
     }
 
     const axiosPrivate = useAxiosPrivate()
-    const {user, getNames, items, setAtHome, isRotated, setIsRotated} = useContext(AuthContext)
+    const {user, getNames, items, setAtHome, isRotated, setIsRotated, currency} = useContext(AuthContext)
     const refresh = useRefreshToken()
 const {auth, getTrans, itemRef, 
 
@@ -314,7 +314,7 @@ const {auth, getTrans, itemRef,
        >
        <tr>
            <th>NAME</th>
-           <th>PRICE ($)</th>
+           <th>PRICE ({currency})</th>
            <th>UNIT MEASURE</th>
            {/* <th>P/U</th> */}
            <th colSpan={2}>ACTIONS</th>

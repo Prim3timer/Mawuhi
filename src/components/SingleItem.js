@@ -28,7 +28,7 @@ const SingleItem = ()=> {
   console.log(state.transArray)
   const {auth, setAuth,users} = useAuth()
   const axiosPrivate = useAxiosPrivate()
-  const {falseIsRotated} = useContext(AuthContext)
+  const {falseIsRotated, currency} = useContext(AuthContext)
   const [userId, setUserId] = useState('')
   console.log(auth.accessToken)
 
@@ -273,7 +273,7 @@ function numberWithCommas(x) {
 
             </section>
             </div>
-            <h3>₦{numberWithCommas(parseFloat(state.elItem.total).toFixed(2))}</h3>
+            <h3>{currency}{numberWithCommas(parseFloat(state.elItem.total).toFixed(2))}</h3>
              <section
             className="cart-action"
             >

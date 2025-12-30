@@ -25,7 +25,7 @@ const Transactions = ()=> {
     const now = new Date()
     const date = format(now, 'yyyy-MM-dd tHH:mm:ss')
     console.log(date)
-    const {auth,user, getNames, setAtHome, isRotated, setIsRotated, falseIsRotated} = useContext(AuthContext)
+    const {auth,user, getNames, setAtHome, isRotated, setIsRotated, falseIsRotated, currency} = useContext(AuthContext)
     const inputRef = useRef()
     const qtyRef = useRef()
     const cashPaidRef = useRef(null)
@@ -491,7 +491,7 @@ useEffect(()=> {
                     <h4 
                     style={{display: `${state.getAllTotals ? 'none' : 'block' }`}}
                     // >N{parseFloat(item.total).toFixed(2)}</h3>
-                    >${numberWithCommas(parseFloat(item.total).toFixed(2))}</h4>
+                    >{currency}{numberWithCommas(parseFloat(item.total).toFixed(2))}</h4>
 
                     </article>
 
@@ -528,7 +528,7 @@ useEffect(()=> {
                       <h2
                 id="grand-total-one"
              
-                >Total: ${numberWithCommas(parseFloat(state.total).toFixed(2))}</h2>
+                >Total: {currency}{numberWithCommas(parseFloat(state.total).toFixed(2))}</h2>
             <form
             
             >
@@ -547,7 +547,7 @@ useEffect(()=> {
             }}
             >
            <h4
-           >Balance: ${state.paidAmount > state.total  ? parseFloat(state.balance).toFixed(2) : 0}</h4>
+           >Balance: {currency}{state.paidAmount > state.total  ? parseFloat(state.balance).toFixed(2) : 0}</h4>
            {/* <h3>${state.paidAmount > state.total  ? parseFloat(state.balance).toFixed(2) : 0}</h3>  */}
            </section>
            <article className="cash-confirm">

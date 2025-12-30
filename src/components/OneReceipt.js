@@ -15,7 +15,7 @@ const [currentUser, setCurrentUser] = useState()
 const [currentTrans, setCurrentTrans] = useState()
 const [state, dispatch] = useReducer(reducer, initialState)
 const {auth, setAuth} = useAuth()
-const {currentUsers, setIsRotated, falseRotated} = useContext(AuthContext)
+const {currentUsers, setIsRotated, falseRotated, currency} = useContext(AuthContext)
 const navigate = useNavigate()
 setOneReceipt(true)
 
@@ -147,7 +147,7 @@ style={{
                    <p>Unit Price: {numberWithCommas(parseFloat(good.price).toFixed(2))}</p>
                    <p
                   
-                   >Sub Total: ₦{numberWithCommas(parseFloat(good.total).toFixed(2))}</p>
+                   >Sub Total: {currency}{numberWithCommas(parseFloat(good.total).toFixed(2))}</p>
               
                    {/* <br/> */}
                </div>
@@ -160,7 +160,7 @@ style={{
            // margin: '0 0 0 4rem',
            // color: 'green'
        }}
-       >Grand Total: ₦{ numberWithCommas(parseFloat(currentTrans.grandTotal).toFixed(2))}</h4>
+       >Grand Total: {currency}{ numberWithCommas(parseFloat(currentTrans.grandTotal).toFixed(2))}</h4>
        
   
 <h5>Operator: {currentTrans.cashier}</h5>

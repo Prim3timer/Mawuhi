@@ -28,6 +28,8 @@ const [currentUsers, setCurrentUsers] = useState([])
   const [search2, setSearch2] = useState('')
      const itemRef = useRef()
         const barRef = useRef(null)
+        const currency = '₦'
+        // const currency = '$'
 
 
         const axiosPrivate = useAxiosPrivate()
@@ -222,7 +224,7 @@ const [currentUsers, setCurrentUsers] = useState([])
             search, setSearch, setSearch2, search2, sales, user, currentUser,
             setCurrentUser, setCurrentUser2, currentUser2, users, setUsers, transactions, atHome, setAtHome,
             currentUsers, setCurrentUsers, setIsRotated, isRotated, barRef, persistor, setPersistor, falseIsRotated,
-            genTrans, setGenTrans
+            genTrans, setGenTrans, currency
 
         }}>
             {children}

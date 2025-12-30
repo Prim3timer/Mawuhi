@@ -18,7 +18,7 @@ const [showOne, setShowOne] = useState(false)
 const [oneId, setOneId] = useState('')
 const { auth} = useAuth();
 const [currentUser, setCurrentUser] = useState('')
-const {atHome, getUsers, currentUsers, setIsRotated, falseRotated} = useContext(AuthContext)
+const {atHome, getUsers, currentUsers, setIsRotated, falseRotated, currency} = useContext(AuthContext)
 
 // const theDay = new Date(inv.date).getDate()
 //     const aDate = format(inv.date.substring(0, 10), `${theDay} MMM, yyyy`)
@@ -42,12 +42,7 @@ const getItems = async ()=> {
              
                 const cashierTrans = response.data.filter((item) => item.cashierID === auth.picker)
                       const person = auth.user && auth.users.find((person) => person._id == auth.picker)
-            
-                
                           setCurrentUser(person)
-
-                      
-
                 // dispatch({type: 'getNames', payload: response.data})
                 cashierTrans.reverse()
                 dispatch({type: 'getNames', payload: cashierTrans})
@@ -80,15 +75,10 @@ const assertain = (id) => {
         dispatch({type: 'isMatched', payload: true})
     }
 }
-
-
 const handleRemove = async ()=> {
     dispatch({type: 'cancel', payload: false})
     const response = await axios.delete(`/transactions/${state.id}`)
     // const newGraw = state.items && state.items.filter((item)=> item._id !== state.id)
- 
-
-
     // e.preventDefault()     
     // removeInventory(id)
         // await axios.delete(`/transactions/${id}`)
@@ -209,10 +199,10 @@ function numberWithCommas(x) {
                                 >
                                     <h4>{good.name}</h4>
                                     <p>Qty: {parseFloat(good.qty).toFixed(2)}{good.unitMeasure.split(' ')[1].slice(1, -1)}</p>
-                                    <p>Unit Price: {numberWithCommas(parseFloat(good.price).toFixed(2))}</p>
+                                    <p>Unit Price: {currency}{numberWithCommas(parseFloat(good.price).toFixed(2))}</p>
                                     <p
                                    
-                                    >Sub Total: ${numberWithCommas(parseFloat(good.total).toFixed(2))}</p>
+                                    >Sub Total: {numberWithCommas(parseFloat(good.total).toFixed(2))}</p>
                                
                                     {/* <br/> */}
                                 </div>
@@ -222,7 +212,7 @@ function numberWithCommas(x) {
                         <h4
                         className="receipts-grand-total"
                         
-                        >Grand Total: ${ numberWithCommas(parseFloat(item.grandTotal).toFixed(2))}</h4>
+                        >Grand Total: {currency}{ numberWithCommas(parseFloat(item.grandTotal).toFixed(2))}</h4>
                         
                    
            <h5>Cashier: {item.cashier}</h5>

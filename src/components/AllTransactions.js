@@ -16,7 +16,7 @@ const [showOne, setShowOne] = useState(false)
 const [oneId, setOneId] = useState('')
 const [allTransi, setAllTransi] = useState([])
 
-const {falseIsRotated} = useContext(AuthContext)
+const {falseIsRotated, currency} = useContext(AuthContext)
 
     const getItems = async ()=> {
         console.log('picker3 is : ', auth.picker3)
@@ -216,10 +216,10 @@ function numberWithCommas(x) {
                                             >
                                                 <h4>{good.name}</h4>
                                                 <p>Qty: {good.qty}{good.unitMeasure.split(' ')[1].slice(1, -1)}</p>
-                                                <p>Unit Price: {numberWithCommas(parseFloat(good.price).toFixed(2))}</p>
+                                                <p>Unit Price: {currency}{numberWithCommas(parseFloat(good.price).toFixed(2))}</p>
                                                 <p
                                                
-                                                >Sub Total: ₦{numberWithCommas(parseFloat(good.total).toFixed(2))}</p>
+                                                >Sub Total: {numberWithCommas(parseFloat(good.total).toFixed(2))}</p>
                                            
                                                 <br/>
                                             </div>
@@ -232,7 +232,7 @@ function numberWithCommas(x) {
                                         // margin: '0 0 0 4rem',
                                         // color: 'green'
                                     }}
-                                    >Grand Total: ₦{ numberWithCommas(parseFloat(item.grandTotal).toFixed(2))}</h4>
+                                    >Grand Total: {currency}{ numberWithCommas(parseFloat(item.grandTotal).toFixed(2))}</h4>
                                     
                                
                        <h5>Cashier: {item.cashier}</h5>

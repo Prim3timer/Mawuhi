@@ -16,7 +16,7 @@ const Payment = () => {
     const [userId, setUserId] = useState('')
     const cartQtyRef = useRef(null)
 const {auth, setAuth} = useAuth()
-const {falseIsRotated} = useContext(AuthContext)
+const {falseIsRotated, currency} = useContext(AuthContext)
     const axiosPrivate = useAxiosPrivate()
 
 
@@ -201,7 +201,7 @@ const plural2 = state.cartAmount.length === 1 ? '' : 's'
             /> {item.unitMeasure.split(' ')[1].slice(1, -1)}
             </label>
          
-            <h3>${numberWithCommas(parseFloat(item.total).toFixed(2))}</h3>
+            <h3>{currency}{numberWithCommas(parseFloat(item.total).toFixed(2))}</h3>
 
             </section>
             <p onClick={() => removeItem(item.id)}
@@ -213,7 +213,7 @@ const plural2 = state.cartAmount.length === 1 ? '' : 's'
         </div>
     )
 })}
-<h2>Total: ${numberWithCommas(parseFloat(state.totalCart).toFixed(2))}</h2>
+<h2>Total:{currency}{numberWithCommas(parseFloat(state.totalCart).toFixed(2))}</h2>
 {/* <hr></hr> */}
 {/* <hr></hr> */}
 <div className="cart-action">
