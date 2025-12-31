@@ -98,7 +98,7 @@ useEffect(()=> {
     {/* <h5> orders </h5> */}
     <label>Filter By Status
         <input 
-          id="invent-search"
+          // id="invent-search"
           type="text"
           role="searchbox" 
           placeholder="pending / shipped"
@@ -108,7 +108,7 @@ useEffect(()=> {
           </label>
     <label>Filter By Date
         <input 
-          id="invent-search"
+          // id="invent-search"
           type="text"
           role="searchbox" 
           placeholder="yyyy-MM-dd"
