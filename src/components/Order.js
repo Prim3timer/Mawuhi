@@ -118,14 +118,15 @@ useEffect(()=> {
           </label>
           </form>
       {allTransactions && allTransactions.map((tran, i) => {
-        const theDay = new Date(tran.date).toDateString().substring(0, 15)
+        const theDay = new Date(tran.date).toString().substring(0, 10)
+        const theDay2 = new Date(tran.date).toString().substring(11, 25)
         return (
           tran.address  ?     <section className='order-details' key={tran._id}>
             <article className='inner-order-dets'>
              <p>{tran._id}</p>
             {/* <p className='order-index'>{i + 1}</p> */}
               <div className='name-date'>
-      <p>{theDay}</p>
+      <p>{theDay}, {theDay2}</p>
       </div>
       <article>
         <h4 className='order-h4'>items quantity</h4>
@@ -135,10 +136,6 @@ useEffect(()=> {
           return (
             <div key={i}>
           <p>{good.name}: {good.qty} {good.unitMeasure.split(' ')[0]}{good.qty > 1 ? 's' : ''}</p>
-          {/* <p>unit price: {good.price}</p> */}
-          {/* <p>{good.qty}{good.unitMeasure.split(' ')[1].slice(1, -1)}</p> */}
-         {/* <br/> */}
-            
          </div>
         )
       })

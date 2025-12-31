@@ -80,7 +80,9 @@ let CreateItem = () => {
     }
 
 
-
+const handleUpload = () => {
+    console.log('uploaded')
+}
     return (
         <div className="create-item"
            onClick={falseIsRotated}
@@ -144,6 +146,7 @@ let CreateItem = () => {
                 onChange={handleFile}
                   multiple
                 />
+                {/* <button onClick={handleUpload}>upload  </button> */}
                 <br/>
               
                <button type="submit" className="pop">Add Item</button>
