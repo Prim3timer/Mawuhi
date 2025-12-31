@@ -122,13 +122,13 @@ useEffect(()=> {
         return (
           tran.address  ?     <section className='order-details' key={tran._id}>
             <article className='inner-order-dets'>
-            <p className='order-index'>{i + 1}</p>
+             <p>{tran._id}</p>
+            {/* <p className='order-index'>{i + 1}</p> */}
               <div className='name-date'>
       <p>{theDay}</p>
-             <p>{tran._id}</p>
       </div>
       <article>
-        <h4>items quantity</h4>
+        <h4 className='order-h4'>items quantity</h4>
       <section className='item-dets'>
       {
         tran.goods.map((good, i) => {
@@ -146,7 +146,7 @@ useEffect(()=> {
     </section>
     </article>
     <section>
-        <h4>shipping address</h4>
+        <h4 className='orderh4'>shipping address</h4>
       <div>
       {
 
