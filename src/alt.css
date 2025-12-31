@@ -536,7 +536,7 @@ padding: .2rem .5rem;
   display: flex;
   flex-direction: column;
   row-gap: .5rem;
-  width: 95vw;
+  width: 90vw;
 }
 .order-index {
   text-align: center;
