@@ -485,7 +485,7 @@ width: 100%;
   display: flex;
   column-gap: .5rem;
   margin: 1rem 0;
-  padding: 1rem;
+  padding: .5rem;
   /* padding-right: 2rem; */
   background-color: lightpink;
 }
@@ -515,6 +515,14 @@ padding: .2rem .5rem;
 
 } */
 
+.orders {
+  /* background-color: red; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+}
+
 .orders .search-form input  {
   padding: .2rem;
   min-width: 100%;
@@ -528,7 +536,7 @@ padding: .2rem .5rem;
   display: flex;
   flex-direction: column;
   row-gap: .5rem;
-  width: 70vw;
+  width: 95vw;
 }
 .order-index {
   text-align: center;
