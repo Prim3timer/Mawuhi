@@ -484,7 +484,7 @@ width: 100%;
 .order-details {
   display: flex;
   column-gap: .5rem;
-  margin: 1rem 0;
+  /* margin: 1rem 0; */
   padding: .5rem;
   /* padding-right: 2rem; */
   background-color: lightpink;
@@ -519,6 +519,7 @@ padding: .2rem .5rem;
   /* background-color: red; */
   display: flex;
   flex-direction: column;
+  row-gap: 1rem;
   align-items: center;
   width: 100vw;
 }
