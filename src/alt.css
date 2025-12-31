@@ -471,7 +471,7 @@ width: 100%;
   align-items: center;
   place-content: center;
   column-gap: 20%;
-  background-color: whitesmoke;
+  background-color: white;
   width: 100%;
 }
 
@@ -532,7 +532,7 @@ padding: .2rem .5rem;
 }
 
 .name-date, .shipping-address {
-  background-color: whitesmoke ;
+  background-color: white ;
   padding: .5rem;
   
 }
@@ -543,7 +543,7 @@ padding: .2rem .5rem;
 
 }
 .item-dets {
-  background-color: whitesmoke; 
+  background-color: white; 
   padding: .2rem 1rem;
 
 }
