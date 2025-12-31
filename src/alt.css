@@ -486,7 +486,7 @@ width: 100%;
   column-gap: .5rem;
   margin: 1rem 0;
   padding: 1rem;
-  padding-right: 2rem;
+  /* padding-right: 2rem; */
   background-color: lightpink;
 }
 
