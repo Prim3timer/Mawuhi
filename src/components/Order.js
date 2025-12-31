@@ -121,8 +121,8 @@ useEffect(()=> {
         const theDay = new Date(tran.date).toDateString().substring(0, 15)
         return (
           tran.address  ?     <section className='order-details' key={tran._id}>
-            <p>{i + 1}.</p>
             <article className='inner-order-dets'>
+            <p className='order-index'>{i + 1}</p>
               <div className='name-date'>
       <p>{theDay}</p>
              <p>{tran._id}</p>

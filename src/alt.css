@@ -530,6 +530,9 @@ padding: .2rem .5rem;
   row-gap: .5rem;
   width: 70vw;
 }
+.order-index {
+  text-align: center;
+}
 
 .name-date, .shipping-address {
   background-color: whitesmoke ;
