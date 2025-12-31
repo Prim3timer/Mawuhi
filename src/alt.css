@@ -536,7 +536,7 @@ padding: .2rem .5rem;
   /* background-color: gainsboro; */
   display: flex;
   flex-direction: column;
-  row-gap: .5rem;
+  /* row-gap: .5rem; */
   width: 90vw;
 }
 .order-index {
