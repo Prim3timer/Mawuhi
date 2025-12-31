@@ -26,7 +26,7 @@ const axiosPrivate = useAxiosPrivate()
   const setTransArray = () => {
   console.log(genTrans)
  
-      setAllTransactions(genTrans)
+      // setAllTransactions(genTrans)
       const filterate = genTrans.filter((item) => item.status.toLowerCase().includes(search.toLowerCase()))
       const filterate2 = filterate.filter((item) => item.date.includes(search2))
       setAllTransactions(filterate2)

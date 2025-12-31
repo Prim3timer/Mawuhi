@@ -504,6 +504,7 @@ width: 100%;
 }
 
 .done-status {
+    font-weight: bold;
   display: flex;
   column-gap: .5rem;
   color: green;
