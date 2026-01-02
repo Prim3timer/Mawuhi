@@ -17,9 +17,8 @@ let CreateItem = () => {
        const [showUpdate, setShowUpdate] = useState(false)
        const [files, setFiles] = useState()
        const now = new Date()
-       const unitMeasures = ['Kilogram (kg)', 'Piece (pc)', 'Plate (Plt)', 'Dozen (dz)', 'Bottle (Btl)', 'Pound (lbs)', 'Litre (L)', 'Sachet (sct)', 'Ounce (Oz)', 'Gram (g)', 'Set (St)', 'Bag (Bg)',  'Pairs (pr)', 'Kilowatthour (kWh)', 'Kilowatt (kW)'
-       ]
-    const {falseIsRotated} = useContext(AuthContext)
+ 
+    const {falseIsRotated, measurements} = useContext(AuthContext)
      const refresh = useRefreshToken()
  const axiosPrivate = useAxiosPrivate()
     const handleSubmit = async (e)=> {
@@ -113,7 +112,7 @@ const handleUpload = () => {
 
         }}
         >
-            {unitMeasures.map((measurement, i)=> {
+            {measurements.map((measurement, i)=> {
                 return (
                     
                     <option 

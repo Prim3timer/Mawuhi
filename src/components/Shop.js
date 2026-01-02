@@ -17,7 +17,7 @@ const {v4: uuid} = require('uuid')
 const Shop = () => {
   // window.history.pushState(null, null, '/home');
   const [state, dispatch] = useReducer(reducer, initialState)
-  const {falseIsRotated, currency} = useContext(AuthContext)
+  const {falseIsRotated, currency, items, oneItem} = useContext(AuthContext)
   const [shopItems, setShopItems] = useState([])
   const axiosPrivate = useAxiosPrivate()
 
@@ -25,13 +25,13 @@ const Shop = () => {
         dispatch({type: 'clear'})
         try {
             // dispatch({type: 'errMsg', payload: 'loading...'})
-            const response = await axiosPrivate.get('/items')
+            // const response = await axiosPrivate.get('/items')
             dispatch({type: 'errMsg', payload: ''})
           
-            dispatch({type: 'items', payload: response.data.items})   
-            console.log(response.data.items ) 
+              // dispatch({type: 'items', payload: items})   
+              // console.log(response.data.items ) 
 
-             const filterItems = response.data.items.filter((item) => item.name.toLowerCase().includes(state.search.toLowerCase()))
+             const filterItems = items.filter((item) => item.name.toLowerCase().includes(state.search.toLowerCase()))
           console.log(filterItems)
   
           
@@ -41,15 +41,6 @@ const Shop = () => {
     dispatch({type: 'errMsg', payload: error.message})
   }
     }
-
-  
-// console.log(items)
-const {setAuth, auth} = useAuth()
-  const oneItem  =(id) => {
-    setAuth(prev => {
-      return {...prev, picker3: id}
-    })
-  }
 
 
 useEffect(()=> {
@@ -64,7 +55,7 @@ useEffect(()=> {
 
 
   return (
-    !state.items ? <h2 className="shop">Loading...</h2> :<div className="shop"
+    !items ? <h2 className="shop">Loading...</h2> :<div className="shop"
     onClick={falseIsRotated}
     >
       <div className="home-shop">

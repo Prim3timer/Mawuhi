@@ -32,26 +32,38 @@ const [currentUsers, setCurrentUsers] = useState([])
         // const currency = '$'
 
 
+             const measurements = ['grams (g)', 'Piece (pc)', 'Plate (Plt)', 'Dozen (dz)', 'Bottle (Btl)', 'ounce (oz)', 'centiliter (CL)', 'Sachet (sct)', 'Ounce (Oz)', 'Set (St)', 'Bag (Bg)', 'Pairs (pr)',
+        'centimiters (cm)', 'Kilogram (kg)', 'Kilowatthour (kWh)', 'Kilowatt (kW)', 'Litre (L)', 'Pound (lbs)'
+       ]
+
+
         const axiosPrivate = useAxiosPrivate()
  const navigate = useNavigate();
     const location = useLocation();
    let {cancel, items, isEdit, afa, sales, price, unitMeasure, user, getNames, receipt, transactions, isHome} = state
 
+  const oneItem  =(id) => {
+  localStorage.setItem('memId', id)
+}
 
+const userPage = (id) => {
+    localStorage.setItem('memUser', id)
+    
+        }
 
-//  const getItems = async ()=> {
-//         dispatch({type: 'clear'})
-//         try {
-//             // dispatch({type: 'errMsg', payload: 'loading...'})
-//             const response = await axios.get('/items')
-//             dispatch({type: 'errMsg', payload: ''})
+ const getItems = async ()=> {
+        dispatch({type: 'clear'})
+        try {
+            // dispatch({type: 'errMsg', payload: 'loading...'})
+            const response = await axiosPrivate.get('/items')
+            dispatch({type: 'errMsg', payload: ''})
           
-//             dispatch({type: 'items', payload: response.data.items})   
-//             console.log(response.data.items ) 
-//         } catch (error) {
-//             console.log(error)
-//         }
-//     }
+            dispatch({type: 'items', payload: response.data.items})   
+            console.log(response.data.items ) 
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
 
         const getTransaction = async ()=> {
@@ -89,28 +101,12 @@ const [currentUsers, setCurrentUsers] = useState([])
         //   }           
         }
 
-        // const getUsers = async ()=> {
-        //     try {
-        //             const response = await axiosPrivate.get('/users')
-        //         console.log(response.data)
-        //             if (response){
+        const getUsers = async () => {
+            // const response = await axiosPrivate.get('/users')
+            // console.log(response.data.users)
+            // setUsers(response.data.users)
 
-        //                 setUsers(response.data)
-        //             }
-        //             // const currentUser = response.data.find((user) => user._id === picker)
-        //             const person = response.data.find((user) => user._id === auth.picker3)
-               
-        //            setCurrentUser2(person)
-        //            dispatch({type: 'inItem', payload: currentUser})
-                        
-        //                 console.log(currentUser2)
-                        
-        //             } catch (error) {
-        //                 console.log(error)
-        //             }
-        //         }
-
-
+        }
 
                  
                 
@@ -214,7 +210,13 @@ const [currentUsers, setCurrentUsers] = useState([])
   getTransaction()
 }, [state.search])
 
+useEffect(()=> {
+    getItems()
+}, [])
 
+useEffect(()=> {
+    getUsers()
+}, [])
 
     return (
 
@@ -223,8 +225,8 @@ const [currentUsers, setCurrentUsers] = useState([])
             generalRemain, remainDelete,  isEdit, afa, price, unitMeasure, getTransaction,
             search, setSearch, setSearch2, search2, sales, user, currentUser,
             setCurrentUser, setCurrentUser2, currentUser2, users, setUsers, transactions, atHome, setAtHome,
-            currentUsers, setCurrentUsers, setIsRotated, isRotated, barRef, persistor, setPersistor, falseIsRotated,
-            genTrans, setGenTrans, currency
+            currentUsers, setCurrentUsers, setIsRotated, isRotated, barRef, persistor, setPersistor, falseIsRotated, measurements,
+            genTrans, setGenTrans, currency, items, oneItem, userPage
 
         }}>
             {children}

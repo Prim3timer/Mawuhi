@@ -28,40 +28,30 @@ const SingleItem = ()=> {
   console.log(state.transArray)
   const {auth, setAuth,users} = useAuth()
   const axiosPrivate = useAxiosPrivate()
-  const {falseIsRotated, currency} = useContext(AuthContext)
+  const {falseIsRotated, currency, items} = useContext(AuthContext)
   const [userId, setUserId] = useState('')
-  console.log(auth.accessToken)
 
   const getItem = async () => {
-
-    
+    const useId = localStorage.getItem('memId')  
+          
     try {
       if (!state.elItem){
         throw new Error('no items found')
       }
-      const response = await axiosPrivate.get('/items')  
+ 
       // console.log(response.data)
       const users = await axiosPrivate.get('/users')
   
       const currentUser = users && users.data.users.find((user)=> user._id === auth.picker)
       console.log(currentUser.cart)
-       setUserId(currentUser._id)
-  
-      setAuth(prev => {
-        
-        return {...prev, singleItemId: auth.picker3}
-      })
-      
+      setUserId(currentUser._id)
+
   //     const userItems = cartItems.data.filter((item) => item.userId === auth.picker)
   //     console.log(userItems)
   //   console.log('user items are: ', userItems)
   dispatch({type: 'SINGLEITEMARRAY', payload: currentUser.cart})
     setIsLoading(false)
-  //     if (cartItems?.length){
-  
-  //     }
-      
-        const goods = response.data.items.find((item) => item._id === auth.picker3)
+        const goods = items.find((item) => item._id === useId)
         if (goods){
           
           const newGoods = {...goods, transQty: 1, total: goods.price}

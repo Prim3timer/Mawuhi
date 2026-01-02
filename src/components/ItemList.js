@@ -10,7 +10,6 @@ import reducer from "../reducer"
 import { FaTrashAlt } from "react-icons/fa";
 // import SearchItem from "./SearchItem"
 import { Link } from "react-router-dom"
-import EditItem from "./EditItem"
 import useAuth from "../hooks/useAuth"
 import axios from "../app/api/axios"
 import AuthContext from "../context/authProvider"
@@ -42,7 +41,7 @@ const previouPath = previousLocation ? previousLocation : 'N/A'
     }
 
     const axiosPrivate = useAxiosPrivate()
-    const {user, getNames, items, setAtHome, isRotated, setIsRotated, currency} = useContext(AuthContext)
+    const {user, getNames,  measurements,  isRotated, setIsRotated, currency, items} = useContext(AuthContext)
     const refresh = useRefreshToken()
 const {auth, getTrans, itemRef, 
 
@@ -51,19 +50,19 @@ const {auth, getTrans, itemRef,
     const [taskComplete, setTaskComplete] = useState(false)
 
 
-     const measurements = ['grams (g)', 'Piece (pc)', 'Plate (Plt)', 'Dozen (dz)', 'Bottle (Btl)', 'ounce (oz)', 'centiliter (CL)', 'Sachet (sct)', 'Ounce (Oz)', 'Set (St)', 'Bag (Bg)', 'Pairs (pr)',
-        'centimiters (cm)', 'Kilogram (kg)', 'Kilowatthour (kWh)', 'Kilowatt (kW)', 'Litre (L)', 'Pound (lbs)'
-       ]
+    //  const measurements = ['grams (g)', 'Piece (pc)', 'Plate (Plt)', 'Dozen (dz)', 'Bottle (Btl)', 'ounce (oz)', 'centiliter (CL)', 'Sachet (sct)', 'Ounce (Oz)', 'Set (St)', 'Bag (Bg)', 'Pairs (pr)',
+    //     'centimiters (cm)', 'Kilogram (kg)', 'Kilowatthour (kWh)', 'Kilowatt (kW)', 'Litre (L)', 'Pound (lbs)'
+    //    ]
 
 
        const getItems = async ()=> {
                dispatch({type: 'clear'})
                try {
                    // dispatch({type: 'errMsg', payload: 'loading...'})
-                   const response = await axiosPrivate.get('/items')
+                //    const response = await axiosPrivate.get('/items')
                    dispatch({type: 'errMsg', payload: ''})
-                 const filterate = response.data.items.filter((item)=> item.name.toLowerCase().includes(state.search.toLowerCase()))
-                 console.log(response.data.items ) 
+                 const filterate =items.filter((item)=> item.name.toLowerCase().includes(state.search.toLowerCase()))
+                //  console.log(response.data.items ) 
                  console.log(filterate)
                  if (filterate){
                        dispatch({type: 'getNames', payload: filterate})   
@@ -71,8 +70,8 @@ const {auth, getTrans, itemRef,
                        
                        // dispatch({type: 'user', payload: state.getNames[0].name})
                       console.log(state.getNames)
-                       console.log(response.data)
-                       setImage(response.newData)
+                    //    console.log(response.data)
+                    //    setImage(response.newData)
                        
                     } 
                 } catch (error) {

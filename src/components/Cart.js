@@ -16,18 +16,16 @@ const Payment = () => {
     const [userId, setUserId] = useState('')
     const cartQtyRef = useRef(null)
 const {auth, setAuth} = useAuth()
-const {falseIsRotated, currency} = useContext(AuthContext)
+const {falseIsRotated, currency, items} = useContext(AuthContext)
     const axiosPrivate = useAxiosPrivate()
 
 
 const getItems = async () => {
     try {
-         const response = await axiosPrivate.get('/items')
-         if (response){
-             dispatch({type: 'items', payload: response.data.items})
+   
+             dispatch({type: 'items', payload: items})
          
        
-        }
     } catch (error) {
         console.error(error)
     }   

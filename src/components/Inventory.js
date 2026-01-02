@@ -26,7 +26,7 @@ const Inventory = ({mark, setMark})=> {
     const {auth, setAuth} = useAuth()
   const [search2, setSearch2] = useState('')
     const invRef = useRef()
-    const {setIsRotated, setCurrentUsers} = useContext(AuthContext)
+    const {setIsRotated, setCurrentUsers, items} = useContext(AuthContext)
     const axiosPrivate = useAxiosPrivate()
 
      const navigate = useNavigate();
@@ -42,10 +42,9 @@ const Inventory = ({mark, setMark})=> {
             
 
 
-              const graw = await axiosPrivate.get('/items')
+            //   const graw = await axiosPrivate.get('/items')
 
-              console.log(graw.data)
-              const filterate = graw.data.items.filter((inner)=> inner.name.toLowerCase().includes(state.search.toLowerCase()))
+              const filterate = items.filter((inner)=> inner.name.toLowerCase().includes(state.search.toLowerCase()))
               dispatch({type: 'items', 
                   payload: filterate})
 
@@ -69,7 +68,7 @@ const Inventory = ({mark, setMark})=> {
             dispatch({type: 'isMatched', payload: true})
         } else {
             dispatch({type: 'isEdit', payload: true})    
-            const currentItem =   state.items.find((item) => item._id === id)
+            const currentItem =   items.find((item) => item._id === id)
             dispatch({type: 'afa', payload: currentItem.name})
             dispatch({type: 'ole', payload: currentItem.qty})
             dispatch({type: 'id', payload: id})
@@ -91,8 +90,14 @@ const Inventory = ({mark, setMark})=> {
                   }
                   const response = await axiosPrivate.patch(`/items/inventory/${state.id}`, inventory) 
                   if (response){
-                      const graw = await axiosPrivate.get('/items')
-                      dispatch({type: 'items', payload: graw.data.items})
+                    const updatedItems = items.map((item) => {
+                        if (item._id === state.id){
+                            return {...item, name: inventory.name, qty: inventory.qty, date: inventory.date}
+                        }
+                        return item
+                    })
+                  
+                      dispatch({type: 'items', payload: updatedItems})
                       dispatch({type: 'success', payload: 'inventory edited'})
                       setTimeout(()=> {
                           dispatch({type: 'success', payload: ''})

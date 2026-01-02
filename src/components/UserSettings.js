@@ -39,16 +39,18 @@ const UserSettings = () => {
     const [isPassword3, setisPassword3] = useState('password')
     const [passwordCheck3, setPasswordCheck3] = useState(faEyeSlash)
     const axiosPrivate = useAxiosPrivate()
-    // const {users, getUsers} = useContext(AuthContext)
+    const {getUsers} = useContext(AuthContext)
     const [ID, setID] = useState('')
     const saveRef = useRef(null)
     const pwdRef = useRef()
-    // console.log(users)
+    const [users,   setUsers] = useState('')
+    console.log(users)
     // picker3 is the not the current user.  It is the user in question.
     // console.log({ auth })
     const [active, setActive] = useState('')
-    const theRole = auth.users.find((user) => user._id === auth.picker3)
-    const [roles, setRoles] = useState(Object.keys(theRole.roles))
+    console.log(auth.picker)
+    // const theRole = users && users.find((user) => user._id === localStorage.getItem('memUser'))
+    const [roles, setRoles] = useState(Object.keys(''))
     // const [roles, setRoles] =  useState({})
     const navigate = useNavigate()
     // dispatch({type: ACTION.SUCCESS, payload: false})
@@ -85,12 +87,21 @@ const UserSettings = () => {
         }
     }
 
-    const getAUser = () => {
-        const person = auth.user && auth.users.find((user) => user._id === auth.picker3)
+    const getAUser = async () => {
+         const response = await axiosPrivate.get('/users')
+        console.log(response.data.users)
+        setUsers(response.data.users)
+        const person = response.data.users.find((user) => user._id === localStorage.getItem('memUser'))
+        console.log(person)
+            // const theRole = users && users.find((user) => user._id === localStorage.getItem('memUser'))
         if (person) {
 
             setCurrentUser(person)
+           
+                setRoles(Object.keys(person.roles))
+
             setUsername(person.username)
+            
             // setRoles(person.roles)
             setActive(person.active)
             console.log({ auth })

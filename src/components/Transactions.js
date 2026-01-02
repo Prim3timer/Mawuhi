@@ -23,14 +23,14 @@ const Transactions = ()=> {
     const [card, setCard] = useState(false)
     const [checkout, setCheckout] = useState(false)
     const now = new Date()
-    const {auth,user, getNames, setAtHome, isRotated, setIsRotated, falseIsRotated, currency} = useContext(AuthContext)
+    const {auth,user, getNames, setAtHome, isRotated, setIsRotated, falseIsRotated, currency, items} = useContext(AuthContext)
     const inputRef = useRef()
     const qtyRef = useRef()
     const cashPaidRef = useRef(null)
     const [firstRedChecker, setFirstRedChecker] = useState('')
     const [success, setSuccess] = useState(false)
     const [noShow, setNoShow] = useState(false)
-    const [items, setItems] = useState([])
+    // const [items, setItems] = useState([])
 
     const axiosPrivate = useAxiosPrivate()
 
@@ -96,11 +96,11 @@ const Transactions = ()=> {
            
     }
 
-    const getItems = async () => {
-        const response = await axiosPrivate.get('/items')
-        console.log(response.data.items)
-        setItems(response.data.items)
-    }
+    // const getItems = async () => {
+    //     const response = await axiosPrivate.get('/items')
+    //     console.log(response.data.items)
+    //     setItems(response.data.items)
+    // }
     
     
     const removeItem = async (id)=>{
@@ -353,9 +353,9 @@ useEffect(()=> {
 // }
 }, [])
 
-useEffect(()=> {
-    getItems()
-}, [])
+// useEffect(()=> {
+//     getItems()
+// }, [])
 
 
     return (

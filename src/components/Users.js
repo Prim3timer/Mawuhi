@@ -17,7 +17,7 @@ import AuthContext from "../context/authProvider";
 
 
 const Users = ()=> {
-    const { users, setAtHome, currentUsers, setCurrentUsers} = useContext(AuthContext)
+    const { users, setAtHome, setUsers, currentUsers, setCurrentUsers, userPage} = useContext(AuthContext)
     const {auth, setAuth} = useAuth()
 // setAtHome(false)
         // const [currentUsers, setCurrentUsers] = useState()
@@ -30,22 +30,6 @@ const Users = ()=> {
         const axiosPrivate = useAxiosPrivate()
  const navigate = useNavigate();
     const location = useLocation();
-        const userPage = (id) => {
-            const currentUser = users.find((user) => user._id === id)
-           setAuth(prev => {
-
-            return {...prev, currentUser, picker3: id
-            }
-        })
-
-            
-  
-            const person = users.find((user)=> user._id === id)
-            setBrand(person)
-        
-          
-             
-        }
 
  useEffect(()=> {
     // console.log(auth)
@@ -65,7 +49,7 @@ const Users = ()=> {
                 console.log(response.data.users)
              
                     isMounted && setCurrentUsers(response.data.users)
-                    
+                    setUsers(response.data.users)
                     
                    setAuth(prev => {
 
