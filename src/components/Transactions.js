@@ -31,7 +31,7 @@ const Transactions = ()=> {
     const [success, setSuccess] = useState(false)
     const [noShow, setNoShow] = useState(false)
     // const [items, setItems] = useState([])
-
+console.log(items)
     const axiosPrivate = useAxiosPrivate()
 
     
