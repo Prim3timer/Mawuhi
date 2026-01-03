@@ -345,13 +345,10 @@ useEffect(()=> {
 
 // }
 }, [ ])
-useEffect(()=> {
+// useEffect(()=> {
 
-    refresh()
-// if (sessionId){
-
-// }
-}, [])
+//     refresh()
+// }, [])
 
 // useEffect(()=> {
 //     getItems()
