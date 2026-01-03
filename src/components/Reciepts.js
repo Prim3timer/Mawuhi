@@ -41,8 +41,8 @@ const getItems = async ()=> {
             if (response){
         
              
-                const cashierTrans = response.data.filter((item) => item.cashierID === auth.picker3)
-                      const person = auth.user && auth.users.find((person) => person._id == auth.picker3)
+                const cashierTrans = response.data.filter((item) => item.cashierID === localStorage.getItem('memUser'))
+                      const person = auth.user && auth.users.find((person) => person._id == localStorage.getItem('memUser'))
                       console.log(person)
                       if (person ){
                           setCurrentUser(person)
@@ -149,7 +149,7 @@ function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
     return (
-        !state.getNames ? <h2
+        !currentUser ? <h2
         
         className="receipts"
         >Loading...</h2> : <div

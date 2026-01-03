@@ -15,6 +15,7 @@ const [specArray, setSpecArray] = useState([])
       const [search2, setSearch2] = useState('')
       const [username, setUsername] = useState('')
     const {auth} = useAuth()
+    const memUser = localStorage.getItem('memUser')
 
 // const auth.picker3 = atHome === true ? auth.picker : auth.picker3
 
@@ -49,11 +50,11 @@ const [specArray, setSpecArray] = useState([])
             // const response2 = await axiosPrivate.get('/users')
             // console.log(response2)
             console.log(response)
-            const newArray = response.data.filter((item)=> item.cashierID === auth.picker3)
+            const newArray = response.data.filter((item)=> item.cashierID === memUser)
             // console.log(newArray)
             
 
-                const person = auth.user && auth.users.find((person) => person._id == auth.picker3)
+                const person = auth.user && auth.users.find((person) => person._id == memUser)
                 setCurrenUser(person)
                 console.log(person)
        

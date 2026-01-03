@@ -8,6 +8,7 @@ import Shopping from "./Reciepts"
 import AuthContext from "../context/authProvider"
 import { Link } from "react-router-dom"
 import AllTransactions from "./AllTransactions"
+import useAxiosPrivate from "../hooks/useAxiosPrivate"
 
 const UserSelect = () => {
     const [state, dispatch] = useReducer(reducer, initialState)
@@ -29,6 +30,7 @@ console.log({users})
     const [allTransactons, setAllTransactions] = useState(false)
     const [picker, setPicker] = useState('')
     const [reciepts, setReceipts] = useState(false)
+    const axiosPrivate = useAxiosPrivate()
 
 const showMe = () => {
     // dispatch({type: 'indSales', payload: true})
@@ -36,10 +38,13 @@ const showMe = () => {
    
   
 }
-const getAUser = ()=>{
+const getAUser = async ()=>{
     try {
-        
-        const user = auth.users.find((user) => user._id === auth.picker3)
+               const response = await axiosPrivate.get('/users')
+               console.log(response.data)
+               console.log(localStorage.getItem('memId'))
+               const user = response.data.users.find((user) => user._id === localStorage.getItem('memUser'))
+               console.log(user)
         if (user){
     
             setCurrentUser2(user)

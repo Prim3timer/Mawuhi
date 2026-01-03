@@ -13,7 +13,7 @@ const useRefreshToken = ()=> {
             // this allows us to send cookies with our request
             withCredentials: true
         })
-        setAuth(prev => {
+        setAuth && setAuth(prev => {
             // console.log(JSON.stringify(prev))
             console.log(response.data.accessToken)
             return {...prev, accessToken: response.data.accessToken,
