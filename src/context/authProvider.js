@@ -54,12 +54,14 @@ const userPage = (id) => {
  const getItems = async ()=> {
         dispatch({type: 'clear'})
         try {
-            // dispatch({type: 'errMsg', payload: 'loading...'})
+            dispatch({type: 'errMsg', payload: 'loading...'})
             const response = await axiosPrivate.get('/items')
             dispatch({type: 'errMsg', payload: ''})
-          
-            dispatch({type: 'items', payload: response.data.items})   
-            console.log(response.data.items ) 
+          if (response){
+
+              dispatch({type: 'items', payload: response.data.items})   
+              console.log(response.data.items ) 
+          }
         } catch (error) {
             console.log(error)
         }
@@ -214,9 +216,9 @@ useEffect(()=> {
     getItems()
 }, [])
 
-useEffect(()=> {
-    getUsers()
-}, [])
+// useEffect(()=> {
+//     getUsers()
+// }, [])
 
     return (
 

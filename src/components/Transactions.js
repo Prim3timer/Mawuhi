@@ -341,7 +341,7 @@ useEffect(()=> {
 
 // if (sessionId){
     getRecipt()
-  inputRef.current.focus()
+//   inputRef.current.focus()
 
 // }
 }, [ ])
