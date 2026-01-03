@@ -66,7 +66,7 @@ const getAUser = async ()=>{
 
 
     return (
-   !currentUser2 ? <h2
+   !username ? <h2
    className="user-select"
    >Loading...</h2> : <div
 
@@ -74,7 +74,7 @@ const getAUser = async ()=>{
     >
             <h2
           className="user-select-header"
-            >{username}{username ? "'s" : ''} activity</h2>
+            >{username}{"'s"} activity</h2>
             {console.log(currentUser)}
             <article
             className="userselect-buttons-container"
