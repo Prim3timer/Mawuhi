@@ -540,7 +540,7 @@ padding: .2rem .5rem;
   width: 90vw;
 }
 
-.inner-order-dets >*:nth-child(1){
+.inner-order-dets >*:nth-child(1) {
   color: white;
 }
 
@@ -563,10 +563,6 @@ padding: .2rem .5rem;
   margin-top: 5px;
 }
 
-.name-date {
-  margin-bottom: 1rem;
-}
-
 .name-date p {
   color: white;
   background-color: none;
@@ -587,6 +583,9 @@ padding: .2rem .5rem;
 
 .order-h4 {
   color: white;
+}
+.order-h4 {
+  margin-top: .5rem;
 }
 .item-dets h4 {
   margin: .5rem 0;
