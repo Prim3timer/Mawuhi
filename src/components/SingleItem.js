@@ -94,7 +94,7 @@ if (foundItem){
   
 }else if (actualItem.quantity === 0) dispatch({type: 'ALERTMSG', payload: 'item is out of stock'})
   else if (state.elItem.qty < qtyRef.current.value){
-    dispatch({type: 'ALERTMSG', payload: 'not enough in stock choose a lower amount' })
+    dispatch({type: 'ALERTMSG', payload: `pls select qty less than or equal to ${numberWithCommas(Number(state.elItem.qty))}` })
     setTimeout(()=> {
         dispatch({type: 'success', payload: false})
       // dispatch({type: 'ALERTMSG', payload: '' })
@@ -161,7 +161,7 @@ console.log(auth)
           }
         }else {
             dispatch({type: 'success', payload: true})
-            dispatch({type: 'ALERTMSG', payload: 'not enough in stock choose a lower amount' })
+            dispatch({type: 'ALERTMSG', payload: `pls select qty less than or equal to ${numberWithCommas(Number(state.elItem.qty))}` })
     setTimeout(()=> {
         dispatch({type: 'success', payload: false})
       // dispatch({type: 'ALERTMSG', payload: '' })
@@ -204,25 +204,13 @@ function numberWithCommas(x) {
     getItem()
  }, [state.alertMsg])
 
- function numberWithCommas(x) {
-        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    }
+//  function numberWithCommas(x) {
+//         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+//     }
 
     return (
         isLoading ? <h2  className="single-item">Loading...</h2> :
          <div>
-         
-
-  {/* <div style={{
-                width: '200px',
-                height: '200px',
-                overflow: 'auto',
-                display: 'flex',
-                columnGap: '.5rem'
-            }}>
-                <img className="mult-pics" src={Beef.map((pic) => pic.first)} alt="credit" />
-                
-            </div> */}
 
            {state.elItem &&   <article
             className="single-item"
