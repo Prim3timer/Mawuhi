@@ -123,9 +123,9 @@ useEffect(()=> {
         return (
           tran.address  ?     <section className='order-details' key={tran._id}>
             <article className='inner-order-dets'>
-             <p>{tran._id}</p>
             {/* <p className='order-index'>{i + 1}</p> */}
               <div className='name-date'>
+             <p>{tran._id}</p>
       <p>{theDay}, {theDay2}</p>
       </div>
       <article>
