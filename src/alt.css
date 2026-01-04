@@ -544,14 +544,12 @@ padding: .2rem .5rem;
   color: white;
 }
 
-.inner-order-dets >*:nth-child(1){
-  color: white;
-}
+
 .order-index {
   text-align: center;
 }
 
-.name-date, .shipping-address {
+ .shipping-address {
   background-color: whitesmoke ;
   padding: .5rem;
 
@@ -566,6 +564,8 @@ padding: .2rem .5rem;
 }
 
 .name-date p {
+  color: white;
+  background-color: none;
   line-height: 2rem;
  overflow-x: auto;
 
