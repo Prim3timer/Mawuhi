@@ -143,7 +143,7 @@ useEffect(()=> {
     </section>
     </article>
     <section>
-        <h4 className='orderh4'>shipping address</h4>
+        <h4 className='order-h4'>shipping address</h4>
       <div>
       {
 

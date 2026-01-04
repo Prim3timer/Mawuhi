@@ -19,7 +19,7 @@ const location = useLocation()
 const navRef = useRef()
 const {width} = useWindowSize()
 
-console.log(width)
+// console.log(width)
 
   const workBar = ()=> {
       const navWidth = navRef.current.getBoundingClientRect().width

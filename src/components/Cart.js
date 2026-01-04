@@ -35,7 +35,7 @@ const getCartItems = async () => {
     try {
         const response = await axiosPrivate.get('/users')
         console.log(response.data)
-        const currentUser = response.data.users.find((user) => user._id === auth.picker)
+        const currentUser = response.data.users.find((user) => user._id === localStorage.getItem('memUser'))
         setCartItems(currentUser.cart)
         console.log(cartItems)
         const newUseritems = currentUser.cart.map((item) => {
@@ -43,8 +43,6 @@ const getCartItems = async () => {
         })
         console.log(newUseritems)
         setUserId(currentUser._id)
-     
-console.log(newUseritems)
         if (newUseritems){
             dispatch({type: 'CARTARRAY', payload: newUseritems})
         
@@ -68,18 +66,18 @@ const doneSales = async()=> {
     const date = format(now, 'dd/mm/yyyy\tHH:mm:ss')
 
     try {
-        const excessCheck = cartItems.filter((item) =>  item.quantity < Number(item.transQty))
+        const excessCheck = state.cartArray.filter((item) =>  item.quantity < Number(item.transQty))
         const excessItem = excessCheck.map((item) => item.name)
         console.log(excessItem)
         setExcessQty(excessItem)
         if (excessItem.length){
             dispatch({type:'success', payload: true})
             console.log(excessItem.length)
-            dispatch({type: 'ALERTMSG', payload: `the ${excessItem.length > 1 ? 'quantities' : 'quantity'} of ${excessItem.map((item) => item).join(', ')} slected ${excessQty.length > 1 ? 'exceed' : 'exceeds'} the quantity in stock`})
+            dispatch({type: 'ALERTMSG', payload: `the ${excessItem.length > 1 ? 'quantities' : 'quantity'} of ${excessItem.map((item) => item).join(', ')} slected ${excessItem.length > 1 ? 'exceed' : 'exceeds'} the quantity in stock`})
             setTimeout(()=> {
                 dispatch({type: 'success', payload: false})
                 
-            },3000)
+            },5000)
             
         }
         
@@ -91,7 +89,7 @@ const doneSales = async()=> {
           const response = await axios.post(`/sessions/create-checkout-session`, newerArray)
           
           if (response){
-              window.location = response.data?.session?.url
+            //   window.location = response.data?.session?.url
               // console.log(response.data)
               
       } 

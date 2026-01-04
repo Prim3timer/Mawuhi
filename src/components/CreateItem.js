@@ -21,12 +21,16 @@ let CreateItem = () => {
     const {falseIsRotated, measurements} = useContext(AuthContext)
      const refresh = useRefreshToken()
  const axiosPrivate = useAxiosPrivate()
+
+
     const handleSubmit = async (e)=> {
         
-        const {name, price, unitMeasure, image} = state
         e.preventDefault()
+        const {name, price, unitMeasure, image} = state
         const formData = new FormData()
-        // files.map((file)=> )
+        files.map((file) => formData.append('images', file))
+        console.log(formData)
+
         console.log(files)
         try {
             const newItem = {
@@ -72,6 +76,8 @@ let CreateItem = () => {
 
     }
 
+
+
     const handleFile = (e) => {
         const allFiles = Object.values(e.target.files)
         setFiles(allFiles)
@@ -79,8 +85,14 @@ let CreateItem = () => {
     }
 
 
-const handleUpload = () => {
-    console.log('uploaded')
+const handleUpload = async (e) => {
+    e.preventDefault()
+    console.log(files)
+   const formData = new FormData()
+        files.map((file) => formData.append('images', file))
+        console.log(formData)
+    const response = await axios.post(`/item/pic/upload/${state.name}`, formData)
+    console.log(response.data)
 }
     return (
         <div className="create-item"
@@ -93,7 +105,7 @@ const handleUpload = () => {
                 <input
               ref={itemRef}
                 type="text"
-                required
+                // required
                 value={state.name}
                 onChange={(e)=> dispatch({type: 'name', payload: e.target.value})}
                 />
@@ -130,7 +142,7 @@ const handleUpload = () => {
                 <h4>Price:</h4>
                 <input
                 type="text"
-                required
+                // required
                 value={state.price}
                 onChange={(e)=> dispatch({type: 'price', payload: e.target.value})}
               
@@ -141,7 +153,7 @@ const handleUpload = () => {
                 <input
                 type="file"
                 // required
-                value={state.image}
+                // value={state.image}
                 onChange={handleFile}
                   multiple
                 />
