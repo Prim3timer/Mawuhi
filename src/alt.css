@@ -536,7 +536,7 @@ padding: .2rem .5rem;
   /* background-color: gainsboro; */
   display: flex;
   flex-direction: column;
-  /* row-gap: .5rem; */
+  row-gap: .5rem;
   width: 90vw;
 }
 
@@ -585,7 +585,7 @@ padding: .2rem .5rem;
   color: white;
 }
 .order-h4 {
-  margin-top: .5rem;
+  /* margin-top: .5rem; */
 }
 .item-dets h4 {
   margin: .5rem 0;
