@@ -17,7 +17,7 @@ const {v4: uuid} = require('uuid')
 const Shop = () => {
   // window.history.pushState(null, null, '/home');
   const [state, dispatch] = useReducer(reducer, initialState)
-  const {falseIsRotated, currency, items, oneItem} = useContext(AuthContext)
+  const {falseIsRotated, currency, items, oneItem, picUrl} = useContext(AuthContext)
   const [shopItems, setShopItems] = useState([])
   const axiosPrivate = useAxiosPrivate()
 
@@ -87,7 +87,7 @@ useEffect(()=> {
           onClick={()=> oneItem(item._id)}
           >
             {console.log(item.name, item.img[0])}
-            <img  className='shop-img' src={`http://localhost:3500/images/${item.name}/${item.img[0]}`} alt={item.name}/>
+            <img  className='shop-img' src={`${picUrl}/${item.name}/${item.img[0]}`} alt={item.name}/>
             <div className="shop-item-texts">
                 <h4>{currency}{numberWithCommas(item.price)}</h4> 
             <p style={{

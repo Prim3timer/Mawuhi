@@ -29,6 +29,7 @@ const [currentUsers, setCurrentUsers] = useState([])
      const itemRef = useRef()
         const barRef = useRef(null)
         const currency = '₦'
+        const picUrl = 'http://localhost:3500/images' || 'mawuhi.onrender.com/images'
         // const currency = '$'
 
 
@@ -230,7 +231,7 @@ useEffect(()=> {
             search, setSearch, setSearch2, search2, sales, user, currentUser,
             setCurrentUser, setCurrentUser2, currentUser2, users, setUsers, transactions, atHome, setAtHome,
             currentUsers, setCurrentUsers, setIsRotated, isRotated, barRef, persistor, setPersistor, falseIsRotated, measurements,
-            genTrans, setGenTrans, currency, items, oneItem, userPage
+            genTrans, setGenTrans, currency, items, oneItem, userPage, picUrl
 
         }}>
             {children}
