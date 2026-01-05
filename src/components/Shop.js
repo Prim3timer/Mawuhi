@@ -22,6 +22,7 @@ const Shop = () => {
   const axiosPrivate = useAxiosPrivate()
 
      const getItems = async ()=> {
+      console.log(items)
         dispatch({type: 'clear'})
         try {
             // dispatch({type: 'errMsg', payload: 'loading...'})
@@ -74,7 +75,8 @@ useEffect(()=> {
    </form>
  
       <section className="shop-inner-container">
-      {shopItems && shopItems.map((item)=> {
+      {shopItems && shopItems.map((item, i)=> {
+        console.log(item.img[0])
         return (
         <Link to={'/single-item'}
         className="linker"
@@ -84,7 +86,8 @@ useEffect(()=> {
           className="shopping-items"
           onClick={()=> oneItem(item._id)}
           >
-            <img  className='shop-img' src={`${item.img}`} alt={item.name}/>
+            {console.log(item.name, item.img[0])}
+            <img  className='shop-img' src={`http://localhost:3500/images/${item.name}/${item.img[0]}`} alt={item.name}/>
             <div className="shop-item-texts">
                 <h4>{currency}{numberWithCommas(item.price)}</h4> 
             <p style={{

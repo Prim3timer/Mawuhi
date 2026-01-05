@@ -200,7 +200,7 @@ const plural2 = state.cartAmount.length === 1 ? '' : 's'
     return (
         <div className="cart-main-container">
             <article className="cart-items-container">
-            <img className="cart-item-image" src={ `${jerom ?  jerom.img : ''}` } alt={item.name}/>
+            <img className="cart-item-image" src={`http://localhost:3500/images/${item.name}/${item.img}`} alt={item.name}/>
            <section>
             <p>{item.name}</p>
             {/* <h3>price: ${item.price}</h3> */}

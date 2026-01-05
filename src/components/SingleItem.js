@@ -231,7 +231,7 @@ function numberWithCommas(x) {
           
                 {/* <h2>Single Item</h2> */}
               <section className="single-image-container">
-                  <img  className='single-item-image' src={state.elItem.img}/>
+                  <img  className='single-item-image' src={`http://localhost:3500/images/${state.elItem.name}/${state.elItem.img[0]}`} alt={state.elItem.name}/>
                 <p>{state.elItem.name}</p>
                 {/* <img src={"https://images.app.goo.gl/ZcZWCKKhGh9Y8sR26"} alt="food"/> */}
                   
