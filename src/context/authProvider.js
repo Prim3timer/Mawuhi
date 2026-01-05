@@ -29,7 +29,7 @@ const [currentUsers, setCurrentUsers] = useState([])
      const itemRef = useRef()
         const barRef = useRef(null)
         const currency = '₦'
-        const picUrl = 'http://localhost:3500/images' || 'mawuhi.onrender.com/images'
+        const picUrl = 'http://localhost:3500/images' || 'http://mawuhi.onrender.com/images'
         // const currency = '$'
 
 
