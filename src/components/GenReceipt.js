@@ -89,7 +89,7 @@ const handleRemove = async ()=> {
 }
 
 const oneShow = (id) => {
-    dispatch({type: 'id', payload: id})
+    localStorage.setItem('memTransaction', id)
     auth.picker2 = id
     
     setShowOne(true)

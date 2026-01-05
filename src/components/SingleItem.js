@@ -33,6 +33,8 @@ const SingleItem = ()=> {
 
   const getItem = async () => {
     const useId = localStorage.getItem('memId')  
+    const memUser = localStorage.getItem('memUser')
+    console.log(memUser)
           
     try {
       if (!state.elItem){
@@ -42,7 +44,7 @@ const SingleItem = ()=> {
       // console.log(response.data)
       const users = await axiosPrivate.get('/users')
   
-      const currentUser = users && users.data.users.find((user)=> user._id === auth.picker)
+      const currentUser = users && users.data.users.find((user)=> user._id === auth.picker && memUser)
       console.log(currentUser.cart)
       setUserId(currentUser._id)
 
@@ -88,20 +90,23 @@ console.log(actualItem)
 
 console.log({actualItem: actualItem})
 const foundItem = state.singleItemArray.find((item) => item.name === actualItem.name)
-if (foundItem){
-
-  dispatch({type: 'ALERTMSG', payload: 'item already in cart'})
-  
-}else if (actualItem.quantity === 0) dispatch({type: 'ALERTMSG', payload: 'item is out of stock'})
+if (actualItem.quantity === 0) {
+  dispatch({type: 'ALERTMSG', payload: 'item is out of stock'})
+} 
   else if (state.elItem.qty < qtyRef.current.value){
-    dispatch({type: 'ALERTMSG', payload: `pls select qty less than or equal to ${numberWithCommas(Number(state.elItem.qty))}` })
+    dispatch({type: 'ALERTMSG', payload: `pls select qty less than or equal to ${numberWithCommas(Number(state.elItem.qty).toFixed(2))}` })
     setTimeout(()=> {
         dispatch({type: 'success', payload: false})
       // dispatch({type: 'ALERTMSG', payload: '' })
 
     }, 3000)
+ dispatch({type: 'elItem', payload: 1})
   
-  }
+  } else if (foundItem){
+
+  dispatch({type: 'ALERTMSG', payload: 'item already in cart'})
+  
+}
   else {
     const response = await axiosPrivate.post(`/users/sessions/${auth.picker}`, actualItem)
     console.log(response.data)
@@ -117,6 +122,9 @@ if (foundItem){
     } catch (error) {
       console.log(error.message)
     }
+    // finally {
+    //   qtyRef.current.value = ''
+    // }
 
   }
 
@@ -125,7 +133,8 @@ if (foundItem){
 // Rhinohorn1#
        const now = new Date()
           const date = format(now, 'dd/MM/yyyy\tHH:mm:ss')
-      const doneSales = async()=> {
+      const doneSales = async(e)=> {
+        e.preventDefault()
           try {
               const {elItem} = state
 state.singleItemArray.push(elItem)
@@ -161,7 +170,9 @@ console.log(auth)
           }
         }else {
             dispatch({type: 'success', payload: true})
-            dispatch({type: 'ALERTMSG', payload: `pls select qty less than or equal to ${numberWithCommas(Number(state.elItem.qty))}` })
+            dispatch({type: 'ALERTMSG', payload: `pls select qty less than or equal to ${numberWithCommas(Number(state.elItem.qty).toFixed(2))}` })
+            
+           dispatch({type: 'elItem', payload: 1})
     setTimeout(()=> {
         dispatch({type: 'success', payload: false})
       // dispatch({type: 'ALERTMSG', payload: '' })

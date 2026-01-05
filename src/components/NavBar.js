@@ -41,17 +41,17 @@ const {width} = useWindowSize()
 
 const logout = useLogout()
 
-   const signOut = async () => {
+  //  const signOut = async () => {
        
-            // if used in more components, this should be in context 
-            // axios to /logout endpoint 
-            const response = await logout()
-            console.log(response)
-            navigate('/login');
-            if (response){
+  //           // if used in more components, this should be in context 
+  //           // axios to /logout endpoint 
+  //           const response = await logout()
+  //           console.log(response)
+  //           navigate('/login');
+  //           if (response){
 
-            }
-        }
+  //           }
+  //       }
      const pix = 1200
 
     return (

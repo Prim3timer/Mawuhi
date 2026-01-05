@@ -10,6 +10,9 @@ const useLogout = ()=> {
     const logout = async () => {
         setAuth({})
         setIsRotated(false)
+        localStorage.removeItem('memId')
+        localStorage.removeItem('memUser')
+        localStorage.removeItem('memTransaction')
         console.log(isRotated)
         try {
             const response = await axios('/auth/logout', {

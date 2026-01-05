@@ -32,7 +32,7 @@ const [currentUsers, setCurrentUsers] = useState([])
         // const currency = '$'
 
 
-             const measurements = ['grams (g)', 'Piece (pc)', 'Plate (Plt)', 'Dozen (dz)', 'Bottle (Btl)', 'ounce (oz)', 'centiliter (CL)', 'Sachet (sct)', 'Ounce (Oz)', 'Set (St)', 'Bag (Bg)', 'Pairs (pr)',
+             const measurements = ['grams (g)', 'Piece (pc)', 'Plate (Plt)', 'Dozen (dz)', 'Bottle (Btl)', 'ounce (oz)', 'centiliter (CL)', 'Sachet (sct)', 'Ounce (Oz)', 'Set (St)', 'Bag (Bg)', 'Pair (pr)',
         'centimiters (cm)', 'Kilogram (kg)', 'Kilowatthour (kWh)', 'Kilowatt (kW)', 'Litre (L)', 'Pound (lbs)'
        ]
 
@@ -44,6 +44,7 @@ const [currentUsers, setCurrentUsers] = useState([])
 
   const oneItem  =(id) => {
   localStorage.setItem('memId', id)
+  localStorage.setItem('memUser', auth.picker)
 }
 
 const userPage = (id) => {

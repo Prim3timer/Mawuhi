@@ -12,6 +12,7 @@ import AuthContext from "../context/authProvider"
 const Payment = () => {
     const [state, dispatch] = useReducer(reducer, initialState)
     const [cartItems, setCartItems] = useState([])
+    const [currentCartItems, setCurrentCartItems] = useState([])
     const [excessQty, setExcessQty] = useState('')
     const [userId, setUserId] = useState('')
     const cartQtyRef = useRef(null)
@@ -19,8 +20,16 @@ const {auth, setAuth} = useAuth()
 const {falseIsRotated, currency, items} = useContext(AuthContext)
     const axiosPrivate = useAxiosPrivate()
 
+    const memUser = localStorage.getItem('memUser')
 
 const getItems = async () => {
+       const currentItems = await axios.get('/items')
+
+
+       console.log(cartItems)
+        setCurrentCartItems(currentItems.data.items )
+    console.log(auth.picker)
+    console.log(memUser)
     try {
    
              dispatch({type: 'items', payload: items})
@@ -35,9 +44,9 @@ const getCartItems = async () => {
     try {
         const response = await axiosPrivate.get('/users')
         console.log(response.data)
-        const currentUser = response.data.users.find((user) => user._id === localStorage.getItem('memUser'))
+        const currentUser = response.data.users.find((user) => user._id === memUser)
         setCartItems(currentUser.cart)
-        console.log(cartItems)
+        console.log(currentUser)
         const newUseritems = currentUser.cart.map((item) => {
             return {...item, amount: item.quantity}
         })
@@ -60,24 +69,33 @@ const getCartItems = async () => {
 
 
 const doneSales = async()=> {
+    console.log(currentCartItems)
     console.log(state.cartArray)
-    // auth.cartArray = state.cartArray
+    const latest = cartItems.map((item) => {
+     const done = currentCartItems.find((currentItem) => currentItem._id === item.id)
+     if (done) return {...item, quantity: done.qty}
+    })
     const now = new Date()
-    const date = format(now, 'dd/mm/yyyy\tHH:mm:ss')
-
+    
     try {
-        const excessCheck = state.cartArray.filter((item) =>  item.quantity < Number(item.transQty))
+        console.log(latest)
+        console.log(state.cartArray)
+        const excessCheck = latest.filter((item) =>  item.quantity < Number(item.transQty))
+        console.log(excessCheck)
         const excessItem = excessCheck.map((item) => item.name)
         console.log(excessItem)
         setExcessQty(excessItem)
         if (excessItem.length){
             dispatch({type:'success', payload: true})
-            console.log(excessItem.length)
-            dispatch({type: 'ALERTMSG', payload: `the ${excessItem.length > 1 ? 'quantities' : 'quantity'} of ${excessItem.map((item) => item).join(', ')} slected ${excessItem.length > 1 ? 'exceed' : 'exceeds'} the quantity in stock`})
+            console.log(excessCheck)
+            dispatch({type: 'ALERTMSG', payload: `${excessItem.length > 1 ? 'quantities' : 'quantity'} of ${excessItem.map((item) => item).join(', ')} slected ${excessItem.length > 1 ? 'exceed' : 'exceeds'} the quantity in stock`})
             setTimeout(()=> {
                 dispatch({type: 'success', payload: false})
                 
             },5000)
+            // change back to 1 the quantities of the items whose values exceed the that in stock.
+            excessCheck.map((item) =>   dispatch({type: 'MAINCARTFIELD', payload: 1, id: item.id}))
+          
             
         }
         
@@ -90,7 +108,7 @@ const doneSales = async()=> {
           
           if (response){
             //   window.location = response.data?.session?.url
-              // console.log(response.data)
+            //   console.log(response.data)
               
       } 
 

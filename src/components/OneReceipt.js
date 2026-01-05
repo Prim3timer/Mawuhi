@@ -56,30 +56,13 @@ const getItems = async ()=> {
 const latestReceipt = response.data.filter((receipt) => receipt.cashierID === auth.picker )
 const reverseReceipt = latestReceipt.reverse()
 console.log(auth.picker)
-                const oneTrans = response.data.find((item) => item._id === auth.picker2)
-                const seaSaw = oneTrans ? oneTrans : reverseReceipt[0]
+                const oneTrans = response.data.find((item) => item._id === localStorage.getItem('memTransaction'))
                 // dispatch({type: 'getNames', payload: response.data})
-                setCurrentTrans(seaSaw)
+                setCurrentTrans(oneTrans)
                 // console.log(currentTrans)
                 // dispatch({type: 'getNames', payload: cashierTrans})
                 return item
             })
-            // const gog =  await axios.get('/users')
-
-            // const person = gog.data.find((user) => user._id === auth.picker3)
-            // console.log(person)
-            // setCurrentUser(person)
-
-        
-
-            // const filterate = cashierTrans.filter((inner)=> inner.date.substring(0, 10).includes(state.search))
-            // console.log(filterate)
-        
-            
-            // console.log(state.getNames)
-            // dispatch({type: 'getNames', 
-            //     payload: filterate})
-                
             }
     } catch (error) {
         console.log(error)
