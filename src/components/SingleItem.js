@@ -28,8 +28,9 @@ const SingleItem = ()=> {
   console.log(state.transArray)
   const {auth, setAuth,users} = useAuth()
   const axiosPrivate = useAxiosPrivate()
-  const {falseIsRotated, currency, items} = useContext(AuthContext)
+  const {falseIsRotated, currency, items, picUrl} = useContext(AuthContext)
   const [userId, setUserId] = useState('')
+  const [index, setIndex] = useState(0)
 
   const getItem = async () => {
     const useId = localStorage.getItem('memId')  
@@ -209,6 +210,10 @@ console.log(auth)
 function numberWithCommas(x) {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
+
+    const handleIndex = (i) => {
+      setIndex(i)
+    }
     
  
  useEffect(()=> {
@@ -231,9 +236,17 @@ function numberWithCommas(x) {
           
                 {/* <h2>Single Item</h2> */}
               <section className="single-image-container">
-                  <img  className='single-item-image' src={`http://localhost:3500/images/${state.elItem.name}/${state.elItem.img[0]}`} alt={state.elItem.name}/>
+                  <img  className='single-item-image' src={`${picUrl}/${state.elItem.name}/${state.elItem.img[index]}`} alt={state.elItem.name}/>
                 <p>{state.elItem.name}</p>
-                {/* <img src={"https://images.app.goo.gl/ZcZWCKKhGh9Y8sR26"} alt="food"/> */}
+                   <div className="single-item-array">
+            {state.elItem.img.map((image, i)=> {
+              console.log(image)
+              return (
+             
+                  <img src={`${picUrl}/${state.elItem.name}/${image}`} onClick={() => handleIndex(i)}/>
+                )
+              })}
+              </div>
                   
                 </section>
                 <p> { state.elItem.unitMeasure === 'Kilogram (kg)' || state.elItem.unitMeasure === 'Kilowatthour (kWh)' 

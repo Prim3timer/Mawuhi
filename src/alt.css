@@ -743,11 +743,26 @@ row-gap: 1rem;
 
 .single-item-image {
   width: 350px;
-  object-fit: cover;
+  height: 350px;
+  object-fit: contain;
   
 }
 .single-item {
   margin: 2rem 0;
+}
+
+.single-item-array{
+display: flex;
+justify-self: center;
+/* background-color: red; */
+column-gap: .5rem;
+width: 60%;
+overflow-y: hidden;
+}
+.single-item-array >* {
+  object-fit: cover;
+  width: 100px;
+  height: 100px;
 }
 
 .inner-single-item {

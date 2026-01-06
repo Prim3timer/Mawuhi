@@ -23,7 +23,7 @@ const Transactions = ()=> {
     const [card, setCard] = useState(false)
     const [checkout, setCheckout] = useState(false)
     const now = new Date()
-    const {auth,user, getNames, setAtHome, isRotated, setIsRotated, falseIsRotated, currency, items} = useContext(AuthContext)
+    const {auth,user, getNames, setAtHome, isRotated, setIsRotated, falseIsRotated, currency, items, picUrl} = useContext(AuthContext)
     const inputRef = useRef()
     const qtyRef = useRef()
     const cashPaidRef = useRef(null)
@@ -440,7 +440,7 @@ useEffect(()=> {
                            
                 <section className="trans-name-and-img">
                    
-                    <img className="trans-img" src={`http://localhost:3500/images/${item.name}/${item.img[0]}`} alt={item.name}/>
+                    <img className="trans-img" src={`${picUrl}/${item.name}/${item.img[0]}`} alt={item.name}/>
                      <h5
                 
                  >
