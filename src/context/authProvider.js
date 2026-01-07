@@ -29,7 +29,10 @@ const [currentUsers, setCurrentUsers] = useState([])
      const itemRef = useRef()
         const barRef = useRef(null)
         const currency = '₦'
-        const picUrl = 'https://mawuhi-back.onrender.com/images'
+        // const picUrl = 'https://mawuhi-back.onrender.com/images'
+        const picUrl = 'http://localhost:3500/images'
+        // const picUrl = process.env.PUBLIC_URL
+        console.log(JSON.stringify(picUrl))
         // const currency = '$'
 
 
