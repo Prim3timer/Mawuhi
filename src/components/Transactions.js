@@ -440,7 +440,7 @@ useEffect(()=> {
                            
                 <section className="trans-name-and-img">
                    
-                    <img className="trans-img" src={`${picUrl}/${item.name}/${item.img[0]}`} alt={item.name}/>
+                    <img className="trans-img" src={`${picUrl}/images/${item.name}/${item.img[0]}`} alt={item.name}/>
                      <h5
                 
                  >
