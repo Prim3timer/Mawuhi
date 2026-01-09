@@ -15,17 +15,17 @@ const Payment = () => {
     const [currentCartItems, setCurrentCartItems] = useState([])
     const [excessQty, setExcessQty] = useState('')
     const [userId, setUserId] = useState('')
+    const [itemImage, setItemImage] = useState('')
     const cartQtyRef = useRef(null)
 const {auth, setAuth} = useAuth()
-const {falseIsRotated, currency, items} = useContext(AuthContext)
+const {falseIsRotated, currency, items, picUrl} = useContext(AuthContext)
     const axiosPrivate = useAxiosPrivate()
 
     const memUser = localStorage.getItem('memUser')
 
 const getItems = async () => {
        const currentItems = await axios.get('/items')
-
-
+   
        console.log(cartItems)
         setCurrentCartItems(currentItems.data.items )
     console.log(auth.picker)
@@ -195,12 +195,11 @@ const plural2 = state.cartAmount.length === 1 ? '' : 's'
             { state.cartArray.length ? <h3>{parseFloat(state.cartAmount).toFixed(2)} item{plural2}, {state.cartArray.length} product{plural}</h3> : 'Empty'}
 
 {state.cartArray && state.cartArray.map((item) =>{
-    // this line is for dynamic image sourcing
-    const jerom = state.items && state.items.find((things) => things.name == item.name)
+    console.log(item)
     return (
         <div className="cart-main-container">
             <article className="cart-items-container">
-            <img className="cart-item-image" src={`http://localhost:3500/images/${item.name}/${item.img}`} alt={item.name}/>
+            <img className="cart-item-image" src={`${picUrl}/images/${item.name}/${item.img[0]}`} alt={item.name}/>
            <section>
             <p>{item.name}</p>
             {/* <h3>price: ${item.price}</h3> */}

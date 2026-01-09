@@ -85,7 +85,8 @@ const SingleItem = ()=> {
         transQty: elItem.transQty,
         price: elItem.price,
         total: elItem.total,
-        unitMeasure: elItem.unitMeasure
+        unitMeasure: elItem.unitMeasure,
+        img: elItem.img
       }
 console.log(actualItem)
 
@@ -236,14 +237,14 @@ function numberWithCommas(x) {
           
                 {/* <h2>Single Item</h2> */}
               <section className="single-image-container">
-                  <img  className='single-item-image' src={`${picUrl}/${state.elItem.name}/${state.elItem.img[index]}`} alt={state.elItem.name}/>
+                  <img  className='single-item-image' src={`${picUrl}/images/${state.elItem.name}/${state.elItem.img[index]}`} alt={state.elItem.name}/>
                 <p>{state.elItem.name}</p>
                    <div className="single-item-array">
             {state.elItem.img.map((image, i)=> {
               console.log(image)
               return (
              
-                  <img src={`${picUrl}/${state.elItem.name}/${image}`} onClick={() => handleIndex(i)}/>
+                  <img src={`${picUrl}/images/${state.elItem.name}/${image}`} onClick={() => handleIndex(i)}/>
                 )
               })}
               </div>
