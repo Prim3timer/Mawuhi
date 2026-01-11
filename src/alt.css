@@ -257,6 +257,7 @@ margin: 0 0 1rem 0;
   height: 200px;
   object-fit: contain;
   background-color: gray;
+    object-fit: cover;
 }
 
 #ole {
@@ -2385,6 +2386,7 @@ max-width: 95%;
 
 .edit-item-image {
   width: 170px;
+  object-fit: cover;
 }
 
 
