@@ -214,6 +214,7 @@ margin: 0 0 1rem 0;
   display: flex;
   flex-direction: column;
   row-gap: 1rem;
+  max-width: 90vw;
 }
 
 .edit-an-item h2 {
@@ -2377,9 +2378,16 @@ max-width: 95%;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2,1fr);
   gap: .5rem;
-  justify-content: center;
+  align-items: center;
+  max-width: 100vw;
   /* background-color: red; */
 }
+
+.edit-item-image {
+  width: 170px;
+}
+
+
 
 .admin {
   /* margin: 3rem; */
