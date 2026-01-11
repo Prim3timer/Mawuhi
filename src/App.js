@@ -14,7 +14,7 @@ import CreateItem from "./components/CreateItem"
 import CreateInventory from "./components/CreateInventory"
 import Admin from "./components/Admin"
 import LinkPage from "./components/LinkPage"
-import Edit from "./components/Edit"
+import EditItem from "./components/EditItem"
 import Sales from "./components/Sales"
 import ItemList from "./components/ItemList"
 import Reciepts from "./components/Reciepts"
@@ -45,6 +45,7 @@ import AuthContext from "./context/authProvider"
 import GenSales from "./components/GenSales"
 import GenShopping from "./components/GenReceipt"
 import Orders from "./components/Order"
+import Cancel from "./components/Cancel"
 
 // import SearchItem from "./SearchItem";
 
@@ -130,12 +131,13 @@ return (
       <Route path="one-receipt" element={<OneReceipt setOneReceipt={setOneReceipt}/>}/>
       <Route path="cart" element={<Cart/>}/>
       <Route path="order" element={<Orders/>}/>
+      <Route path="cancel" element={<Cancel/>}/>
          </Route>
         
         
        <Route element={<RequireAuth allowedRoles={[1984]}/>}>
          <Route path="editor" element={<Editor/>}/>
-       <Route path="edit" element={<Edit/>}/>
+       <Route path="edit-item" element={<EditItem/>}/>
       
        <Route path="all-sales" element={<AllSales
        />}/>

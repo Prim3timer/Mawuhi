@@ -6,7 +6,7 @@ import { Link, useLocation } from "react-router-dom"
 import useAuth from "../hooks/useAuth"
 import useLogout from "../hooks/useLogout";
 import AuthContext from "../context/authProvider"
-import mainLinks from "./mainLinks"
+import mainLinks from "./multiLinks"
 const SideBar = () => {
     const {auth} = useAuth()
     const {isRotated, setIsRotated, barRef} = useContext(AuthContext)

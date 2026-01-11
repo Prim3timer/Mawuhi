@@ -264,14 +264,7 @@ const UserSettings = () => {
 
         return (
             <option
-                style={{
-                    fontSize: '2.5rem',
-                    display: 'flex',
-                    alignItems: 'center',
-                }}
-                key={role}
-                value={role}
-
+               className="assigned-roles-options"
             > {role}</option >
         )
     })

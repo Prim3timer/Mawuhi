@@ -53,41 +53,6 @@ const logout = useLogout()
             }
         }
 
-
-    //     useEffect(()=> {
-    //     let isMounted = true
-    //     // to cancel our request if the Component unmounts
-    //     const controller = new AbortController()
-    
-    //     const getUsers = async ()=> {
-          
-    //         try {
-    //             const response = await axiosPrivate.get('/users', {
-    //                 signal: controller.signal
-    //             })
-    //             // setCurrentUsers(response.data)
-             
-    //                 // isMounted && setCurrentUsers(response.data)
-                    
-                
-    //         } catch (error) {
-    //             console.log(error)
-    //             navigate('/login', { state: { from: location }, replace: true });
-    //         }
-    //     }
-        
-    //     getUsers()
-    //     // clean up function
-    //     return ()=> {
-    //         isMounted = false
-    //         // if (controller){
-    //             // controller.abort()
-
-    //         // }
-            
-    //     }
-    // }, [])
-
 useEffect(()=> {
     trueHome()
 }, [])
@@ -152,6 +117,10 @@ useEffect(()=> {
         <Link to="/cart">
         cart
         </Link>
+        <Link to="/cancel">
+        cancel
+        </Link>
+        
         {/* <br /> */}
         {/* <Link to="/linkpage">link page</Link> */}
       

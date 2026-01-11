@@ -1,4 +1,4 @@
-const mainLinks = [
+const multiLinks = [
     {
         id: 1,
         name: 'transactions',
@@ -44,6 +44,10 @@ const mainLinks = [
         name: 'cart',
         path: '/cart'
     },
+    {id: 9,
+        name: 'cancel',
+        path: '/cancel'
+    },
     
     // {
     //     id: 10,
@@ -52,4 +56,4 @@ const mainLinks = [
     // }
 ]
 
-export default mainLinks
+export default multiLinks

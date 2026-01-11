@@ -6,7 +6,7 @@ import useAuth from "../hooks/useAuth"
 import useLogout from "../hooks/useLogout";
 import SideBar from "./SideBar"
 import AuthContext from "../context/authProvider"
-import mainLinks from "./mainLinks"
+import multiLinks from "./multiLinks"
 import useWindowSize from "../hooks/useWindowSize"
 const NavBar = ()=> {
   
@@ -41,17 +41,6 @@ const {width} = useWindowSize()
 
 const logout = useLogout()
 
-  //  const signOut = async () => {
-       
-  //           // if used in more components, this should be in context 
-  //           // axios to /logout endpoint 
-  //           const response = await logout()
-  //           console.log(response)
-  //           navigate('/login');
-  //           if (response){
-
-  //           }
-  //       }
      const pix = 1200
 
     return (
@@ -68,8 +57,8 @@ const logout = useLogout()
 
                 <div
                 className={width > 739 ? 'show-home-links' : 'hide-home-links'}>
-            {auth.accessToken && mainLinks.map((mainLink)=> {
-                    const {id, name, path} = mainLink
+            {auth.accessToken && multiLinks.map((link)=> {
+                    const {id, name, path} = link
                 return (
                   // <div className="link-names">
                     <Link to={path} className="home-links" key={id}>{name}</Link>
