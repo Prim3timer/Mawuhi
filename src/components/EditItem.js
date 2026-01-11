@@ -20,11 +20,12 @@ const EditItem = ()=> {
             let fiveArray = []
     let i = 0;
     while (i < 5){
-        fiveArray.push({id: i + 1, name: 'noPic'})
+        fiveArray.push({id: i + 1, name: 'no image'})
         i++
     }
     const getItem = () => {
         const currentItem = items.find((item) => item._id === localStorage.getItem('memId'))
+   
         if (currentItem){
             setUnitMeasure(currentItem.unitMeasure)
             setPrice(currentItem.price)
@@ -74,7 +75,11 @@ const EditItem = ()=> {
             <h2>Edit Item</h2>
             <section className="edit-item-colage">
         {picArray && picArray.map((pic)=> {
-         return <img className="edit-item-image" src={`${picUrl}/images/${item.name}/${pic}`}/>
+                 console.log(pic)
+         return (
+            // <div></div>
+             <img className="edit-item-image" src={`${picUrl}/images/${item.name}/${pic}`} alt={pic.name}/>
+         )
 
         })}
         </section>
