@@ -44,7 +44,9 @@ const EditItem = ()=> {
 
     const options = measurements.map((measurement) => {
         return (
-            <option>{measurement}</option>
+            <option
+            className="update-form-unit-measuer"
+            >{measurement}</option>
         )
     })
 
@@ -91,6 +93,7 @@ const EditItem = ()=> {
                 <input
                 type="text"
                 id="name"
+                className="update-form-name"
                 value={state.afa}
                 onChange={(e)=> dispatch({type: 'afa', payload: e.target.value})}
                 />
@@ -98,6 +101,7 @@ const EditItem = ()=> {
                 <label htmlFor="qty">quantity
                 <input
                 type="text" 
+                className="update-form-quantity"
                 id="ole"
                 value={item.qty}
                 onChange={(e)=> dispatch({type: 'ole', payload: e.target.value})}

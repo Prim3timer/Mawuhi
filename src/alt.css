@@ -260,8 +260,8 @@ margin: 0 0 1rem 0;
     object-fit: cover;
 }
 
+
 #ole {
-  /* background-color: red; */
   width: 6rem;
   font-size: 1.5rem;
   /* margin-right: 1rem; */
@@ -2389,6 +2389,16 @@ max-width: 95%;
   object-fit: cover;
 }
 
+.update-form-name {
+  /* background-color: red; */
+width:60vw; 
+}
+
+
+.unit-measure-options {
+  /* background-color: yellow; */
+  width: 50vw;
+}
 
 
 .admin {
