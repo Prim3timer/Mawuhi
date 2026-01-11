@@ -2374,18 +2374,12 @@ max-width: 95%;
 
       .edit-item-colage {
   display: grid;
-  grid-template-columns: repeat(2, 200px);
-  grid-template-rows: repeat(2, 200px);
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2,1fr);
   gap: .5rem;
+  justify-content: center;
+  /* background-color: red; */
 }
-
-.edit-item-image {
-  width: 180px;
-  height: 180px;
-  object-fit: contain;
-  background-color: gray;
-}
-
 
 .admin {
   /* margin: 3rem; */
