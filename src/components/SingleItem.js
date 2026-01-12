@@ -237,14 +237,14 @@ function numberWithCommas(x) {
           
                 {/* <h2>Single Item</h2> */}
               <section className="single-image-container">
-                  <img  className='single-item-image' src={`${picUrl}/images/${state.elItem.name}/${state.elItem.img[index]}`} alt={state.elItem.name}/>
+                  <img  className='single-item-image' src={`${picUrl}/images/${state.elItem.name}/${state.elItem.img[index].name}`} alt={state.elItem.name}/>
                 <p>{state.elItem.name}</p>
                    <div className="single-item-array">
             {state.elItem.img.map((image, i)=> {
               console.log(image)
               return (
              
-                  <img src={`${picUrl}/images/${state.elItem.name}/${image}`} onClick={() => handleIndex(i)}/>
+                  <img src={`${picUrl}/images/${state.elItem.name}/${image.name}`} onClick={() => handleIndex(i)}/>
                 )
               })}
               </div>
@@ -253,7 +253,7 @@ function numberWithCommas(x) {
                 <p> { state.elItem.unitMeasure === 'Kilogram (kg)' || state.elItem.unitMeasure === 'Kilowatthour (kWh)' 
                     || state.elItem.unitMeasure === 'Kilowatt (kW)'  || state.elItem.unitMeasure === 'Pound (lbs)' ||  state.elItem.unitMeasure === 'Litre (L)' ? parseFloat(state.elItem.qty).toFixed(2) : state.elItem.qty }{state.elItem.unitMeasure && state.elItem.unitMeasure.split(' ')[1].slice(1, -1)} Left</p>
                 <div className="single-item-texts">
-              
+              <p>{state.elItem.description}</p>
                   <section
           className="qty-cont"
           >

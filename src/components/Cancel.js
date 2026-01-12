@@ -91,7 +91,7 @@ useEffect(()=> {
                 onClick={()=> oneItem(item._id)}
                 >
                   {console.log(item.name, item.img[0])}
-                  <img  className='shop-img' src={`${picUrl}/images/${item.name}/${item.img[0]}`} alt={item.name}/>
+                  <img  className='shop-img' src={`${picUrl}/images/${item.name}/${item.img[0].name}`} alt={item.name}/>
                   <div className="shop-item-texts">
                       <h4>{currency}{numberWithCommas(item.price)}</h4> 
                   <p style={{

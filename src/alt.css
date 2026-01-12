@@ -253,11 +253,125 @@ margin: 0 0 1rem 0;
 }
 
 .edit-item-image {
+  display: grid;
+  /* align-items: center; */
+  justify-content: center;
   width: 200px;
   height: 200px;
-  object-fit: contain;
   background-color: gray;
     object-fit: cover;
+    opacity: 6;
+}
+
+
+
+
+
+.input-icon {
+   display: flex;
+ justify-content: center;
+ align-items: center;
+ min-width: 100%;
+}
+
+.plus {
+
+  /* position: absolute; */
+ font-size: 5rem;
+  text-align: center;
+  width: 100%;
+  /* background-color: red; */
+  padding: 0 .5rem;
+  color: whitesmoke;
+}
+.image-name {
+    position: absolute;
+   transform: translateY(-40px) scale(.8);
+   background-color: yellow;
+   padding: .2rem;
+   
+  }
+
+  .edit-icon-inner{
+  background-color: darkslateblue;
+  padding: .2rem;
+  /* width: 100%; */
+  position: absolute;
+  color: whitesmoke;
+  left: 0;
+  /* top: 0; */
+  border-radius: 3px;
+}
+
+
+.del-icon {
+    position: absolute;
+    width: 150px;
+    height: 155px;
+    text-align: right;
+    color: whitesmoke;
+
+  }
+
+
+  .del-icon-inner {
+  position: absolute;
+  /* top: 3px; */
+  right: 0px;
+  color: whitesmoke;
+  /* right: 1px; */
+  /* width: 100%; */
+  opacity: .6;
+  /* background-color: black; */
+  border-radius: 3px;
+  font-size: 1.5rem;
+    /* width: 5rem; */
+  background-color:red;
+  /* left: 20%; */
+  padding: 2px 5px;
+}
+
+.edit-icon-inner{
+  background-color: darkslateblue;
+  /* padding: .2rem; */
+  /* width: 100vw; */
+  position: absolute;
+  /* margin-left: 12rem; */
+/* left: 0; */
+  /* left: 100%; */
+  /* justify-content: start; */
+  /* top: 0; */
+  border-radius: 3px;
+}
+
+
+.input-for-edit {
+  position: absolute;
+  background-color: red;
+  width: 80%;
+  transform: scale(1.3) rotate(90deg) translate(1px);
+  opacity: 0;
+}
+
+.the-icons  {
+  position: relative;
+  /* top: 3px; */
+  /* left: 50%; */
+  /* min-width: 40rem; */
+  background-color: red;
+  /* grid-template-columns: repeat(1, 1fr); */
+
+
+  
+}
+
+  .add-pic-edit {
+  /* width: 8rem; */
+  opacity: 0;
+  width: 150px;
+  transform: rotate(90deg) translate(40px, 0) scale(1.5);
+  z-index: 10;
+  position: absolute;
 }
 
 

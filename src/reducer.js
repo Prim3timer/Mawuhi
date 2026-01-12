@@ -70,6 +70,7 @@ const reducer = (state, action)=> {
         case 'afa':
           return {...state, afa: action.payload}
         case 'ole':
+          
           return {...state, ole: action.payload}
         case 'transArray':
           return {...state, transArray: action.payload}
