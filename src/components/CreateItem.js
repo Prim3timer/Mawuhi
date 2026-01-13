@@ -17,6 +17,7 @@ let CreateItem = () => {
        const [showUpdate, setShowUpdate] = useState(false)
        const [files, setFiles] = useState()
        const now = new Date()
+       const [description, setDescription] = useState('')
  
     const {falseIsRotated, measurements} = useContext(AuthContext)
      const refresh = useRefreshToken()
@@ -28,7 +29,10 @@ let CreateItem = () => {
         e.preventDefault()
         const {name, price, unitMeasure, image} = state
         const formData = new FormData()
-        files.map((file) => formData.append('images', file))
+        if (files){
+            files.map((file) => formData.append('images', file))
+
+        }
         console.log(formData)
 
         console.log(files)
@@ -37,6 +41,7 @@ let CreateItem = () => {
                 name: `${name}`,
                 price: price,
                 unitMeasure: unitMeasure,
+                description,
                 // image: files,
                 now
             }
@@ -149,6 +154,12 @@ const handleUpload = async (e) => {
               
                 />
                 <br/>   
+                  <p>Description:</p>
+                <textarea maxLength={300}
+                className="item-description"
+                value={description}
+                onChange={(e)=> setDescription(e.target.value)}
+                ></textarea>
                 <br/>   
                 <h4>Add Images</h4>
                 <input
@@ -160,6 +171,7 @@ const handleUpload = async (e) => {
                 />
                 {/* <button onClick={handleUpload}>upload  </button> */}
                 <br/>
+              
               
                <button type="submit" className="pop">Add Item</button>
         <h3 className={showUpdate ? "create-item-update" : "hide-show-update"}>{state.isMatched}</h3>

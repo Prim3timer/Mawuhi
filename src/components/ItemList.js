@@ -49,12 +49,6 @@ const {auth, getTrans, itemRef,
     const [state, dispatch] = useReducer(reducer, initialState)
     const [taskComplete, setTaskComplete] = useState(false)
 
-
-    //  const measurements = ['grams (g)', 'Piece (pc)', 'Plate (Plt)', 'Dozen (dz)', 'Bottle (Btl)', 'ounce (oz)', 'centiliter (CL)', 'Sachet (sct)', 'Ounce (Oz)', 'Set (St)', 'Bag (Bg)', 'Pairs (pr)',
-    //     'centimiters (cm)', 'Kilogram (kg)', 'Kilowatthour (kWh)', 'Kilowatt (kW)', 'Litre (L)', 'Pound (lbs)'
-    //    ]
-
-
        const getItems = async ()=> {
                dispatch({type: 'clear'})
                try {

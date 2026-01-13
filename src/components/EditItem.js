@@ -1,7 +1,7 @@
 import { useReducer, useEffect, useContext, useState  } from "react"
 import reducer from "../reducer"
 import initialState from "../store"  
-import axios from "../app/api/axios"
+import axios, { axiosPrivate } from "../app/api/axios"
 import AuthContext from "../context/authProvider"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faTimes, faPlus, faPenToSquare } from "@fortawesome/free-solid-svg-icons"
@@ -21,6 +21,8 @@ const EditItem = ()=> {
     const [file, setFile] = useState()
     const [isLoading, setIsLoading] = useState(true)
     const [index, setIndex] = useState()
+    const [success, setSuccess] = useState(false)
+    const [initialPic, setInitialPic] = useState()
 
 
 
@@ -39,7 +41,12 @@ const EditItem = ()=> {
         console.log(name)
 
     }
-    const handleDelete = (pic, id, index) => {
+    const handleDeletePic = async (pic, id, index) => {
+        const getPic = picArray.find((pic) => pic.id === id)
+        console.log(getPic.name)
+        setInitialPic(getPic.name)
+
+        console.log(getPic)
        const currentPics = picArray.map((pic) => {
         if (pic.id === id){
             return {...pic, name: 'no image'}
@@ -48,6 +55,7 @@ const EditItem = ()=> {
        })
        setPicArray(currentPics)
        fiveArray = currentPics
+       const response = await axiosPrivate.delete(`/delete-pic/${getPic.name}?name=${item.name}&id=${item._id}`)
        console.log(fiveArray)
 
     }
@@ -61,6 +69,7 @@ const EditItem = ()=> {
             dispatch({type: 'ole', payload: currentItem.price})
             dispatch({type: 'afa', payload: currentItem.name})
             setQuantity(currentItem.qty)
+            setDescription(currentItem.description)
            currentItem.img.map((pic, i) => {
                 // return pic
                 fiveArray.splice(i, 1, pic)
@@ -83,6 +92,7 @@ const EditItem = ()=> {
          const hanldeImageId = (ide) => {
         setId(ide)
         console.log(ide)
+        // setPicArray(fiveArray)
         // setSuccess(false)
       
       }
@@ -101,9 +111,48 @@ const EditItem = ()=> {
 
      const handleFile = (e, ide) => {
         setFile(e.target.files[0])
+        const newArray= picArray.map((pic)=>{
+            if (pic.id === ide){
+                return {...pic, name: e.target.files[0].name}
+            }
+            return pic
+        })
+        if (file){
+            setSuccess(true)
+            setId(ide)
+        }
+        setPicArray(newArray)
      
         setId(ide)
         console.log(e.target.files[0])
+      }
+
+      const handleUpload = async (id) => {
+        console.log('after shfit')
+              const formData = new FormData()
+  const imgObj =  {id, name: file.name}
+    formData.append('image', file)
+    console.log(file)
+            // const newItem = {
+            //     name: state.afa && state.afa,
+            //     price: state.ole && state.ole,
+            //     qty: quantity && quantity,
+            //     unitMeasure: unitMeasure && unitMeasure,
+            //     img: imgObj,
+            //     description: description && description
+            // }
+
+             item.img.map((item, i) => {
+    fiveArray.splice(item.id -1, 1, item)
+  })
+             fiveArray.splice(id - 1, 1, imgObj) 
+             console.log(fiveArray)
+             const response = await axios.patch(`/items/pic/${item.name}?fiveArray=${JSON.stringify(fiveArray)}&initialPic=${initialPic}&id=${item._id}`, formData)
+             if (fiveArray){
+
+                 setPicArray(fiveArray)
+             } 
+             
       }
       
 
@@ -118,26 +167,10 @@ const EditItem = ()=> {
            console.log(file)
         try {
 
-              const formData = new FormData()
-  const imgObj =  {id, name: file.name}
-    formData.append('image', file)
-            const newItem = {
-                name: state.afa && state.afa,
-                price: state.ole && state.ole,
-                qty: quantity && quantity,
-                unitMeasure: unitMeasure && unitMeasure,
-                img: imgObj,
-                description: description && description
-            }
-
-             item.img.map((item, i) => {
-    fiveArray.splice(item.id -1, 1, item)
-  })
-             fiveArray.splice(id - 1, 1, imgObj) 
              console.log(fiveArray)
-            console.log(newItem)
-             const response = await axios.patch(`/items/${item._id}?newItem=${JSON.stringify(newItem)}`)  
-             const response2 = await axios.post(`/items/pic/${item.name}?id=${item._id}&fiveArray=${JSON.stringify(fiveArray)}&index=${id}`, formData)
+            // console.log(newItem)
+           
+             const response2 = await axios.post(`/items/pic/${item.name}?id=${item._id}&fiveArray=${JSON.stringify(fiveArray)}&index=${id}`)
         } catch (error) {
             
         }
@@ -157,11 +190,11 @@ const EditItem = ()=> {
             <h2>Edit Item</h2>
             <section className="edit-item-colage">
         {picArray && picArray.map((pic)=> {
-                 console.log(pic)
-                 console.log(id)
-                 console.log(file)
+                //  console.log(pic)
+                //  console.log(id)
+                //  console.log(file)
          return (
-            <div className="edit-item-image">
+            <div className="edit-item-image" key={pic.id}>
                    {isLoading && pic.name === file && file.name ?  <p className="loading">Loading...</p> : ''}
        
                 {pic.name === 'no image' ?  '':   <div className="the-icons"><label 
@@ -171,14 +204,18 @@ const EditItem = ()=> {
         name="myFile"
         onChange={(e) => instantHandleFile(e, pic.id)}
         onClick={() => hanldePreviousFileName(pic.name)}
-        /><FontAwesomeIcon icon={faPenToSquare}/> </label><label
-        className="del-icon-inner"
-        onClick={() => handleDelete(pic, pic.id, index)}
-        > <FontAwesomeIcon icon={faTimes} /> </label></div>}
+        /></label><label
+     
+        onClick={() => handleDeletePic(pic, pic.id, index)}
+        > <FontAwesomeIcon
+           className="del-icon-inner"
+        icon={faTimes} /> </label></div>}
                 
-            { pic.name === 'no image' ? <div className="input-icon" ><label  className="plus"
+          {pic.name === 'no image' ? <div className="input-icon">{id === pic.id && file ? <p
+  className="pic-name"
+  >{ file ? file.name : '' }</p> : ''}<br/> {id !== pic.id || !file  ? <label  className="plus"
     htmlFor="addImage"
-  ><FontAwesomeIcon icon={faPlus}/></label>
+  ><FontAwesomeIcon icon={faPlus}/></label> : ''}
   <input type="file"
    className={'add-pic-edit'}  
    onChange={(e) => handleFile(e, pic.id)}  
@@ -187,10 +224,14 @@ const EditItem = ()=> {
    />
  </div> : 
  <img className="edit-item-image" src={`${picUrl}/images/${item.name}/${pic.name}`} alt={pic.name}/>}
+         {file && <button className={id === pic.id && !success ? 'show-button': 'hide-button'} onClick={() => handleUpload(pic.id,)}
+//   
+   >upload image</button>}
             </div>
          )
 
         })}
+
         </section>
             <form onSubmit={(e)=> e.preventDefault()}
                 className="item-update-form"  
@@ -235,13 +276,15 @@ const EditItem = ()=> {
                 </label>
                 <label>Description:</label>
                 <textarea className="item-description"
+                maxLength={300}
+                value={description}
                 onChange={(e) => handleDescription(e)}
                 ></textarea>
               
                 <button 
                 id="update-button"
                 onClick={handleEdit}
-                type="submit">Update</button>
+                type="submit">Done</button>
                 <h2>{state.success}</h2>
             </form>
         </div>

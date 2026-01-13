@@ -80,7 +80,6 @@ useEffect(()=> {
        
             <section className="shop-inner-container">
             {shopItems && shopItems.map((item, i)=> {
-              console.log(item.img[0])
               return (
               <Link to={'/edit-item'}
               className="linker"
@@ -90,7 +89,6 @@ useEffect(()=> {
                 className="shopping-items"
                 onClick={()=> oneItem(item._id)}
                 >
-                  {console.log(item.name, item.img[0])}
                   <img  className='shop-img' src={`${picUrl}/images/${item.name}/${item.img[0].name}`} alt={item.name}/>
                   <div className="shop-item-texts">
                       <h4>{currency}{numberWithCommas(item.price)}</h4> 
