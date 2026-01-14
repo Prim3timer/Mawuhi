@@ -62,7 +62,7 @@ const EditItem = ()=> {
                 
                 dispatch({type: 'errMsg', payload: ''})
             }, 3000)
-            //    dispatch({type: 'success', payload: false})
+            //    dispatch({type: 'success', payload: true})
     }
     } catch (error) {
             dispatch({type: 'errMsg', payload: error.message})
