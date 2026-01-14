@@ -58,7 +58,11 @@ const EditItem = ()=> {
        const response = await axiosPrivate.delete(`/delete-pic/${getPic.name}?name=${item.name}&id=${item._id}`)
        if (response){
             dispatch({type: 'errMsg', payload: response.data})
-            setSuccess(false)
+            setTimeout(()=> {
+                
+                dispatch({type: 'errMsg', payload: ''})
+            }, 3000)
+            //    dispatch({type: 'success', payload: false})
     }
     } catch (error) {
             dispatch({type: 'errMsg', payload: error.message})
@@ -111,6 +115,7 @@ const EditItem = ()=> {
     }
 
      const handleFile = (e, ide) => {
+        e.preventDefault()
         setFile(e.target.files[0])
         const newArray= picArray.map((pic)=>{
             if (pic.id === ide){
@@ -229,7 +234,7 @@ const imageFunc = async () => {
             <h2>Edit {item.name}</h2>
             <section className="edit-item-colage">
         {picArray && picArray.map((pic)=> {
-                //  console.log(pic)
+                 console.log(pic.id, id)
                 //  console.log(id)
                 //  console.log(file)
          return (
@@ -258,8 +263,9 @@ const imageFunc = async () => {
  <img className="edit-item-image" src={`${picUrl}/images/${item.name}/${pic.name}`} alt={pic.name}/>}
          {file && <button className={id === pic.id && !success ? 'show-button': 'hide-button'} onClick={() => handleUpload(pic.id)}
 //   
+
    >upload image</button>}
-   {isLoading ? <p>uploading...</p> : <p className="upload-alert">{state.errMsg}</p>}
+   {isLoading && id === pic.id ? <p>uploading...</p> : pic.id === id && <p className="upload-alert">{state.errMsg}</p>}
             </div>
          )
 

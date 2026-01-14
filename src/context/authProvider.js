@@ -61,7 +61,7 @@ const userPage = (id) => {
         dispatch({type: 'clear'})
         try {
             dispatch({type: 'errMsg', payload: 'loading...'})
-            const response = await axiosPrivate.get('/items')
+            const response = await axios.get('/items')
             console.log(response.data.users)
             dispatch({type: 'errMsg', payload: ''})
           if (response){
