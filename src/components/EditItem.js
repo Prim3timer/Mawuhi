@@ -261,11 +261,11 @@ const imageFunc = async () => {
    /> : ''}
  </div> : 
  <img className="edit-item-image" src={`${picUrl}/images/${item.name}/${pic.name}`} alt={pic.name}/>}
-         {file && <button className={id === pic.id && !success ? 'show-button': 'hide-button'} onClick={() => handleUpload(pic.id)}
+         {file && <button className={id === pic.id && !success && !isLoading ? 'show-button': 'hide-button'} onClick={() => handleUpload(pic.id)}
 //   
 
    >upload image</button>}
-   {isLoading && id === pic.id ? <p>uploading...</p> : pic.id === id && <p className="upload-alert">{state.errMsg}</p>}
+   {isLoading && id === pic.id ? <p>uploading...</p> : ''}
             </div>
          )
 
