@@ -381,6 +381,10 @@ margin: 0 0 1rem 0;
   background-color: yellow;
   padding: .5rem;
 }
+
+.uplaod-alert {
+  position: absolute;
+}
 .show-button     {
   display: block;
    /* transform: translate(30px, 150px) scale(1.5); */

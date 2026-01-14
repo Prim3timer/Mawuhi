@@ -20,7 +20,7 @@ const EditItem = ()=> {
     const [price, setPrice] = useState('')
     const [id, setId] = useState()
     const [file, setFile] = useState()
-    const [isLoading, setIsLoading] = useState(true)
+    const [isLoading, setIsLoading] = useState(false)
     const [index, setIndex] = useState()
     const [success, setSuccess] = useState(false)
     const [initialPic, setInitialPic] = useState()
@@ -129,6 +129,7 @@ const EditItem = ()=> {
       }
 // to add a single image to a particular canvas
       const handleUpload = async (id) => {
+        setIsLoading(true)
           const formData = new FormData()
         try {
              const imgObj =  {id, name: file.name}
@@ -142,8 +143,13 @@ const EditItem = ()=> {
              console.log(fiveArray)
              const response = await axios.patch(`/items/pic/${item.name}?fiveArray=${JSON.stringify(fiveArray)}&initialPic=${initialPic}&id=${item._id}`, formData)
              if(response){
-                 setSuccess(true)                                 
+                 setSuccess(true)         
+                 setIsLoading(false)                        
                  dispatch({type: 'errMsg', payload: response.data})
+                 setTimeout(()=> {
+                     setSuccess(false)
+                     dispatch({type: 'errMsg', payload: ''})
+                 }, 2000)
                  
                 }
                 setFile('')
@@ -253,6 +259,7 @@ const imageFunc = async () => {
          {file && <button className={id === pic.id && !success ? 'show-button': 'hide-button'} onClick={() => handleUpload(pic.id)}
 //   
    >upload image</button>}
+   {isLoading ? <p>uploading...</p> : <p className="upload-alert">{state.errMsg}</p>}
             </div>
          )
 
