@@ -14,7 +14,7 @@ const EditItem = ()=> {
     const {items, picUrl, measurements} = useContext(AuthContext)
     const [item, setItem] = useState({})
     const [picArray, setPicArray] = useState([])
-    // const [unitMeasure, setUnitMeasure] = useState()
+   const [firstName, setFirstName] = useState('')
     const [description, setDescription] = useState('')
     const [quantity, setQuantity] = useState('')
     const [price, setPrice] = useState('')
@@ -69,7 +69,7 @@ const EditItem = ()=> {
 
     const getItem = () => {
         const currentItem = items.find((item) => item._id === localStorage.getItem('memId'))
-   
+        setFirstName(currentItem.name)
         if (currentItem){
          dispatch({type: 'unitMeasure', payload: currentItem.unitMeasure})
             setPrice(currentItem.price)
@@ -163,7 +163,6 @@ const imageFunc = async () => {
     if (currentBackItem){
         console.log(currentBackItem.img)
         setPicArray(currentBackItem.img)
-
     }
     
   try {
@@ -173,15 +172,12 @@ const imageFunc = async () => {
   }
 }
 
-
-
-
-
     const handleEdit = async (ide) => {
          
         console.log(fiveArray)
         setId(ide)
-        console.log(item.name)
+        console.log(state.afa)
+        console.log(firstName)
         try {
                const newItem = {
                 name: afa,
@@ -195,7 +191,7 @@ const imageFunc = async () => {
              console.log(fiveArray)
             console.log(newItem)
            
-             const response2 = await axios.patch(`/items/texts/${JSON.stringify(newItem)}?id=${item._id}&fiveArray=${JSON.stringify(fiveArray)}&index=${id}`)
+             const response2 = await axiosPrivate.patch(`/items/texts/${JSON.stringify(newItem)}?id=${item._id}&firstName=${firstName}&index=${id}`)
             dispatch({type: 'success', payload: true})
             dispatch({type: 'errMsg', payload: response2.data.message})
         } catch (error) {
