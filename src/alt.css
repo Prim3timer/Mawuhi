@@ -377,15 +377,19 @@ margin: 0 0 1rem 0;
 
 
 .pic-name {
-  font-size: .5rem;
+  font-size: .8rem;
+  background-color: yellow;
+  padding: .5rem;
 }
 .show-button     {
   display: block;
    /* transform: translate(30px, 150px) scale(1.5); */
-position: absolute;
+position: relative;
      /* z-index: 10; */
-     width: 6rem;
-     font-size: .5rem;
+     /* width: 6rem; */
+     height: 2rem;
+     padding: 0 1rem;
+     font-size: 1rem;
 
 }
 

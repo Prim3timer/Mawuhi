@@ -5,6 +5,7 @@ import axios, { axiosPrivate } from "../app/api/axios"
 import AuthContext from "../context/authProvider"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faTimes, faPlus, faTrash, faSave } from "@fortawesome/free-solid-svg-icons"
+import { type } from "@testing-library/user-event/dist/type"
 
 
 
@@ -29,11 +30,7 @@ const EditItem = ()=> {
 
 
             let fiveArray = []
-    let i = 0;
-    while (i < 5){
-        fiveArray.push({id: i + 1, name: 'no image'})
-        i++
-    }
+
 
     const instantHandleFile =  () => {
         console.log('ihF')
@@ -44,10 +41,12 @@ const EditItem = ()=> {
 
     }
     const handleDeletePic = async (pic, id, index) => {
-        const getPic = picArray.find((pic) => pic.id === id)
+
+        try {
+             const getPic = picArray.find((pic) => pic.id === id)
         console.log(getPic.name)
         setInitialPic(getPic.name)
-
+    
         console.log(getPic)
        const currentPics = picArray.map((pic) => {
         if (pic.id === id){
@@ -56,11 +55,16 @@ const EditItem = ()=> {
         return pic
        })
        setPicArray(currentPics)
-       fiveArray = currentPics
        const response = await axiosPrivate.delete(`/delete-pic/${getPic.name}?name=${item.name}&id=${item._id}`)
-       setSuccess(false)
-       console.log(fiveArray)
-
+       if (response){
+            dispatch({type: 'errMsg', payload: response.data})
+            setSuccess(false)
+    }
+    } catch (error) {
+            dispatch({type: 'errMsg', payload: error.message})
+            
+        }
+       
     }
 
     const getItem = () => {
@@ -73,12 +77,7 @@ const EditItem = ()=> {
             dispatch({type: 'afa', payload: currentItem.name})
             setQuantity(currentItem.qty)
             setDescription(currentItem.description)
-           currentItem.img.map((pic, i) => {
-                // return pic
-                fiveArray.splice(i, 1, pic)
-            })
-            // console.log(fiveArray)
-         setPicArray(fiveArray)
+         setPicArray(currentItem.img)
             
             setItem(currentItem)
         }
@@ -128,22 +127,14 @@ const EditItem = ()=> {
         setId(ide)
         console.log(e.target.files[0])
       }
-
+// to add a single image to a particular canvas
       const handleUpload = async (id) => {
-        console.log('after shfit')
-              const formData = new FormData()
-  const imgObj =  {id, name: file.name}
+          const formData = new FormData()
+        try {
+             const imgObj =  {id, name: file.name}
     formData.append('image', file)
-    console.log(file)
-            // const newItem = {
-            //     name: state.afa && state.afa,
-            //     price: state.ole && state.ole,
-            //     qty: quantity && quantity,
-            //     unitMeasure: unitMeasure && unitMeasure,
-            //     img: imgObj,
-            //     description: description && description
-            // }
-
+    console.log(item.img)
+          
              item.img.map((item, i) => {
     fiveArray.splice(item.id -1, 1, item)
   })
@@ -151,10 +142,15 @@ const EditItem = ()=> {
              console.log(fiveArray)
              const response = await axios.patch(`/items/pic/${item.name}?fiveArray=${JSON.stringify(fiveArray)}&initialPic=${initialPic}&id=${item._id}`, formData)
              if(response){
-                 setSuccess(false)                                 
+                 setSuccess(true)                                 
+                 dispatch({type: 'errMsg', payload: response.data})
                  
                 }
                 setFile('')
+        } catch (error) {
+            dispatch({type: 'errMsg', payload: error.message})
+        }
+ 
              
       }
       
@@ -163,7 +159,7 @@ const EditItem = ()=> {
 // the purpose of this function is to make the image render once its uploaded
 const imageFunc = async () => {
     const backendItems = await axiosPrivate.get('/items')
-    const currentBackItem = backendItems.data.items.find((item) => item._id === item._id)
+    const currentBackItem = backendItems.data.items.find((it) => it._id === item._id)
     if (currentBackItem){
         console.log(currentBackItem.img)
         setPicArray(currentBackItem.img)
@@ -250,15 +246,15 @@ const imageFunc = async () => {
   >{ file ? file.name : '' }</p> : ''}<br/> {id !== pic.id || !file  ? <label  className="plus"
     htmlFor="addImage"
   ><FontAwesomeIcon icon={faPlus}/></label> : ''}
-  <input type="file"
+ {!file ? <input type="file"
    className={'add-pic-edit'}  
    onChange={(e) => handleFile(e, pic.id)}  
    onClick={() => hanldeImageId(pic.id)}
    htmlFor="addImage"
-   />
+   /> : ''}
  </div> : 
  <img className="edit-item-image" src={`${picUrl}/images/${item.name}/${pic.name}`} alt={pic.name}/>}
-         {file && <button className={id === pic.id && !success ? 'show-button': 'hide-button'} onClick={() => handleUpload(pic.id,)}
+         {file && <button className={id === pic.id && !success ? 'show-button': 'hide-button'} onClick={() => handleUpload(pic.id)}
 //   
    >upload image</button>}
             </div>
@@ -289,7 +285,7 @@ const imageFunc = async () => {
                 onChange={(e)=> setQuantity(e.target.value)}
                 />
                 </label>
-                <label>Unit Measure
+                <label>unit measure
                  <select
                 className="unit-measure-options"
                 size={"1"}
@@ -308,7 +304,7 @@ const imageFunc = async () => {
                 onChange={(e)=> dispatch({type: 'ole', payload: e.target.value})}
                 />
                 </label>
-                <label>Description:</label>
+                <label>description:</label>
                 <textarea className="item-description"
                 maxLength={300}
                 value={description}
