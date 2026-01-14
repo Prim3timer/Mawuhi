@@ -68,7 +68,7 @@ const EditItem = ()=> {
     }
 
     const getItem = () => {
-        const currentItem = items.find((item) => item._id === localStorage.getItem('memId'))
+        const currentItem = items && items.find((item) => item._id === localStorage.getItem('memId'))
         setFirstName(currentItem.name)
         if (currentItem){
          dispatch({type: 'unitMeasure', payload: currentItem.unitMeasure})
