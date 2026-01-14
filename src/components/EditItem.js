@@ -4,7 +4,7 @@ import initialState from "../store"
 import axios, { axiosPrivate } from "../app/api/axios"
 import AuthContext from "../context/authProvider"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faTimes, faPlus, faPenToSquare } from "@fortawesome/free-solid-svg-icons"
+import {faTimes, faPlus, faTrash, faSave } from "@fortawesome/free-solid-svg-icons"
 
 
 
@@ -13,7 +13,7 @@ const EditItem = ()=> {
     const {items, picUrl, measurements} = useContext(AuthContext)
     const [item, setItem] = useState({})
     const [picArray, setPicArray] = useState([])
-    const [unitMeasure, setUnitMeasure] = useState()
+    // const [unitMeasure, setUnitMeasure] = useState()
     const [description, setDescription] = useState('')
     const [quantity, setQuantity] = useState('')
     const [price, setPrice] = useState('')
@@ -23,6 +23,8 @@ const EditItem = ()=> {
     const [index, setIndex] = useState()
     const [success, setSuccess] = useState(false)
     const [initialPic, setInitialPic] = useState()
+      const {afa, unitMeasure, ole} = state
+       const now = new Date()
 
 
 
@@ -56,6 +58,7 @@ const EditItem = ()=> {
        setPicArray(currentPics)
        fiveArray = currentPics
        const response = await axiosPrivate.delete(`/delete-pic/${getPic.name}?name=${item.name}&id=${item._id}`)
+       setSuccess(false)
        console.log(fiveArray)
 
     }
@@ -64,7 +67,7 @@ const EditItem = ()=> {
         const currentItem = items.find((item) => item._id === localStorage.getItem('memId'))
    
         if (currentItem){
-            setUnitMeasure(currentItem.unitMeasure)
+         dispatch({type: 'unitMeasure', payload: currentItem.unitMeasure})
             setPrice(currentItem.price)
             dispatch({type: 'ole', payload: currentItem.price})
             dispatch({type: 'afa', payload: currentItem.name})
@@ -89,14 +92,12 @@ const EditItem = ()=> {
         )
     })
 
-         const hanldeImageId = (ide) => {
+       const hanldeImageId = (ide) => {
         setId(ide)
         console.log(ide)
-        // setPicArray(fiveArray)
-        // setSuccess(false)
+        setSuccess(false)
       
       }
-
     //      const instantHandleFile = (e, id) => {
     //     setInstantFile(e.target.files[0])
     //     console.log(e.target.files[0])
@@ -106,7 +107,8 @@ const EditItem = ()=> {
 
     const onUnitMeasureChange = (e) => {
         console.log(e.target.value)
-        setUnitMeasure(e.target.value)
+        dispatch({type: 'unitMeasure', payload: e.target.value})
+        // setUnitMeasure(e.target.value)
     }
 
      const handleFile = (e, ide) => {
@@ -148,31 +150,66 @@ const EditItem = ()=> {
              fiveArray.splice(id - 1, 1, imgObj) 
              console.log(fiveArray)
              const response = await axios.patch(`/items/pic/${item.name}?fiveArray=${JSON.stringify(fiveArray)}&initialPic=${initialPic}&id=${item._id}`, formData)
-             if (fiveArray){
-
-                 setPicArray(fiveArray)
-             } 
+             if(response){
+                 setSuccess(false)                                 
+                 
+                }
+                setFile('')
              
       }
       
 
+
+// the purpose of this function is to make the image render once its uploaded
+const imageFunc = async () => {
+    const backendItems = await axiosPrivate.get('/items')
+    const currentBackItem = backendItems.data.items.find((item) => item._id === item._id)
+    if (currentBackItem){
+        console.log(currentBackItem.img)
+        setPicArray(currentBackItem.img)
+
+    }
+    
+  try {
+    
+  } catch (error) {
+    
+  }
+}
+
+
+
+
+
     const handleEdit = async (ide) => {
+         
         console.log(fiveArray)
         setId(ide)
         console.log(item.name)
-        // console.log(unitMeasure)
-        // console.log(description)
-        // console.log((state.ole))
-        // console.log(id)
-           console.log(file)
         try {
-
+               const newItem = {
+                name: afa,
+                price: ole,
+                quantity,
+                unitMeasure,
+                description,
+                // image: files,
+                now
+            }
              console.log(fiveArray)
-            // console.log(newItem)
+            console.log(newItem)
            
-             const response2 = await axios.post(`/items/pic/${item.name}?id=${item._id}&fiveArray=${JSON.stringify(fiveArray)}&index=${id}`)
+             const response2 = await axios.patch(`/items/texts/${JSON.stringify(newItem)}?id=${item._id}&fiveArray=${JSON.stringify(fiveArray)}&index=${id}`)
+            dispatch({type: 'success', payload: true})
+            dispatch({type: 'errMsg', payload: response2.data.message})
         } catch (error) {
-            
+            dispatch({type: 'errMsg', payload: error.message})
+        }
+        finally {
+            setTimeout(()=> {
+                dispatch({type: 'success', payload: false})
+                dispatch({type: 'errMsg', payload: ''})
+            }, 3000 )
         }
     }
 
@@ -184,10 +221,14 @@ const EditItem = ()=> {
         getItem()
     }, [])
 
+    useEffect(()=> {
+        imageFunc()
+    }, [file])
+
  
     return (
         <div className="edit-an-item">
-            <h2>Edit Item</h2>
+            <h2>Edit {item.name}</h2>
             <section className="edit-item-colage">
         {picArray && picArray.map((pic)=> {
                 //  console.log(pic)
@@ -197,14 +238,7 @@ const EditItem = ()=> {
             <div className="edit-item-image" key={pic.id}>
                    {isLoading && pic.name === file && file.name ?  <p className="loading">Loading...</p> : ''}
        
-                {pic.name === 'no image' ?  '':   <div className="the-icons"><label 
-        className="edit-icon-inner"
-        htmlFor="myFile"
-        ><input type="file"  className="input-for-edit" 
-        name="myFile"
-        onChange={(e) => instantHandleFile(e, pic.id)}
-        onClick={() => hanldePreviousFileName(pic.name)}
-        /></label><label
+                {pic.name === 'no image' ?  '':   <div className="the-icons"><label
      
         onClick={() => handleDeletePic(pic, pic.id, index)}
         > <FontAwesomeIcon
@@ -281,11 +315,14 @@ const EditItem = ()=> {
                 onChange={(e) => handleDescription(e)}
                 ></textarea>
               
+                <section className="edit-delete-text">
+               <button  className="user-action"> <FontAwesomeIcon icon={faTrash}/></button>
                 <button 
-                id="update-button"
+                className="user-action"
                 onClick={handleEdit}
-                type="submit">Done</button>
-                <h2>{state.success}</h2>
+                type="submit"><FontAwesomeIcon icon={faSave}/></button>
+                </section>
+                {state.success ?<h2 className="err-msg">{state.errMsg}</h2> : ''}
             </form>
         </div>
     )

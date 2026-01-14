@@ -134,15 +134,17 @@ const {auth, getTrans, itemRef,
                     
                 }
 
-                   const handleRemove = async ()=> {
-                                         const response = await axiosPrivate.delete(`/items/delete/${state.id}`)
-                                        if (response) {
-                        
-                                            const newGraw = state.getNames && state.getNames.filter((item)=> item._id !== state.id)
-                                            dispatch({type: 'getNames', payload: newGraw})
-                                            dispatch({type: 'cancel', payload: false})
-                                        }
-                                }
+        const handleRemove = async ()=> {
+            const item = state.getNames && state.getNames.find((item)=> item._id === state.id)
+            console.log(item)
+                const response = await axiosPrivate.delete(`/items/delete/${state.id}?name=${item.name}`)
+            if (response) {
+
+                const newGraw = state.getNames && state.getNames.filter((item)=> item._id !== state.id)
+                dispatch({type: 'getNames', payload: newGraw})
+                dispatch({type: 'cancel', payload: false})
+            }
+            }
 
     const assertain = (id) => {
         console.log({auth})
@@ -153,6 +155,7 @@ const {auth, getTrans, itemRef,
             dispatch({type: 'cancel', payload: true})
             dispatch({type: 'id', payload: id})
             const getItem = state.items && state.items.find((item)=> item._id === id)
+            // console.log(getItem)
             dispatch({type: 'inItem', payload: getItem})
 
         }

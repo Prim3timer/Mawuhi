@@ -1978,7 +1978,14 @@ button:active {
       padding: 1rem;
       /* width: ; */
       
-      
+    }
+
+    .edit-delete-text {
+      display: flex;
+      margin-top: 2rem;
+      align-items: center;
+      justify-content: center;
+   column-gap: 5rem;
     }
     .no-err-msg {
       background-color: lightgreen;
@@ -2907,6 +2914,9 @@ width: 70vw;
 
       .shop-item-texts {
         /* background-color: yellow; */
+    display: flex;
+    flex-direction: column;
+    row-gap: .5rem;
         width: 10.5rem;
       }
     
