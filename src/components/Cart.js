@@ -45,6 +45,7 @@ const getCartItems = async () => {
         const response = await axiosPrivate.get('/users')
         console.log(response.data)
         const currentUser = response.data.users.find((user) => user._id === memUser)
+        console.log(memUser)
         setCartItems(currentUser.cart)
         console.log(currentUser)
         const newUseritems = currentUser.cart.map((item) => {
@@ -107,8 +108,8 @@ const doneSales = async()=> {
           const response = await axios.post(`/sessions/create-checkout-session`, newerArray)
           
           if (response){
-            //   window.location = response.data?.session?.url
-            //   console.log(response.data)
+              window.location = response.data?.session?.url
+              console.log(response.data)
               
       } 
 

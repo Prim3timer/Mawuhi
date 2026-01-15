@@ -15,7 +15,7 @@ import initialState from '../store';
 const LOGIN_URL = '/auth';
 
 const Login = () => {
-       const { setAuth, persistor, setPersistor} = useContext(AuthContext);
+       const { auth, setAuth, persistor, setPersistor} = useContext(AuthContext);
 
     const [state, dispatch] = useReducer(reducer, initialState)
   
@@ -79,6 +79,7 @@ const Login = () => {
             const accessToken = response?.data?.accessToken;
             const roles = response?.data?.roles;
             const picker = response?.data?.id;
+            console.log(auth)
             
             setAuth({ user,roles, accessToken, picker});
             
@@ -86,6 +87,7 @@ const Login = () => {
             setPwd('');
             // get the user to where they wanted to go before they were kicked out to 
             // the login page
+          
             navigate(from, { replace: true });
             // dispatch({type: 'success', payload: true})
         } catch (err) {

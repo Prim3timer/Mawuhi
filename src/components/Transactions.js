@@ -17,7 +17,7 @@ import useAxiosPrivate from "../hooks/useAxiosPrivate";
 
 const Transactions = ()=> {
 
-    
+
     const [state, dispatch] = useReducer(reducer, initialState)   
     const [cash, setCash] = useState(false)
     const [card, setCard] = useState(false)
@@ -34,7 +34,7 @@ const Transactions = ()=> {
 console.log(items)
     const axiosPrivate = useAxiosPrivate()
 
-    
+        localStorage.setItem('memUser', auth.picker)
     const refresh = useRefreshToken()
 
     

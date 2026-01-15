@@ -44,11 +44,6 @@ const multiLinks = [
         name: 'cart',
         path: '/cart'
     },
-    {id: 10,
-        name: 'cancel',
-        path: '/cancel'
-    },
-    
     // {
     //     id: 10,
     //     name: 'single item',

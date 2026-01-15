@@ -5,6 +5,7 @@ import axios, { axiosPrivate } from "../app/api/axios"
 import AuthContext from "../context/authProvider"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faTimes, faPlus, faTrash, faSave } from "@fortawesome/free-solid-svg-icons"
+import { useNavigate } from "react-router-dom"
 import { type } from "@testing-library/user-event/dist/type"
 
 
@@ -27,19 +28,10 @@ const EditItem = ()=> {
       const {afa, unitMeasure, ole} = state
        const now = new Date()
 
-
+const navigate = useNavigate()
 
             let fiveArray = []
 
-
-    const instantHandleFile =  () => {
-        console.log('ihF')
-    }
-    
-    const hanldePreviousFileName = (name) => {
-        console.log(name)
-
-    }
     const handleDeletePic = async (pic, id, index) => {
 
         try {
@@ -57,10 +49,12 @@ const EditItem = ()=> {
        setPicArray(currentPics)
        const response = await axiosPrivate.delete(`/delete-pic/${getPic.name}?name=${item.name}&id=${item._id}`)
        if (response){
+           dispatch({type: 'success', payload: true})   
             dispatch({type: 'errMsg', payload: response.data})
             setTimeout(()=> {
                 
                 dispatch({type: 'errMsg', payload: ''})
+                dispatch({type: 'success', payload: false})   
             }, 3000)
             //    dispatch({type: 'success', payload: true})
     }
@@ -148,13 +142,14 @@ const EditItem = ()=> {
              console.log(fiveArray)
              const response = await axios.patch(`/items/pic/${item.name}?fiveArray=${JSON.stringify(fiveArray)}&initialPic=${initialPic}&id=${item._id}`, formData)
              if(response){
-                 setSuccess(true)         
-                 setIsLoading(false)                        
-                 dispatch({type: 'errMsg', payload: response.data})
-                 setTimeout(()=> {
-                     setSuccess(false)
-                     dispatch({type: 'errMsg', payload: ''})
-                 }, 2000)
+                  dispatch({type: 'success', payload: true})   
+                  setIsLoading(false)                        
+                  dispatch({type: 'errMsg', payload: response.data})
+                  setTimeout(()=> {
+                      setSuccess(false)
+                      dispatch({type: 'errMsg', payload: ''})
+                      dispatch({type: 'success', payload: false})   
+                 }, 3000)
                  
                 }
                 setFile('')
@@ -220,6 +215,40 @@ const imageFunc = async () => {
         setDescription(e.target.value)
     }
 
+
+    const handleItemDelete = async () => {
+        console.log(item._id, item.name)
+        const response = await axiosPrivate.delete(`/items/delete/${item._id}?name=${item.name}`)
+        try {
+              if (response){
+                navigate('/item-list')
+              }
+        } catch (error) {
+            dispatch({type: 'errMsg', payload: error.message})
+        }
+        console.log('deleted')
+    }
+
+        const remainDelete = () => {
+        // this condition statement is to enable the removal of the confirm window once any part
+        // of the 
+        // page is touched.
+        if (state.cancel) {
+
+            dispatch({ type: 'cancel', payload: false })
+        }
+
+    }
+
+        const generalRemain = () => {
+        if (state.isMatched) dispatch({ type: 'isMatched', payload: false })
+
+    }
+
+      const assertain = () => {
+        dispatch({ type: 'cancel', payload: true })
+    }
+
     useEffect(()=> {
         getItem()
     }, [])
@@ -230,7 +259,9 @@ const imageFunc = async () => {
 
  
     return (
-        <div className="edit-an-item">
+        <div className="edit-an-item"
+        onClick={remainDelete}
+        >
             <h2>Edit {item.name}</h2>
             <section className="edit-item-colage">
         {picArray && picArray.map((pic)=> {
@@ -321,7 +352,9 @@ const imageFunc = async () => {
                 ></textarea>
               
                 <section className="edit-delete-text">
-               <button  className="user-action"> <FontAwesomeIcon icon={faTrash}/></button>
+               <button  className="user-action"
+               onClick={assertain}
+               > <FontAwesomeIcon icon={faTrash}/></button>
                 <button 
                 className="user-action"
                 onClick={handleEdit}
@@ -329,6 +362,70 @@ const imageFunc = async () => {
                 </section>
                 {state.success ?<h2 className="err-msg">{state.errMsg}</h2> : ''}
             </form>
+
+                <div
+                    className={state.cancel ? 'delete' : 'no-delete'}
+                >
+                    <h3
+                        id="verify-header"
+                        style={{
+                            margin: '.5rem auto',
+                            //   display: 'flex',
+                        }}
+                    > Delete  {item.name && item.name} from items</h3>
+                    <article
+                        style={{
+                            display: 'flex',
+                            //  flexDirection: 'row',
+                            columnGap: '4vw',
+                            justifyContent: 'center',
+                        }}
+                    >
+                        <button
+                            onClick={remainDelete}
+                        >No</button><button
+                            onClick={handleItemDelete}
+                            style={{
+                                backgroundColor: 'red',
+                                borderColor: 'red'
+                            }}
+                        >Yes</button></article></div>
+
+                <div
+                    className={state.isMatched ? 'unauthorization-alert' : 'authorization'}
+
+                >
+                    <h2
+                        id="verify-header"
+                        style={{
+                            margin: '.5rem auto',
+                            //   display: 'flex',
+                        }}
+                    >Unauthorized!</h2>
+                    <button
+                        onClick={generalRemain}
+                    >
+                        ok</button>
+
+                </div>
+                <div
+                    style={{
+                        display: state.success ? 'block' : 'none',
+                        position: 'fixed',
+                        margin: '1rem 0',
+                        top: '40%',
+                        left: '30%',
+                        width: '40%',
+                        textAlign: 'center',
+                        padding: '1rem',
+                        backgroundColor: 'lightpink',
+                        borderRadius: '5px',
+                        fontSize: '1.5rem',
+                        opacity: '.85'
+                    }}
+                >
+                    <h4>{state.selectUser}</h4>
+                </div>
         </div>
     )
 }

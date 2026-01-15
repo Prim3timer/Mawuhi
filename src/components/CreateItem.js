@@ -71,7 +71,7 @@ let CreateItem = () => {
             dispatch({type: 'piecesUnit', payload: '' })
             dispatch({type: 'IMAGE', payload: '' })
             setDescription('')
-            formData.remove()
+           
         }  
         } catch (error) {
             dispatch({type: 'errMsg', payload: `${error.message}`})

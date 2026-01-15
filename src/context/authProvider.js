@@ -28,13 +28,13 @@ const [currentUsers, setCurrentUsers] = useState([])
   const [search2, setSearch2] = useState('')
      const itemRef = useRef()
         const barRef = useRef(null)
-        const currency = '₦'
+        // const currency = '₦'
         // const picUrl = 'https://mawuhi-back.onrender.com/images'
         // const picUrl = 'http://localhost:3500/images'
         // const picUrl = process.env.PUBLIC_URL
         const picUrl = process.env.REACT_APP_URL
         console.log(picUrl)
-        // const currency = '$'
+        const currency = '$'
 
 
              const measurements = ['grams (g)', 'Piece (pc)', 'Plate (Plt)', 'Dozen (dz)', 'Bottle (Btl)', 'ounce (oz)', 'centiliter (CL)', 'Sachet (sct)', 'Ounce (Oz)', 'Set (St)', 'Bag (Bg)', 'Pair (pr)',
