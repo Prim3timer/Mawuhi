@@ -171,7 +171,8 @@ function numberWithCommas(x) {
         </article>
          
             {state.getNames && state.getNames.map((item)=> {
-                const theDay = new Date(item.date).toDateString().substring(4, 15)
+                // const theDay = new Date(item.date).toDateString().substring(4, 15)
+                const theDay = new Date(item.date).toString()
 
                 return (
                     <section
