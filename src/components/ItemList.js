@@ -20,6 +20,7 @@ const Items = ()=> {
   // window.history.pushState(null, null, '/home');
   const [state, dispatch] = useReducer(reducer, initialState)
   const {falseIsRotated, currency, items, oneItem, picUrl} = useContext(AuthContext)
+  console.log(items)
   const [shopItems, setShopItems] = useState([])
   const axiosPrivate = useAxiosPrivate()
 

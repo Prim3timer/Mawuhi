@@ -55,7 +55,7 @@ let CreateItem = () => {
                 const myError =  new Error('There cannot be two intances of the same item')
         }
         else {
-            const response = await axiosPrivate.post('/items', newItem)  
+            const response = await axios.post('/items', newItem)  
             const response2 = await axios.post(`/item/pic/upload/${newItem.name}`, formData)
             if (response){  
                 setShowUpdate(true)

@@ -89,7 +89,7 @@ const {auth, getTrans, itemRef,
                        }
                        const response = await axiosPrivate.patch(`/items/${id}`, newItem)  
                        if (response){  
-                           const graw = await axiosPrivate.get('/items')
+                        //    const graw = await axiosPrivate.get('/items')
                            dispatch({type: 'getNames', payload: graw.data.items})
                
                            dispatch({type: 'ALERTMSG', payload: `${newItem.name} Edited` })
