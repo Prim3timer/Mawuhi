@@ -56,7 +56,7 @@ let CreateItem = () => {
         }
         else {
             const response = await axios.post('/items', newItem)  
-            const response2 = await axios.post(`/item/pic/upload/${newItem.name}`, formData)
+            const response2 = await axios.post(`/items/pic/upload/${newItem.name}`, formData)
             if (response){  
                 setShowUpdate(true)
                 dispatch({type: 'isMatched', payload: `new item, ${newItem.name} created` })
