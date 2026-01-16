@@ -408,7 +408,7 @@ const imageFunc = async () => {
                         ok</button>
 
                 </div>
-                <div
+                {/* <div
                     style={{
                         display: state.success ? 'block' : 'none',
                         position: 'fixed',
@@ -425,7 +425,7 @@ const imageFunc = async () => {
                     }}
                 >
                     <h4>{state.selectUser}</h4>
-                </div>
+                </div> */}
         </div>
     )
 }
