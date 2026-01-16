@@ -235,7 +235,7 @@ useEffect(()=> {
             search, setSearch, setSearch2, search2, sales, user, currentUser,
             setCurrentUser, setCurrentUser2, currentUser2, users, setUsers, transactions, atHome, setAtHome,
             currentUsers, setCurrentUsers, setIsRotated, isRotated, barRef, persistor, setPersistor, falseIsRotated, measurements,
-            genTrans, setGenTrans, currency, items, oneItem, userPage, picUrl
+            genTrans, setGenTrans, currency, items, oneItem, userPage, picUrl, getItems
 
         }}>
             {children}

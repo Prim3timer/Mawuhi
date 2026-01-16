@@ -29,13 +29,13 @@ const Items = ()=> {
         dispatch({type: 'clear'})
         try {
             // dispatch({type: 'errMsg', payload: 'loading...'})
-            // const response = await axiosPrivate.get('/items')
+            const response = await axiosPrivate.get('/items')
             dispatch({type: 'errMsg', payload: ''})
           
               // dispatch({type: 'items', payload: items})   
               // console.log(response.data.items ) 
 
-             const filterItems = items.filter((item) => item.name.toLowerCase().includes(state.search.toLowerCase()))
+             const filterItems = response && response.data.items.filter((item) => item.name.toLowerCase().includes(state.search.toLowerCase()))
           console.log(filterItems)
   
           
@@ -50,6 +50,7 @@ const Items = ()=> {
 useEffect(()=> {
   getItems()
 }, [state.search])
+
 
 
  function numberWithCommas(x) {

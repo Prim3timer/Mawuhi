@@ -25,7 +25,8 @@ let CreateItem = () => {
 
 
     const handleSubmit = async (e)=> {
-        
+         setShowUpdate(true)
+        dispatch({type: 'isMatched', payload: 'creating item...'})
         e.preventDefault()
         const {name, price, unitMeasure, image} = state
         const formData = new FormData()
@@ -58,7 +59,7 @@ let CreateItem = () => {
             const response = await axios.post('/items', newItem)  
             const response2 = await axios.post(`/items/pic/upload/${newItem.name}`, formData)
             if (response){  
-                setShowUpdate(true)
+               
                 dispatch({type: 'isMatched', payload: `new item, ${newItem.name} created` })
                 setTimeout(()=> {
                     dispatch({type: 'isMatched', payload: '' })
