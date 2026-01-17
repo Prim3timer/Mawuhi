@@ -1483,7 +1483,8 @@ display: block;
   }
 
   .trans-name-and-img img {
-    height: 100px;
+    height: 100px;  
+    width: 100px;  
   }
 
   #trans-item >*:nth-child(2) {
