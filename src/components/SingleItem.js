@@ -237,8 +237,9 @@ function numberWithCommas(x) {
           
                 {/* <h2>Single Item</h2> */}
               <section className="single-image-container">
+                   <p>{state.elItem.name}</p>
                   <img  className='single-item-image' src={`${picUrl}/images/${state.elItem.name}/${state.elItem.img[index].name}`} alt={state.elItem.name}/>
-                <p>{state.elItem.name}</p>
+             
                    <div className="single-item-array">
             {state.elItem.img.map((image, i)=> {
               console.log(image)
