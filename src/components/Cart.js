@@ -196,11 +196,12 @@ const plural2 = state.cartAmount.length === 1 ? '' : 's'
             { state.cartArray.length ? <h3>{parseFloat(state.cartAmount).toFixed(2)} item{plural2}, {state.cartArray.length} product{plural}</h3> : 'Empty'}
 
 {state.cartArray && state.cartArray.map((item) =>{
-    console.log(item)
+    console.log(item.img[0].name)
+    console.log(item.name)
     return (
         <div className="cart-main-container">
             <article className="cart-items-container">
-            <img className="cart-item-image" src={`${picUrl}/images/${item.name}/${item.img[0]}`} alt={item.name}/>
+            <img className="cart-item-image" src={`${picUrl}/images/${item.name}/${item.img[0].name}`} alt={item.name}/>
            <section>
             <p>{item.name}</p>
             {/* <h3>price: ${item.price}</h3> */}
