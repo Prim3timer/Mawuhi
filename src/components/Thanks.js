@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 
 const Thanks = () =>{
 const {currentUsers} = useContext(AuthContext)
+const [transId, setTransId] = useState()
 
 
 const getRecipt = async ()=> {
@@ -39,6 +40,8 @@ return
 
 } else if (!oldSession || oldSession !== sessionId) {
     const response = await axios.post(`/sessions/thanks/${sessionId}`, dateOjb)
+    console.log(response.data)
+    setTransId(response.data.transaction._id)
 }
 
 } catch (error){
@@ -64,7 +67,7 @@ useEffect(()=> {
             <article>
             <Link to={'/shop'}><button>Shopping</button></Link>
             {/* <Link to={'/home'}><button>Home</button></Link> */}
-            <Link to={'/one-receipt'}><button>Get Receipt</button></Link>
+            <Link to={'/one-receipt'} onClick={localStorage.setItem('memTransaction', transId && transId)}><button>Get Receipt</button></Link>
       </article>
         </div>
     )

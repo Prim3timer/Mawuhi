@@ -30,7 +30,7 @@ const Transactions = ()=> {
     const [firstRedChecker, setFirstRedChecker] = useState('')
     const [success, setSuccess] = useState(false)
     const [noShow, setNoShow] = useState(false)
-    // const [items, setItems] = useState([])
+    const [recipt, setReceipt] = useState({})
 console.log(items)
     const axiosPrivate = useAxiosPrivate()
 
@@ -276,6 +276,11 @@ function numberWithCommas(x) {
 
             
             const getRecipt = async ()=> {
+                const transes = await axios.get(`/transactions`)
+                console.log(transes.data)
+                const reverseTranses = transes.data.reverse()
+                console.log(reverseTranses[0])
+                localStorage.setItem('memTransaction', reverseTranses[0]._id)
                 dispatch({type: 'transArray', payload: []})
     const queryParams = new URLSearchParams(window.location.search)
     let sessionId = queryParams.get("session_id")
@@ -296,11 +301,7 @@ function numberWithCommas(x) {
     return
      }else if (!oldSession || oldSession !== sessionId){  
          const response = await axios.post(`/transactions/sessions/${sessionId}`, dateOjb)
-         console.log(response.data)
 
-         if (res.data){
-            
-         }
          if (response){
              setSuccess(true)
             dispatch({type: 'ALERTMSG', payload: response.data.message})
@@ -311,6 +312,7 @@ function numberWithCommas(x) {
         
              return {...prev, users: response.data.users
              }
+
          })
      }
     
@@ -344,15 +346,7 @@ useEffect(()=> {
 //   inputRef.current.focus()
 
 // }
-}, [ ])
-// useEffect(()=> {
-
-//     refresh()
-// }, [])
-
-// useEffect(()=> {
-//     getItems()
-// }, [])
+}, [success])
 
 
     return (

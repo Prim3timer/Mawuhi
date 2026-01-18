@@ -81,7 +81,7 @@ useEffect(()=> {
     console.log(currentTrans)
 }, [])
 
-   const theDay = new Date(currentTrans && currentTrans.date).toDateString().substring(4, 15)
+   const theDay = new Date(currentTrans && currentTrans.date).toString().substring(4, 25)
 //    console.log(theDay)
 
 

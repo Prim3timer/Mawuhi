@@ -18,31 +18,22 @@ const [showOne, setShowOne] = useState(false)
 const [oneId, setOneId] = useState('')
 const { auth} = useAuth();
 const [currentUser, setCurrentUser] = useState('')
-const {atHome, getUsers, currentUsers, setIsRotated, falseRotated, currency} = useContext(AuthContext)
+const {atHome, getUsers, currentUsers, setIsRotated, falseRotated, currency, users} = useContext(AuthContext)
 
 // const theDay = new Date(inv.date).getDate()
 //     const aDate = format(inv.date.substring(0, 10), `${theDay} MMM, yyyy`)
 const refresh = useRefreshToken()
 const getItems = async ()=> {
-    // const authUsers = await refresh()
-    
-  
-    // setAuth(authUsers)
-    // const person = users.find((user) => user._id === pickerChecker)
-    // auth.picker3 = state.id
+    const userId = localStorage.getItem('memUser')
+    console.log(userId)
     try {
-
-        
-            //   const gog =  await axios.get('/users')
-    
-            // setCurrentUser(person)
-    
+            console.log("hello users")
+            // const users = await axios.get('/users')
+            console.log(users)
             const response = await axiosPrivate.get('/transactions')
-        
-             
-                const cashierTrans = response.data.filter((item) => item.cashierID === auth.picker)
-                      const person = auth.user && auth.users.find((person) => person._id == auth.picker)
-                          setCurrentUser(person)
+    
+                const cashierTrans = response.data.filter((item) => item.cashierID === userId)
+                          console.log(currentUser)
                 // dispatch({type: 'getNames', payload: response.data})
                 cashierTrans.reverse()
                 dispatch({type: 'getNames', payload: cashierTrans})
@@ -133,10 +124,7 @@ function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
     return (
-        !currentUser ? <h2
-        
-        className="receipts"
-        >Loading...</h2> : <div
+        <div
         className="receipts"
         
         onClick={generalRemain}
@@ -171,8 +159,8 @@ function numberWithCommas(x) {
         </article>
          
             {state.getNames && state.getNames.map((item)=> {
-                // const theDay = new Date(item.date).toDateString().substring(4, 15)
-                const theDay = new Date(item.date).toString()
+                const theDay = new Date(item.date).toString().substring(4, 25)
+                // const theDay = new Date(item.date).toString(0, 10)
 
                 return (
                     <section

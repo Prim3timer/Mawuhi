@@ -226,7 +226,6 @@ useEffect(()=> {
 // useEffect(()=> {
 //     getUsers()
 // }, [])
-
     return (
 
         <AuthContext.Provider value={{auth, setAuth,

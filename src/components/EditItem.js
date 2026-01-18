@@ -169,6 +169,7 @@ const imageFunc = async () => {
     if (currentBackItem){
         console.log(currentBackItem.img)
         setPicArray(currentBackItem.img)
+       
     }
     
   try {
@@ -265,12 +266,9 @@ const imageFunc = async () => {
             <h2>Edit {item.name}</h2>
             <section className="edit-item-colage">
         {picArray && picArray.map((pic)=> {
-                 console.log(pic.id, id)
-                //  console.log(id)
-                //  console.log(file)
          return (
             <div className="edit-item-image" key={pic.id}>
-                   {isLoading && pic.name === file && file.name ?  <p className="loading">Loading...</p> : ''}
+                   {isLoading && pic.name === file.name ?  <p className="loading">Loading...</p> : ''}
        
                 {pic.name === 'no image' ?  '':   <div className="the-icons"><label
      
@@ -292,6 +290,7 @@ const imageFunc = async () => {
    /> : ''}
  </div> : 
  <img className="edit-item-image" src={`${picUrl}/images/${item.name}/${pic.name}`} alt={pic.name}/>}
+ {/* if file has a value and id = id of the element  in picArray and  both success and isLoading is false */}
          {file && <button className={id === pic.id && !success && !isLoading ? 'show-button': 'hide-button'} onClick={() => handleUpload(pic.id)}
 //   
 
@@ -360,7 +359,7 @@ const imageFunc = async () => {
                 onClick={handleEdit}
                 type="submit"><FontAwesomeIcon icon={faSave}/></button>
                 </section>
-                {state.success ?<h2 className="err-msg">{state.errMsg}</h2> : ''}
+                {state.success ?<h2 className="delete">{state.errMsg}</h2> : ''}
             </form>
 
                 <div
@@ -408,24 +407,6 @@ const imageFunc = async () => {
                         ok</button>
 
                 </div>
-                {/* <div
-                    style={{
-                        display: state.success ? 'block' : 'none',
-                        position: 'fixed',
-                        margin: '1rem 0',
-                        top: '40%',
-                        left: '30%',
-                        width: '40%',
-                        textAlign: 'center',
-                        padding: '1rem',
-                        backgroundColor: 'lightpink',
-                        borderRadius: '5px',
-                        fontSize: '1.5rem',
-                        opacity: '.85'
-                    }}
-                >
-                    <h4>{state.selectUser}</h4>
-                </div> */}
         </div>
     )
 }
